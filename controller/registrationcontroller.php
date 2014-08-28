@@ -18,11 +18,9 @@ use \OCP\AppFramework\Controller;
 
 class RegistrationController extends Controller {
 
-	public function __construct($appName, IRequest $request, $userId){
+	public function __construct($appName, IRequest $request){
 		parent::__construct($appName, $request);
-		$this->userId = $userId;
 	}
-
 
 	/**
 	 * @NoAdminRequired
