@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<info>
+    <id>registration</id>
+    <name>Registration</name>
+    <description>User registration</description>
+    <licence>AGPL</licence>
+    <author>Pellaeon Lin</author>
+    <version>0.0.1</version>
+    <requiremin>7</requiremin>
+</info>
