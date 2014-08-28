@@ -14,7 +14,7 @@ namespace OCA\Registration\AppInfo;
 
 use \OCP\AppFramework\App;
 
-use \OCA\Registration\Controller\PageController;
+use \OCA\Registration\Controller\RegistrationController;
 
 
 class Application extends App {
@@ -28,11 +28,10 @@ class Application extends App {
 		/**
 		 * Controllers
 		 */
-		$container->registerService('PageController', function($c) {
-			return new PageController(
+		$container->registerService('RegistrationController', function($c) {
+			return new RegistrationController(
 				$c->query('AppName'), 
-				$c->query('Request'),
-				$c->query('UserId')
+				$c->query('Request')
 			);
 		});
 

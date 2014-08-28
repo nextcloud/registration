@@ -16,33 +16,36 @@ use \OCP\IRequest;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Controller;
 
-class PageController extends Controller {
+class RegistrationController extends Controller {
 
-    private $userId;
-
-    public function __construct($appName, IRequest $request, $userId){
-        parent::__construct($appName, $request);
-        $this->userId = $userId;
-    }
+	public function __construct($appName, IRequest $request, $userId){
+		parent::__construct($appName, $request);
+		$this->userId = $userId;
+	}
 
 
-    /**
-     * @NoAdminRequired
+	/**
+	 * @NoAdminRequired
 	 * @PublicPage
-     */
-    public function index() {
-        $params = array('user' => $this->userId);
-        return new TemplateResponse('registration', 'main', $params);  // templates/main.php
-    }
+	 */
+	public function displayRegisterPage($errormsg, $entered) {
+		OC_Template::printGuestPage('core/registration', 'register',
+			array('errormsg' => $errormsg,
+			'entered' => $entered));
+	}
+	public function index() {
+		$params = array('user' => $this->userId);
+		return new TemplateResponse('registration', 'main', $params);  // templates/main.php
+	}
 
 
-    /**
-     * Simply method that posts back the payload of the request
-     * @NoAdminRequired
-     */
-    public function doEcho($echo) {
-        return array('echo' => $echo);
-    }
+	/**
+	 * Simply method that posts back the payload of the request
+	 * @NoAdminRequired
+	 */
+	public function doEcho($echo) {
+		return array('echo' => $echo);
+	}
 
 
 }
