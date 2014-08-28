@@ -26,24 +26,11 @@ class RegistrationController extends Controller {
 	 * @NoAdminRequired
 	 * @PublicPage
 	 */
-	public function displayRegisterPage($errormsg, $entered) {
-		OC_Template::printGuestPage('core/registration', 'register',
-			array('errormsg' => $errormsg,
-			'entered' => $entered));
+	public function displayRegisterPage() {
+		$params = array(
+			'errormsg' => $this->request->getParam('errormsg'),
+			'entered' => $this->request->getParam('entered')
+		);
+		return new TemplateResponse('registration', 'register', $params);
 	}
-	public function index() {
-		$params = array('user' => $this->userId);
-		return new TemplateResponse('registration', 'main', $params);  // templates/main.php
-	}
-
-
-	/**
-	 * Simply method that posts back the payload of the request
-	 * @NoAdminRequired
-	 */
-	public function doEcho($echo) {
-		return array('echo' => $echo);
-	}
-
-
 }
