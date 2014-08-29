@@ -50,6 +50,10 @@ class Application extends App {
 		$container->registerService('L10N', function($c) {
 			return $c->query('ServerContainer')->getL10N($c->query('AppName'));
 		});
+
+		$container->registerService('PendingRegist', function($c) {
+			return new PendingRegist($c->query('ServerContainer')->getDb());
+		});
 	}
 
 
