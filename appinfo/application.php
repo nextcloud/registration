@@ -15,10 +15,10 @@ namespace OCA\Registration\AppInfo;
 use \OCP\AppFramework\App;
 
 use \OCA\Registration\Controller\RegistrationController;
+use \OCA\Registration\Wrapper;
 
 
 class Application extends App {
-
 
 	public function __construct (array $urlParams=array()) {
 		parent::__construct('registration', $urlParams);
@@ -42,7 +42,14 @@ class Application extends App {
 		$container->registerService('UserId', function($c) {
 			return \OCP\User::getUser();
 		});		
-		
+
+		$container->registerService('Mail', function($c) {
+			return Mail();
+		});
+
+		$container->registerService('L10N', function($c) {
+			return $c->query('ServerContainer')->getL10N($c->query('AppName'));
+		});
 	}
 
 

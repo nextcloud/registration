@@ -15,10 +15,16 @@ namespace OCA\Registration\Controller;
 use \OCP\IRequest;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Controller;
+use \OCA\Registration\Wrapper;
 
 class RegistrationController extends Controller {
 
-	public function __construct($appName, IRequest $request){
+	private $mail;
+	private $l10n;
+
+	public function __construct($appName, IRequest $request, Mail $mail, $l10n){
+		$this->mail = $mail;
+		$this->l10n = $l10n;
 		parent::__construct($appName, $request);
 	}
 
