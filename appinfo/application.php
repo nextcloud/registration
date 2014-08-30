@@ -14,7 +14,7 @@ namespace OCA\Registration\AppInfo;
 
 use \OCP\AppFramework\App;
 
-use \OCA\Registration\Controller\RegistrationController;
+use \OCA\Registration\Controller\RegisterController;
 use \OCA\Registration\Wrapper;
 
 
@@ -28,8 +28,8 @@ class Application extends App {
 		/**
 		 * Controllers
 		 */
-		$container->registerService('RegistrationController', function($c) {
-			return new RegistrationController(
+		$container->registerService('RegisterController', function($c) {
+			return new RegisterController(
 				$c->query('AppName'), 
 				$c->query('Request')
 			);
@@ -49,6 +49,10 @@ class Application extends App {
 
 		$container->registerService('L10N', function($c) {
 			return $c->query('ServerContainer')->getL10N($c->query('AppName'));
+		});
+
+		$container->registerService('URLGenerator', function($c) {
+			return $c->getServer()->getURLGenerator();
 		});
 
 		$container->registerService('PendingRegist', function($c) {

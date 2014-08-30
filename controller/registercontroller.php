@@ -17,16 +17,18 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Controller;
 use \OCA\Registration\Wrapper;
 
-class RegistrationController extends Controller {
+class RegisterController extends Controller {
 
 	private $mail;
 	private $l10n;
 	private $db;
+	private $urlgenerator;
 
-	public function __construct($appName, IRequest $request, Mail $mail, $l10n, $db){
+	public function __construct($appName, IRequest $request, Mail $mail, $l10n, $db, $urlgenerator){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
 		$this->db = $db;
+		$this->urlgenerator = $urlgenerator;
 		parent::__construct($appName, $request);
 	}
 
@@ -35,7 +37,7 @@ class RegistrationController extends Controller {
 	 * @NoCSRFRequired
 	 * @PublicPage
 	 */
-	public function displayRegisterPage($errormsg, $entered) {
+	public function askEmail($errormsg, $entered) {
 		$params = array(
 			'errormsg' => $errormsg ? $errormsg : $this->request->getParam('errormsg'),
 			'entered' => $entered ? $entered : $this->request->getParam('entered')
@@ -63,8 +65,7 @@ class RegistrationController extends Controller {
 		// FEATURE: allow only from specific email domain
 
 		$token = $this->db->savePendingRegistration($email);
-		$link = OC_Helper::linkToRoute('core_registration_register_form',
-			array('token' => $token));
+		$link = $this->urlgenerator->linkToRoute('registration.verify.token', array('token' => $token));
 		$link = OC_Helper::makeURLAbsolute($link);
 		$from = OCP\Util::getDefaultEmailAddress('register');
 		$tmpl = new OC_Template('core/registration', 'email');
@@ -78,3 +79,4 @@ class RegistrationController extends Controller {
 		}
 		$this->displayRegisterPage('', true);
 	}
+}
