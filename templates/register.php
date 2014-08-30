@@ -6,7 +6,7 @@
 			</li>
 		</ul>
 	<?php else: ?>
-		<form action="<?php print_unescaped(OC_Helper::linkToRoute('core_registration_send_email')) ?>" method="post">
+		<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.validateEmail')) ?>" method="post">
 			<fieldset>
 				<ul class="error">
 					<li><?php print_unescaped($_['errormsg']); ?></li>
@@ -21,7 +21,7 @@
 		</form>
 	<?php endif; ?>
 <?php else: ?>
-	<form action="<?php print_unescaped(OC_Helper::linkToRoute('core_registration_send_email')) ?>" method="post">
+	<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.validateEmail')) ?>" method="post">
 		<fieldset>
 			<?php if (!empty($_['errormsg'])): ?>
 				<ul class="error">
