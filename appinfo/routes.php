@@ -24,6 +24,6 @@ $application = new Application();
 $application->registerRoutes($this, array('routes' => array(
 	array('name' => 'register#askEmail', 'url' => '/', 'verb' => 'GET'),
 	array('name' => 'register#validateEmail', 'url' => '/', 'verb' => 'POST'),
-	array('name' => 'verify#token', 'url' => '/verify/{token}', 'verb' => 'GET'),
-	array('name' => 'verify#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST')
+	array('name' => 'register#verifyToken', 'url' => '/verify/{token}', 'verb' => 'GET'),
+	array('name' => 'register#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST')
 )));
