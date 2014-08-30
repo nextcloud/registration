@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+lang_map = ja_JP: ja
+
+[owncloud.registration]
+file_filter = <lang>/registration.po
+source_file = templates/registration.pot
+source_lang = en
+type = PO
