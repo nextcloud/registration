@@ -55,13 +55,22 @@ class RegisterController extends Controller {
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
 		if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-			$this->askEmail($this->l10n->t('Email address you entered is not valid'), true);
-			return;
+			return new TemplateResponse('', 'error', array(array('error' => $this->l10n->t('Email address you entered is not valid'))), 'error');
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('Email address you entered is not valid'),
+					'hint' => ''
+				))
+			), 'error');
 		}
 
 		if ( $this->pendingreg->find($email) ) {
-			$this->askEmail($this->l10n->t('There is already a pending registration with this email'), true);
-			return;
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('There is already a pending registration with this email'),
+					'hint' => ''
+				))
+			), 'error');
 		}
 
 		// FEATURE: allow only from specific email domain
