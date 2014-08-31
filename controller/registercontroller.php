@@ -82,11 +82,30 @@ class RegisterController extends Controller {
 		$res = new TemplateResponse('registration', 'email', array('link' => $link));
 		$msg = $res->render();
 		try {
-			$this->mail->send($email, 'ownCloud User', $l->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
+			$this->mail->send($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
 		} catch (Exception $e) {
 			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
 			return;
 		}
 		$this->askEmail('', true);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @PublicPage
+	 */
+	public function verifyToken($token) {
+		$email = $this->pendingreg->findByToken($token);
+		if ( \OCP\DB::isError($email) ) {
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+					'hint' => ''
+				))
+			), 'error');
+		} elseif ( $email ) {
+			return new TemplateResponse('registration', 'form', array(), 'guest');
+		}
 	}
 }

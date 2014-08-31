@@ -25,4 +25,9 @@ class PendingRegist {
 		return $query->execute(array($email))->fetchAll();
 	}
 
+	public function findByToken($token) {
+		$query = $this->db->prepareQuery('SELECT `email` FROM `*PREFIX*registration` WHERE `token` = ? ');
+		return $query->execute(array($token))->fetchOne();
+	}
+
 }
