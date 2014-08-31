@@ -3,6 +3,7 @@ namespace OCA\Registration\Db;
 
 use \OCP\IDb;
 use \OCP\Util;
+use \OCP\Config;
 
 class PendingRegist {
 
@@ -15,7 +16,7 @@ class PendingRegist {
 	public function save($email) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
 			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, ? )' );
-		$token = hash('sha256', generateRandomBytes(30).OC_Config::getValue('passwordsalt', ''));
+		$token = hash('sha256', Util::generateRandomBytes(30).Config::getSystemValue('passwordsalt', ''));
 		$query->execute(array( $email, $token, time() ));
 		return $token;
 	}
