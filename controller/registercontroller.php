@@ -42,7 +42,7 @@ class RegisterController extends Controller {
 			'errormsg' => $errormsg ? $errormsg : $this->request->getParam('errormsg'),
 			'entered' => $entered ? $entered : $this->request->getParam('entered')
 		);
-		return new TemplateResponse('registration', 'register', $params);
+		return new TemplateResponse('registration', 'register', $params, 'blank');
 	}
 
 	/**
