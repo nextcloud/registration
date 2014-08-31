@@ -16,6 +16,7 @@ use \OCP\AppFramework\App;
 
 use \OCA\Registration\Controller\RegisterController;
 use \OCA\Registration\Wrapper;
+use \OCA\Registration\Db\PendingRegist;
 
 
 class Application extends App {
@@ -31,7 +32,11 @@ class Application extends App {
 		$container->registerService('RegisterController', function($c) {
 			return new RegisterController(
 				$c->query('AppName'), 
-				$c->query('Request')
+				$c->query('Request'),
+				$c->query('Mail'),
+				$c->query('L10N'),
+				$c->query('URLGenerator'),
+				$c->query('PendingRegist')
 			);
 		});
 

@@ -21,14 +21,15 @@ class RegisterController extends Controller {
 
 	private $mail;
 	private $l10n;
-	private $db;
 	private $urlgenerator;
+	private $pendingreg;
 
-	public function __construct($appName, IRequest $request, Mail $mail, $l10n, $db, $urlgenerator){
+	public function __construct($appName, IRequest $request, Mail $mail, $l10n, $urlgenerator,
+	$pendingreg){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
-		$this->db = $db;
 		$this->urlgenerator = $urlgenerator;
+		$this->pendingreg = $pendingreg;
 		parent::__construct($appName, $request);
 	}
 
@@ -57,14 +58,14 @@ class RegisterController extends Controller {
 			return;
 		}
 
-		if ( $this->db->find($email) ) {
+		if ( $this->pendingreg->find($email) ) {
 			$this->displayRegisterPage($this->l10n->t('There is already a pending registration with this email'), true);
 			return;
 		}
 
 		// FEATURE: allow only from specific email domain
 
-		$token = $this->db->savePendingRegistration($email);
+		$token = $this->pendingreg->save($email);
 		$link = $this->urlgenerator->linkToRoute('registration.verify.token', array('token' => $token));
 		$link = OC_Helper::makeURLAbsolute($link);
 		$from = OCP\Util::getDefaultEmailAddress('register');

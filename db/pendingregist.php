@@ -12,7 +12,7 @@ class PendingRegist {
 		$this->db = $db;
 	}
 
-	public function savePendingRegistration($email) {
+	public function save($email) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
 			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, ? )' );
 		$token = hash('sha256', generateRandomBytes(30).OC_Config::getValue('passwordsalt', ''));
