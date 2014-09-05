@@ -3,6 +3,7 @@ $TRANSLATIONS = array(
 "Email address you entered is not valid" => "Zadaná e-mailová adresa není správná",
 "There is already a pending registration with this email" => "Již existuje čekající registrace s touto e-mailovou adresou",
 "Verify your ownCloud registration request" => "Ověřte svůj požadavek na registraci ownCloud",
+"Invalid verification URL. No registration request with this verification URL is found." => "Neplatná ověřovací URL. Nebyl nalezen žádný registrační požadavek pro tuto ověřovací URL.",
 "To create a new account on ownCloud, just click the following link: {link}" => "Pro vytvoření nového účtu v ownCloud klikněte na následující odkaz: {link}",
 "Username" => "Uživatelské jméno",
 "Password" => "Heslo",
