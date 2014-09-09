@@ -1,0 +1,16 @@
+<?php
+$TRANSLATIONS = array(
+"Email address you entered is not valid" => "L'adresse courriel indiquée n'est pas valide",
+"There is already a pending registration with this email" => "Il y a déjà une inscription en attente avec cet adresse courriel",
+"Verify your ownCloud registration request" => "Vérifiez votre demande d'inscription ownCloud",
+"Invalid verification URL. No registration request with this verification URL is found." => "Adresse URL de vérification invalide. Aucune demande d'inscription avec cette adresse URL de vérification n'a été trouvée.",
+"To create a new account on ownCloud, just click the following link: {link}" => "Pour créer un nouveau compte sur ownCloud, cliquez simplement sur le lien suivant : {link}",
+"Username" => "Nom d'utilisateur",
+"Password" => "Mot de passe",
+"Create account" => "Créer un compte",
+"Thank you for registering, you should receive verification link in a few minutes." => "Merci pour votre inscription, vous allez recevoir un lien de vérification dans quelques instants.",
+"Email" => "Adresse courriel",
+"Please re-enter a valid email address" => "Veuillez remplir une adresse courriel valide",
+"You will receive an email with verification link" => "Vous allez recevoir un courriel avec un lien de vérification"
+);
+$PLURAL_FORMS = "nplurals=2; plural=(n > 1);";
