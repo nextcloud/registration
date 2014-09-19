@@ -9,6 +9,9 @@ $TRANSLATIONS = array(
 "Password" => "Пароль",
 "Create account" => "Создать учётную запись",
 "Thank you for registering, you should receive verification link in a few minutes." => "Спасибо за регистрацию, вы должны получить подтверждающую ссылку через несколько минут.",
-"Email" => "E-mail"
+"Email" => "E-mail",
+"Request verification link" => "Запросить проверочную ссылку",
+"Please re-enter a valid email address" => "Введите повторно действительный адрес электронной почты.",
+"You will receive an email with verification link" => "Вы получите сообщение с проверочной ссылкой."
 );
 $PLURAL_FORMS = "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);";
