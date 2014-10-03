@@ -76,7 +76,7 @@ class RegisterController extends Controller {
 		// FEATURE: allow only from specific email domain
 
 		$token = $this->pendingreg->save($email);
-		$link = $this->urlgenerator->linkToRoute('registration.register.verifytoken', array('token' => $token));
+		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
 		$link = $this->urlgenerator->getAbsoluteURL($link);
 		$from = Util::getDefaultEmailAddress('register');
 		$res = new TemplateResponse('registration', 'email', array('link' => $link));
