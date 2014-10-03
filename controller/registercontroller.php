@@ -102,7 +102,7 @@ class RegisterController extends Controller {
 	 * @PublicPage
 	 */
 	public function verifyToken($token) {
-		$email = $this->pendingreg->findByToken($token);
+		$email = $this->pendingreg->findEmailByToken($token);
 		if ( \OCP\DB::isError($email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
