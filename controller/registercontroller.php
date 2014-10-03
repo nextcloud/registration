@@ -79,7 +79,7 @@ class RegisterController extends Controller {
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
 		$link = $this->urlgenerator->getAbsoluteURL($link);
 		$from = Util::getDefaultEmailAddress('register');
-		$res = new TemplateResponse('registration', 'email', array('link' => $link));
+		$res = new TemplateResponse('registration', 'email', array('link' => $link), 'blank');
 		$msg = $res->render();
 		try {
 			$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
