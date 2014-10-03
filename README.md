@@ -1,4 +1,6 @@
-# Registration
+# Warning: work in progress, nothing works now.
+
+# User registration
 Place this app in **owncloud/apps/**
 
 
