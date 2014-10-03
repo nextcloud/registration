@@ -87,7 +87,13 @@ class RegisterController extends Controller {
 			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
 			return;
 		}
-		$this->askEmail('', true);
+		// TODO: below is not an error, should add "message" template
+		return new TemplateResponse('', 'error', array(
+			'errors' => array(array(
+				'error' => $this->l10n->t('Verification email successfully sent.'),
+				'hint' => ''
+			))
+		), 'error');
 	}
 
 	/**
