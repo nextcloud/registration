@@ -49,7 +49,7 @@ class Application extends App {
 		});		
 
 		$container->registerService('Mail', function($c) {
-			return Mail();
+			return new Wrapper\Mail;
 		});
 
 		$container->registerService('L10N', function($c) {
