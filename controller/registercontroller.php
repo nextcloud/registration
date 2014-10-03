@@ -111,7 +111,28 @@ class RegisterController extends Controller {
 				))
 			), 'error');
 		} elseif ( $email ) {
-			return new TemplateResponse('registration', 'form', array(), 'guest');
+			return new TemplateResponse('registration', 'form', array('email' => $email), 'guest');
+		}
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @PublicPage
+	 */
+	public function createAccount($token) {
+		$email = $this->pendingreg->findEmailByToken($token);
+		if ( \OCP\DB::isError($email) ) {
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+					'hint' => ''
+				))
+			), 'error');
+		} elseif ( $email ) {
+			$username = $this->request->getParam('username');
+			$password = $this->request->getParam('password');
+			return new TemplateResponse('registration', 'form', array('email' => $email), 'guest');
 		}
 	}
 }

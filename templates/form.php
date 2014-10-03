@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.createAccount')) ?>" method="post">
 	<fieldset>
 		<?php if ( $_['errormsgs'] ) {?>
 		<ul class="error">
@@ -14,8 +14,8 @@
 		</p>
 
 		<p class="infield groupmiddle">
-		<input type="text" name="user" id="user" value="<?php echo $_['entered_data']['user']; ?>" />
-		<label for="user" class="infield"><?php print_unescaped($l->t( 'Username' )); ?></label>
+		<input type="text" name="username" id="username" value="<?php echo $_['entered_data']['user']; ?>" />
+		<label for="username" class="infield"><?php print_unescaped($l->t( 'Username' )); ?></label>
 		<img class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
 
