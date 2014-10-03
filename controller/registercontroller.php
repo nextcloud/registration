@@ -82,7 +82,7 @@ class RegisterController extends Controller {
 		$res = new TemplateResponse('registration', 'email', array('link' => $link));
 		$msg = $res->render();
 		try {
-			$this->mail->send($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
+			$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
 		} catch (Exception $e) {
 			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
 			return;
