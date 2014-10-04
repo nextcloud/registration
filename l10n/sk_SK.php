@@ -4,7 +4,6 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "Registrácia s touto emailovou adresou už čaká na overenie registrácie",
 "Verify your ownCloud registration request" => "Overte svoju požiadavku na registráciu do ownCloud",
 "Invalid verification URL. No registration request with this verification URL is found." => "Neplatná overovacia URL. Nebola nájdená žiadna požiadavka o registráciu pre túto overovaciu URL.",
-"To create a new account on ownCloud, just click the following link: {link}" => "Pre vytvorenie nového účtu v ownCloude kliknite na nasledujúci odkaz: {link}",
 "Username" => "Používateľské meno",
 "Password" => "Heslo",
 "Create account" => "Vytvoriť účet",

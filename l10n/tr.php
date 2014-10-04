@@ -4,7 +4,6 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "Bu e-posta ile zaten bekleyen bir kayıt mevcut",
 "Verify your ownCloud registration request" => "ownCloud kayıt talebinizi doğrulayın",
 "Invalid verification URL. No registration request with this verification URL is found." => "Geçersiz doğrulama adresi. Bu doğrulama adresi ile bir kayıt talebi bulunamadı.",
-"To create a new account on ownCloud, just click the following link: {link}" => "ownCloud üzerinde yeni bir hesap oluşturmak için sadece şu bağlantıya tıklayın: {link}",
 "Username" => "Kullanıcı Adı",
 "Password" => "Parola",
 "Create account" => "Hesap oluştur",

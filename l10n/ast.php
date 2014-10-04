@@ -4,7 +4,6 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "Ya esiste un rexistru pendiente con esta direición de corréu",
 "Verify your ownCloud registration request" => "Verifica la to solicitú de rexistru en ownCloud",
 "Invalid verification URL. No registration request with this verification URL is found." => "Verificación inválida d'URL. Nun esiste nenguna solicitú con esta verificación d'URL.",
-"To create a new account on ownCloud, just click the following link: {link}" => "Pa crear una nueva cuenta'n ownCloud, namás calca nel siguiente enlláz: {link}",
 "Username" => "Nome d'usuariu",
 "Password" => "Contraseña",
 "Create account" => "Crear cuenta",

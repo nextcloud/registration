@@ -4,7 +4,6 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "Selle aadressi pealt juba oodatakse registreerumise kinnitamist",
 "Verify your ownCloud registration request" => "Kinnita oma ownCloudi registreerumise soov",
 "Invalid verification URL. No registration request with this verification URL is found." => "Vigane kinnituse URL. Selle kinnitus URL-iga registreerimise päringut ei leitud.",
-"To create a new account on ownCloud, just click the following link: {link}" => "ownCloudi uue kasutajakonto loomisels kliki lihtsalt järgnevale lingile: {link}",
 "Username" => "Kasutajanimi",
 "Password" => "Parool",
 "Create account" => "Loo konto",

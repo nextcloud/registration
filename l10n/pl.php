@@ -4,7 +4,6 @@ $TRANSLATIONS = array(
 "There is already a pending registration with this email" => "Istnieje już rejestracja w toku z tego adresu email",
 "Verify your ownCloud registration request" => "Zweryfikuj swoje żądanie rejestracji ownCloud",
 "Invalid verification URL. No registration request with this verification URL is found." => "Nieprawidłowy URL weryfikacji. Nie ma żadnego żądania weryfikacji pod tym URL-em.",
-"To create a new account on ownCloud, just click the following link: {link}" => "Aby utworzyć nowe konto ownCloud, sprawdź następujący link: {link}",
 "Username" => "Nazwa użytkownika",
 "Password" => "Hasło",
 "Create account" => "Utwórz konto",

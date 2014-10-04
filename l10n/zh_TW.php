@@ -3,7 +3,6 @@ $TRANSLATIONS = array(
 "Email address you entered is not valid" => "您輸入的 email 地址無效",
 "There is already a pending registration with this email" => "這個 email 地址已經有一個等待中的註冊",
 "Verify your ownCloud registration request" => "驗證您的 ownCloud 註冊請求",
-"To create a new account on ownCloud, just click the following link: {link}" => "要在 ownCloud 上建立帳號，請點以下連結：{link}",
 "Username" => "使用者名稱：",
 "Password" => "密碼",
 "Create account" => "建立帳號",
