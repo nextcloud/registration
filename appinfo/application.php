@@ -36,7 +36,8 @@ class Application extends App {
 				$c->query('Mail'),
 				$c->query('L10N'),
 				$c->query('URLGenerator'),
-				$c->query('PendingRegist')
+				$c->query('PendingRegist'),
+				$c->query('UserManager')
 			);
 		});
 
@@ -47,6 +48,10 @@ class Application extends App {
 		$container->registerService('UserId', function($c) {
 			return \OCP\User::getUser();
 		});		
+
+		$container->registerService('UserManager', function($c) {
+			return new \OC\User\Manager();
+		});
 
 		$container->registerService('Mail', function($c) {
 			return new Wrapper\Mail;

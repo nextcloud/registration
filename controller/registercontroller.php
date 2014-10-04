@@ -25,12 +25,13 @@ class RegisterController extends Controller {
 	private $urlgenerator;
 	private $pendingreg;
 
-	public function __construct($appName, IRequest $request, Mail $mail, $l10n, $urlgenerator,
-	$pendingreg){
+	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, $l10n, $urlgenerator,
+	$pendingreg, $usermanager){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
 		$this->pendingreg = $pendingreg;
+		$this->usermanager = $usermanager;
 		parent::__construct($appName, $request);
 	}
 
@@ -132,7 +133,23 @@ class RegisterController extends Controller {
 		} elseif ( $email ) {
 			$username = $this->request->getParam('username');
 			$password = $this->request->getParam('password');
-			return new TemplateResponse('registration', 'form', array('email' => $email), 'guest');
+			try {
+				$user = $this->usermanager->createUser($username, $password);
+			} catch (Exception $e) {
+				return new TemplateResponse('registration', 'form',
+					array('email' => $email,
+						'entered_data' => array('username' => $username),
+						'errormsgs' => array($e->message, $username, $password)), 'guest');
+			}
+			if ( $user === false ) {
+				return new TemplateResponse('', 'error', array(
+					'errors' => array(array(
+						'error' => $this->l10n->t('Unable to create user, there are problems with user backend.'),
+						'hint' => ''
+					))
+				), 'error');
+			}
+			return;
 		}
 	}
 }
