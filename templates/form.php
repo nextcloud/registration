@@ -1,4 +1,4 @@
-<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.createAccount')) ?>" method="post">
+<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.createAccount', array('token'=>$_['token']))) ?>" method="post">
 	<fieldset>
 		<?php if ( $_['errormsgs'] ) {?>
 		<ul class="error">

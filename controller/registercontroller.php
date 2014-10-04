@@ -112,7 +112,7 @@ class RegisterController extends Controller {
 				))
 			), 'error');
 		} elseif ( $email ) {
-			return new TemplateResponse('registration', 'form', array('email' => $email), 'guest');
+			return new TemplateResponse('registration', 'form', array('email' => $email, 'token' => $token), 'guest');
 		}
 	}
 
