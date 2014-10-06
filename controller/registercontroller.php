@@ -17,6 +17,7 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Controller;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
+use \OCP\IUserManager;
 
 class RegisterController extends Controller {
 
@@ -26,7 +27,7 @@ class RegisterController extends Controller {
 	private $pendingreg;
 
 	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, $l10n, $urlgenerator,
-	$pendingreg, $usermanager){
+	$pendingreg, IUserManager $usermanager){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;

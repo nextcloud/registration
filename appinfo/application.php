@@ -50,7 +50,7 @@ class Application extends App {
 		});		
 
 		$container->registerService('UserManager', function($c) {
-			return new \OC\User\Manager();
+			return $c->query('ServerContainer')->getUserManager();
 		});
 
 		$container->registerService('Mail', function($c) {
