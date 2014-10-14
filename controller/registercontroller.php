@@ -150,7 +150,15 @@ class RegisterController extends Controller {
 					))
 				), 'error');
 			}
-			return;
+			// TODO: below is not an error, should add "message" template
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => str_replace('{link}',
+					$this->urlgenerator->getAbsoluteUrl('/'),
+					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')),
+					'hint' => ''
+				))
+			), 'error');
 		}
 	}
 }
