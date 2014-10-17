@@ -6,6 +6,7 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "Doğrulama e-postası başarıyla gönderildi.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Geçersiz doğrulama adresi. Bu doğrulama adresi ile bir kayıt talebi bulunamadı.",
 "Unable to create user, there are problems with user backend." => "Kullanıcı oluşturma başarısız, kullanıcı arka ucu ile ilgili sorunlar var.",
+"Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Hesabınız başarıyla oluşturuldu, artık <a href=\"{link}\">oturum açabilirsiniz</a>.",
 "To create a new account on ownCloud, just click the following link:<br/>{link}" => "ownCloud üzerinde yeni bir hesap oluşturmak için, sadece şu bağlantıya tıklamanız yeterli:<br/>{link}",
 "Welcome, you can create your account below." => "Hoş geldiniz, aşağıdan hesabınızı oluşturabilirsiniz.",
 "Username" => "Kullanıcı Adı",
