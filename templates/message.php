@@ -1,7 +1,6 @@
-<ul class="error-wide">
-	<?php foreach($_["msgs"] as $msg):?>
-		<li class='msg'>
-			<?php print_unesacped($msg) ?><br/>
-		</li>
-	<?php endforeach ?>
+<?php
+\OCP\Util::addStyle('registration', 'style');
+?>
+<ul class="msg error-wide">
+	<li><?php print_unescaped($_['msg']) ?></li>
 </ul>

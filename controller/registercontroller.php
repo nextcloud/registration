@@ -89,9 +89,9 @@ class RegisterController extends Controller {
 			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
 			return;
 		}
-		return new TemplateResponse('registration', 'message', array('msgs' =>
+		return new TemplateResponse('registration', 'message', array('msg' =>
 			$this->l10n->t('Verification email successfully sent.')
-		));
+		), 'guest');
 	}
 
 	/**
@@ -148,7 +148,7 @@ class RegisterController extends Controller {
 			}
 			return new TemplateResponse('registration', 'message', array('msgs' =>
 					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
-				));
+				), 'guest');
 		}
 	}
 }
