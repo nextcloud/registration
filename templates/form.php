@@ -9,7 +9,7 @@
 			} ?>
 		</ul>
 		<?php } else { ?>
-		<ul class="success"><!-- TODO: add success style -->
+		<ul class="msg">
 			<li><?php print_unescaped($l->t('Welcome, you can create your account below.')); ?></li>
 		</ul>
 		<?php } ?>
