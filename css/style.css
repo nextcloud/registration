@@ -16,3 +16,12 @@
 #username-icon {
 	top: 17px;
 }
+
+.msg {
+	color: white;
+	margin: 5px;
+}
+
+.groupofone {
+	position: relative;
+}

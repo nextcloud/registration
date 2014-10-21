@@ -1,4 +1,6 @@
-<?php if ($_['entered']): ?>
+<?php
+\OCP\Util::addStyle('registration', 'style');
+if ($_['entered']): ?>
 	<?php if (empty($_['errormsg'])): ?>
 		<ul class="success">
 			<li>
@@ -11,10 +13,10 @@
 				<ul class="error">
 					<li><?php print_unescaped($_['errormsg']); ?></li>
 				</ul>
-				<p class="infield">
-					<input type="email" name="email" id="email" placeholder="" value="" required autofocus />
+				<p class="groupofone">
+				<input type="email" name="email" id="email" placeholder="<?php print_unescaped($l->t('Email')); ?>" value="" required autofocus />
 					<label for="email" class="infield"><?php print_unescaped($l->t( 'Email' )); ?></label>
-					<img class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
+					<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 				</p>
 				<input type="submit" id="submit" value="<?php print_unescaped($l->t('Request verification link')); ?>" />
 			</fieldset>
@@ -26,15 +28,17 @@
 			<?php if (!empty($_['errormsg'])): ?>
 				<ul class="error">
 					<li><?php print_unescaped($_['errormsg']); ?></li>
+					<li><?php print_unescaped($l->t('Please re-enter a valid email address')); ?></li>
 				</ul>
-				<?php print_unescaped($l->t('Please re-enter a valid email address')); ?>
 			<?php else: ?>
-				<?php print_unescaped($l->t('You will receive an email with verification link')); ?>
+				<ul class="msg">
+					<li><?php print_unescaped($l->t('You will receive an email with verification link')); ?></li>
+				</ul>
 			<?php endif; ?>
-			<p class="infield">
-				<input type="email" name="email" id="email" placeholder="" value="" required autofocus />
-				<label for="email" class="infield"><?php print_unescaped($l->t( 'Email' )); ?></label>
-				<img class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
+			<p class="groupofone">
+			<input type="email" name="email" id="email" placeholder="<?php print_unescaped($l->t('Email')); ?>" value="" required autofocus />
+				<label for="email" class="infield"><?php print_unescaped($l->t('Email')); ?></label>
+				<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 			</p>
 			<input type="submit" id="submit" value="<?php print_unescaped($l->t('Request verification link')); ?>" />
 		</fieldset>
