@@ -146,8 +146,10 @@ class RegisterController extends Controller {
 					))
 				), 'error');
 			}
-			return new TemplateResponse('registration', 'message', array('msgs' =>
-					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
+			return new TemplateResponse('registration', 'message', array('msg' =>
+				str_replace('{link}',
+					$this->urlgenerator->getAbsoluteURL('/'),
+					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.'))
 				), 'guest');
 		}
 	}

@@ -21,6 +21,10 @@
 	color: white;
 	margin: 5px;
 }
+.msg a {
+	color: white;
+	text-decoration: underline;
+}
 
 .groupofone {
 	position: relative;
