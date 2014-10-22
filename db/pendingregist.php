@@ -15,9 +15,9 @@ class PendingRegist {
 
 	public function save($email) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
-			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, ? )' );
+			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )' );
 		$token = hash('sha256', Util::generateRandomBytes(30).Config::getSystemValue('passwordsalt', ''));
-		$query->execute(array( $email, $token, time() ));
+		$query->execute(array( $email, $token ));
 		return $token;
 	}
 	public function find($email) {
