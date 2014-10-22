@@ -6,7 +6,6 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "Имейлът за проверка е изпратен успешно.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Невалидна връзка за потвърждение. Не е намерена заявка за регистрация, която да е за тази връзка.",
 "Unable to create user, there are problems with user backend." => "Не може да се създаде потребител, има проблем с администрирането на потребителите.",
-"To create a new account on ownCloud, just click the following link:<br/>{link}" => "За да създадете нов профил в ownCloud, последвайте връзката:<br/>{link}",
 "Welcome, you can create your account below." => "Добре дошли, можете да си създадете профил по-долу.",
 "Username" => "Потребителско Име",
 "Password" => "Парола",

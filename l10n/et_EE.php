@@ -7,7 +7,6 @@ $TRANSLATIONS = array(
 "Invalid verification URL. No registration request with this verification URL is found." => "Vigane kinnituse URL. Selle kinnitus URL-iga registreerimise päringut ei leitud.",
 "Unable to create user, there are problems with user backend." => "Kasutaja loomine ebaõnnestus, kasutaja adminiliidesega oli probleeme.",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Sinu konto on loodud, sa võid <a href=\"{link}\">kohe sisse logida</a>.",
-"To create a new account on ownCloud, just click the following link:<br/>{link}" => "ownCloudi uue kasutajakonto loomiseks kliki lihtsalt järgnevale lingile:<br/>{link}",
 "Welcome, you can create your account below." => "Teretulemast, sa võid konto luua allpool.",
 "Username" => "Kasutajanimi",
 "Password" => "Parool",
