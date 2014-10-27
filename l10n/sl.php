@@ -7,6 +7,7 @@ $TRANSLATIONS = array(
 "Invalid verification URL. No registration request with this verification URL is found." => "Neveljaven naslov URL overitve. Na tem naslovu ni ustrezne zahteve registracije.",
 "Unable to create user, there are problems with user backend." => "Ni mogoče ustvariti uporabnika zaradi težav z ozadnjim programom.",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Račun je uspešno ustvarjen, zato se lahko <a href=\"{link}\">prijavite</a>.",
+"To create a new account on ownCloud, just click the following link:\n{link}" => "Za ustvarjanje novega računa ownCloud, kliknite na povezavo:\n{link}",
 "Welcome, you can create your account below." => "Dobrodošli! Ustvarite nov račun.",
 "Username" => "Uporabniško ime",
 "Password" => "Geslo",
