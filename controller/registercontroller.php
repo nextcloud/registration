@@ -78,6 +78,7 @@ class RegisterController extends Controller {
 		// FEATURE: allow only from specific email domain
 
 		$token = $this->pendingreg->save($email);
+		//TODO: check for error
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
 		$link = $this->urlgenerator->getAbsoluteURL($link);
 		$from = Util::getDefaultEmailAddress('register');
@@ -146,6 +147,15 @@ class RegisterController extends Controller {
 					))
 				), 'error');
 			}
+			$res = $this->pendingreg->setRegistered($token);
+			if ( \OCP\DB::isError($res) ) {
+				return new TemplateResponse('', 'error', array(
+					'errors' => array(array(
+						'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+						'hint' => ''
+					))
+				), 'error');
+
 			return new TemplateResponse('registration', 'message', array('msg' =>
 				str_replace('{link}',
 					$this->urlgenerator->getAbsoluteURL('/'),

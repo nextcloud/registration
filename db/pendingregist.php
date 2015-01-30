@@ -30,4 +30,9 @@ class PendingRegist {
 		return $query->execute(array($token))->fetchOne();
 	}
 
+	public function setRegistered($token) {
+		$query = $this->db->prepareQuery('UPDATE SET `registered`=true FROM `*PREFIX*registration` WHERE `token` = ? ');
+		return $query->execute(array($token));
+	}
+
 }
