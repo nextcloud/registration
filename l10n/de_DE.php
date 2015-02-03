@@ -5,7 +5,7 @@ $TRANSLATIONS = array(
 "Verify your ownCloud registration request" => "Bitte Ihre ownCloud-Registrierung bestätigen.",
 "Verification email successfully sent." => "E-Mail zur Bestätigung erfolgreich gesendet.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ungültige Bestätigungsadresse. Keine Registrierunganfrage mit dieser Bestätigungsadresse gefunden.",
-"Unable to create user, there are problems with user backend." => "Benutzer konnte nicht erstellt werden, es gibt Probleme mit dem Benutzerhintergrundprogramm.",
+"Unable to create user, there are problems with user backend." => "Benutzer konnte nicht erstellt werden, es gibt Probleme mit dem Benutzer-Backend.",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Ihr Konto wurde erfolgreich erstellt, Sie können sich <a href=\"{link}\">jetzt anmelden</a>.",
 "To create a new account on ownCloud, just click the following link:\n{link}" => "Zur Erstellung eines neuen ownCloud-Kontos bitte auf den nachfolgenden Verweis klicken:\n{link}",
 "Welcome, you can create your account below." => "Willkommen, Sie können im unteren Teil Ihr Konto anlegen.",
