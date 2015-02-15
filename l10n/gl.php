@@ -1,6 +1,6 @@
 <?php
 $TRANSLATIONS = array(
-"Email address you entered is not valid" => "O enderezo introducido non é válido",
+"Email address you entered is not valid" => "O enderezo introducido non é correcto",
 "There is already a pending registration with this email" => "Xa existe unha petición de rexistro con este enderezo",
 "Verify your ownCloud registration request" => "Verifique a súa petición de rexistro en ownCloud",
 "Verification email successfully sent." => "Correo de verificación enviado correctamente",
@@ -15,7 +15,7 @@ $TRANSLATIONS = array(
 "Thank you for registering, you should receive verification link in a few minutes." => "Grazas por rexistrarse, debería recibir unha ligazón de verificación dentro duns minutos.",
 "Email" => "Correo",
 "Request verification link" => "Pedir ligazón de verificación",
-"Please re-enter a valid email address" => "Por favor volte a introducir un enderezo electrónico válido",
+"Please re-enter a valid email address" => "Volva a introducir un enderezo de correo correcto",
 "You will receive an email with verification link" => "Recibirá un correo coa ligazón de verificación"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";
