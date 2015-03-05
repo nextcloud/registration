@@ -31,7 +31,7 @@ class PendingRegist {
 	}
 
 	public function setRegistered($token) {
-		$query = $this->db->prepareQuery('UPDATE SET `registered`=true FROM `*PREFIX*registration` WHERE `token` = ? ');
+		$query = $this->db->prepareQuery('UPDATE `*PREFIX*registration` SET `registered`=true WHERE `token` = ? ');
 		return $query->execute(array($token));
 	}
 
