@@ -155,6 +155,7 @@ class RegisterController extends Controller {
 						'hint' => ''
 					))
 				), 'error');
+			}
 
 			return new TemplateResponse('registration', 'message', array('msg' =>
 				str_replace('{link}',
