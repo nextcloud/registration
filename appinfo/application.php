@@ -37,7 +37,8 @@ class Application extends App {
 				$c->query('L10N'),
 				$c->query('URLGenerator'),
 				$c->query('PendingRegist'),
-				$c->query('UserManager')
+				$c->query('UserManager'),
+				$c->query('Config')
 			);
 		});
 
@@ -51,6 +52,10 @@ class Application extends App {
 
 		$container->registerService('UserManager', function($c) {
 			return $c->query('ServerContainer')->getUserManager();
+		});
+
+		$container->registerService('Config', function($c) {
+			return $c->query('ServerContainer')->getConfig();
 		});
 
 		$container->registerService('Mail', function($c) {

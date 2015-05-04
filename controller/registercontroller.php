@@ -18,6 +18,9 @@ use \OCP\AppFramework\Controller;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
 use \OCP\IUserManager;
+use \OCP\IL10N;
+use \OCP\IConfig;
+use \OCP\IUser;
 
 class RegisterController extends Controller {
 
@@ -25,14 +28,16 @@ class RegisterController extends Controller {
 	private $l10n;
 	private $urlgenerator;
 	private $pendingreg;
+	private $config;
 
-	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, $l10n, $urlgenerator,
-	$pendingreg, IUserManager $usermanager){
+	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, IL10N $l10n, $urlgenerator,
+	$pendingreg, IUserManager $usermanager, IConfig $config){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
 		$this->pendingreg = $pendingreg;
 		$this->usermanager = $usermanager;
+		$this->config = $config;
 		parent::__construct($appName, $request);
 	}
 
@@ -146,15 +151,27 @@ class RegisterController extends Controller {
 						'hint' => ''
 					))
 				), 'error');
-			}
-			$res = $this->pendingreg->setRegistered($token);
-			if ( \OCP\DB::isError($res) ) {
-				return new TemplateResponse('', 'error', array(
-					'errors' => array(array(
-						'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
-						'hint' => ''
-					))
-				), 'error');
+			} else {
+				// Set user email
+				try {
+					$this->config->setUserValue($user->getUID(), 'settings', 'email', $email);
+				} catch (Exception $e) {
+					return new TemplateResponse('registration', 'form',
+						array('email' => $email,
+						'entered_data' => array('username' => $username),
+						'errormsgs' => array($e->message, $username, $password)), 'guest');
+				}
+
+				// Mark registered
+				$res = $this->pendingreg->setRegistered($token);
+				if ( \OCP\DB::isError($res) ) {
+					return new TemplateResponse('', 'error', array(
+						'errors' => array(array(
+							'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+							'hint' => ''
+						))
+					), 'error');
+				}
 			}
 
 			return new TemplateResponse('registration', 'message', array('msg' =>
