@@ -9,7 +9,7 @@
  * @copyright Pellaeon Lin 2014
  */
 
-namespace OCA\Registration\AppInfo;
+namespace OCA\Registration\App;
 
 
 use \OCP\AppFramework\App;
@@ -19,7 +19,7 @@ use \OCA\Registration\Wrapper;
 use \OCA\Registration\Db\PendingRegist;
 
 
-class Application extends App {
+class Registration extends App {
 
 	public function __construct (array $urlParams=array()) {
 		parent::__construct('registration', $urlParams);

@@ -9,4 +9,9 @@
  * @copyright Pellaeon Lin 2014
  */
 
-namespace OCA\Registration\AppInfo;
+namespace OCA\Registration\App;
+
+$app = new Registration();
+$c = $app->getContainer();
+
+\OC_App::registerLogIn(array('name' => $c->query('L10N')->t('Register'), 'href' => $c->query('URLGenerator')->linkToRoute('registration.register.askEmail')));

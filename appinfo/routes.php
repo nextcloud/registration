@@ -9,7 +9,7 @@
  * @copyright Pellaeon Lin 2014
  */
 
-namespace OCA\Registration\AppInfo;
+namespace OCA\Registration\App;
 
 /**
  * Create your routes in here. The name is the lowercase name of the controller
@@ -19,7 +19,7 @@ namespace OCA\Registration\AppInfo;
  * The controller class has to be registered in the application.php file since
  * it's instantiated in there
  */
-$application = new Application();
+$application = new Registration();
 
 $application->registerRoutes($this, array('routes' => array(
 	array('name' => 'register#askEmail', 'url' => '/', 'verb' => 'GET'),
