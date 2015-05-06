@@ -4,19 +4,24 @@ namespace OCA\Registration\Db;
 use \OCP\IDb;
 use \OCP\Util;
 use \OCP\Config;
+use \OCP\Security\ISecureRandom;
 
 class PendingRegist {
 
 	private $db;
 
-	public function __construct(IDb $db) {
+	/** @var \OCP\Security\ISecureRandom */
+	protected $random;
+
+	public function __construct(IDb $db, ISecureRandom $random) {
 		$this->db = $db;
+		$this->random = $random;
 	}
 
 	public function save($email) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
 			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )' );
-		$token = hash('sha256', Util::generateRandomBytes(30).Config::getSystemValue('passwordsalt', ''));
+		$token = $this->random->generate(30);
 		$query->execute(array( $email, $token ));
 		return $token;
 	}

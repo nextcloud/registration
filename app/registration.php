@@ -71,7 +71,8 @@ class Registration extends App {
 		});
 
 		$container->registerService('PendingRegist', function($c) {
-			return new PendingRegist($c->query('ServerContainer')->getDb());
+			return new PendingRegist($c->query('ServerContainer')->getDb(),
+				$c->query('ServerContainer')->getSecureRandom()->getMediumStrengthGenerator());
 		});
 	}
 
