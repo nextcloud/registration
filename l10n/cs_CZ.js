@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Registrovat",
     "Email address you entered is not valid" : "Zadaná emailová adresa není správná",
     "There is already a pending registration with this email" : "Již existuje čekající registrace s touto emailovou adresou",
     "Verify your ownCloud registration request" : "Ověřte svůj požadavek na registraci ownCloud",

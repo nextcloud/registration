@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Rekisteröidy",
     "Email address you entered is not valid" : "Antamasi sähköpostiosoite ei ole kelvollinen",
     "There is already a pending registration with this email" : "Tällä sähköpostiosoitteella on jo odottamassa rekisteröityminen",
     "Verify your ownCloud registration request" : "Vahvista ownCloud-rekisteröintipyyntö",

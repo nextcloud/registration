@@ -1,5 +1,6 @@
 <?php
 $TRANSLATIONS = array(
+"Register" => "Εγγραφή",
 "Email address you entered is not valid" => "Η ηλεκτρονική διεύθυνση που εισάγατε δεν είναι έγκυρη",
 "There is already a pending registration with this email" => "Εκκρεμεί ήδη μία εγγραφή με αυτή τη διεύθυνση ηλ. ταχυδρομείου",
 "Verify your ownCloud registration request" => "Επιβεβαιώστε την αίτηση εγγραφής στο ownCloud",

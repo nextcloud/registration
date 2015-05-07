@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Registreren",
     "Email address you entered is not valid" : "Het e-mailadres dat u heeft ingevuld is niet geldig",
     "There is already a pending registration with this email" : "Er is al een registratie met dit e-mailadres in behandeling",
     "Verify your ownCloud registration request" : "Controleer uw ownCloud registratie verzoek",

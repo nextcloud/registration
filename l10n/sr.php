@@ -1,5 +1,6 @@
 <?php
 $TRANSLATIONS = array(
+"Register" => "Региструј се",
 "Email address you entered is not valid" => "Е-адреса коју сте унели није исправна",
 "There is already a pending registration with this email" => "Већ постоји започет поступак регистрације са том е-адресом",
 "Verify your ownCloud registration request" => "Потврдите свој захтев за оунКлауд регистрацију ",
