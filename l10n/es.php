@@ -1,5 +1,6 @@
 <?php
 $TRANSLATIONS = array(
+"Register" => "Registro",
 "Email address you entered is not valid" => "La dirección de correo electrónico que ingresó no es válida",
 "There is already a pending registration with this email" => "Ya existe un registro pendiente con esta dirección de correo electrónico",
 "Verify your ownCloud registration request" => "Verifique su solicitud de registro con ownCloud",
