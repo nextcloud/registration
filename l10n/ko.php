@@ -1,5 +1,6 @@
 <?php
 $TRANSLATIONS = array(
+"Register" => "등록",
 "Email address you entered is not valid" => "입력한 이메일 주소가 올바르지 않음",
 "There is already a pending registration with this email" => "입력한 이메일 주소로 가입 대기 중",
 "Verify your ownCloud registration request" => "ownCloud 가입 요청 확인",
