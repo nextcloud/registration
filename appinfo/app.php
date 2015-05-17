@@ -15,3 +15,5 @@ $app = new Registration();
 $c = $app->getContainer();
 
 \OC_App::registerLogIn(array('name' => $c->query('L10N')->t('Register'), 'href' => $c->query('URLGenerator')->linkToRoute('registration.register.askEmail')));
+
+\OCP\App::registerAdmin($c->getAppName(), 'admin');

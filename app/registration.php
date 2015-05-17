@@ -11,10 +11,10 @@
 
 namespace OCA\Registration\App;
 
-
 use \OCP\AppFramework\App;
 
 use \OCA\Registration\Controller\RegisterController;
+use \OCA\Registration\Controller\SettingsController;
 use \OCA\Registration\Wrapper;
 use \OCA\Registration\Db\PendingRegist;
 
@@ -31,7 +31,7 @@ class Registration extends App {
 		 */
 		$container->registerService('RegisterController', function($c) {
 			return new RegisterController(
-				$c->query('AppName'), 
+				$c->query('AppName'),
 				$c->query('Request'),
 				$c->query('Mail'),
 				$c->query('L10N'),
@@ -39,6 +39,16 @@ class Registration extends App {
 				$c->query('PendingRegist'),
 				$c->query('UserManager'),
 				$c->query('Config')
+			);
+		});
+
+		$container->registerService('SettingsController', function($c) {
+			return new SettingsController(
+				$c->query('AppName'),
+				$c->query('Request'),
+				$c->query('L10N'),
+				$c->query('Config'),
+				$c->query('GroupManager')
 			);
 		});
 
@@ -52,6 +62,10 @@ class Registration extends App {
 
 		$container->registerService('UserManager', function($c) {
 			return $c->query('ServerContainer')->getUserManager();
+		});
+
+		$container->registerService('GroupManager', function($c) {
+			return $c->query('ServerContainer')->getGroupManager();
 		});
 
 		$container->registerService('Config', function($c) {

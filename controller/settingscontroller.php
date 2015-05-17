@@ -1,0 +1,80 @@
+<?php
+/**
+ * ownCloud - registration
+ *
+ * This file is licensed under the Affero General Public License version 3 or
+ * later. See the COPYING file.
+ *
+ * @author Pellaeon Lin <pellaeon@cnmc.tw>
+ * @copyright Pellaeon Lin 2015
+ */
+
+namespace OCA\Registration\Controller;
+
+use \OCP\IRequest;
+use \OCP\AppFramework\Http\TemplateResponse;
+use \OCP\AppFramework\Http\DataResponse;
+use \OCP\AppFramework\Http;
+use \OCP\AppFramework\Controller;
+use \OCP\IUserManager;
+use \OCP\IGroupManager;
+use \OCP\IL10N;
+use \OCP\IConfig;
+use \OCP\IUser;
+
+class SettingsController extends Controller {
+
+	private $l10n;
+	private $config;
+	private $groupmanager;
+	protected $appName;
+
+	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager){
+		$this->l10n = $l10n;
+		$this->config = $config;
+		$this->groupmanager = $groupmanager;
+		$this->appName = $appName;
+		parent::__construct($appName, $request);
+	}
+
+	/**
+	 * @AdminRequired
+	 *
+	 * @param string $registered_user_group all newly registered user will be put in this group
+	 * @return DataResponse
+	 */
+	public function admin($registered_user_group) {
+		$groups = $this->groupmanager->search('');
+		foreach ( $groups as $group ) {
+			$group_id_list[] = $group->getGid();
+		}
+		if ( in_array($registered_user_group, $group_id_list) ) {
+			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
+			return new DataResponse(array(
+				'data' => array(
+					'message' => (string) $this->l10n->t('Your settings have been updated.'),
+				),
+			));
+		} else {
+			return new DataResponse(array(
+				'data' => array(
+					'message' => (string) $this->l10n->t('No such group'),
+				),
+			), Http::STATUS_NOT_FOUND);
+		}
+	}
+	/**
+	 * @AdminRequired
+	 *
+	 * @return TemplateResponse
+	 */
+	public function displayPanel() {
+		$groups = $this->groupmanager->search('');
+		foreach ( $groups as $group ) {
+			$group_id_list[] = $group->getGid();
+		}
+		return new TemplateResponse('registration', 'admin', [
+			'groups' => $group_id_list
+		], '');
+	}
+}
