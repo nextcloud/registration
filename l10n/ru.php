@@ -8,6 +8,8 @@ $TRANSLATIONS = array(
 "Invalid verification URL. No registration request with this verification URL is found." => "Недействительный проверочный URL. Запросов на регистрацию с таким проверочным URL не найдено.",
 "Unable to create user, there are problems with user backend." => "Невозможно создать учетную запись, возникли проблемы с пользовательской частью.",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Учетная запись успешно создана, теперь вы можете <a href=\"{link}\">войти на сайт</a>.",
+"Your settings have been updated." => "Настройки обновлены.",
+"None" => "Отсутствует",
 "To create a new account on ownCloud, just click the following link:\n{link}" => "Чтобы создать новую учётную запись в ownCloud, перейдите по следующей ссылке:\n{link}",
 "Welcome, you can create your account below." => "Добро пожаловать, Вы можете создать учетную запись ниже.",
 "Username" => "Имя пользователя",

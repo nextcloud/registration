@@ -8,6 +8,8 @@ OC.L10N.register(
     "Invalid verification URL. No registration request with this verification URL is found." : "無效的驗證 URL，沒有關聯的註冊申請",
     "Unable to create user, there are problems with user backend." : "無法建立使用者，使用者後端有問題",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "已經建立您的帳號，可以<a href=\"{link}\">立即登入</a>",
+    "Your settings have been updated." : "您的設定已更新.",
+    "None" : "無",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "點擊以下連結來在 ownCloud 建立新帳號\n{link}",
     "Welcome, you can create your account below." : "歡迎！您可以在下方建立帳號",
     "Username" : "使用者名稱",

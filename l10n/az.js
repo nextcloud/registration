@@ -8,6 +8,8 @@ OC.L10N.register(
     "Invalid verification URL. No registration request with this verification URL is found." : "Etibarsız URL yoxlanışı. Bu yoxlanış URL-i ilə heç bir qeydiyyat müraciəti yoxdur. ",
     "Unable to create user, there are problems with user backend." : "İstifadəçini yaratmaq olmur, arxa sonda olan istifadəçi ilə problemlər var.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Sizin hesab uğurla yaradıldı, artıq  <a href=\"{link}\">daxil ola bilərsiniz</a>.",
+    "Your settings have been updated." : "Sizin configləriniz yenilendi.",
+    "None" : "Heç bir",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "ownCloud-da yeni hesab yaratmaq üçün, yalnız aşağıdakı linkə sıxın:\n{link}",
     "Welcome, you can create your account below." : "Xoş gəlmişsiniz, siz hesabınızı aşağıda yarada bilərsiniz.",
     "Username" : "İstifadəçi adı",

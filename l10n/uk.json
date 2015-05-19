@@ -7,6 +7,8 @@
     "Invalid verification URL. No registration request with this verification URL is found." : "Недійсний URL перевірки. Запитів на реєстрацію з таким URL не знайдено.",
     "Unable to create user, there are problems with user backend." : "Неможливо створити обліковий запис, можливо, проблема на боці користувача.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Ваш обліковий запис успішно створено, тепер ви можете <a href=\"{link}\">зайти на сайт</a>.",
+    "Your settings have been updated." : "Налаштування оновлені.",
+    "None" : "Жоден",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Щоб створити новий обліковий запис ownCloud, перейдіть за наступним посиланням:\n{link}",
     "Welcome, you can create your account below." : "Вітаємо, ви можете створити обліковий запис нижче.",
     "Username" : "Ім'я користувача",

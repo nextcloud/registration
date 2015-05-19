@@ -6,6 +6,8 @@
     "Invalid verification URL. No registration request with this verification URL is found." : "URL verifikacije nije validan. Nije pronađen zahtjev registracije sa ovim verifikacionim URL.",
     "Unable to create user, there are problems with user backend." : "Nemoguće kreirati korisnika, postoje problemi sa korisnikovom pozadinom.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Vaš račun je uspješno kreiran, možete se <a href=\"{link}\">sad prijaviti</a>.",
+    "Your settings have been updated." : "Vaše opcije su uspješno ažurirane.",
+    "None" : "Ništa",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Za kreiranje novog ownCloud računa, kliknite na slijedeću vezu:\n{link}",
     "Welcome, you can create your account below." : "Dobrodošli, u nastavku možete kreirati svoj račun.",
     "Username" : "Korisničko ime",

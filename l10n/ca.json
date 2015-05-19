@@ -6,6 +6,8 @@
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificació invàlid. No s'ha trobat cap sol·licitud de registre amb aquest URL de verificació.",
     "Unable to create user, there are problems with user backend." : "No és possible crear l'usuari, hi ha problemes amb el backend d'usuari.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "El seu compte ha estat creada, pot <a href=\"{link}\">connectar-se ara</a>.",
+    "Your settings have been updated." : "La configuració s'ha actualitzat.",
+    "None" : "Cap",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Per crear un compte en ownCloud, faci clic al següent enllaç:\n{link}",
     "Welcome, you can create your account below." : "Benvingut, pot crear un compte més a baix.",
     "Username" : "Nom d'usuari",

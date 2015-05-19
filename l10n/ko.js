@@ -9,6 +9,8 @@ OC.L10N.register(
     "Invalid verification URL. No registration request with this verification URL is found." : "확인 URL이 잘못되었습니다. 이 확인 URL과 연결된 가입 요청이 없습니다.",
     "Unable to create user, there are problems with user backend." : "사용자 백엔드 오류로 사용자를 등록할 수 없습니다.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "회원 가입이 완료되었으며 <a href=\"{link}\">로그인할 수 있습니다</a>.",
+    "Your settings have been updated." : "설정이 업데이트 되었습니다.",
+    "None" : "없음",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "ownCloud에 새로 가입하려면 다음 링크를 누르십시오:\n{link}",
     "Welcome, you can create your account below." : "안녕하세요, 아래에서 회원 가입할 수 있습니다.",
     "Username" : "사용자 이름",

@@ -8,6 +8,8 @@ OC.L10N.register(
     "Invalid verification URL. No registration request with this verification URL is found." : "Невалидна връзка за потвърждение. Не е намерена заявка за регистрация, която да е за тази връзка.",
     "Unable to create user, there are problems with user backend." : "Не може да се създаде потребител, има проблеми с потребителския бекенд.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Вашият профил бе създаден успешно, вече може да се <a href=\"{link}\">впишете</a>.",
+    "Your settings have been updated." : "Вашите настройки са актуализирани.",
+    "None" : "Няма",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "За да създадете нов профил в ownCloud, натиснете следната връзка: {link}",
     "Welcome, you can create your account below." : "Добре дошли, можете да си създадете собствен профил по-долу.",
     "Username" : "Потребителско име",

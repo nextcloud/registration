@@ -8,6 +8,8 @@ OC.L10N.register(
     "Invalid verification URL. No registration request with this verification URL is found." : "Egiaztapen URL baliogabea. Ez da erregistro eskaririk aurkitu URL honekin.",
     "Unable to create user, there are problems with user backend." : "Ezin izan da erabiltzailea sortu, arazoak daude erabiltzaile motorrarekin.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Zure kontua ongi sortu da, orain  <a href=\"{link}\">saioa has </a>dezakezu.",
+    "Your settings have been updated." : "Zure ezarpenak eguneratu dira.",
+    "None" : "Ezer",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "ownClouden kontu berri bat sortzeko, hurrengo esteka sakatu:\n{link}",
     "Welcome, you can create your account below." : "Ongi etorria, azpian kontu bat sor dezakezu.",
     "Username" : "Erabiltzaile izena",
