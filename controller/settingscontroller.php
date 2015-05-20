@@ -48,7 +48,14 @@ class SettingsController extends Controller {
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
-		if ( in_array($registered_user_group, $group_id_list) ) {
+		if ( $registered_user_group === 'none' ) {
+			$this->config->deleteAppValue($this->appName, 'registered_user_group');
+			return new DataResponse(array(
+				'data' => array(
+					'message' => (string) $this->l10n->t('Your settings have been updated.'),
+				),
+			));
+		} else if ( in_array($registered_user_group, $group_id_list) ) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
 			return new DataResponse(array(
 				'data' => array(
