@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Register",
     "Email address you entered is not valid" : "Email address you entered is not valid",
     "There is already a pending registration with this email" : "There is already a pending registration with this email",
     "Verify your ownCloud registration request" : "Verify your ownCloud registration request",
@@ -9,6 +10,9 @@ OC.L10N.register(
     "Unable to create user, there are problems with user backend." : "Unable to create user, there are problems with the user backend.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>.",
     "Your settings have been updated." : "Your settings have been updated.",
+    "No such group" : "No such group",
+    "Registration" : "Registration",
+    "Default group that all registered users belong" : "Default group that all registered users belong",
     "None" : "None",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "To create a new account on ownCloud, just click the following link:\n{link}",
     "Welcome, you can create your account below." : "Welcome, you can create your account below.",
