@@ -9,6 +9,7 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Votre compte a bien été créé, vous pouvez maintenant <a href=\"{link}\">vous connecter</a>.",
     "Your settings have been updated." : "Vos paramètres ont été mis à jour.",
     "No such group" : "Aucun groupe correspondant",
+    "Default group that all registered users belong" : "Groupe par défaut dont tous les utilisateurs dépendent",
     "None" : "Aucun",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Pour créer un nouveau compte sur ownCloud, cliquez sur le lien suivant :\n{link}",
     "Welcome, you can create your account below." : "Bienvenue, vous pouvez créer votre compte ci-dessous.",
