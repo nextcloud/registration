@@ -12,7 +12,7 @@ OC.L10N.register(
     "Your settings have been updated." : "Vos paramètres ont été mis à jour.",
     "No such group" : "Aucun groupe correspondant",
     "Registration" : "Inscription",
-    "Default group that all registered users belong" : "Groupe par défaut auquel tous les utilisateurs sont inscrits",
+    "Default group that all registered users belong" : "Groupe par défaut auquel tous les utilisateurs appartiennent",
     "None" : "Aucun",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Pour créer un nouveau compte sur ownCloud, cliquez sur le lien suivant :\n{link}",
     "Welcome, you can create your account below." : "Bienvenue, vous pouvez créer votre compte ci-dessous.",
