@@ -10,6 +10,7 @@
     "Your settings have been updated." : "Налаштування оновлені.",
     "No such group" : "Немає такої групи",
     "Registration" : "Реєстрація",
+    "Default group that all registered users belong" : "Група за замовчуванням, до якої належать всі зареєстровані користувачі",
     "None" : "Жоден",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Щоб створити новий обліковий запис ownCloud, перейдіть за наступним посиланням:\n{link}",
     "Welcome, you can create your account below." : "Вітаємо, ви можете створити обліковий запис нижче.",
