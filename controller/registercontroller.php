@@ -80,6 +80,15 @@ class RegisterController extends Controller {
 			), 'error');
 		}
 
+		if ( !empty($this->config->getUsersForUserValue('settings', 'email', $email)) ) {
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('There is an existing user with this email'),
+					'hint' => ''
+				))
+			), 'error');
+		}
+
 		// FEATURE: allow only from specific email domain
 
 		$token = $this->pendingreg->save($email);
