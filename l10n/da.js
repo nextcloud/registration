@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Tilmeld",
     "Email address you entered is not valid" : "E-mailadressen du angav er ikke gyldig",
     "There is already a pending registration with this email" : "Der er allerede en afventende tilmelding med denne e-mail",
     "Verify your ownCloud registration request" : "Verificér din forespørgsel om ownCloud-tilmelding",
@@ -9,6 +10,9 @@ OC.L10N.register(
     "Unable to create user, there are problems with user backend." : "Kan ikke oprette bruger - der er problemer med bruger-backend.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Din konto er blevet oprettet, og du kan <a href=\"{link}\">logge ind nu</a>.",
     "Your settings have been updated." : "Dine indstillinger er blevet opdateret.",
+    "No such group" : "Gruppen findes ikke",
+    "Registration" : "Tilmelding",
+    "Default group that all registered users belong" : "Standardgruppen som alle tilmeldte brugere hører til",
     "None" : "Ingen",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "For at oprette en ny konto på ownCloud, klik følgende link:\n{link}",
     "Welcome, you can create your account below." : "Velkommen, du kan oprette din konto nedenfor.",
