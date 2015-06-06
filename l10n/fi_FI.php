@@ -3,6 +3,7 @@ $TRANSLATIONS = array(
 "Register" => "Rekisteröidy",
 "Email address you entered is not valid" => "Antamasi sähköpostiosoite ei ole kelvollinen",
 "There is already a pending registration with this email" => "Tällä sähköpostiosoitteella on jo odottamassa rekisteröityminen",
+"There is an existing user with this email" => "Tämä sähköpostiosoite kuuluu jo toiselle käyttäjälle",
 "Verify your ownCloud registration request" => "Vahvista ownCloud-rekisteröintipyyntö",
 "Verification email successfully sent." => "Vahvistussähköposti lähetettiin onnistuneesti.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Virheellinen vahvistuksen verkko-osoite. Kyseisellä osoitteella ei löytynyt rekisteröintipyyntöä.",

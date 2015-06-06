@@ -4,6 +4,7 @@ OC.L10N.register(
     "Register" : "Tilmeld",
     "Email address you entered is not valid" : "E-mailadressen du angav er ikke gyldig",
     "There is already a pending registration with this email" : "Der er allerede en afventende tilmelding med denne e-mail",
+    "There is an existing user with this email" : "Der findes en bruger med denne e-mail",
     "Verify your ownCloud registration request" : "Verificér din forespørgsel om ownCloud-tilmelding",
     "Verification email successfully sent." : "Bekræftelse er blevet sendt med e-mail.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Ugyldig verifikations-URL. Der blev ikke fundet nogen forespørgsel om tilmelding med denne verifikations-URL.",

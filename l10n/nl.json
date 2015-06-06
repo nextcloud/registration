@@ -2,6 +2,7 @@
     "Register" : "Registreren",
     "Email address you entered is not valid" : "Het e-mailadres dat u heeft ingevuld is niet geldig",
     "There is already a pending registration with this email" : "Er is al een registratie met dit e-mailadres in behandeling",
+    "There is an existing user with this email" : "Er is al een gebruiker met dit e-mailadres",
     "Verify your ownCloud registration request" : "Controleer uw ownCloud registratie verzoek",
     "Verification email successfully sent." : "Verificatie e-mailbericht succesvol verstuurd.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Ongeldige verificatie URL. Er is geen aanvraag voor registratie met deze URL gevonden.",
