@@ -2,6 +2,7 @@
     "Register" : "Εγγραφή",
     "Email address you entered is not valid" : "Η ηλεκτρονική διεύθυνση που εισάγατε δεν είναι έγκυρη",
     "There is already a pending registration with this email" : "Εκκρεμεί ήδη μία εγγραφή με αυτή τη διεύθυνση ηλ. ταχυδρομείου",
+    "There is an existing user with this email" : "Υπάρχει ήδη χρήστης με αυτό το email",
     "Verify your ownCloud registration request" : "Επιβεβαιώστε την αίτηση εγγραφής στο ownCloud",
     "Verification email successfully sent." : "Το μήνυμα επαλήθευσης στάλθηκε επιτυχώς.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Μη έγκυρη URL επιβεβαίωσης. Καμμία αίτηση εγγραφής δεν βρέθηκε με αυτό το URL επιβεβαίωσης.",

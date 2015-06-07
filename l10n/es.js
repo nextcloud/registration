@@ -4,6 +4,7 @@ OC.L10N.register(
     "Register" : "Registro",
     "Email address you entered is not valid" : "La dirección de correo electrónico que ingresó no es válida",
     "There is already a pending registration with this email" : "Ya existe un registro pendiente con esta dirección de correo electrónico",
+    "There is an existing user with this email" : "Ya existe un usuario con este email",
     "Verify your ownCloud registration request" : "Verifique su solicitud de registro con ownCloud",
     "Verification email successfully sent." : "Mensaje de verificación enviado con éxito.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificación inválido. No se ha encontrado ninguna solicitud de registro con este URL de verificación.",
