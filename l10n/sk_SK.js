@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Zaregistrovať sa",
     "Email address you entered is not valid" : "Zadaná emailová adresa nie je správna",
     "There is already a pending registration with this email" : "Registrácia s touto emailovou adresou už čaká na overenie registrácie",
     "Verify your ownCloud registration request" : "Overte svoju požiadavku na registráciu do ownCloud",
@@ -9,6 +10,9 @@ OC.L10N.register(
     "Unable to create user, there are problems with user backend." : "Nedá sa vytvoriť používateľský účet. Nastala chyba v používateľskom backende.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Váš účet bol vytvorený, teraz sa môžete <a href=\"{link}\">prihlásiť</a>.",
     "Your settings have been updated." : "Vaše nastavenia boli aktualizované.",
+    "No such group" : "Takáto skupina neexistuje",
+    "Registration" : "Registrácia",
+    "Default group that all registered users belong" : "Základná skupina pre všetkých novo zaregistrovaných používateľov",
     "None" : "Žiadny",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Pre vytvorenie nového účtu kliknite na nasledovný odkaz:\n{link}",
     "Welcome, you can create your account below." : "Vitajte. Účet si môžete založiť nižšie.",
