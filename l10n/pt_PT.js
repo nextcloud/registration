@@ -1,14 +1,18 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "Registar",
     "Email address you entered is not valid" : "O endereço de correio eletrónico introduzido é inválido",
     "There is already a pending registration with this email" : "Já existe um registo pendente com este correio eletrónico",
+    "There is an existing user with this email" : "Já existe um utilizador com este email",
     "Verify your ownCloud registration request" : "Verifique o seu pedido de registo na ownCloud",
     "Verification email successfully sent." : "Mensagem de verificação enviada com sucesso.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificação inválido. Não foi encontrado nenhum pedido de registo com este URL de verificação.",
     "Unable to create user, there are problems with user backend." : "Não é possível criar o utilizador, existem problemas com a interfacedo utilizador.",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A sua conta foi criada com sucesso, pode <a href=\"{link}\">iniciar a sessão </a> agora.",
     "Your settings have been updated." : "As suas definições foram atualizadas.",
+    "No such group" : "Grupo não encontrado",
+    "Registration" : "Registo",
     "None" : "Nenhum",
     "To create a new account on ownCloud, just click the following link:\n{link}" : "Parar criar uma conta nova na ownCloud, clique na seguinte hiperligação:\n{link}",
     "Welcome, you can create your account below." : "Bem-vindo, pode criar a sua conta em baixo.",
