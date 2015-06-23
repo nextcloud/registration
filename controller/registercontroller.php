@@ -171,12 +171,12 @@ class RegisterController extends Controller {
 						'errormsgs' => array($e->message, $username, $password)), 'guest');
 				}
 
-				// Mark registered
-				$res = $this->pendingreg->setRegistered($token);
+				// Delete pending reg request
+				$res = $this->pendingreg->delete($email);
 				if ( \OCP\DB::isError($res) ) {
 					return new TemplateResponse('', 'error', array(
 						'errors' => array(array(
-							'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+							'error' => $this->l10n->t('Failed to delete pending registration request'),
 							'hint' => ''
 						))
 					), 'error');

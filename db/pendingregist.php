@@ -30,14 +30,14 @@ class PendingRegist {
 		return $query->execute(array($email))->fetchAll();
 	}
 
+	public function delete($email) {
+		$query = $this->db->prepareQuery('DELETE FROM `*PREFIX*registration` WHERE `email` = ? ');
+		return $query->execute(array($email));
+	}
+
 	public function findEmailByToken($token) {
 		$query = $this->db->prepareQuery('SELECT `email` FROM `*PREFIX*registration` WHERE `token` = ? ');
 		return $query->execute(array($token))->fetchOne();
-	}
-
-	public function setRegistered($token) {
-		$query = $this->db->prepareQuery('UPDATE `*PREFIX*registration` SET `registered`=true WHERE `token` = ? ');
-		return $query->execute(array($token));
 	}
 
 }
