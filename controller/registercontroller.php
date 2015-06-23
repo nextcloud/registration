@@ -28,6 +28,7 @@ class RegisterController extends Controller {
 	private $l10n;
 	private $urlgenerator;
 	private $pendingreg;
+	private $usermanager;
 	private $config;
 
 	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, IL10N $l10n, $urlgenerator,
