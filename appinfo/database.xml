@@ -30,12 +30,6 @@
 				<type>timestamp</type>
 				<notnull>true</notnull>
 			</field>
-			<field>
-				<name>registered</name>
-				<type>boolean</type>
-				<default>false</default>
-				<notnull>true</notnull>
-			</field>
 		</declaration>
 	</table>
 </database>

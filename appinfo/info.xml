@@ -5,6 +5,6 @@
     <description>User registration</description>
     <licence>AGPL</licence>
     <author>Pellaeon Lin</author>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
     <requiremin>7</requiremin>
 </info>
