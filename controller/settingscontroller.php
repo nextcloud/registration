@@ -80,6 +80,7 @@ class SettingsController extends Controller {
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
+		// TODO selected
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list
 		], '');

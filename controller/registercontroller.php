@@ -30,15 +30,19 @@ class RegisterController extends Controller {
 	private $pendingreg;
 	private $usermanager;
 	private $config;
+	private $groupmanager;
+	protected $appName;
 
 	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, IL10N $l10n, $urlgenerator,
-	$pendingreg, IUserManager $usermanager, IConfig $config){
+	$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager){
 		$this->mail = $mail;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
 		$this->pendingreg = $pendingreg;
 		$this->usermanager = $usermanager;
 		$this->config = $config;
+		$this->groupmanager = $groupmanager;
+		$this->appName = $appName;
 		parent::__construct($appName, $request);
 	}
 
@@ -170,6 +174,21 @@ class RegisterController extends Controller {
 						array('email' => $email,
 						'entered_data' => array('username' => $username),
 						'errormsgs' => array($e->message, $username, $password)), 'guest');
+				}
+
+				// Add user to group
+				$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+				if ( $registered_user_group !== 'none' ) {
+					try {
+						$group = $this->groupmanager->get($registered_user_group);
+						$group->addUser($user);
+					} catch (Exception $e) {
+						return new TemplateResponse('', 'error', array(
+							'errors' => array(array(
+								'error' => $e->message,
+							))
+						), 'error');
+					}
 				}
 
 				// Delete pending reg request

@@ -38,7 +38,8 @@ class Registration extends App {
 				$c->query('URLGenerator'),
 				$c->query('PendingRegist'),
 				$c->query('UserManager'),
-				$c->query('Config')
+				$c->query('Config'),
+				$c->query('GroupManager')
 			);
 		});
 
