@@ -9,6 +9,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "Correo de verificación enviado correctamente",
     "Invalid verification URL. No registration request with this verification URL is found." : "O URL de verificación no é correcto. Non se atopou ningunha petición de rexistro con este URL de verificación.",
     "Unable to create user, there are problems with user backend." : "Non é posíbel crear o usuario, existen problemas coa infraestrutura de usuarios.",
+    "Failed to delete pending registration request" : "Non foi posíbel eliminar a solicitude de rexistro en trámite",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A súa conta foi creada satisfactoriamente, pode <a href=\"{link}\">conectarse agora</a>.",
     "Your settings have been updated." : "Actualizaronse os axustes.",
     "No such group" : "Non existe o grupo",
