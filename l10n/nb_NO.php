@@ -8,6 +8,7 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "Verifiserings-epost sendt.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ugyldig URL for verifisering. Ingen registreringsforespørsel ble funnet med denne URL",
 "Unable to create user, there are problems with user backend." => "Kan ikke opprette bruker; det er problemer med bruker-serveren.",
+"Failed to delete pending registration request" => "Klarte ikke å slette utestående registreringsforespørsel",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Kontoen din er blitt opprettet. Du kan <a href=\"{link}\">logge inn nå</a>.",
 "Your settings have been updated." => "Innstillingene dine ble oppdatert.",
 "No such group" => "Ingen slik gruppe",
