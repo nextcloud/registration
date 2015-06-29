@@ -1,6 +1,7 @@
 { "translations": {
     "Email address you entered is not valid" : "入力されたメールアドレスが正しくありません",
     "There is already a pending registration with this email" : "このメールアドレスで登録中断しているものがあります。",
+    "There is an existing user with this email" : "このメールアドレスのユーザーがすでに存在します",
     "Verify your ownCloud registration request" : "ownCloud 登録リクエストを確認してください",
     "Verification email successfully sent." : "確認メールを送信しました。",
     "Invalid verification URL. No registration request with this verification URL is found." : "確認URLが不正です。この確認URLに紐付く登録リクエストは、ありません。",
