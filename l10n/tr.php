@@ -8,6 +8,7 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "Doğrulama e-postası başarıyla gönderildi.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Geçersiz doğrulama adresi. Bu doğrulama adresi ile bir kayıt talebi bulunamadı.",
 "Unable to create user, there are problems with user backend." => "Kullanıcı oluşturma başarısız, kullanıcı arka ucu ile ilgili sorunlar var.",
+"Failed to delete pending registration request" => "Bekleyen kayıt isteğini silme başarısız",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Hesabınız başarıyla oluşturuldu, artık <a href=\"{link}\">oturum açabilirsiniz</a>.",
 "Your settings have been updated." => "Ayarlarınız güncellendi.",
 "No such group" => "Böyle bir grup yok",
