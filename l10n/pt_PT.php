@@ -13,7 +13,6 @@ $TRANSLATIONS = array(
 "No such group" => "Grupo não encontrado",
 "Registration" => "Registo",
 "None" => "Nenhum",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "Parar criar uma conta nova na ownCloud, clique na seguinte hiperligação:\n{link}",
 "Welcome, you can create your account below." => "Bem-vindo, pode criar a sua conta em baixo.",
 "Username" => "Nome de utilizador",
 "Password" => "Palavra-passe",

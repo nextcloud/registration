@@ -15,7 +15,6 @@ OC.L10N.register(
     "Registration" : "Vpis",
     "Default group that all registered users belong" : "Privzeta skupina, v kateri so vsi vpisani uporabniki",
     "None" : "Brez",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Za ustvarjanje novega računa ownCloud, kliknite na povezavo:\n{link}",
     "Welcome, you can create your account below." : "Dobrodošli! Ustvarite nov račun.",
     "Username" : "Uporabniško ime",
     "Password" : "Geslo",

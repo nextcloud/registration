@@ -14,7 +14,6 @@ OC.L10N.register(
     "Registration" : "Inscripcion",
     "Default group that all registered users belong" : "Grop per defaut que totes los utilizaires inscriches rejonhon",
     "None" : "Pas cap",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Per crear un novèl compte sus ownCloud, clicatz sul ligam seguent :\n{link}",
     "Welcome, you can create your account below." : "Benvenguda, podètz crear vòstre compte çaijós.",
     "Username" : "Nom d'utilizaire",
     "Password" : "Senhal",

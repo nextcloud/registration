@@ -15,7 +15,6 @@ $TRANSLATIONS = array(
 "Registration" => "Registreerumine",
 "Default group that all registered users belong" => "Vaikimisi grupp, kuhu kõik uued registreerunud kasutajad vaikimisi pannakse",
 "None" => "Pole",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "ownCloudi uue kasutajakonto loomisels kliki lihtsalt järgnevale lingile: \n{link}",
 "Welcome, you can create your account below." => "Teretulemast, sa võid konto luua allpool.",
 "Username" => "Kasutajanimi",
 "Password" => "Parool",

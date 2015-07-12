@@ -16,7 +16,6 @@ OC.L10N.register(
     "Registration" : "Registro",
     "Default group that all registered users belong" : "Grupo predeterminado al cual pertenecen todos los usuarios registrados",
     "None" : "Ninguno",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Para crear una cuenta en ownCloud, haga clic en el siguiente enlace:\n{link}",
     "Welcome, you can create your account below." : "Bienvenido, puede crear una cuenta más abajo.",
     "Username" : "Nombre de usuario",
     "Password" : "Contraseña",

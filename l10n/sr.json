@@ -13,7 +13,6 @@
     "Registration" : "Регистрација",
     "Default group that all registered users belong" : "Подразумевана група где сви корисници припадају",
     "None" : "Ништа",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Да направите нови налог на оунКлауду, кликните на следећу везу:\n{link}",
     "Welcome, you can create your account below." : "Добро дошли. Испод можете направити ваш налог.",
     "Username" : "Корисничко име",
     "Password" : "Лозинка",

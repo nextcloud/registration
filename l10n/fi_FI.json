@@ -14,7 +14,6 @@
     "Registration" : "Rekisteröityminen",
     "Default group that all registered users belong" : "Oletusryhmä, johon kaikki rekisteröityneet käyttäjät kuuluvat",
     "None" : "Ei mitään",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Luo uusi ownCloud-tili napsauttamalla seuraavaa linkkiä:\n{link}",
     "Welcome, you can create your account below." : "Tervetuloa, voit luoda tilisi alta.",
     "Username" : "Käyttäjätunnus",
     "Password" : "Salasana",

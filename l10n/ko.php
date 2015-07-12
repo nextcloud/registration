@@ -10,7 +10,6 @@ $TRANSLATIONS = array(
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "회원 가입이 완료되었으며 <a href=\"{link}\">로그인할 수 있습니다</a>.",
 "Your settings have been updated." => "설정이 업데이트 되었습니다.",
 "None" => "없음",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "ownCloud에 새로 가입하려면 다음 링크를 누르십시오:\n{link}",
 "Welcome, you can create your account below." => "안녕하세요, 아래에서 회원 가입할 수 있습니다.",
 "Username" => "사용자 이름",
 "Password" => "암호",

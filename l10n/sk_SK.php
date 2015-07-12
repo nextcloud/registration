@@ -13,7 +13,6 @@ $TRANSLATIONS = array(
 "Registration" => "Registrácia",
 "Default group that all registered users belong" => "Základná skupina pre všetkých novo zaregistrovaných používateľov",
 "None" => "Žiadny",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "Pre vytvorenie nového účtu kliknite na nasledovný odkaz:\n{link}",
 "Welcome, you can create your account below." => "Vitajte. Účet si môžete založiť nižšie.",
 "Username" => "Používateľské meno",
 "Password" => "Heslo",

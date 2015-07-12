@@ -16,7 +16,6 @@ OC.L10N.register(
     "Registration" : "Pendaftaran",
     "Default group that all registered users belong" : "Grup baku bagi semua pengguna terdaftar",
     "None" : "Tidak ada",
-    "To create a new account on ownCloud, just click the following link:\n{link}" : "Untuk membuat akun baru di ownCloud, klik saja tautan berikut:\n{link}",
     "Welcome, you can create your account below." : "Selamat datang, Anda dapat membuat akun Anda dibawah.",
     "Username" : "Nama Pengguna",
     "Password" : "Sandi",

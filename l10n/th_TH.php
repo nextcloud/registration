@@ -15,7 +15,6 @@ $TRANSLATIONS = array(
 "Registration" => "การลงทะเบียน",
 "Default group that all registered users belong" => "ค่าเริ่มต้นของกลุ่มผู้ใช้ที่ลงทะเบียนเป็นสมาชิก",
 "None" => "ไม่มี",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "หากต้องการสร้างบัญชีใหม่บน ownCloud เพียงแค่คลิกที่ลิงค์ต่อไปนี้: {link}",
 "Welcome, you can create your account below." => "ยินดีต้อนรับ, คุณสามารถสร้างบัญชีของคุณด้านล่าง",
 "Username" => "ชื่อผู้ใช้งาน",
 "Password" => "รหัสผ่าน",

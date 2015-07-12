@@ -15,7 +15,6 @@ $TRANSLATIONS = array(
 "Registration" => "Registrierung",
 "Default group that all registered users belong" => "Standardgruppe, zu der alle registrierten Benutzer gehören",
 "None" => "Keine",
-"To create a new account on ownCloud, just click the following link:\n{link}" => "Zur Erstellung eines neuen ownCloud-Kontos bitte auf den nachfolgenden Verweis klicken: \n{link}",
 "Welcome, you can create your account below." => "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
 "Username" => "Benutzername",
 "Password" => "Passwort",
