@@ -1,10 +1,24 @@
-# Warning: work in progress, nothing works now.
+# Registration
+This app allows users to register a new account.
 
-# User registration
+Flow:
+
+1. User enters his/her email
+2. Verification link is sent to the email address
+3. User clicks on the verification link
+4. User is lead to a form where one can choose username and password
+5. New account is created
+
+# Requirements
+1. ownCloud 8.0+
+2. ownCloud is using MariaDB/MySQL as backend database
+
+# Install
 Place this app in **owncloud/apps/**
 
+# Warning
+This is alpha quality software, use at your own risk.
 
-## Running tests
-After [Installing PHPUnit](http://phpunit.de/getting-started.html) run:
+# Features
 
-    phpunit tests/
+- Admin can specify which group the newly created accounts belong
