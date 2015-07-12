@@ -17,7 +17,8 @@ foreach ( $_['groups'] as $group ) {
 	</p>
 	<p>
 	<label for="allowed_domains"><?php p($l->t('Domain from which registrations are allowed')); ?></label>
-	<input type="text"   id="allowed_domains" name="allowed_domains" value=<?php p($l->t('allowed'));?>
+	<input type="text"   id="allowed_domains" name="allowed_domains" value=<?php p($l->t('allowed'));?>>
+	<button class="save"><?php p($l->t('Save'));?></button>
 
-	</p>
 </form>
+	</p>
