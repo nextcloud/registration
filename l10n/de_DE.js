@@ -16,6 +16,7 @@ OC.L10N.register(
     "Registration" : "Registrierung",
     "Default group that all registered users belong" : "Standardgruppe, zu der alle registrierten Benutzer gehören",
     "None" : "Keine",
+    "Allowed domains for registration" : "Für Registrierung freigeschaltete Domains"
     "Welcome, you can create your account below." : "Willkommen, Sie können im unteren Teil Ihr Konto anlegen.",
     "Username" : "Benutzername",
     "Password" : "Passwort",
