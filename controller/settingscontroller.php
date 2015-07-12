@@ -81,8 +81,10 @@ class SettingsController extends Controller {
 			$group_id_list[] = $group->getGid();
 		}
 		// TODO selected
+		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
 		return new TemplateResponse('registration', 'admin', [
-			'groups' => $group_id_list
+			'groups' => $group_id_list,
+			'current' => $current_value
 		], '');
 	}
 }

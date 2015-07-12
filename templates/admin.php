@@ -6,10 +6,11 @@ script('registration', 'settings');
 	<p>
 	<label for="registered_user_group"><?php p($l->t('Default group that all registered users belong')); ?></label>
 	<select id="registered_user_group" name="registered_user_group">
-		<option value="none"><?php p($l->t('None')); ?></option>
+		<option value="none" <?php echo $_['current'] === 'none' ? 'selected="selected"' : ''; ?>><?php p($l->t('None')); ?></option>
 <?php
 foreach ( $_['groups'] as $group ) {
-	echo '<option value="'.$group.'">'.$group.'</option>';
+	$selected = $_['current'] === $group ? 'selected="selected"' : '';
+	echo '<option value="'.$group.'" '.$selected.'>'.$group.'</option>';
 }
 ?>
 	</select>
