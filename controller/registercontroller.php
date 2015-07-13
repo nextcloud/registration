@@ -18,9 +18,9 @@ use \OCP\AppFramework\Controller;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
 use \OCP\IUserManager;
+use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
-use \OCP\IUser;
 
 class RegisterController extends Controller {
 
