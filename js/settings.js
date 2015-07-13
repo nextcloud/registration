@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	function saveSettings() {
 		var post = $('#registration').serialize();
-		console.log(post);
 		$.post(OC.generateUrl('/apps/registration/settings'), post);
 	}
 
