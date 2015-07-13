@@ -15,6 +15,7 @@ $TRANSLATIONS = array(
 "Registration" => "Εγγραφή",
 "Default group that all registered users belong" => "Προεπιλεγμένη ομάδα όπου ανήκουν όλοι οι εγγεγραμμένοι χρήστες",
 "None" => "Τίποτα",
+"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "Για να δημιουργήσετε ένα νέο λογαριασμό στο ownCloud, απλά κάντε κλικ στον ακόλουθο σύνδεσμο:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "Καλωσήρθατε, μπορείτε να δημιουργήσετε το λογαριασμό σας παρακάτω.",
 "Username" => "Όνομα χρήστη",
 "Password" => "Κωδικός πρόσβασης",

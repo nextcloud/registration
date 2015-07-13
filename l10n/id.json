@@ -14,6 +14,7 @@
     "Registration" : "Pendaftaran",
     "Default group that all registered users belong" : "Grup baku bagi semua pengguna terdaftar",
     "None" : "Tidak ada",
+    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Untuk membuat akun baru di ownCloud, cukup klik tautan berikut:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Selamat datang, Anda dapat membuat akun Anda dibawah.",
     "Username" : "Nama Pengguna",
     "Password" : "Sandi",
