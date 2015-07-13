@@ -48,7 +48,17 @@ class SettingsController extends Controller {
 	 * @return DataResponse
 	 */
 	public function admin($registered_user_group, $allowed_domains) {
-		$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
+		if ($allowed_domains===''){
+			$this->config->deleteAppValue($this->appName, 'registered_user_group');
+		}else{
+			/*
+			$new_domains='';
+			$domains=explode($allowed_domains,';');
+			foreach ( $domains as $domain) {
+				if( (strlen($domain)i >= 3) && (strpos($domain,'.'
+			}*/
+			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
+		}
 		$groups = $this->groupmanager->search('');
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
