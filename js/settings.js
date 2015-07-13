@@ -1,11 +1,8 @@
 $(document).ready(function() {
 	function saveSettings() {
-		var post1 = $('#registered_user_group').serialize();
-		var post2 = $('#allowed_domains').serialize();
-		console.log(post1);
-		console.log(post2);
-		
-		$.post(OC.generateUrl('/apps/registration/settings'), post1,post2);
+		var post = $('#registration').serialize();
+		console.log(post);
+		$.post(OC.generateUrl('/apps/registration/settings'), post);
 	}
 
 	$('#registered_user_group').change(saveSettings);

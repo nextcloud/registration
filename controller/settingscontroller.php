@@ -21,6 +21,7 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\IUser;
+use \OCP\AppFramework\Http\JSONResponse;
 
 class SettingsController extends Controller {
 
