@@ -96,32 +96,29 @@ class RegisterController extends Controller {
 
 
 		// FEATURE: allow only from specific email domain
+
 		$allowed_domains= $this->config->getAppValue($this->appName, 'allowed_domains','');
 		if ($allowed_domains !== null || $allowed_domains !== ''){
 			$allowed_domains= explode (";",$allowed_domains);
 			$allowed=false;
-			$domains='';
+			$domains=array();
 			foreach ($allowed_domains as $domain ) {
-				$domains=$domain.print_unescaped("<br>").$domains;
+				$domains[]=$domain;//=$domain.print_unescaped("<br>").$domains;
 				$maildomain=explode("@",$email)[1];
 				// valid domain, everythings fine
 				if ($maildomain === $domain) {
-					$allowed_domains=true;
+					$allowed=true;
 					break;
 				}
 					
 			}
 			// $allowed still false->return error message
 			if ( $allowed === false ) {
-				return new TemplateResponse('', 'error', array(
-					'errors' => array(array(
-						'error' => $this->l10n->t('Only following domain names are allowed:'."\n".$domains),
-						'hint' => ''
-				))
-			), 'error');
+				return new TemplateResponse('registration', 'domains', ['domains' =>
+					$domains
+				], 'guest');
 			}
 		}
-
 		
 
 		$token = $this->pendingreg->save($email);
