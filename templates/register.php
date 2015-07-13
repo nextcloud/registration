@@ -25,7 +25,7 @@ if ($_['entered']): ?>
 <?php else: ?>
 	<form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.validateEmail')) ?>" method="post">
 		<fieldset>
-			<?php if (!empty($_['errormsg'])): ?>
+			<?php if ($_['errormsg']): ?>
 				<ul class="error">
 					<li><?php print_unescaped($_['errormsg']); ?></li>
 					<li><?php print_unescaped($l->t('Please re-enter a valid email address')); ?></li>

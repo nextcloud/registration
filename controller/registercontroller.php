@@ -85,7 +85,7 @@ class RegisterController extends Controller {
 			), 'error');
 		}
 
-		if ( !empty($this->config->getUsersForUserValue('settings', 'email', $email)) ) {
+		if ( $this->config->getUsersForUserValue('settings', 'email', $email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('There is an existing user with this email'),
