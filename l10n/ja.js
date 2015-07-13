@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "登録",
     "Email address you entered is not valid" : "入力されたメールアドレスが正しくありません",
     "There is already a pending registration with this email" : "このメールアドレスで登録中断しているものがあります。",
     "There is an existing user with this email" : "このメールアドレスのユーザーがすでに存在します",
@@ -8,8 +9,12 @@ OC.L10N.register(
     "Verification email successfully sent." : "確認メールを送信しました。",
     "Invalid verification URL. No registration request with this verification URL is found." : "確認URLが不正です。この確認URLに紐付く登録リクエストは、ありません。",
     "Unable to create user, there are problems with user backend." : "ユーザーを作成できません。バックエンドのユーザー管理システムに問題があります。",
+    "Failed to delete pending registration request" : "保留中の登録リクエストの削除に失敗しました",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "アカウントは無事作成されました。 こちらのリンクから<a href=\"{link}\">ログイン</a>してください。",
     "Your settings have been updated." : "設定を更新しました。",
+    "No such group" : "そのようなグループはありません",
+    "Registration" : "登録",
+    "Default group that all registered users belong" : "すべての登録ユーザーが属しているデフォルトのグループ",
     "None" : "なし",
     "Welcome, you can create your account below." : "ようこそ、以下から新しくアカウントを作成できます。",
     "Username" : "ユーザーID",

@@ -16,6 +16,7 @@ OC.L10N.register(
     "Registration" : "Rekisteröityminen",
     "Default group that all registered users belong" : "Oletusryhmä, johon kaikki rekisteröityneet käyttäjät kuuluvat",
     "None" : "Ei mitään",
+    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Luo uusi ownCloud-tili napsauttamalla seuraavaa linkkiä:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Tervetuloa, voit luoda tilisi alta.",
     "Username" : "Käyttäjätunnus",
     "Password" : "Salasana",
