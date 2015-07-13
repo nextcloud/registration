@@ -98,11 +98,11 @@ class RegisterController extends Controller {
 		// FEATURE: allow only from specific email domain
 		$allowed_domains= $this->config->getAppValue($this->appName, 'allowed_domains','');
 		if ($allowed_domains !== null || $allowed_domains !== ''){
-			$allowed_domains= explode (";";$allowed_domains);
+			$allowed_domains= explode (";",$allowed_domains);
 			$allowed=false;
 			$domains='';
 			foreach ($allowed_domains as $domain ) {
-				$domains=$domain."\n".$domains;
+				$domains=$domain.print_unescaped("<br>").$domains;
 				$maildomain=explode("@",$email)[1];
 				// valid domain, everythings fine
 				if ($maildomain === $domain) {
@@ -115,7 +115,7 @@ class RegisterController extends Controller {
 			if ( $allowed === false ) {
 				return new TemplateResponse('', 'error', array(
 					'errors' => array(array(
-						'error' => $this->l10n->t('Only following domain names are allowed:\n'),
+						'error' => $this->l10n->t('Only following domain names are allowed:'."\n".$domains),
 						'hint' => ''
 				))
 			), 'error');
