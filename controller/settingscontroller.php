@@ -48,8 +48,8 @@ class SettingsController extends Controller {
 	 * @return DataResponse
 	 */
 	public function admin($registered_user_group, $allowed_domains) {
-		if ($allowed_domains===''){
-			$this->config->deleteAppValue($this->appName, 'registered_user_group');
+		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
+			$this->config->deleteAppValue($this->appName, 'allowed_domains');
 		}else{
 			/*
 			$new_domains='';
