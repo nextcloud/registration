@@ -98,7 +98,8 @@ class RegisterController extends Controller {
 		// FEATURE: allow only from specific email domain
 
 		$allowed_domains= $this->config->getAppValue($this->appName, 'allowed_domains','');
-		if ($allowed_domains !== null || $allowed_domains !== ''){
+		if ( ($allowed_domains === null) || ($allowed_domains === '') || ( strlen($allowed_domains)===0)){
+}else{
 			$allowed_domains= explode (";",$allowed_domains);
 			$allowed=false;
 			$domains=array();
@@ -118,7 +119,7 @@ class RegisterController extends Controller {
 					$domains
 				], 'guest');
 			}
-		}
+		}//else var_dump($allowed_domains);
 		
 
 		$token = $this->pendingreg->save($email);
