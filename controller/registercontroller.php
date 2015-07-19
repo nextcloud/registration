@@ -18,9 +18,9 @@ use \OCP\AppFramework\Controller;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
 use \OCP\IUserManager;
+use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
-use \OCP\IUser;
 
 class RegisterController extends Controller {
 
@@ -84,7 +84,7 @@ class RegisterController extends Controller {
 			), 'error');
 		}
 
-		if ( !empty($this->config->getUsersForUserValue('settings', 'email', $email)) ) {
+		if ( $this->config->getUsersForUserValue('settings', 'email', $email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('There is an existing user with this email'),

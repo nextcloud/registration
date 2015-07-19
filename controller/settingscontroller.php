@@ -16,7 +16,6 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\DataResponse;
 use \OCP\AppFramework\Http;
 use \OCP\AppFramework\Controller;
-use \OCP\IUserManager;
 use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;

@@ -16,6 +16,7 @@ OC.L10N.register(
     "Registration" : "การลงทะเบียน",
     "Default group that all registered users belong" : "ค่าเริ่มต้นของกลุ่มผู้ใช้ที่ลงทะเบียนเป็นสมาชิก",
     "None" : "ไม่มี",
+    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "เพื่อที่จะสร้างบัญชี ownCloud ใหม่ โปรดคลิกที่ลิงค์ต่อไปนี้:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "ยินดีต้อนรับ, คุณสามารถสร้างบัญชีของคุณด้านล่าง",
     "Username" : "ชื่อผู้ใช้งาน",
     "Password" : "รหัสผ่าน",
