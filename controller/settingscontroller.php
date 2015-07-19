@@ -20,7 +20,6 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\IUser;
-use \OCP\AppFramework\Http\JSONResponse;
 
 class SettingsController extends Controller {
 
@@ -50,12 +49,6 @@ class SettingsController extends Controller {
 		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
 		}else{
-			/*
-			$new_domains='';
-			$domains=explode($allowed_domains,';');
-			foreach ( $domains as $domain) {
-				if( (strlen($domain)i >= 3) && (strpos($domain,'.'
-			}*/
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 		$groups = $this->groupmanager->search('');
