@@ -14,6 +14,7 @@ $TRANSLATIONS = array(
 "No such group" => "Keine derartige Gruppe",
 "Registration" => "Registrierung",
 "Default group that all registered users belong" => "Standardgruppe, zu der alle registrierten Benutzer gehören",
+"Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Geben Sie hier die freigeschalteten, durch Semikolons getrennten, Domains  ein. Beispiel: owncloud.com;github.com",
 "None" => "Keine",
 "Allowed domains for registration" => "Für Registrierung freigeschaltete Domains",
 "Registration is only allowed for following domains:" => "Registrierung ist nur für folgende Domains freigeschaltet:",
