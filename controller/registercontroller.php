@@ -156,7 +156,8 @@ class RegisterController extends Controller {
 				return new TemplateResponse('registration', 'form',
 					array('email' => $email,
 						'entered_data' => array('username' => $username),
-						'errormsgs' => array($e->message, $username, $password)), 'guest');
+						'errormsgs' => array($e->getMessage()),
+						'token' => $token), 'guest');
 			}
 			if ( $user === false ) {
 				return new TemplateResponse('', 'error', array(
