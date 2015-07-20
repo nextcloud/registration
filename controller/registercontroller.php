@@ -105,7 +105,7 @@ class RegisterController extends Controller {
 		$msg = $res->render();
 		try {
 			$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
 			return;
 		}
@@ -152,7 +152,7 @@ class RegisterController extends Controller {
 			$password = $this->request->getParam('password');
 			try {
 				$user = $this->usermanager->createUser($username, $password);
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 				return new TemplateResponse('registration', 'form',
 					array('email' => $email,
 						'entered_data' => array('username' => $username),
@@ -170,11 +170,13 @@ class RegisterController extends Controller {
 				// Set user email
 				try {
 					$this->config->setUserValue($user->getUID(), 'settings', 'email', $email);
-				} catch (Exception $e) {
-					return new TemplateResponse('registration', 'form',
-						array('email' => $email,
-						'entered_data' => array('username' => $username),
-						'errormsgs' => array($e->message, $username, $password)), 'guest');
+				} catch (\Exception $e) {
+					return new TemplateResponse('', 'error', array(
+						'errors' => array(array(
+							'error' => $this->l10n->t('Unable to set user email: '.$e->getMessage()),
+							'hint' => ''
+						))
+					), 'error');
 				}
 
 				// Add user to group
@@ -183,7 +185,7 @@ class RegisterController extends Controller {
 					try {
 						$group = $this->groupmanager->get($registered_user_group);
 						$group->addUser($user);
-					} catch (Exception $e) {
+					} catch (\Exception $e) {
 						return new TemplateResponse('', 'error', array(
 							'errors' => array(array(
 								'error' => $e->message,
