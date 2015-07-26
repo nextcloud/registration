@@ -8,6 +8,7 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "E-Mail zur Bestätigung erfolgreich gesendet.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ungültige Bestätigungsadresse. Keine Registrierungsanfrage mit dieser Bestätigungsadresse gefunden.",
 "Unable to create user, there are problems with user backend." => "Benutzer konnte nicht erstellt werden, es gibt Probleme mit dem Benutzerhintergrundprogramm.",
+"Unable to set user email: " => "Die E-Mail-Adresse des Benutzers konnte nicht gespeichert werden:",
 "Failed to delete pending registration request" => "Das Löschen der in Bearbeitung befindlichen Registrierungsanfrage ist fehlgeschlagen",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Dein Konto wurde erfolgreich erstellt, Du kannst dich <a href=\"{link}\">jetzt anmelden</a>.",
 "Your settings have been updated." => "Deine Einstellungen wurden aktualisiert.",

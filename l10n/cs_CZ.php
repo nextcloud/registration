@@ -8,6 +8,7 @@ $TRANSLATIONS = array(
 "Verification email successfully sent." => "Ověřovací email úspěšně odeslán.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Neplatná ověřovací URL. Nebyl nalezen žádný registrační požadavek pro tuto ověřovací URL.",
 "Unable to create user, there are problems with user backend." => "Není možné vytvořit uživatelský účet, nastaly potíže v systému úložiště uživatelů.",
+"Unable to set user email: " => "Nelze nastavit email uživatele:",
 "Failed to delete pending registration request" => "Selhalo smazání čekajících požadavků na registraci",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Váš účet byl úspěšně vytvořen, můžete se nyní <a href=\"{link}\">přihlásit</a>.",
 "Your settings have been updated." => "Vaše nastavení bylo aktualizováno.",
