@@ -9,6 +9,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "Verificação de email enviado com sucesso.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificação inválido. Nenhum pedido de registro com este URL de verificação foi encontrado.",
     "Unable to create user, there are problems with user backend." : "Não é possível criar usuário, há problemas com backend do usuário.",
+    "Unable to set user email: " : "Não é possível definir um e-mail para o usuário:",
     "Failed to delete pending registration request" : "Falha ao excluir o pedido de registro pendente",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Sua conta foi criada com sucesso, você pode <a href=\"{link}\">fazer login agora</a>.",
     "Your settings have been updated." : "Suas configurações foram atualizadas.",

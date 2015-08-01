@@ -9,6 +9,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "Vahvistussähköposti lähetettiin onnistuneesti.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Virheellinen vahvistuksen verkko-osoite. Kyseisellä osoitteella ei löytynyt rekisteröintipyyntöä.",
     "Unable to create user, there are problems with user backend." : "Käyttäjän luominen ei onnistunut käyttäjätaustaosan kanssa olevien ongelmien vuoksi.",
+    "Unable to set user email: " : "Käyttäjän sähköpostin asettaminen epäonnistui:",
     "Failed to delete pending registration request" : "Odottavan rekisteröintipyynnön poistaminen epäonnistui",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Tilisi on luotu onnistuneesti. Voit <a href=\"{link}\">kirjautua sisään</a> nyt.",
     "Your settings have been updated." : "Asetuksesi on päivitetty.",

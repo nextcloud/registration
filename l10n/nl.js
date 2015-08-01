@@ -9,6 +9,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "Verificatie e-mailbericht succesvol verstuurd.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Ongeldige verificatie URL. Er is geen aanvraag voor registratie met deze URL gevonden.",
     "Unable to create user, there are problems with user backend." : "Kan gebruikersaccount niet creëren, er zijn problemen met gebruiker's backend.",
+    "Unable to set user email: " : "Kan e-mailadres van gebruiker niet instellen:",
     "Failed to delete pending registration request" : "Verwijderen van de lopende registratieaanvraag is niet gelukt ",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Er is met succes een account voor u gemaakt, u kunt <a href=\"{link}\">nu inloggen</a>.",
     "Your settings have been updated." : "Uw instellingen zijn bijgewerkt",

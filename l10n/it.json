@@ -7,6 +7,7 @@
     "Verification email successfully sent." : "Email di verifica inviata correttamente.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL di verifica non valido. Nessuna richiesta di registrazione trovata con questo URL di verifica.",
     "Unable to create user, there are problems with user backend." : "Impossibile creare l'utente, ci sono problemi con il motore degli utenti.",
+    "Unable to set user email: " : "Impossibile impostare l'indirizzo email dell'utente:",
     "Failed to delete pending registration request" : "L'eliminazione della richiesta di registrazione in corso non è riuscita",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Il tuo account è stato creato correttamente, ora puoi <a href=\"{link}\">effettuare l'accesso</a>.",
     "Your settings have been updated." : "Le tue impostazioni sono state aggiornate.",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "Email verifikasi berhasil dikirim",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL verifikasi tidak sah. Tidak ada permintaan pendaftaran dengan URL verifikasi ini yang ditemukan.",
     "Unable to create user, there are problems with user backend." : "Tidak dapat membuat pengguna, terdapat masalah dengan backend pengguna.",
+    "Unable to set user email: " : "Tidak dapat mengatur email pengguna:",
     "Failed to delete pending registration request" : "Gagal menghapus permintaan penundaan pendaftaran",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Akun Anda telah berhasil dibuat, Anda dapat <a href=\"{link}\">masuk sekarang</a>.",
     "Your settings have been updated." : "Pengaturan Anda telah diperbarui.",

@@ -21,7 +21,11 @@ class PendingRegist {
 	public function save($email) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
 			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )' );
-		$token = $this->random->generate(30);
+		
+		do {
+			$token = $this->random->generate(30);
+		} while (preg_match('/[\/]++/', $token));
+		
 		$query->execute(array( $email, $token ));
 		return $token;
 	}
