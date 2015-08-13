@@ -7,6 +7,7 @@
     "Verification email successfully sent." : "Проверочное письмо успешно отправлено.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Недействительный проверочный URL. Запросов на регистрацию с таким проверочным URL не найдено.",
     "Unable to create user, there are problems with user backend." : "Невозможно создать учетную запись, возникли проблемы с пользовательской частью.",
+    "Unable to set user email: " : "Невозможно установить email пользователя:",
     "Failed to delete pending registration request" : "Не удалось удалить существующий запрос на регистрацию",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Учетная запись успешно создана, теперь вы можете <a href=\"{link}\">войти на сайт</a>.",
     "Your settings have been updated." : "Настройки обновлены.",
