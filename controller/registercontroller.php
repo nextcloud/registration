@@ -67,7 +67,6 @@ class RegisterController extends Controller {
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
 		if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-			return new TemplateResponse('', 'error', array(array('error' => $this->l10n->t('Email address you entered is not valid'))), 'error');
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Email address you entered is not valid'),
@@ -94,7 +93,33 @@ class RegisterController extends Controller {
 			), 'error');
 		}
 
+
 		// FEATURE: allow only from specific email domain
+
+		$allowed_domains= $this->config->getAppValue($this->appName, 'allowed_domains','');
+		if ( ($allowed_domains === null) || ($allowed_domains === '') || ( strlen($allowed_domains)===0)){
+}else{
+			$allowed_domains= explode (";",$allowed_domains);
+			$allowed=false;
+			$domains=array();
+			foreach ($allowed_domains as $domain ) {
+				$domains[]=$domain;//=$domain.print_unescaped("<br>").$domains;
+				$maildomain=explode("@",$email)[1];
+				// valid domain, everythings fine
+				if ($maildomain === $domain) {
+					$allowed=true;
+					break;
+				}
+					
+			}
+			// $allowed still false->return error message
+			if ( $allowed === false ) {
+				return new TemplateResponse('registration', 'domains', ['domains' =>
+					$domains
+				], 'guest');
+			}
+		}//else var_dump($allowed_domains);
+		
 
 		$token = $this->pendingreg->save($email);
 		//TODO: check for error
