@@ -63,16 +63,6 @@ class RegisterController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @PublicPage
-	 * @param string $email
-	 */
-	public function resendEmail($email) {
-		return $this->sendVerificationEmail($email);
-	}
-
-	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 * @PublicPage
 	 */
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
@@ -86,12 +76,30 @@ class RegisterController extends Controller {
 		}
 
 		if ( $this->pendingreg->find($email) ) {
+			$this->pendingreg->delete($email);
+			$token = $this->pendingreg->save($email);
+			$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
+			$link = $this->urlgenerator->getAbsoluteURL($link);
+			$from = Util::getDefaultEmailAddress('register');
+			$res = new TemplateResponse('registration', 'email', array('link' => $link), 'blank');
+			$msg = $res->render();
+			try {
+				$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
+			} catch (\Exception $e) {
+				return new TemplateResponse('', 'error', array(
+					'errors' => array(array(
+						'error' => $this->l10n->t('A problem occurred sending email, please contact your administrator.'),
+						'hint' => ''
+					))
+				), 'error');
+			}
+			return new TemplateResponse('registration', 'message', array('msg' =>
+				$this->l10n->t('Verification email successfully sent.')
+			), 'guest');
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
-					'error' => $this->l10n->t('There is already a pending registration with this email'),
-					'hint' => str_replace('{href}',
-					$this->urlgenerator->linkToRoute('registration.register.resendEmail', array('email' => $email)),
-					$this->l10n->t('<a href="{href}">Click here</a> to re-send the verification email'))
+					'error' => $this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.'),
+					'hint' => ''
 				))
 			), 'error');
 		}
@@ -126,16 +134,6 @@ class RegisterController extends Controller {
 			}
 		}
 
-		return $this->sendVerificationEmail($email);
-	}
-
-	/**
-	 * Delete existing pending registration request for the email and send a new one.
-	 * @param string $email email address to send
-	 * @return TemplateResponse
-	 */
-	private function sendVerificationEmail($email) {
-		$this->pendingreg->delete($email);
 		$token = $this->pendingreg->save($email);
 		//TODO: check for error
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));

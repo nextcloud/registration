@@ -25,7 +25,6 @@ $application->registerRoutes($this, array('routes' => array(
 	array('name' => 'settings#admin', 'url' => '/settings', 'verb' => 'POST'),
 	array('name' => 'register#askEmail', 'url' => '/', 'verb' => 'GET'),
 	array('name' => 'register#validateEmail', 'url' => '/', 'verb' => 'POST'),
-	array('name' => 'register#resendEmail', 'url' => '/resend/{email}', 'verb' => 'GET'),
 	array('name' => 'register#verifyToken', 'url' => '/verify/{token}', 'verb' => 'GET'),
 	array('name' => 'register#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST')
 )));
