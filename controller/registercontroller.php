@@ -119,8 +119,17 @@ class RegisterController extends Controller {
 				], 'guest');
 			}
 		}//else var_dump($allowed_domains);
-		
 
+	return sendVerificationEmail($email);
+	}
+
+	/**
+	 * Delete existing pending registration request for the email and send a new one.
+	 * @param string $email email address to send
+	 * @return TemplateResponse
+	 */
+	private function sendVerificationEmail($email) {
+		$this->pendingreg->delete($email);
 		$token = $this->pendingreg->save($email);
 		//TODO: check for error
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
@@ -131,8 +140,12 @@ class RegisterController extends Controller {
 		try {
 			$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
 		} catch (\Exception $e) {
-			\OC_Template::printErrorPage( 'A problem occurs during sending the e-mail please contact your administrator.');
-			return;
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('A problem occurred sending email, please contact your administrator.')
+					'hint' => ''
+				))
+			), 'error');
 		}
 		return new TemplateResponse('registration', 'message', array('msg' =>
 			$this->l10n->t('Verification email successfully sent.')
