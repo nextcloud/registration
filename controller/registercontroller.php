@@ -93,9 +93,6 @@ class RegisterController extends Controller {
 					))
 				), 'error');
 			}
-			return new TemplateResponse('registration', 'message', array('msg' =>
-				$this->l10n->t('Verification email successfully sent.')
-			), 'guest');
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.'),
