@@ -63,6 +63,16 @@ class RegisterController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @PublicPage
+	 * @param string $email
+	 */
+	public function resendEmail($email) {
+		return $this->sendVerificationEmail($email);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @PublicPage
 	 */
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
@@ -79,7 +89,9 @@ class RegisterController extends Controller {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('There is already a pending registration with this email'),
-					'hint' => ''
+					'hint' => str_replace('{href}',
+					$this->urlgenerator->linkToRoute('registration.register.resendEmail', array('email' => $email)),
+					$this->l10n->t('<a href="{href}">Click here</a> to re-send the verification email'))
 				))
 			), 'error');
 		}
@@ -114,7 +126,7 @@ class RegisterController extends Controller {
 			}
 		}
 
-		return sendVerificationEmail($email);
+		return $this->sendVerificationEmail($email);
 	}
 
 	/**
@@ -136,7 +148,7 @@ class RegisterController extends Controller {
 		} catch (\Exception $e) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
-					'error' => $this->l10n->t('A problem occurred sending email, please contact your administrator.')
+					'error' => $this->l10n->t('A problem occurred sending email, please contact your administrator.'),
 					'hint' => ''
 				))
 			), 'error');
