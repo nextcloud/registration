@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "Register" : "登録",
     "Email address you entered is not valid" : "入力されたメールアドレスが正しくありません",
-    "There is already a pending registration with this email" : "このメールアドレスで保留中の登録がすでに存在します",
-    "There is an existing user with this email" : "このメールアドレスのユーザーがすでに存在します",
     "Verify your ownCloud registration request" : "ownCloud 登録リクエストを確認してください",
+    "There is an existing user with this email" : "このメールアドレスのユーザーがすでに存在します",
     "Verification email successfully sent." : "確認メールを送信しました。",
     "Invalid verification URL. No registration request with this verification URL is found." : "確認URLが不正です。この確認URLに紐付く登録リクエストは、ありません。",
     "Unable to create user, there are problems with user backend." : "ユーザーを作成できません。バックエンドのユーザー管理システムに問題があります。",

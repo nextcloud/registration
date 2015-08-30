@@ -2,9 +2,8 @@
 $TRANSLATIONS = array(
 "Register" => "สมัครสมาชิก",
 "Email address you entered is not valid" => "ที่อยู่อีเมลที่คุณป้อนไม่ถูกต้อง",
-"There is already a pending registration with this email" => "อีเมลนี้ยังอยู่ในขั้นตอนการลงทะเบียน",
-"There is an existing user with this email" => "มีคนใช้อีเมลนี้ไปแล้ว",
 "Verify your ownCloud registration request" => "ตรวจสอบคำขอลงทะเบียน ownCloud ของคุณ",
+"There is an existing user with this email" => "มีคนใช้อีเมลนี้ไปแล้ว",
 "Verification email successfully sent." => "ส่งอีเมลยืนยันเรียบร้อยแล้ว",
 "Invalid verification URL. No registration request with this verification URL is found." => "ตรวจสอบ URL ไม่ถูกต้องไม่มีคำขอการลงทะเบียน",
 "Unable to create user, there are problems with user backend." => "ไม่สามารถสร้างผู้ใช้ที่มีปัญหาเกี่ยวกับแบ็กเอนด์ของผู้ใช้",

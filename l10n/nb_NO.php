@@ -2,9 +2,8 @@
 $TRANSLATIONS = array(
 "Register" => "Registrer",
 "Email address you entered is not valid" => "E-postadressen som du la enn er ikke gyldig",
-"There is already a pending registration with this email" => "Det finnes allerede en ventende registrering med denne e-postadressen",
-"There is an existing user with this email" => "Det finnes allerede en bruker med denne epost-adressen",
 "Verify your ownCloud registration request" => "Verifiser din forespørsel om ownCloud-registrering",
+"There is an existing user with this email" => "Det finnes allerede en bruker med denne epost-adressen",
 "Verification email successfully sent." => "Verifiserings-epost sendt.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ugyldig URL for verifisering. Ingen registreringsforespørsel ble funnet med denne URL",
 "Unable to create user, there are problems with user backend." => "Kan ikke opprette bruker; det er problemer med bruker-serveren.",

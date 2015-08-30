@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "Register" : "Daftar",
     "Email address you entered is not valid" : "Alamat email yang Anda masukkan tidak sah",
-    "There is already a pending registration with this email" : "Sudah ada pendaftaran tertunda dengan email ini",
-    "There is an existing user with this email" : "Sudah ada pengguna yang didaftarkan dengan email ini",
     "Verify your ownCloud registration request" : "Verifikasi permintaan pendaftaran ownCloud Anda",
+    "There is an existing user with this email" : "Sudah ada pengguna yang didaftarkan dengan email ini",
     "Verification email successfully sent." : "Email verifikasi berhasil dikirim",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL verifikasi tidak sah. Tidak ada permintaan pendaftaran dengan URL verifikasi ini yang ditemukan.",
     "Unable to create user, there are problems with user backend." : "Tidak dapat membuat pengguna, terdapat masalah dengan backend pengguna.",

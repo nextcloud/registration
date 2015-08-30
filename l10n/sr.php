@@ -2,9 +2,8 @@
 $TRANSLATIONS = array(
 "Register" => "Региструј се",
 "Email address you entered is not valid" => "Е-адреса коју сте унели није исправна",
-"There is already a pending registration with this email" => "Већ постоји започет поступак регистрације са том е-адресом",
-"There is an existing user with this email" => "Постоји корисник са овом е-адресом",
 "Verify your ownCloud registration request" => "Потврдите свој захтев за оунКлауд регистрацију ",
+"There is an existing user with this email" => "Постоји корисник са овом е-адресом",
 "Verification email successfully sent." => "Порука за потврду је успешно послата",
 "Invalid verification URL. No registration request with this verification URL is found." => "Неисправан УРЛ за потврду. Ниједан захтев за регистрацију са овим УРЛ-ом није пронађен.",
 "Unable to create user, there are problems with user backend." => "Не могу да створим корисника. Постоји проблем са позадином за корисника.",

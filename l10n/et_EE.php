@@ -2,9 +2,8 @@
 $TRANSLATIONS = array(
 "Register" => "Registreeru",
 "Email address you entered is not valid" => "Sinu poolt sisestatud e-posti aadress pole korrektne",
-"There is already a pending registration with this email" => "Selle aadressi pealt juba oodatakse registreerumise kinnitamist",
-"There is an existing user with this email" => "Selle e-posti aadressiga kasutaja on juba olemas",
 "Verify your ownCloud registration request" => "Kinnita oma ownCloudi registreerumise soov",
+"There is an existing user with this email" => "Selle e-posti aadressiga kasutaja on juba olemas",
 "Verification email successfully sent." => "Kinnituskiri on saadetud.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Vigane kinnituse URL. Selle kinnitus URL-iga registreerimise päringut ei leitud.",
 "Unable to create user, there are problems with user backend." => "Kasutaja loomine ebaõnnestus, kasutaja adminiliidesega oli probleeme.",

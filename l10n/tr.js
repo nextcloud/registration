@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "Register" : "Kaydol",
     "Email address you entered is not valid" : "Girdiğiniz e-posta adresi geçerli değil",
-    "There is already a pending registration with this email" : "Bu e-posta ile zaten bekleyen bir kayıt mevcut",
-    "There is an existing user with this email" : "Bu e-posta ile zaten bir kullanıcı mevcut",
     "Verify your ownCloud registration request" : "ownCloud kayıt talebinizi doğrulayın",
+    "There is an existing user with this email" : "Bu e-posta ile zaten bir kullanıcı mevcut",
     "Verification email successfully sent." : "Doğrulama e-postası başarıyla gönderildi.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Geçersiz doğrulama adresi. Bu doğrulama adresi ile bir kayıt talebi bulunamadı.",
     "Unable to create user, there are problems with user backend." : "Kullanıcı oluşturma başarısız, kullanıcı arka ucu ile ilgili sorunlar var.",

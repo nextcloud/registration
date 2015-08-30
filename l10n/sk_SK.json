@@ -1,9 +1,8 @@
 { "translations": {
     "Register" : "Zaregistrovať sa",
     "Email address you entered is not valid" : "Zadaná emailová adresa nie je správna",
-    "There is already a pending registration with this email" : "Registrácia s touto emailovou adresou už čaká na overenie registrácie",
-    "There is an existing user with this email" : "Používateľ s touto emailovou adresou už existuje",
     "Verify your ownCloud registration request" : "Overte svoju požiadavku na registráciu do ownCloud",
+    "There is an existing user with this email" : "Používateľ s touto emailovou adresou už existuje",
     "Verification email successfully sent." : "Overovací email bol úspešne odoslaný.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Neplatná overovacia URL. Nebola nájdená žiadna požiadavka o registráciu pre túto overovaciu URL.",
     "Unable to create user, there are problems with user backend." : "Nedá sa vytvoriť používateľský účet. Nastala chyba v používateľskom backende.",

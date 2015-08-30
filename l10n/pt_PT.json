@@ -1,9 +1,8 @@
 { "translations": {
     "Register" : "Registar",
     "Email address you entered is not valid" : "O endereço de correio eletrónico introduzido é inválido",
-    "There is already a pending registration with this email" : "Já existe um registo pendente com este correio eletrónico",
-    "There is an existing user with this email" : "Já existe um utilizador com este correio eletrónico",
     "Verify your ownCloud registration request" : "Verifique o seu pedido de registo na ownCloud",
+    "There is an existing user with this email" : "Já existe um utilizador com este correio eletrónico",
     "Verification email successfully sent." : "Mensagem de verificação enviada com sucesso.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificação inválido. Não foi encontrado nenhum pedido de registo com este URL de verificação.",
     "Unable to create user, there are problems with user backend." : "Não é possível criar o utilizador, existem problemas com a interface do utilizador.",
