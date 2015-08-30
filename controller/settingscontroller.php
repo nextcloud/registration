@@ -52,6 +52,7 @@ class SettingsController extends Controller {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 		$groups = $this->groupmanager->search('');
+		$group_id_list = array();
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
