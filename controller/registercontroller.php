@@ -126,7 +126,7 @@ class RegisterController extends Controller {
 			}
 			if ( $allowed === false ) {
 				return new TemplateResponse('registration', 'domains', ['domains' =>
-					$domains
+					$allowed_domains
 				], 'guest');
 			}
 		}
