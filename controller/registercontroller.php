@@ -174,7 +174,6 @@ class RegisterController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 * @PublicPage
 	 */
 	public function createAccount($token) {
