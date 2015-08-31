@@ -2,6 +2,8 @@
     "Register" : "Registrar",
     "Email address you entered is not valid" : "O endereço de email que você forneceu é inválido",
     "Verify your ownCloud registration request" : "Verifique seu pedido de registro no ownCloud ",
+    "A problem occurred sending email, please contact your administrator." : "Ocorreu um problema ao enviar um e-mail, por favor, contate o administrador.",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Já existe um registro pendente com este e-mail, um novo e-mail de verificação foi enviado para o endereço.",
     "There is an existing user with this email" : "Existe um usuário com este email",
     "Verification email successfully sent." : "Verificação de email enviado com sucesso.",
     "Invalid verification URL. No registration request with this verification URL is found." : "URL de verificação inválido. Nenhum pedido de registro com este URL de verificação foi encontrado.",
