@@ -47,7 +47,6 @@ class RegisterController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @PublicPage
 	 */
@@ -154,7 +153,6 @@ class RegisterController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 * @PublicPage
 	 */
@@ -173,7 +171,6 @@ class RegisterController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @PublicPage
 	 */
 	public function createAccount($token) {
