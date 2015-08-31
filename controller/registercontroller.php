@@ -102,8 +102,10 @@ class RegisterController extends Controller {
 		if ( $this->config->getUsersForUserValue('settings', 'email', $email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
-					'error' => $this->l10n->t('There is an existing user with this email'),
-					'hint' => ''
+					'error' => $this->l10n->t('A user has already taken this email, maybe you already have an account?'),
+					'hint' => str_replace(
+						'{login}', $this->urlgenerator->getAbsoluteURL('/'),
+						$this->l10n->t('You can <a href="{login}">log in now</a>.'))
 				))
 			), 'error');
 		}
