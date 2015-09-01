@@ -3,7 +3,6 @@ $TRANSLATIONS = array(
 "Register" => "Регистрация",
 "Email address you entered is not valid" => "Указанный вами адрес email недействителен",
 "Verify your ownCloud registration request" => "Подтвердите запрос на регистрацию в ownCloud",
-"There is an existing user with this email" => "Пользователь с указанным адресом email уже существует",
 "Verification email successfully sent." => "Проверочное письмо успешно отправлено.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Недействительный проверочный URL. Запросов на регистрацию с таким проверочным URL не найдено.",
 "Unable to create user, there are problems with user backend." => "Невозможно создать учетную запись, возникли проблемы с пользовательской частью.",

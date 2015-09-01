@@ -2,7 +2,6 @@
     "Register" : "등록",
     "Email address you entered is not valid" : "입력한 이메일 주소가 올바르지 않음",
     "Verify your ownCloud registration request" : "ownCloud 가입 요청 확인",
-    "There is an existing user with this email" : "같은 이메일을 사용하는 사용자가 이미 존재함",
     "Verification email successfully sent." : "확인 이메일을 보냈습니다.",
     "Invalid verification URL. No registration request with this verification URL is found." : "확인 URL이 잘못되었습니다. 이 확인 URL과 연결된 가입 요청이 없습니다.",
     "Unable to create user, there are problems with user backend." : "사용자 백엔드 오류로 사용자를 등록할 수 없습니다.",

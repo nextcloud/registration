@@ -6,7 +6,6 @@ OC.L10N.register(
     "Verify your ownCloud registration request" : "Verificér din forespørgsel om ownCloud-tilmelding",
     "A problem occurred sending email, please contact your administrator." : "Der opstod et problem ved afsendelse af e-mail. Kontakt venligst din administrator.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Der findes allerede en afventende tilmelding med denne e-mail. Der er blevet sendt en ny bekræftelse per e-mail til denne adresse.",
-    "There is an existing user with this email" : "Der findes en bruger med denne e-mail",
     "Verification email successfully sent." : "Bekræftelse er blevet sendt med e-mail.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Ugyldig verifikations-URL. Der blev ikke fundet nogen forespørgsel om tilmelding med denne verifikations-URL.",
     "Unable to create user, there are problems with user backend." : "Kan ikke oprette bruger - der er problemer med bruger-backend.",

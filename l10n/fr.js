@@ -4,7 +4,7 @@ OC.L10N.register(
     "Register" : "S'enregistrer",
     "Email address you entered is not valid" : "L'adresse de courriel saisie n'est pas valable",
     "Verify your ownCloud registration request" : "Effectuez la vérification de votre demande d'inscription ownCloud",
-    "There is an existing user with this email" : "Un utilisateur existant utilise cette adresse de courriel",
+    "A problem occurred sending email, please contact your administrator." : "Une erreur est survenue lors de l'envoi de l'e-mail. Veuillez contacter votre administrateur.",
     "Verification email successfully sent." : "Courriel de vérification envoyé avec succès.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Lien de vérification non valable. Aucune demande d'inscription correspondante n'a été trouvée.",
     "Unable to create user, there are problems with user backend." : "Impossible de créer l'utilisateur, problèmes avec l’infrastructure utilisateur.",

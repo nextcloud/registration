@@ -5,7 +5,6 @@ $TRANSLATIONS = array(
 "Verify your ownCloud registration request" => "Controleer uw ownCloud registratie verzoek",
 "A problem occurred sending email, please contact your administrator." => "Er ontstond een probleem bij het versturen van het e-mailbericht, neem contact op met uw beheerder.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Er is al een registratie met dit e-mailadres in behandeling, er is nu een nieuwe verificatie e-mail naar dit adres gestuurd.",
-"There is an existing user with this email" => "Er is al een gebruiker met dit e-mailadres",
 "Verification email successfully sent." => "Verificatie e-mailbericht succesvol verstuurd.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ongeldige verificatie URL. Er is geen aanvraag voor registratie met deze URL gevonden.",
 "Unable to create user, there are problems with user backend." => "Kan gebruikersaccount niet creëren, er zijn problemen met gebruiker's backend.",
