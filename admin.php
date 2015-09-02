@@ -9,8 +9,8 @@
  * @copyright Pellaeon Lin 2015
  */
 
-namespace OCA\Registration\App;
+namespace OCA\Registration\AppInfo;
 
-$app = new Registration();
+$app = new Application();
 $controller = $app->getContainer()->query('SettingsController');
 return $controller->displayPanel()->render();
