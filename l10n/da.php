@@ -5,6 +5,8 @@ $TRANSLATIONS = array(
 "Verify your ownCloud registration request" => "Verificér din forespørgsel om ownCloud-tilmelding",
 "A problem occurred sending email, please contact your administrator." => "Der opstod et problem ved afsendelse af e-mail. Kontakt venligst din administrator.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Der findes allerede en afventende tilmelding med denne e-mail. Der er blevet sendt en ny bekræftelse per e-mail til denne adresse.",
+"A user has already taken this email, maybe you already have an account?" => "En bruger har allerede benyttet denne e-mail - måske fordi du allerede har en konto?",
+"You can <a href=\"{login}\">log in now</a>." => "Du kan <a href=\"{login}\">logge ind nu</a>.",
 "Verification email successfully sent." => "Bekræftelse er blevet sendt med e-mail.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ugyldig verifikations-URL. Der blev ikke fundet nogen forespørgsel om tilmelding med denne verifikations-URL.",
 "Unable to create user, there are problems with user backend." => "Kan ikke oprette bruger - der er problemer med bruger-backend.",

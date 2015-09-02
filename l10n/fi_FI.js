@@ -6,6 +6,8 @@ OC.L10N.register(
     "Verify your ownCloud registration request" : "Vahvista ownCloud-rekisteröintipyyntö",
     "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä tapahtui virhe. Ole yhteydessä ylläpitoon.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tällä sähköpostiosoitteella on jo olemassa oleva rekisteröintipyyntö. Uusi vahvistusviesti on lähetetty sähköpostitse.",
+    "A user has already taken this email, maybe you already have an account?" : "Tämä sähköpostiosoite on jo jonkun käyttäjän käytössä. Oletko varma, ettei sinulla ole jo tunnusta tähän ownCloudiin?",
+    "You can <a href=\"{login}\">log in now</a>." : "Voit <a href=\"{login}\">kirjautua sisään</a> nyt.",
     "Verification email successfully sent." : "Vahvistussähköposti lähetettiin onnistuneesti.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Virheellinen vahvistuksen verkko-osoite. Kyseisellä osoitteella ei löytynyt rekisteröintipyyntöä.",
     "Unable to create user, there are problems with user backend." : "Käyttäjän luominen ei onnistunut käyttäjätaustaosan kanssa olevien ongelmien vuoksi.",
