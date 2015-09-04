@@ -4,6 +4,8 @@
     "Verify your ownCloud registration request" : "ownCloud kayıt talebinizi doğrulayın",
     "A problem occurred sending email, please contact your administrator." : "Eposta gönderilirken hata oluştu, lütfen sistem yöneticinizle bağlantı kurun.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Bu eposta adresiyle bir kayıt işlemi zaten beklemede, yeni bir doğrulama epostası bu adrese gönderilecek.",
+    "A user has already taken this email, maybe you already have an account?" : "Bu eposta adresiyle bir hesap alınmış, zaten bir hesabınız olabilir mi?",
+    "You can <a href=\"{login}\">log in now</a>." : "Artık <a href=\"{login}\">oturum açabilirsiniz</a>.",
     "Verification email successfully sent." : "Doğrulama e-postası başarıyla gönderildi.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Geçersiz doğrulama adresi. Bu doğrulama adresi ile bir kayıt talebi bulunamadı.",
     "Unable to create user, there are problems with user backend." : "Kullanıcı oluşturma başarısız, kullanıcı arka ucu ile ilgili sorunlar var.",
