@@ -4,6 +4,8 @@ $TRANSLATIONS = array(
 "Email address you entered is not valid" => "Zadaná emailová adresa není správná",
 "Verify your ownCloud registration request" => "Ověřte svůj požadavek na registraci ownCloud",
 "A problem occurred sending email, please contact your administrator." => "Při odesílání emailu nastala chyba, kontaktujte prosím svého administrátora.",
+"There is already a pending registration with this email, a new verification email has been sent to the address." => "Pro tuto emailovou adresu již byl otevřen požadavek na registraci, na zadanou emailovou adresu byl znovu odeslán ověřovací email.",
+"A user has already taken this email, maybe you already have an account?" => "Tato emailová adresa je již použita, možná zde již máte účet?",
 "You can <a href=\"{login}\">log in now</a>." => "Nyní se můžete <a href=\"{login}\">přihlásit</a>.",
 "Verification email successfully sent." => "Ověřovací email úspěšně odeslán.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Neplatná ověřovací URL. Nebyl nalezen žádný registrační požadavek pro tuto ověřovací URL.",
