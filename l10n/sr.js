@@ -4,6 +4,7 @@ OC.L10N.register(
     "Register" : "Региструј се",
     "Email address you entered is not valid" : "Е-адреса коју сте унели није исправна",
     "Verify your ownCloud registration request" : "Потврдите свој захтев за оунКлауд регистрацију ",
+    "You can <a href=\"{login}\">log in now</a>." : "Можете да се <a href=\"{login}\">пријавите сада</a>.",
     "Verification email successfully sent." : "Порука за потврду је успешно послата",
     "Invalid verification URL. No registration request with this verification URL is found." : "Неисправан УРЛ за потврду. Ниједан захтев за регистрацију са овим УРЛ-ом није пронађен.",
     "Unable to create user, there are problems with user backend." : "Не могу да створим корисника. Постоји проблем са позадином за корисника.",
