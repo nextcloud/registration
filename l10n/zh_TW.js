@@ -21,6 +21,7 @@ OC.L10N.register(
     "None" : "無",
     "Allowed domains for registration" : "允許註冊的 email 網域",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "將允許註冊的網域以分號分隔後輸入，例如：owncloud.com;github.com",
+    "Registration is only allowed for following domains:" : "僅允許下列網域註冊：",
     "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "點擊以下連結來在 ownCloud 建立新帳號:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "歡迎！您可以在下方建立帳號",
     "Username" : "使用者名稱",
