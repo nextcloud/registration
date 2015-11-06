@@ -15,6 +15,7 @@ $TRANSLATIONS = array(
 "Registration" => "登録",
 "Default group that all registered users belong" => "すべての登録ユーザーが属しているデフォルトのグループ",
 "None" => "なし",
+"Registration is only allowed for following domains:" => "次のドメインのみ登録可能です：",
 "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "ownCloud に新しいアカウントを作成するには、以下のリンクをクリックしてください:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "ようこそ、以下から新しくアカウントを作成できます。",
 "Username" => "ユーザーID",
