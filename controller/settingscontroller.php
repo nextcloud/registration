@@ -47,9 +47,9 @@ class SettingsController extends Controller {
 	 */
 	public function admin($registered_user_group, $allowed_domains) {
 		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
-			$this->config->deleteAppValue($this->appName, 'allowed_domains');
+			$this->config->deleteAppValue($this->appName, 'allowed_domains_for_mail_address');
 		}else{
-			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
+			$this->config->setAppValue($this->appName, 'allowed_domains_for_mail_address', $allowed_domains);
 		}
 		$groups = $this->groupmanager->search('');
 		$group_id_list = array();
@@ -90,7 +90,7 @@ class SettingsController extends Controller {
 		}
 		// TODO selected
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains_for_mail_address', '');
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list,
 			'current' => $current_value,
