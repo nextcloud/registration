@@ -111,7 +111,7 @@ class RegisterController extends Controller {
 
 
 		// allow only from specific email domain
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains_for_mail_address', '');
 		if ( $allowed_domains !== '' ) {
 			$allowed_domains = explode(';', $allowed_domains);
 			$allowed = false;
