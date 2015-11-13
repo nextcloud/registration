@@ -21,7 +21,7 @@ OC.L10N.register(
     "None" : "Geen",
     "Allowed mail address domains for registration" : "Toegestane mailadres domeinen voor registratie",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Voer een een door punt-comma's gesplitste lijst met toegestane domeinen in. Voorbeeld: owncloud..com;github.com",
-    "Registration is only allowed for following domains:" : "Registratie kan alleen voor de volgende domeinen:",
+    "Registration is only allowed for following mail address domains:" : "Registratie kan alleen voor de volgende mailadresdomeinen:",
     "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Klik op de volgende link om een nieuw ownCloud account te maken::<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Welkom, u kunt hieronder uw account aanmaken.",
     "Username" : "Gebruikersnaam",
