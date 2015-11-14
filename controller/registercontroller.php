@@ -21,10 +21,11 @@ use \OCP\IUserManager;
 use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
+use \OCP\Mail\IMailer;
 
 class RegisterController extends Controller {
 
-	private $mail;
+	private $mailer;
 	private $l10n;
 	private $urlgenerator;
 	private $pendingreg;
@@ -33,9 +34,9 @@ class RegisterController extends Controller {
 	private $groupmanager;
 	protected $appName;
 
-	public function __construct($appName, IRequest $request, Wrapper\Mail $mail, IL10N $l10n, $urlgenerator,
+	public function __construct($appName, IRequest $request, IMailer $mailer, IL10N $l10n, $urlgenerator,
 	$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager){
-		$this->mail = $mail;
+		$this->mailer = $mailer;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
 		$this->pendingreg = $pendingreg;
@@ -63,6 +64,7 @@ class RegisterController extends Controller {
 	 */
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
+		// TODO use Mailer::validateMailAddress
 		if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
@@ -75,13 +77,9 @@ class RegisterController extends Controller {
 		if ( $this->pendingreg->find($email) ) {
 			$this->pendingreg->delete($email);
 			$token = $this->pendingreg->save($email);
-			$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
-			$link = $this->urlgenerator->getAbsoluteURL($link);
-			$from = Util::getDefaultEmailAddress('register');
-			$res = new TemplateResponse('registration', 'email', array('link' => $link), 'blank');
-			$msg = $res->render();
+
 			try {
-				$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
+				$this->sendValidationEmail($token, $email);
 			} catch (\Exception $e) {
 				return new TemplateResponse('', 'error', array(
 					'errors' => array(array(
@@ -131,14 +129,8 @@ class RegisterController extends Controller {
 		}
 
 		$token = $this->pendingreg->save($email);
-		//TODO: check for error
-		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
-		$link = $this->urlgenerator->getAbsoluteURL($link);
-		$from = Util::getDefaultEmailAddress('register');
-		$res = new TemplateResponse('registration', 'email', array('link' => $link), 'blank');
-		$msg = $res->render();
 		try {
-			$this->mail->sendMail($email, 'ownCloud User', $this->l10n->t('Verify your ownCloud registration request'), $msg, $from, 'ownCloud');
+			$this->sendValidationEmail($token, $email);
 		} catch (\Exception $e) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
@@ -247,5 +239,33 @@ class RegisterController extends Controller {
 					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.'))
 				), 'guest');
 		}
+	}
+
+	/**
+	 * Sends validation email
+	 * @param string $token
+	 * @param string $to
+	 * @return null
+	 * @throws \Exception
+	 */
+	private function sendValidationEmail(string $token, string $to) {
+		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
+		$link = $this->urlgenerator->getAbsoluteURL($link);
+		$html_template = new TemplateResponse('registration', 'email_html', array('link' => $link), 'blank');
+		$html_part = $html_template->render();
+		$plaintext_template = new TemplateResponse('registration', 'email_plaintext', array('link' => $link), 'blank');
+		$plaintext_part = $plaintext_template->render();
+		$subject = $this->l10n->t('Verify your ownCloud registration request');
+
+		$from = Util::getDefaultEmailAddress('register');
+		$message = $this->mailer->createMessage();
+		$message->setFrom([$from]);
+		$message->setTo([$to]);
+		$message->setSubject($subject);
+		$message->setPlainBody($plaintext_part);
+		$message->setHtmlBody($html_part);
+		$failed_recipients = $this->mailer->send($message);
+		if ( !empty($failed_recipients) )
+			throw new \Exception('Failed recipients: '.print_r($failed_recipients, true));
 	}
 }

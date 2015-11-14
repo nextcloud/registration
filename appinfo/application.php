@@ -33,7 +33,7 @@ class Application extends App {
 			return new RegisterController(
 				$c->query('AppName'),
 				$c->query('Request'),
-				$c->query('Mail'),
+				$c->query('Mailer'),
 				$c->query('L10N'),
 				$c->query('URLGenerator'),
 				$c->query('PendingRegist'),
@@ -73,8 +73,8 @@ class Application extends App {
 			return $c->query('ServerContainer')->getConfig();
 		});
 
-		$container->registerService('Mail', function($c) {
-			return new Wrapper\Mail;
+		$container->registerService('Mailer', function($c) {
+			return $c->query('ServerContainer')->getMailer();
 		});
 
 		$container->registerService('L10N', function($c) {
