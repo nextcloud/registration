@@ -1,8 +1,8 @@
-#email, #username {
+#email, #username, #password {
 	width: 223px !important;
 	padding-left: 36px !important;
 }
-#email-icon, #username-icon {
+#email-icon, #username-icon, #password-icon {
 	position: absolute;
 	left: 16px;
 	top: 22px;
