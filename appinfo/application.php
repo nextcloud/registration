@@ -11,6 +11,8 @@
 
 namespace OCA\Registration\AppInfo;
 
+use \OC\AppFramework\Utility\SimpleContainer;
+
 use \OCP\AppFramework\App;
 
 use \OCA\Registration\Controller\RegisterController;
@@ -29,7 +31,7 @@ class Application extends App {
 		/**
 		 * Controllers
 		 */
-		$container->registerService('RegisterController', function($c) {
+		$container->registerService('RegisterController', function(SimpleContainer $c) {
 			return new RegisterController(
 				$c->query('AppName'),
 				$c->query('Request'),
@@ -43,7 +45,7 @@ class Application extends App {
 			);
 		});
 
-		$container->registerService('SettingsController', function($c) {
+		$container->registerService('SettingsController', function(SimpleContainer $c) {
 			return new SettingsController(
 				$c->query('AppName'),
 				$c->query('Request'),
@@ -57,35 +59,35 @@ class Application extends App {
 		/**
 		 * Core
 		 */
-		$container->registerService('UserId', function($c) {
+		$container->registerService('UserId', function(SimpleContainer $c) {
 			return \OCP\User::getUser();
 		});		
 
-		$container->registerService('UserManager', function($c) {
+		$container->registerService('UserManager', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getUserManager();
 		});
 
-		$container->registerService('GroupManager', function($c) {
+		$container->registerService('GroupManager', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getGroupManager();
 		});
 
-		$container->registerService('Config', function($c) {
+		$container->registerService('Config', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getConfig();
 		});
 
-		$container->registerService('Mailer', function($c) {
+		$container->registerService('Mailer', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getMailer();
 		});
 
-		$container->registerService('L10N', function($c) {
+		$container->registerService('L10N', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getL10N($c->query('AppName'));
 		});
 
-		$container->registerService('URLGenerator', function($c) {
+		$container->registerService('URLGenerator', function(SimpleContainer $c) {
 			return $c->getServer()->getURLGenerator();
 		});
 
-		$container->registerService('PendingRegist', function($c) {
+		$container->registerService('PendingRegist', function(SimpleContainer $c) {
 			return new PendingRegist($c->query('ServerContainer')->getDb(),
 				$c->query('ServerContainer')->getSecureRandom()->getMediumStrengthGenerator());
 		});
