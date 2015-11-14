@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "Registar",
 "Email address you entered is not valid" => "O endereço de correio eletrónico introduzido é inválido",
-"Verify your ownCloud registration request" => "Verifique o seu pedido de registo na ownCloud",
 "A problem occurred sending email, please contact your administrator." => "Ocorrei um problema ao enviar a mensagem, por favor, contacte o seu administrador.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Já existe um registo pendente com este endereço de correio eletronico, foi enviado um novo email de verificação para este endereço.",
 "A user has already taken this email, maybe you already have an account?" => "Já existe um utilizador com este e-mail, já poderá ter uma conta?",
@@ -13,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Não é possível definir o correio eletrónico do utilziador: ",
 "Failed to delete pending registration request" => "Não foi possível eliminar o pedido de registo pendente",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "A sua conta foi criada com sucesso, pode <a href=\"{link}\">iniciar a sessão </a> agora.",
+"Verify your ownCloud registration request" => "Verifique o seu pedido de registo na ownCloud",
 "Your settings have been updated." => "As suas definições foram atualizadas.",
 "No such group" => "Não existe tal grupo",
 "Registration" => "Registo",
@@ -20,7 +20,6 @@ $TRANSLATIONS = array(
 "None" => "Nenhum",
 "Allowed domains for registration" => "Dominios permitidos para registo",
 "Registration is only allowed for following domains:" => "O registo é apenas permitido para os seguintes dominios:",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "Para criar uma nova conta na ownCloud, basta clicar na hiperligação seguinte:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "Bem-vindo, pode criar a sua conta em baixo.",
 "Username" => "Nome de utilizador",
 "Password" => "Palavra-passe",

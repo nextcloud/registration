@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "등록",
 "Email address you entered is not valid" => "입력한 이메일 주소가 올바르지 않음",
-"Verify your ownCloud registration request" => "ownCloud 가입 요청 확인",
 "A problem occurred sending email, please contact your administrator." => "이메일을 보내는 중 문제가 발생했습니다. 시스템 관리자에게 연락하십시오.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "같은 이메일에서 온 등록 요청이 이미 있어서 새 확인 메일을 보냈습니다.",
 "A user has already taken this email, maybe you already have an account?" => "누군가가 이미 이 메일 주소를 선점했습니다. 계정이 있을 수도 있습니다.",
@@ -13,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "사용자 이메일을 설정할 수 없음: ",
 "Failed to delete pending registration request" => "대기 중인 등록 요청을 삭제할 수 없음",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "회원 가입이 완료되었으며 <a href=\"{link}\">로그인할 수 있습니다</a>.",
+"Verify your ownCloud registration request" => "ownCloud 가입 요청 확인",
 "Your settings have been updated." => "설정이 업데이트 되었습니다.",
 "No such group" => "그룹이 존재하지 않음",
 "Registration" => "등록",
@@ -21,7 +21,6 @@ $TRANSLATIONS = array(
 "Allowed domains for registration" => "등록이 허용된 도메인",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "등록이 허용된 도메인을 쌍반점(;)으로 구분하여 입력하십시오. 예: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "다음 도메인 사용자만 등록할 수 있습니다:",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "ownCloud에 새 계정을 등록하려면 다음 링크를 누르십시오:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "안녕하세요, 아래에서 회원 가입할 수 있습니다.",
 "Username" => "사용자 이름",
 "Password" => "암호",

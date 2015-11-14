@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Register" : "S'enregistrar",
     "Email address you entered is not valid" : "L'adreça de corrièl picada es pas valabla",
-    "Verify your ownCloud registration request" : "Efectuatz la verificacion de vòstra demanda d'inscripcion ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Una error s'es produsida almoment del mandadís de l'e-mail. Contactatz vòstre administrator.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "I a ja una inscripcion en espèra amb aquesta adreça de corrièr electronic. Un novèl messatge de confirmacion es estat mandat a l'adreça indicada.",
     "A user has already taken this email, maybe you already have an account?" : "Un utilizaire utiliza ja aquesta adreça de corrièr electronic. Benlèu qu'avètz ja un compte ?",
@@ -14,6 +13,7 @@ OC.L10N.register(
     "Unable to set user email: " : "Impossible de definir l'email utilizaire :",
     "Failed to delete pending registration request" : "Error al moment de la supression de la demanda d'enregistrament en espèra",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Vòstre compte es estat creat corrèctament, ara vos podètz <a href=\"{link}\">connectar</a>.",
+    "Verify your ownCloud registration request" : "Efectuatz la verificacion de vòstra demanda d'inscripcion ownCloud",
     "Your settings have been updated." : "Vòstres paramètres son estats meses a jorn.",
     "No such group" : "Pas cap de grop correspondent",
     "Registration" : "Inscripcion",
@@ -22,7 +22,6 @@ OC.L10N.register(
     "Allowed domains for registration" : "Domenis autorizats per las inscripcions",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Sasissètz una lista de domenis autorizats, separats per un punt-virgula. Exemple: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Las inscripcions son pas autorizadas que suls domenis seguents :",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Per crear un novèl compte sus ownCloud, clicatz sul ligam seguent :<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Benvenguda, podètz crear vòstre compte çaijós.",
     "Username" : "Nom d'utilizaire",
     "Password" : "Senhal",

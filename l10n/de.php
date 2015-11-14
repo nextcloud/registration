@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "Registrieren",
 "Email address you entered is not valid" => "Die eingegebene E-Mail-Adresse ist ungültig.",
-"Verify your ownCloud registration request" => "Bitte Deine ownCloud-Registrierung bestätigen",
 "A problem occurred sending email, please contact your administrator." => "Ein Problem ist beim Senden der E-Mail aufgetreten, bitte den Administrator kontaktieren",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Für diese Mail gibt es bereits eine ausstehende Registrierung, es wurde erneut eine Bestätigungsemail an diese Addresse gesendet.",
 "You can <a href=\"{login}\">log in now</a>." => "Du kannst dich <a href=\"{login}\">jetzt anmelden</a>.",
@@ -12,6 +11,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Die E-Mail-Adresse des Benutzers konnte nicht gespeichert werden:",
 "Failed to delete pending registration request" => "Das Löschen der in Bearbeitung befindlichen Registrierungsanfrage ist fehlgeschlagen",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Dein Konto wurde erfolgreich erstellt, Du kannst dich <a href=\"{link}\">jetzt anmelden</a>.",
+"Verify your ownCloud registration request" => "Bitte Deine ownCloud-Registrierung bestätigen",
 "Your settings have been updated." => "Deine Einstellungen wurden aktualisiert.",
 "No such group" => "Keine derartige Gruppe",
 "Registration" => "Registrierung",
@@ -19,7 +19,6 @@ $TRANSLATIONS = array(
 "None" => "Keine",
 "Allowed domains for registration" => "Erlaubte Domains für die Registrierung",
 "Registration is only allowed for following domains:" => "Anmeldung ist nur für die folgenden Domains erlaubt:",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "Bitte klicke auf den folgenden Link, um ein neues ownCloud-Konto zu erstellen:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
 "Username" => "Benutzername",
 "Password" => "Passwort",

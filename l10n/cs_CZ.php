@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "Registrovat",
 "Email address you entered is not valid" => "Zadaná emailová adresa není správná",
-"Verify your ownCloud registration request" => "Ověřte svůj požadavek na registraci ownCloud",
 "A problem occurred sending email, please contact your administrator." => "Při odesílání emailu nastala chyba, kontaktujte prosím svého administrátora.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Pro tuto emailovou adresu již byl otevřen požadavek na registraci, na zadanou emailovou adresu byl znovu odeslán ověřovací email.",
 "A user has already taken this email, maybe you already have an account?" => "Tato emailová adresa je již použita, možná zde již máte účet?",
@@ -13,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Nelze nastavit email uživatele:",
 "Failed to delete pending registration request" => "Selhalo smazání čekajících požadavků na registraci",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Váš účet byl úspěšně vytvořen, můžete se nyní <a href=\"{link}\">přihlásit</a>.",
+"Verify your ownCloud registration request" => "Ověřte svůj požadavek na registraci ownCloud",
 "Your settings have been updated." => "Vaše nastavení bylo aktualizováno.",
 "No such group" => "Taková skupina neexistuje",
 "Registration" => "Registrace",
@@ -21,7 +21,6 @@ $TRANSLATIONS = array(
 "Allowed domains for registration" => "Povolené domény pro registraci",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Zadejte středníkem oddělený seznam povolených domén. Příklad: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Registrace je povolena pouze pro následující domény:",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "Pro vytvoření nového účtu v ownCloud klikněte na následující odkaz:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "Vítejte, svůj účet si můžete založit níže.",
 "Username" => "Uživatelské jméno",
 "Password" => "Heslo",

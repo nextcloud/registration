@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "Registrer",
     "Email address you entered is not valid" : "E-postadressen som du la enn er ikke gyldig",
-    "Verify your ownCloud registration request" : "Verifiser din forespørsel om ownCloud-registrering",
     "A problem occurred sending email, please contact your administrator." : "Et problem oppstod ved sending av mailen. Kontakt administratoren.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Det finnes allerede en ventende registrering med denne e-postadressen. En ny verifiserings-epost er blitt sendt til adressen.",
     "A user has already taken this email, maybe you already have an account?" : "En bruker har allerede valgt denne mail-adressen. Kanskje du har en konto allerede?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "Kan ikke sette brukerens e-post:",
     "Failed to delete pending registration request" : "Klarte ikke å slette utestående registreringsforespørsel",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Kontoen din er blitt opprettet. Du kan <a href=\"{link}\">logge inn nå</a>.",
+    "Verify your ownCloud registration request" : "Verifiser din forespørsel om ownCloud-registrering",
     "Your settings have been updated." : "Innstillingene dine ble oppdatert.",
     "No such group" : "Ingen slik gruppe",
     "Registration" : "Registrering",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Tillatte domener for registrering",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Legg inn en semikolon-separert liste av tillatte domener. Eksempel: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrering er tillatt kun for følgende domener:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Klkk denne lenken for å opprette en ny konto på ownCloud:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Velkommen, du kan opprette kontoen din nedenfor.",
     "Username" : "Brukernavn",
     "Password" : "Passord",

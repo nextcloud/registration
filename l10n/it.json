@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "Registrati",
     "Email address you entered is not valid" : "L'indirizzo email digitato non è valido",
-    "Verify your ownCloud registration request" : "Verifica la tua richiesta di registrazione a ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio della email, contatta il tuo amministratore.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "C'è già una registrazione in corso con questa email, un nuovo messaggio di verifica è stato inviato all'indirizzo.",
     "A user has already taken this email, maybe you already have an account?" : "Un utente ha già registrato questa email, forse hai già un account?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "Impossibile impostare l'indirizzo email dell'utente:",
     "Failed to delete pending registration request" : "L'eliminazione della richiesta di registrazione in corso non è riuscita",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Il tuo account è stato creato correttamente, ora puoi <a href=\"{link}\">effettuare l'accesso</a>.",
+    "Verify your ownCloud registration request" : "Verifica la tua richiesta di registrazione a ownCloud",
     "Your settings have been updated." : "Le tue impostazioni sono state aggiornate.",
     "No such group" : "Gruppo inesistente",
     "Registration" : "Registrazione",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Domini consentiti per la registrazione",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Digita un elenco separato da punti e virgole con i domini consentiti. Esempio: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "La registrazione è consentita solo per i seguenti domini:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Per creare un nuovo account su ownCloud, ti basta fare clic sul collegamento seguente:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Benvenuto, puoi creare il tuo account qui sotto.",
     "Username" : "Nome utente",
     "Password" : "Password",

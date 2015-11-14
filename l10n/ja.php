@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "登録",
 "Email address you entered is not valid" => "入力されたメールアドレスが正しくありません",
-"Verify your ownCloud registration request" => "ownCloud 登録リクエストを確認してください",
 "A problem occurred sending email, please contact your administrator." => "メール送信でエラーが発生しました,管理者に連絡してください。",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "このメールアドレスでの登録申請がすでに存在します，新しい確認メールをアドレスに送信しました｡",
 "A user has already taken this email, maybe you already have an account?" => "このメールアドレスは既に使用中です,もしかして既にアカウントを持っていませんか？",
@@ -13,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "ユーザーメールを設定できません:",
 "Failed to delete pending registration request" => "保留中の登録リクエストの削除に失敗しました",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "アカウントは無事作成されました。 こちらのリンクから<a href=\"{link}\">ログイン</a>してください。",
+"Verify your ownCloud registration request" => "ownCloud 登録リクエストを確認してください",
 "Your settings have been updated." => "設定を更新しました。",
 "No such group" => "そのようなグループはありません",
 "Registration" => "登録",
@@ -21,7 +21,6 @@ $TRANSLATIONS = array(
 "Allowed domains for registration" => "登録が許可されたドメイン",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "許可するドメインのリストをセミコロン区切りで入力してください｡例:owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "次のドメインのみ登録可能です：",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "ownCloud に新しいアカウントを作成するには、以下のリンクをクリックしてください:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "ようこそ、以下から新しくアカウントを作成できます。",
 "Username" => "ユーザーID",
 "Password" => "パスワード",

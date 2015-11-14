@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "Regjistrohuni",
     "Email address you entered is not valid" : "Adresa email që dhatë nuk është e vlefshme",
-    "Verify your ownCloud registration request" : "Verifikoni kërkesën e regjistrimit tuaj në ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Ndodhi një problem gjatë dërgimit të email-it, ju lutemi, lidhuni me përgjegjësin tuaj.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Ka tashmë një kërkes në pritje me këtë email, te adresa u dërgua një email i ri verifikimi.",
     "A user has already taken this email, maybe you already have an account?" : "Këtë email e ka përdorur një herë një përdorues, ndoshta keni tashmë një llogari?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "S’arrihet të caktohet email përdoruesi: ",
     "Failed to delete pending registration request" : "Dështoi në fshirjen e kërkesës për regjistrim në pritje",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Llogaria juaj u krijua me sukses, tani mund të <a href=\"{link}\">bëni hyrjen</a>.",
+    "Verify your ownCloud registration request" : "Verifikoni kërkesën e regjistrimit tuaj në ownCloud",
     "Your settings have been updated." : "Rregullimet tuaja u përditësuan.",
     "No such group" : "S’ka grup të tillë",
     "Registration" : "Regjistrim",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Përkatësi të lejuara për regjistrim",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Jepni një listë përkatësish të lejuara, të ndara me pikëpresje. Shembull: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Regjistrimi lejohet vetëm për përkatësitë vijuese:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Që të krijoni një llogari të re te ownCloud, thjesht klikoni mbi lidhjen vijuese:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Mirë se vini, llogarinë tuaj mund ta krijoni më poshtë.",
     "Username" : "Emër përdoruesi",
     "Password" : "Fjalëkalim",

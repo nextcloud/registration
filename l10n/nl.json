@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "Registreren",
     "Email address you entered is not valid" : "Het e-mailadres dat u heeft ingevuld is niet geldig",
-    "Verify your ownCloud registration request" : "Controleer uw ownCloud registratie verzoek",
     "A problem occurred sending email, please contact your administrator." : "Er ontstond een probleem bij het versturen van het e-mailbericht, neem contact op met uw beheerder.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Er is al een registratie met dit e-mailadres in behandeling, er is nu een nieuwe verificatie e-mail naar dit adres gestuurd.",
     "A user has already taken this email, maybe you already have an account?" : "Een gebruiker heeft dit e-mailadres al, misschien hebt u al een account?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "Kan e-mailadres van gebruiker niet instellen:",
     "Failed to delete pending registration request" : "Verwijderen van de lopende registratieaanvraag is niet gelukt ",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Er is met succes een account voor u gemaakt, u kunt <a href=\"{link}\">nu inloggen</a>.",
+    "Verify your ownCloud registration request" : "Controleer uw ownCloud registratie verzoek",
     "Your settings have been updated." : "Uw instellingen zijn bijgewerkt",
     "No such group" : "Niet zo'n groep",
     "Registration" : "Registratie",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Toegestane domeinen voor registratie",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Voer een een door punt-comma's gesplitste lijst met toegestane domeinen in. Voorbeeld: owncloud..com;github.com",
     "Registration is only allowed for following domains:" : "Registratie kan alleen voor de volgende domeinen:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Klik op de volgende link om een nieuw ownCloud account te maken::<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Welkom, u kunt hieronder uw account aanmaken.",
     "Username" : "Gebruikersnaam",
     "Password" : "Wachtwoord",

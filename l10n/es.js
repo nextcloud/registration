@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Register" : "Registro",
     "Email address you entered is not valid" : "La dirección de correo electrónico que ingresó no es válida",
-    "Verify your ownCloud registration request" : "Verifique su solicitud de registro con ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Ocurrió un problema al enviar el mensaje de correo electrónico. Contacte a su administrador.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Ya hay un registro pendiente para este correo. Acaba de enviarse un nuevo mensaje de verificación.",
     "A user has already taken this email, maybe you already have an account?" : "Un usuario ya ha utilizado este correo electrónico, ¿sabe si usted ya tiene una cuenta?",
@@ -14,6 +13,7 @@ OC.L10N.register(
     "Unable to set user email: " : "No se puede establecer correo electrónico del usuario:",
     "Failed to delete pending registration request" : "Fallo al eliminar la petición de registro pendiente",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Su cuenta ha sido creada con éxito, puede <a href=\"{link}\">iniciar sesión ahora</a>.",
+    "Verify your ownCloud registration request" : "Verifique su solicitud de registro con ownCloud",
     "Your settings have been updated." : "Sus ajustes han sido actualizados.",
     "No such group" : "No existe tal grupo",
     "Registration" : "Registro",
@@ -22,7 +22,6 @@ OC.L10N.register(
     "Allowed domains for registration" : "Dominios permitidos para el registro",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Escribe una lista de dominios permitidos separados por punto y coma. Ejemplo: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "El registro sólo está permitido para los siguientes dominios:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Para crear una nueva cuenta en ownCloud, solo haga clic en el siguiente enlace: <br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Bienvenido, puede crear una cuenta más abajo.",
     "Username" : "Nombre de usuario",
     "Password" : "Contraseña",

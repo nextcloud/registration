@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Register" : "Регистрация",
     "Email address you entered is not valid" : "Указанный вами адрес email недействителен",
-    "Verify your ownCloud registration request" : "Подтвердите запрос на регистрацию в ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Возникла проблема отправки email, пожалуйста свяжитесь с администратором.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Уже существует запрос на регистрацию с этим адресом email, новое подтверждение было отправлено снова.",
     "A user has already taken this email, maybe you already have an account?" : "Пользователь уже получил этот email, возможно учетная запись уже существует?",
@@ -14,6 +13,7 @@ OC.L10N.register(
     "Unable to set user email: " : "Невозможно установить email пользователя:",
     "Failed to delete pending registration request" : "Не удалось удалить существующий запрос на регистрацию",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Учетная запись успешно создана, теперь вы можете <a href=\"{link}\">войти на сайт</a>.",
+    "Verify your ownCloud registration request" : "Подтвердите запрос на регистрацию в ownCloud",
     "Your settings have been updated." : "Настройки обновлены.",
     "No such group" : "Нет такой группы",
     "Registration" : "Регистрация",
@@ -22,7 +22,6 @@ OC.L10N.register(
     "Allowed domains for registration" : "Доменные зоны разрешенные к регистрации",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Укажите список разрешенных доменов разделенных точкой с запятой. Например: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Регистрация доступна только для следующих доменов:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Для создания новой учетной записи ownCloud просто нажмите на следующую ссылку:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Добро пожаловать, Вы можете создать учетную запись ниже.",
     "Username" : "Имя пользователя",
     "Password" : "Пароль",

@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "Daftar",
     "Email address you entered is not valid" : "Alamat email yang Anda masukkan tidak sah",
-    "Verify your ownCloud registration request" : "Verifikasi permintaan pendaftaran ownCloud Anda",
     "A problem occurred sending email, please contact your administrator." : "Ada masalah saat mengirim email, silakan hubungi administrator Anda.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Sudah ada pendaftaran yang tertunda dengan email ini, sebuah verifikasi email telah dikirim ke alamat tersebut.",
     "A user has already taken this email, maybe you already have an account?" : "Seorang pengguna sudah menggunakan email ini, mungkinkah Anda sudah mempunyai akun?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "Tidak dapat mengatur email pengguna:",
     "Failed to delete pending registration request" : "Gagal menghapus permintaan penundaan pendaftaran",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Akun Anda telah berhasil dibuat, Anda dapat <a href=\"{link}\">masuk sekarang</a>.",
+    "Verify your ownCloud registration request" : "Verifikasi permintaan pendaftaran ownCloud Anda",
     "Your settings have been updated." : "Pengaturan Anda telah diperbarui.",
     "No such group" : "Tidak ada grup",
     "Registration" : "Pendaftaran",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Domain yang diizinkan untuk pendaftaran",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Masukkan daftar domain-domain yang diizinkan yang dipisahkan dengan tanda titik koma. Misalnya: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Pendaftaran hanya diizinkan untuk domain-domain berikut:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Untuk membuat akun baru di ownCloud, cukup klik tautan berikut:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Selamat datang, Anda dapat membuat akun Anda dibawah.",
     "Username" : "Nama Pengguna",
     "Password" : "Sandi",

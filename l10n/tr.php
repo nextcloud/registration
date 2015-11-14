@@ -2,7 +2,6 @@
 $TRANSLATIONS = array(
 "Register" => "Kaydol",
 "Email address you entered is not valid" => "Girdiğiniz e-posta adresi geçerli değil",
-"Verify your ownCloud registration request" => "ownCloud kayıt talebinizi doğrulayın",
 "A problem occurred sending email, please contact your administrator." => "E-posta gönderilirken hata oluştu, lütfen sistem yöneticinizle bağlantı kurun.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Bu e-posta adresiyle bir kayıt işlemi zaten beklemede, yeni bir doğrulama e-postası bu adrese gönderilecek.",
 "A user has already taken this email, maybe you already have an account?" => "Bu e-posta adresiyle bir hesap alınmış, zaten bir hesabınız olabilir mi?",
@@ -13,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Kullanıcı e-postası ayarlanamadı: ",
 "Failed to delete pending registration request" => "Bekleyen kayıt isteğini silme başarısız",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Hesabınız başarıyla oluşturuldu, artık <a href=\"{link}\">oturum açabilirsiniz</a>.",
+"Verify your ownCloud registration request" => "ownCloud kayıt talebinizi doğrulayın",
 "Your settings have been updated." => "Ayarlarınız güncellendi.",
 "No such group" => "Böyle bir grup yok",
 "Registration" => "Kayıt",
@@ -21,7 +21,6 @@ $TRANSLATIONS = array(
 "Allowed domains for registration" => "Kayıt için izin verilen sunucu adları",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "İzin verilen sunucu adlarını aralarında noktalı virgülle listeleyin. Örneğin: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Kayıt işlemi sadece bu sunucu adları için izin verilmektedir:",
-"To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" => "ownCloud üzerinde yeni bir hesap oluşturmak için, sadece şu bağlantıya tıklamanız yeterli:<br/><br/>\n<a href=\"{link}\">{link}</a>",
 "Welcome, you can create your account below." => "Hoş geldiniz, aşağıdan hesabınızı oluşturabilirsiniz.",
 "Username" => "Kullanıcı Adı",
 "Password" => "Parola",

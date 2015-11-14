@@ -1,7 +1,6 @@
 { "translations": {
     "Register" : "S'enregistrer",
     "Email address you entered is not valid" : "L'adresse de courriel saisie n'est pas valable",
-    "Verify your ownCloud registration request" : "Effectuez la vérification de votre demande d'inscription ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Une erreur est survenue lors de l'envoi de l'e-mail. Veuillez contacter votre administrateur.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Il y a déjà une inscription en attente avec cette adresse de courriel. Un nouveau message de confirmation a été envoyé à l'adresse indiquée.",
     "A user has already taken this email, maybe you already have an account?" : "Un utilisateur utilise déjà cette adresse de courriel. Peut-être avez-vous déjà un compte ?",
@@ -12,6 +11,7 @@
     "Unable to set user email: " : "Impossible de définir l'email utilisateur :",
     "Failed to delete pending registration request" : "Erreur lors de la suppression de la demande d'enregistrement en attente",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Votre compte a bien été créé, vous pouvez maintenant <a href=\"{link}\">vous connecter</a>.",
+    "Verify your ownCloud registration request" : "Effectuez la vérification de votre demande d'inscription ownCloud",
     "Your settings have been updated." : "Vos paramètres ont été mis à jour.",
     "No such group" : "Aucun groupe correspondant",
     "Registration" : "Inscription",
@@ -20,7 +20,6 @@
     "Allowed domains for registration" : "Domaine autorisés pour les inscriptions",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Saisissez une liste de domaines autorisés, séparés d'un point-virgule. Exemple: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Les inscriptions ne sont autorisées que sur les domaines suivants :",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Pour créer un nouveau compte sur ownCloud, cliquez sur le lien suivant :<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Bienvenue, vous pouvez créer votre compte ci-dessous.",
     "Username" : "Nom d'utilisateur",
     "Password" : "Mot de passe",

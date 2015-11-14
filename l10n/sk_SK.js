@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Register" : "Zaregistrovať sa",
     "Email address you entered is not valid" : "Zadaná emailová adresa nie je správna",
-    "Verify your ownCloud registration request" : "Overte svoju požiadavku na registráciu do ownCloud",
     "A problem occurred sending email, please contact your administrator." : "Pri posielaní emailu sa vyskytol problém, kontaktujte svojho administrátora, prosím.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Registrácia s týmto emailom sa už spracováva, na túto adresu bude zaslaný nový overovací mail",
     "A user has already taken this email, maybe you already have an account?" : "Použivateľ s týmto emailom už existuje, je možné že tu už máte účet.",
@@ -14,6 +13,7 @@ OC.L10N.register(
     "Unable to set user email: " : "Nemožno nastaviť email používateľa:",
     "Failed to delete pending registration request" : "Zlyhalo zmazanie čakajúcich žiadostí na registráciu",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Váš účet bol vytvorený, teraz sa môžete <a href=\"{link}\">prihlásiť</a>.",
+    "Verify your ownCloud registration request" : "Overte svoju požiadavku na registráciu do ownCloud",
     "Your settings have been updated." : "Vaše nastavenia boli aktualizované.",
     "No such group" : "Takáto skupina neexistuje",
     "Registration" : "Registrácia",
@@ -22,7 +22,6 @@ OC.L10N.register(
     "Allowed domains for registration" : "Domény s povolenou registráciou",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Zadajte povolené domény oddelené bodkočiarkami. Napríklad: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrácia je povolená len pre nasledovné domémy:",
-    "To create a new account on ownCloud, just click the following link:<br/><br/>\n<a href=\"{link}\">{link}</a>" : "Pre vytvorenie nového účtu v ownCloude kliknite na nasledujúci odkaz:<br/><br/>\n<a href=\"{link}\">{link}</a>",
     "Welcome, you can create your account below." : "Vitajte. Účet si môžete založiť nižšie.",
     "Username" : "Používateľské meno",
     "Password" : "Heslo",
