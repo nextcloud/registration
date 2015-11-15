@@ -20,6 +20,7 @@
     "Allowed domains for registration" : "Rekisteröintiin sallitut verkkodomainit",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Anna puolipisteellä erotettuina lista sallituista verkkodomaineista. Esimerkki: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Rekisteröinti on sallittu vain seuraavista verkkodomaineista:",
+    "To create a new account on ownCloud, just click the following link:" : "Luo uusi ownCloud-tili napsauttamalla seuraavaa linkkiä:",
     "Welcome, you can create your account below." : "Tervetuloa, voit luoda tilisi alta.",
     "Username" : "Käyttäjätunnus",
     "Password" : "Salasana",

@@ -21,6 +21,7 @@ $TRANSLATIONS = array(
 "Allowed domains for registration" => "Domini consentiti per la registrazione",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Digita un elenco separato da punti e virgole con i domini consentiti. Esempio: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "La registrazione è consentita solo per i seguenti domini:",
+"To create a new account on ownCloud, just click the following link:" => "Per creare un nuovo account su ownCloud, ti basta fare clic sul collegamento seguente:",
 "Welcome, you can create your account below." => "Benvenuto, puoi creare il tuo account qui sotto.",
 "Username" => "Nome utente",
 "Password" => "Password",

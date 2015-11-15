@@ -22,6 +22,7 @@ OC.L10N.register(
     "Allowed domains for registration" : "Përkatësi të lejuara për regjistrim",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Jepni një listë përkatësish të lejuara, të ndara me pikëpresje. Shembull: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Regjistrimi lejohet vetëm për përkatësitë vijuese:",
+    "To create a new account on ownCloud, just click the following link:" : "Që të krijoni një llogari të re në ownCloud, thjesht klikoni mbi lidhjen vijuese:",
     "Welcome, you can create your account below." : "Mirë se vini, llogarinë tuaj mund ta krijoni më poshtë.",
     "Username" : "Emër përdoruesi",
     "Password" : "Fjalëkalim",
