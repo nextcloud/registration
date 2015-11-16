@@ -64,8 +64,7 @@ class RegisterController extends Controller {
 	 */
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
-		// TODO use Mailer::validateMailAddress
-		if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+		if ( !$this->mailer->validateMailAddress($email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Email address you entered is not valid'),
