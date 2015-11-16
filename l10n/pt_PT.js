@@ -19,7 +19,6 @@ OC.L10N.register(
     "Registration" : "Registo",
     "Default group that all registered users belong" : "O grupo predefinido em que todos os utilziadores pertencem",
     "None" : "Nenhum",
-    "Allowed domains for registration" : "Dominios permitidos para registo",
     "Registration is only allowed for following domains:" : "O registo é apenas permitido para os seguintes dominios:",
     "Welcome, you can create your account below." : "Bem-vindo, pode criar a sua conta em baixo.",
     "Username" : "Nome de utilizador",

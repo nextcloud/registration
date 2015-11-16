@@ -17,7 +17,6 @@
     "Registration" : "Pendaftaran",
     "Default group that all registered users belong" : "Grup baku bagi semua pengguna terdaftar",
     "None" : "Tidak ada",
-    "Allowed domains for registration" : "Domain yang diizinkan untuk pendaftaran",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Masukkan daftar domain-domain yang diizinkan yang dipisahkan dengan tanda titik koma. Misalnya: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Pendaftaran hanya diizinkan untuk domain-domain berikut:",
     "Welcome, you can create your account below." : "Selamat datang, Anda dapat membuat akun Anda dibawah.",

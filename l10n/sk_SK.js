@@ -19,7 +19,6 @@ OC.L10N.register(
     "Registration" : "Registrácia",
     "Default group that all registered users belong" : "Základná skupina pre všetkých novo zaregistrovaných používateľov",
     "None" : "Žiadny",
-    "Allowed domains for registration" : "Domény s povolenou registráciou",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Zadajte povolené domény oddelené bodkočiarkami. Napríklad: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrácia je povolená len pre nasledovné domémy:",
     "Welcome, you can create your account below." : "Vitajte. Účet si môžete založiť nižšie.",

@@ -17,7 +17,6 @@
     "Registration" : "Inscripcion",
     "Default group that all registered users belong" : "Grop per defaut que totes los utilizaires inscriches rejonhon",
     "None" : "Pas cap",
-    "Allowed domains for registration" : "Domenis autorizats per las inscripcions",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Sasissètz una lista de domenis autorizats, separats per un punt-virgula. Exemple: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Las inscripcions son pas autorizadas que suls domenis seguents :",
     "Welcome, you can create your account below." : "Benvenguda, podètz crear vòstre compte çaijós.",

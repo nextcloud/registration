@@ -18,7 +18,6 @@ $TRANSLATIONS = array(
 "Registration" => "Regjistrim",
 "Default group that all registered users belong" => "Grup parazgjedhje të cilit i përkasin krejt përdoruesit e regjistruar",
 "None" => "Asnjë",
-"Allowed domains for registration" => "Përkatësi të lejuara për regjistrim",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Jepni një listë përkatësish të lejuara, të ndara me pikëpresje. Shembull: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Regjistrimi lejohet vetëm për përkatësitë vijuese:",
 "To create a new account on ownCloud, just click the following link:" => "Që të krijoni një llogari të re në ownCloud, thjesht klikoni mbi lidhjen vijuese:",

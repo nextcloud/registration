@@ -18,7 +18,6 @@ $TRANSLATIONS = array(
 "Registration" => "การลงทะเบียน",
 "Default group that all registered users belong" => "ค่าเริ่มต้นของกลุ่มผู้ใช้ที่ลงทะเบียนเป็นสมาชิก",
 "None" => "ไม่มี",
-"Allowed domains for registration" => "โดเมนที่ได้รับอนุญาตให้ลงทะเบียน",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "ป้อนรายการโดเมนที่ได้รับอนุญาต ตัวอย่าง: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "การลงทะเบียนอนุญาตเฉพาะโดเมนดังต่อไปนี้:",
 "Welcome, you can create your account below." => "ยินดีต้อนรับ, คุณสามารถสร้างบัญชีของคุณด้านล่าง",

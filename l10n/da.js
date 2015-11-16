@@ -19,7 +19,6 @@ OC.L10N.register(
     "Registration" : "Tilmelding",
     "Default group that all registered users belong" : "Standardgruppen som alle tilmeldte brugere hører til",
     "None" : "Ingen",
-    "Allowed domains for registration" : "Tilladte domæner for registrering",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Indtast en semikolon separeret liste med tilladte domæner.\nEksempel: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrering er kun tilladt for følgende domæner:",
     "Welcome, you can create your account below." : "Velkommen, du kan oprette din konto nedenfor.",

@@ -18,7 +18,6 @@ $TRANSLATIONS = array(
 "Registration" => "Kayıt",
 "Default group that all registered users belong" => "Tüm kaydedilen kullanıcıların ait olduğu öntanımlı grup",
 "None" => "Hiçbiri",
-"Allowed domains for registration" => "Kayıt için izin verilen sunucu adları",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "İzin verilen sunucu adlarını aralarında noktalı virgülle listeleyin. Örneğin: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Kayıt işlemi sadece bu sunucu adları için izin verilmektedir:",
 "Welcome, you can create your account below." => "Hoş geldiniz, aşağıdan hesabınızı oluşturabilirsiniz.",

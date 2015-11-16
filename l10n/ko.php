@@ -18,7 +18,6 @@ $TRANSLATIONS = array(
 "Registration" => "등록",
 "Default group that all registered users belong" => "모든 등록 사용자가 속한 기본 그룹",
 "None" => "없음",
-"Allowed domains for registration" => "등록이 허용된 도메인",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "등록이 허용된 도메인을 쌍반점(;)으로 구분하여 입력하십시오. 예: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "다음 도메인 사용자만 등록할 수 있습니다:",
 "Welcome, you can create your account below." => "안녕하세요, 아래에서 회원 가입할 수 있습니다.",

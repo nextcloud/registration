@@ -17,7 +17,6 @@ $TRANSLATIONS = array(
 "Registration" => "Registrierung",
 "Default group that all registered users belong" => "Standardgruppe, zu der alle registrierten Benutzer gehören",
 "None" => "Keine",
-"Allowed domains for registration" => "Erlaubte Domains für die Registrierung",
 "Registration is only allowed for following domains:" => "Anmeldung ist nur für die folgenden Domains erlaubt:",
 "Welcome, you can create your account below." => "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
 "Username" => "Benutzername",

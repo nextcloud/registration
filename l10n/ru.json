@@ -17,7 +17,6 @@
     "Registration" : "Регистрация",
     "Default group that all registered users belong" : "Группа по умолчанию для всех новых пользователей",
     "None" : "Отсутствует",
-    "Allowed domains for registration" : "Доменные зоны разрешенные к регистрации",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Укажите список разрешенных доменов разделенных точкой с запятой. Например: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Регистрация доступна только для следующих доменов:",
     "Welcome, you can create your account below." : "Добро пожаловать, Вы можете создать учетную запись ниже.",

@@ -17,7 +17,6 @@
     "Registration" : "Registro",
     "Default group that all registered users belong" : "Grupo predeterminado al cual pertenecen todos los usuarios registrados",
     "None" : "Ninguno",
-    "Allowed domains for registration" : "Dominios permitidos para el registro",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Escribe una lista de dominios permitidos separados por punto y coma. Ejemplo: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "El registro sólo está permitido para los siguientes dominios:",
     "Welcome, you can create your account below." : "Bienvenido, puede crear una cuenta más abajo.",

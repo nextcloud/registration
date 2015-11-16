@@ -17,7 +17,6 @@
     "Registration" : "註冊",
     "Default group that all registered users belong" : "新註冊的使用者會被加入的群組",
     "None" : "無",
-    "Allowed domains for registration" : "允許註冊的 email 網域",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "將允許註冊的網域以分號分隔後輸入，例如：owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "僅允許下列網域註冊：",
     "To create a new account on ownCloud, just click the following link:" : "點下方的連結來建立新 ownCloud 帳號",

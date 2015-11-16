@@ -18,7 +18,6 @@ $TRANSLATIONS = array(
 "Registration" => "Εγγραφή",
 "Default group that all registered users belong" => "Προεπιλεγμένη ομάδα όπου ανήκουν όλοι οι εγγεγραμμένοι χρήστες",
 "None" => "Τίποτα",
-"Allowed domains for registration" => "Επιτρεπόμενοι τομείς για εγγραφή",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Εισάγετε μια λίστα επιτρεπόμενων τομέων, διαχωρισμένη με ερωτηματικά. Παράδειγμα: ",
 "Registration is only allowed for following domains:" => "Η εγγραφή επιτρέπεται μόνο για τους ακόλουθους τομείς:",
 "Welcome, you can create your account below." => "Καλωσήρθατε, μπορείτε να δημιουργήσετε το λογαριασμό σας παρακάτω.",
