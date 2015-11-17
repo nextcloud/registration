@@ -19,6 +19,7 @@ OC.L10N.register(
     "Registration" : "Registrace",
     "Default group that all registered users belong" : "Výchozí skupina pro všechny nově registrované uživatele",
     "None" : "Žádné",
+    "Allowed mail address domains for registration" : "Povolené domény emailových adres pro registraci",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Zadejte středníkem oddělený seznam povolených domén. Příklad: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrace je povolena pouze pro následující domény:",
     "To create a new account on ownCloud, just click the following link:" : "Pro vytvoření nového ownCloud účtu klikněte na následující odkaz:",

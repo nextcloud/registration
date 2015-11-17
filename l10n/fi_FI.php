@@ -18,6 +18,7 @@ $TRANSLATIONS = array(
 "Registration" => "Rekisteröityminen",
 "Default group that all registered users belong" => "Oletusryhmä, johon kaikki rekisteröityneet käyttäjät kuuluvat",
 "None" => "Ei mitään",
+"Allowed mail address domains for registration" => "Rekisteröintiin sallittujen sähköpostiosoitteiden verkkotunnukset",
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Anna puolipisteellä erotettuina lista sallituista verkkodomaineista. Esimerkki: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Rekisteröinti on sallittu vain seuraavista verkkodomaineista:",
 "To create a new account on ownCloud, just click the following link:" => "Luo uusi ownCloud-tili napsauttamalla seuraavaa linkkiä:",

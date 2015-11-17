@@ -17,6 +17,7 @@
     "Registration" : "登録",
     "Default group that all registered users belong" : "すべての登録ユーザーが属しているデフォルトのグループ",
     "None" : "なし",
+    "Allowed mail address domains for registration" : "登録が許可されたメールアドレスドメイン",
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "許可するドメインのリストをセミコロン区切りで入力してください｡例:owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "次のドメインのみ登録可能です：",
     "To create a new account on ownCloud, just click the following link:" : "ownCloud に新しいアカウントを作成する場合、以下のリンクをクリックしてください: ",
