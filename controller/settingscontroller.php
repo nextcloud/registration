@@ -88,7 +88,6 @@ class SettingsController extends Controller {
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
-		// TODO selected
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
 		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 		return new TemplateResponse('registration', 'admin', [
