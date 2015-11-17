@@ -257,9 +257,9 @@ class RegisterController extends Controller {
 			'link' => $link,
 			'sitename' => $this->defaults->getName()
 		];
-		$html_template = new TemplateResponse('registration', 'email_html', $template_var, 'blank');
+		$html_template = new TemplateResponse('registration', 'email.validate_html', $template_var, 'blank');
 		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email_plaintext', $template_var, 'blank');
+		$plaintext_template = new TemplateResponse('registration', 'email.validate_plaintext', $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
 		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
 
