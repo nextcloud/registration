@@ -32,10 +32,12 @@ class RegisterController extends Controller {
 	private $usermanager;
 	private $config;
 	private $groupmanager;
+	/** @var \OC_Defaults */
+	private $defaults;
 	protected $appName;
 
 	public function __construct($appName, IRequest $request, IMailer $mailer, IL10N $l10n, $urlgenerator,
-	$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager){
+	$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, \OC_Defaults $defaults){
 		$this->mailer = $mailer;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
@@ -43,6 +45,7 @@ class RegisterController extends Controller {
 		$this->usermanager = $usermanager;
 		$this->config = $config;
 		$this->groupmanager = $groupmanager;
+		$this->defaults = $defaults;
 		$this->appName = $appName;
 		parent::__construct($appName, $request);
 	}
@@ -250,15 +253,19 @@ class RegisterController extends Controller {
 	private function sendValidationEmail(string $token, string $to) {
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
 		$link = $this->urlgenerator->getAbsoluteURL($link);
-		$html_template = new TemplateResponse('registration', 'email_html', array('link' => $link), 'blank');
+		$template_var = [
+			'link' => $link,
+			'sitename' => $this->defaults->getName()
+		];
+		$html_template = new TemplateResponse('registration', 'email_html', $template_var, 'blank');
 		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email_plaintext', array('link' => $link), 'blank');
+		$plaintext_template = new TemplateResponse('registration', 'email_plaintext', $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
-		$subject = $this->l10n->t('Verify your ownCloud registration request');
+		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
 
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();
-		$message->setFrom([$from]);
+		$message->setFrom([$from => $this->defaults->getName()]);
 		$message->setTo([$to]);
 		$message->setSubject($subject);
 		$message->setPlainBody($plaintext_part);

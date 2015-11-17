@@ -41,7 +41,8 @@ class Application extends App {
 				$c->query('PendingRegist'),
 				$c->query('UserManager'),
 				$c->query('Config'),
-				$c->query('GroupManager')
+				$c->query('GroupManager'),
+				$c->query('Defaults')
 			);
 		});
 
@@ -90,6 +91,10 @@ class Application extends App {
 		$container->registerService('PendingRegist', function(SimpleContainer $c) {
 			return new PendingRegist($c->query('ServerContainer')->getDb(),
 				$c->query('ServerContainer')->getSecureRandom()->getMediumStrengthGenerator());
+		});
+
+		$container->registerService('Defaults', function(SimpleContainer $c) {
+			return new \OC_Defaults;
 		});
 	}
 
