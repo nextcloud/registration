@@ -10,7 +10,6 @@
     "Unable to set user email: " : "Die E-Mail-Adresse des Benutzers konnte nicht gespeichert werden:",
     "Failed to delete pending registration request" : "Das Löschen der in Bearbeitung befindlichen Registrierungsanfrage ist fehlgeschlagen",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Dein Konto wurde erfolgreich erstellt, Du kannst dich <a href=\"{link}\">jetzt anmelden</a>.",
-    "Verify your ownCloud registration request" : "Bitte Deine ownCloud-Registrierung bestätigen",
     "Your settings have been updated." : "Deine Einstellungen wurden aktualisiert.",
     "No such group" : "Keine derartige Gruppe",
     "Registration" : "Registrierung",

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Unable to set user email: " : "사용자 이메일을 설정할 수 없음: ",
     "Failed to delete pending registration request" : "대기 중인 등록 요청을 삭제할 수 없음",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "회원 가입이 완료되었으며 <a href=\"{link}\">로그인할 수 있습니다</a>.",
-    "Verify your ownCloud registration request" : "ownCloud 가입 요청 확인",
     "Your settings have been updated." : "설정이 업데이트 되었습니다.",
     "No such group" : "그룹이 존재하지 않음",
     "Registration" : "등록",

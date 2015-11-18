@@ -12,7 +12,6 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "No se puede establecer correo electrónico del usuario:",
 "Failed to delete pending registration request" => "Fallo al eliminar la petición de registro pendiente",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Su cuenta ha sido creada con éxito, puede <a href=\"{link}\">iniciar sesión ahora</a>.",
-"Verify your ownCloud registration request" => "Verifique su solicitud de registro con ownCloud",
 "Your settings have been updated." => "Sus ajustes han sido actualizados.",
 "No such group" => "No existe tal grupo",
 "Registration" => "Registro",

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Unable to set user email: " : "ไม่สามารถตั้งค่าอีเมลของผู้ใช้:",
     "Failed to delete pending registration request" : "ไม่สามารถลบคำขอลงทะเบียนที่รอดำเนินการ",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "เราได้สร้างบัญชีของคุณเรียบร้อยแล้วคุณสามารถ <a href=\"{link}\">เข้าสู่ระบบได้ที่นี่</a>",
-    "Verify your ownCloud registration request" : "ตรวจสอบคำขอลงทะเบียน ownCloud ของคุณ",
     "Your settings have been updated." : "การตั้งค่าของคุณได้รับการปรับปรุง",
     "No such group" : "ไม่มีกลุ่มดังกล่าว",
     "Registration" : "การลงทะเบียน",

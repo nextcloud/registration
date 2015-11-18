@@ -12,7 +12,6 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Tidak dapat mengatur email pengguna:",
 "Failed to delete pending registration request" => "Gagal menghapus permintaan penundaan pendaftaran",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Akun Anda telah berhasil dibuat, Anda dapat <a href=\"{link}\">masuk sekarang</a>.",
-"Verify your ownCloud registration request" => "Verifikasi permintaan pendaftaran ownCloud Anda",
 "Your settings have been updated." => "Pengaturan Anda telah diperbarui.",
 "No such group" => "Tidak ada grup",
 "Registration" => "Pendaftaran",

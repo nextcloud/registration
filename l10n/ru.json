@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Невозможно установить email пользователя:",
     "Failed to delete pending registration request" : "Не удалось удалить существующий запрос на регистрацию",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Учетная запись успешно создана, теперь вы можете <a href=\"{link}\">войти на сайт</a>.",
-    "Verify your ownCloud registration request" : "Подтвердите запрос на регистрацию в ownCloud",
     "Your settings have been updated." : "Настройки обновлены.",
     "No such group" : "Нет такой группы",
     "Registration" : "Регистрация",

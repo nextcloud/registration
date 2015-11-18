@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Kan ikke angive e-mail for bruger:",
     "Failed to delete pending registration request" : "Det lykkedes ikke at slette ventende registreringsanmodning",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Din konto er blevet oprettet, og du kan <a href=\"{link}\">logge ind nu</a>.",
-    "Verify your ownCloud registration request" : "Verificér din forespørgsel om ownCloud-tilmelding",
     "Your settings have been updated." : "Dine indstillinger er blevet opdateret.",
     "No such group" : "Gruppen findes ikke",
     "Registration" : "Tilmelding",

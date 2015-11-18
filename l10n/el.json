@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Αδυναμία ορισμού email χρήστη:",
     "Failed to delete pending registration request" : "Αποτυχία διαγραφής εκκρεμούς αίτησης εγγραφής",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία, μπορείτε να <a href=\"{link}\">συνδεθείτε τώρα</a>.",
-    "Verify your ownCloud registration request" : "Επιβεβαιώστε την αίτηση εγγραφής στο ownCloud",
     "Your settings have been updated." : "Οι ρυθμίσεις σας έχουν ενημερωθεί.",
     "No such group" : "Δεν υπάρχει τέτοια ομάδα",
     "Registration" : "Εγγραφή",

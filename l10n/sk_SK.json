@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Nemožno nastaviť email používateľa:",
     "Failed to delete pending registration request" : "Zlyhalo zmazanie čakajúcich žiadostí na registráciu",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Váš účet bol vytvorený, teraz sa môžete <a href=\"{link}\">prihlásiť</a>.",
-    "Verify your ownCloud registration request" : "Overte svoju požiadavku na registráciu do ownCloud",
     "Your settings have been updated." : "Vaše nastavenia boli aktualizované.",
     "No such group" : "Takáto skupina neexistuje",
     "Registration" : "Registrácia",

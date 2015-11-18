@@ -13,7 +13,6 @@ OC.L10N.register(
     "Unable to set user email: " : "Não é possível definir o correio eletrónico do utilziador: ",
     "Failed to delete pending registration request" : "Não foi possível eliminar o pedido de registo pendente",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A sua conta foi criada com sucesso, pode <a href=\"{link}\">iniciar a sessão </a> agora.",
-    "Verify your ownCloud registration request" : "Verifique o seu pedido de registo na ownCloud",
     "Your settings have been updated." : "As suas definições foram atualizadas.",
     "No such group" : "Não existe tal grupo",
     "Registration" : "Registo",

@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Impossible de definir l'email utilizaire :",
     "Failed to delete pending registration request" : "Error al moment de la supression de la demanda d'enregistrament en espèra",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Vòstre compte es estat creat corrèctament, ara vos podètz <a href=\"{link}\">connectar</a>.",
-    "Verify your ownCloud registration request" : "Efectuatz la verificacion de vòstra demanda d'inscripcion ownCloud",
     "Your settings have been updated." : "Vòstres paramètres son estats meses a jorn.",
     "No such group" : "Pas cap de grop correspondent",
     "Registration" : "Inscripcion",

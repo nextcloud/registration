@@ -11,7 +11,6 @@
     "Unable to set user email: " : "Kullanıcı e-postası ayarlanamadı: ",
     "Failed to delete pending registration request" : "Bekleyen kayıt isteğini silme başarısız",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Hesabınız başarıyla oluşturuldu, artık <a href=\"{link}\">oturum açabilirsiniz</a>.",
-    "Verify your ownCloud registration request" : "ownCloud kayıt talebinizi doğrulayın",
     "Your settings have been updated." : "Ayarlarınız güncellendi.",
     "No such group" : "Böyle bir grup yok",
     "Registration" : "Kayıt",

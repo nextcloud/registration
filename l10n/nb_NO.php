@@ -12,7 +12,6 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Kan ikke sette brukerens e-post:",
 "Failed to delete pending registration request" => "Klarte ikke å slette utestående registreringsforespørsel",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Kontoen din er blitt opprettet. Du kan <a href=\"{link}\">logge inn nå</a>.",
-"Verify your ownCloud registration request" => "Verifiser din forespørsel om ownCloud-registrering",
 "Your settings have been updated." => "Innstillingene dine ble oppdatert.",
 "No such group" => "Ingen slik gruppe",
 "Registration" => "Registrering",
