@@ -233,6 +233,20 @@ class RegisterController extends Controller {
 						))
 					), 'error');
 				}
+
+				$admin_users = $this->groupmanager->get('admin')->getUsers();
+				$to_arr = array();
+				foreach ( $admin_users as $au ) {
+					$au_email = $this->config->getUserValue($au->getUID(), 'settings', 'email');
+					if ( $au_email !== '' ) {
+						$to_arr[$au_email] = $au->getDisplayName();
+					}
+				}
+				try {
+					$this->sendNewUserNotifEmail($to_arr, $user->getUID());
+				} catch (\Exception $e) {
+					\OCP\Util::writeLog('registration', 'Sending admin notification email failed: '. $e->getMessage, \OCP\Util::ERROR);
+				}
 			}
 
 			return new TemplateResponse('registration', 'message', array('msg' =>
@@ -267,6 +281,36 @@ class RegisterController extends Controller {
 		$message = $this->mailer->createMessage();
 		$message->setFrom([$from => $this->defaults->getName()]);
 		$message->setTo([$to]);
+		$message->setSubject($subject);
+		$message->setPlainBody($plaintext_part);
+		$message->setHtmlBody($html_part);
+		$failed_recipients = $this->mailer->send($message);
+		if ( !empty($failed_recipients) )
+			throw new \Exception('Failed recipients: '.print_r($failed_recipients, true));
+	}
+
+	/**
+	 * Sends new user notification email to admin
+	 * @param array $to
+	 * @param string $username the new user
+	 * @return null
+	 * @throws \Exception
+	 */
+	private function sendNewUserNotifEmail(array $to, string $username) {
+		$template_var = [
+			'user' => $username,
+			'sitename' => $this->defaults->getName()
+		];
+		$html_template = new TemplateResponse('registration', 'email.newuser_html', $template_var, 'blank');
+		$html_part = $html_template->render();
+		$plaintext_template = new TemplateResponse('registration', 'email.newuser_plaintext', $template_var, 'blank');
+		$plaintext_part = $plaintext_template->render();
+		$subject = $this->l10n->t('A new user "%s" had created an account on %s', [$username, $this->defaults->getName()]);
+
+		$from = Util::getDefaultEmailAddress('register');
+		$message = $this->mailer->createMessage();
+		$message->setFrom([$from => $this->defaults->getName()]);
+		$message->setTo($to);
 		$message->setSubject($subject);
 		$message->setPlainBody($plaintext_part);
 		$message->setHtmlBody($html_part);
