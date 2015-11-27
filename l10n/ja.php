@@ -2,9 +2,9 @@
 $TRANSLATIONS = array(
 "Register" => "登録",
 "Email address you entered is not valid" => "入力されたメールアドレスが正しくありません",
-"A problem occurred sending email, please contact your administrator." => "メール送信でエラーが発生しました,管理者に連絡してください。",
+"A problem occurred sending email, please contact your administrator." => "メール送信時にエラーが発生しました。管理者に連絡してください。",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "このメールアドレスでの登録申請がすでに存在します，新しい確認メールをアドレスに送信しました｡",
-"A user has already taken this email, maybe you already have an account?" => "このメールアドレスは既に使用中です,もしかして既にアカウントを持っていませんか？",
+"A user has already taken this email, maybe you already have an account?" => "このメールアドレスは既に使用中です。もしかして既にアカウントを持っていませんか？",
 "You can <a href=\"{login}\">log in now</a>." => "<a href=\"{login}\">今すぐログイン</a> できます。",
 "Verification email successfully sent." => "確認メールを送信しました。",
 "Invalid verification URL. No registration request with this verification URL is found." => "確認URLが不正です。この確認URLに紐付く登録リクエストは、ありません。",
