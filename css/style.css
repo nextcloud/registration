@@ -1,8 +1,9 @@
-#email, #username, #password {
+input[type="email"], input[type="text"], input[type="password"] {
 	width: 223px !important;
 	padding-left: 36px !important;
 }
-#email-icon, #username-icon, #password-icon {
+
+form img.svg {
 	position: absolute;
 	left: 16px;
 	top: 22px;

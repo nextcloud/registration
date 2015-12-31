@@ -69,7 +69,7 @@ class RegisterController extends Controller {
 			'errormsg' => $errormsg ? $errormsg : $this->request->getParam('errormsg'),
 			'entered' => $entered ? $entered : $this->request->getParam('entered')
 		);
-		return new TemplateResponse('registration', 'register', $params, 'guest');
+		return new TemplateResponse('registration', 'form', $params, 'guest');
 	}
 
 	/**
@@ -77,6 +77,9 @@ class RegisterController extends Controller {
 	 */
 	public function validateEmail() {
 		$email = $this->request->getParam('email');
+		$username = $this->request->getParam('username');
+		$password = $this->request->getParam('password');
+		$display_name = $this->request->getParam('display_name');
 		if ( !$this->mailer->validateMailAddress($email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
@@ -86,6 +89,7 @@ class RegisterController extends Controller {
 			), 'error');
 		}
 
+		// find if there is an existing request
 		if ( $this->pendingreg->find($email) ) {
 			$this->pendingreg->delete($email);
 			$token = $this->pendingreg->save($email);
@@ -95,7 +99,7 @@ class RegisterController extends Controller {
 			} catch (\Exception $e) {
 				return new TemplateResponse('', 'error', array(
 					'errors' => array(array(
-						'error' => $this->l10n->t('A problem occurred sending email, please contact your administrator.'),
+						'error' => $this->l10n->t('There is already a pending registration with this email, but while trying to send a new verification email, a problem occurred, please contact your administrator.'),
 						'hint' => ''
 					))
 				), 'error');
@@ -140,7 +144,30 @@ class RegisterController extends Controller {
 			}
 		}
 
-		$token = $this->pendingreg->save($email);
+		// validate username as in UserManager::createUser()
+		try {
+			if (preg_match('/[^a-zA-Z0-9 _\.@\-]/', $username)) {
+				throw new \Exception($this->l10n->t('Only the following characters are allowed in a username:'
+					. ' "a-z", "A-Z", "0-9", and "_.@-"'));
+			}
+			// No empty username
+			if (trim($username) == '') {
+				throw new \Exception($this->l10n->t('A valid username must be provided'));
+			}
+			// No empty password
+			if (trim($password) == '') {
+				throw new \Exception($this->l10n->t('A valid password must be provided'));
+			}
+		} catch (\Exception $e) {
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $e->getMessage(),
+					'hint' => ''
+				))
+			), 'error');
+		}
+
+		$token = $this->pendingreg->save($username, $display_name, $email, \OC::$server->getHasher()->hash($password));
 		try {
 			$this->sendValidationEmail($token, $email);
 		} catch (\Exception $e) {

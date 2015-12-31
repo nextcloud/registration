@@ -17,13 +17,13 @@ class PendingRegist {
 		$this->random = $random;
 	}
 
-	public function save($email) {
+	public function save(string $username, string $display_name, string $email, string $password) {
 		$query = $this->db->prepareQuery( 'INSERT INTO `*PREFIX*registration`'
-			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )' );
+			.' ( `username`, `display_name`, `email`, `password`, `token`, `requested` ) VALUES( ?, ?, ?, ?, ?, NOW() )' );
 		
 		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_DIGITS);
 		
-		$query->execute(array( $email, $token ));
+		$query->execute(array( $username, $display_name, $email, $password, $token ));
 		return $token;
 	}
 	public function find($email) {

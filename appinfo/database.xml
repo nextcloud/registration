@@ -16,9 +16,18 @@
 				<primary>true</primary>
 			</field>
 			<field>
+				<name>username</name>
+				<type>text</type>
+				<notnull>true</notnull>
+			</field>
+			<field>
 				<name>email</name>
 				<type>text</type>
 				<notnull>true</notnull>
+			</field>
+			<field>
+				<name>display_name</name>
+				<type>text</type>
 			</field>
 			<field>
 				<name>token</name>
@@ -29,6 +38,20 @@
 				<name>requested</name>
 				<type>timestamp</type>
 				<notnull>true</notnull>
+			</field>
+			<field>
+				<name>password</name>
+				<type>text</type>
+				<notnull>true</notnull>
+			</field>
+			<field>
+				<name>email_validated</name>
+				<type>boolean</type>
+				<default>false</default>
+			</field>
+			<field>
+				<name>approved</name>
+				<type>boolean</type>
 			</field>
 		</declaration>
 	</table>
