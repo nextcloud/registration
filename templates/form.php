@@ -1,6 +1,6 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
-?><form action="<?php print_unescaped(OC_Helper::linkToRoute('registration.register.createAccount', array('token'=>$_['token']))) ?>" method="post">
+?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', array('token'=>$_['token']))) ?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
 		<?php if ( $_['errormsgs'] ) {?>
