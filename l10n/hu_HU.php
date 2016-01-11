@@ -23,7 +23,6 @@ $TRANSLATIONS = array(
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Írd be pontosvesszővel elválasztva az engedélyezett domaineket. Például: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Regisztráció csak ezeknek a domaineknek engedélyezett:",
 "A new user \"%s\" has created an account on %s" => "%s felhasználó létrehozva %s fiókkal.",
-"A new user \"%\"s has created an account on %s" => "%s felhasználó létrehozva %s fiókkal.",
 "To create a new account on %s, just click the following link:" => "%s helyen új fiók létrehozásához, csak kattints a következő hivatkozásra:",
 "Welcome, you can create your account below." => "Üdv, most már létrehozhatod a fiókod alább.",
 "Username" => "Felhasználónév",

@@ -22,7 +22,6 @@
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Εισάγετε μια λίστα επιτρεπόμενων τομέων, διαχωρισμένη με ερωτηματικά. Παράδειγμα: ",
     "Registration is only allowed for following domains:" : "Η εγγραφή επιτρέπεται μόνο για τους ακόλουθους τομείς:",
     "A new user \"%s\" has created an account on %s" : "Ένας νέος χρήστης \"%s\" δημιούργησε λογαριασμό στο %s",
-    "A new user \"%\"s has created an account on %s" : "Ένας νέος χρήστης \"%s\" δημιούργησε λογαριασμό στο %s",
     "To create a new account on %s, just click the following link:" : "Για να δημιουργήσετε έναν νέο λογαριασμό στο %s, πατήστε στον παρακάτω σύνδεσμο:",
     "Welcome, you can create your account below." : "Καλωσήρθατε, μπορείτε να δημιουργήσετε το λογαριασμό σας παρακάτω.",
     "Username" : "Όνομα χρήστη",

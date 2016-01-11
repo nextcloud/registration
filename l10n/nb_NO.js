@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Legg inn en semikolon-separert liste av tillatte domener. Eksempel: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrering er tillatt kun for følgende domener:",
     "A new user \"%s\" has created an account on %s" : "En ny bruker \"%s\" har opprettet en konto på %s",
-    "A new user \"%\"s has created an account on %s" : "En ny bruker \"%s\"s har opprettet en konto på %s",
     "To create a new account on %s, just click the following link:" : "For å opprette en ny konto på %s, klikk på denne lenken:",
     "Welcome, you can create your account below." : "Velkommen, du kan opprette kontoen din nedenfor.",
     "Username" : "Brukernavn",

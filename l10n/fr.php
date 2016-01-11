@@ -23,7 +23,6 @@ $TRANSLATIONS = array(
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "Saisissez une liste de domaines autorisés, séparés d'un point-virgule. Exemple: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "Les inscriptions ne sont autorisées que sur les domaines suivants :",
 "A new user \"%s\" has created an account on %s" => "Un nouvel utilisateur \"%s\" a créé un compte sur %s",
-"A new user \"%\"s has created an account on %s" => "Un nouvel utilisateur \"%s\" a créé un compte sur %s",
 "To create a new account on %s, just click the following link:" => "Pour créer un nouveau compte sur %s, cliquez simplement sur le lien suivant link:",
 "Welcome, you can create your account below." => "Bienvenue, vous pouvez créer votre compte ci-dessous.",
 "Username" => "Nom d'utilisateur",

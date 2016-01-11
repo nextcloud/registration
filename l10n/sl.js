@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Vnesite spisek domen, ločenih s podpičjem. Primer: owncloud.com; domena.si",
     "Registration is only allowed for following domains:" : "Prijava je dovoljena samo za sledeče domene:",
     "A new user \"%s\" has created an account on %s" : "Nov uporabnik \"%s\" je ustvaril račun na %s",
-    "A new user \"%\"s has created an account on %s" : "Nov uporabnik \"%s\" je ustvaril račun na %s",
     "To create a new account on %s, just click the following link:" : "Za ustvariti nov računa na %s, kliknite na spodnjo povezavo:",
     "Welcome, you can create your account below." : "Dobrodošli! Ustvarite nov račun.",
     "Username" : "Uporabniško ime",

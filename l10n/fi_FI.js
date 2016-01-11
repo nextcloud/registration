@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Anna puolipisteellä erotettuina lista sallituista verkkodomaineista. Esimerkki: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Rekisteröinti on sallittu vain seuraavista verkkodomaineista:",
     "A new user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" on luonut tilin kohteessa %s",
-    "A new user \"%\"s has created an account on %s" : "Uusi käyttäjä \"%s\" on luonut tilin kohteessa %s",
     "To create a new account on %s, just click the following link:" : "Luo uusi %s-tili napsauttamalla seuraavaa linkkiä:",
     "Welcome, you can create your account below." : "Tervetuloa, voit luoda tilisi alta.",
     "Username" : "Käyttäjätunnus",

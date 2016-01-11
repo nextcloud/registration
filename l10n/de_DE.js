@@ -19,7 +19,6 @@ OC.L10N.register(
     "None" : "Keine",
     "Registration is only allowed for following domains:" : "Die Registrierung ist nur für die folgenden Domains möglich:",
     "A new user \"%s\" has created an account on %s" : "Ein neuer Benutzer \"%s\" hat sich ein neues Konto angelegt bei %s",
-    "A new user \"%\"s has created an account on %s" : "Ein neuer Benutzer \"%\"s hat sich ein neues Konto angelegt bei %s",
     "To create a new account on %s, just click the following link:" : "Zur Erstellung eines neuen ownCloud Kontos %s, klicken Sie bitte auf den folgenden Link:",
     "Welcome, you can create your account below." : "Willkommen, Sie können im unteren Teil Ihr Konto anlegen.",
     "Username" : "Benutzername",

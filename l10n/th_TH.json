@@ -22,7 +22,6 @@
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "ป้อนรายการโดเมนที่ได้รับอนุญาต ตัวอย่าง: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "การลงทะเบียนอนุญาตเฉพาะโดเมนดังต่อไปนี้:",
     "A new user \"%s\" has created an account on %s" : "ผู้ใช้ใหม่ \"%s\" ได้สร้างบัญชีผู้ใช้บน %s",
-    "A new user \"%\"s has created an account on %s" : "ผู้ใช้ใหม่ \"%s\" ได้สร้างบัญชีผู้ใช้บน %s",
     "To create a new account on %s, just click the following link:" : "หากต้องการสร้างบัญชีใหม่บน %s เพียงแค่คลิกที่ลิงค์ต่อไปนี้:",
     "Welcome, you can create your account below." : "ยินดีต้อนรับ, คุณสามารถสร้างบัญชีของคุณด้านล่าง",
     "Username" : "ชื่อผู้ใช้งาน",

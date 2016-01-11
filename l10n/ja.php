@@ -23,7 +23,6 @@ $TRANSLATIONS = array(
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "許可するドメインのリストをセミコロン区切りで入力してください｡例:owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "次のドメインのみ登録可能です：",
 "A new user \"%s\" has created an account on %s" => "新しいユーザー　\"%s\" を アカウント名 \"%s\" として作成しました",
-"A new user \"%\"s has created an account on %s" => "新しいユーザー　\"%s\" を アカウント名 \"%s\" として作成しました",
 "To create a new account on %s, just click the following link:" => " %s に新しいアカウントを作成する場合、以下のリンクをクリックしてください: ",
 "Welcome, you can create your account below." => "ようこそ、以下から新しくアカウントを作成できます。",
 "Username" => "ユーザーID",

@@ -23,7 +23,6 @@ $TRANSLATIONS = array(
 "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" => "יש להכניס רשימת תחומים domains מאושרים מופרדים עם נקודה פסיק. לדוגמא: owncloud.com;github.com",
 "Registration is only allowed for following domains:" => "רישום מותר לתחומים domains אלו:",
 "A new user \"%s\" has created an account on %s" => "משתמש חדש \"%s\" יצר חשבון ב- %s",
-"A new user \"%\"s has created an account on %s" => "משתמש חדש \"%\"s יצר חשבון ב- %s",
 "To create a new account on %s, just click the following link:" => "ליצירת חשבון חדש ב- %s, יש ללחוץ על קישור זה:",
 "Welcome, you can create your account below." => "בורכים הבאים, ניתן ליצור חשבון למטה.",
 "Username" => "שם משתמש",

@@ -22,7 +22,6 @@
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Bitte gib eine durch Semikolon getrennte Liste der erlaubten Domains ein. Beispiel: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Anmeldung ist nur für die folgenden Domains erlaubt:",
     "A new user \"%s\" has created an account on %s" : "Ein neuer Benutzer \"%s\" hat ein Konto auf %s erstellt",
-    "A new user \"%\"s has created an account on %s" : "Ein neuer Benutzer \"%\"s hat ein Konto auf %s erstellt",
     "To create a new account on %s, just click the following link:" : "Um ein neues Konto auf %s zu erstellen, klick bitte auf den folgenden Link:",
     "Welcome, you can create your account below." : "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
     "Username" : "Benutzername",

@@ -22,7 +22,6 @@
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Zadejte středníkem oddělený seznam povolených domén. Příklad: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Registrace je povolena pouze pro následující domény:",
     "A new user \"%s\" has created an account on %s" : "Nový uživatel \"%s\" vytvořil účet na %s",
-    "A new user \"%\"s has created an account on %s" : "Nový uživatel \"%\"s vytvořil účet na %s",
     "To create a new account on %s, just click the following link:" : "Pro vytvoření nového účtu na %s klikněte na následující odkaz:",
     "Welcome, you can create your account below." : "Vítejte, svůj účet si můžete založit níže.",
     "Username" : "Uživatelské jméno",

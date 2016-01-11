@@ -22,7 +22,6 @@
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Укажите список разрешенных доменов разделенных точкой с запятой. Например: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Регистрация доступна только для следующих доменов:",
     "A new user \"%s\" has created an account on %s" : "Новый пользователь \"%s\" создал учетную запись на %s",
-    "A new user \"%\"s has created an account on %s" : "Новый пользователь \"%s\" создал учетную запись на %s",
     "To create a new account on %s, just click the following link:" : "Чтобы создать новую учетную запись на%s, просто нажмите на следующую ссылку:",
     "Welcome, you can create your account below." : "Добро пожаловать, Вы можете создать учетную запись ниже.",
     "Username" : "Имя пользователя",

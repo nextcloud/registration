@@ -12,6 +12,7 @@ $TRANSLATIONS = array(
 "Unable to set user email: " => "Não é possível definir o correio eletrónico do utilziador: ",
 "Failed to delete pending registration request" => "Não foi possível eliminar o pedido de registo pendente",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "A sua conta foi criada com sucesso, pode <a href=\"{link}\">iniciar a sessão </a> agora.",
+"A new user \"%s\" had created an account on %s" => "Um novo utilizador \"%s\" criou uma conta em %s",
 "Your settings have been updated." => "As suas definições foram atualizadas.",
 "No such group" => "Não existe tal grupo",
 "Registration" => "Registo",

@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com" : "Sasissètz una lista de domenis autorizats, separats per un punt-virgula. Exemple: owncloud.com;github.com",
     "Registration is only allowed for following domains:" : "Las inscripcions son pas autorizadas que suls domenis seguents :",
     "A new user \"%s\" has created an account on %s" : "Un novèl utilizaire \"%s\" a creat un compte sus %s",
-    "A new user \"%\"s has created an account on %s" : "Un novèl utilizaire \"%s\" a creat un compte sus %s",
     "To create a new account on %s, just click the following link:" : "Per crear un compte novèl sus %s, clicatz simplament sul ligam seguent :",
     "Welcome, you can create your account below." : "Benvenguda, podètz crear vòstre compte çaijós.",
     "Username" : "Nom d'utilizaire",
