@@ -70,7 +70,7 @@ class RegisterController extends Controller {
 		if ( !$this->mailer->validateMailAddress($email) ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
-					'error' => $this->l10n->t('Email address you entered is not valid'),
+					'error' => $this->l10n->t('The email address you entered is not valid'),
 					'hint' => ''
 				))
 			), 'error');
@@ -191,7 +191,7 @@ class RegisterController extends Controller {
 			if ( $user === false ) {
 				return new TemplateResponse('', 'error', array(
 					'errors' => array(array(
-						'error' => $this->l10n->t('Unable to create user, there are problems with user backend.'),
+						'error' => $this->l10n->t('Unable to create user, there are problems with the user backend.'),
 						'hint' => ''
 					))
 				), 'error');
@@ -305,7 +305,7 @@ class RegisterController extends Controller {
 		$html_part = $html_template->render();
 		$plaintext_template = new TemplateResponse('registration', 'email.newuser_plaintext', $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
-		$subject = $this->l10n->t('A new user "%s" had created an account on %s', [$username, $this->defaults->getName()]);
+		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
 
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();

@@ -4,7 +4,7 @@ if ($_['entered']): ?>
 	<?php if (empty($_['errormsg'])): ?>
 		<ul class="success">
 			<li>
-			<?php print_unescaped($l->t('Thank you for registering, you should receive verification link in a few minutes.')); ?>
+			<?php print_unescaped($l->t('Thank you for registering, you should receive a verification link in a few minutes.')); ?>
 			</li>
 		</ul>
 	<?php else: ?>
@@ -33,7 +33,7 @@ if ($_['entered']): ?>
 				</ul>
 			<?php else: ?>
 				<ul class="msg">
-					<li><?php print_unescaped($l->t('You will receive an email with verification link')); ?></li>
+					<li><?php print_unescaped($l->t('You will receive an email with a verification link')); ?></li>
 				</ul>
 			<?php endif; ?>
 			<p class="groupofone">
