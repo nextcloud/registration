@@ -20,7 +20,7 @@ foreach ( $_['groups'] as $group ) {
 	<input type="text" id="allowed_domains" name="allowed_domains" value=<?php p($_['allowed']);?>>
 	</p>
 	<p>
-	<em><?php p($l->t('Enter a semicolon-seperated list of allowed domains. Example: owncloud.com;github.com'));?> 
+	<em><?php p($l->t('Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com'));?> 
 </em>
 	</p>
 
