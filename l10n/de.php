@@ -1,12 +1,14 @@
 <?php
 $TRANSLATIONS = array(
 "Register" => "Registrieren",
+"The email address you entered is not valid" => "Die eingegebene E-Mail Adresse ist ungültig",
 "A problem occurred sending email, please contact your administrator." => "Ein Problem ist beim Senden der E-Mail aufgetreten, bitte den Administrator kontaktieren",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Für diese Mail gibt es bereits eine ausstehende Registrierung, es wurde erneut eine Bestätigungsemail an diese Addresse gesendet.",
 "A user has already taken this email, maybe you already have an account?" => "Diese E-Mail wurde bereits verwendet, vielleicht hast du bereits ein Konto?",
 "You can <a href=\"{login}\">log in now</a>." => "Du kannst dich <a href=\"{login}\">jetzt anmelden</a>.",
 "Verification email successfully sent." => "E-Mail zur Bestätigung erfolgreich gesendet.",
 "Invalid verification URL. No registration request with this verification URL is found." => "Ungültige Bestätigungsadresse. Keine Registrierungsanfrage mit dieser Bestätigungsadresse gefunden.",
+"Unable to create user, there are problems with the user backend." => "Benutzer konnte nicht erstellt werden, es gibt Probleme mit dem Benutzerhintergrundprogramm.",
 "Unable to set user email: " => "Die E-Mail-Adresse des Benutzers konnte nicht gespeichert werden:",
 "Failed to delete pending registration request" => "Das Löschen der in Bearbeitung befindlichen Registrierungsanfrage ist fehlgeschlagen",
 "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." => "Dein Konto wurde erfolgreich erstellt, Du kannst dich <a href=\"{link}\">jetzt anmelden</a>.",
