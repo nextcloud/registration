@@ -3,7 +3,6 @@ namespace OCA\Registration\Db;
 
 use \OCP\IDb;
 use \OCP\Util;
-use \OCP\Config;
 use \OCP\Security\ISecureRandom;
 
 class PendingRegist {
