@@ -152,7 +152,7 @@ class RegisterController extends Controller {
 	 */
 	public function verifyToken($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
-		if ( \OCP\DB::isError($email) ) {
+		if ( $email === false ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
@@ -169,7 +169,7 @@ class RegisterController extends Controller {
 	 */
 	public function createAccount($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
-		if ( \OCP\DB::isError($email) ) {
+		if ( $email === false ) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
@@ -225,7 +225,7 @@ class RegisterController extends Controller {
 
 				// Delete pending reg request
 				$res = $this->pendingreg->delete($email);
-				if ( \OCP\DB::isError($res) ) {
+				if ( $res === false ) {
 					return new TemplateResponse('', 'error', array(
 						'errors' => array(array(
 							'error' => $this->l10n->t('Failed to delete pending registration request'),
