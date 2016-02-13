@@ -60,10 +60,6 @@ class Application extends App {
 		/**
 		 * Core
 		 */
-		$container->registerService('UserId', function(SimpleContainer $c) {
-			return \OCP\User::getUser();
-		});		
-
 		$container->registerService('UserManager', function(SimpleContainer $c) {
 			return $c->query('ServerContainer')->getUserManager();
 		});
