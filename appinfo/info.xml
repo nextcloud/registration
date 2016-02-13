@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <info>
-    <id>registration</id>
-    <name>Registration</name>
-    <description>User registration</description>
-    <licence>AGPL</licence>
-    <author>Pellaeon Lin</author>
-    <version>0.1.0</version>
-    <requiremin>8.1.0</requiremin>
+	<id>registration</id>
+	<name>Registration</name>
+	<description>User registration</description>
+	<licence>AGPL</licence>
+	<author>Pellaeon Lin</author>
+	<version>0.1.1</version>
+	<dependencies>
+		<owncloud min-version="8.1" max-version="10.0"/>
+	</dependencies>
 </info>
