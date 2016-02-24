@@ -20,13 +20,17 @@ $TRANSLATIONS = array(
 "Default group that all registered users belong" => "Standardgruppe, zu der alle registrierten Benutzer gehören",
 "None" => "Keine",
 "Allowed mail address domains for registration" => "Erlaubte Domains für die Registrierung",
+"Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" => "Gib eine Semikolon getrennte Liste der zulässigen Domänen an. Beispiel: owncloud.com;github.com",
+"Registration is only allowed for the following domains:" => "Eine Anmeldung ist nur für die folgenden Domains erlaubt:",
 "To create a new account on %s, just click the following link:" => "Um ein neues Konto auf %s zu erstellen, klick bitte auf den folgenden Link:",
 "Welcome, you can create your account below." => "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
 "Username" => "Benutzername",
 "Password" => "Passwort",
 "Create account" => "Konto erstellen",
+"Thank you for registering, you should receive a verification link in a few minutes." => "Danke für die Registrierung, du solltest einen Bestätigungs-Link in wenigen Minuten erhalten.",
 "Email" => "E-Mail",
 "Request verification link" => "Bestätigungslink anfragen",
-"Please re-enter a valid email address" => "Bitte nochmals eine gültige E-Mail-Adresse angeben"
+"Please re-enter a valid email address" => "Bitte nochmals eine gültige E-Mail-Adresse angeben",
+"You will receive an email with a verification link" => "Du wirst eine E-Mail mit einem Bestätigungslink erhalten"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";
