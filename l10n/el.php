@@ -1,6 +1,7 @@
 <?php
 $TRANSLATIONS = array(
 "Register" => "Εγγραφή",
+"The email address you entered is not valid" => "Η διεύθυνση ηλεκτρονικού ταχυδρομείου που εισάγατε δεν είναι έγκυρη",
 "A problem occurred sending email, please contact your administrator." => "Παρουσιάστηκε σφάλμα κατά την αποστολή email, παρακαλώ επικοινωνήστε με τον διαχειριστή.",
 "There is already a pending registration with this email, a new verification email has been sent to the address." => "Εκκρεμεί ήδη μία εγγραφή με αυτή τη διεύθυνση ηλ. ταχυδρομείου, ένα καινούριο μήνυμα επιβεβαίωσης έχει σταλεί στη διεύθυνση.",
 "A user has already taken this email, maybe you already have an account?" => "Υπάρχει χρήστης με αυτή τη διεύθυνση email. Μηπώς έχετε ήδη λογαριασμό;",
