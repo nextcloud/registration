@@ -5,8 +5,8 @@
 	<description>User registration</description>
 	<licence>AGPL</licence>
 	<author>Pellaeon Lin</author>
-	<version>0.1.2</version>
+	<version>0.1.3</version>
 	<dependencies>
-		<owncloud min-version="8.1" max-version="8.2"/>
+		<owncloud min-version="8.1" max-version="9.1"/>
 	</dependencies>
 </info>
