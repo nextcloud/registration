@@ -264,7 +264,7 @@ class RegisterController extends Controller {
 	 * @return null
 	 * @throws \Exception
 	 */
-	private function sendValidationEmail(string $token, string $to) {
+	private function sendValidationEmail($token, $to) {
 		$link = $this->urlgenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
 		$link = $this->urlgenerator->getAbsoluteURL($link);
 		$template_var = [
@@ -296,7 +296,7 @@ class RegisterController extends Controller {
 	 * @return null
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifEmail(array $to, string $username) {
+	private function sendNewUserNotifEmail(array $to, $username) {
 		$template_var = [
 			'user' => $username,
 			'sitename' => $this->defaults->getName()
