@@ -22,6 +22,8 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Mail\IMailer;
+use \OC_User;
+use \OC_Util;
 
 class RegisterController extends Controller {
 
@@ -34,10 +36,12 @@ class RegisterController extends Controller {
 	private $groupmanager;
 	/** @var \OC_Defaults */
 	private $defaults;
+	private $random;
 	protected $appName;
 
 	public function __construct($appName, IRequest $request, IMailer $mailer, IL10N $l10n, $urlgenerator,
-	$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, \OC_Defaults $defaults){
+		$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, \OC_Defaults $defaults,
+		ISecureRandom $random){
 		$this->mailer = $mailer;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
@@ -47,6 +51,7 @@ class RegisterController extends Controller {
 		$this->groupmanager = $groupmanager;
 		$this->defaults = $defaults;
 		$this->appName = $appName;
+		$this->random = $random;
 		parent::__construct($appName, $request);
 	}
 
@@ -196,9 +201,10 @@ class RegisterController extends Controller {
 					))
 				), 'error');
 			} else {
+				$userId = $user->getUID();
 				// Set user email
 				try {
-					$this->config->setUserValue($user->getUID(), 'settings', 'email', $email);
+					$this->config->setUserValue($userId, 'settings', 'email', $email);
 				} catch (\Exception $e) {
 					return new TemplateResponse('', 'error', array(
 						'errors' => array(array(
@@ -234,6 +240,7 @@ class RegisterController extends Controller {
 					), 'error');
 				}
 
+				// Notify admin
 				$admin_users = $this->groupmanager->get('admin')->getUsers();
 				$to_arr = array();
 				foreach ( $admin_users as $au ) {
@@ -243,17 +250,42 @@ class RegisterController extends Controller {
 					}
 				}
 				try {
-					$this->sendNewUserNotifEmail($to_arr, $user->getUID());
+					$this->sendNewUserNotifEmail($to_arr, $userId);
 				} catch (\Exception $e) {
 					\OCP\Util::writeLog('registration', 'Sending admin notification email failed: '. $e->getMessage, \OCP\Util::ERROR);
 				}
-			}
 
-			return new TemplateResponse('registration', 'message', array('msg' =>
-				str_replace('{link}',
-					$this->urlgenerator->getAbsoluteURL('/'),
-					$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.'))
-				), 'guest');
+				// Try to log user in
+				if (OC_User::login($username, $password)) {
+					// setting up the time zone
+					/*
+					if (isset($_POST['timezone-offset'])) {
+						self::$server->getSession()->set('timezone', (string)$_POST['timezone-offset']);
+						self::$server->getConfig()->setUserValue($userId, 'core', 'timezone', (string)$_POST['timezone']);
+					}*/
+
+					$this->cleanupLoginTokens($userId);
+					/*if (!empty($_POST["remember_login"])) {
+						$logintoken = $this->random->generate(32);
+						$this->config->setUserValue($userId, 'login_token', $logintoken, time());
+						OC_User::setMagicInCookie($userId, $logintoken);
+					} else {
+						OC_User::unsetMagicInCookie();
+					}*/
+					// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
+					$logintoken = $this->random->generate(32);
+					$this->config->setUserValue($userId, 'login_token', $logintoken, time());
+					OC_User::setMagicInCookie($userId, $logintoken);
+					OC_Util::redirectToDefaultPage();
+
+					// Render message in case redirect failed
+					return new TemplateResponse('registration', 'message', array('msg' =>
+						str_replace('{link}',
+							$this->urlgenerator->getAbsoluteURL('/'),
+							$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.'))
+						), 'guest');
+				}
+			}
 		}
 	}
 
@@ -317,5 +349,21 @@ class RegisterController extends Controller {
 		$failed_recipients = $this->mailer->send($message);
 		if ( !empty($failed_recipients) )
 			throw new \Exception('Failed recipients: '.print_r($failed_recipients, true));
+	}
+
+	/**
+	 * Replicates OC::cleanupLoginTokens() since it's protected
+	 * @param string $userId
+	 * @return null
+	 */
+	private function cleanupLoginTokens($userId) {
+		$cutoff = time() - $this->config->getSystemValue('remember_login_cookie_lifetime', 60 * 60 * 24 * 15);
+		$tokens = $this->config->getUserKeys($userId, 'login_token');
+		foreach ($tokens as $token) {
+			$time = $this->config->getUserValue($userId, 'login_token', $token);
+			if ($time < $cutoff) {
+				$this->config->deleteUserValue($userId, 'login_token', $token);
+			}
+		}
 	}
 }
