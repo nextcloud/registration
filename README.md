@@ -7,18 +7,17 @@ Flow:
 2. Verification link is sent to the email address
 3. User clicks on the verification link
 4. User is lead to a form where one can choose username and password
-5. New account is created
+5. New account is created and is logged in automatically
 
 # Requirements
-1. ownCloud 8.0+
-2. ownCloud is using MariaDB/MySQL as backend database
+1. ownCloud/Nextcloud 9.1.0.7+
+2. Backend database is MariaDB/MySQL
 
 # Install
 Place this app in **owncloud/apps/**
 
-# Warning
-This is alpha quality software, use at your own risk.
-
 # Features
 
-- Admin can specify which group the newly created accounts belong
+- Admin can specify which group the newly created users belong
+- Admin can limit the email domains allowed to register
+- Admin will be notified by email for new user creation
