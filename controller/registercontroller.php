@@ -14,14 +14,17 @@ namespace OCA\Registration\Controller;
 
 use \OCP\IRequest;
 use \OCP\AppFramework\Http\TemplateResponse;
+use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\AppFramework\Controller;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
 use \OCP\IUserManager;
+use \OCP\IUserSession;
 use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Mail\IMailer;
+use \OCP\Security\ISecureRandom;
 use \OC_User;
 use \OC_Util;
 
@@ -37,11 +40,12 @@ class RegisterController extends Controller {
 	/** @var \OC_Defaults */
 	private $defaults;
 	private $random;
+	private $usersession;
 	protected $appName;
 
 	public function __construct($appName, IRequest $request, IMailer $mailer, IL10N $l10n, $urlgenerator,
 		$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, \OC_Defaults $defaults,
-		ISecureRandom $random){
+		ISecureRandom $random, IUserSession $us){
 		$this->mailer = $mailer;
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
@@ -52,6 +56,7 @@ class RegisterController extends Controller {
 		$this->defaults = $defaults;
 		$this->appName = $appName;
 		$this->random = $random;
+		$this->usersession = $us;
 		parent::__construct($appName, $request);
 	}
 
@@ -171,6 +176,7 @@ class RegisterController extends Controller {
 
 	/**
 	 * @PublicPage
+	 * @UseSession
 	 */
 	public function createAccount($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
@@ -256,35 +262,10 @@ class RegisterController extends Controller {
 				}
 
 				// Try to log user in
-				if (OC_User::login($username, $password)) {
-					// setting up the time zone
-					/*
-					if (isset($_POST['timezone-offset'])) {
-						self::$server->getSession()->set('timezone', (string)$_POST['timezone-offset']);
-						self::$server->getConfig()->setUserValue($userId, 'core', 'timezone', (string)$_POST['timezone']);
-					}*/
+				$this->usersession->login($username, $password);
+				$this->usersession->createSessionToken($this->request, $userId, $username, $password);
 
-					$this->cleanupLoginTokens($userId);
-					/*if (!empty($_POST["remember_login"])) {
-						$logintoken = $this->random->generate(32);
-						$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-						OC_User::setMagicInCookie($userId, $logintoken);
-					} else {
-						OC_User::unsetMagicInCookie();
-					}*/
-					// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
-					$logintoken = $this->random->generate(32);
-					$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-					OC_User::setMagicInCookie($userId, $logintoken);
-					OC_Util::redirectToDefaultPage();
-
-					// Render message in case redirect failed
-					return new TemplateResponse('registration', 'message', array('msg' =>
-						str_replace('{link}',
-							$this->urlgenerator->getAbsoluteURL('/'),
-							$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.'))
-						), 'guest');
-				}
+				return new RedirectResponse($this->urlgenerator->linkToRoute('files.view.index'));
 			}
 		}
 	}

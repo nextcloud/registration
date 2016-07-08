@@ -43,7 +43,8 @@ class Application extends App {
 				$c->query('Config'),
 				$c->query('GroupManager'),
 				$c->query('Defaults'),
-				$c->query('ServerContainer')->getSecureRandom()->getMediumStrengthGenerator()
+				$c->query('ServerContainer')->getSecureRandom()->getMediumStrengthGenerator(),
+				$c->query('ServerContainer')->getUserSession()
 			);
 		});
 
