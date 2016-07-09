@@ -11,13 +11,15 @@
 
 	var PENDING_USER = '';
 	var REG_CONTENT = 
-	'<div id="reg-content" style="display none;">' +
+	'<div id="reg-content" style="display: none; overflow-y: auto;">' +
 	'	<table id="reglist" class="grid">' +
 	'		<thead>' +
 	'			<tr>' +
 	'				<th>{{label-username}}</th>' +
 	'				<th>{{label-email}}</th>' +
-	'				<th></th>' +
+	'				<th>{{label-displayname}}</th>' +
+	'				<th>{{label-emailverified}}</th>' +
+	'				<th>{{label-actions}}</th>' +
 	'			</tr>' +
 	'		</thead>' +
 	'		<tbody>' +
@@ -25,7 +27,14 @@
 	'			<tr>' +
 	'				<td>{{this.username}}</td>' +
 	'				<td>{{this.email}}</td>' +
-	'				<td><a class="reg-deny icon-close">Deny</a> <a class="reg-approve icon-checkmark">Approve</a></td>' +
+	'				<td>{{this.displayname}}</td>' +
+	'				<td>{{#if this.emailverified}}' +
+	'					<i class="reg-approve icon-checkmark"></i>'+
+	'					{{else}}'+
+	'					<i class="reg-deny icon-close"></i>'+
+	'					{{/if}}</td>' +
+	'				<td><a class="reg-deny icon-close">{{../label-deny}}</a> <a class="reg-approve icon-checkmark">{{../label-approve}}</a> '+
+	'				<a class="reg-delete icon-delete">{{../label-delete}}</a></td>' +
 	'			</tr>' +
 	'			{{/each}}' +
 	'		</tbody>' +
@@ -38,8 +47,14 @@
 		$('#app-content').after(reg_content({
 			'label-username': t('registration', 'Username'),
 			'label-email': t('registration', 'Email'),
+			'label-displayname': t('registration', 'Display Name'),
+			'label-emailverified': t('registration', 'Email Verified'),
+			'label-actions': t('registration', 'Actions'),
+			'label-approve': t('registration', 'Approve'),
+			'label-deny': t('registration', 'Deny'),
+			'label-delete': t('registration', 'Delete'),
 			'users': [
-				{'username': 'clubmate', 'email': 'clib@mate.me'},
+				{'username': 'clubmate', 'email': 'clib@mate.me', 'displayname': 'John Doe', 'email_validated': false},
 			],
 		}));
 		// TODO only append when count>0

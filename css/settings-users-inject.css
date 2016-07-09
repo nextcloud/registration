@@ -2,7 +2,7 @@ table#reglist > tbody > tr {
 	height: 39px;
 }
 
-.reg-approve, .reg-deny {
+.reg-approve, .reg-deny, .reg-delete {
 	padding-left: 25px;
 	background-position: 5px center;
 	padding: 3px 6px 3px 25px;
