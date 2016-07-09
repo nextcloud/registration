@@ -262,10 +262,25 @@ class RegisterController extends Controller {
 				}
 
 				// Try to log user in
-				$this->usersession->login($username, $password);
-				$this->usersession->createSessionToken($this->request, $userId, $username, $password);
+				if ( method_exists($this->usersession, 'createSessionToken') ) {
+					$this->usersession->login($username, $password);
+					$this->usersession->createSessionToken($this->request, $userId, $username, $password);
+					return new RedirectResponse($this->urlgenerator->linkToRoute('files.view.index'));
+				} elseif (OC_User::login($username, $password)) {
+					$this->cleanupLoginTokens($userId);
+					// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
+					$logintoken = $this->random->generate(32);
+					$this->config->setUserValue($userId, 'login_token', $logintoken, time());
+					OC_User::setMagicInCookie($userId, $logintoken);
+					OC_Util::redirectToDefaultPage();
 
-				return new RedirectResponse($this->urlgenerator->linkToRoute('files.view.index'));
+					// Render message in case redirect failed
+					return new TemplateResponse('registration', 'message', array('msg' =>
+						str_replace('{link}',
+							$this->urlgenerator->getAbsoluteURL('/'),
+							$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
+						)), 'guest');
+				}
 			}
 		}
 	}
