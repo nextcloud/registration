@@ -1,9 +1,9 @@
 <?php
 $TRANSLATIONS = array(
 "Register" => "Registar",
-"The email address you entered is not valid" => "O endereço de correio eletrónico introduzido não é válido",
-"A problem occurred sending email, please contact your administrator." => "Ocorrei um problema ao enviar a mensagem, por favor, contacte o seu administrador.",
-"There is already a pending registration with this email, a new verification email has been sent to the address." => "Já existe um registo pendente com este endereço de correio eletronico, foi enviado um novo email de verificação para este endereço.",
+"The email address you entered is not valid" => "O endereço de correio eletrónico  inserido não é válido.",
+"A problem occurred sending email, please contact your administrator." => "Ocorreu um problema ao enviar a mensagem, por favor, contacte o seu administrador.",
+"There is already a pending registration with this email, a new verification email has been sent to the address." => "Já existe um registo pendente com este e-mail, foi enviada uma nova mensagem de verificação para o endereço.",
 "A user has already taken this email, maybe you already have an account?" => "Já existe um utilizador com este e-mail, já poderá ter uma conta?",
 "You can <a href=\"{login}\">log in now</a>." => "Agora, pode <a href=\"{login}\">iniciar a sessão</a>.",
 "Verification email successfully sent." => "Mensagem de verificação enviada com sucesso.",

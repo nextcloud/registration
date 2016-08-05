@@ -5,7 +5,7 @@ OC.L10N.register(
     "The email address you entered is not valid" : "คุณป้อนอีเมลไม่ถูกต้อง",
     "A problem occurred sending email, please contact your administrator." : "เกิดปัญหาขณะกำลังส่งอีเมล กรุณาติดต่อผู้ดูแลระบบของคุณ",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "นี้อยู่ระหว่างดำเนินการลงทะเบียนด้วยอีเมล กรุณาไปตรวจสอบอีเมลของคุณเพื่อยืนยัน",
-    "A user has already taken this email, maybe you already have an account?" : "อีเมล์นี้มีคนใช้ไปแล้ว บางทีคุณอาจมีบัญชีอยู่แล้ว?",
+    "A user has already taken this email, maybe you already have an account?" : "อีเมลนี้มีคนใช้ไปแล้ว บางทีคุณอาจมีบัญชีอยู่แล้ว?",
     "You can <a href=\"{login}\">log in now</a>." : "คุณสามารถ <a href=\"{login}\">เข้าสู่ระบบในขณะนี้</a>",
     "Verification email successfully sent." : "ส่งอีเมลยืนยันเรียบร้อยแล้ว",
     "Invalid verification URL. No registration request with this verification URL is found." : "ตรวจสอบ URL ไม่ถูกต้องไม่มีคำขอการลงทะเบียน",
