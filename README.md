@@ -14,7 +14,9 @@ Flow:
 2. Backend database is MariaDB/MySQL
 
 # Install
-Place this app in **owncloud/apps/**
+1. Place this app in **owncloud/apps/**
+2. Enable "Registration" in /settings/apps
+3. Log out, and you should see "Register" under "Other login methods"
 
 # Features
 
