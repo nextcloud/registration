@@ -20,6 +20,8 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Προεπιλεγμένη ομάδα όπου ανήκουν όλοι οι εγγεγραμμένοι χρήστες",
     "None" : "Τίποτα",
     "Allowed mail address domains for registration" : "Επιτρεπόμενα email domains για εγγραφή",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Εισάγετε μια λίστα επιτρεπόμενων τομέων, διαχωρισμένη με ερωτηματικά. Παράδειγμα: owncloud.com;github.com",
+    "Registration is only allowed for the following domains:" : "Η εγγραφή επιτρέπεται μόνο για τους ακόλουθους τομείς:",
     "To create a new account on %s, just click the following link:" : "Για να δημιουργήσετε έναν νέο λογαριασμό στο %s, πατήστε στον παρακάτω σύνδεσμο:",
     "Welcome, you can create your account below." : "Καλωσήρθατε, μπορείτε να δημιουργήσετε το λογαριασμό σας παρακάτω.",
     "Username" : "Όνομα χρήστη",
@@ -27,6 +29,7 @@ OC.L10N.register(
     "Create account" : "Δημιουργία λογαριασμού",
     "Email" : "Ηλ. ταχυδρομείο",
     "Request verification link" : "Αίτηση συνδέσμου επιβεβαίωσης",
-    "Please re-enter a valid email address" : "Παρακαλώ εισάγετε ξανά μια έγκυρη διεύθυνση ηλ. ταχυδρομείου"
+    "Please re-enter a valid email address" : "Παρακαλώ εισάγετε ξανά μια έγκυρη διεύθυνση ηλ. ταχυδρομείου",
+    "You will receive an email with a verification link" : "Θα λάβετε ένα μήνυμα ηλ. ταχυδρομείου με το σύνδεσμο επιβεβαίωσης"
 },
 "nplurals=2; plural=(n != 1);");
