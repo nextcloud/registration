@@ -60,21 +60,25 @@ class SettingsController extends Controller {
 			$this->config->deleteAppValue($this->appName, 'registered_user_group');
 			return new DataResponse(array(
 				'data' => array(
-					'message' => (string) $this->l10n->t('Your settings have been updated.'),
+					'message' => (string) $this->l10n->t('Saved'),
 				),
+				'status' => 'success'
+				
 			));
 		} else if ( in_array($registered_user_group, $group_id_list) ) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
 			return new DataResponse(array(
 				'data' => array(
-					'message' => (string) $this->l10n->t('Your settings have been updated.'),
+					'message' => (string) $this->l10n->t('Saved'),
 				),
+				'status' => 'success'
 			));
 		} else {
 			return new DataResponse(array(
 				'data' => array(
 					'message' => (string) $this->l10n->t('No such group'),
 				),
+				'status' => 'error'
 			), Http::STATUS_NOT_FOUND);
 		}
 	}
