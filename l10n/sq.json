@@ -13,7 +13,6 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Llogaria juaj u krijua me sukses, tani mund të <a href=\"{link}\">bëni hyrjen</a>.",
     "Verify your %s registration request" : "Verifikoni kërkesën e regjistrimit tuaj %s",
     "A new user \"%s\" has created an account on %s" : "Një përdorues i ri \"%s\" ka krijuar një llogari te %s",
-    "Your settings have been updated." : "Rregullimet tuaja u përditësuan.",
     "No such group" : "S’ka grup të tillë",
     "Registration" : "Regjistrim",
     "Default group that all registered users belong" : "Grup parazgjedhje të cilit i përkasin krejt përdoruesit e regjistruar",

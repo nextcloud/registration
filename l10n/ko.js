@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "회원 가입이 완료되었으며 <a href=\"{link}\">로그인할 수 있습니다</a>.",
     "Verify your %s registration request" : "%s의 가입 요청을 승인해주세요",
     "A new user \"%s\" has created an account on %s" : "새로운 사용자 \"%s\"이(가) %s에 생성되었습니다.",
-    "Your settings have been updated." : "설정이 업데이트 되었습니다.",
     "No such group" : "그룹이 존재하지 않음",
     "Registration" : "등록",
     "Default group that all registered users belong" : "모든 등록 사용자가 속한 기본 그룹",

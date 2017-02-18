@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Er is met succes een account voor u gemaakt, u kunt <a href=\"{link}\">nu inloggen</a>.",
     "Verify your %s registration request" : "Controleer uw %s registratie verzoek",
     "A new user \"%s\" has created an account on %s" : "Een nieuwe gebruiker \"%s\" heeft een account gecreëerd op %s",
-    "Your settings have been updated." : "Uw instellingen zijn bijgewerkt",
     "No such group" : "Niet zo'n groep",
     "Registration" : "Registratie",
     "Default group that all registered users belong" : "Standaardgroep voor alle geregistreerde gebruikers",

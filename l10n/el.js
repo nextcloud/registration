@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία, μπορείτε να <a href=\"{link}\">συνδεθείτε τώρα</a>.",
     "Verify your %s registration request" : "Επιβεβαιώστε το αίτημα εγγραφής σας στο %s",
     "A new user \"%s\" has created an account on %s" : "Ένας νέος χρήστης \"%s\" δημιούργησε λογαριασμό στο %s",
-    "Your settings have been updated." : "Οι ρυθμίσεις σας έχουν ενημερωθεί.",
     "No such group" : "Δεν υπάρχει τέτοια ομάδα",
     "Registration" : "Εγγραφή",
     "Default group that all registered users belong" : "Προεπιλεγμένη ομάδα όπου ανήκουν όλοι οι εγγεγραμμένοι χρήστες",

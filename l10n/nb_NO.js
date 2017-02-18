@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Kontoen din er blitt opprettet. Du kan <a href=\"{link}\">logge inn nå</a>.",
     "Verify your %s registration request" : "Verifiser din forespørsel om %s-registrering",
     "A new user \"%s\" has created an account on %s" : "En ny bruker \"%s\" har opprettet en konto på %s",
-    "Your settings have been updated." : "Innstillingene dine ble oppdatert.",
     "No such group" : "Ingen slik gruppe",
     "Registration" : "Registrering",
     "Default group that all registered users belong" : "Standard gruppe som alle registrerte brukere er med i",

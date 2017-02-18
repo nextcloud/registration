@@ -13,7 +13,6 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "เราได้สร้างบัญชีของคุณเรียบร้อยแล้วคุณสามารถ <a href=\"{link}\">เข้าสู่ระบบได้ที่นี่</a>",
     "Verify your %s registration request" : "ตรวจสอบ %s ของคุณเพื่อร้องขอการลงทะเบียน",
     "A new user \"%s\" has created an account on %s" : "ผู้ใช้ใหม่ \"%s\" ได้สร้างบัญชีผู้ใช้บน %s",
-    "Your settings have been updated." : "อัพเดทการตั้งค่าเรียบร้อยแล้ว",
     "No such group" : "ไม่มีกลุ่มดังกล่าว",
     "Registration" : "การลงทะเบียน",
     "Default group that all registered users belong" : "ค่าเริ่มต้นของกลุ่มผู้ใช้ที่ลงทะเบียนเป็นสมาชิก",

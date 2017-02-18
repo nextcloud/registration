@@ -13,7 +13,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Vòstre compte es estat creat corrèctament, ara vos podètz <a href=\"{link}\">connectar</a>.",
     "Verify your %s registration request" : "Efectuatz la verificacion de vòstra demanda d'inscripcion %s",
     "A new user \"%s\" has created an account on %s" : "Un novèl utilizaire \"%s\" a creat un compte sus %s",
-    "Your settings have been updated." : "Vòstres paramètres son estats meses a jorn.",
     "No such group" : "Pas cap de grop correspondent",
     "Registration" : "Inscripcion",
     "Default group that all registered users belong" : "Grop per defaut que totes los utilizaires inscriches rejonhon",

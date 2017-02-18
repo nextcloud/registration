@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Din konto er blevet oprettet, og du kan <a href=\"{link}\">logge ind nu</a>.",
     "Verify your %s registration request" : "Verificér din %s forespørgsel om ownCloud-tilmelding",
     "A new user \"%s\" has created an account on %s" : "En ny bruger \"%s\" har oprettet en brugerkonto på %s",
-    "Your settings have been updated." : "Dine indstillinger er blevet opdateret.",
     "No such group" : "Gruppen findes ikke",
     "Registration" : "Tilmelding",
     "Default group that all registered users belong" : "Standardgruppen som alle tilmeldte brugere hører til",

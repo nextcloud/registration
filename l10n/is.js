@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Aðgangurinn þinn hefur verið búinn til, þú getur núna <a href=\"{link}\">skráð þig inn</a>.",
     "Verify your %s registration request" : "Sannreyndu skráningarbeiðni þína á %s",
     "A new user \"%s\" has created an account on %s" : "Nýr notandi \"%s\" hefur verið búinn til á %s",
-    "Your settings have been updated." : "Stillingarnar þínar voru uppfærðar.",
     "No such group" : "Enginn slíkur hópur",
     "Registration" : "Skráning",
     "Default group that all registered users belong" : "Sjálfgefinn hópur sem allir skráðir notendur tilheyra",

@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "החשבון שלך נוצר בהצלחה, ניתן <a href=\"{link}\">להתחבר עכשיו</a>.",
     "Verify your %s registration request" : "אימות %s בקשת רישום",
     "A new user \"%s\" has created an account on %s" : "משתמש חדש \"%s\" יצר חשבון ב- %s",
-    "Your settings have been updated." : "ההגדרות שלך עודכנו",
     "No such group" : "אין קבוצה כזו",
     "Registration" : "רישום",
     "Default group that all registered users belong" : "קבוצת ברירת מחדש שכל משתמש רשום משוייך",

@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "成功创建账户，您现在可以<a href=\"{link}\">登陆</a>。",
     "Verify your %s registration request" : "验证您的 %s 注册请求",
     "A new user \"%s\" has created an account on %s" : "新用户“%s”在 %s 创建了一个账户",
-    "Your settings have been updated." : "您的设置已更新。",
     "No such group" : "无此组",
     "Registration" : "注册",
     "Default group that all registered users belong" : "注册用户的默认群组",

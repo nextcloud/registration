@@ -13,7 +13,6 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Учетная запись успешно создана, теперь вы можете <a href=\"{link}\">войти на сайт</a>.",
     "Verify your %s registration request" : "Проверьте свой %s запрос регистрации",
     "A new user \"%s\" has created an account on %s" : "Новый пользователь \"%s\" создал учетную запись на %s",
-    "Your settings have been updated." : "Настройки обновлены.",
     "No such group" : "Такой группы не существует",
     "Registration" : "Регистрация",
     "Default group that all registered users belong" : "Группа по умолчанию для всех новых пользователей",

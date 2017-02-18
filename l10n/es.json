@@ -13,7 +13,6 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Su cuenta ha sido creada con éxito, puede <a href=\"{link}\">iniciar sesión ahora</a>.",
     "Verify your %s registration request" : "Verifique su solicitud de registro %s",
     "A new user \"%s\" has created an account on %s" : "Un nuevo usuario \"%s\" ha creado una cuenta en %s",
-    "Your settings have been updated." : "Sus ajustes han sido actualizados.",
     "No such group" : "No existe tal grupo",
     "Registration" : "Registro",
     "Default group that all registered users belong" : "Grupo predeterminado al cual pertenecen todos los usuarios registrados",

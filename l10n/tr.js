@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Hesabınız başarıyla oluşturuldu, artık <a href=\"{link}\">oturum açabilirsiniz</a>.",
     "Verify your %s registration request" : "%s, kayıt talebinizi doğrulayın",
     "A new user \"%s\" has created an account on %s" : "Yeni kullanıcı \"%s\", \"%s\" üzerinde hesap oluşturdu",
-    "Your settings have been updated." : "Ayarlarınız güncellendi.",
     "No such group" : "Böyle bir grup yok",
     "Registration" : "Kayıt",
     "Default group that all registered users belong" : "Tüm kaydedilen kullanıcıların ait olduğu öntanımlı grup",

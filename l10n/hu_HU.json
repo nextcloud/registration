@@ -11,7 +11,6 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A fiókod sikeresen elkészült, most már <a href=\"{login}\">bejelentkezhetsz itt</a>.",
     "Verify your %s registration request" : "Hitelesítsd a(z) %s regisztráció kérelmed",
     "A new user \"%s\" has created an account on %s" : "%s felhasználó létrehozva %s fiókkal.",
-    "Your settings have been updated." : "Beállításait sikeresen frissítettük.",
     "No such group" : "Nem létező csoport",
     "Registration" : "Regisztráció",
     "Default group that all registered users belong" : "Alapértelmezett csoport a regisztrált felhasználóknak",

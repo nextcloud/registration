@@ -15,7 +15,6 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "アカウントは無事作成されました。 こちらのリンクから<a href=\"{link}\">ログイン</a>してください。",
     "Verify your %s registration request" : "%s の登録リクエストを確認してください",
     "A new user \"%s\" has created an account on %s" : "新しいユーザー \"%s\" を アカウント名 \"%s\" として作成しました",
-    "Your settings have been updated." : "設定を更新しました。",
     "No such group" : "そのようなグループはありません",
     "Registration" : "登録",
     "Default group that all registered users belong" : "すべての登録ユーザーが属しているデフォルトのグループ",
