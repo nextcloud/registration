@@ -14,6 +14,7 @@ OC.L10N.register(
     "Failed to delete pending registration request" : "Неуспешно изтриване  на чакащата заявка за регистрация",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Вашият профил бе създаден успешно, вече може да се <a href=\"{link}\">впишете</a>.",
     "Verify your %s registration request" : "Потвърдете Вашата %s заявка за регистрация",
+    "Saved" : "Запазено",
     "No such group" : "Няма подобна група",
     "Registration" : "Регистрация",
     "Default group that all registered users belong" : "Група по подразбиране, към която пренадлежат всички регистрирани потребители",

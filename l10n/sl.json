@@ -13,6 +13,7 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Račun je uspešno ustvarjen, zato se lahko <a href=\"{link}\">prijavite</a>.",
     "Verify your %s registration request" : "Preverite zahtevo %s za prijavo.",
     "A new user \"%s\" has created an account on %s" : "Nov uporabnik \"%s\" je ustvaril račun na %s",
+    "Saved" : "Shranjeno",
     "No such group" : "Ni take skupine",
     "Registration" : "Vpis",
     "Default group that all registered users belong" : "Privzeta skupina, v kateri so vsi vpisani uporabniki",

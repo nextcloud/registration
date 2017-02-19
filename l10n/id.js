@@ -13,6 +13,7 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Akun Anda telah berhasil dibuat, Anda dapat <a href=\"{link}\">masuk sekarang</a>.",
     "Verify your %s registration request" : "Verifikasi permintaan pendaftaran %s Anda",
     "A new user \"%s\" has created an account on %s" : "Pengguna baru \"%s\" telah membuat sebuah akun di %s",
+    "Saved" : "Disimpan",
     "No such group" : "Tidak ada grup",
     "Registration" : "Pendaftaran",
     "Default group that all registered users belong" : "Grup baku bagi semua pengguna terdaftar",

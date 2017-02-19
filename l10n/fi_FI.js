@@ -15,6 +15,7 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Tilisi on luotu onnistuneesti. Voit <a href=\"{link}\">kirjautua sisään</a> nyt.",
     "Verify your %s registration request" : "Vahvista %s-rekisteröitymispyyntösi",
     "A new user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" on luonut tilin kohteessa %s",
+    "Saved" : "Tallennettu",
     "No such group" : "Ei kyseistä ryhmää",
     "Registration" : "Rekisteröityminen",
     "Default group that all registered users belong" : "Oletusryhmä, johon kaikki rekisteröityneet käyttäjät kuuluvat",

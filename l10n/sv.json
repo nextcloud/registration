@@ -13,6 +13,7 @@
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Ditt konto har skapats, nu kan du <a href=\"{link}\"> logga in </a>.",
     "Verify your %s registration request" : "Verifiera din %s registreringsbegäran",
     "A new user \"%s\" has created an account on %s" : "En ny användare \"%s\" har skapat ett konto på %s",
+    "Saved" : "Sparad",
     "No such group" : "Gruppen finns inte",
     "Registration" : "Registrering",
     "Default group that all registered users belong" : "Standardgruppen alla registrerade användare tillhör",

@@ -15,6 +15,7 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Creóse la cuenta. Pues <a href=\"{link}\">coneutate</a> agora.",
     "Verify your %s registration request" : "Verifica la to solicitú de rexistru %s",
     "A new user \"%s\" has created an account on %s" : "Un nuevu usuariu \"%s\" creó una cuenta en %s",
+    "Saved" : "Guardáu",
     "No such group" : "Nun esiste esi grupu",
     "Registration" : "Rexistru",
     "Default group that all registered users belong" : "Grupu predetermináu al que pertenecen tolos usuarios rexistraos",

@@ -15,6 +15,7 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Il tuo account è stato creato correttamente, ora puoi <a href=\"{link}\">effettuare l'accesso</a>.",
     "Verify your %s registration request" : "Verifica la tua richiesta di registrazione a %s",
     "A new user \"%s\" has created an account on %s" : "Un nuovo utente \"%s\" ha creato un account  su %s",
+    "Saved" : "Salvato",
     "No such group" : "Gruppo inesistente",
     "Registration" : "Registrazione",
     "Default group that all registered users belong" : "Il gruppo predefinito al quale appartengono tutti gli utenti registrati",

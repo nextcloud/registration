@@ -12,7 +12,7 @@ OC.L10N.register(
     "Unable to set user email: " : "Не можливо встановити користувачу адресу електронної пошти: ",
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Ваш обліковий запис успішно створено, тепер ви можете <a href=\"{link}\">зайти на сайт</a>.",
     "A new user \"%s\" has created an account on %s" : "Новий користувач \"%s\" зробив обліковий запис у %s",
-    "Your settings have been updated." : "Налаштування оновлені.",
+    "Saved" : "Збережено",
     "No such group" : "Немає такої групи",
     "Registration" : "Реєстрація",
     "Default group that all registered users belong" : "Група за замовчуванням, до якої належать всі зареєстровані користувачі",

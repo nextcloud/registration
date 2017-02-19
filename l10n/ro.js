@@ -15,6 +15,7 @@ OC.L10N.register(
     "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "Contul tău a fost creat cu succes, te poți <a href=\"{link}\">autentifica acum</a>.",
     "Verify your %s registration request" : "Verifică-ți cererea %s de înregistrare",
     "A new user \"%s\" has created an account on %s" : "Utilizatorul nou \"%s\" a creat un cont pe %s",
+    "Saved" : "Salvat",
     "No such group" : "Niciun astfel de grup",
     "Registration" : "Înregistrare",
     "Default group that all registered users belong" : "Grupul implicit de care toți utilizatorii înregistrați aparțin",
