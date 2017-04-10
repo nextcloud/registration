@@ -28,6 +28,7 @@ OC.L10N.register(
     "Username" : "Όνομα χρήστη",
     "Password" : "Κωδικός πρόσβασης",
     "Create account" : "Δημιουργία λογαριασμού",
+    "Thank you for registering, you should receive a verification link in a few minutes." : "Σας ευχαριστούμε για την εγγραφή, θα λάβετε σύνδεσμο επιβεβαίωσης σε λίγα λεπτά.",
     "Email" : "Ηλ. ταχυδρομείο",
     "Request verification link" : "Αίτηση συνδέσμου επιβεβαίωσης",
     "Please re-enter a valid email address" : "Παρακαλώ εισάγετε ξανά μια έγκυρη διεύθυνση ηλ. ταχυδρομείου",
