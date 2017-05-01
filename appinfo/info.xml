@@ -10,6 +10,7 @@
 	<website>https://github.com/pellaeon/registration</website>
 	<bugs>https://github.com/pellaeon/registration/issues</bugs>
 	<repository>https://github.com/pellaeon/registration</repository>
+	<screenshot>https://raw.githubusercontent.com/pellaeon/registration/master/appinfo/screenshot.png</screenshot>
 	<dependencies>
 		<database>sqlite</database>
 		<database>pgsql</database>
