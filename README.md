@@ -12,7 +12,8 @@ Flow:
 # Requirements
 1. ownCloud 9.1.0.7+
 2. Nextcloud 9+
-3. Backend database is MariaDB/MySQL
+
+Supports SQLite and MariaDB, PostgreSQL support is [enabled but not tested](https://github.com/pellaeon/registration/issues/24#issuecomment-294504028).
 
 # Install
 1. Place this app in `owncloud/apps/` or `nextcloud/apps`
