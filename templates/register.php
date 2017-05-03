@@ -1,5 +1,7 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
+if ( \OCP\Util::getVersion()[0] >= 12 )
+	\OCP\Util::addStyle('core', 'guest');
 if ($_['entered']): ?>
 	<?php if (empty($_['errormsg'])): ?>
 		<ul class="success">

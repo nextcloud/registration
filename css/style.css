@@ -1,6 +1,6 @@
-#email, #username, #password {
-	width: 223px !important;
-	padding-left: 36px !important;
+#body-login #email, #body-login #username, #body-login #password {
+	width: 223px;
+	padding-left: 36px;
 }
 #email-icon, #username-icon, #password-icon {
 	position: absolute;
@@ -9,9 +9,6 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 	filter: alpha(opacity=30);
 	opacity: .3;
-}
-#body-login input[type="email"] {
-	width: 249px;
 }
 #username-icon {
 	top: 17px;
