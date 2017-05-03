@@ -16,6 +16,7 @@ use \OCP\IRequest;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\AppFramework\Controller;
+use \OCP\Defaults;
 use \OCP\Util;
 use \OCA\Registration\Wrapper;
 use \OCP\IUserManager;
@@ -37,14 +38,14 @@ class RegisterController extends Controller {
 	private $usermanager;
 	private $config;
 	private $groupmanager;
-	/** @var \OC_Defaults */
+	/** @var \OCP\Defaults */
 	private $defaults;
 	private $random;
 	private $usersession;
 	protected $appName;
 
 	public function __construct($appName, IRequest $request, IMailer $mailer, IL10N $l10n, $urlgenerator,
-		$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, \OC_Defaults $defaults,
+		$pendingreg, IUserManager $usermanager, IConfig $config, IGroupManager $groupmanager, Defaults $defaults,
 		ISecureRandom $random, IUserSession $us){
 		$this->mailer = $mailer;
 		$this->l10n = $l10n;

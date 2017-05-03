@@ -92,7 +92,7 @@ class Application extends App {
 		});
 
 		$container->registerService('Defaults', function(SimpleContainer $c) {
-			return new \OC_Defaults;
+			return new \OCP\Defaults;
 		});
 	}
 
