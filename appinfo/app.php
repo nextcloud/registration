@@ -11,9 +11,9 @@
 
 namespace OCA\Registration\AppInfo;
 
-$app = new Application();
-$c = $app->getContainer();
+\OC_App::registerLogIn([
+	'name' => \OC::$server->getL10N('registration')->t('Register'),
+	'href' => \OC::$server->getURLGenerator()->linkToRoute('registration.register.askEmail')
+]);
 
-\OC_App::registerLogIn(array('name' => $c->query('L10N')->t('Register'), 'href' => $c->query('URLGenerator')->linkToRoute('registration.register.askEmail')));
-
-\OCP\App::registerAdmin($c->getAppName(), 'admin');
+\OCP\App::registerAdmin('registration', 'admin');

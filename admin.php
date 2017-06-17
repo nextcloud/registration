@@ -11,6 +11,7 @@
 
 namespace OCA\Registration\AppInfo;
 
-$app = new Application();
-$controller = $app->getContainer()->query('SettingsController');
+use OCA\Registration\Controller\SettingsController;
+
+$controller = \OC::$server->query(SettingsController::class);
 return $controller->displayPanel()->render();

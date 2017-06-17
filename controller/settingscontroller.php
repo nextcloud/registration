@@ -6,6 +6,7 @@
  * later. See the COPYING file.
  *
  * @author Pellaeon Lin <pellaeon@cnmc.tw>
+ * @author Julius Härtl <jus@bitgrid.net>
  * @copyright Pellaeon Lin 2015
  */
 
@@ -19,21 +20,24 @@ use \OCP\AppFramework\Controller;
 use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
-use \OCP\IUser;
 
 class SettingsController extends Controller {
 
+	/** @var IL10N */
 	private $l10n;
+	/** @var IConfig */
 	private $config;
+	/** @var IGroupManager */
 	private $groupmanager;
+	/** @var string */
 	protected $appName;
 
 	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager){
+		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
 		$this->config = $config;
 		$this->groupmanager = $groupmanager;
 		$this->appName = $appName;
-		parent::__construct($appName, $request);
 	}
 
 	
@@ -89,6 +93,7 @@ class SettingsController extends Controller {
 	 */
 	public function displayPanel() {
 		$groups = $this->groupmanager->search('');
+		$group_id_list = [];
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
