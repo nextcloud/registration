@@ -17,3 +17,6 @@ namespace OCA\Registration\AppInfo;
 ]);
 
 \OCP\App::registerAdmin('registration', 'admin');
+
+$app = new \OCP\AppFramework\App('registration');
+$app->getContainer()->registerCapability(\OCA\Registration\Capabilities::class);

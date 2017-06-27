@@ -23,6 +23,11 @@
 
 namespace OCA\Registration\Service;
 
+use OC\Authentication\Exceptions\InvalidTokenException;
+use OC\Authentication\Exceptions\PasswordlessTokenException;
+use OC\Authentication\Token\IProvider;
+use OC\Authentication\Token\IToken;
+use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use \OCP\AppFramework\Http\TemplateResponse;
@@ -30,22 +35,25 @@ use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\Defaults;
 use OCP\ILogger;
 use OCP\IRequest;
+use OCP\ISession;
 use OCP\IURLGenerator;
-use \OCP\Util;
+use OCP\Security\ICrypto;
+use OCP\Session\Exceptions\SessionNotAvailableException;
 use \OCP\IUserManager;
 use \OCP\IUserSession;
 use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
-use \OCP\Mail\IMailer;
 use \OCP\Security\ISecureRandom;
 use \OC_User;
 use \OC_Util;
 
 class RegistrationService {
 
-	/** @var IMailer */
-	private $mailer;
+	/** @var string */
+	private $appName;
+	/** @var MailService */
+	private $mailService;
 	/** @var IL10N */
 	private $l10n;
 	/** @var IURLGenerator */
@@ -64,17 +72,22 @@ class RegistrationService {
 	private $random;
 	/** @var IUserSession  */
 	private $usersession;
-	/** @var string */
-	private $appName;
 	/** @var IRequest */
 	private $request;
 	/** @var ILogger */
 	private $logger;
+	/** @var ISession */
+	private $session;
+	/** @var IProvider */
+	private $tokenProvider;
+	/** @var ICrypto */
+	private $crypto;
 
-	public function __construct($appName, IMailer $mailer, IL10N $l10n, IURLGenerator $urlGenerator,
+	public function __construct($appName, MailService $mailService, IL10N $l10n, IURLGenerator $urlGenerator,
 								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager, Defaults $defaults,
-								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger){
-		$this->mailer = $mailer;
+								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto){
+		$this->appName = $appName;
+		$this->mailService = $mailService;
 		$this->l10n = $l10n;
 		$this->urlGenerator = $urlGenerator;
 		$this->registrationMapper = $registrationMapper;
@@ -84,29 +97,60 @@ class RegistrationService {
 		$this->defaults = $defaults;
 		$this->random = $random;
 		$this->usersession = $us;
-		$this->appName = $appName;
 		$this->request = $request;
 		$this->logger = $logger;
+		$this->session = $session;
+		$this->tokenProvider = $tokenProvider;
+		$this->crypto = $crypto;
 	}
 
+	public function confirmEmail(Registration &$registration) {
+		$registration->setEmailConfirmed(true);
+		$this->registrationMapper->update($registration);
+	}
 
+	/**
+	 * @param Registration $registration
+	 */
+	public function generateNewToken(Registration &$registration) {
+		$this->registrationMapper->generateNewToken($registration);
+		$this->registrationMapper->update($registration);
+	}
+	/**
+	 * @param $email
+	 * @param string $username
+	 * @param string $password
+	 * @param string $displayname
+	 * @return Registration
+	 */
+	public function createRegistration($email, $username="", $password="", $displayname="") {
+		$registration = new Registration();
+		$registration->setEmail($email);
+		$registration->setUsername($username);
+		$registration->setDisplayname();
+		if($password !== "") {
+			$password = $this->crypto->encrypt($password);
+			$registration->setPassword($password);
+		}
+		$this->registrationMapper->generateNewToken($registration);
+		$this->registrationMapper->generateClientSecret($registration);
+		$this->registrationMapper->insert($registration);
+		return $registration;
+	}
+
+	/**
+	 * @param $email
+	 * @return Registration
+	 * @throws RegistrationException
+	 */
 	public function validateEmail($email) {
 
-		if ( !$this->mailer->validateMailAddress($email) ) {
-			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
-		}
+		$this->mailService->validateEmail($email);
 
+		// check for pending registrations
 		try {
-			$registration = $this->registrationMapper->find($email);
-		} catch (\Exception $e) {
-			$registration = null;
-		}
-		// check if email already tried to register
-		if ( $registration !== null) {
-			$this->registrationMapper->delete($registration);
-			$this->generateToken($email);
-			throw new RegistrationException($this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.'));
-		}
+			return $this->registrationMapper->find($email);
+		} catch (\Exception $e) {}
 
 		if ( $this->config->getUsersForUserValue('settings', 'email', $email) ) {
 			throw new RegistrationException(
@@ -115,32 +159,34 @@ class RegistrationService {
 			);
 		}
 
-		// allow only from specific email domain}
 		if (!$this->checkAllowedDomains($email)) {
-			$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-			$allowed_domains = explode(';', $allowed_domains);
-			return new TemplateResponse('registration', 'domains', [
-				'domains' => $allowed_domains
-			], 'guest');
+			throw new RegistrationException(
+				$this->l10n->t(
+					'Registration is only allowed for the following domains: ' .
+					$this->config->getAppValue($this->appName, 'allowed_domains', '')
+				)
+			);
 		}
-
-		$this->generateToken($email);
-
 		return null;
-
 	}
 
-	public function generateToken($email)  {
-		try {
-			$registration = $this->registrationMapper->find($email);
-			$this->registrationMapper->delete($registration);
-		} catch (\Exception $exception) {}
-		$registration = $this->registrationMapper->save($email);
+	/**
+	 * @param $displayname
+	 * @throws RegistrationException
+	 */
+	public function validateDisplayname($displayname) {
+		if($displayname === "") {
+			throw new RegistrationException($this->l10n->t('Please provide a valid display name.'));
+		}
+	}
 
-		try {
-			$this->sendValidationEmail($registration->getToken(), $email);
-		} catch (\Exception $e) {
-			throw new RegistrationException($this->l10n->t('A problem occurred sending email, please contact your administrator.'));
+	/**
+	 * @param $username
+	 * @throws RegistrationException
+	 */
+	public function validateUsername($username) {
+		if($username === "" || $this->userManager->get($username) !== null) {
+			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
 		}
 	}
 
@@ -169,6 +215,17 @@ class RegistrationService {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getAllowedDomains() {
+		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowed_domains = explode(';', $allowed_domains);
+		return $allowed_domains;
+	}
+
+	/**
+	 * Find registration entity for token
+	 *
 	 * @param $token
 	 * @return string
 	 * @throws RegistrationException
@@ -181,11 +238,25 @@ class RegistrationService {
 		}
 	}
 
+	/**
+	 * @param $registration
+	 * @param null $username
+	 * @param null $password
+	 * @return \OCP\IUser
+	 * @throws RegistrationException
+	 */
+	public function createAccount(Registration &$registration, $username = null, $password = null) {
+		if($password === null && $registration->getPassword() === null) {
+			$generatedPassword = $this->generateRandomDeviceToken();
+			$registration->setPassword($this->crypto->encrypt($generatedPassword));
+		}
 
-	public function createAccount($token, $username, $password) {
-		$email = $this->registrationMapper->findEmailByToken($token);
-		if ( $email === false ) {
-			throw new RegistrationException($this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'));
+		if ($username === null) {
+			$username = $registration->getUsername();
+		}
+
+		if($registration->getPassword() !== null) {
+			$password = $this->crypto->decrypt($registration->getPassword());
 		}
 
 		$user = $this->userManager->createUser($username, $password);
@@ -195,7 +266,7 @@ class RegistrationService {
 		$userId = $user->getUID();
 		// Set user email
 		try {
-			$this->config->setUserValue($userId, 'settings', 'email', $email);
+			$this->config->setUserValue($userId, 'settings', 'email', $registration->getEmail());
 		} catch (\Exception $e) {
 			throw new RegistrationException($this->l10n->t('Unable to set user email: ' . $e->getMessage()));
 		}
@@ -211,19 +282,98 @@ class RegistrationService {
 			}
 		}
 
-		// Delete pending reg request
-		$res = $this->registrationMapper->deleteByEmail($email);
-		if ($res === false) {
-			throw new RegistrationException($this->l10n->t('Failed to delete pending registration request'));
+		// Delete pending registration if no client secret is stored
+		if($registration->getClientSecret() === null) {
+			$res = $this->registrationMapper->delete($registration);
+			if ($res === false) {
+				throw new RegistrationException($this->l10n->t('Failed to delete pending registration request'));
+			}
 		}
 
-		$this->notifyAdmins($userId);
-
-		$this->loginUser($userId, $username, $password);
-
+		$this->mailService->notifyAdmins($userId);
+		return $user;
 	}
 
-	public function loginUser($userId, $username, $password) {
+	/**
+	 * @param $token
+	 * @return Registration
+	 */
+	public function getRegistrationForToken($token) {
+		return $this->registrationMapper->findByToken($token);
+	}
+
+	/**
+	 * @param Registration $registation
+	 * @return null|\OCP\IUser
+	 */
+	public function getUserAccount(Registration $registation) {
+		$user = $this->userManager->get($registation->getUsername());
+		return $user;
+	}
+
+	/**
+	 * @param Registration $registration
+	 */
+	public function deleteRegistration(Registration $registration) {
+		$this->registrationMapper->delete($registration);
+	}
+
+	/**
+	 * Return a 25 digit device password
+	 *
+	 * Example: AbCdE-fGhIj-KlMnO-pQrSt-12345
+	 *
+	 * @return string
+	 */
+	private function generateRandomDeviceToken() {
+		$groups = [];
+		for ($i = 0; $i < 5; $i++) {
+			$groups[] = $this->random->generate(5, ISecureRandom::CHAR_HUMAN_READABLE);
+		}
+		return implode('-', $groups);
+	}
+
+	/**
+	 * @param $uid
+	 * @return string
+	 * @throws RegistrationException
+	 */
+	public function generateAppPassword($uid) {
+		$name = $this->l10n->t('Registration app auto setup');
+		try {
+			$sessionId = $this->session->getId();
+		} catch (SessionNotAvailableException $ex) {
+			throw new RegistrationException('Failed to generate an app token.');
+		}
+
+		try {
+			$sessionToken = $this->tokenProvider->getToken($sessionId);
+			$loginName = $sessionToken->getLoginName();
+			try {
+				$password = $this->tokenProvider->getPassword($sessionToken, $sessionId);
+			} catch (PasswordlessTokenException $ex) {
+				$password = null;
+			}
+		} catch (InvalidTokenException $ex) {
+			throw new RegistrationException('Failed to generate an app token.');
+		}
+
+		$token = $this->generateRandomDeviceToken();
+		$this->tokenProvider->generateToken($token, $uid, $loginName, $password, $name, IToken::PERMANENT_TOKEN);
+		return $token;
+	}
+
+	/**
+	 * @param $userId
+	 * @param $username
+	 * @param $password
+	 * @param $decrypt
+	 * @return RedirectResponse|TemplateResponse
+	 */
+	public function loginUser($userId, $username, $password, $decrypt = false) {
+		if ($decrypt) {
+			$password = $this->crypto->decrypt($password);
+		}
 		if ( method_exists($this->usersession, 'createSessionToken') ) {
 			$this->usersession->login($username, $password);
 			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
@@ -244,83 +394,6 @@ class RegistrationService {
 
 	}
 
-	public function notifyAdmins($userId) {
-		// Notify admin
-		$admin_users = $this->groupManager->get('admin')->getUsers();
-		$to_arr = array();
-		foreach ( $admin_users as $au ) {
-			$au_email = $this->config->getUserValue($au->getUID(), 'settings', 'email');
-			if ( $au_email !== '' ) {
-				$to_arr[$au_email] = $au->getDisplayName();
-			}
-		}
-		try {
-			$this->sendNewUserNotifEmail($to_arr, $userId);
-		} catch (\Exception $e) {
-			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
-		}
-	}
-
-	/**
-	 * Sends validation email
-	 * @param string $token
-	 * @param string $to
-	 * @throws \Exception
-	 */
-	private function sendValidationEmail($token, $to) {
-		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', array('token' => $token));
-		$link = $this->urlGenerator->getAbsoluteURL($link);
-		$template_var = [
-			'link' => $link,
-			'sitename' => $this->defaults->getName()
-		];
-		$html_template = new TemplateResponse('registration', 'email.validate_html', $template_var, 'blank');
-		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.validate_plaintext', $template_var, 'blank');
-		$plaintext_part = $plaintext_template->render();
-		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
-
-		$from = Util::getDefaultEmailAddress('register');
-		$message = $this->mailer->createMessage();
-		$message->setFrom([$from => $this->defaults->getName()]);
-		$message->setTo([$to]);
-		$message->setSubject($subject);
-		$message->setPlainBody($plaintext_part);
-		$message->setHtmlBody($html_part);
-		$failed_recipients = $this->mailer->send($message);
-		if ( !empty($failed_recipients) )
-			throw new RegistrationException('Failed recipients: '.print_r($failed_recipients, true));
-	}
-
-	/**
-	 * Sends new user notification email to admin
-	 * @param array $to
-	 * @param string $username the new user
-	 * @throws \Exception
-	 */
-	private function sendNewUserNotifEmail(array $to, $username) {
-		$template_var = [
-			'user' => $username,
-			'sitename' => $this->defaults->getName()
-		];
-		$html_template = new TemplateResponse('registration', 'email.newuser_html', $template_var, 'blank');
-		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.newuser_plaintext', $template_var, 'blank');
-		$plaintext_part = $plaintext_template->render();
-		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
-
-		$from = Util::getDefaultEmailAddress('register');
-		$message = $this->mailer->createMessage();
-		$message->setFrom([$from => $this->defaults->getName()]);
-		$message->setTo($to);
-		$message->setSubject($subject);
-		$message->setPlainBody($plaintext_part);
-		$message->setHtmlBody($html_part);
-		$failed_recipients = $this->mailer->send($message);
-		if ( !empty($failed_recipients) )
-			throw new RegistrationException('Failed recipients: '.print_r($failed_recipients, true));
-	}
-
 	/**
 	 * Replicates OC::cleanupLoginTokens() since it's protected
 	 * @param string $userId
@@ -336,7 +409,4 @@ class RegistrationService {
 		}
 	}
 
-	public function getRegistrationForToken($token) {
-		return $this->registrationMapper->findByToken($token);
-	}
 }

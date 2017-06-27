@@ -23,6 +23,7 @@
 
 namespace OCA\Registration\Db;
 
+use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\Mapper;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
@@ -37,33 +38,46 @@ class RegistrationMapper extends Mapper {
 		$this->random = $random;
 	}
 
+	/**
+	 * @param $token
+	 * @return Registration|Entity
+	 */
 	public function findByToken($token) {
 		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `token` = ? ', [$token]);
 	}
 
-	public function findEmailByToken($token) {
-		$entity = $this->findByToken($token);
-		return $entity->getEmail();
-	}
-
+	/**
+	 * @param $email
+	 * @return Registration|Entity
+	 */
 	public function find($email) {
-		$sql = 'SELECT `email` FROM `*PREFIX*registration` WHERE `email` = ? ';
+		$sql = 'SELECT * FROM `*PREFIX*registration` WHERE `email` = ? ';
 		return $this->findEntity($sql, [$email]);
 	}
 
-	public function deleteByEmail($email) {
-		$entity = $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `email` = ?', [$email]);
-		return $this->delete($entity);
+	/**
+	 * @param Entity $entity
+	 * @return Entity
+	 */
+	public function insert(Entity $entity) {
+		$entity->setRequested(date('Y-m-d H:i:s'));
+		return parent::insert($entity);
 	}
 
-	public function save($email) {
+	/**
+	 * @param Registration $registration
+	 */
+	public function generateNewToken(Registration &$registration) {
 		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_DIGITS);
-		$registration = new Registration();
-		$registration->setEmail($email);
 		$registration->setToken($token);
-		$registration->setRequested(date('Y-m-d H:i:s'));
-		return $this->insert($registration);
+	}
 
+	/**
+	 * @param Registration $registration
+	 */
+	public function generateClientSecret(Registration &$registration) {
+		$token = $this->random->generate(32, ISecureRandom::CHAR_HUMAN_READABLE);
+		$registration->setClientSecret($token);
 	}
 
 }

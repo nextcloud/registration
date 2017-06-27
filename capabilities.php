@@ -21,27 +21,30 @@
  *
  */
 
-namespace OCA\Registration\Db;
+namespace OCA\Registration;
 
-use OCP\AppFramework\Db\Entity;
+use OCP\Capabilities\ICapability;
+use OCP\IURLGenerator;
 
-class Registration extends Entity {
+class Capabilities implements ICapability {
 
-	const STATUS_FINISHED = 0;
-	const STATUS_PENDING = 1;
+	/** @var IURLGenerator */
+	private $urlGenerator;
 
-	public $id;
-	protected $email;
-	protected $username;
-	protected $displayname;
-	protected $password;
-	protected $token;
-	protected $requested;
-	protected $emailConfirmed;
-	protected $clientSecret;
+	public function __construct(IURLGenerator $urlGenerator) {
+		$this->urlGenerator = $urlGenerator;
+	}
 
-	public function __construct() {
-		$this->addType('emailConfirmed', 'boolean');
+	public function getCapabilities() {
+		return [
+			'registration' =>
+			[
+				'enabled' => true,
+				'apiRoot' => $this->urlGenerator->linkTo(
+					'', 'ocs/v1.php/apps/registration/api/v1/'),
+				'apiLevel' => 'v1'
+			]
+		];
 	}
 
 }
