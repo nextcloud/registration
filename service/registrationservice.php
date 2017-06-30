@@ -310,6 +310,14 @@ class RegistrationService {
 	}
 
 	/**
+	 * @param $secret
+	 * @return Registration
+	 */
+	public function getRegistrationForSecret($secret) {
+		return $this->registrationMapper->findBySecret($secret);
+	}
+
+	/**
 	 * @param Registration $registation
 	 * @return null|\OCP\IUser
 	 */

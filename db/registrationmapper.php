@@ -46,6 +46,11 @@ class RegistrationMapper extends Mapper {
 		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `token` = ? ', [$token]);
 	}
 
+	public function findBySecret($secret) {
+		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `client_secret` = ? ', [$secret]);
+
+	}
+
 	/**
 	 * @param $email
 	 * @return Registration|Entity

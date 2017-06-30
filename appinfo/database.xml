@@ -42,10 +42,12 @@
 				<name>token</name>
 				<type>text</type>
 				<notnull>true</notnull>
+				<unique>true</unique>
 			</field>
 			<field>
 				<name>client_secret</name>
 				<type>text</type>
+				<unique>true</unique>
 			</field>
 			<field>
 				<name>requested</name>

@@ -49,8 +49,8 @@ class ApiController extends OCSController {
 	/** @var Defaults */
 	private $defaults;
 
-	const OCS_STATUS_PENDING = 101;
-	const OCS_STATUS_RESENT = 102;
+	const OCS_STATUS_PENDING = 403;
+	const OCS_STATUS_RESENT = 403;
 
 	public function __construct($appName,
 								IRequest $request,
@@ -95,18 +95,19 @@ class ApiController extends OCSController {
 	 * @PublicPage
 	 * @AnonRateThrottle(limit=10, period=1)
 	 *
-	 * @param string $registrationToken
 	 * @param string $clientSecret
 	 * @throws OCSException
 	 * @return DataResponse
 	 */
-	public function status($registrationToken, $clientSecret=null) {
-		$data = [];
+	public function status($clientSecret) {
 		try {
 			/** @var Registration $registration */
-			$registration = $this->registrationService->getRegistrationForToken($registrationToken);
+			$registration = $this->registrationService->getRegistrationForSecret($clientSecret);
 			if(!$registration->getEmailConfirmed()) {
-				throw new OCSException($this->l10n->t('Your registration is pending. Please confirm your email address.'), self::OCS_STATUS_PENDING);
+				throw new OCSException(
+					$this->l10n->t('Your registration is pending. Please confirm your email address.'),
+					self::OCS_STATUS_PENDING
+				);
 			} else {
 				// create account if email confirmed and not already created
 				$user = $this->registrationService->getUserAccount($registration);
@@ -115,16 +116,13 @@ class ApiController extends OCSController {
 				}
 				$this->registrationService->loginUser($user->getUID(), $registration->getUsername(), $registration->getPassword(), true);
 				$appPassword = $this->registrationService->generateAppPassword($user->getUID());
-				if ($clientSecret === $registration->getClientSecret()) {
-					$data = [
-						'status' => Registration::STATUS_FINISHED,
-						'appPassword' => $appPassword,
-						'cloudUrl' => $this->defaults->getBaseUrl()
-					];
-					$this->registrationService->deleteRegistration($registration);
-				}
+				$data = [
+					'appPassword' => $appPassword,
+					'cloudUrl' => $this->defaults->getBaseUrl()
+				];
+				$this->registrationService->deleteRegistration($registration);
+				return new DataResponse($data, Http::STATUS_OK);
 			}
-			return new DataResponse($data, Http::STATUS_OK);
 		} catch (DoesNotExistException $e) {
 			throw new OCSNotFoundException('No pending registration.');
 		}
@@ -158,7 +156,6 @@ class ApiController extends OCSController {
 			}
 
 			$data['message'] = $this->l10n->t('Your registration is pending. Please confirm your email address.');
-			$data['token'] = $registration->getToken();
 			$data['status'] = Registration::STATUS_PENDING;
 			if($secret !== null) {
 				$data['secret'] = $secret;
