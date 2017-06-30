@@ -1,8 +1,10 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
+ * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -61,12 +63,21 @@ class MailService {
 		$this->logger = $logger;
 	}
 
+	/**
+	 * @param string $email
+	 * @throws RegistrationException
+	 */
 	public function validateEmail($email) {
 		if ( !$this->mailer->validateMailAddress($email) ) {
 			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
 		}
 	}
 
+	/**
+	 * @param Registration $registration
+	 * @return bool
+	 * @throws RegistrationException
+	 */
 	public function sendTokenByMail(Registration $registration) {
 		return true;
 		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', array('token' => $registration->getToken()));
@@ -94,6 +105,9 @@ class MailService {
 		}
 	}
 
+	/**
+	 * @param string $userId
+	 */
 	public function notifyAdmins($userId) {
 		// Notify admin
 		$admin_users = $this->groupManager->get('admin')->getUsers();

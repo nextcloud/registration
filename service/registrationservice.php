@@ -1,8 +1,12 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
+ * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+ * @copyright Copyright (c) 2017 Lukas Reschke <lukas@statuscode.ch>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+ * @author Lukas Reschke <lukas@statuscode.ch>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -104,6 +108,9 @@ class RegistrationService {
 		$this->crypto = $crypto;
 	}
 
+	/**
+	 * @param Registration $registration
+	 */
 	public function confirmEmail(Registration &$registration) {
 		$registration->setEmailConfirmed(true);
 		$this->registrationMapper->update($registration);
@@ -117,7 +124,7 @@ class RegistrationService {
 		$this->registrationMapper->update($registration);
 	}
 	/**
-	 * @param $email
+	 * @param string $email
 	 * @param string $username
 	 * @param string $password
 	 * @param string $displayname
@@ -139,7 +146,7 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $email
+	 * @param string $email
 	 * @return Registration
 	 * @throws RegistrationException
 	 */
@@ -171,7 +178,7 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $displayname
+	 * @param string $displayname
 	 * @throws RegistrationException
 	 */
 	public function validateDisplayname($displayname) {
@@ -181,7 +188,7 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $username
+	 * @param string $username
 	 * @throws RegistrationException
 	 */
 	public function validateUsername($username) {
@@ -193,7 +200,7 @@ class RegistrationService {
 	/**
 	 * check if email domain is allowed
 	 *
-	 * @param $email
+	 * @param string $email
 	 * @return bool
 	 */
 	public function checkAllowedDomains($email) {
@@ -226,7 +233,7 @@ class RegistrationService {
 	/**
 	 * Find registration entity for token
 	 *
-	 * @param $token
+	 * @param string $token
 	 * @return string
 	 * @throws RegistrationException
 	 */
@@ -240,8 +247,8 @@ class RegistrationService {
 
 	/**
 	 * @param $registration
-	 * @param null $username
-	 * @param null $password
+	 * @param string $username
+	 * @param string $password
 	 * @return \OCP\IUser
 	 * @throws RegistrationException
 	 */
@@ -334,7 +341,7 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $uid
+	 * @param string $uid
 	 * @return string
 	 * @throws RegistrationException
 	 */

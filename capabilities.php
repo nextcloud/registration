@@ -41,7 +41,7 @@ class Capabilities implements ICapability {
 			[
 				'enabled' => true,
 				'apiRoot' => $this->urlGenerator->linkTo(
-					'', 'ocs/v1.php/apps/registration/api/v1/'),
+					'', 'ocs/v2.php/apps/registration/api/v1/'),
 				'apiLevel' => 'v1'
 			]
 		];

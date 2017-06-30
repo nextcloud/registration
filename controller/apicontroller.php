@@ -49,16 +49,16 @@ class ApiController extends OCSController {
 	/** @var Defaults */
 	private $defaults;
 
+	const OCS_STATUS_PENDING = 101;
+	const OCS_STATUS_RESENT = 102;
+
 	public function __construct($appName,
 								IRequest $request,
-								$corsMethods = 'PUT, POST, GET, DELETE, PATCH',
-								$corsAllowedHeaders = 'Authorization, Content-Type, Accept',
-								$corsMaxAge = 1728000,
 								RegistrationService $registrationService,
 								MailService $mailService,
 								IL10N $l10n,
 								Defaults $defaults) {
-		parent::__construct($appName, $request, $corsMethods, $corsAllowedHeaders, $corsMaxAge);
+		parent::__construct($appName, $request);
 		$this->registrationService = $registrationService;
 		$this->mailService = $mailService;
 		$this->l10n = $l10n;
@@ -69,9 +69,9 @@ class ApiController extends OCSController {
 	 * @PublicPage
 	 * @AnonRateThrottle(limit=5, period=1)
 	 *
-	 * @param $username
-	 * @param $displayname
-	 * @param $email
+	 * @param string $username
+	 * @param string $displayname
+	 * @param string $email
 	 * @throws OCSException
 	 * @return DataResponse
 	 */
@@ -93,9 +93,10 @@ class ApiController extends OCSController {
 
 	/**
 	 * @PublicPage
+	 * @AnonRateThrottle(limit=10, period=1)
 	 *
-	 * @param $registrationToken
-	 * @param $clientSecret
+	 * @param string $registrationToken
+	 * @param string $clientSecret
 	 * @throws OCSException
 	 * @return DataResponse
 	 */
@@ -105,10 +106,7 @@ class ApiController extends OCSController {
 			/** @var Registration $registration */
 			$registration = $this->registrationService->getRegistrationForToken($registrationToken);
 			if(!$registration->getEmailConfirmed()) {
-				$data = [
-					'status' => Registration::STATUS_PENDING,
-					'message' => $this->l10n->t('Your registration is pending. Please confirm your email address.')
-				];
+				throw new OCSException($this->l10n->t('Your registration is pending. Please confirm your email address.'), self::OCS_STATUS_PENDING);
 			} else {
 				// create account if email confirmed and not already created
 				$user = $this->registrationService->getUserAccount($registration);
@@ -135,10 +133,10 @@ class ApiController extends OCSController {
 	/**
 	 * @PublicPage
 	 *
-	 * @param $username
-	 * @param $displayname
-	 * @param $email
-	 * @param $password
+	 * @param string $username
+	 * @param string $displayname
+	 * @param string $email
+	 * @param string $password
 	 * @throws OCSException
 	 * @return DataResponse
 	 */
@@ -156,7 +154,7 @@ class ApiController extends OCSController {
 			} else {
 				$this->registrationService->generateNewToken($registration);
 				$this->mailService->sendTokenByMail($registration);
-				throw new RegistrationException($this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.'));
+				throw new OCSException($this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.'), self::OCS_STATUS_RESENT);
 			}
 
 			$data['message'] = $this->l10n->t('Your registration is pending. Please confirm your email address.');

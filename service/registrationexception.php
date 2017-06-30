@@ -27,16 +27,22 @@ class RegistrationException extends \Exception {
 
 	protected $hint;
 
+	/**
+	 * RegistrationException constructor.
+	 *
+	 * @param string $message
+	 * @param string $hint
+	 */
 	public function __construct($message, $hint = "") {
 		parent::__construct($message);
-		$this->setHint($hint);
-	}
-
-	public function setHint($hint) {
 		$this->hint = $hint;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHint() {
 		return $this->hint;
 	}
+
 }
