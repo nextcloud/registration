@@ -12,7 +12,7 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "Não é possível criar o utilizador, existem problemas com a interface do utilizador.",
     "Unable to set user email: " : "Não é possível definir o e-mail do utilizador: ",
     "Failed to delete pending registration request" : "Não foi possível eliminar o pedido de registo pendente",
-    "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A sua conta foi criada com sucesso, pode <a href=\"{link}\">iniciar a sessão </a> agora.",
+    "Your account has been successfully created, you can <a href=\"{link}\">log in now</a>." : "A sua conta foi criada com sucesso. Pode <a href=\"{link}\">iniciar a sessão </a> agora.",
     "Verify your %s registration request" : "Verifique o seu pedido de registo %s",
     "A new user \"%s\" has created an account on %s" : "Um novo utilizador \"%s\" criou uma conta em %s",
     "Saved" : "Guardado",
