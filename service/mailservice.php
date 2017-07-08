@@ -79,7 +79,6 @@ class MailService {
 	 * @throws RegistrationException
 	 */
 	public function sendTokenByMail(Registration $registration) {
-		return true;
 		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', array('token' => $registration->getToken()));
 		$link = $this->urlGenerator->getAbsoluteURL($link);
 		$template_var = [

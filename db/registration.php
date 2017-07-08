@@ -27,9 +27,6 @@ use OCP\AppFramework\Db\Entity;
 
 class Registration extends Entity {
 
-	const STATUS_FINISHED = 0;
-	const STATUS_PENDING = 1;
-
 	public $id;
 	protected $email;
 	protected $username;

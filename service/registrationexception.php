@@ -32,9 +32,10 @@ class RegistrationException extends \Exception {
 	 *
 	 * @param string $message
 	 * @param string $hint
+	 * @param int $code
 	 */
-	public function __construct($message, $hint = "") {
-		parent::__construct($message);
+	public function __construct($message, $hint = "", $code = 400) {
+		parent::__construct($message, $code);
 		$this->hint = $hint;
 	}
 

@@ -241,7 +241,7 @@ class RegistrationService {
 		try {
 			return $this->registrationMapper->findByToken($token);
 		} catch (DoesNotExistException $exception) {
-			throw new RegistrationException($this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'));
+			throw new RegistrationException($this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.', 404));
 		}
 	}
 
