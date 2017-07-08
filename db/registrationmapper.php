@@ -23,6 +23,7 @@
 
 namespace OCA\Registration\Db;
 
+use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\Mapper;
 use OCP\IDBConnection;
@@ -48,7 +49,18 @@ class RegistrationMapper extends Mapper {
 
 	public function findBySecret($secret) {
 		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `client_secret` = ? ', [$secret]);
+	}
 
+	public function usernameIsPending($username) {
+		try {
+			$entity = $this->findEntity(
+				'SELECT id FROM `*PREFIX*registration` WHERE `username` = ? ',
+				[$username]
+			);
+		} catch (DoesNotExistException $e) {
+			return false;
+		}
+		return true;
 	}
 
 	/**

@@ -192,8 +192,12 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateUsername($username) {
-		if($username === "" || $this->userManager->get($username) !== null) {
+		if($username === "") {
 			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
+		}
+
+		if($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {
+			throw new RegistrationException($this->l10n->t('The username you have chosen already exists.'));
 		}
 	}
 
