@@ -236,6 +236,12 @@ class RegisterController extends Controller {
 					}
 				}
 
+				// Disable user if admin approval is required
+				$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+				if( $admin_approval_required == "yes" ) {
+					$user->setEnabled(false);
+				}
+
 				// Delete pending reg request
 				$res = $this->pendingreg->delete($email);
 				if ( $res === false ) {
@@ -262,6 +268,13 @@ class RegisterController extends Controller {
 					\OCP\Util::writeLog('registration', 'Sending admin notification email failed: '. $e->getMessage, \OCP\Util::ERROR);
 				}
 
+				if( $admin_approval_required == "yes" ) {
+					return new TemplateResponse('registration', 'message', array('msg' =>
+							"Your account has been successfully created, but it still needs approval from an administrator."
+						), 'guest');
+				}
+				else
+				{
 				// Try to log user in
 				if ( method_exists($this->usersession, 'createSessionToken') ) {
 					$this->usersession->login($username, $password);
@@ -281,6 +294,7 @@ class RegisterController extends Controller {
 							$this->urlgenerator->getAbsoluteURL('/'),
 							$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
 						)), 'guest');
+				}
 				}
 			}
 		}
@@ -330,9 +344,14 @@ class RegisterController extends Controller {
 			'user' => $username,
 			'sitename' => $this->defaults->getName()
 		];
-		$html_template = new TemplateResponse('registration', 'email.newuser_html', $template_var, 'blank');
+
+		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+
+		$html_template_file = $admin_approval_required == "yes" ? 'email.newuser_inactive_html' : 'email.newuser_html';
+		$plaintext_template_file = $admin_approval_required == "yes" ? 'email.newuser_inactive_plaintext' : 'email.newuser_plaintext';
+		$html_template = new TemplateResponse('registration', $html_template_file, $template_var, 'blank');
 		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.newuser_plaintext', $template_var, 'blank');
+		$plaintext_template = new TemplateResponse('registration', $plaintext_template_file, $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
 		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
 
