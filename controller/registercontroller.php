@@ -178,107 +178,107 @@ class RegisterController extends Controller {
 	 */
 	public function createAccount($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
-		if ($email === false) {
+		if (!$email) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
 					'hint' => '',
 				)),
 			), 'error');
-		} elseif ($email) {
-			$username = $this->request->getParam('username');
-			$password = $this->request->getParam('password');
+		}
+
+		$username = $this->request->getParam('username');
+		$password = $this->request->getParam('password');
+		try {
+			$user = $this->usermanager->createUser($username, $password);
+		} catch (\Exception $e) {
+			return new TemplateResponse('registration', 'form',
+				array('email' => $email,
+					'entered_data' => array('username' => $username),
+					'errormsgs' => array($e->getMessage()),
+					'token' => $token), 'guest');
+		}
+		if ($user === false) {
+			return new TemplateResponse('', 'error', array(
+				'errors' => array(array(
+					'error' => $this->l10n->t('Unable to create user, there are problems with the user backend.'),
+					'hint' => '',
+				)),
+			), 'error');
+		} else {
+			$userId = $user->getUID();
+			// Set user email
 			try {
-				$user = $this->usermanager->createUser($username, $password);
+				$this->config->setUserValue($userId, 'settings', 'email', $email);
 			} catch (\Exception $e) {
-				return new TemplateResponse('registration', 'form',
-					array('email' => $email,
-						'entered_data' => array('username' => $username),
-						'errormsgs' => array($e->getMessage()),
-						'token' => $token), 'guest');
-			}
-			if ($user === false) {
 				return new TemplateResponse('', 'error', array(
 					'errors' => array(array(
-						'error' => $this->l10n->t('Unable to create user, there are problems with the user backend.'),
+						'error' => $this->l10n->t('Unable to set user email: ' . $e->getMessage()),
 						'hint' => '',
 					)),
 				), 'error');
-			} else {
-				$userId = $user->getUID();
-				// Set user email
+			}
+
+			// Add user to group
+			$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+			if ($registered_user_group !== 'none') {
 				try {
-					$this->config->setUserValue($userId, 'settings', 'email', $email);
+					$group = $this->groupmanager->get($registered_user_group);
+					$group->addUser($user);
 				} catch (\Exception $e) {
 					return new TemplateResponse('', 'error', array(
 						'errors' => array(array(
-							'error' => $this->l10n->t('Unable to set user email: ' . $e->getMessage()),
-							'hint' => '',
+							'error' => $e->message,
 						)),
 					), 'error');
 				}
+			}
 
-				// Add user to group
-				$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
-				if ($registered_user_group !== 'none') {
-					try {
-						$group = $this->groupmanager->get($registered_user_group);
-						$group->addUser($user);
-					} catch (\Exception $e) {
-						return new TemplateResponse('', 'error', array(
-							'errors' => array(array(
-								'error' => $e->message,
-							)),
-						), 'error');
-					}
-				}
+			// Delete pending reg request
+			$res = $this->pendingreg->delete($email);
+			if ($res === false) {
+				return new TemplateResponse('', 'error', array(
+					'errors' => array(array(
+						'error' => $this->l10n->t('Failed to delete pending registration request'),
+						'hint' => '',
+					)),
+				), 'error');
+			}
 
-				// Delete pending reg request
-				$res = $this->pendingreg->delete($email);
-				if ($res === false) {
-					return new TemplateResponse('', 'error', array(
-						'errors' => array(array(
-							'error' => $this->l10n->t('Failed to delete pending registration request'),
-							'hint' => '',
-						)),
-					), 'error');
+			// Notify admin
+			$admin_users = $this->groupmanager->get('admin')->getUsers();
+			$to_arr = array();
+			foreach ($admin_users as $au) {
+				$au_email = $this->config->getUserValue($au->getUID(), 'settings', 'email');
+				if ($au_email !== '') {
+					$to_arr[$au_email] = $au->getDisplayName();
 				}
+			}
+			try {
+				$this->sendNewUserNotifEmail($to_arr, $userId);
+			} catch (\Exception $e) {
+				\OCP\Util::writeLog('registration', 'Sending admin notification email failed: ' . $e->getMessage, \OCP\Util::ERROR);
+			}
 
-				// Notify admin
-				$admin_users = $this->groupmanager->get('admin')->getUsers();
-				$to_arr = array();
-				foreach ($admin_users as $au) {
-					$au_email = $this->config->getUserValue($au->getUID(), 'settings', 'email');
-					if ($au_email !== '') {
-						$to_arr[$au_email] = $au->getDisplayName();
-					}
-				}
-				try {
-					$this->sendNewUserNotifEmail($to_arr, $userId);
-				} catch (\Exception $e) {
-					\OCP\Util::writeLog('registration', 'Sending admin notification email failed: ' . $e->getMessage, \OCP\Util::ERROR);
-				}
+			// Try to log user in
+			if (method_exists($this->usersession, 'createSessionToken')) {
+				$this->usersession->login($username, $password);
+				$this->usersession->createSessionToken($this->request, $userId, $username, $password);
+				return new RedirectResponse($this->urlgenerator->linkToRoute('files.view.index'));
+			} elseif (OC_User::login($username, $password)) {
+				$this->cleanupLoginTokens($userId);
+				// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
+				$logintoken = $this->random->generate(32);
+				$this->config->setUserValue($userId, 'login_token', $logintoken, time());
+				OC_User::setMagicInCookie($userId, $logintoken);
+				OC_Util::redirectToDefaultPage();
 
-				// Try to log user in
-				if (method_exists($this->usersession, 'createSessionToken')) {
-					$this->usersession->login($username, $password);
-					$this->usersession->createSessionToken($this->request, $userId, $username, $password);
-					return new RedirectResponse($this->urlgenerator->linkToRoute('files.view.index'));
-				} elseif (OC_User::login($username, $password)) {
-					$this->cleanupLoginTokens($userId);
-					// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
-					$logintoken = $this->random->generate(32);
-					$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-					OC_User::setMagicInCookie($userId, $logintoken);
-					OC_Util::redirectToDefaultPage();
-
-					// Render message in case redirect failed
-					return new TemplateResponse('registration', 'message', array('msg' =>
-						str_replace('{link}',
-							$this->urlgenerator->getAbsoluteURL('/'),
-							$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
-						)), 'guest');
-				}
+				// Render message in case redirect failed
+				return new TemplateResponse('registration', 'message', array('msg' =>
+					str_replace('{link}',
+						$this->urlgenerator->getAbsoluteURL('/'),
+						$this->l10n->t('Your account has been successfully created, you can <a href="{link}">log in now</a>.')
+					)), 'guest');
 			}
 		}
 	}
