@@ -11,15 +11,14 @@
 
 namespace OCA\Registration\Controller;
 
-use \OCP\IRequest;
-use \OCP\AppFramework\Http\TemplateResponse;
-use \OCP\AppFramework\Http\DataResponse;
-use \OCP\AppFramework\Http;
-use \OCP\AppFramework\Controller;
-use \OCP\IGroupManager;
-use \OCP\IL10N;
-use \OCP\IConfig;
-use \OCP\IUser;
+use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\TemplateResponse;
+use OCP\IConfig;
+use OCP\IGroupManager;
+use OCP\IL10N;
+use OCP\IRequest;
 
 class SettingsController extends Controller {
 
@@ -28,15 +27,13 @@ class SettingsController extends Controller {
 	private $groupmanager;
 	protected $appName;
 
-	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager){
+	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager) {
 		$this->l10n = $l10n;
 		$this->config = $config;
 		$this->groupmanager = $groupmanager;
 		$this->appName = $appName;
 		parent::__construct($appName, $request);
 	}
-
-	
 
 	/**
 	 * @AdminRequired
@@ -46,42 +43,43 @@ class SettingsController extends Controller {
 	 * @return DataResponse
 	 */
 	public function admin($registered_user_group, $allowed_domains) {
-		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
+		if (($allowed_domains === '') || ($allowed_domains === NULL)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
-		}else{
+		} else {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 		$groups = $this->groupmanager->search('');
 		$group_id_list = array();
-		foreach ( $groups as $group ) {
+		foreach ($groups as $group) {
 			$group_id_list[] = $group->getGid();
 		}
-		if ( $registered_user_group === 'none' ) {
+		if ($registered_user_group === 'none') {
 			$this->config->deleteAppValue($this->appName, 'registered_user_group');
 			return new DataResponse(array(
 				'data' => array(
 					'message' => (string) $this->l10n->t('Saved'),
 				),
-				'status' => 'success'
-				
+				'status' => 'success',
+
 			));
-		} else if ( in_array($registered_user_group, $group_id_list) ) {
+		} elseif (in_array($registered_user_group, $group_id_list)) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
 			return new DataResponse(array(
 				'data' => array(
 					'message' => (string) $this->l10n->t('Saved'),
 				),
-				'status' => 'success'
+				'status' => 'success',
 			));
 		} else {
 			return new DataResponse(array(
 				'data' => array(
 					'message' => (string) $this->l10n->t('No such group'),
 				),
-				'status' => 'error'
+				'status' => 'error',
 			), Http::STATUS_NOT_FOUND);
 		}
 	}
+
 	/**
 	 * @AdminRequired
 	 *
@@ -89,7 +87,7 @@ class SettingsController extends Controller {
 	 */
 	public function displayPanel() {
 		$groups = $this->groupmanager->search('');
-		foreach ( $groups as $group ) {
+		foreach ($groups as $group) {
 			$group_id_list[] = $group->getGid();
 		}
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
@@ -97,7 +95,7 @@ class SettingsController extends Controller {
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list,
 			'current' => $current_value,
-			'allowed' => $allowed_domains
+			'allowed' => $allowed_domains,
 		], '');
 	}
 }
