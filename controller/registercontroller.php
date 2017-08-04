@@ -160,16 +160,16 @@ class RegisterController extends Controller {
 	 */
 	public function verifyToken($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
-		if ($email === false) {
+		if (!$email) {
 			return new TemplateResponse('', 'error', array(
 				'errors' => array(array(
 					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
 					'hint' => '',
 				)),
 			), 'error');
-		} elseif ($email) {
-			return new TemplateResponse('registration', 'form', array('email' => $email, 'token' => $token), 'guest');
 		}
+
+		return new TemplateResponse('registration', 'form', array('email' => $email, 'token' => $token), 'guest');
 	}
 
 	/**
