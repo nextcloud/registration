@@ -154,6 +154,15 @@ class RegisterController extends Controller {
 		), 'guest');
 	}
 
+	private function getInvalidVerificationURLTemplateResponse() {
+		return new TemplateResponse('', 'error', array(
+			'errors' => array(array(
+				'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
+				'hint' => '',
+			)),
+		), 'error');
+	}
+
 	/**
 	 * @NoCSRFRequired
 	 * @PublicPage
@@ -161,12 +170,7 @@ class RegisterController extends Controller {
 	public function verifyToken($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
 		if (!$email) {
-			return new TemplateResponse('', 'error', array(
-				'errors' => array(array(
-					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
-					'hint' => '',
-				)),
-			), 'error');
+			return $this->getInvalidVerificationURLTemplateResponse();
 		}
 
 		return new TemplateResponse('registration', 'form', array('email' => $email, 'token' => $token), 'guest');
@@ -179,12 +183,7 @@ class RegisterController extends Controller {
 	public function createAccount($token) {
 		$email = $this->pendingreg->findEmailByToken($token);
 		if (!$email) {
-			return new TemplateResponse('', 'error', array(
-				'errors' => array(array(
-					'error' => $this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.'),
-					'hint' => '',
-				)),
-			), 'error');
+			return $this->getInvalidVerificationURLTemplateResponse();
 		}
 
 		$username = $this->request->getParam('username');
