@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Registration\Db;
 
+use OCA\Registration\TokenHasher\TokenHasher;
 use OCP\IDbConnection;
 use OCP\Security\ISecureRandom;
 
@@ -22,7 +23,7 @@ class PendingRegist {
 
 		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER . ISecureRandom::CHAR_DIGITS);
 
-		$query->execute(array($email, $token));
+		$query->execute(array($email, TokenHasher::hash($token)));
 		return $token;
 	}
 
@@ -42,7 +43,7 @@ class PendingRegist {
 	 */
 	public function findEmailByToken($token) {
 		$query = $this->db->prepare('SELECT `email` FROM `*PREFIX*registration` WHERE `token` = ? ');
-		$query->execute(array($token));
+		$query->execute(array(TokenHasher::hash($token)));
 		return $query->fetch()['email'];
 	}
 
