@@ -3,6 +3,14 @@
 if (\OCP\Util::getVersion()[0] >= 12) {
 	\OCP\Util::addStyle('core', 'guest');
 }
+
+function getEnteredData($key) {
+	if (!isset($_['entered_data'][$key])) {
+		return '';
+	}
+	return $_['entered_data'][$key];
+}
+
 ?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', array('token' => $_['token'])))?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken'])?>" />
 	<fieldset>
@@ -25,7 +33,7 @@ if (\OCP\Util::getVersion()[0] >= 12) {
 		</p>
 
 		<p class="groupmiddle">
-		<input type="text" name="username" id="username" value="<?php echo $_['entered_data']['user']; ?>" placeholder="<?php print_unescaped($l->t('Username'));?>" />
+		<input type="text" name="username" id="username" value="<?php echo getEnteredData('user'); ?>" placeholder="<?php print_unescaped($l->t('Username'));?>" />
 		<label for="username" class="infield"><?php print_unescaped($l->t('Username'));?></label>
 		<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg'));?>" alt=""/>
 		</p>
