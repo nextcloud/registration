@@ -14,5 +14,5 @@ return ['routes' => [
 	array('name' => 'register#askEmail', 'url' => '/', 'verb' => 'GET'),
 	array('name' => 'register#validateEmail', 'url' => '/', 'verb' => 'POST'),
 	array('name' => 'register#verifyToken', 'url' => '/verify/{token}', 'verb' => 'GET'),
-	array('name' => 'register#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST')
+	array('name' => 'register#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST'),
 ]];

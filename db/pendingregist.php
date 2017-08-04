@@ -1,9 +1,8 @@
 <?php
 namespace OCA\Registration\Db;
 
-use \OCP\IDbConnection;
-use \OCP\Util;
-use \OCP\Security\ISecureRandom;
+use OCP\IDbConnection;
+use OCP\Security\ISecureRandom;
 
 class PendingRegist {
 
@@ -18,14 +17,15 @@ class PendingRegist {
 	}
 
 	public function save($email) {
-		$query = $this->db->prepare( 'INSERT INTO `*PREFIX*registration`'
-			.' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )' );
-		
-		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_DIGITS);
-		
-		$query->execute(array( $email, $token ));
+		$query = $this->db->prepare('INSERT INTO `*PREFIX*registration`'
+			. ' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )');
+
+		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER . ISecureRandom::CHAR_DIGITS);
+
+		$query->execute(array($email, $token));
 		return $token;
 	}
+
 	public function find($email) {
 		$query = $this->db->prepare('SELECT `email` FROM `*PREFIX*registration` WHERE `email` = ? ');
 		$query->execute(array($email));
