@@ -7,6 +7,7 @@ use OCP\Security\ISecureRandom;
 class PendingRegist {
 
 	private $db;
+	private $tokenLength = 6;
 
 	/** @var \OCP\Security\ISecureRandom */
 	protected $random;
@@ -20,7 +21,7 @@ class PendingRegist {
 		$query = $this->db->prepare('INSERT INTO `*PREFIX*registration`'
 			. ' ( `email`, `token`, `requested` ) VALUES( ?, ?, NOW() )');
 
-		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER . ISecureRandom::CHAR_DIGITS);
+		$token = $this->random->generate($this->tokenLength, ISecureRandom::CHAR_UPPER . ISecureRandom::CHAR_DIGITS);
 
 		$query->execute(array($email, $token));
 		return $token;
