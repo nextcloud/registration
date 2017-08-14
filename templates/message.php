@@ -2,5 +2,5 @@
 \OCP\Util::addStyle('registration', 'style');
 ?>
 <ul class="msg error-wide">
-	<li><?php print_unescaped($_['msg']) ?></li>
+	<li><?php p($_['msg'])?></li>
 </ul>
