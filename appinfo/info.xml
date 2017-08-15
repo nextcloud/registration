@@ -6,7 +6,7 @@
 	<description>User registration</description>
 	<licence>agpl</licence>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
-	<version>0.2.5</version>
+	<version>0.2.5-1</version>
 	<website>https://github.com/pellaeon/registration</website>
 	<bugs>https://github.com/pellaeon/registration/issues</bugs>
 	<repository>https://github.com/pellaeon/registration</repository>
