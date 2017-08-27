@@ -11,6 +11,7 @@ OC.L10N.register(
     "A problem occurred sending email, please contact your administrator." : "Prišlo je do napake med pošiljanjem elektronskega sporočila. Stopite v stik s skrbnikom sistema.",
     "A new user \"%s\" has created an account on %s" : "Nov uporabnik \"%s\" je ustvaril račun na %s",
     "A user has already taken this email, maybe you already have an account?" : "Uporabnik z navedenim elektronskim naslovom že obstaja. Je mogoče veljaven račun ownCloud že ustvarjen?",
+    "You can <a href=\"%s\">log in now</a>." : "Sedaj se je mogoče <a href=\"%s\">prijaviti</a>.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Neveljaven naslov URL overitve. Na tem naslovu ni ustrezne zahteve registracije.",
     "Unable to create user, there are problems with the user backend." : "Ni mogoče ustvariti uporabnika. Zaznane so težave z ozadnjim programom.",
     "Unable to set user email: " : "Ni mogoče nastaviti uporabnikovega elektronskega naslova:",
