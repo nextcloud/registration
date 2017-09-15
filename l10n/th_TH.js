@@ -38,6 +38,6 @@ OC.L10N.register(
     "Email" : "อีเมล",
     "Request verification link" : "ร้องขอลิงค์ยืนยันตัวตน",
     "Please re-enter a valid email address" : "กรุณป้อนที่อยู่อีเมลที่ถูกต้องอีกครั้ง",
-    "You will receive an email with a verification link" : "คุณจะได้รับอีเมลที่มีลิงก์ยืนยัน"
+    "You will receive an email with a verification link" : "คุณจะได้รับอีเมลที่มีลิงค์ยืนยัน"
 },
 "nplurals=1; plural=0;");
