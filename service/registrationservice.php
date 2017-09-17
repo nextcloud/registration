@@ -277,7 +277,7 @@ class RegistrationService {
 		$userId = $user->getUID();
 		// Set user email
 		try {
-			$this->config->setUserValue($userId, 'settings', 'email', $registration->getEmail());
+			$user->setEMailAddress($registration->getEmail());
 		} catch (\Exception $e) {
 			throw new RegistrationException($this->l10n->t('Unable to set user email: ' . $e->getMessage()));
 		}
