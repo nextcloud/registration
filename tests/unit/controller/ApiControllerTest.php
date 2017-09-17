@@ -122,10 +122,10 @@ class ApiControllerTest extends TestCase {
 	 */
 	public function testStatusNoRegistration() {
 		$this->registrationService
-			->method('getRegistrationForToken')
-			->with('ABCDEF')
+			->method('getRegistrationForSecret')
+			->with('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp')
 			->willThrowException(new DoesNotExistException(''));
-		$this->controller->status('ABCDEF');
+		$this->controller->status('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp');
 	}
 
 	/**
@@ -136,10 +136,10 @@ class ApiControllerTest extends TestCase {
 		$registration = new Registration();
 		$registration->setEmailConfirmed(false);
 		$this->registrationService
-			->method('getRegistrationForToken')
-			->with('ABCDEF')
+			->method('getRegistrationForSecret')
+			->with('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp')
 			->willReturn($registration);
-		$actual = $this->controller->status('ABCDEF');
+		$actual = $this->controller->status('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp');
 	}
 
 	public function testStatusConfirmedRegistration() {
@@ -148,8 +148,8 @@ class ApiControllerTest extends TestCase {
 		$registration->setClientSecret('mysecret');
 		$user = $this->createMock(IUser::class);
 		$this->registrationService
-			->method('getRegistrationForToken')
-			->with('ABCDEF')
+			->method('getRegistrationForSecret')
+			->with('mysecret')
 			->willReturn($registration);
 		$this->registrationService
 			->expects($this->once())
@@ -162,7 +162,7 @@ class ApiControllerTest extends TestCase {
 		$this->registrationService
 			->expects($this->once())
 			->method('generateAppPassword');
-		$actual = $this->controller->status('ABCDEF');
+		$actual = $this->controller->status('mysecret');
 		$expected = new DataResponse([]);
 		$this->assertEquals($expected, $actual);
 	}
