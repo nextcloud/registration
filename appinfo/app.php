@@ -17,8 +17,3 @@ namespace OCA\Registration\AppInfo;
 ]);
 
 \OCP\App::registerAdmin('registration', 'admin');
-
-if(interface_exists('\OCP\Capabilities\IPublicCapability')) {
-	$app = new \OCP\AppFramework\App('registration');
-	$app->getContainer()->registerCapability(\OCA\Registration\Capabilities::class);
-}
