@@ -135,7 +135,7 @@ class RegisterController extends Controller {
 		$registration = $this->registrationService->getRegistrationForToken($token);
 
 		try {
-			$this->registrationService->createAccount($registration, $username, $password);
+			$user = $this->registrationService->createAccount($registration, $username, $password);
 		} catch (RegistrationException $exception) {
 			return $this->renderError($exception->getMessage(), $exception->getHint());
 		} catch (\InvalidArgumentException $exception) {
@@ -149,10 +149,7 @@ class RegisterController extends Controller {
 				], 'guest');
 		}
 
-		return new TemplateResponse('registration', 'message',
-			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlgenerator->getAbsoluteURL('/')])],
-			'guest'
-		);
+		return $this->registrationService->loginUser($user->getUID(), $username, $password, false);
 	}
 
 	private function renderError($error, $hint="") {
