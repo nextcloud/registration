@@ -1,5 +1,6 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
+\OCP\Util::addScript('registration', 'form');
 if ( \OCP\Util::getVersion()[0] >= 12 )
 	\OCP\Util::addStyle('core', 'guest');
 ?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', array('token'=>$_['token']))) ?>" method="post">
@@ -33,7 +34,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 		<label for="password" class="infield"><?php p($l->t( 'Password' )); ?></label>
 		<img id="password-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
 		<input id="show" name="show" type="checkbox">
-		<label style="display: inline;" for="show"></label>
+		<label id="show-password" style="display: inline;" for="show"></label>
 		</p>
 		<input type="submit" id="submit" value="<?php p($l->t('Create account')); ?>" />
 	</fieldset>
