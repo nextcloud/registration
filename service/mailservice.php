@@ -112,8 +112,8 @@ class MailService {
 		$admin_users = $this->groupManager->get('admin')->getUsers();
 		$to_arr = array();
 		foreach ( $admin_users as $au ) {
-			$au_email = $this->config->getUserValue($au->getUID(), 'settings', 'email');
-			if ( $au_email !== '' ) {
+			$au_email = $au->getEMailAddress();
+			if ( $au_email !== '' && $au->isEnabled()) {
 				$to_arr[$au_email] = $au->getDisplayName();
 			}
 		}
