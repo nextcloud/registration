@@ -12,7 +12,7 @@ OC.L10N.register(
     "Verify your %s registration request" : "Bestätigen Sie Ihre %s Registrierungsanfrage",
     "A problem occurred sending email, please contact your administrator." : "Beim Senden der E-Mail ist ein Problem aufgetreten, bitte kontaktieren Sie Ihren Administrator.",
     "A new user \"%s\" has created an account on %s" : "Ein neuer Benutzer \"%s\" hat sich ein neues Konto angelegt bei %s",
-    "A user has already taken this email, maybe you already have an account?" : "Diese EMail-Adresse ist bereits registriert, vielleicht haben Sie bereits einen Account?",
+    "A user has already taken this email, maybe you already have an account?" : "Diese E-Mail-Adresse ist bereits registriert, vielleicht haben Sie bereits einen Account?",
     "You can <a href=\"%s\">log in now</a>." : "Sie können sich <a href=\"%s\">jetzt anmelden</a>.",
     "Registration is only allowed for the following domains: " : "Eine Anmeldung ist nur für die folgenden Domains erlaubt:",
     "Please provide a valid display name." : "Bitte tragen Sie einen gültigen Anzeigenamen ein.",
