@@ -21,7 +21,7 @@ if ($_['entered']): ?>
 					<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 				</p>
 				<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
-				<input type="submit" id="submit" value="<?php p($l->t('Request verification link')); ?>" />
+				<input type="submit" id="submit" value="<?php p($l->t('Register')); ?>" />
 			</fieldset>
 		</form>
 	<?php endif; ?>
@@ -44,7 +44,7 @@ if ($_['entered']): ?>
 				<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 			</p>
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
-			<input type="submit" id="submit" value="<?php p($l->t('Request verification link')); ?>" />
+			<input type="submit" id="submit" value="<?php p($l->t('Register')); ?>" />
 		</fieldset>
 	</form>
 <?php endif; ?>
