@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Register" : "Εγγραφή",
+    "Your registration is pending. Please confirm your email address." : "Η εγγραφή σας εκκρεμεί. Παρακαλούμε να επιβεβαιώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Εκκρεμεί ήδη μία εγγραφή με αυτή τη διεύθυνση ηλ. ταχυδρομείου, ένα καινούριο μήνυμα επιβεβαίωσης έχει σταλεί στη διεύθυνση.",
     "Verification email successfully sent." : "Το μήνυμα επαλήθευσης στάλθηκε επιτυχώς.",
     "Saved" : "Αποθηκεύτηκαν",
