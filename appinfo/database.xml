@@ -23,7 +23,6 @@
 			<field>
 				<name>username</name>
 				<type>text</type>
-				<notnull>true</notnull>
 			</field>
 			<field>
 				<name>password</name>
