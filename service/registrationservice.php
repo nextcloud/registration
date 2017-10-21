@@ -288,7 +288,7 @@ class RegistrationService {
 			try {
 				$group = $this->groupManager->get($registered_user_group);
 				$group->addUser($user);
-				$groupId = $group->gitGID();
+				$groupId = $group->getGID();
 			} catch (\Exception $e) {
 				throw new RegistrationException($e->getMessage());
 			}
