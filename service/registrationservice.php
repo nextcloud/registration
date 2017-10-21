@@ -295,7 +295,7 @@ class RegistrationService {
 
 		// disable user if this is requested by config
 		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
-		if ($admin_approval_required) {
+		if ($admin_approval_required == "yes") {
 			$user->setEnabled(false);
 		}
 
