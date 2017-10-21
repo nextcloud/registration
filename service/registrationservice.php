@@ -293,6 +293,9 @@ class RegistrationService {
 			}
 		}
 
+		// Disable user unconditionaly
+		$user->setEnabled(false);
+
 		// Delete pending registration if no client secret is stored
 		if($registration->getClientSecret() === null) {
 			$res = $this->registrationMapper->delete($registration);

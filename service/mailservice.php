@@ -135,9 +135,9 @@ class MailService {
 			'user' => $username,
 			'sitename' => $this->defaults->getName()
 		];
-		$html_template = new TemplateResponse('registration', 'email.newuser_html', $template_var, 'blank');
+		$html_template = new TemplateResponse('registration', 'email.newuser.disabled_html', $template_var, 'blank');
 		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.newuser_plaintext', $template_var, 'blank');
+		$plaintext_template = new TemplateResponse('registration', 'email.newuser.disabled_plaintext', $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
 		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
 
