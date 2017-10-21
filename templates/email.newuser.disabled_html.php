@@ -1,2 +1,2 @@
 <?php
-echo $l->t('A new user "%s" has created an account on %s and awaits admin validation', [$_['user'], $_['sitename']]);
+echo $l->t('A new user "%s" has created an account on %s and awaits admin approbation', [$_['user'], $_['sitename']]);

@@ -157,7 +157,7 @@ class RegisterController extends Controller {
 			return new TemplateResponse(
 				'registration',
 				'message',
-				array('msg' => "Your account has been successfully created, but it still needs approval from an administrator."),
+				array('msg' => $this->l10n->t("Your account has been successfully created, but it still needs approval from an administrator.")),
 				'guest');
 		}
 	}
