@@ -117,7 +117,7 @@ class MailService {
 		// add subadmins of this group to notification list
 		if (!$userIsEnabled and $userGroupId) {
 			$group = $this->groupManager->get($userGroupId);
-			$subadmin_users = $this->$groupManager->getSubAdmin()->getGroupsSubAdmins($group);
+			$subadmin_users = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
 			foreach ($subadmin_users as $user) {
 				if (!in_array($user, $admin_users)) {
 					$admin_users[] = $user;
