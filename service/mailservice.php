@@ -106,11 +106,25 @@ class MailService {
 
 	/**
 	 * @param string $userId
+	 * @param string $userGroupId
 	 * @param bool $userIsEnabled
 	 */
-	public function notifyAdmins($userId, $userIsEnabled) {
+	public function notifyAdmins($userId, $userIsEnabled, $userGroupId) {
 		// Notify admin
 		$admin_users = $this->groupManager->get('admin')->getUsers();
+
+		// if the user is disabled and belongs to a group
+		// add subadmins of this group to notification list
+		if (!$userIsEnabled and $userGroupId) {
+			$group = $this->groupManager->get($userGroupId);
+			$subadmin_users = $group->getSubAdmin()->getGroupsSubAdmins($group);
+			foreach ($subadmin_users as $user) {
+				if (!in_array($user, $admin_users)) {
+					$admin_users[] = $user;
+				}
+			}
+		}
+
 		$to_arr = array();
 		foreach ( $admin_users as $au ) {
 			$au_email = $au->getEMailAddress();

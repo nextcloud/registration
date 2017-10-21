@@ -288,9 +288,12 @@ class RegistrationService {
 			try {
 				$group = $this->groupManager->get($registered_user_group);
 				$group->addUser($user);
+				$groupId = $group->gitGID();
 			} catch (\Exception $e) {
 				throw new RegistrationException($e->getMessage());
 			}
+		} else {
+			$groupId = "";
 		}
 
 		// disable user if this is requested by config
@@ -307,7 +310,7 @@ class RegistrationService {
 			}
 		}
 
-		$this->mailService->notifyAdmins($userId, $user->isEnabled());
+		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
 		return $user;
 	}
 
