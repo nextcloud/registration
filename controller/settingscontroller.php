@@ -47,14 +47,21 @@ class SettingsController extends Controller {
 	 *
 	 * @param string $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
+     * @param bool $admin_approval_required newly registered users have to be validated by an admin
 	 * @return DataResponse
 	 */
-	public function admin($registered_user_group, $allowed_domains) {
+	public function admin($registered_user_group, $allowed_domains, $admin_approval_required) {
+		// handle domains
 		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
 		}else{
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
+
+		// handle admin validation
+		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? "yes" : "no");
+
+		// handle groups
 		$groups = $this->groupmanager->search('');
 		$group_id_list = array();
 		foreach ( $groups as $group ) {
@@ -92,17 +99,25 @@ class SettingsController extends Controller {
 	 * @return TemplateResponse
 	 */
 	public function displayPanel() {
+		// handle groups
 		$groups = $this->groupmanager->search('');
 		$group_id_list = [];
 		foreach ( $groups as $group ) {
 			$group_id_list[] = $group->getGid();
 		}
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+
+		// handle domains
 		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+
+		// handle admin validation
+		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list,
 			'current' => $current_value,
-			'allowed' => $allowed_domains
+			'allowed' => $allowed_domains,
+			'approval_required' => $admin_approval_required
 		], '');
 	}
 }

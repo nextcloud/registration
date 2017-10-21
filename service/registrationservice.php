@@ -293,8 +293,11 @@ class RegistrationService {
 			}
 		}
 
-		// Disable user unconditionaly
-		$user->setEnabled(false);
+		// disable user if this is requested by config
+		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+		if ($admin_approval_required) {
+			$user->setEnabled(false);
+		}
 
 		// Delete pending registration if no client secret is stored
 		if($registration->getClientSecret() === null) {
@@ -304,7 +307,7 @@ class RegistrationService {
 			}
 		}
 
-		$this->mailService->notifyAdmins($userId);
+		$this->mailService->notifyAdmins($userId, $user->isEnabled());
 		return $user;
 	}
 

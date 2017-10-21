@@ -106,8 +106,9 @@ class MailService {
 
 	/**
 	 * @param string $userId
+	 * @param bool $userIsEnabled
 	 */
-	public function notifyAdmins($userId) {
+	public function notifyAdmins($userId, $userIsEnabled) {
 		// Notify admin
 		$admin_users = $this->groupManager->get('admin')->getUsers();
 		$to_arr = array();
@@ -118,7 +119,7 @@ class MailService {
 			}
 		}
 		try {
-			$this->sendNewUserNotifEmail($to_arr, $userId);
+			$this->sendNewUserNotifEmail($to_arr, $userId, $userIsEnabled);
 		} catch (\Exception $e) {
 			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
 		}
@@ -128,16 +129,27 @@ class MailService {
 	 * Sends new user notification email to admin
 	 * @param array $to
 	 * @param string $username the new user
+	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifEmail(array $to, $username) {
+	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
 		$template_var = [
 			'user' => $username,
 			'sitename' => $this->defaults->getName()
 		];
-		$html_template = new TemplateResponse('registration', 'email.newuser.disabled_html', $template_var, 'blank');
+
+		// handle user enableness
+		if ($userIsEnabled) {
+			$html_template_file = 'email.newuser_html';
+			$plaintext_template_file = 'email.newuser_plaintext';
+		} else {
+			$html_template_file = 'email.newuser.disabled_html';
+			$plaintext_template_file = 'email.newuser.disabled_plaintext';
+		}
+
+		$html_template = new TemplateResponse('registration', $html_template_file, $template_var, 'blank');
 		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.newuser.disabled_plaintext', $template_var, 'blank');
+		$plaintext_template = new TemplateResponse('registration', $plaintext_template_file, $template_var, 'blank');
 		$plaintext_part = $plaintext_template->render();
 		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
 
