@@ -30,6 +30,9 @@ OC.L10N.register(
     "Email" : "Adresse courriel",
     "Request verification link" : "Demander un lien de vérification.",
     "Please re-enter a valid email address" : "Veuillez indiquer une adresse courriel valide",
-    "You will receive an email with a verification link" : "Vous allez recevoir un courriel avec un lien de vérification"
+    "You will receive an email with a verification link" : "Vous allez recevoir un courriel avec un lien de vérification",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Un nouvel utilisateur \"%s\" a créé un compte sur %s et attend l'approbation d'un administrateur",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Votre compte a bien été créé, il doit maintenant être approuvé par un administrateur.",
+    "Require admin approval?" : "Nécessite l'approbation d'un administrateur ?"
 },
 "nplurals=2; plural=(n > 1);");

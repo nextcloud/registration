@@ -288,9 +288,18 @@ class RegistrationService {
 			try {
 				$group = $this->groupManager->get($registered_user_group);
 				$group->addUser($user);
+				$groupId = $group->getGID();
 			} catch (\Exception $e) {
 				throw new RegistrationException($e->getMessage());
 			}
+		} else {
+			$groupId = "";
+		}
+
+		// disable user if this is requested by config
+		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+		if ($admin_approval_required == "yes") {
+			$user->setEnabled(false);
 		}
 
 		// Delete pending registration if no client secret is stored
@@ -301,7 +310,7 @@ class RegistrationService {
 			}
 		}
 
-		$this->mailService->notifyAdmins($userId);
+		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
 		return $user;
 	}
 

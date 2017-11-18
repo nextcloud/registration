@@ -36,6 +36,9 @@
     "Email" : "E-Mail",
     "Request verification link" : "Bestätigungslink anfragen",
     "Please re-enter a valid email address" : "Bitte nochmals eine gültige E-Mail-Adresse angeben",
-    "You will receive an email with a verification link" : "Du wirst eine E-Mail mit einem Bestätigungslink erhalten"
+    "You will receive an email with a verification link" : "Du wirst eine E-Mail mit einem Bestätigungslink erhalten",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Ein neuer Benutzer \"%s\" hat ein Konto auf %s erstellt und erwarte den Administrator Approbation ",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ihr Konto wurde erfolgreich erstellt, aber es muss von einem Administrator genehmigt werden.",
+    "Require admin approval?" : "Ist der Administrator Approbation erforderlich?"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -28,6 +28,9 @@
     "Email" : "メール",
     "Request verification link" : "確認URLリンクをリクエスト",
     "Please re-enter a valid email address" : "有効なメールアドレスを再度入力してください。",
-    "You will receive an email with a verification link" : "確認URLの入ったメールをお送り致します。"
+    "You will receive an email with a verification link" : "確認URLの入ったメールをお送り致します。",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "新しいユーザー \"%s\" を アカウント名 \"%s\" として作成しました、今管理者の承認は必要です",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "アカウントは作成成功しましたけど、管理者の承認は必要です。",
+    "Require admin approval?" : "管理者の承認は必要ですか"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
