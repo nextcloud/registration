@@ -14,11 +14,9 @@ namespace OCA\Registration\Controller;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;
-use OCP\AppFramework\Db\DoesNotExistException;
+use OCA\Registration\Util\CoreBridge;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\OCS\OCSException;
-use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Defaults;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -80,58 +78,58 @@ class ApiControllerTest extends TestCase {
 		$this->assertEquals($expected, $actual);
 	}
 
-	/**
-	 * @expectedException \OCP\AppFramework\OCS\OCSException
-	 * @expectedExceptionCode 999
-	 */
 	public function testValidateFailEmail() {
+        $exception = CoreBridge::createException('OCSException', '', 999);
+
+        $this->expectException(get_class($exception));
+
 		$this->registrationService
 			->expects($this->once())
 			->method('validateEmail')
-			->willThrowException(new OCSException('', 999));
+			->willThrowException($exception);
+
 		$this->controller->validate('user1', 'user test', 'test@example.com');
 	}
 
-	/**
-	 * @expectedException \OCP\AppFramework\OCS\OCSException
-	 * @expectedExceptionCode 999
-	 */
 	public function testValidateFailDisplayname() {
-		$this->registrationService
+        $exception = CoreBridge::createException('OCSException', '', 999);
+
+        $this->expectException(get_class($exception));
+
+        $this->registrationService
 			->expects($this->once())
 			->method('validateDisplayname')
-			->willThrowException(new OCSException('', 999));
+			->willThrowException($exception);
+
 		$this->controller->validate('user1', 'user test', 'test@example.com');
 	}
 
-	/**
-	 * @expectedException \OCP\AppFramework\OCS\OCSException
-	 * @expectedExceptionCode 999
-	 */
 	public function testValidateFailUsername() {
-		$this->registrationService
+        $exception = CoreBridge::createException('OCSException', '', 999);
+
+        $this->expectException(get_class($exception));
+
+        $this->registrationService
 			->expects($this->once())
 			->method('validateUsername')
-			->willThrowException(new OCSException('', 999));
+			->willThrowException($exception);
+
 		$this->controller->validate('user1', 'user test', 'test@example.com');
 	}
 
-	/**
-	 * @expectedException \OCP\AppFramework\OCS\OCSNotFoundException
-	 * @expectedExceptionCode 404
-	 */
 	public function testStatusNoRegistration() {
+        $exception = CoreBridge::createException('OCSNotFoundException', '', 404);
+
+        $this->expectException(get_class($exception));
+
 		$this->registrationService
 			->method('getRegistrationForSecret')
 			->with('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp')
-			->willThrowException(new DoesNotExistException(''));
+			->willThrowException($exception);
+
 		$this->controller->status('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp');
 	}
 
-	/**
-	 * @expectedException \OCP\AppFramework\OCS\OCSException
-	 * @expectedExceptionCode 403
-	 */
 	public function testStatusPendingRegistration() {
 		$registration = new Registration();
 		$registration->setEmailConfirmed(false);
@@ -139,7 +137,18 @@ class ApiControllerTest extends TestCase {
 			->method('getRegistrationForSecret')
 			->with('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp')
 			->willReturn($registration);
+
 		$actual = $this->controller->status('L2qdLAtrJTx499ErjwkwnZqGmLdm3Acp');
+
+		$expected = new DataResponse(
+			[
+				'registrationStatus' => 1,
+				'message'			=> $this->l10n->t('Your registration is pending. Please confirm your email address.'),
+			],
+			Http::STATUS_OK
+		);
+
+		$this->assertEquals($expected, $actual);
 	}
 
 	public function testStatusConfirmedRegistration() {
@@ -163,12 +172,11 @@ class ApiControllerTest extends TestCase {
 			->expects($this->once())
 			->method('generateAppPassword');
 		$actual = $this->controller->status('mysecret');
-		$expected = new DataResponse([]);
+		$expected = new DataResponse([
+			'appPassword'		=> null,
+			'cloudUrl'		   => $this->defaults->getBaseUrl(),
+			'registrationStatus' => 0,
+		]);
 		$this->assertEquals($expected, $actual);
 	}
-
-	public function testStatusConfirmedRegistrationWithSecret() {
-
-	}
-
 }

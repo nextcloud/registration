@@ -25,7 +25,7 @@ foreach ( $_['groups'] as $group ) {
 
 	<p>
 	<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?>
-	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if($_['approval_required'] == "yes" ) echo " checked"; ?>>
+	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if($_['approval_required'] === "yes" ) echo " checked"; ?>>
 	</label>
 	</p>
 </form>
