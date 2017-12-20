@@ -27,12 +27,10 @@ use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
+use OCA\Registration\Util\CoreBridge;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
-use OCP\AppFramework\OCS\OCSBadRequestException;
-use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\AppFramework\OCSController;
-use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Defaults;
 use OCP\IL10N;
@@ -73,7 +71,7 @@ class ApiController extends OCSController {
 	 * @param string $username
 	 * @param string $displayname
 	 * @param string $email
-	 * @throws OCSException
+	 * @throws \Exception
 	 * @return DataResponse
 	 */
 	public function validate($username, $displayname, $email) {
@@ -82,7 +80,7 @@ class ApiController extends OCSController {
 			$this->registrationService->validateDisplayname($displayname);
 			$this->registrationService->validateUsername($username);
 		} catch (RegistrationException $e) {
-			throw new OCSBadRequestException($e->getMessage());
+            throw CoreBridge::createException('OCSBadRequestException', $e->getMessage());
 		}
 		$data = [
 			'username' => $username,
@@ -97,7 +95,7 @@ class ApiController extends OCSController {
 	 * @AnonRateThrottle(limit=10, period=1)
 	 *
 	 * @param string $clientSecret
-	 * @throws OCSException
+	 * @throws \Exception
 	 * @return DataResponse
 	 */
 	public function status($clientSecret) {
@@ -105,7 +103,7 @@ class ApiController extends OCSController {
 			/** @var Registration $registration */
 			$registration = $this->registrationService->getRegistrationForSecret($clientSecret);
 		} catch (DoesNotExistException $e) {
-			throw new OCSNotFoundException('No pending registration.');
+            throw CoreBridge::createException('OCSNotFoundException', 'No pending registration.');
 		}
 
 		if (!$registration->getEmailConfirmed()) {
@@ -142,7 +140,7 @@ class ApiController extends OCSController {
 	 * @param string $displayname
 	 * @param string $email
 	 * @param string $password
-	 * @throws OCSException
+	 * @throws \Exception
 	 * @return DataResponse
 	 */
 	public function register($username, $displayname, $email, $password) {
@@ -175,8 +173,7 @@ class ApiController extends OCSController {
 			}
 			return new DataResponse($data, Http::STATUS_OK);
 		} catch (RegistrationException $exception) {
-			throw new OCSException($exception->getMessage(), $exception->getCode());
+            throw CoreBridge::createException('OCSException', $exception->getMessage(), $exception->getCode());
 		}
 	}
-
 }

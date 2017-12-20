@@ -49,8 +49,6 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Security\ISecureRandom;
-use \OC_User;
-use \OC_Util;
 
 class RegistrationService {
 
@@ -298,7 +296,7 @@ class RegistrationService {
 
 		// disable user if this is requested by config
 		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
-		if ($admin_approval_required == "yes") {
+		if ($admin_approval_required === "yes") {
 			$user->setEnabled(false);
 		}
 
@@ -406,13 +404,13 @@ class RegistrationService {
 			$this->usersession->login($username, $password);
 			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
 			return new RedirectResponse($this->urlGenerator->linkToRoute('files.view.index'));
-		} elseif (OC_User::login($username, $password)) {
+		} elseif (\OC_User::login($username, $password)) {
 			$this->cleanupLoginTokens($userId);
 			// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
 			$logintoken = $this->random->generate(32);
 			$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-			OC_User::setMagicInCookie($userId, $logintoken);
-			OC_Util::redirectToDefaultPage();
+			\OC_User::setMagicInCookie($userId, $logintoken);
+            \OC_Util::redirectToDefaultPage();
 		}
 		// Render message in case redirect failed
 		return new TemplateResponse('registration', 'message',

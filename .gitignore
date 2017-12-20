@@ -1,0 +1,3 @@
+# due to the different Travis-CI PHP versions we MUST NOT lock to specific versions
+composer.lock
+vendor

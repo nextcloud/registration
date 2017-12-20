@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/buffcode/registration.svg?branch=master)](https://travis-ci.org/buffcode/registration)
+
 # Registration
 This app allows users to register a new account.
 

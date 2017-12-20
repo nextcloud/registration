@@ -1,15 +1,22 @@
-sudo: required
+sudo: false
 language: php
 php:
   - 5.6
   - 7.0
+  - 7.1
+  - 7.2
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+services:
+  - mysql
+  - postgresql
 
 addons:
   apt:
     packages:
-    - mysql-server-5.6
-    - mysql-client-core-5.6
-    - mysql-client-5.6
     - php5-pgsql
     - libxml2-utils
 
@@ -17,71 +24,62 @@ env:
   global:
     - PHP_COVERAGE=FALSE
   matrix:
-    - CORE_FORK_BRANCH=nc_master    DB=sqlite
-    - CORE_FORK_BRANCH=nc_stable11  DB=sqlite
-    - CORE_FORK_BRANCH=nc_stable12  DB=sqlite
-    - CORE_FORK_BRANCH=oc_master    DB=sqlite
-    - CORE_FORK_BRANCH=oc_stable10  DB=sqlite
-    - CORE_FORK_BRANCH=nc_master    DB=mysql
-    - CORE_FORK_BRANCH=nc_stable11  DB=mysql
-    - CORE_FORK_BRANCH=nc_stable12  DB=mysql
-    - CORE_FORK_BRANCH=oc_master    DB=mysql
-    - CORE_FORK_BRANCH=oc_stable10  DB=mysql
+    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=sqlite
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=sqlite
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=sqlite
+
+    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=mysql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=mysql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=mysql
+
+    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=pgsql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=pgsql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=pgsql
+
+    - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=sqlite
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=sqlite
+
+    - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=mysql
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=mysql
+
+    - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=pgsql
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=pgsql
 
 matrix:
-  allow_failures:
-    - php: 7.0
   fast_finish: true
-
-branches:
-  only:
-  - master
+  exclude:
+    # Nextcloud 11/12 are not compatible with PHP 7.2
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=mysql
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=mysql
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=sqlite
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=sqlite
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=pgsql
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=pgsql
 
 before_install:
-  - php --info
-
-  # Set up DB
-  - if [[ "$DB" == 'pgsql' ]]; then createuser -U travis -s oc_autotest; fi
-  - if [[ "$DB" == 'mysql' ]]; then mysql -u root -e 'create database oc_autotest;'; fi
-  - if [[ "$DB" == 'mysql' ]]; then mysql -u root -e "CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY '';"; fi
-  - if [[ "$DB" == 'mysql' ]]; then mysql -u root -e "GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';"; fi
-
-  - cd ..
-  - if [[ $(echo $CORE_FORK_BRANCH | awk -F '_' '{print $1}') == 'oc' ]]; then git clone https://github.com/owncloud/core.git --recursive --depth 1 -b $(echo $CORE_FORK_BRANCH | awk -F '_' '{print $2}') core; fi
-  - if [[ $(echo $CORE_FORK_BRANCH | awk -F '_' '{print $1}') == 'nc' ]]; then git clone https://github.com/nextcloud/server.git --recursive --depth 1 -b $(echo $CORE_FORK_BRANCH | awk -F '_' '{print $2}') core; fi
-  - mv registration core/apps/
-
-before_script:
-  # Set up core
-  - php -f core/occ maintenance:install --database-name oc_autotest --database-user oc_autotest --admin-user admin --admin-pass admin --database $DB --database-pass=''
-
-  # Set up app
-  - php -f core/occ app:enable registration
-  # Enable app twice to check occ errors of registered commands
-  - php -f core/occ app:enable registration
-  - cd core/apps/registration
-
   # XDebug is only needed if we report coverage -> speeds up other builds
   - if [[ "$PHP_COVERAGE" = "FALSE" ]]; then phpenv config-rm xdebug.ini; fi
 
+install:
+  - . ./tests/scripts/core-download.sh
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/core-database.sh
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/core-setup.sh
+
 script:
   # Check info.xml schema validity
-  - wget https://apps.nextcloud.com/schema/apps/info.xsd
-  - xmllint appinfo/info.xml --schema info.xsd --noout
-  - rm info.xsd
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/lint-appinfo.sh
 
   # Check PHP syntax errors
-  #- find . -name \*.php -not -path './vendor/*' -exec php -l "{}" \;
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/lint-php.sh
 
-  # Run server's app code checker
-  # TODO: enable once table renames are possible
-  # - php ../../occ app:check-code mail
-
+  # Run app code checker but do not fail, as we have to use private API for now
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/app-check-code.sh || true
 
   # Run PHP tests
-  - cd tests
-  - phpunit -c phpunit.xml
-
-  # Test packaging
-  #- cd ..
-  #- if [[ "$PACKAGE" = "TRUE" ]]; then make appstore; fi
+  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/phpunit.sh
