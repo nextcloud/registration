@@ -4,7 +4,6 @@ php:
   - 5.6
   - 7.0
   - 7.1
-  - 7.2
 
 cache:
   directories:
@@ -24,43 +23,89 @@ env:
   global:
     - PHP_COVERAGE=FALSE
   matrix:
+    # Nextcloud 9+
     - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=sqlite
     - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=sqlite
     - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=sqlite
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=sqlite
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=sqlite
 
     - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=mysql
     - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=mysql
     - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=mysql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=mysql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=mysql
 
     - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=pgsql
     - CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=pgsql
     - CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=pgsql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=pgsql
+    - CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=pgsql
 
+    # ownCloud 9.1+
     - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=sqlite
     - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=sqlite
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=sqlite
 
     - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=mysql
     - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=mysql
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=mysql
 
     - CORE_TYPE=owncloud  CORE_BRANCH=master    DB=pgsql
     - CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=pgsql
+    - CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=pgsql
 
 matrix:
   fast_finish: true
   exclude:
-    # Nextcloud 11/12 are not compatible with PHP 7.2
+    # Nextcloud prior v11 is not compatible with PHP 7.1
+    # (see https://github.com/nextcloud/server/blob/stable10/console.php#L42)
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=pgsql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=pgsql
+
+    # ownCloud prior v10 is not compatible with PHP 7.1
+    # (see https://github.com/owncloud/core/blob/stable9.1/console.php#L47)
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=pgsql
+
+  include:
+    # Nextcloud prior v13 is not compatible with PHP 7.2
+    # (see https://github.com/nextcloud/server/issues/6786#issuecomment-335154372)
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=mysql
+      env: CORE_TYPE=nextcloud CORE_BRANCH=master    DB=sqlite
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=mysql
+      env: CORE_TYPE=nextcloud CORE_BRANCH=master    DB=mysql
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=sqlite
+      env: CORE_TYPE=nextcloud CORE_BRANCH=master    DB=pgsql
+
+    # ownCloud prior v10 is not compatible with PHP 7.2
+    # (see https://github.com/owncloud/core/pull/29878)
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=sqlite
+      env: CORE_TYPE=owncloud  CORE_BRANCH=master    DB=sqlite
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable11  DB=pgsql
+      env: CORE_TYPE=owncloud  CORE_BRANCH=master    DB=mysql
     - php: 7.2
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable12  DB=pgsql
+      env: CORE_TYPE=owncloud  CORE_BRANCH=master    DB=pgsql
+    - php: 7.2
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=sqlite
+    - php: 7.2
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=mysql
+    - php: 7.2
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable10  DB=pgsql
 
 before_install:
   # XDebug is only needed if we report coverage -> speeds up other builds
