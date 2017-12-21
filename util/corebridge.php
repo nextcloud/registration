@@ -5,6 +5,9 @@ namespace OCA\Registration\Util;
 class CoreBridge
 {
     /**
+     * This function maps an exception class to the available exception class of the core
+     * in order to provide cross-core and cross-version compatibility.
+     *
      * @param string $className
      * @return string
      * @throws \LogicException
@@ -13,20 +16,20 @@ class CoreBridge
     {
         static $classes = [
             'OCSException'           => [
-                'nextcloud' => 'OCP\AppFramework\OCS\OCSException',
-                'owncloud'  => 'OC\OCS\Exception',
+                'OCP\AppFramework\OCS\OCSException',
+                'OC\OCS\Exception',
             ],
             'OCSBadRequestException' => [
-                'nextcloud' => 'OCP\AppFramework\OCS\OCSBadRequestException',
-                'owncloud'  => 'OC\OCS\Exception',
+                'OCP\AppFramework\OCS\OCSBadRequestException',
+                'OC\OCS\Exception',
             ],
             'OCSNotFoundException'   => [
-                'nextcloud' => 'OCP\AppFramework\OCS\OCSNotFoundException',
-                'owncloud'  => 'OC\OCS\Exception',
+                'OCP\AppFramework\OCS\OCSNotFoundException',
+                'OC\OCS\Exception',
             ],
             'DoesNotExistException'  => [
-                'nextcloud' => 'OCP\AppFramework\Db\DoesNotExistException',
-                'owncloud'  => 'OCP\AppFramework\Db\DoesNotExistException',
+                'OCP\AppFramework\Db\DoesNotExistException',
+                'OCP\AppFramework\Db\DoesNotExistException',
             ],
         ];
 
@@ -56,8 +59,9 @@ class CoreBridge
         $reflection = new \ReflectionClass($exceptionClassName);
         $params = $reflection->getConstructor()->getParameters();
 
-        if ($params[0]->getClass() && $params[0]->getClass()->getName() === 'OC\OCS\Result') {
-            return new $exceptionClassName(new \OC\OCS\Result($message, $code));
+        if ($params[0]->getClass() && ($params[0]->getClass()->getName() === 'OC\OCS\Result' || $params[0]->getClass()->getName() === 'OC_OCS_Result')) {
+            $subClass = $params[0]->getClass()->getName();
+            return new $exceptionClassName(new $subClass($message, $code));
         }
 
         if (count($params) >= 2) {

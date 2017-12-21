@@ -15,7 +15,7 @@ Flow:
 1. ownCloud 9.1.0.7+
 2. Nextcloud 9+
 
-Supports SQLite and MariaDB, PostgreSQL support is [enabled but not tested](https://github.com/pellaeon/registration/issues/24#issuecomment-294504028).
+Supports SQLite, MySQL/MariaDB and PostgreSQL.
 
 # Install
 1. Place this app in `owncloud/apps/` or `nextcloud/apps`
