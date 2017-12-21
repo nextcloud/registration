@@ -57,6 +57,31 @@ env:
 
 matrix:
   fast_finish: true
+  exclude:
+    # Nextcloud prior v11 is not compatible with PHP 7.1
+    # (see https://github.com/nextcloud/server/blob/stable10/console.php#L42)
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable9   DB=pgsql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable10  DB=pgsql
+
+    # ownCloud prior v10 is not compatible with PHP 7.1
+    # (see https://github.com/owncloud/core/blob/stable9.1/console.php#L47)
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=mysql
+    - php: 7.1
+      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=pgsql
+
   include:
     # Nextcloud prior v13 is not compatible with PHP 7.2
     # (see https://github.com/nextcloud/server/issues/6786#issuecomment-335154372)
