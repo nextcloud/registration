@@ -18,10 +18,14 @@ Flow:
 Supports SQLite, MySQL/MariaDB and PostgreSQL.
 
 # Install
-1. Place this app in `owncloud/apps/` or `nextcloud/apps`
+## ownCloud
+1. Place this app in the apps folder
 2. Enable "Registration" in */settings/apps* (Upper left dropdown -> plus sign -> "Disabled")
 3. Make sure you have correctly set up your mail server according to the [documentation](https://docs.nextcloud.com/server/11/admin_manual/configuration_server/email_configuration.html)
 4. Log out, and you should see "Register" under "Other login methods"
+
+## Nextcloud AppStore
+From your Nextcloud instance, click: your profile to the upper right -> Apps -> Tools (in the left column), find Registration, click Enable
 
 # Features
 
