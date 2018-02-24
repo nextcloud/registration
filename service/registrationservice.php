@@ -122,6 +122,7 @@ class RegistrationService {
 		$this->registrationMapper->update($registration);
 	}
 	/**
+	 * Create registration request, used by both the API and form
 	 * @param string $email
 	 * @param string $username
 	 * @param string $password
@@ -138,7 +139,8 @@ class RegistrationService {
 			$registration->setPassword($password);
 		}
 		$this->registrationMapper->generateNewToken($registration);
-		$this->registrationMapper->generateClientSecret($registration);
+		if ( $password !== '' && $username !== '' )
+			$this->registrationMapper->generateClientSecret($registration);
 		$this->registrationMapper->insert($registration);
 		return $registration;
 	}
@@ -301,6 +303,9 @@ class RegistrationService {
 		}
 
 		// Delete pending registration if no client secret is stored
+		// with client secret implies registered via API
+		// without client secret implies registered via form
+		// if registered via API, the registration request will be deleted in apicontroller::status
 		if($registration->getClientSecret() === null) {
 			$res = $this->registrationMapper->delete($registration);
 			if ($res === false) {
