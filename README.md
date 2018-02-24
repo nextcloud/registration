@@ -21,7 +21,7 @@ Supports SQLite, MySQL/MariaDB and PostgreSQL.
 ## ownCloud
 1. Place this app in the apps folder
 2. Enable "Registration" in */settings/apps* (Upper left dropdown -> plus sign -> "Disabled")
-3. Make sure you have correctly set up your mail server according to the [documentation](https://docs.nextcloud.com/server/11/admin_manual/configuration_server/email_configuration.html)
+3. Make sure you have correctly set up your mail server according to the [documentation](https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/email_configuration.html)
 4. Log out, and you should see "Register" under "Other login methods"
 
 ## Nextcloud AppStore
