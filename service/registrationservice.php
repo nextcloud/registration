@@ -132,7 +132,7 @@ class RegistrationService {
 		$registration = new Registration();
 		$registration->setEmail($email);
 		$registration->setUsername($username);
-		$registration->setDisplayname();
+		$registration->setDisplayname($displayname);
 		if($password !== "") {
 			$password = $this->crypto->encrypt($password);
 			$registration->setPassword($password);
