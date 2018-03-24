@@ -30,7 +30,7 @@
     "Require admin approval?" : "Bestätigung durch einen Administrator erforderlich?",
     "Registration is only allowed for the following domains:" : "Eine Anmeldung ist nur für die folgenden Domains erlaubt:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Ein Neuer Benutzer \"%s\" hat ein Konto auf %s erstellt und wartet auf eine Freigabe durch den Administrator",
-    "To create a new account on %s, just click the following link:" : "Um ein neues Konto auf %s zu erstellen, klick bitte auf den folgenden Link:",
+    "To create a new account on %s, just click the following link:" : "Um ein neues Konto auf %s zu erstellen, klicke bitte auf den folgenden Link:",
     "Welcome, you can create your account below." : "Willkommen, Du kannst im unteren Teil Dein Konto anlegen.",
     "Username" : "Benutzername",
     "Password" : "Passwort",
