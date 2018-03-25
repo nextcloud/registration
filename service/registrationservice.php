@@ -408,7 +408,7 @@ class RegistrationService {
 		if ( method_exists($this->usersession, 'createSessionToken') ) {
 			$this->usersession->login($username, $password);
 			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
-			return new RedirectResponse($this->urlGenerator->linkToRoute('files.view.index'));
+			return new RedirectResponse($this->urlGenerator->linkTo('', 'index.php'));
 		} elseif (\OC_User::login($username, $password)) {
 			$this->cleanupLoginTokens($userId);
 			// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
