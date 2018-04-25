@@ -33,6 +33,11 @@ From your Nextcloud instance, click: your profile to the upper right -> Apps -> 
 - Admin can limit the email domains allowed to register
 - Admin will be notified by email for new user creation
 
+# Donate
+
+Send Ethereum to `0x941613eBB948C2C547cb957B55fEB2609fa6Fe66`
+Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
+
 # FAQ
 
 **Q: A problem occurred sending email, please contact your administrator.**
