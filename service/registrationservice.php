@@ -159,7 +159,7 @@ class RegistrationService {
 			return $this->registrationMapper->find($email);
 		} catch (\Exception $e) {}
 
-		if ( $this->config->getUsersForUserValue('settings', 'email', $email) ) {
+		if ( $this->userManager->getByEmail($email) ) {
 			throw new RegistrationException(
 				$this->l10n->t('A user has already taken this email, maybe you already have an account?'),
 				$this->l10n->t('You can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])
