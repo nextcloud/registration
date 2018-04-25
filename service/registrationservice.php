@@ -254,7 +254,7 @@ class RegistrationService {
 	 * @param string $username
 	 * @param string $password
 	 * @return \OCP\IUser
-	 * @throws RegistrationException
+	 * @throws RegistrationException|\InvalidTokenException
 	 */
 	public function createAccount(Registration &$registration, $username = null, $password = null) {
 		if($password === null && $registration->getPassword() === null) {
@@ -270,6 +270,15 @@ class RegistrationService {
 			$password = $this->crypto->decrypt($registration->getPassword());
 		}
 
+		$this->validateUsername($username);
+
+		/* TODO
+		 * createUser tests username validity once, but validateUsername already checked it,
+		 * but createUser doesn't check if there is a pending registration with that name
+		 *
+		 * And validateUsername will throw RegistrationException while
+		 * createUser throws \InvalidTokenException in NC, \Exception in OC
+		 */
 		$user = $this->userManager->createUser($username, $password);
 		if ($user === false) {
 			throw new RegistrationException($this->l10n->t('Unable to create user, there are problems with the user backend.'));

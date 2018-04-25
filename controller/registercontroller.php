@@ -136,9 +136,7 @@ class RegisterController extends Controller {
 
 		try {
 			$user = $this->registrationService->createAccount($registration, $username, $password);
-		} catch (RegistrationException $exception) {
-			return $this->renderError($exception->getMessage(), $exception->getHint());
-		} catch (\InvalidArgumentException $exception) {
+		} catch (\Exception $exception) {
 			// Render form with previously sent values
 			return new TemplateResponse('registration', 'form',
 				[
