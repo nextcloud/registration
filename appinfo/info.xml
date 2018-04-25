@@ -4,8 +4,30 @@
 	<id>registration</id>
 	<name>Registration</name>
 	<summary>This app allows users to self-register a new account using their e-mail address.</summary>
-	<description>User registration</description>
-	<version>0.4.0</version>
+	<description><![CDATA[User registration
+
+This app allows users to register a new account.
+
+# Flow
+
+1. User enters his/her email
+2. Verification link is sent to the email address
+3. User clicks on the verification link
+4. User is lead to a form where one can choose username and password
+5. New account is created and is logged in automatically
+
+# Features
+
+- Admin can specify which group the newly created users belong
+- Admin can limit the email domains allowed to register
+- Admin will be notified by email for new user creation
+
+# Donate
+
+Send Ethereum to `0x941613eBB948C2C547cb957B55fEB2609fa6Fe66`
+Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
+		]]></description>
+	<version>0.4.2</version>
 	<licence>agpl</licence>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
 	<category>security</category>
