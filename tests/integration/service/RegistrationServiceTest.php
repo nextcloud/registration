@@ -140,7 +140,43 @@ class RegistrationServiceTest extends TestCase {
 		$this->assertInstanceOf(IUser::class, $resulting_user);
 		$this->assertEquals($form_input_username, $resulting_user->getUID());
 		$this->assertEquals('asd@example.com', $resulting_user->getEmailAddress());
+	}
 
+	/**
+	 * @depends testCreateAccountWebForm
+	 * @expectedException OCA\Registration\Service\RegistrationException
+	 */
+	public function testDuplicateUsernameWebForm() {
+		$reg = new Registration();
+		$reg->setEmail("pppp@example.com");
+		//$reg->setUsername("alice1");
+		$reg->setDisplayname("Alice");
+		//$reg->setPassword("asdf");
+		$reg->setEmailConfirmed(true);
 
+		$resulting_user = $this->service->createAccount($reg, 'alice1', 'asdf');
+	}
+
+	/*
+	 * NOTE
+	 * We don't need to test for duplicate emails here, because:
+	 * In Webform, emails are validated not to be duplicate in validateEmail(),
+	 * that is, when users first fill in their email
+	 * In API, they are also validated in ApiControllerTest::validate()
+	 */
+
+	/**
+	 * @depends testCreateAccountWebForm
+	 * @expectedException OCA\Registration\Service\RegistrationException
+	 */
+	public function testDuplicateUsernameApi() {
+		$reg = new Registration();
+		$reg->setEmail("pppp@example.com");
+		$reg->setUsername("alice1");
+		$reg->setDisplayname("Alice");
+		$reg->setPassword("asdf");
+		$reg->setEmailConfirmed(true);
+
+		$resulting_user = $this->service->createAccount($reg);
 	}
 }
