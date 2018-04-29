@@ -69,11 +69,10 @@ class RegisterController extends Controller {
 	/**
 	 * @PublicPage
 	 *
+	 * @param string $email
 	 * @return TemplateResponse
 	 */
-	public function validateEmail() {
-		$email = $this->request->getParam('email');
-
+	public function validateEmail($email) {
 		if (!$this->registrationService->checkAllowedDomains($email)) {
 			return new TemplateResponse('registration', 'domains', [
 				'domains' => $this->registrationService->getAllowedDomains()
