@@ -128,7 +128,7 @@ class MailService {
 		$to_arr = array();
 		foreach ( $admin_users as $au ) {
 			$au_email = $au->getEMailAddress();
-			if ( $au_email !== '' && $au->isEnabled()) {
+			if ( $au_email && $au->isEnabled()) {
 				$to_arr[$au_email] = $au->getDisplayName();
 			}
 		}
