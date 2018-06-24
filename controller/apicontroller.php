@@ -148,7 +148,7 @@ class ApiController extends OCSController {
 		try {
 			$secret = null;
 			$registration = $this->registrationService->validateEmail($email);
-			if($registration === null) {
+			if($registration === true) {
 				$this->registrationService->validateDisplayname($displayname);
 				$this->registrationService->validateUsername($username);
 				$registration = $this->registrationService->createRegistration($email, $username, $password, $displayname);

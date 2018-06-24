@@ -67,21 +67,30 @@ class RegisterController extends Controller {
 	}
 
 	/**
+	 * User POST email, if email is valid and not duplicate, we send token by mail
 	 * @PublicPage
 	 *
 	 * @param string $email
 	 * @return TemplateResponse
 	 */
-	public function validateEmail($email) {
-		if (!$this->registrationService->checkAllowedDomains($email)) {
+	public function validateEmail($email) {//TODO rename to receiveUserEmail
+		if (!$this->registrationService->checkAllowedDomains($email)) {//TODO Duplicate code with Service
 			return new TemplateResponse('registration', 'domains', [
 				'domains' => $this->registrationService->getAllowedDomains()
 			], 'guest');
 		}
 		try {
-			$this->registrationService->validateEmail($email);
-			$registration = $this->registrationService->createRegistration($email);
-			$this->mailService->sendTokenByMail($registration);
+			$reg = $this->registrationService->validateEmail($email);
+			if ( $reg === true ) {
+				$registration = $this->registrationService->createRegistration($email);
+				$this->mailService->sendTokenByMail($registration);
+			} else {
+				$this->registrationService->generateNewToken($reg);
+				$this->mailService->sendTokenByMail($reg);
+				return new TemplateResponse('registration', 'message', array('msg' =>
+					$this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.')
+				), 'guest');
+			}
 		} catch (RegistrationException $e) {
 			return $this->renderError($e->getMessage(), $e->getHint());
 		}

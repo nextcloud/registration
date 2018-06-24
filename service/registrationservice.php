@@ -147,7 +147,7 @@ class RegistrationService {
 
 	/**
 	 * @param string $email
-	 * @return Registration
+	 * @return Registration|true if there is a pending reg with this email, return the pending reg, if there are no problems with the email, return true.
 	 * @throws RegistrationException
 	 */
 	public function validateEmail($email) {
@@ -156,8 +156,8 @@ class RegistrationService {
 
 		// check for pending registrations
 		try {
-			return $this->registrationMapper->find($email);
-		} catch (\Exception $e) {}
+			return $this->registrationMapper->find($email);//if not found DB will throw a exception
+		} catch (DoesNotExistException $e) {}
 
 		if ( $this->userManager->getByEmail($email) ) {
 			throw new RegistrationException(
@@ -174,7 +174,7 @@ class RegistrationService {
 				)
 			);
 		}
-		return null;
+		return true;
 	}
 
 	/**
