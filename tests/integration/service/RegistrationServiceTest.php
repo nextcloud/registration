@@ -23,7 +23,6 @@ use OCP\IUser;
 use OCP\IURLGenerator;
 use OCP\IUserManager;
 use OCP\IUserSession;
-//use \Test\TestCase;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
@@ -71,19 +70,23 @@ class RegistrationServiceTest extends TestCase {
 		$this->mailService = $this->createMock(MailService::class);
 		$this->l10n = $this->createMock(IL10N::class);
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
-		$this->registrationMapper = $this->createMock(RegistrationMapper::class);
 		#$this->userManager = $this->createMock(IUserManager::class);
 		$this->userManager = \OC::$server->getUserManager();
 		$this->config = $this->createMock(IConfig::class);
 		$this->groupManager = \OC::$server->getGroupManager();
 		$this->defaults = $this->createMock(Defaults::class);
-		$this->random = $this->createMock(ISecureRandom::class);
+		$this->random = \OC::$server->getSecureRandom();
 		$this->usersession = $this->createMock(IUserSession::class);
 		$this->request = $this->createMock(IRequest::class);
 		$this->logger = $this->createMock(ILogger::class);
 		$this->session = $this->createMock(ISession::class);
 		$this->tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);
+
+		$this->registrationMapper = new RegistrationMapper(
+			\OC::$server->getDatabaseConnection(),
+			$this->random
+		);
 
 		$this->service = new RegistrationService(
 			'registration',
@@ -103,6 +106,30 @@ class RegistrationServiceTest extends TestCase {
 			$this->tokenProvider,
 			$this->crypto
 		);
+	}
+
+	public function testValidateNewEmail() {
+		$email = 'aaaa@example.com';
+
+		$this->config->expects($this->at(0))
+			->method('getAppValue')
+			->with("registration", 'allowed_domains', '')
+			->willReturn('');
+
+		$ret = $this->service->validateEmail($email);
+
+		//$this->assertInstanceOf(Registration::class, $ret);
+		$this->assertTrue($ret);
+	}
+
+	public function testValidatePendingReg() {
+		$email = 'aaaa@example.com';
+
+		$this->service->createRegistration($email, 'alice');
+		$ret = $this->service->validateEmail($email);
+
+		$this->assertInstanceOf(Registration::class, $ret);
+		$this->assertEquals($email, $ret->getEmail());
 	}
 
 	public function testCreateAccountWebForm() {
