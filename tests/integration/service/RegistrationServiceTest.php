@@ -165,6 +165,23 @@ class RegistrationServiceTest extends TestCase {
 		$this->service->validateEmail($email2);
 	}
 
+	public function testCreatePendingReg() {
+		$email = 'aaaa@example.com';
+
+		$actual = $this->service->createRegistration($email);
+
+		$expected = new Registration();
+		$expected->setEmail($email);
+		$expected->setUsername('');
+		$expected->setDisplayname('');
+		$this->registrationMapper->generateNewToken($expected);
+
+		$this->assertEquals($expected->getEmail(), $actual->getEmail());
+
+		$indb = $this->registrationMapper->find($email);
+		$this->assertEquals($expected->getEmail(), $indb->getEmail());
+	}
+
 	public function testValidatePendingReg() {
 		$email = 'aaaa@example.com';
 
