@@ -200,26 +200,10 @@ class RegistrationServiceTest extends TestCase {
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
-		/*
-		$map = [
-			["registration", 'registered_user_group', 'none'],
-			["registration", 'admin_approval_required', 'no']
-		];
-		 */
-
-		$this->config->expects($this->at(0))
+		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->with("registration", 'registered_user_group', 'none')
-			->willReturn('none');
-		$this->config->expects($this->at(1))
-			->method('getAppValue')
-			->with("registration", 'admin_approval_required', 'no')
-			->willReturn('no');
+			->will($this->returnCallback(array($this, 'settingsCallback1')));
 
-
-		//$regroup = $this->config->getAppValue("registration", 'registered_user_group', 'none');
-		//print_r($regroup);
-		//$this->assertEquals($this->config->getAppValue('registration', 'registered_user_group', 'none'), "none");
 
 		$form_input_username = 'alice1';
 		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdf');
@@ -265,5 +249,14 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmailConfirmed(true);
 
 		$resulting_user = $this->service->createAccount($reg);
+	}
+
+	public function settingsCallback1($app, $key, $default) {
+		$map = [
+			'registered_user_group' => 'none',
+			'admin_approval_required' => 'no'
+		];
+
+		return $map[$key];
 	}
 }
