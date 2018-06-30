@@ -111,7 +111,7 @@ class RegistrationServiceTest extends TestCase {
 	public function testValidateNewEmail() {
 		$email = 'aaaa@example.com';
 
-		$this->config->expects($this->at(0))
+		$this->config->expects($this->once())
 			->method('getAppValue')
 			->with("registration", 'allowed_domains', '')
 			->willReturn('');
