@@ -126,7 +126,7 @@ class RegistrationControllerTest extends TestCase {
 			->method('getAppValue')
 			->with("registration", 'allowed_domains', '')
 			->willReturn('');
-		$this->mailService->expects($this->at(0))
+		$this->mailService->expects($this->once())
 			->method('sendTokenByMail')
 			->willReturn(true);
 
