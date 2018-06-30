@@ -122,6 +122,49 @@ class RegistrationServiceTest extends TestCase {
 		$this->assertTrue($ret);
 	}
 
+	public function testValidateNewEmailWithinAllowedDomain() {
+		$email = 'aaaa@example.com';
+
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->with("registration", 'allowed_domains', '')
+			->willReturn('example.com');
+
+		$ret = $this->service->validateEmail($email);
+		$this->assertTrue($ret, print_r($ret, true));
+	}
+	/**
+	 * @depends testValidateNewEmailWithinAllowedDomain
+	 * @expectedException OCA\Registration\Service\RegistrationException
+	 */
+	public function testValidateNewEmailNotWithinAllowedDomain() {
+		$email2 = 'bbbb@gmail.com';
+
+		$this->service->validateEmail($email2);
+	}
+
+	public function testValidateNewEmailWithinMultipleAllowedDomain() {
+		$email = 'aaaa@example.com';
+		$email2 = 'bbbb@gmail.com';
+
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->with("registration", 'allowed_domains', '')
+			->willReturn('example.com;gmail.com');
+
+		$this->assertTrue($this->service->validateEmail($email));
+		$this->assertTrue($this->service->validateEmail($email2));
+	}
+	/**
+	 * @depends testValidateNewEmailWithinMultipleAllowedDomain
+	 * @expectedException OCA\Registration\Service\RegistrationException
+	 */
+	public function testValidateNewEmailNotWithinMultipleAllowedDomain() {
+		$email2 = 'cccc@yahoo.com';
+
+		$this->service->validateEmail($email2);
+	}
+
 	public function testValidatePendingReg() {
 		$email = 'aaaa@example.com';
 
