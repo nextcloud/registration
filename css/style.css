@@ -30,3 +30,10 @@ input[type="submit"] {
 .groupofone {
 	position: relative;
 }
+
+.selfield {
+	width: 270px;
+	height: 47px;
+	margin: 4px;
+	border-radius: 3px;
+}

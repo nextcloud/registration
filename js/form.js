@@ -5,3 +5,12 @@ $('#show-password').click(function () {
 		$('#password').attr('type', 'password');
 	}
 });
+
+
+var timezones = moment.tz.names();
+
+$('#timezone').append('<option value="automatic">' + t('registration', 'Automatic') + ' (' + moment.tz.guess() + ')</option>');
+
+$.each(timezones, function(index, timezone) {
+	$('#timezone').append('<option value="' + timezone + '">' + timezone + '</option>');
+});
