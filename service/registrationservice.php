@@ -329,7 +329,7 @@ class RegistrationService {
 		$this->config->setUserValue($user->getUID(), 'registration', 'phoneno', $phoneno);
 		$this->config->setUserValue($user->getUID(), 'registration', 'firstname', $firstname);
 		$this->config->setUserValue($user->getUID(), 'registration', 'lastname', $lastname);
-		$this->config->setUserValue($user->getUID(), 'registration', 'timezone', $timezone);
+		$this->config->setUserValue($user->getUID(), 'calendar', 'timezone', $timezone);
 		return $user;
 	}
 
