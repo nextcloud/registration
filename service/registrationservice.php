@@ -260,7 +260,7 @@ class RegistrationService {
 	 * @return \OCP\IUser
 	 * @throws RegistrationException|\InvalidTokenException
 	 */
-	public function createAccount(Registration &$registration, $username = null, $password = null, $displayName = null, $country = null, $language = null, $phoneno = null, $timezone = null) {
+	public function createAccount(Registration &$registration, $username = null, $password = null, $displayName = null, $country = null, $language = null, $phoneno = null, $timezone = null, $company = null) {
 		if($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
@@ -350,6 +350,10 @@ class RegistrationService {
 
 		if ($timezone !== null) {
 			$this->config->setUserValue($user->getUID(), 'calendar', 'timezone', $timezone);
+		}
+
+		if ($company !== null) {
+			$this->config->setUserValue($user->getUID(), 'registration', 'company', $company);
 		}
 
 		return $user;

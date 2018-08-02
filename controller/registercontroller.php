@@ -146,10 +146,11 @@ class RegisterController extends Controller {
 		$phoneno = $this->request->getParam('phoneno');
 		$fullname = $this->request->getParam('fullname');
 		$timezone = $this->request->getParam('timezone');
+		$company = $this->request->getParam('company');
 		$registration = $this->registrationService->getRegistrationForToken($token);
 
 		try {
-			$user = $this->registrationService->createAccount($registration, $username, $password, $fullname, $country, $language, $phoneno, $timezone);
+			$user = $this->registrationService->createAccount($registration, $username, $password, $fullname, $country, $language, $phoneno, $timezone, $company);
 		} catch (\Exception $exception) {
 			// Render form with previously sent values
 			return new TemplateResponse('registration', 'form',
