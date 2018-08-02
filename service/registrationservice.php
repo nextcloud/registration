@@ -336,7 +336,7 @@ class RegistrationService {
 
 		if ($phoneno !== null) {
 			$accountData = $this->accountManager->getUser($user);
-			$accountData[AccountManager::PROPERTY_PHONE] = ['value' => $phoneno];
+			$accountData[AccountManager::PROPERTY_PHONE] = ['value' => $phoneno, 'scope' => AccountManager::VISIBILITY_PRIVATE];
 			$this->accountManager->updateUser($user, $accountData);
 		}
 
