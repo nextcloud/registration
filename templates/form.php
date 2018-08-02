@@ -22,10 +22,8 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<label for="email" class="infield"><?php echo $_['email']; ?></label>
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 
-			<input type="text" id="firstname" name="firstname" placeholder="<?php p($l->t('Firstname')); ?>" required />
-			<label for="firstname" class="infield"><?php p($l->t('Firstname'));?></label>
-			<input type="text" id="lastname" name="lastname"  placeholder="<?php p($l->t('Lastname')); ?>" required />
-			<label  for="lastname" class="infield"><?php p($l->t('Lastname'));?></label>
+			<input type="text" id="fullname" name="fullname" placeholder="<?php p($l->t('Full name')); ?>" required />
+			<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
 			<select id="country" name="country" class="selfield" placeholder="<?php p($l->t('Country')); ?>" >
 				<option value="AF">Afghanistan</option>
 				<option value="AX">Åland Islands</option>

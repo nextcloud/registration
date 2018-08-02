@@ -49,6 +49,7 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Security\ISecureRandom;
+use OC\Accounts\AccountManager;
 
 class RegistrationService {
 
@@ -84,10 +85,12 @@ class RegistrationService {
 	private $tokenProvider;
 	/** @var ICrypto */
 	private $crypto;
+	/** @var AccountManager */
+	private $accountManager;
 
 	public function __construct($appName, MailService $mailService, IL10N $l10n, IURLGenerator $urlGenerator,
 								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager, Defaults $defaults,
-								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto){
+								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto,AccountManager $accountManager){
 		$this->appName = $appName;
 		$this->mailService = $mailService;
 		$this->l10n = $l10n;
@@ -104,6 +107,7 @@ class RegistrationService {
 		$this->session = $session;
 		$this->tokenProvider = $tokenProvider;
 		$this->crypto = $crypto;
+		$this->accountManager = $accountManager;
 	}
 
 	/**
@@ -256,7 +260,7 @@ class RegistrationService {
 	 * @return \OCP\IUser
 	 * @throws RegistrationException|\InvalidTokenException
 	 */
-	public function createAccount(Registration &$registration, $username = null, $password = null, $country = null, $language = null, $phoneno = null, $firstname = null, $lastname = null, $timezone = null) {
+	public function createAccount(Registration &$registration, $username = null, $password = null, $displayName = null, $country = null, $language = null, $phoneno = null, $timezone = null) {
 		if($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
@@ -289,6 +293,12 @@ class RegistrationService {
 			$user->setEMailAddress($registration->getEmail());
 		} catch (\Exception $e) {
 			throw new RegistrationException($this->l10n->t('Unable to set user email: ' . $e->getMessage()));
+		}
+		// Set user displayname
+		try {
+			$user->setDisplayName($displayName);
+		} catch (\Exception $e) {
+			throw new RegistrationException($this->l10n->t('Unable to set user display name: ' . $e->getMessage()));
 		}
 
 		// Add user to group
@@ -324,12 +334,24 @@ class RegistrationService {
 
 		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
 
-		$this->config->setUserValue($user->getUID(), 'registration', 'country', $country);
-		$this->config->setUserValue($user->getUID(), 'registration', 'language', $language);
-		$this->config->setUserValue($user->getUID(), 'registration', 'phoneno', $phoneno);
-		$this->config->setUserValue($user->getUID(), 'registration', 'firstname', $firstname);
-		$this->config->setUserValue($user->getUID(), 'registration', 'lastname', $lastname);
-		$this->config->setUserValue($user->getUID(), 'calendar', 'timezone', $timezone);
+		if ($phoneno !== null) {
+			$accountData = $this->accountManager->getUser($user);
+			$accountData[AccountManager::PROPERTY_PHONE] = ['value' => $phoneno];
+			$this->accountManager->updateUser($user, $accountData);
+		}
+
+		if ($country !== null) {
+			$this->config->setUserValue($user->getUID(), 'registration', 'country', $country);
+		}
+
+		if ($language !== null) {
+			$this->config->setUserValue($user->getUID(), 'core', 'lang', $language);
+		}
+
+		if ($timezone !== null) {
+			$this->config->setUserValue($user->getUID(), 'calendar', 'timezone', $timezone);
+		}
+
 		return $user;
 	}
 
