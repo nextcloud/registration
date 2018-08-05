@@ -70,6 +70,12 @@ matrix:
       env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=mysql
     - php: 5.6
       env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=pgsql
+    - php: 7.0
+      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=sqlite
+    - php: 7.0
+      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=mysql
+    - php: 7.0
+      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=pgsql
 
     # Nextcloud prior v11 is not compatible with PHP 7.1
     # (see https://github.com/nextcloud/server/blob/stable10/console.php#L42)
