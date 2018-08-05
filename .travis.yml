@@ -95,11 +95,11 @@ matrix:
     # ownCloud prior v10 is not compatible with PHP 7.1
     # (see https://github.com/owncloud/core/blob/stable9.1/console.php#L47)
     - php: 7.1
-      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=sqlite
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable9.1 DB=sqlite
     - php: 7.1
-      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=mysql
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable9.1 DB=mysql
     - php: 7.1
-      env: CORE_TYPE=owncloud  CORE_BRANCH=stable9.1 DB=pgsql
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable9.1 DB=pgsql
 
   include:
     # Nextcloud prior v13 is not compatible with PHP 7.2
