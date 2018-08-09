@@ -15,6 +15,12 @@ $.each(timezones, function(index, timezone) {
 	$('#timezone').append('<option value="' + timezone + '">' + timezone + '</option>');
 });
 
-var language = window.navigator.userLanguage || window.navigator.language;
+var timezone = $('#timezone').attr('data-value');
+$('#timezone').val(timezone);
+var language = $('#language').attr('data-value');
+if (language === '') {
+	language = window.navigator.userLanguage || window.navigator.language;
+}
 $('#language').val(language.substr(0, 2));
-$('#country').val('');
+var country = $('#country').attr('data-value');
+$('#country').val(country);

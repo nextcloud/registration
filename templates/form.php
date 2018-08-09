@@ -22,9 +22,9 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<label for="email" class="infield"><?php echo $_['email']; ?></label>
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 
-			<input type="text" id="fullname" name="fullname" placeholder="<?php p($l->t('Full name')); ?>" required />
+			<input type="text" id="fullname" name="fullname" value="<?php echo !empty($_['entered_data']['fullname']) ? $_['entered_data']['fullname'] : ''; ?>" placeholder="<?php p($l->t('Full name')); ?>" required />
 			<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
-			<select id="country" name="country" class="selfield" placeholder="<?php p($l->t('Country')); ?>" >
+			<select id="country" name="country" class="selfield" data-value="<?php echo !empty($_['entered_data']['country']) ? $_['entered_data']['country'] : ''; ?>" placeholder="<?php p($l->t('Country')); ?>" >
 				<option value="AF">Afghanistan</option>
 				<option value="AX">Åland Islands</option>
 				<option value="AL">Albania</option>
@@ -276,7 +276,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 				<option value="ZW">Zimbabwe</option>
 			</select>
 			<label  for="country" class="infield"><?php p($l->t('Country'));?></label>
-			<select id="language" name="language" placeholder="Language" class="selfield">
+			<select id="language" name="language" data-value="<?php echo !empty($_['entered_data']['language']) ? $_['entered_data']['language'] : ''; ?>" placeholder="Language" class="selfield">
 				<option value="en">
 					English (US) </option>
 				<option value="es">
@@ -408,11 +408,11 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 					uz </option>
 			</select>
 			<label  for="language" class="infield"><?php p($l->t('Language'));?></label>
-			<select id="timezone" name="timezone" class="selfield" placeholder="<?php p($l->t('Timezone')); ?>" />
+			<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" />
 			<label  for="timezone" class="infield"><?php p($l->t('Timezone'));?></label>
-			<input type="text" id="company" name="company"  placeholder="<?php p($l->t('Company')); ?>" />
+			<input type="text" id="company" name="company" value="<?php echo !empty($_['entered_data']['company']) ? $_['entered_data']['company'] : ''; ?>" placeholder="<?php p($l->t('Company')); ?>" />
 			<label class="infield"><?php p($l->t('Company'));?></label>
-			<input type="text" id="phoneno" name="phoneno"  placeholder="<?php p($l->t('Phone Number')); ?>" />
+			<input type="text" id="phoneno" name="phoneno" value="<?php echo !empty($_['entered_data']['phoneno']) ? $_['entered_data']['phoneno'] : ''; ?>" placeholder="<?php p($l->t('Phone Number')); ?>" />
 			<label class="infield"><?php p($l->t('Phone Number'));?></label>
 		</p>
 
