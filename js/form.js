@@ -14,3 +14,7 @@ $('#timezone').append('<option value="automatic">' + t('registration', 'Automati
 $.each(timezones, function(index, timezone) {
 	$('#timezone').append('<option value="' + timezone + '">' + timezone + '</option>');
 });
+
+var language = window.navigator.userLanguage || window.navigator.language;
+$('#language').val(language.substr(0, 2));
+$('#country').val('');
