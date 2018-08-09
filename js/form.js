@@ -11,9 +11,37 @@ var timezones = moment.tz.names();
 
 $('#timezone').append('<option value="automatic">' + t('registration', 'Automatic') + ' (' + moment.tz.guess() + ')</option>');
 
-$.each(timezones, function(index, timezone) {
-	$('#timezone').append('<option value="' + timezone + '">' + timezone + '</option>');
-});
+
+	$.each(timezones, function(index, timezone) {
+		var parts = timezone.split('/');
+		if (parts.length === 1) {
+			if ($('#group-global').length === 0) {
+				$('#timezone').append($('<optgroup/>', {
+					id: 'group-global',
+					label: t('calendar', 'Global')
+				}));
+			}
+
+			$('#group-global').append($('<option/>', {
+				value: timezone,
+				text : timezone
+			}));
+		} else {
+			var group = timezone.split('/', 1);
+			if ($('#group-' + group).length === 0) {
+				$('#timezone').append($('<optgroup/>', {
+					id: 'group-' + group,
+					label: group
+				}));
+			}
+
+			$('#group-' + group).append($('<option/>', {
+				value: timezone,
+				text : timezone
+			}));
+		}
+	});
+
 
 var timezone = $('#timezone').attr('data-value');
 $('#timezone').val(timezone);
