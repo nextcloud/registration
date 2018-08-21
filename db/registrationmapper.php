@@ -73,6 +73,17 @@ class RegistrationMapper extends Mapper {
 	}
 
 	/**
+	 * @param $email
+	 */
+	public function deleteAll($email) {
+		$sql = 'SELECT * FROM `*PREFIX*registration` WHERE `email` = ? ';
+		$entities = $this->findEntities($sql, [$email]);
+		foreach ($entities as $entity) {
+			$this->delete($entity);
+		}
+	}
+
+	/**
 	 * @param Entity $entity
 	 * @return Entity
 	 */

@@ -50,6 +50,7 @@ use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Security\ISecureRandom;
 use OC\Accounts\AccountManager;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
 class RegistrationService {
 
@@ -162,6 +163,9 @@ class RegistrationService {
 		try {
 			return $this->registrationMapper->find($email);//if not found DB will throw a exception
 		} catch (DoesNotExistException $e) {}
+		catch (MultipleObjectsReturnedException $e) {
+			$this->registrationMapper->deleteAll($email);
+		}
 
 		if ( $this->userManager->getByEmail($email) ) {
 			throw new RegistrationException(
