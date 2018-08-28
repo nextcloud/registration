@@ -24,8 +24,48 @@ foreach ( $_['groups'] as $group ) {
 	</p>
 
 	<p>
-	<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?>
-	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if($_['approval_required'] === "yes" ) echo " checked"; ?>>
-	</label>
+
+	<input class="checkbox" type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if($_['approval_required'] === "yes" ) echo " checked"; ?>>
+	<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?></label>
+	</input>
+	</p>
+
+	<h3><?php p($l->t('Show extra fields in registration form?')); ?>
+	</h3>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="fullname" name="fullname" <?php if($_['fullname'] === "yes" ) echo " checked"; ?>>
+	<label for="fullname"><?php p($l->t('Full name')); ?></label>
+	</input>
+	</p>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="country" name="country" <?php if($_['country'] === "yes" ) echo " checked"; ?>>
+	<label for="country"><?php p($l->t('Country')); ?></label>
+	</input>
+	</p>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="language" name="language" <?php if($_['language'] === "yes" ) echo " checked"; ?>>
+	<label for="language"><?php p($l->t('Language')); ?></label>
+	</input>
+	</p>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="timezone" name="timezone" <?php if($_['timezone'] === "yes" ) echo " checked"; ?>>
+	<label for="timezone"><?php p($l->t('Timezone')); ?></label>
+	</input>
+	</p>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="company" name="company" <?php if($_['company'] === "yes" ) echo " checked"; ?>>
+	<label for="company"><?php p($l->t('Company')); ?></label>
+	</input>
+	</p>
+
+	<p>
+	<input class="checkbox" type="checkbox" id="phoneno" name="phoneno" <?php if($_['phoneno'] === "yes" ) echo " checked"; ?>>
+	<label for="phoneno"><?php p($l->t('Phone number')); ?></label>
+	</input>
 	</p>
 </form>

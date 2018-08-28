@@ -21,9 +21,11 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<input type="email" name="email" id="email" value="<?php echo $_['email']; ?>" disabled />
 			<label for="email" class="infield"><?php echo $_['email']; ?></label>
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
-
+			<?php if ($_['showfullname'] === "yes") {?>
 			<input type="text" id="fullname" name="fullname" value="<?php echo !empty($_['entered_data']['fullname']) ? $_['entered_data']['fullname'] : ''; ?>" placeholder="<?php p($l->t('Full name')); ?>" required />
 			<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
+			<?php }?>
+			<?php if ($_['showcountry'] === "yes") {?>
 			<select id="country" name="country" class="selfield" data-value="<?php echo !empty($_['entered_data']['country']) ? $_['entered_data']['country'] : ''; ?>" placeholder="<?php p($l->t('Country')); ?>" >
 				<option value="AF">Afghanistan</option>
 				<option value="AX">Åland Islands</option>
@@ -276,6 +278,8 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 				<option value="ZW">Zimbabwe</option>
 			</select>
 			<label  for="country" class="infield"><?php p($l->t('Country'));?></label>
+			<?php }?>
+			<?php if ($_['showlanguage'] === "yes") {?>
 			<select id="language" name="language" data-value="<?php echo !empty($_['entered_data']['language']) ? $_['entered_data']['language'] : ''; ?>" placeholder="Language" class="selfield">
 				<option value="en">
 					English (US) </option>
@@ -408,12 +412,19 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 					uz </option>
 			</select>
 			<label  for="language" class="infield"><?php p($l->t('Language'));?></label>
+			<?php }?>
+			<?php if ($_['showtimezone'] === "yes") {?>
 			<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" />
 			<label  for="timezone" class="infield"><?php p($l->t('Timezone'));?></label>
+			<?php }?>
+			<?php if ($_['showcompany'] === "yes") {?>
 			<input type="text" id="company" name="company" value="<?php echo !empty($_['entered_data']['company']) ? $_['entered_data']['company'] : ''; ?>" placeholder="<?php p($l->t('Company')); ?>" />
 			<label class="infield"><?php p($l->t('Company'));?></label>
+			<?php }?>
+			<?php if ($_['showphoneno'] === "yes") {?>
 			<input type="text" id="phoneno" name="phoneno" value="<?php echo !empty($_['entered_data']['phoneno']) ? $_['entered_data']['phoneno'] : ''; ?>" placeholder="<?php p($l->t('Phone Number')); ?>" />
 			<label class="infield"><?php p($l->t('Phone Number'));?></label>
+			<?php }?>
 		</p>
 
 		<p class="groupmiddle">

@@ -40,7 +40,7 @@ class SettingsController extends Controller {
 		$this->appName = $appName;
 	}
 
-	
+
 
 	/**
 	 * @AdminRequired
@@ -50,7 +50,7 @@ class SettingsController extends Controller {
      * @param bool $admin_approval_required newly registered users have to be validated by an admin
 	 * @return DataResponse
 	 */
-	public function admin($registered_user_group, $allowed_domains, $admin_approval_required) {
+	public function admin($registered_user_group, $allowed_domains, $admin_approval_required, $fullname, $country, $language, $timezone, $company, $phoneno) {
 		// handle domains
 		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
@@ -60,6 +60,14 @@ class SettingsController extends Controller {
 
 		// handle admin validation
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? "yes" : "no");
+
+		// extra fields
+		$this->config->setAppValue($this->appName, 'fullname', $fullname ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'country', $country ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'language', $language ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'timezone', $timezone ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'company', $company ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'phoneno', $phoneno ? "yes" : "no");
 
 		// handle groups
 		$groups = $this->groupmanager->search('');
@@ -74,7 +82,7 @@ class SettingsController extends Controller {
 					'message' => (string) $this->l10n->t('Saved'),
 				),
 				'status' => 'success'
-				
+
 			));
 		} else if ( in_array($registered_user_group, $group_id_list) ) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
@@ -113,11 +121,25 @@ class SettingsController extends Controller {
 		// handle admin validation
 		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
 
+		// extra fields
+		$fullname = $this->config->getAppValue($this->appName, 'fullname', "no");
+		$country = $this->config->getAppValue($this->appName, 'country', "no");
+		$language = $this->config->getAppValue($this->appName, 'language', "no");
+		$timezone = $this->config->getAppValue($this->appName, 'timezone', "no");
+		$company = $this->config->getAppValue($this->appName, 'company', "no");
+		$phoneno = $this->config->getAppValue($this->appName, 'phoneno', "no");
+
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list,
 			'current' => $current_value,
 			'allowed' => $allowed_domains,
-			'approval_required' => $admin_approval_required
+			'approval_required' => $admin_approval_required,
+			'fullname' => $fullname,
+			'country' => $country,
+			'language' => $language,
+			'timezone' => $timezone,
+			'company' => $company,
+			'phoneno' => $phoneno
 		], '');
 	}
 }

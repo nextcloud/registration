@@ -22,11 +22,14 @@ use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\AppFramework\Controller;
 use OCP\IURLGenerator;
 use \OCP\IL10N;
+use \OCP\IConfig;
 
 class RegisterController extends Controller {
 
 	/** @var IL10N */
 	private $l10n;
+	/** @var IConfig */
+	private $config;
 	/** @var IURLGenerator */
 	private $urlgenerator;
 	/** @var RegistrationService */
@@ -39,6 +42,7 @@ class RegisterController extends Controller {
 		$appName,
 		IRequest $request,
 		IL10N $l10n,
+		IConfig $config,
 		IURLGenerator $urlgenerator,
 		RegistrationService $registrationService,
 		MailService $mailService
@@ -48,6 +52,7 @@ class RegisterController extends Controller {
 		$this->urlgenerator = $urlgenerator;
 		$this->registrationService = $registrationService;
 		$this->mailService = $mailService;
+		$this->config = $config;
 	}
 
 	/**
@@ -124,7 +129,21 @@ class RegisterController extends Controller {
 				);
 			}
 
-			return new TemplateResponse('registration', 'form', ['email' => $registration->getEmail(), 'token' => $registration->getToken()], 'guest');
+			// extra fields
+			$showfullname = $this->config->getAppValue($this->appName, 'fullname', "no");
+			$showcountry = $this->config->getAppValue($this->appName, 'country', "no");
+			$showlanguage = $this->config->getAppValue($this->appName, 'language', "no");
+			$showtimezone = $this->config->getAppValue($this->appName, 'timezone', "no");
+			$showcompany = $this->config->getAppValue($this->appName, 'company', "no");
+			$showphoneno = $this->config->getAppValue($this->appName, 'phoneno', "no");
+
+			return new TemplateResponse('registration', 'form', ['email' => $registration->getEmail(), 'token' => $registration->getToken(),
+					'showfullname' => $showfullname,
+					'showcountry' => $showcountry,
+					'showlanguage' => $showlanguage,
+					'showtimezone' => $showtimezone,
+					'showcompany' => $showcompany,
+					'showphoneno' => $showphoneno], 'guest');
 		} catch (RegistrationException $exception) {
 			return $this->renderError($exception->getMessage(), $exception->getHint());
 		}
@@ -149,6 +168,14 @@ class RegisterController extends Controller {
 		$company = $this->request->getParam('company');
 		$registration = $this->registrationService->getRegistrationForToken($token);
 
+		// extra fields
+		$showfullname = $this->config->getAppValue($this->appName, 'fullname', "no");
+		$showcountry = $this->config->getAppValue($this->appName, 'country', "no");
+		$showlanguage = $this->config->getAppValue($this->appName, 'language', "no");
+		$showtimezone = $this->config->getAppValue($this->appName, 'timezone', "no");
+		$showcompany = $this->config->getAppValue($this->appName, 'company', "no");
+		$showphoneno = $this->config->getAppValue($this->appName, 'phoneno', "no");
+
 		try {
 			$user = $this->registrationService->createAccount($registration, $username, $password, $fullname, $country, $language, $phoneno, $timezone, $company);
 		} catch (\Exception $exception) {
@@ -158,7 +185,13 @@ class RegisterController extends Controller {
 					'email' => $registration->getEmail(),
 					'entered_data' => array('user' => $username, 'fullname' => $fullname, 'country' => $country, 'language' => $language, 'phoneno' => $phoneno, 'timezone' => $timezone, 'company' => $company),
 					'errormsgs' => array($exception->getMessage()),
-					'token' => $token
+					'token' => $token,
+					'showfullname' => $showfullname,
+					'showcountry' => $showcountry,
+					'showlanguage' => $showlanguage,
+					'showtimezone' => $showtimezone,
+					'showcompany' => $showcompany,
+					'showphoneno' => $showphoneno
 				], 'guest');
 		}
 
