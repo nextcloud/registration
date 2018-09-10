@@ -30,3 +30,12 @@ input[type="submit"] {
 .groupofone {
 	position: relative;
 }
+
+#show-password {
+	margin-left: 0px!important;
+	padding-left: 0px!important;
+}
+
+#submit {
+	margin-top: 24px!important;
+}
