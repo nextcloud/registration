@@ -164,6 +164,7 @@ class RegistrationService {
 			return $this->registrationMapper->find($email);//if not found DB will throw a exception
 		} catch (DoesNotExistException $e) {}
 		catch (MultipleObjectsReturnedException $e) {
+			$this->logger->error($e->getMessage(), array('app' => $this->appName));
 			$this->registrationMapper->deleteAll($email);
 		}
 
