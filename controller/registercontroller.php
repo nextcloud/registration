@@ -209,7 +209,7 @@ class RegisterController extends Controller {
 	}
 
 	private function renderError($error, $hint="") {
-		return new TemplateResponse('', 'error', array(
+		return new TemplateResponse('registration', 'error', array(
 			'errors' => array(array(
 				'error' => $error,
 				'hint' => $hint
