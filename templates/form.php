@@ -17,7 +17,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<li><?php p($l->t('Welcome, you can create your account below.'));?></li>
 		</ul>
 		<?php } ?>
-		<p class="grouptop">
+		<p class="groupofone">
 			<input type="email" name="email" id="email" value="<?php echo $_['email']; ?>" disabled />
 			<label for="email" class="infield"><?php echo $_['email']; ?></label>
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
@@ -26,6 +26,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
 			<?php }?>
 			<?php if ($_['showcountry'] === "yes") {?>
+			<label for="country" class="msg"><?php p($l->t('Country'));?></label>
 			<select id="country" name="country" class="selfield" data-value="<?php echo !empty($_['entered_data']['country']) ? $_['entered_data']['country'] : ''; ?>" placeholder="<?php p($l->t('Country')); ?>" >
 				<option value="AF">Afghanistan</option>
 				<option value="AX">Åland Islands</option>
@@ -280,6 +281,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<label  for="country" class="infield"><?php p($l->t('Country'));?></label>
 			<?php }?>
 			<?php if ($_['showlanguage'] === "yes") {?>
+			<label for="language" class="msg"><?php p($l->t('Language'));?></label>
 			<select id="language" name="language" data-value="<?php echo !empty($_['entered_data']['language']) ? $_['entered_data']['language'] : ''; ?>" placeholder="Language" class="selfield">
 				<option value="en">
 					English (US) </option>
@@ -411,9 +413,9 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 				<option value="uz">
 					uz </option>
 			</select>
-			<label  for="language" class="infield"><?php p($l->t('Language'));?></label>
 			<?php }?>
 			<?php if ($_['showtimezone'] === "yes") {?>
+			<label for="timezone" class="msg"><?php p($l->t('Timezone'));?></label>
 			<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" />
 			<label  for="timezone" class="infield"><?php p($l->t('Timezone'));?></label>
 			<?php }?>
@@ -427,13 +429,13 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<?php }?>
 		</p>
 
-		<p class="groupmiddle">
+		<p class="groupofone">
 			<input type="text" name="username" id="username" value="<?php echo !empty($_['entered_data']['user']) ? $_['entered_data']['user'] : ''; ?>" placeholder="<?php p($l->t('Username')); ?>" />
 			<label for="username" class="infield"><?php p($l->t('Username')); ?></label>
 			<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
 
-		<p class="groupbottom">
+		<p class="groupofone">
 			<input type="password" name="password" id="password" placeholder="<?php p($l->t('Password')); ?>"/>
 			<label for="password" class="infield"><?php p($l->t( 'Password' )); ?></label>
 			<img id="password-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
