@@ -211,11 +211,22 @@ class RegistrationServiceTest extends TestCase {
 
 
 		$form_input_username = 'alice1';
-		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdfnommon');
+		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdfnommon', 'displayName', 'countryname', 'languagename', 'phoneno', 'timezonename', 'companyname');
 
 		$this->assertInstanceOf(IUser::class, $resulting_user);
 		$this->assertEquals($form_input_username, $resulting_user->getUID());
 		$this->assertEquals('asd@example.com', $resulting_user->getEmailAddress());
+		$this->assertEquals('displayName', $resulting_user->getDisplayName());
+
+		$this->config->expects($this->any())
+			->method('getUserValue')
+			->will($this->returnValueMap([
+				[$resulting_user->getUID(), 'registration', 'country', 'countryname', 'countryname'],
+				[$resulting_user->getUID(), 'registration', 'company', 'companyname', 'companyname'],
+				[$resulting_user->getUID(), 'core', 'lang', 'countryname', 'countryname'],
+				[$resulting_user->getUID(), 'calendar', 'timezone', 'timezonename', 'timezonename'],
+			]));
+
 	}
 
 	/**
