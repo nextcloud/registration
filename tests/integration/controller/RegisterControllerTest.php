@@ -23,6 +23,7 @@ use OCP\IUser;
 use OCP\IURLGenerator;
 use OCP\IUserManager;
 use OCP\IUserSession;
+use OC\Accounts\AccountManager;
 
 use \OCP\AppFramework\Http\TemplateResponse;
 
@@ -66,6 +67,8 @@ class RegistrationControllerTest extends TestCase {
 	private $tokenProvider;
 	/** @var ICrypto */
 	private $crypto;
+	/** @var AccountManager */
+	private $accountManager;
 
 	public function setUp () {
 		parent::setUp();
@@ -84,6 +87,7 @@ class RegistrationControllerTest extends TestCase {
 		$this->session = $this->createMock(ISession::class);
 		$this->tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);
+		$this->accountManager = $this->createMock(AccountManager::class);
 
 		$this->registrationMapper = new RegistrationMapper(
 			\OC::$server->getDatabaseConnection(),
@@ -106,13 +110,15 @@ class RegistrationControllerTest extends TestCase {
 			$this->logger,
 			$this->session,
 			$this->tokenProvider,
-			$this->crypto
+			$this->crypto,
+			$this->accountManager
 		);
 
 		$this->controller = new RegisterController(
 			'registration',
 			$this->request,
 			$this->l10n,
+			$this->config,
 			$this->urlGenerator,
 			$this->registrationService,
 			$this->mailService

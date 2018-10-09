@@ -23,6 +23,7 @@ use OCP\IUser;
 use OCP\IURLGenerator;
 use OCP\IUserManager;
 use OCP\IUserSession;
+use OC\Accounts\AccountManager;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
@@ -64,6 +65,8 @@ class RegistrationServiceTest extends TestCase {
 	private $tokenProvider;
 	/** @var ICrypto */
 	private $crypto;
+	/** @var AccountManager */
+	private $accountManager;
 
 	public function setUp () {
 		parent::setUp();
@@ -82,6 +85,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->session = $this->createMock(ISession::class);
 		$this->tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);
+		$this->accountManager = $this->createMock(AccountManager::class);
 
 		$this->registrationMapper = new RegistrationMapper(
 			\OC::$server->getDatabaseConnection(),
@@ -104,7 +108,8 @@ class RegistrationServiceTest extends TestCase {
 			$this->logger,
 			$this->session,
 			$this->tokenProvider,
-			$this->crypto
+			$this->crypto,
+			$this->accountManager
 		);
 	}
 
@@ -206,7 +211,7 @@ class RegistrationServiceTest extends TestCase {
 
 
 		$form_input_username = 'alice1';
-		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdf');
+		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdfnommon');
 
 		$this->assertInstanceOf(IUser::class, $resulting_user);
 		$this->assertEquals($form_input_username, $resulting_user->getUID());
@@ -225,7 +230,7 @@ class RegistrationServiceTest extends TestCase {
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
-		$resulting_user = $this->service->createAccount($reg, 'alice1', 'asdf');
+		$resulting_user = $this->service->createAccount($reg, 'alice1', 'asdfnommon');
 	}
 
 	/*
