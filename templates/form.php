@@ -25,11 +25,13 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<?php if ($_['showfullname'] === "yes") {?>
 			<p class="groupbottom">
 				<input type="text" id="fullname" name="fullname" value="<?php echo !empty($_['entered_data']['fullname']) ? $_['entered_data']['fullname'] : ''; ?>" placeholder="<?php p($l->t('Full name')); ?>" required />
+				<img id="fullname-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 				<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
 			</p>
 			<?php }?>
 			<?php if ($_['showcountry'] === "yes") {?>
 			<p class="groupofone">
+				<img id="country-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 				<label for="country" class="msg"><?php p($l->t('Country'));?></label>
 				<select id="country" name="country" class="selfield" data-value="<?php echo !empty($_['entered_data']['country']) ? $_['entered_data']['country'] : ''; ?>" placeholder="<?php p($l->t('Country')); ?>" >
 					<option value="AF">Afghanistan</option>
@@ -282,11 +284,11 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 					<option value="ZM">Zambia</option>
 					<option value="ZW">Zimbabwe</option>
 				</select>
-				<label  for="country" class="infield"><?php p($l->t('Country'));?></label>
 			</p>
 			<?php }?>
 			<?php if ($_['showlanguage'] === "yes") {?>
 			<p class="grouptop">
+				<img id="language-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 				<label for="language" class="msg"><?php p($l->t('Language'));?></label>
 				<select id="language" name="language" data-value="<?php echo !empty($_['entered_data']['language']) ? $_['entered_data']['language'] : ''; ?>" placeholder="Language" class="selfield">
 					<option value="en">
@@ -423,21 +425,23 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<?php }?>
 			<?php if ($_['showtimezone'] === "yes") {?>
 			<p class="grouptop">
+				<img id="timezone-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 				<label for="timezone" class="msg"><?php p($l->t('Timezone'));?></label>
-				<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" />
-				<label  for="timezone" class="infield"><?php p($l->t('Timezone'));?></label>
+				<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" ></select>
 			</p>
 			<?php }?>
 			<?php if ($_['showcompany'] === "yes") {?>
 			<p class="grouptop">
 				<input type="text" id="company" name="company" value="<?php echo !empty($_['entered_data']['company']) ? $_['entered_data']['company'] : ''; ?>" placeholder="<?php p($l->t('Company')); ?>" />
 				<label class="infield"><?php p($l->t('Company'));?></label>
+				<img id="company-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 			</p>
 			<?php }?>
 			<?php if ($_['showphoneno'] === "yes") {?>
 			<p class="groupmiddle">
 				<input type="text" id="phoneno" name="phoneno" value="<?php echo !empty($_['entered_data']['phoneno']) ? $_['entered_data']['phoneno'] : ''; ?>" placeholder="<?php p($l->t('Phone Number')); ?>" />
 				<label class="infield"><?php p($l->t('Phone Number'));?></label>
+				<img id="phoneno-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
 			</p>
 			<?php }?>
 

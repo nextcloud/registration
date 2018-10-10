@@ -1,11 +1,27 @@
-#body-login #email, #body-login #username, #body-login #password {
+#body-login #email, #body-login #username, #body-login #password, #body-login #phoneno, #body-login #company, #body-login #fullname {
 	width: 223px;
 	padding-left: 36px;
 }
-#email-icon, #username-icon, #password-icon {
+#email-icon, #username-icon, #company-icon {
 	position: absolute;
 	left: 16px;
 	top: 22px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	opacity: .3;
+}
+#password-icon, #fullname-icon, #phoneno-icon {
+	position: absolute;
+	left: 16px;
+	top: 18px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	opacity: .3;
+}
+#country-icon, #language-icon, #timezone-icon {
+	position: relative;
+	left: 2px;
+	top: 5px;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 	filter: alpha(opacity=30);
 	opacity: .3;
