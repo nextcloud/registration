@@ -309,12 +309,15 @@ class RegistrationService {
 		// Add user to group
 		$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
 		if ( $registered_user_group !== 'none' ) {
-			try {
-				$group = $this->groupManager->get($registered_user_group);
+			$group = $this->groupManager->get($registered_user_group);
+			if ( $group === null ) {
+				// This might happen if $registered_user_group is deleted after setting the value
+				// Here I choose to log error instead of stopping the user to register
+				$this->logger->error("You specified newly registered users be added to '$registered_user_group' group, but it does not exist.");
+				$groupId = '';
+			} else {
 				$group->addUser($user);
 				$groupId = $group->getGID();
-			} catch (\Exception $e) {
-				throw new RegistrationException($e->getMessage());
 			}
 		} else {
 			$groupId = "";
