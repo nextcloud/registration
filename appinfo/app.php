@@ -15,5 +15,3 @@ namespace OCA\Registration\AppInfo;
 	'name' => \OC::$server->getL10N('registration')->t('Register'),
 	'href' => \OC::$server->getURLGenerator()->linkToRoute('registration.register.askEmail')
 ]);
-
-\OCP\App::registerAdmin('registration', 'admin');
