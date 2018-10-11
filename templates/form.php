@@ -28,7 +28,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<?php if ($_['showfullname'] === "yes") {?>
 			<p class="groupmiddle">
 				<input type="text" id="fullname" name="fullname" value="<?php echo !empty($_['entered_data']['fullname']) ? $_['entered_data']['fullname'] : ''; ?>" placeholder="<?php p($l->t('Full name')); ?>" required />
-				<img id="fullname-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
+				<img id="fullname-icon" class="svg" src="<?php print_unescaped(image_path('', 'categories/social.svg')); ?>" alt=""/>
 				<label for="fullname" class="infield"><?php p($l->t('Full name'));?></label>
 			</p>
 			<?php }?>
@@ -37,14 +37,14 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<p class="groupmiddle">
 				<input type="text" id="company" name="company" value="<?php echo !empty($_['entered_data']['company']) ? $_['entered_data']['company'] : ''; ?>" placeholder="<?php p($l->t('Company')); ?>" />
 				<label class="infield"><?php p($l->t('Company'));?></label>
-				<img id="company-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
+				<img id="company-icon" class="svg" src="<?php print_unescaped(image_path('', 'categories/social.svg')); ?>" alt=""/>
 			</p>
 			<?php }?>
 			<?php if ($_['showphoneno'] === "yes") {?>
 			<p class="groupmiddle">
 				<input type="text" id="phoneno" name="phoneno" value="<?php echo !empty($_['entered_data']['phoneno']) ? $_['entered_data']['phoneno'] : ''; ?>" placeholder="<?php p($l->t('Phone Number')); ?>" />
 				<label class="infield"><?php p($l->t('Phone Number'));?></label>
-				<img id="phoneno-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/contacts-dark.svg')); ?>" alt=""/>
+				<img id="phoneno-icon" class="svg" src="<?php print_unescaped(image_path('', 'categories/social.svg')); ?>" alt=""/>
 			</p>
 			<?php }?>
 
