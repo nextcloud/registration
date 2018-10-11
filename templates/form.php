@@ -1,6 +1,8 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
-\OCP\Util::addScript('registration', 'moment-timezone-with-data');
+if ($_['showtimezone'] === "yes") {
+	\OCP\Util::addScript('registration', 'moment-timezone-with-data');
+}
 \OCP\Util::addScript('registration', 'form');
 if ( \OCP\Util::getVersion()[0] >= 12 )
 	\OCP\Util::addStyle('core', 'guest');
