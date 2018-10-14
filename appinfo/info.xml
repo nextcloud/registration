@@ -27,7 +27,7 @@ This app allows users to register a new account.
 Send Ethereum to `0x941613eBB948C2C547cb957B55fEB2609fa6Fe66`
 Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
 		]]></description>
-	<version>0.4.4</version>
+	<version>0.4.5</version>
 	<licence>agpl</licence>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
 	<category>security</category>
