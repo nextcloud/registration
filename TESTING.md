@@ -1,3 +1,5 @@
+You need a fully working nextcloud/owncloud instance. Check-out this app into the `apps` folder, install the dependencies, and follow the instructions below. The tests will modify your database but should automatically revert the changes in the cleanup stage.
+
 # Dependencies
 
 FreeBSD packages:
