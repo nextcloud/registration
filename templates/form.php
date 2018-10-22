@@ -457,7 +457,7 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 			<?php }?>
 			<?php if ($_['showtimezone'] === "yes") {?>
 			<p class="grouptop">
-				<img id="timezone-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/calendar-dark.svg')); ?>" alt=""/>
+				<img id="timezone-icon" class="svg" src="<?php print_unescaped(image_path('', 'places/calendar.svg')); ?>" alt=""/>
 				<label for="timezone" class="msg"><?php p($l->t('Timezone'));?></label>
 				<select id="timezone" name="timezone" class="selfield" data-value="<?php echo !empty($_['entered_data']['timezone']) ? $_['entered_data']['timezone'] : ''; ?>" placeholder="<?php p($l->t('Timezone')); ?>" ></select>
 			</p>

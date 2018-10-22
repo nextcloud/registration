@@ -177,7 +177,13 @@ class RegisterController extends Controller {
 		$showphoneno = $this->config->getAppValue($this->appName, 'phoneno', "no");
 
 		try {
-			$user = $this->registrationService->createAccount($registration, $username, $password, $fullname, $country, $language, $phoneno, $timezone, $company);
+			$user = $this->registrationService->createAccount($registration, $username, $password,
+																$showfullname == "yes" ? $fullname : null,
+																$showcountry == "yes" ? $country : null,
+																$showlanguage == "yes" ? $language : null,
+																$showphoneno == "yes" ? $phoneno : null,
+																$showtimezone == "yes" ? $timezone : null,
+																$showcompany == "yes" ? $company : null);
 		} catch (\Exception $exception) {
 			// Render form with previously sent values
 			return new TemplateResponse('registration', 'form',
