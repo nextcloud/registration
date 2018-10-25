@@ -9,38 +9,49 @@ $('#show-password').click(function () {
 
 var timezones = moment.tz.names();
 
-$('#timezone').append('<option value="automatic">' + t('registration', 'Automatic') + ' (' + moment.tz.guess() + ')</option>');
 
+var opts_list = $('#timezone').find('option');
+opts_list.sort(function(a, b) { return $(a).text().localeCompare($(b).text()); });
+$.each(opts_list, function(index, timezone) {
+	var parts = $(timezone).text().split('/');
+	$(timezone).remove();
 
-	$.each(timezones, function(index, timezone) {
-		var parts = timezone.split('/');
-		if (parts.length === 1) {
-			if ($('#group-global').length === 0) {
-				$('#timezone').append($('<optgroup/>', {
-					id: 'group-global',
-					label: t('calendar', 'Global')
-				}));
-			}
-
-			$('#group-global').append($('<option/>', {
-				value: timezone,
-				text : timezone
-			}));
-		} else {
-			var group = timezone.split('/', 1);
-			if ($('#group-' + group).length === 0) {
-				$('#timezone').append($('<optgroup/>', {
-					id: 'group-' + group,
-					label: group
-				}));
-			}
-
-			$('#group-' + group).append($('<option/>', {
-				value: timezone,
-				text : timezone
+	if (parts.length === 1) {
+		if ($('#group-global').length === 0) {
+			$('#timezone').append($('<optgroup/>', {
+				id: 'group-global',
+				label: t('registration', 'Global')
 			}));
 		}
-	});
+
+		$('#group-global').append($('<option/>', {
+			value: $(timezone).val(),
+			text : $(timezone).text()
+		}));
+	} else {
+		var group = $(timezone).val().split('/', 1);
+		if ($('#group-' + group).length === 0) {
+			$('#timezone').append($('<optgroup/>', {
+				id: 'group-' + group,
+				label: t('registration', group)
+			}));
+		}
+
+		$('#group-' + group).append($('<option/>', {
+			value: $(timezone).val(),
+			text : $(timezone).text()
+		}));
+	}
+});
+
+var guess = moment.tz.guess();
+if (guess.indexOf('/') !== -1) {
+	var parts = guess.split('/');
+	if (parts.length === 2) {
+		guess = parts[0] + ' / ' + parts[1];
+	}
+}
+$('#timezone').prepend('<option value="automatic">' + t('registration', 'Automatic') + ' (' + t('registration', guess) + ')</option>');
 
 
 var timezone = $('#timezone').attr('data-value');
