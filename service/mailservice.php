@@ -148,6 +148,7 @@ class MailService {
 	 */
 	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
 		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersList');
+		// TODO: for owncloud, route name should be user_management.users https://github.com/owncloud/user_management/blob/master/appinfo/routes.php#L30
 		$template_var = [
 			'user' => $username,
 			'sitename' => $this->defaults->getName(),
