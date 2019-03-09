@@ -147,7 +147,7 @@ class MailService {
 	 * @throws \Exception
 	 */
 	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
-		$link = $this->urlGenerator->linkToRoute('settings_users');
+		$link = $this->urlGenerator->linkToRoute('settings.Users.usersList');
 		$link = $this->urlGenerator->getAbsoluteURL($link);
 		$template_var = [
 			'user' => $username,
