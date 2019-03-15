@@ -37,14 +37,14 @@ env:
     - CORE_TYPE=nextcloud CORE_BRANCH=stable14  DB=pgsql
 
     # ownCloud 10.1+
-    - CORE_TYPE=owncloud CORE_BRANCH=master    DB=sqlite
-    - CORE_TYPE=owncloud CORE_BRANCH=stable10.1 DB=sqlite
+    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=sqlite
+    - CORE_TYPE=owncloud CORE_BRANCH=stable10   DB=sqlite
 
-    - CORE_TYPE=owncloud CORE_BRANCH=master    DB=mysql
-    - CORE_TYPE=owncloud CORE_BRANCH=stable10.1 DB=mysql
+    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=mysql
+    - CORE_TYPE=owncloud CORE_BRANCH=stable10   DB=mysql
 
-    - CORE_TYPE=owncloud CORE_BRANCH=master    DB=pgsql
-    - CORE_TYPE=owncloud CORE_BRANCH=stable10.1 DB=pgsql
+    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=pgsql
+    - CORE_TYPE=owncloud CORE_BRANCH=stable10   DB=pgsql
 
 matrix:
   fast_finish: true
