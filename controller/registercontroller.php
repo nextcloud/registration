@@ -93,7 +93,9 @@ class RegisterController extends Controller {
 				), 'guest');
 			}
 		} catch (RegistrationException $e) {
-			return $this->renderError($e->getMessage(), $e->getHint());
+			return new TemplateResponse('registration', 'message', array('msg' =>
+				$e->getMessage().'<br/>'.$e->getHint()
+			), 'guest');
 		}
 
 
