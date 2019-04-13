@@ -19,6 +19,17 @@ class RegistrationSettings implements ISettings {
 	public function getPriority() {
 		return 50;
 	}
+
+	/*
+	 * Below for ownCloud
+	 */
+	public function getPanel() {
+		return $this->getForm();
+	}
+
+	public function getSectionID() {
+		return $this->getSection();
+	}
 }
 
 ?>
