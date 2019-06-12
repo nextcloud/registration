@@ -85,7 +85,7 @@ class RegistrationMapper extends Mapper {
 	 * @param Registration $registration
 	 */
 	public function generateNewToken(Registration &$registration) {
-		$token = $this->random->generate(6, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_DIGITS);
+		$token = $this->random->generate(10, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_LOWER.ISecureRandom::CHAR_DIGITS);
 		$registration->setToken($token);
 	}
 
