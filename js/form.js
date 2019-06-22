@@ -11,4 +11,5 @@ function togglePasswordTextFieldVisibility() {
 $(document).ready(function() {
     passwordTextField = $("#password");
     $("#show").change(togglePasswordTextFieldVisibility);
+    $("#showadminpass").change(togglePasswordTextFieldVisibility);
 });
