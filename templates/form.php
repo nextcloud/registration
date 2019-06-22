@@ -8,9 +8,9 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 	<fieldset>
 		<?php if ( !empty($_['errormsgs']) ) {?>
 		<ul class="error">
-			<?php foreach ( $_['errormsgs'] as $errormsg ) {
-				echo "<li>$errormsg</li>";
-			} ?>
+			<?php foreach ( $_['errormsgs'] as $errormsg ) { ?>
+			<li><?php p($errormsg); ?></li>
+			<?php } ?>
 		</ul>
 		<?php } else { ?>
 		<ul class="msg">
@@ -18,13 +18,13 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 		</ul>
 		<?php } ?>
 		<p class="grouptop">
-			<input type="email" name="email" id="email" value="<?php echo $_['email']; ?>" disabled />
-			<label for="email" class="infield"><?php echo $_['email']; ?></label>
+			<input type="email" name="email" id="email" value="<?php p($_['email']); ?>" disabled />
+			<label for="email" class="infield"><?php p($_['email']); ?></label>
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 		</p>
 
 		<p class="groupmiddle">
-			<input type="text" name="username" id="username" value="<?php echo !empty($_['entered_data']['user']) ? $_['entered_data']['user'] : ''; ?>" placeholder="<?php p($l->t('Username')); ?>" />
+			<input type="text" name="username" id="username" value="<?php if (!empty($_['entered_data']['user'])) { p($_['entered_data']['user']); } ?>" placeholder="<?php p($l->t('Username')); ?>" />
 			<label for="username" class="infield"><?php p($l->t('Username')); ?></label>
 			<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
