@@ -49,12 +49,12 @@ env:
 matrix:
   fast_finish: true
   exclude:
-#    - php: 7.0
-#      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=sqlite
-#    - php: 7.0
-#      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=mysql
-#    - php: 7.0
-#      env: CORE_TYPE=owncloud CORE_BRANCH=master    DB=pgsql
+    - php: 7.3
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable10    DB=sqlite
+    - php: 7.3
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable10    DB=mysql
+    - php: 7.3
+      env: CORE_TYPE=owncloud CORE_BRANCH=stable10    DB=pgsql
 #    - php: 7.0
 #      env: CORE_TYPE=nextcloud CORE_BRANCH=master    DB=sqlite
 #    - php: 7.0
