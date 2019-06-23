@@ -16,7 +16,6 @@ services:
 addons:
   apt:
     packages:
-    - php5-pgsql
     - libxml2-utils
 
 env:
