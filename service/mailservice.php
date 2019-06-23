@@ -147,8 +147,11 @@ class MailService {
 	 * @throws \Exception
 	 */
 	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
-		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersList');
-		// TODO: for owncloud, route name should be user_management.users https://github.com/owncloud/user_management/blob/master/appinfo/routes.php#L30
+		if ( $this->config->getAppValue('core', 'vendor', '') === 'nextcloud' ) {
+			$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersList');
+		} else {
+			$link = $this->urlGenerator->linkToRouteAbsolute('user_management.users');
+		}
 		$template_var = [
 			'user' => $username,
 			'sitename' => $this->defaults->getName(),
