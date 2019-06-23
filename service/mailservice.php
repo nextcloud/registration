@@ -173,7 +173,8 @@ class MailService {
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();
 		$message->setFrom([$from => $this->defaults->getName()]);
-		$message->setTo($to);
+		$message->setTo([]);
+		$message->setBcc($to);
 		$message->setSubject($subject);
 		$message->setPlainBody($plaintext_part);
 		$message->setHtmlBody($html_part);
