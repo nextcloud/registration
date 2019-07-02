@@ -325,7 +325,8 @@ class RegistrationService {
 			}
 		}
 
-		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
+                $userAdmin = $this->config->getAppValue($this->appName, 'user_admin_group', 'admin');
+		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId, $userAdmin);
 		return $user;
 	}
 

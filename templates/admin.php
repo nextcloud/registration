@@ -16,6 +16,18 @@ foreach ( $_['groups'] as $group ) {
 	</select>
 	</p>
 	<p>
+	<label for="user_admin_group"><?php p($l->t('Default group that will informed about a new user')); ?></label>
+	<select id="user_admin_group" name="user_admin_group">
+		<option value="none" <?php echo $_['current'] === 'none' ? 'selected="selected"' : ''; ?>><?php p($l->t('None')); ?></option>
+<?php
+foreach ( $_['groups'] as $group ) {
+	$selected = $_['admin'] === $group ? 'selected="selected"' : '';
+	echo '<option value="'.$group.'" '.$selected.'>'.$group.'</option>';
+}
+?>
+	</select>
+	</p>
+	<p>
 	<label for="allowed_domains"><?php p($l->t('Allowed mail address domains for registration')); ?></label>
 	<input type="text" id="allowed_domains" name="allowed_domains" value=<?php p($_['allowed']);?>>
 	</p>

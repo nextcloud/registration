@@ -50,7 +50,7 @@ class SettingsController extends Controller {
      * @param bool $admin_approval_required newly registered users have to be validated by an admin
 	 * @return DataResponse
 	 */
-	public function admin($registered_user_group, $allowed_domains, $admin_approval_required) {
+	public function admin($registered_user_group, $user_admin_group, $allowed_domains, $admin_approval_required) {
 		// handle domains
 		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
@@ -61,6 +61,9 @@ class SettingsController extends Controller {
 		// handle admin validation
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? "yes" : "no");
 
+                // handle user admin group
+                $this->config->setAppValue($this->appName, 'user_admin_group', $user_admin_group);
+                
 		// handle groups
 		$groups = $this->groupmanager->search('');
 		$group_id_list = array();
@@ -107,6 +110,7 @@ class SettingsController extends Controller {
 		}
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
 
+                $user_admin = $this->config->getAppValue($this->appName, 'user_admin_group', 'admin');
 		// handle domains
 		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 
@@ -116,6 +120,7 @@ class SettingsController extends Controller {
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $group_id_list,
 			'current' => $current_value,
+                        'admin' => $user_admin,
 			'allowed' => $allowed_domains,
 			'approval_required' => $admin_approval_required
 		], '');
