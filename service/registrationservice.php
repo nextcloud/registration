@@ -215,7 +215,7 @@ class RegistrationService {
 			foreach ($allowed_domains as $domain) {
 				$maildomain = explode("@", $email)[1];
 				// valid domain, everythings fine
-				if ($maildomain === $domain) {
+				if (strtolower($maildomain) === strtolower($domain)) {
 					$allowed = true;
 					break;
 				}
