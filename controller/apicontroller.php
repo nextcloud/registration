@@ -140,10 +140,11 @@ class ApiController extends OCSController {
 	 * @param string $displayname
 	 * @param string $email
 	 * @param string $password
+	 * @param string $redirect_url
 	 * @throws \Exception
 	 * @return DataResponse
 	 */
-	public function register($username, $displayname, $email, $password) {
+	public function register($username, $displayname, $email, $password, $redirect_url='') {
 		$data = [];
 		try {
 			$secret = null;
@@ -152,9 +153,13 @@ class ApiController extends OCSController {
 				$this->registrationService->validateDisplayname($displayname);
 				$this->registrationService->validateUsername($username);
 				$registration = $this->registrationService->createRegistration($email, $username, $password, $displayname);
+				if (!empty($redirect_url)) {
+					$this->registrationService->updateRedirectUrl($registration, $redirect_url);
+				}
 				$this->mailService->sendTokenByMail($registration);
 				$secret = $registration->getClientSecret();
 			} else {
+				$this->registrationService->updateRedirectUrl($registration, $redirect_url);
 				$this->registrationService->generateNewToken($registration);
 				$this->mailService->sendTokenByMail($registration);
 				return new DataResponse(

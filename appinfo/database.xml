@@ -51,6 +51,10 @@
 				<type>timestamp</type>
 				<notnull>true</notnull>
 			</field>
+			<field>
+				<name>redirect_url</name>
+				<type>text</type>
+			</field>
 		</declaration>
 	</table>
 </database>

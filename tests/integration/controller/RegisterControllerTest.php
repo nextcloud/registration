@@ -9,12 +9,15 @@ use OCA\Registration\Service\RegistrationService;
 use OCA\Registration\Util\CoreBridge;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\RedirectResponse;
+use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Defaults;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\ILogger;
 use OC\Authentication\Token\IProvider;
+use OC\User\Session as UserSession;
 use OCP\IRequest;
 use OCP\Security\ISecureRandom;
 use OCP\Security\ICrypto;
@@ -23,8 +26,6 @@ use OCP\IUser;
 use OCP\IURLGenerator;
 use OCP\IUserManager;
 use OCP\IUserSession;
-
-use \OCP\AppFramework\Http\TemplateResponse;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
@@ -78,7 +79,7 @@ class RegistrationControllerTest extends TestCase {
 		$this->groupManager = \OC::$server->getGroupManager();
 		$this->defaults = $this->createMock(Defaults::class);
 		$this->random = \OC::$server->getSecureRandom();
-		$this->usersession = $this->createMock(IUserSession::class);
+		$this->usersession = $this->createMock(UserSession::class);
 		$this->request = $this->createMock(IRequest::class);
 		$this->logger = $this->createMock(ILogger::class);
 		$this->session = $this->createMock(ISession::class);
@@ -139,6 +140,45 @@ class RegistrationControllerTest extends TestCase {
 		), 'guest');
 
 
+		$this->assertEquals($expected, $ret, print_r($ret, true));
+	}
+
+	public function testRedirectUrl() {
+		$email = 'aaaa@example.com';
+		$redirect_url = 'https://example.com';
+
+		$config_map = array(
+			['registration', 'allowed_domains', '', ''],
+			['registration', 'registered_user_group', 'none', 'none'],
+		);
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->will($this->returnValueMap($config_map));
+		$this->mailService->expects($this->once())
+			->method('sendTokenByMail')
+			->willReturn(true);
+		$this->request->expects($this->atLeastOnce())
+			->method('getParam')
+			->withConsecutive(['username'], ['password'])
+			->willReturnOnConsecutiveCalls('sampleuser', 'secret');
+
+		$this->assertEquals($this->registrationService->validateEmail($email), true);
+
+		$ret = $this->controller->validateEmail($email, $redirect_url);
+
+		$expected = new TemplateResponse('registration', 'message', array('msg' =>
+			$this->l10n->t('Verification email successfully sent.')
+		), 'guest');
+
+
+		$this->assertEquals($expected, $ret, print_r($ret, true));
+
+		$reg = $this->registrationService->validateEmail($email);
+		$this->assertInstanceOf(Registration::class, $reg);
+		$this->assertEquals($redirect_url, $reg->getRedirectUrl());
+
+		$ret = $this->controller->createAccount($reg->getToken());
+		$expected = new RedirectResponse($redirect_url);
 		$this->assertEquals($expected, $ret, print_r($ret, true));
 	}
 }

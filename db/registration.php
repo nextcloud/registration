@@ -36,6 +36,7 @@ class Registration extends Entity {
 	protected $requested;
 	protected $emailConfirmed;
 	protected $clientSecret;
+	protected $redirectUrl;
 
 	public function __construct() {
 		$this->addType('emailConfirmed', 'boolean');

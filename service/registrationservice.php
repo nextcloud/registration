@@ -121,6 +121,20 @@ class RegistrationService {
 		$this->registrationMapper->generateNewToken($registration);
 		$this->registrationMapper->update($registration);
 	}
+
+	/**
+	 * @param Registration $registration
+	 * @param string $redirect_url
+	 */
+	public function updateRedirectUrl(Registration &$registration, $redirect_url) {
+		if ($redirect_url === $registration->getRedirectUrl()) {
+			return;
+		}
+
+		$registration->setRedirectUrl($redirect_url);
+		$this->registrationMapper->update($registration);
+	}
+
 	/**
 	 * Create registration request, used by both the API and form
 	 * @param string $email

@@ -72,9 +72,10 @@ class RegisterController extends Controller {
 	 * @AnonRateThrottle(limit=5, period=1)
 	 *
 	 * @param string $email
+	 * @param string $redirect_url
 	 * @return TemplateResponse
 	 */
-	public function validateEmail($email) {//TODO rename to receiveUserEmail
+	public function validateEmail($email, $redirect_url='') {//TODO rename to receiveUserEmail
 		if (!$this->registrationService->checkAllowedDomains($email)) {//TODO Duplicate code with Service
 			return new TemplateResponse('registration', 'domains', [
 				'domains' => $this->registrationService->getAllowedDomains()
@@ -84,8 +85,12 @@ class RegisterController extends Controller {
 			$reg = $this->registrationService->validateEmail($email);
 			if ( $reg === true ) {
 				$registration = $this->registrationService->createRegistration($email);
+				if (!empty($redirect_url)) {
+					$this->registrationService->updateRedirectUrl($registration, $redirect_url);
+				}
 				$this->mailService->sendTokenByMail($registration);
 			} else {
+				$this->registrationService->updateRedirectUrl($reg, $redirect_url);
 				$this->registrationService->generateNewToken($reg);
 				$this->mailService->sendTokenByMail($reg);
 				return new TemplateResponse('registration', 'message', array('msg' =>
@@ -160,7 +165,12 @@ class RegisterController extends Controller {
 
 		if ($user->isEnabled()) {
 			// log the user
-			return $this->registrationService->loginUser($user->getUID(), $username, $password, false);
+			$result = $this->registrationService->loginUser($user->getUID(), $username, $password, false);
+			$redirect_url = $registration->getRedirectUrl();
+			if (!empty($redirect_url)) {
+				$result = new RedirectResponse($redirect_url);
+			}
+			return $result;
 		} else {
 			// warn the user their account needs admin validation
 			return new TemplateResponse(
