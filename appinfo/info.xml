@@ -41,7 +41,7 @@ Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
 		<database>pgsql</database>
 		<database min-version="5.5">mysql</database>
 		<owncloud min-version="9.0" max-version="11"/>
-		<nextcloud min-version="14" max-version="18" />
+		<nextcloud min-version="14" max-version="19" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Registration\Settings\RegistrationSettings</admin>
