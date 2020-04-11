@@ -1,47 +1,24 @@
-You need a fully working nextcloud/owncloud instance. Check-out this app into the `apps` folder, install the dependencies, and follow the instructions below. The tests will modify your database but should automatically revert the changes in the cleanup stage.
+You need a fully working nextcloud/owncloud instance. Check-out this app into the `apps` folder, and follow the instructions below. The tests will modify your database but should automatically revert the changes in the cleanup stage. (As provided by https://github.com/ChristophWurst/nextcloud_testing)
 
-# Dependencies
-
-FreeBSD packages:
+# Enable the app
 
 ```
-php70
-php70-ctype
-php70-curl
-php70-dom
-php70-filter
-php70-gd
-php70-hash
-php70-json
-php70-mbstring
-php70-mysqli
-php70-openssl
-php70-pcntl
-php70-pdo
-php70-pdo_mysql
-php70-pdo_sqlite
-php70-phar
-php70-posix
-php70-session
-php70-simplexml
-php70-sqlite3
-php70-tokenizer
-php70-xml
-php70-xmlreader
-php70-xmlwriter
-php70-zip
-php70-zlib
+cd <nextcloud root>
+sudo -u php occ app:enable registration
 ```
 
-# Install phpunit 5.7 which is not in FreeBSD Package repository, using composer
+# Make sure you have latest dev dependencies
 
+If you don't have `composer` installed yet, follow https://getcomposer.org/download/
+
+Then install dev dependencies:
 ```
-cd registration
 composer install
 ```
 
 # Run tests manually
 
 ```
-vendor/phpunit/phpunit/phpunit -c tests/phpunit.xml
+sudo -u www-data vendor/bin/phpunit -c tests/phpunit.unit.xml
+sudo -u www-data vendor/bin/phpunit -c tests/phpunit.integration.xml
 ```
