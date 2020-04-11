@@ -67,7 +67,7 @@ class RegistrationControllerTest extends TestCase {
 	/** @var ICrypto */
 	private $crypto;
 
-	public function setUp () {
+	public function setUp (): void {
 		parent::setUp();
 		$this->mailService = $this->createMock(MailService::class);
 		$this->l10n = $this->createMock(IL10N::class);

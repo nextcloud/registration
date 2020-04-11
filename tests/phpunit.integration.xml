@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit bootstrap="bootstrap.php"
+		 verbose="true"
+		>
+	<testsuite name='Registration app tests'>
+		<directory suffix='Test.php'>integration</directory>
+	</testsuite>
+	<!-- filters for code coverage -->
+	<filter>
+		<whitelist>
+			<directory suffix=".php">../</directory>
+		</whitelist>
+	</filter>
+</phpunit>

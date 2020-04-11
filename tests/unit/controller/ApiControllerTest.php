@@ -21,7 +21,7 @@ use OCP\Defaults;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IUser;
-use \Test\TestCase;
+use ChristophWurst\Nextcloud\Testing\TestCase;
 
 class ApiControllerTest extends TestCase {
 
@@ -38,7 +38,7 @@ class ApiControllerTest extends TestCase {
 	/** @var ApiController */
 	private $controller;
 
-	public function setUp () {
+	public function setUp (): void {
 		parent::setUp();
 		$this->request = $this->createMock(IRequest::class);
 		$this->registrationService = $this->createMock(RegistrationService::class);
