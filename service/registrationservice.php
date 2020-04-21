@@ -431,7 +431,7 @@ class RegistrationService {
 		}
 		// Render message in case redirect failed
 		return new TemplateResponse('registration', 'message',
-			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.'), [$this->urlGenerator->getAbsoluteURL('/')]]
+			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])]
 			, 'guest'
 		);
 
