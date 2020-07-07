@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Registration\Controller;
+namespace OCA\Registration\Tests\Integration\Controller;
 
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
@@ -33,7 +33,7 @@ use ChristophWurst\Nextcloud\Testing\TestCase;
  *
  * @group DB
  */
-class RegistrationControllerTest extends TestCase {
+class RegisterControllerTest extends TestCase {
 	use DatabaseTransaction;
 
 	/** @var MailService */

@@ -10,8 +10,6 @@
  * @copyright Pellaeon Lin 2014
  */
 
-$app = new \OCA\Registration\AppInfo\Application();
-
 return [
 	'routes' => [
 		['name' => 'settings#admin', 'url' => '/settings', 'verb' => 'POST'],

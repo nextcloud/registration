@@ -9,7 +9,7 @@
  * @copyright Pellaeon Lin 2014
  */
 
-namespace OCA\Registration\Controller;
+namespace OCA\Registration\Tests\Unit\Controller;
 
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;

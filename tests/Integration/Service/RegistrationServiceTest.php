@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Registration\Service;
+namespace OCA\Registration\Tests\Integration\Service;
 
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
