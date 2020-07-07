@@ -9,8 +9,6 @@
  * @copyright Pellaeon Lin 2014
  */
 
-namespace OCA\Registration\AppInfo;
-
 \OC_App::registerLogIn([
 	'name' => \OC::$server->getL10N('registration')->t('Register'),
 	'href' => \OC::$server->getURLGenerator()->linkToRoute('registration.register.askEmail')
