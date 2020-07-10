@@ -20,7 +20,6 @@ addons:
 
 env:
   global:
-    - CORE_TYPE=nextcloud
     - CORE_BRANCH=master
     - APP_NAME=notifications
   matrix:
@@ -43,8 +42,6 @@ matrix:
       env: DB=sqlite CORE_BRANCH=stable18
     - php: 7.2
       env: DB=sqlite CORE_BRANCH=stable17
-    - php: 7.3
-      env: DB=sqlite CORE_BRANCH=master CORE_TYPE=owncloud
   fast_finish: true
 
 before_install:
