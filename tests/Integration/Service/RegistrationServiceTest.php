@@ -7,7 +7,6 @@ use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
-use OCP\Defaults;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
@@ -47,8 +46,6 @@ class RegistrationServiceTest extends TestCase {
 	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
-	/** @var \OCP\Defaults */
-	private $defaults;
 	/** @var ISecureRandom */
 	private $random;
 	/** @var IUserSession  */
@@ -73,7 +70,6 @@ class RegistrationServiceTest extends TestCase {
 		$this->userManager = \OC::$server->getUserManager();
 		$this->config = $this->createMock(IConfig::class);
 		$this->groupManager = \OC::$server->getGroupManager();
-		$this->defaults = $this->createMock(Defaults::class);
 		$this->random = \OC::$server->getSecureRandom();
 		$this->usersession = $this->createMock(IUserSession::class);
 		$this->request = $this->createMock(IRequest::class);
@@ -96,7 +92,6 @@ class RegistrationServiceTest extends TestCase {
 			$this->userManager,
 			$this->config,
 			$this->groupManager,
-			$this->defaults,
 			$this->random,
 			$this->usersession,
 			$this->request,

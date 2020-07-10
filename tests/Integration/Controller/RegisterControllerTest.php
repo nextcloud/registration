@@ -6,7 +6,6 @@ use OCA\Registration\Controller\RegisterController;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;
-use OCP\Defaults;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
@@ -73,7 +72,6 @@ class RegisterControllerTest extends TestCase {
 		$this->userManager = \OC::$server->getUserManager();
 		$this->config = $this->createMock(IConfig::class);
 		$this->groupManager = \OC::$server->getGroupManager();
-		$this->defaults = $this->createMock(Defaults::class);
 		$this->random = \OC::$server->getSecureRandom();
 		$this->usersession = $this->createMock(IUserSession::class);
 		$this->request = $this->createMock(IRequest::class);
@@ -96,7 +94,6 @@ class RegisterControllerTest extends TestCase {
 			$this->userManager,
 			$this->config,
 			$this->groupManager,
-			$this->defaults,
 			$this->random,
 			$this->usersession,
 			$this->request,

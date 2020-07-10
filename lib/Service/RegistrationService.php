@@ -36,7 +36,6 @@ use OCA\Registration\Db\RegistrationMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\RedirectResponse;
-use \OCP\Defaults;
 use OCP\ILogger;
 use OCP\IRequest;
 use OCP\ISession;
@@ -68,8 +67,6 @@ class RegistrationService {
 	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
-	/** @var \OCP\Defaults */
-	private $defaults;
 	/** @var ISecureRandom */
 	private $random;
 	/** @var IUserSession  */
@@ -86,7 +83,7 @@ class RegistrationService {
 	private $crypto;
 
 	public function __construct($appName, MailService $mailService, IL10N $l10n, IURLGenerator $urlGenerator,
-								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager, Defaults $defaults,
+								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager,
 								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto) {
 		$this->appName = $appName;
 		$this->mailService = $mailService;
@@ -96,7 +93,6 @@ class RegistrationService {
 		$this->userManager = $userManager;
 		$this->config = $config;
 		$this->groupManager = $groupManager;
-		$this->defaults = $defaults;
 		$this->random = $random;
 		$this->usersession = $us;
 		$this->request = $request;
@@ -109,7 +105,7 @@ class RegistrationService {
 	/**
 	 * @param Registration $registration
 	 */
-	public function confirmEmail(Registration &$registration) {
+	public function confirmEmail(Registration $registration) {
 		$registration->setEmailConfirmed(true);
 		$this->registrationMapper->update($registration);
 	}
@@ -117,7 +113,7 @@ class RegistrationService {
 	/**
 	 * @param Registration $registration
 	 */
-	public function generateNewToken(Registration &$registration) {
+	public function generateNewToken(Registration $registration) {
 		$this->registrationMapper->generateNewToken($registration);
 		$this->registrationMapper->update($registration);
 	}
@@ -255,9 +251,9 @@ class RegistrationService {
 	 * @param string $username
 	 * @param string $password
 	 * @return \OCP\IUser
-	 * @throws RegistrationException|\InvalidTokenException
+	 * @throws RegistrationException|InvalidTokenException
 	 */
-	public function createAccount(Registration &$registration, $username = null, $password = null) {
+	public function createAccount(Registration $registration, $username = null, $password = null) {
 		if ($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
