@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Registreer",
+    "Saved" : "Bewaar",
+    "None" : "Geen",
+    "Username" : "Gebruikersnaam",
+    "Password" : "Wagwoord",
+    "Create account" : "Skep rekening",
+    "Email" : "E-pos"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

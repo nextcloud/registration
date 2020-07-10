@@ -1,0 +1,9 @@
+{ "translations": {
+    "Saved" : "บันทึกแล้ว",
+    "None" : "ไม่มี",
+    "Username" : "ชื่อผู้ใช้",
+    "Password" : "รหัสผ่าน",
+    "Create account" : "สร้างบัญชีใหม่",
+    "Email" : "อีเมล"
+},"pluralForm" :"nplurals=1; plural=0;"
+}

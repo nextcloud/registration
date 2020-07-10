@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "ثبت نام",
+    "Saved" : "ذخیره شد",
+    "None" : "هیچ‌کدام",
+    "Username" : "نام کاربری",
+    "Password" : "کلمه عبور",
+    "Create account" : "ساخت حساب",
+    "Email" : "email"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

@@ -1,0 +1,7 @@
+{ "translations": {
+    "Saved" : "Goymt",
+    "Username" : "Brúkaranavn",
+    "Password" : "Loyniorð",
+    "Email" : "T-post"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

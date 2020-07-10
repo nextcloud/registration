@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Hesap Aç",
+    "Saved" : "Kaydedildi",
+    "None" : "Yok",
+    "Username" : "Kullanıcı Adı",
+    "Password" : "Parola",
+    "Create account" : "Hesap açın",
+    "Email" : "E-posta"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

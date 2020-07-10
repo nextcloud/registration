@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Erregistratu",
+    "Saved" : "Gordeta",
+    "None" : "Bat ere ez",
+    "Username" : "Erabiltzaile-izena",
+    "Password" : "Pasahitza",
+    "Create account" : "Kontua sortu",
+    "Email" : "Helbide elektronikoa"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

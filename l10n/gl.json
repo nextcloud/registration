@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Rexistrar",
+    "Saved" : "Gardada",
+    "None" : "Ningún",
+    "Username" : "Nome de usuario",
+    "Password" : "Contrasinal",
+    "Create account" : "Crear unha conta",
+    "Email" : "Correo-e"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

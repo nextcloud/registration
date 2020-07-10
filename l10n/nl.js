@@ -1,0 +1,12 @@
+OC.L10N.register(
+    "registration",
+    {
+    "Register" : "Registreer",
+    "Saved" : "Bewaard",
+    "None" : "Geen",
+    "Username" : "Gebruikersnaam",
+    "Password" : "Wachtwoord",
+    "Create account" : "Account aanmaken",
+    "Email" : "Email"
+},
+"nplurals=2; plural=(n != 1);");

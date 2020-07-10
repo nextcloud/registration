@@ -1,0 +1,9 @@
+{ "translations": {
+    "Saved" : "Gespäichert",
+    "None" : "Keng",
+    "Username" : "Benotzernumm",
+    "Password" : "Passwuert",
+    "Create account" : "Kont uleeën",
+    "Email" : "Email"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Regisztráció",
+    "Saved" : "Mentve",
+    "None" : "Nincs",
+    "Username" : "Felhasználónév",
+    "Password" : "Jelszó",
+    "Create account" : "Fiók létrehozása",
+    "Email" : "E-mail"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

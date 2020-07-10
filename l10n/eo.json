@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Registriĝi",
+    "Saved" : "Konservita",
+    "None" : "Nenio",
+    "Username" : "Uzantnomo",
+    "Password" : "Pasvorto",
+    "Create account" : "Krei konton",
+    "Email" : "Retpoŝtadreso"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

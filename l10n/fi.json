@@ -1,0 +1,10 @@
+{ "translations": {
+    "Register" : "Rekisteröidy",
+    "Saved" : "Tallennettu",
+    "None" : "Ei mitään",
+    "Username" : "Käyttäjätunnus",
+    "Password" : "Salasana",
+    "Create account" : "Luo tili",
+    "Email" : "Sähköposti"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
