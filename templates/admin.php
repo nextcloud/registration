@@ -23,11 +23,10 @@ foreach ($_['groups'] as $group) {
 	<em><?php p($l->t('Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com'));?></em>
 	</p>
 
-	<p>
-	<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?>
-	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
+	<div style="margin-top: 10px;">
+		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
 	echo " checked";
 } ?>>
-	</label>
-	</p>
+		<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?></label>
+	</div>
 </form>
