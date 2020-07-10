@@ -2,6 +2,7 @@
 
 namespace OCA\Registration\Tests\Integration\Controller;
 
+use OCA\Registration\Controller\RegisterController;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;

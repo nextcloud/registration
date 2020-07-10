@@ -11,6 +11,7 @@
 
 namespace OCA\Registration\Tests\Unit\Controller;
 
+use OCA\Registration\Controller\ApiController;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;

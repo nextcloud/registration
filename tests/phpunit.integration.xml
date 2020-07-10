@@ -3,7 +3,7 @@
 		 verbose="true"
 		>
 	<testsuite name='Registration app tests'>
-		<directory suffix='Test.php'>integration</directory>
+		<directory suffix='Test.php'>Integration</directory>
 	</testsuite>
 	<!-- filters for code coverage -->
 	<filter>

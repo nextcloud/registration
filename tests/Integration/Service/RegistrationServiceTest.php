@@ -5,6 +5,7 @@ namespace OCA\Registration\Tests\Integration\Service;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
+use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
 use OCP\Defaults;
 use OCP\IConfig;
@@ -133,11 +134,11 @@ class RegistrationServiceTest extends TestCase {
 	}
 	/**
 	 * @depends testValidateNewEmailWithinAllowedDomain
-	 * @expectedException OCA\Registration\Service\RegistrationException
 	 */
 	public function testValidateNewEmailNotWithinAllowedDomain() {
 		$email2 = 'bbbb@gmail.com';
 
+		$this->expectException(RegistrationException::class);
 		$this->service->validateEmail($email2);
 	}
 
@@ -155,11 +156,11 @@ class RegistrationServiceTest extends TestCase {
 	}
 	/**
 	 * @depends testValidateNewEmailWithinMultipleAllowedDomain
-	 * @expectedException OCA\Registration\Service\RegistrationException
 	 */
 	public function testValidateNewEmailNotWithinMultipleAllowedDomain() {
 		$email2 = 'cccc@yahoo.com';
 
+		$this->expectException(RegistrationException::class);
 		$this->service->validateEmail($email2);
 	}
 
@@ -213,7 +214,6 @@ class RegistrationServiceTest extends TestCase {
 
 	/**
 	 * @depends testCreateAccountWebForm
-	 * @expectedException OCA\Registration\Service\RegistrationException
 	 */
 	public function testDuplicateUsernameWebForm() {
 		$reg = new Registration();
@@ -223,6 +223,7 @@ class RegistrationServiceTest extends TestCase {
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
+		$this->expectException(RegistrationException::class);
 		$resulting_user = $this->service->createAccount($reg, 'alice1', 'asdf');
 	}
 
@@ -236,7 +237,6 @@ class RegistrationServiceTest extends TestCase {
 
 	/**
 	 * @depends testCreateAccountWebForm
-	 * @expectedException OCA\Registration\Service\RegistrationException
 	 */
 	public function testDuplicateUsernameApi() {
 		$reg = new Registration();
@@ -246,6 +246,7 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
+		$this->expectException(RegistrationException::class);
 		$resulting_user = $this->service->createAccount($reg);
 	}
 
