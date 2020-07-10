@@ -47,9 +47,9 @@ class ApiController extends OCSController {
 	/** @var Defaults */
 	private $defaults;
 
-	const REGISTRATION_STATUS_COMPLETE = 0;
-	const REGISTRATION_STATUS_PENDING = 1;
-	const REGISTRATION_STATUS_EXISTING = 2;
+	public const REGISTRATION_STATUS_COMPLETE = 0;
+	public const REGISTRATION_STATUS_PENDING = 1;
+	public const REGISTRATION_STATUS_EXISTING = 2;
 
 	public function __construct($appName,
 								IRequest $request,
@@ -80,7 +80,7 @@ class ApiController extends OCSController {
 			$this->registrationService->validateDisplayname($displayname);
 			$this->registrationService->validateUsername($username);
 		} catch (RegistrationException $e) {
-            throw CoreBridge::createException('OCSBadRequestException', $e->getMessage());
+			throw CoreBridge::createException('OCSBadRequestException', $e->getMessage());
 		}
 		$data = [
 			'username' => $username,
@@ -103,7 +103,7 @@ class ApiController extends OCSController {
 			/** @var Registration $registration */
 			$registration = $this->registrationService->getRegistrationForSecret($clientSecret);
 		} catch (DoesNotExistException $e) {
-            throw CoreBridge::createException('OCSNotFoundException', 'No pending registration.');
+			throw CoreBridge::createException('OCSNotFoundException', 'No pending registration.');
 		}
 
 		if (!$registration->getEmailConfirmed()) {
@@ -148,7 +148,7 @@ class ApiController extends OCSController {
 		try {
 			$secret = null;
 			$registration = $this->registrationService->validateEmail($email);
-			if($registration === true) {
+			if ($registration === true) {
 				$this->registrationService->validateDisplayname($displayname);
 				$this->registrationService->validateUsername($username);
 				$registration = $this->registrationService->createRegistration($email, $username, $password, $displayname);
@@ -168,12 +168,12 @@ class ApiController extends OCSController {
 
 			$data['message'] = $this->l10n->t('Your registration is pending. Please confirm your email address.');
 			$data['registrationStatus'] = self::REGISTRATION_STATUS_PENDING;
-			if($secret !== null) {
+			if ($secret !== null) {
 				$data['secret'] = $secret;
 			}
 			return new DataResponse($data, Http::STATUS_OK);
 		} catch (RegistrationException $exception) {
-            throw CoreBridge::createException('OCSException', $exception->getMessage(), $exception->getCode());
+			throw CoreBridge::createException('OCSException', $exception->getMessage(), $exception->getCode());
 		}
 	}
 }

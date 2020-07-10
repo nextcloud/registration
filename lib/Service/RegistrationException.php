@@ -24,7 +24,6 @@
 namespace OCA\Registration\Service;
 
 class RegistrationException extends \Exception {
-
 	protected $hint;
 
 	/**
@@ -45,5 +44,4 @@ class RegistrationException extends \Exception {
 	public function getHint() {
 		return $this->hint;
 	}
-
 }

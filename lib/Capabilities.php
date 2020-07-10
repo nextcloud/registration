@@ -23,7 +23,6 @@
 
 namespace OCA\Registration;
 
-use OCP\Capabilities\ICapability;
 use OCP\Capabilities\IPublicCapability;
 use OCP\IURLGenerator;
 
@@ -47,5 +46,4 @@ class Capabilities implements IPublicCapability {
 			]
 		];
 	}
-
 }

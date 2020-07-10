@@ -1,7 +1,8 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
-if ( \OCP\Util::getVersion()[0] >= 12 )
+if (\OCP\Util::getVersion()[0] >= 12) {
 	\OCP\Util::addStyle('core', 'guest');
+}
 if ($_['entered']): ?>
 	<?php if (empty($_['errormsg'])): ?>
 		<ul class="success">
@@ -17,7 +18,7 @@ if ($_['entered']): ?>
 				</ul>
 				<p class="groupofone">
 					<input type="email" name="email" id="email" placeholder="<?php p($l->t('Email')); ?>" value="" required autofocus />
-					<label for="email" class="infield"><?php p($l->t( 'Email' )); ?></label>
+					<label for="email" class="infield"><?php p($l->t('Email')); ?></label>
 					<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 				</p>
 				<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />

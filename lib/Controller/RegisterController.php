@@ -42,7 +42,7 @@ class RegisterController extends Controller {
 		IURLGenerator $urlgenerator,
 		RegistrationService $registrationService,
 		MailService $mailService
-	){
+	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
@@ -59,10 +59,10 @@ class RegisterController extends Controller {
 	 * @return TemplateResponse
 	 */
 	public function askEmail($errormsg, $entered) {
-		$params = array(
+		$params = [
 			'errormsg' => $errormsg ? $errormsg : $this->request->getParam('errormsg'),
 			'entered' => $entered ? $entered : $this->request->getParam('entered')
-		);
+		];
 		return new TemplateResponse('registration', 'register', $params, 'guest');
 	}
 
@@ -82,26 +82,26 @@ class RegisterController extends Controller {
 		}
 		try {
 			$reg = $this->registrationService->validateEmail($email);
-			if ( $reg === true ) {
+			if ($reg === true) {
 				$registration = $this->registrationService->createRegistration($email);
 				$this->mailService->sendTokenByMail($registration);
 			} else {
 				$this->registrationService->generateNewToken($reg);
 				$this->mailService->sendTokenByMail($reg);
-				return new TemplateResponse('registration', 'message', array('msg' =>
+				return new TemplateResponse('registration', 'message', ['msg' =>
 					$this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.')
-				), 'guest');
+				], 'guest');
 			}
 		} catch (RegistrationException $e) {
-			return new TemplateResponse('registration', 'message', array('msg' =>
+			return new TemplateResponse('registration', 'message', ['msg' =>
 				$e->getMessage().'<br/>'.$e->getHint()
-			), 'guest');
+			], 'guest');
 		}
 
 
-		return new TemplateResponse('registration', 'message', array('msg' =>
+		return new TemplateResponse('registration', 'message', ['msg' =>
 			$this->l10n->t('Verification email successfully sent.')
-		), 'guest');
+		], 'guest');
 	}
 
 	/**
@@ -130,7 +130,6 @@ class RegisterController extends Controller {
 		} catch (RegistrationException $exception) {
 			return $this->renderError($exception->getMessage(), $exception->getHint());
 		}
-
 	}
 
 	/**
@@ -152,8 +151,8 @@ class RegisterController extends Controller {
 			return new TemplateResponse('registration', 'form',
 				[
 					'email' => $registration->getEmail(),
-					'entered_data' => array('user' => $username),
-					'errormsgs' => array($exception->getMessage()),
+					'entered_data' => ['user' => $username],
+					'errormsgs' => [$exception->getMessage()],
 					'token' => $token
 				], 'guest');
 		}
@@ -166,18 +165,17 @@ class RegisterController extends Controller {
 			return new TemplateResponse(
 				'registration',
 				'message',
-				array('msg' => $this->l10n->t("Your account has been successfully created, but it still needs approval from an administrator.")),
+				['msg' => $this->l10n->t("Your account has been successfully created, but it still needs approval from an administrator.")],
 				'guest');
 		}
 	}
 
 	private function renderError($error, $hint="") {
-		return new TemplateResponse('', 'error', array(
-			'errors' => array(array(
+		return new TemplateResponse('', 'error', [
+			'errors' => [[
 				'error' => $error,
 				'hint' => $hint
-			))
-		), 'error');
+			]]
+		], 'error');
 	}
-
 }

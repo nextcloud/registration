@@ -97,5 +97,4 @@ class RegistrationMapper extends Mapper {
 		//FIXME eqivalent to ISecureRandom::CHAR_HUMAN_READABLE introduced in https://github.com/nextcloud/server/commit/f2a2b34e4639e88f8d948a388a51f010212b42a3 but not supported in ownCloud yet. We'll just use the string for now then switch to constants when supported.
 		$registration->setClientSecret($token);
 	}
-
 }
