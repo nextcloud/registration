@@ -60,7 +60,6 @@ class RegistrationServiceTest extends TestCase {
 	private $tokenProvider;
 	/** @var ICrypto */
 	private $crypto;
-
 	/** @var RegistrationService */
 	private $service;
 
@@ -105,31 +104,30 @@ class RegistrationServiceTest extends TestCase {
 		);
 	}
 
-	public function testValidateNewEmail() {
-		$email = 'aaaa@example.com';
-
-		$this->config->expects($this->once())
-			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('');
-
-		$this->service->validateEmail($email);
-	}
-
-	public function testValidateNewEmailWithinAllowedDomain() {
-		$email = 'aaaa@example.com';
-
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('example.com');
-
-		$this->service->validateEmail($email);
+	public function dataValidateEmail(): array {
+		return [
+			['aaaa@example.com', ''],
+			['aaaa@example.com', 'example.com'],
+			['aaaa@example.com', 'eXample.com'],
+			['aaaa@eXample.com', 'example.com'],
+		];
 	}
 
 	/**
-	 * @depends testValidateNewEmailWithinAllowedDomain
+	 * @dataProvider dataValidateEmail
+	 * @param string $email
+	 * @param string $allowedDomains
+	 * @throws RegistrationException
 	 */
+	public function testValidateEmail(string $email, string $allowedDomains) {
+		$this->config->expects($this->once())
+			->method('getAppValue')
+			->with('registration', 'allowed_domains', '')
+			->willReturn($allowedDomains);
+
+		$this->service->validateEmail($email);
+	}
+
 	public function testValidateNewEmailNotWithinAllowedDomain() {
 		$email2 = 'bbbb@gmail.com';
 

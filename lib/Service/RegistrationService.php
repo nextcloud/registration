@@ -217,17 +217,16 @@ class RegistrationService {
 	public function checkAllowedDomains(string $email): bool {
 		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 		if ($allowedDomains !== '') {
-			$allowedDomains = explode(';', $allowedDomains);
-			$allowed = false;
+			[,$mailDomain] = explode('@', strtolower($email), 2);
+			$allowedDomains = explode(';', strtolower($allowedDomains));
+
 			foreach ($allowedDomains as $domain) {
-				[,$mailDomain] = explode('@', $email, 2);
 				// valid domain, everything's fine
 				if ($mailDomain === $domain) {
-					$allowed = true;
-					break;
+					return true;
 				}
 			}
-			return $allowed;
+			return false;
 		}
 		return true;
 	}
