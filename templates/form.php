@@ -1,14 +1,15 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
 \OCP\Util::addScript('registration', 'form');
-if ( \OCP\Util::getVersion()[0] >= 12 )
+if (\OCP\Util::getVersion()[0] >= 12) {
 	\OCP\Util::addStyle('core', 'guest');
-?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', array('token'=>$_['token']))) ?>" method="post">
+}
+?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', ['token'=>$_['token']])) ?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
-		<?php if ( !empty($_['errormsgs']) ) {?>
+		<?php if (!empty($_['errormsgs'])) {?>
 		<ul class="error">
-			<?php foreach ( $_['errormsgs'] as $errormsg ) { ?>
+			<?php foreach ($_['errormsgs'] as $errormsg) { ?>
 			<li><?php p($errormsg); ?></li>
 			<?php } ?>
 		</ul>
@@ -24,16 +25,18 @@ if ( \OCP\Util::getVersion()[0] >= 12 )
 		</p>
 
 		<p class="groupmiddle">
-			<input type="text" name="username" id="username" value="<?php if (!empty($_['entered_data']['user'])) { p($_['entered_data']['user']); } ?>" placeholder="<?php p($l->t('Username')); ?>" />
+			<input type="text" name="username" id="username" value="<?php if (!empty($_['entered_data']['user'])) {
+	p($_['entered_data']['user']);
+} ?>" placeholder="<?php p($l->t('Username')); ?>" />
 			<label for="username" class="infield"><?php p($l->t('Username')); ?></label>
 			<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
 
 		<p class="groupbottom">
 			<input type="password" name="password" id="password" placeholder="<?php p($l->t('Password')); ?>"/>
-			<label for="password" class="infield"><?php p($l->t( 'Password' )); ?></label>
+			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img id="password-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
-			<?php if ( \OC::$server->getConfig()->getAppValue('core', 'vendor', '') === 'nextcloud' ) { ?>
+			<?php if (\OC::$server->getConfig()->getAppValue('core', 'vendor', '') === 'nextcloud') { ?>
 			<input id="show" name="show" type="checkbox">
 			<label id="show-password" style="display: inline;" for="show"></label>
 			<?php } else { ?>

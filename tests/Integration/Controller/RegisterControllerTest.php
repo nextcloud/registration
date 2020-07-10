@@ -2,13 +2,9 @@
 
 namespace OCA\Registration\Tests\Integration\Controller;
 
-use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;
-use OCA\Registration\Util\CoreBridge;
-use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\DataResponse;
 use OCP\Defaults;
 use OCP\IConfig;
 use OCP\IGroupManager;
@@ -19,7 +15,6 @@ use OCP\IRequest;
 use OCP\Security\ISecureRandom;
 use OCP\Security\ICrypto;
 use OCP\ISession;
-use OCP\IUser;
 use OCP\IURLGenerator;
 use OCP\IUserManager;
 use OCP\IUserSession;
@@ -28,6 +23,7 @@ use \OCP\AppFramework\Http\TemplateResponse;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
+
 /**
  * class RegistrationControllerTest
  *
@@ -67,7 +63,7 @@ class RegisterControllerTest extends TestCase {
 	/** @var ICrypto */
 	private $crypto;
 
-	public function setUp (): void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->mailService = $this->createMock(MailService::class);
 		$this->l10n = $this->createMock(IL10N::class);
@@ -134,9 +130,9 @@ class RegisterControllerTest extends TestCase {
 
 		$ret = $this->controller->validateEmail($email);
 
-		$expected = new TemplateResponse('registration', 'message', array('msg' =>
+		$expected = new TemplateResponse('registration', 'message', ['msg' =>
 			$this->l10n->t('Verification email successfully sent.')
-		), 'guest');
+		], 'guest');
 
 
 		$this->assertEquals($expected, $ret, print_r($ret, true));

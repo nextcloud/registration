@@ -87,7 +87,7 @@ class RegistrationService {
 
 	public function __construct($appName, MailService $mailService, IL10N $l10n, IURLGenerator $urlGenerator,
 								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager, Defaults $defaults,
-								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto){
+								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto) {
 		$this->appName = $appName;
 		$this->mailService = $mailService;
 		$this->l10n = $l10n;
@@ -134,13 +134,14 @@ class RegistrationService {
 		$registration->setEmail($email);
 		$registration->setUsername($username);
 		$registration->setDisplayname($displayname);
-		if($password !== "") {
+		if ($password !== "") {
 			$password = $this->crypto->encrypt($password);
 			$registration->setPassword($password);
 		}
 		$this->registrationMapper->generateNewToken($registration);
-		if ( $password !== '' && $username !== '' )
+		if ($password !== '' && $username !== '') {
 			$this->registrationMapper->generateClientSecret($registration);
+		}
 		$this->registrationMapper->insert($registration);
 		return $registration;
 	}
@@ -151,15 +152,15 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail($email) {
-
 		$this->mailService->validateEmail($email);
 
 		// check for pending registrations
 		try {
 			return $this->registrationMapper->find($email);//if not found DB will throw a exception
-		} catch (DoesNotExistException $e) {}
+		} catch (DoesNotExistException $e) {
+		}
 
-		if ( $this->userManager->getByEmail($email) ) {
+		if ($this->userManager->getByEmail($email)) {
 			throw new RegistrationException(
 				$this->l10n->t('A user has already taken this email, maybe you already have an account?'),
 				$this->l10n->t('You can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])
@@ -182,7 +183,7 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateDisplayname($displayname) {
-		if($displayname === "") {
+		if ($displayname === "") {
 			throw new RegistrationException($this->l10n->t('Please provide a valid display name.'));
 		}
 	}
@@ -192,11 +193,11 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateUsername($username) {
-		if($username === "") {
+		if ($username === "") {
 			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
 		}
 
-		if($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {
+		if ($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {
 			throw new RegistrationException($this->l10n->t('The username you have chosen already exists.'));
 		}
 	}
@@ -209,7 +210,7 @@ class RegistrationService {
 	 */
 	public function checkAllowedDomains($email) {
 		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		if ( $allowed_domains !== '' ) {
+		if ($allowed_domains !== '') {
 			$allowed_domains = explode(';', $allowed_domains);
 			$allowed = false;
 			foreach ($allowed_domains as $domain) {
@@ -257,7 +258,7 @@ class RegistrationService {
 	 * @throws RegistrationException|\InvalidTokenException
 	 */
 	public function createAccount(Registration &$registration, $username = null, $password = null) {
-		if($password === null && $registration->getPassword() === null) {
+		if ($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
 		}
@@ -266,7 +267,7 @@ class RegistrationService {
 			$username = $registration->getUsername();
 		}
 
-		if($registration->getPassword() !== null) {
+		if ($registration->getPassword() !== null) {
 			$password = $this->crypto->decrypt($registration->getPassword());
 		}
 
@@ -293,9 +294,9 @@ class RegistrationService {
 
 		// Add user to group
 		$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
-		if ( $registered_user_group !== 'none' ) {
+		if ($registered_user_group !== 'none') {
 			$group = $this->groupManager->get($registered_user_group);
-			if ( $group === null ) {
+			if ($group === null) {
 				// This might happen if $registered_user_group is deleted after setting the value
 				// Here I choose to log error instead of stopping the user to register
 				$this->logger->error("You specified newly registered users be added to '$registered_user_group' group, but it does not exist.");
@@ -318,7 +319,7 @@ class RegistrationService {
 		// with client secret implies registered via API
 		// without client secret implies registered via form
 		// if registered via API, the registration request will be deleted in apicontroller::status
-		if($registration->getClientSecret() === null) {
+		if ($registration->getClientSecret() === null) {
 			$res = $this->registrationMapper->delete($registration);
 			if ($res === false) {
 				throw new RegistrationException($this->l10n->t('Failed to delete pending registration request'));
@@ -417,7 +418,7 @@ class RegistrationService {
 		if ($decrypt) {
 			$password = $this->crypto->decrypt($password);
 		}
-		if ( method_exists($this->usersession, 'createSessionToken') ) {
+		if (method_exists($this->usersession, 'createSessionToken')) {
 			$this->usersession->login($username, $password);
 			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
 			return new RedirectResponse($this->urlGenerator->linkTo('', 'index.php'));
@@ -427,14 +428,13 @@ class RegistrationService {
 			$logintoken = $this->random->generate(32);
 			$this->config->setUserValue($userId, 'login_token', $logintoken, time());
 			\OC_User::setMagicInCookie($userId, $logintoken);
-            \OC_Util::redirectToDefaultPage();
+			\OC_Util::redirectToDefaultPage();
 		}
 		// Render message in case redirect failed
 		return new TemplateResponse('registration', 'message',
 			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])]
 			, 'guest'
 		);
-
 	}
 
 	/**
@@ -451,5 +451,4 @@ class RegistrationService {
 			}
 		}
 	}
-
 }

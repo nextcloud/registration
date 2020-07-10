@@ -32,7 +32,7 @@ class SettingsController extends Controller {
 	/** @var string */
 	protected $appName;
 
-	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager){
+	public function __construct($appName, IRequest $request, IL10N $l10n, IConfig $config, IGroupManager $groupmanager) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
 		$this->config = $config;
@@ -47,14 +47,14 @@ class SettingsController extends Controller {
 	 *
 	 * @param string $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
-     * @param bool $admin_approval_required newly registered users have to be validated by an admin
+	 * @param bool $admin_approval_required newly registered users have to be validated by an admin
 	 * @return DataResponse
 	 */
 	public function admin($registered_user_group, $allowed_domains, $admin_approval_required) {
 		// handle domains
-		if ( ( $allowed_domains==='' ) || ( $allowed_domains === NULL ) ){
+		if (($allowed_domains==='') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
-		}else{
+		} else {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 
@@ -63,34 +63,34 @@ class SettingsController extends Controller {
 
 		// handle groups
 		$groups = $this->groupmanager->search('');
-		$group_id_list = array();
-		foreach ( $groups as $group ) {
+		$group_id_list = [];
+		foreach ($groups as $group) {
 			$group_id_list[] = $group->getGid();
 		}
-		if ( $registered_user_group === 'none' ) {
+		if ($registered_user_group === 'none') {
 			$this->config->deleteAppValue($this->appName, 'registered_user_group');
-			return new DataResponse(array(
-				'data' => array(
+			return new DataResponse([
+				'data' => [
 					'message' => (string) $this->l10n->t('Saved'),
-				),
+				],
 				'status' => 'success'
 				
-			));
-		} else if ( in_array($registered_user_group, $group_id_list) ) {
+			]);
+		} elseif (in_array($registered_user_group, $group_id_list)) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
-			return new DataResponse(array(
-				'data' => array(
+			return new DataResponse([
+				'data' => [
 					'message' => (string) $this->l10n->t('Saved'),
-				),
+				],
 				'status' => 'success'
-			));
+			]);
 		} else {
-			return new DataResponse(array(
-				'data' => array(
+			return new DataResponse([
+				'data' => [
 					'message' => (string) $this->l10n->t('No such group'),
-				),
+				],
 				'status' => 'error'
-			), Http::STATUS_NOT_FOUND);
+			], Http::STATUS_NOT_FOUND);
 		}
 	}
 	/**
@@ -102,7 +102,7 @@ class SettingsController extends Controller {
 		// handle groups
 		$groups = $this->groupmanager->search('');
 		$group_id_list = [];
-		foreach ( $groups as $group ) {
+		foreach ($groups as $group) {
 			$group_id_list[] = $group->getGid();
 		}
 		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');

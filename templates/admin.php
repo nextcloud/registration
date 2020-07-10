@@ -8,7 +8,7 @@ script('registration', 'settings');
 	<select id="registered_user_group" name="registered_user_group">
 		<option value="none" <?php echo $_['current'] === 'none' ? 'selected="selected"' : ''; ?>><?php p($l->t('None')); ?></option>
 <?php
-foreach ( $_['groups'] as $group ) {
+foreach ($_['groups'] as $group) {
 	$selected = $_['current'] === $group ? 'selected="selected"' : '';
 	echo '<option value="'.$group.'" '.$selected.'>'.$group.'</option>';
 }
@@ -25,7 +25,9 @@ foreach ( $_['groups'] as $group ) {
 
 	<p>
 	<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?>
-	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if($_['approval_required'] === "yes" ) echo " checked"; ?>>
+	<input type="checkbox" id="admin_approval_required" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
+	echo " checked";
+} ?>>
 	</label>
 	</p>
 </form>

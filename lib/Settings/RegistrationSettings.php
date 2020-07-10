@@ -1,7 +1,7 @@
 <?php
+
 namespace OCA\Registration\Settings;
 
-use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Settings\ISettings;
 
 use OCA\Registration\Controller\SettingsController;
@@ -31,5 +31,3 @@ class RegistrationSettings implements ISettings {
 		return $this->getSection();
 	}
 }
-
-?>

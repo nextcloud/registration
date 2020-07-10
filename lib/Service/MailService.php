@@ -68,7 +68,7 @@ class MailService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail($email) {
-		if ( !$this->mailer->validateMailAddress($email) ) {
+		if (!$this->mailer->validateMailAddress($email)) {
 			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
 		}
 	}
@@ -79,7 +79,7 @@ class MailService {
 	 * @throws RegistrationException
 	 */
 	public function sendTokenByMail(Registration $registration) {
-		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', array('token' => $registration->getToken()));
+		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', ['token' => $registration->getToken()]);
 		$link = $this->urlGenerator->getAbsoluteURL($link);
 		$template_var = [
 			'link' => $link,
@@ -99,7 +99,7 @@ class MailService {
 		$message->setPlainBody($plaintext_part);
 		$message->setHtmlBody($html_part);
 		$failed_recipients = $this->mailer->send($message);
-		if ( !empty($failed_recipients) ) {
+		if (!empty($failed_recipients)) {
 			throw new RegistrationException($this->l10n->t('A problem occurred sending email, please contact your administrator.'));
 		}
 	}
@@ -125,10 +125,10 @@ class MailService {
 			}
 		}
 
-		$to_arr = array();
-		foreach ( $admin_users as $au ) {
+		$to_arr = [];
+		foreach ($admin_users as $au) {
 			$au_email = $au->getEMailAddress();
-			if ( $au_email && $au->isEnabled()) {
+			if ($au_email && $au->isEnabled()) {
 				$to_arr[$au_email] = $au->getDisplayName();
 			}
 		}
@@ -147,7 +147,7 @@ class MailService {
 	 * @throws \Exception
 	 */
 	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
-		if ( $this->config->getAppValue('core', 'vendor', '') === 'nextcloud' ) {
+		if ($this->config->getAppValue('core', 'vendor', '') === 'nextcloud') {
 			$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersList');
 		} else {
 			$link = $this->urlGenerator->linkToRouteAbsolute('user_management.users');
@@ -182,8 +182,8 @@ class MailService {
 		$message->setPlainBody($plaintext_part);
 		$message->setHtmlBody($html_part);
 		$failed_recipients = $this->mailer->send($message);
-		if ( !empty($failed_recipients) )
+		if (!empty($failed_recipients)) {
 			throw new RegistrationException('Failed recipients: '.print_r($failed_recipients, true));
+		}
 	}
-
 }

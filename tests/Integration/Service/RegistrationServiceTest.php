@@ -6,9 +6,6 @@ use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;
-use OCA\Registration\Util\CoreBridge;
-use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\DataResponse;
 use OCP\Defaults;
 use OCP\IConfig;
 use OCP\IGroupManager;
@@ -26,6 +23,7 @@ use OCP\IUserSession;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
+
 /**
  * class RegistrationServiceTest
  *
@@ -65,7 +63,7 @@ class RegistrationServiceTest extends TestCase {
 	/** @var ICrypto */
 	private $crypto;
 
-	public function setUp (): void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->mailService = $this->createMock(MailService::class);
 		$this->l10n = $this->createMock(IL10N::class);
@@ -202,7 +200,7 @@ class RegistrationServiceTest extends TestCase {
 
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->will($this->returnCallback(array($this, 'settingsCallback1')));
+			->will($this->returnCallback([$this, 'settingsCallback1']));
 
 
 		$form_input_username = 'alice1';

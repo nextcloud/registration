@@ -26,7 +26,6 @@ namespace OCA\Registration\Db;
 use OCP\AppFramework\Db\Entity;
 
 class Registration extends Entity {
-
 	public $id;
 	protected $email;
 	protected $username;
@@ -40,5 +39,4 @@ class Registration extends Entity {
 	public function __construct() {
 		$this->addType('emailConfirmed', 'boolean');
 	}
-
 }

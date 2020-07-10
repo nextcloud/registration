@@ -26,8 +26,7 @@ namespace OCA\Registration\AppInfo;
 use OCP\AppFramework\App;
 
 class Application extends App {
-
-	public function __construct(array $urlParams = array()) {
+	public function __construct(array $urlParams = []) {
 		parent::__construct('registration', $urlParams);
 
 		$container = $this->getContainer();
@@ -39,5 +38,4 @@ class Application extends App {
 			$container->registerCapability(\OCA\Registration\Capabilities::class);
 		}
 	}
-
 }

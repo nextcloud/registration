@@ -38,7 +38,7 @@ class ApiControllerTest extends TestCase {
 	/** @var ApiController */
 	private $controller;
 
-	public function setUp (): void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->request = $this->createMock(IRequest::class);
 		$this->registrationService = $this->createMock(RegistrationService::class);
@@ -79,9 +79,9 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailEmail() {
-        $exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = CoreBridge::createException('OCSException', '', 999);
 
-        $this->expectException(get_class($exception));
+		$this->expectException(get_class($exception));
 
 		$this->registrationService
 			->expects($this->once())
@@ -92,11 +92,11 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailDisplayname() {
-        $exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = CoreBridge::createException('OCSException', '', 999);
 
-        $this->expectException(get_class($exception));
+		$this->expectException(get_class($exception));
 
-        $this->registrationService
+		$this->registrationService
 			->expects($this->once())
 			->method('validateDisplayname')
 			->willThrowException($exception);
@@ -105,11 +105,11 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailUsername() {
-        $exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = CoreBridge::createException('OCSException', '', 999);
 
-        $this->expectException(get_class($exception));
+		$this->expectException(get_class($exception));
 
-        $this->registrationService
+		$this->registrationService
 			->expects($this->once())
 			->method('validateUsername')
 			->willThrowException($exception);
@@ -118,9 +118,9 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testStatusNoRegistration() {
-        $exception = CoreBridge::createException('OCSNotFoundException', '', 404);
+		$exception = CoreBridge::createException('OCSNotFoundException', '', 404);
 
-        $this->expectException(get_class($exception));
+		$this->expectException(get_class($exception));
 
 		$this->registrationService
 			->method('getRegistrationForSecret')
