@@ -5,18 +5,11 @@ This app allows users to register a new account.
 
 
 # Requirements
-1. ownCloud 9.1.0.7+
-2. Nextcloud 9+
+1. Nextcloud 17+
 
 Supports SQLite, MySQL/MariaDB and PostgreSQL.
 
 # Install
-## ownCloud
-1. Place this app in the apps folder
-2. Enable "Registration" in */settings/apps* (Upper left dropdown -> plus sign -> "Disabled")
-3. Make sure you have correctly set up your mail server according to the [documentation](https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/email_configuration.html)
-4. Log out, and you should see "Register" under "Other login methods"
-
 ## Nextcloud AppStore
 From your Nextcloud instance, click: your profile to the upper right -> Apps -> Tools (in the left column), find Registration, click Enable
 
