@@ -84,7 +84,7 @@ class RegistrationMapper extends Mapper {
 	/**
 	 * @param Registration $registration
 	 */
-	public function generateNewToken(Registration &$registration) {
+	public function generateNewToken(Registration $registration) {
 		$token = $this->random->generate(10, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_LOWER.ISecureRandom::CHAR_DIGITS);
 		$registration->setToken($token);
 	}
@@ -92,8 +92,8 @@ class RegistrationMapper extends Mapper {
 	/**
 	 * @param Registration $registration
 	 */
-	public function generateClientSecret(Registration &$registration) {
-		$token = $this->random->generate(32, "abcdefgijkmnopqrstwxyzABCDEFGHJKLMNPQRSTWXYZ23456789");
+	public function generateClientSecret(Registration $registration) {
+		$token = $this->random->generate(32, 'abcdefgijkmnopqrstwxyzABCDEFGHJKLMNPQRSTWXYZ23456789');
 		//FIXME eqivalent to ISecureRandom::CHAR_HUMAN_READABLE introduced in https://github.com/nextcloud/server/commit/f2a2b34e4639e88f8d948a388a51f010212b42a3 but not supported in ownCloud yet. We'll just use the string for now then switch to constants when supported.
 		$registration->setClientSecret($token);
 	}
