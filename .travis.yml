@@ -57,9 +57,6 @@ install:
   - . ${BUILD_APP_MODULE_DIR}/tests/scripts/core-setup.sh
 
 script:
-  # Check PHP syntax errors
-  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/lint-php.sh
-
   # Run app code checker but do not fail, as we have to use private API for now
   - . ${BUILD_APP_MODULE_DIR}/tests/scripts/app-check-code.sh || true
 
