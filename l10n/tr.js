@@ -2,11 +2,27 @@ OC.L10N.register(
     "registration",
     {
     "Register" : "Hesap Aç",
+    "Your registration is pending. Please confirm your email address." : "Hesap açma başvurunuz bekliyor. Lütfen e-posta adresinizi doğrulayın.",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Daha önce bu e-posta adresiyle yapılmış bir hesap açma başvurusu var. Adrese yeni bir doğrulama e-postası gönderildi.",
+    "Verification email successfully sent." : "Doğrulama e-postası gönderildi.",
+    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Hesabınız açıldı. <a href=\"%s\">Oturum açabilirsiniz</a>.",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Hesabınız açıldı ancak bir yönetici tarafından onaylanması bekleniyor.",
     "Saved" : "Kaydedildi",
+    "No such group" : "Böyle bir grup yok",
+    "The email address you entered is not valid" : "Yazdığınız e-posta adresi geçersiz",
+    "Verify your %s registration request" : "%s hesap açma başvurunuzu doğrulayın",
+    "A problem occurred sending email, please contact your administrator." : "E-posta gönderilirken bir sorun çıktı. Lütfen BT yöneticiniz ile görüşün.",
+    "A new user \"%s\" has created an account on %s" : "%s üzerinde \"%s\" kullanıcı hesabı açıldı",
+    "A user has already taken this email, maybe you already have an account?" : "Bu e-posta adresini kullanan başka bir kullanıcı zaten var. Daha önce hesap açmış olabilir misiniz?",
+    "You can <a href=\"%s\">log in now</a>." : "Artık <a href=\"%s\">oturum açabilirsiniz</a>.",
     "None" : "Yok",
     "Username" : "Kullanıcı Adı",
     "Password" : "Parola",
     "Create account" : "Hesap açın",
-    "Email" : "E-posta"
+    "Thank you for registering, you should receive a verification link in a few minutes." : "Hesap açtığınız için teşekkürler. Bir kaç dakika içinde bir doğrulama e-postası almalısınız.",
+    "Email" : "E-posta",
+    "Request verification link" : "Doğrulama bağlantısı gönder",
+    "Please re-enter a valid email address" : "Lütfen yeniden geçerli bir e-posta adresi yazın",
+    "You will receive an email with a verification link" : "Doğrulama bağlantısını içeren bir e-posta alacaksınız"
 },
 "nplurals=2; plural=(n > 1);");
