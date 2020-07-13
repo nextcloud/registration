@@ -36,7 +36,7 @@ use OCP\AppFramework\Db\Entity;
  * @method void setPassword(string $password)
  * @method string getDisplayname()
  * @method void setDisplayname(string $displayname)
- * @method bool isEmailConfirmed()
+ * @method bool getEmailConfirmed()
  * @method void setEmailConfirmed(bool $emailConfirmed)
  * @method string getToken()
  * @method void setToken(string $token)
