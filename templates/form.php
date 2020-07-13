@@ -1,9 +1,7 @@
 <?php
 \OCP\Util::addStyle('registration', 'style');
 \OCP\Util::addScript('registration', 'form');
-if (\OCP\Util::getVersion()[0] >= 12) {
-	\OCP\Util::addStyle('core', 'guest');
-}
+\OCP\Util::addStyle('core', 'guest');
 ?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', ['token'=>$_['token']])) ?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
