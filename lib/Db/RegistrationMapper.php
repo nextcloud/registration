@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
@@ -25,13 +27,13 @@ namespace OCA\Registration\Db;
 
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
-use OCP\AppFramework\Db\Mapper;
+use OCP\AppFramework\Db\QBMapper;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
 
-class RegistrationMapper extends Mapper {
+class RegistrationMapper extends QBMapper {
 
-	/** @var \OCP\Security\ISecureRandom */
+	/** @var ISecureRandom */
 	protected $random;
 
 	public function __construct(IDBConnection $db, ISecureRandom $random) {
@@ -40,23 +42,43 @@ class RegistrationMapper extends Mapper {
 	}
 
 	/**
-	 * @param $token
-	 * @return Registration|Entity
+	 * @param string $token
+	 * @return Registration
+	 * @throws DoesNotExistException
+	 * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
 	 */
-	public function findByToken($token) {
-		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `token` = ? ', [$token]);
+	public function findByToken(string $token): Entity {
+		$query = $this->db->getQueryBuilder();
+		$query->select('*')
+			->from($this->getTableName())
+			->where($query->expr()->eq('token', $query->createNamedParameter($token)));
+
+		return $this->findEntity($query);
 	}
 
-	public function findBySecret($secret) {
-		return $this->findEntity('SELECT * FROM `*PREFIX*registration` WHERE `client_secret` = ? ', [$secret]);
+	/**
+	 * @param string $secret
+	 * @return Registration
+	 * @throws DoesNotExistException
+	 * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
+	 */
+	public function findBySecret(string $secret): Entity {
+		$query = $this->db->getQueryBuilder();
+		$query->select('*')
+			->from($this->getTableName())
+			->where($query->expr()->eq('client_secret', $query->createNamedParameter($secret)));
+
+		return $this->findEntity($query);
 	}
 
-	public function usernameIsPending($username) {
+	public function usernameIsPending(string $username): bool {
 		try {
-			$entity = $this->findEntity(
-				'SELECT id FROM `*PREFIX*registration` WHERE `username` = ? ',
-				[$username]
-			);
+			$query = $this->db->getQueryBuilder();
+			$query->select('*')
+				->from($this->getTableName())
+				->where($query->expr()->eq('username', $query->createNamedParameter($username)));
+
+			$this->findEntity($query);
 		} catch (DoesNotExistException $e) {
 			return false;
 		}
@@ -64,19 +86,23 @@ class RegistrationMapper extends Mapper {
 	}
 
 	/**
-	 * @param $email
-	 * @return Registration|Entity
+	 * @param string $email
+	 * @return Registration
 	 */
-	public function find($email) {
-		$sql = 'SELECT * FROM `*PREFIX*registration` WHERE `email` = ? ';
-		return $this->findEntity($sql, [$email]);
+	public function find(string $email): Entity {
+		$query = $this->db->getQueryBuilder();
+		$query->select('*')
+			->from($this->getTableName())
+			->where($query->expr()->eq('email', $query->createNamedParameter($email)));
+
+		return $this->findEntity($query);
 	}
 
 	/**
 	 * @param Entity $entity
-	 * @return Entity
+	 * @return Registration
 	 */
-	public function insert(Entity $entity) {
+	public function insert(Entity $entity): Entity {
 		$entity->setRequested(date('Y-m-d H:i:s'));
 		return parent::insert($entity);
 	}
@@ -84,7 +110,7 @@ class RegistrationMapper extends Mapper {
 	/**
 	 * @param Registration $registration
 	 */
-	public function generateNewToken(Registration $registration) {
+	public function generateNewToken(Registration $registration): void {
 		$token = $this->random->generate(10, ISecureRandom::CHAR_UPPER.ISecureRandom::CHAR_LOWER.ISecureRandom::CHAR_DIGITS);
 		$registration->setToken($token);
 	}
@@ -92,7 +118,7 @@ class RegistrationMapper extends Mapper {
 	/**
 	 * @param Registration $registration
 	 */
-	public function generateClientSecret(Registration $registration) {
+	public function generateClientSecret(Registration $registration): void {
 		$token = $this->random->generate(32, 'abcdefgijkmnopqrstwxyzABCDEFGHJKLMNPQRSTWXYZ23456789');
 		//FIXME eqivalent to ISecureRandom::CHAR_HUMAN_READABLE introduced in https://github.com/nextcloud/server/commit/f2a2b34e4639e88f8d948a388a51f010212b42a3 but not supported in ownCloud yet. We'll just use the string for now then switch to constants when supported.
 		$registration->setClientSecret($token);
