@@ -23,19 +23,19 @@
 
 namespace OCA\Registration\AppInfo;
 
+use OCA\Registration\Capabilities;
 use OCP\AppFramework\App;
+use OC\Authentication\Token\IProvider;
 
 class Application extends App {
-	public function __construct(array $urlParams = []) {
-		parent::__construct('registration', $urlParams);
+	public function __construct() {
+		parent::__construct('registration');
 
 		$container = $this->getContainer();
-		$container->registerService('OC\Authentication\Token\IProvider', function ($c) {
-			return \OC::$server->query('OC\Authentication\Token\IProvider');
+		$container->registerService(IProvider::class, function ($c) {
+			return \OC::$server->query(IProvider::class); // TODO needed?
 		});
 
-		if (interface_exists('\OCP\Capabilities\IPublicCapability')) {
-			$container->registerCapability(\OCA\Registration\Capabilities::class);
-		}
+		$container->registerCapability(Capabilities::class);
 	}
 }

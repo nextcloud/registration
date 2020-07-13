@@ -27,9 +27,11 @@ use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
-use OCA\Registration\Util\CoreBridge;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\OCS\OCSBadRequestException;
+use OCP\AppFramework\OCS\OCSException;
+use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\AppFramework\OCSController;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Defaults;
@@ -80,7 +82,7 @@ class ApiController extends OCSController {
 			$this->registrationService->validateDisplayname($displayname);
 			$this->registrationService->validateUsername($username);
 		} catch (RegistrationException $e) {
-			throw CoreBridge::createException('OCSBadRequestException', $e->getMessage());
+			throw new OCSBadRequestException($e->getMessage());
 		}
 		$data = [
 			'username' => $username,
@@ -103,7 +105,7 @@ class ApiController extends OCSController {
 			/** @var Registration $registration */
 			$registration = $this->registrationService->getRegistrationForSecret($clientSecret);
 		} catch (DoesNotExistException $e) {
-			throw CoreBridge::createException('OCSNotFoundException', 'No pending registration.');
+			throw new OCSNotFoundException('No pending registration.');
 		}
 
 		if (!$registration->getEmailConfirmed()) {
@@ -173,7 +175,7 @@ class ApiController extends OCSController {
 			}
 			return new DataResponse($data, Http::STATUS_OK);
 		} catch (RegistrationException $exception) {
-			throw CoreBridge::createException('OCSException', $exception->getMessage(), $exception->getCode());
+			throw new OCSException($exception->getMessage(), $exception->getCode());
 		}
 	}
 }

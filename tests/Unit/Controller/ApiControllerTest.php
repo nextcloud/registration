@@ -15,9 +15,10 @@ use OCA\Registration\Controller\ApiController;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationService;
-use OCA\Registration\Util\CoreBridge;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\OCS\OCSException;
+use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Defaults;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -80,7 +81,7 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailEmail() {
-		$exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = new OCSException('', 999);
 
 		$this->expectException(get_class($exception));
 
@@ -93,7 +94,7 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailDisplayname() {
-		$exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = new OCSException('', 999);
 
 		$this->expectException(get_class($exception));
 
@@ -106,7 +107,7 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testValidateFailUsername() {
-		$exception = CoreBridge::createException('OCSException', '', 999);
+		$exception = new OCSException('', 999);
 
 		$this->expectException(get_class($exception));
 
@@ -119,7 +120,7 @@ class ApiControllerTest extends TestCase {
 	}
 
 	public function testStatusNoRegistration() {
-		$exception = CoreBridge::createException('OCSNotFoundException', '', 404);
+		$exception = new OCSNotFoundException('');
 
 		$this->expectException(get_class($exception));
 
