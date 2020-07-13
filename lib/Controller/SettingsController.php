@@ -13,7 +13,6 @@
 namespace OCA\Registration\Controller;
 
 use \OCP\IRequest;
-use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\DataResponse;
 use \OCP\AppFramework\Http;
 use \OCP\AppFramework\Controller;
@@ -39,8 +38,6 @@ class SettingsController extends Controller {
 		$this->groupmanager = $groupmanager;
 		$this->appName = $appName;
 	}
-
-	
 
 	/**
 	 * @AdminRequired
@@ -71,53 +68,25 @@ class SettingsController extends Controller {
 			$this->config->deleteAppValue($this->appName, 'registered_user_group');
 			return new DataResponse([
 				'data' => [
-					'message' => (string) $this->l10n->t('Saved'),
+					'message' => $this->l10n->t('Saved'),
 				],
-				'status' => 'success'
-				
+				'status' => 'success',
 			]);
 		} elseif (in_array($registered_user_group, $group_id_list)) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
 			return new DataResponse([
 				'data' => [
-					'message' => (string) $this->l10n->t('Saved'),
+					'message' => $this->l10n->t('Saved'),
 				],
-				'status' => 'success'
+				'status' => 'success',
 			]);
 		} else {
 			return new DataResponse([
 				'data' => [
-					'message' => (string) $this->l10n->t('No such group'),
+					'message' => $this->l10n->t('No such group'),
 				],
-				'status' => 'error'
+				'status' => 'error',
 			], Http::STATUS_NOT_FOUND);
 		}
-	}
-	/**
-	 * @AdminRequired
-	 *
-	 * @return TemplateResponse
-	 */
-	public function displayPanel() {
-		// handle groups
-		$groups = $this->groupmanager->search('');
-		$group_id_list = [];
-		foreach ($groups as $group) {
-			$group_id_list[] = $group->getGid();
-		}
-		$current_value = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
-
-		// handle domains
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-
-		// handle admin validation
-		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
-
-		return new TemplateResponse('registration', 'admin', [
-			'groups' => $group_id_list,
-			'current' => $current_value,
-			'allowed' => $allowed_domains,
-			'approval_required' => $admin_approval_required
-		], '');
 	}
 }
