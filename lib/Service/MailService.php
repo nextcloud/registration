@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
@@ -27,7 +30,6 @@ namespace OCA\Registration\Service;
 
 use OCA\Registration\Db\Registration;
 use OCP\Defaults;
-use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\ILogger;
@@ -45,19 +47,21 @@ class MailService {
 	private $defaults;
 	/** @var IL10N */
 	private $l10n;
-	/** @var IConfig */
-	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
 	/** @var ILogger */
 	private $logger;
 
-	public function __construct(IURLGenerator $urlGenerator, IMailer $mailer, Defaults $defaults, IL10N $l10n, IConfig $config, IGroupManager $groupManager, ILogger $logger) {
+	public function __construct(IURLGenerator $urlGenerator,
+								IMailer $mailer,
+								Defaults $defaults,
+								IL10N $l10n,
+								IGroupManager $groupManager,
+								ILogger $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->defaults = $defaults;
 		$this->l10n = $l10n;
-		$this->config = $config;
 		$this->groupManager = $groupManager;
 		$this->logger = $logger;
 	}
@@ -66,7 +70,7 @@ class MailService {
 	 * @param string $email
 	 * @throws RegistrationException
 	 */
-	public function validateEmail($email) {
+	public function validateEmail(string $email): void {
 		if (!$this->mailer->validateMailAddress($email)) {
 			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
 		}
@@ -76,7 +80,7 @@ class MailService {
 	 * @param Registration $registration
 	 * @throws RegistrationException
 	 */
-	public function sendTokenByMail(Registration $registration) {
+	public function sendTokenByMail(Registration $registration): void {
 		$link = $this->urlGenerator->linkToRouteAbsolute('registration.register.verifyToken', ['token' => $registration->getToken()]);
 		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
 
@@ -113,22 +117,17 @@ class MailService {
 		}
 	}
 
-	/**
-	 * @param string $userId
-	 * @param string $userGroupId
-	 * @param bool $userIsEnabled
-	 */
-	public function notifyAdmins($userId, $userIsEnabled, $userGroupId) {
+	public function notifyAdmins(string $userId, bool $userIsEnabled, string $userGroupId): void {
 		// Notify admin
 		$admin_users = $this->groupManager->get('admin')->getUsers();
 
 		// if the user is disabled and belongs to a group
 		// add subadmins of this group to notification list
-		if (!$userIsEnabled and $userGroupId) {
+		if (!$userIsEnabled && $userGroupId) {
 			$group = $this->groupManager->get($userGroupId);
 			$subadmin_users = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
 			foreach ($subadmin_users as $user) {
-				if (!in_array($user, $admin_users)) {
+				if (!in_array($user, $admin_users, true)) {
 					$admin_users[] = $user;
 				}
 			}
@@ -142,20 +141,21 @@ class MailService {
 			}
 		}
 		try {
-			$this->sendNewUserNotifEmail($to_arr, $userId, $userIsEnabled);
+			$this->sendNewUserNotifyEmail($to_arr, $userId, $userIsEnabled);
 		} catch (\Exception $e) {
 			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
 		}
 	}
 
 	/**
-	 * Sends new user notification email to admin
+	 * Sends new user notification email to given user list
+	 *
 	 * @param array $to
 	 * @param string $username the new user
 	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
+	private function sendNewUserNotifyEmail(array $to, string $username, bool $userIsEnabled): void {
 		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersListByGroup', [
 			'group' => 'disabled',
 		]);
