@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
@@ -24,18 +26,24 @@
 namespace OCA\Registration\AppInfo;
 
 use OCA\Registration\Capabilities;
+use OCA\Registration\RegistrationLoginOption;
 use OCP\AppFramework\App;
-use OC\Authentication\Token\IProvider;
+use OCP\AppFramework\Bootstrap\IBootContext;
+use OCP\AppFramework\Bootstrap\IBootstrap;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
-class Application extends App {
+class Application extends App implements IBootstrap {
+	public const APP_ID = 'registration';
+
 	public function __construct() {
-		parent::__construct('registration');
+		parent::__construct(self::APP_ID);
+	}
 
-		$container = $this->getContainer();
-		$container->registerService(IProvider::class, function ($c) {
-			return \OC::$server->query(IProvider::class); // TODO needed?
-		});
+	public function register(IRegistrationContext $context): void {
+		$context->registerAlternativeLogin(RegistrationLoginOption::class);
+		$context->registerCapability(Capabilities::class);
+	}
 
-		$container->registerCapability(Capabilities::class);
+	public function boot(IBootContext $context): void {
 	}
 }

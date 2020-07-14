@@ -37,10 +37,7 @@ Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
 	<repository>https://github.com/nextcloud/registration</repository>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/appinfo/screenshot.png</screenshot>
 	<dependencies>
-		<database>sqlite</database>
-		<database>pgsql</database>
-		<database min-version="5.5">mysql</database>
-		<nextcloud min-version="17" max-version="20" />
+		<nextcloud min-version="20" max-version="20" />
 	</dependencies>
 	<settings>
 		<admin>OCA\Registration\Settings\RegistrationSettings</admin>
