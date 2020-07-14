@@ -119,29 +119,30 @@ class MailService {
 
 	public function notifyAdmins(string $userId, bool $userIsEnabled, string $userGroupId): void {
 		// Notify admin
-		$admin_users = $this->groupManager->get('admin')->getUsers();
+		$adminUsers = $this->groupManager->get('admin')->getUsers();
 
 		// if the user is disabled and belongs to a group
 		// add subadmins of this group to notification list
 		if (!$userIsEnabled && $userGroupId) {
 			$group = $this->groupManager->get($userGroupId);
-			$subadmin_users = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
-			foreach ($subadmin_users as $user) {
-				if (!in_array($user, $admin_users, true)) {
-					$admin_users[] = $user;
+			$subAdmins = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
+			foreach ($subAdmins as $subAdmin) {
+				if (!in_array($subAdmin, $adminUsers, true)) {
+					$adminUsers[] = $subAdmin;
 				}
 			}
 		}
 
-		$to_arr = [];
-		foreach ($admin_users as $au) {
-			$au_email = $au->getEMailAddress();
-			if ($au_email && $au->isEnabled()) {
-				$to_arr[$au_email] = $au->getDisplayName();
+		$toArr = [];
+		foreach ($adminUsers as $adminUser) {
+			$email = $adminUser->getEMailAddress();
+			if ($email && $adminUser->isEnabled()) {
+				$toArr[$email] = $adminUser->getDisplayName();
 			}
 		}
+
 		try {
-			$this->sendNewUserNotifyEmail($to_arr, $userId, $userIsEnabled);
+			$this->sendNewUserNotifyEmail($toArr, $userId, $userIsEnabled);
 		} catch (\Exception $e) {
 			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
 		}
@@ -199,9 +200,9 @@ class MailService {
 		$message->setTo([]);
 		$message->setBcc($to);
 		$message->useTemplate($template);
-		$failed_recipients = $this->mailer->send($message);
-		if (!empty($failed_recipients)) {
-			throw new RegistrationException('Failed recipients: '.print_r($failed_recipients, true));
+		$failedRecipients = $this->mailer->send($message);
+		if (!empty($failedRecipients)) {
+			throw new RegistrationException('Failed recipients: ' . print_r($failedRecipients, true));
 		}
 	}
 }
