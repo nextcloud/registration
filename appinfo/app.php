@@ -9,7 +9,9 @@
  * @copyright Pellaeon Lin 2014
  */
 
+\OCP\Util::addStyle('registration', 'register-button');
 \OC_App::registerLogIn([
 	'name' => \OC::$server->getL10N('registration')->t('Register'),
-	'href' => \OC::$server->getURLGenerator()->linkToRoute('registration.register.askEmail')
+	'href' => \OC::$server->getURLGenerator()->linkToRoute('registration.register.askEmail'),
+	'style' => 'register-button',
 ]);

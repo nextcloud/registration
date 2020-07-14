@@ -1,0 +1,8 @@
+#alternative-logins .button.register-button {
+	color: var(--color-primary-element);
+}
+
+.register-button:only-child {
+	width: 220px;
+	margin-left: 70px !important;
+}
