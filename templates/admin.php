@@ -1,4 +1,6 @@
 <?php
+/** @var array $_ */
+/** @var \OCP\IL10N $l */
 script('registration', 'settings');
 ?>
 <form id="registration_settings_form" class="section">
