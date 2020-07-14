@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/pellaeon/registration.svg?branch=master)](https://travis-ci.org/pellaeon/registration)
-
 # Registration
 This app allows users to register a new account.
 
