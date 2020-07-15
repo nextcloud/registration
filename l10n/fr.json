@@ -28,7 +28,6 @@
     "Default group that all registered users belong" : "Groupe par défaut auquel appartiennent tous les utilisateurs enregistrés",
     "None" : "Aucun",
     "Allowed mail address domains for registration" : "Domaines d'adresses de courrier électronique autorisés pour l'enregistrement",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Entrez une liste de domaines autorisés séparés par des points-virgules. Exemple : owncloud.com;github.com",
     "Require admin approval?" : "Nécessite l'approbation de l'administrateur ?",
     "Registration is only allowed for the following domains:" : "L'inscription n'est autorisée que pour les domaines suivants :",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Un nouvel utilisateur \"%s\" a créé un compte sur %s et attend l'approbation de l'administration",
@@ -41,6 +40,7 @@
     "Email" : "Email",
     "Request verification link" : "Demander un lien de vérification",
     "Please re-enter a valid email address" : "Veuillez, s'il vous plaît, saisir à nouveau une adresse électronique valide",
-    "You will receive an email with a verification link" : "Vous allez recevoir un email avec un lien de vérification"
+    "You will receive an email with a verification link" : "Vous allez recevoir un email avec un lien de vérification",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Entrez une liste de domaines autorisés séparés par des points-virgules. Exemple : owncloud.com;github.com"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

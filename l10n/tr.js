@@ -30,7 +30,6 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Tüm hesap açmış kullanıcıların katılacağı varsayılan grup",
     "None" : "Yok",
     "Allowed mail address domains for registration" : "Hesap açmak için kullanılabilecek e-posta adresi etki alanları",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Hesap açılmasına izin verilecek etki alanlarının noktalı virgül ile ayrılmış listesi. Örnek: owncloud.com;github.com",
     "Require admin approval?" : "Yönetici onayı istensin",
     "Registration is only allowed for the following domains:" : "Yalnız şu etki alanları ile hesap açılabilir:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "\"%s\" kullanıcı hesabı %s üzerinde açıldı ve onaylanmayı bekliyor",
@@ -43,6 +42,7 @@ OC.L10N.register(
     "Email" : "E-posta",
     "Request verification link" : "Doğrulama bağlantısı gönder",
     "Please re-enter a valid email address" : "Lütfen yeniden geçerli bir e-posta adresi yazın",
-    "You will receive an email with a verification link" : "Doğrulama bağlantısını içeren bir e-posta alacaksınız"
+    "You will receive an email with a verification link" : "Doğrulama bağlantısını içeren bir e-posta alacaksınız",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Hesap açılmasına izin verilecek etki alanlarının noktalı virgül ile ayrılmış listesi. Örnek: owncloud.com;github.com"
 },
 "nplurals=2; plural=(n > 1);");
