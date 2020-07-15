@@ -1,7 +1,7 @@
 <?php
+\OCP\Util::addStyle('core', 'guest');
 \OCP\Util::addStyle('registration', 'style');
 \OCP\Util::addScript('registration', 'form');
-\OCP\Util::addStyle('core', 'guest');
 ?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', ['token'=>$_['token']])) ?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
@@ -34,13 +34,9 @@
 			<input type="password" name="password" id="password" placeholder="<?php p($l->t('Password')); ?>"/>
 			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img id="password-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
-			<?php if (\OC::$server->getConfig()->getAppValue('core', 'vendor', '') === 'nextcloud') { ?>
-			<input id="show" name="show" type="checkbox">
-			<label id="show-password" style="display: inline;" for="show"></label>
-			<?php } else { ?>
-			<input type="checkbox" id="showadminpass" name="showadminpass">
-			<label for="showadminpass"></label>
-			<?php } ?>
+			<a id="showadminpass" href="#" class="toggle-password">
+				<img src="<?php print_unescaped(image_path('core', 'actions/toggle.svg')); ?>">
+			</a>
 		</p>
 		<input type="submit" id="submit" value="<?php p($l->t('Create account')); ?>" />
 	</fieldset>
