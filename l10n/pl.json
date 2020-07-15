@@ -28,7 +28,6 @@
     "Default group that all registered users belong" : "Domyślna grupa, do której będą należeć wszyscy zarejestrowani użytkownicy",
     "None" : "Brak",
     "Allowed mail address domains for registration" : "Dozwolone domeny adresów e-mail dla rejestracji",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Wpisz listę dozwolonych domen, które należy oddzielić średnikami. Przykład: owncloud.com;github.com",
     "Require admin approval?" : "Wymagać zgody administratora?",
     "Registration is only allowed for the following domains:" : "Rejestracja jest dozwolona tylko dla następujących domen:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Nowy użytkownik \"%s\" utworzył konto w %s i oczekuje zgody administratora",
@@ -41,6 +40,7 @@
     "Email" : "E-mail",
     "Request verification link" : "Poproś o link weryfikacyjny",
     "Please re-enter a valid email address" : "Wpisz ponownie prawidłowy adres e-mail",
-    "You will receive an email with a verification link" : "Otrzymasz wiadomość e-mail z linkiem weryfikacyjnym"
+    "You will receive an email with a verification link" : "Otrzymasz wiadomość e-mail z linkiem weryfikacyjnym",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Wpisz listę dozwolonych domen, które należy oddzielić średnikami. Przykład: owncloud.com;github.com"
 },"pluralForm" :"nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
 }

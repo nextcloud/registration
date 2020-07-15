@@ -1,9 +1,18 @@
 { "translations": {
     "Register" : "Registra",
+    "Your registration is pending. Please confirm your email address." : "La tua registrazione è in attesa. Conferma il tuo indirizzo di posta.",
     "Verification email successfully sent." : "Email di verifica inviata correttamente.",
     "Saved" : "Salvato",
+    "No such group" : "Nessun gruppo",
     "The email address you entered is not valid" : "L'indirizzo di posta che hai digitato non è valido",
     "Verify your %s registration request" : "Verifica la tua richiesta di registrazione a %s",
+    "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio del messaggio, contatta il tuo amministratore.",
+    "You can <a href=\"%s\">log in now</a>." : "Ora puoi <a href=\"%s\">accedere</a>.",
+    "Registration is only allowed for the following domains: " : "La registrazione è consentita solo per i domini seguenti:",
+    "Please provide a valid display name." : "Fornisci un nome visualizzato valido.",
+    "Please provide a valid user name." : "Fornisci un nome utente valido.",
+    "The username you have chosen already exists." : "Il nome utente che hai scelto esiste già.",
+    "Unable to set user email: " : "Impossibile impostare l'email dell'utente:",
     "Registration" : "Registrazione",
     "None" : "Nessuno",
     "Username" : "Nome utente",
@@ -11,6 +20,7 @@
     "Create account" : "Crea account",
     "Email" : "Email",
     "Request verification link" : "Richiedi collegamento di verifica",
-    "Please re-enter a valid email address" : "Digita nuovamente un indirizzo di posta valido"
+    "Please re-enter a valid email address" : "Digita nuovamente un indirizzo di posta valido",
+    "You will receive an email with a verification link" : "Riceverai un messaggio con un collegamento di conferma"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

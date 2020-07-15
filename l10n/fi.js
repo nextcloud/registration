@@ -24,7 +24,6 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Oletusryhmä, johon kaikki rekisteröityneet käyttäjät kuuluvat",
     "None" : "Ei mitään",
     "Allowed mail address domains for registration" : "Rekisteröintiin sallittujen sähköpostiosoitteiden verkkotunnukset",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Kirjoita puolipisteellä erotettu lista sallituista verkkotunnuksista. Esimerkki: owncloud.com;github.com",
     "Require admin approval?" : "Vaaditaanko ylläpitäjän hyväksyntä?",
     "Registration is only allowed for the following domains:" : "Rekisteröityminen on sallittu vain seuraavista verkkotunnuksista:",
     "To create a new account on %s, just click the following link:" : "Luo uusi tili palveluun %s napsauttamalla seuraavaa linkkiä:",
@@ -36,6 +35,7 @@ OC.L10N.register(
     "Email" : "Sähköposti",
     "Request verification link" : "Pyydä vahvistuslinkkiä",
     "Please re-enter a valid email address" : "Kirjoita uudelleen kelvollinen sähköpostiosoite",
-    "You will receive an email with a verification link" : "Saat sähköpostiviestin, joka sisältää vahvistuslinkin"
+    "You will receive an email with a verification link" : "Saat sähköpostiviestin, joka sisältää vahvistuslinkin",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Kirjoita puolipisteellä erotettu lista sallituista verkkotunnuksista. Esimerkki: owncloud.com;github.com"
 },
 "nplurals=2; plural=(n != 1);");

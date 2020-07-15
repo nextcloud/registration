@@ -30,7 +30,6 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Standardgruppe, zu der alle registrierten Benutzer gehören",
     "None" : "Keine",
     "Allowed mail address domains for registration" : "Zulässige Mail-Adressdomänen für die Registrierung",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Geben Sie eine durch Semikolons getrennte Liste der zulässigen Domänen ein. Z.B.: nextcloud.com; example.com",
     "Require admin approval?" : "Genehmigung durch Administrator erforderlich?",
     "Registration is only allowed for the following domains:" : "Die Registrierung ist nur für folgende Domains zulässig:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Ein neuer Benutzer \"%s\" hat ein Konto auf %s erstellt und wartet auf Freischaltung durch einen Administrator",
@@ -43,6 +42,7 @@ OC.L10N.register(
     "Email" : "E-Mail",
     "Request verification link" : "Bestätigungslink anfordern",
     "Please re-enter a valid email address" : "Bitte geben Sie eine gültige E-Mail-Adresse erneut ein",
-    "You will receive an email with a verification link" : "Sie erhalten eine E-Mail mit einem Bestätigungslink"
+    "You will receive an email with a verification link" : "Sie erhalten eine E-Mail mit einem Bestätigungslink",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Geben Sie eine durch Semikolons getrennte Liste der zulässigen Domänen ein. Z.B.: nextcloud.com; example.com"
 },
 "nplurals=2; plural=(n != 1);");
