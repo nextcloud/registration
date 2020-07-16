@@ -28,6 +28,7 @@
     "Default group that all registered users belong" : "Grupo predeterminado ao que pertencen todos os usuarios rexistrados",
     "None" : "Ningún",
     "Allowed mail address domains for registration" : "Dominios de enderezo de correo permitidos para o seu rexistro",
+    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Introduza unha lista separada por punto e coma de dominios permitidos. Exemplo: nextcloud.com;example.com",
     "Require admin approval?" : "Necesita a aprobación do administrador?",
     "Registration is only allowed for the following domains:" : "O rexistro está permitido só para os seguintes dominios:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Un novo usuario «%s» creou unha conta en %s e agarda a aprobación dun administrador",
