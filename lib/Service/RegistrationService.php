@@ -40,6 +40,7 @@ use OCP\ILogger;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
+use OCP\IUser;
 use OCP\Security\ICrypto;
 use OCP\Session\Exceptions\SessionNotAvailableException;
 use \OCP\IUserManager;
@@ -247,12 +248,12 @@ class RegistrationService {
 
 	/**
 	 * @param $registration
-	 * @param string $username
-	 * @param string $password
+	 * @param string|null $username
+	 * @param string|null $password
 	 * @return \OCP\IUser
 	 * @throws RegistrationException|InvalidTokenException
 	 */
-	public function createAccount(Registration $registration, $username = null, $password = null) {
+	public function createAccount(Registration $registration, ?string $username = null, ?string $password = null) {
 		if ($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
@@ -414,33 +415,18 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $userId
-	 * @param $username
-	 * @param $password
-	 * @param $decrypt
-	 * @return RedirectResponse|TemplateResponse
+	 * @param string $userId
+	 * @param string $username
+	 * @param string $password
+	 * @param bool $decrypt
 	 */
-	public function loginUser($userId, $username, $password, $decrypt = false) {
+	public function loginUser(string $userId, string $username, string $password, bool $decrypt = false): void {
 		if ($decrypt) {
 			$password = $this->crypto->decrypt($password);
 		}
-		if (method_exists($this->usersession, 'createSessionToken')) {
-			$this->usersession->login($username, $password);
-			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
-			return new RedirectResponse($this->urlGenerator->linkTo('', 'index.php'));
-		} elseif (\OC_User::login($username, $password)) {
-			$this->cleanupLoginTokens($userId);
-			// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
-			$logintoken = $this->random->generate(32);
-			$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-			\OC_User::setMagicInCookie($userId, $logintoken);
-			\OC_Util::redirectToDefaultPage();
-		}
-		// Render message in case redirect failed
-		return new TemplateResponse('registration', 'message',
-			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])]
-			, 'guest'
-		);
+
+		$this->usersession->login($username, $password);
+		$this->usersession->createSessionToken($this->request, $userId, $username, $password);
 	}
 
 	/**

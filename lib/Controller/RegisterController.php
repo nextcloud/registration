@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ownCloud - registration
  *
@@ -7,53 +10,63 @@
  *
  * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author 2020 Joas Schilling <coding@schilljs.com>
  * @copyright Pellaeon Lin 2014
  */
 
 namespace OCA\Registration\Controller;
 
+use Exception;
 use OCA\Registration\Db\Registration;
+use OCA\Registration\Service\LoginFlowService;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
+use OCP\AppFramework\Controller;
 use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\RedirectResponse;
+use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\Response;
-use \OCP\IRequest;
-use \OCP\AppFramework\Http\TemplateResponse;
-use \OCP\AppFramework\Http\RedirectResponse;
-use \OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\StandaloneTemplateResponse;
+use OCP\AppFramework\Http\TemplateResponse;
+use OCP\IL10N;
+use OCP\IRequest;
 use OCP\IURLGenerator;
-use \OCP\IConfig;
-use \OCP\IL10N;
+use OCP\IConfig;
+use OCP\IL10N;
 
 class RegisterController extends Controller {
 
 	/** @var IL10N */
 	private $l10n;
 	/** @var IURLGenerator */
-	private $urlgenerator;
+	private $urlGenerator;
 	/** @var IConfig */
 	private $config;
 	/** @var RegistrationService */
 	private $registrationService;
 	/** @var MailService */
 	private $mailService;
-
+	/** @var LoginFlowService */
+	private $loginFlowService;
 
 	public function __construct(
-		$appName,
+		string $appName,
 		IRequest $request,
 		IL10N $l10n,
-		IURLGenerator $urlgenerator,
+		IURLGenerator $urlGenerator,
 		IConfig $config,
 		RegistrationService $registrationService,
+		LoginFlowService $loginFlowService,
 		MailService $mailService
 	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
-		$this->urlgenerator = $urlgenerator;
+		$this->urlGenerator = $urlGenerator;
 		$this->config = $config;
 		$this->registrationService = $registrationService;
+		$this->loginFlowService = $loginFlowService;
 		$this->mailService = $mailService;
 	}
 
@@ -102,7 +115,7 @@ class RegisterController extends Controller {
 		}
 
 		return new RedirectResponse(
-			$this->urlgenerator->linkToRoute(
+			$this->urlGenerator->linkToRoute(
 				'registration.register.showVerificationForm',
 				['secret' => $registration->getClientSecret()]
 			)
@@ -120,12 +133,8 @@ class RegisterController extends Controller {
 	public function showVerificationForm(string $secret, string $message = ''): TemplateResponse {
 		try {
 			$this->registrationService->getRegistrationForSecret($secret);
-		} catch (RegistrationException $e) {
-			return new TemplateResponse('core', 'error', [
-				'errors' => [
-					$this->l10n->t('The verification secret does not exist anymore'),
-				],
-			], 'error');
+		} catch (DoesNotExistException $e) {
+			return $this->validateSecretAndTokenErrorPage();
 		}
 
 		return new TemplateResponse('registration', 'form/verification', [
@@ -151,16 +160,12 @@ class RegisterController extends Controller {
 					$this->l10n->t('The entered verification code is wrong')
 				);
 			}
-		} catch (RegistrationException $e) {
-			return new TemplateResponse('core', 'error', [
-				'errors' => [
-					$this->l10n->t('The verification secret does not exist anymore'),
-				],
-			], 'error');
+		} catch (DoesNotExistException $e) {
+			return $this->validateSecretAndTokenErrorPage();
 		}
 
 		return new RedirectResponse(
-			$this->urlgenerator->linkToRoute(
+			$this->urlGenerator->linkToRoute(
 				'registration.register.showUserForm',
 				[
 					'secret' => $secret,
@@ -176,95 +181,101 @@ class RegisterController extends Controller {
 	 *
 	 * @param string $secret
 	 * @param string $token
+	 * @param string $username
+	 * @param string $message
 	 * @return TemplateResponse
 	 */
-	public function showUserForm(string $secret, string $token): TemplateResponse {
+	public function showUserForm(string $secret, string $token, string $username = '', string $message = ''): TemplateResponse {
 		try {
-			$registration = $this->registrationService->getRegistrationForSecret($secret);
-
-			if ($registration->getToken() !== $token) {
-				throw new RegistrationException('Invalid verification token');
-			}
+			$registration = $this->validateSecretAndToken($secret, $token);
 		} catch (RegistrationException $e) {
-			return new TemplateResponse('core', 'error', [
-				'errors' => [
-					$this->l10n->t('The verification secret does not exist anymore or the verification token is invalid'),
-				],
-			], 'error');
+			return $this->validateSecretAndTokenErrorPage();
 		}
 
-		try {
-			/** @var Registration $registration */
-			$registration = $this->registrationService->verifyToken($token);
-			$this->registrationService->confirmEmail($registration);
-
-			// create account without form if username/password are already stored
-			if ($registration->getUsername() !== "" && $registration->getPassword() !== "") {
-				$this->registrationService->createAccount($registration);
-				return new TemplateResponse('registration', 'message',
-					['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlgenerator->getAbsoluteURL('/')])],
-					'guest'
-				);
-			}
-
-			return new TemplateResponse('registration', 'form/user', [
-				'email' => $registration->getEmail(),
-				'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
-				'token' => $registration->getToken(),
-			], 'guest');
-		} catch (RegistrationException $exception) {
-			return $this->renderError($exception->getMessage(), $exception->getHint());
-		}
+		return new TemplateResponse('registration', 'form/user', [
+			'email' => $registration->getEmail(),
+			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
+			'username' => $username,
+			'message' => $message,
+		], 'guest');
 	}
 
 	/**
 	 * @PublicPage
 	 * @UseSession
 	 *
-	 * @param $token
+	 * @param string $secret
+	 * @param string $token
+	 * @param string $username
+	 * @param string $password
 	 * @return RedirectResponse|TemplateResponse
 	 */
-	public function submitUserForm($token) {
-		$registration = $this->registrationService->getRegistrationForToken($token);
+	public function submitUserForm(string $secret, string $token, string $username, string $password): Response {
+		try {
+			$registration = $this->validateSecretAndToken($secret, $token);
+		} catch (RegistrationException $e) {
+			return $this->validateSecretAndTokenErrorPage();
+		}
+
 		if ($this->config->getAppValue('registration', 'email_is_login', '0') === '1') {
 			$username = $registration->getEmail();
-		} else {
-			$username = $this->request->getParam('username');
 		}
-		$password = $this->request->getParam('password');
 
 		try {
 			$user = $this->registrationService->createAccount($registration, $username, $password);
-		} catch (\Exception $exception) {
-			// Render form with previously sent values
-			return new TemplateResponse('registration', 'form',
-				[
-					'email' => $registration->getEmail(),
-					'entered_data' => ['user' => $username],
-					'errormsgs' => [$exception->getMessage()],
-					'token' => $token
-				], 'guest');
+		} catch (Exception $exception) {
+			return $this->showUserForm($secret, $token, $username, $exception->getMessage());
 		}
 
 		if ($user->isEnabled()) {
-			// log the user
-			return $this->registrationService->loginUser($user->getUID(), $username, $password, false);
-		} else {
-			// warn the user their account needs admin validation
-			return new TemplateResponse(
-				'registration',
-				'message',
-				['msg' => $this->l10n->t("Your account has been successfully created, but it still needs approval from an administrator.")],
-				'guest');
+			$this->registrationService->loginUser($user->getUID(), $user->getUID(), $password);
+
+			if ($this->loginFlowService->isUsingLoginFlow(2)) {
+				$response = $this->loginFlowService->tryLoginFlowV2($user);
+				if ($response instanceof Response) {
+					return $response;
+				}
+			}
+
+			if ($this->loginFlowService->isUsingLoginFlow(1)) {
+				$response = $this->loginFlowService->tryLoginFlowV1();
+				if ($response instanceof Response && $response->getStatus() === Http::STATUS_SEE_OTHER) {
+					return $response;
+				}
+			}
+
+			return new RedirectToDefaultAppResponse();
 		}
+
+		// warn the user their account needs admin validation
+		return new StandaloneTemplateResponse('registration', 'approval-required', [], 'guest');
 	}
 
-	private function renderError($error, $hint="") {
-		return new TemplateResponse('', 'error', [
-			'errors' => [[
-				'error' => $error,
-				'hint' => $hint
-			]]
+	/**
+	 * @param string $secret
+	 * @param string $token
+	 * @return Registration
+	 * @throws RegistrationException
+	 */
+	protected function validateSecretAndToken(string $secret, string $token): Registration {
+		try {
+			$registration = $this->registrationService->getRegistrationForSecret($secret);
+		} catch (DoesNotExistException $e) {
+			throw new RegistrationException('Invalid secret');
+		}
+
+		if ($registration->getToken() !== $token) {
+			throw new RegistrationException('Invalid token');
+		}
+
+		return $registration;
+	}
+
+	protected function validateSecretAndTokenErrorPage(): TemplateResponse {
+		return new TemplateResponse('core', 'error', [
+			'errors' => [
+				$this->l10n->t('The verification failed.'),
+			],
 		], 'error');
 	}
 }
