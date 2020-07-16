@@ -28,6 +28,7 @@
     "Default group that all registered users belong" : "Grupo padrão ao qual todos os usuários registrados pertencem",
     "None" : "Nenhuma",
     "Allowed mail address domains for registration" : "Domínios de endereço de e-mail permitidos para registro",
+    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Digite uma lista dos domínios permitidos separada por ponto e vírgula. Por exemplo: nextcloud.com;example.com",
     "Require admin approval?" : "Requer aprovação do administrador?",
     "Registration is only allowed for the following domains:" : "O registro é permitido apenas para os seguintes domínios:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Um novo usuário \"%s\" criou uma conta em %s e aguarda aprovação do administrador",

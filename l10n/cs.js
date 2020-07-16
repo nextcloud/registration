@@ -30,6 +30,7 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Výchozí skupina, do které budou náležet všichni uživatelé po registraci",
     "None" : "Žádné",
     "Allowed mail address domains for registration" : "Domény, pouze ze kterých jsou přijímány e-mailové adresy k registraci.",
+    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Zadejte středníkem oddělovaný seznam domén, ze kterých bude umožněna registrace. Příklad: example.com;example.net",
     "Require admin approval?" : "Vyžadovat schválení správcem?",
     "Registration is only allowed for the following domains:" : "Registrace je možná pouze pro e-maily z následujících domén:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Novému uživateli „%s“ byl vytvořen účet na %s a čeká na schválení správcem",

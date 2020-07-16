@@ -30,6 +30,7 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Groupe par défaut auquel appartiennent tous les utilisateurs enregistrés",
     "None" : "Aucun",
     "Allowed mail address domains for registration" : "Domaines d'adresses de courrier électronique autorisés pour l'enregistrement",
+    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Saisissez une liste de domaines autorisés, séparés par des points-virgules. Exemple : nextcloud.com;example.com",
     "Require admin approval?" : "Nécessite l'approbation de l'administrateur ?",
     "Registration is only allowed for the following domains:" : "L'inscription n'est autorisée que pour les domaines suivants :",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Un nouvel utilisateur \"%s\" a créé un compte sur %s et attend l'approbation de l'administration",
