@@ -47,7 +47,7 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	}
 
 	public function getLink(): string {
-		return $this->url->linkToRoute('registration.register.askEmail');
+		return $this->url->linkToRoute('registration.register.showEmailForm');
 	}
 
 	public function getClass(): string {

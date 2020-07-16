@@ -16,6 +16,8 @@ use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Http\Response;
 use \OCP\IRequest;
 use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\RedirectResponse;
@@ -59,64 +61,138 @@ class RegisterController extends Controller {
 	 * @NoCSRFRequired
 	 * @PublicPage
 	 *
-	 * @param $errormsg
-	 * @param $entered
+	 * @param string $email
+	 * @param string $message
 	 * @return TemplateResponse
 	 */
-	public function askEmail($errormsg, $entered) {
+	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
 		$params = [
-			'errormsg' => $errormsg ? $errormsg : $this->request->getParam('errormsg'),
-			'entered' => $entered ? $entered : $this->request->getParam('entered')
+			'email' => $email,
+			'message' => $message,
 		];
-		return new TemplateResponse('registration', 'register', $params, 'guest');
+		return new TemplateResponse('registration', 'form/email', $params, 'guest');
 	}
 
 	/**
-	 * User POST email, if email is valid and not duplicate, we send token by mail
 	 * @PublicPage
 	 * @AnonRateThrottle(limit=5, period=1)
 	 *
 	 * @param string $email
 	 * @return TemplateResponse
 	 */
-	public function validateEmail($email) {//TODO rename to receiveUserEmail
-		if (!$this->registrationService->checkAllowedDomains($email)) {//TODO Duplicate code with Service
-			return new TemplateResponse('registration', 'domains', [
-				'domains' => $this->registrationService->getAllowedDomains()
-			], 'guest');
-		}
+	public function submitEmailForm(string $email): Response {
 		try {
-			$reg = $this->registrationService->validateEmail($email);
-			if ($reg === true) {
+			// Registration already in progress, update token and continue with verification
+			$registration = $this->registrationService->getRegistrationForEmail($email);
+			$this->registrationService->generateNewToken($registration);
+		} catch (DoesNotExistException $e) {
+			// No registration in progress
+			try {
+				$this->registrationService->validateEmail($email);
 				$registration = $this->registrationService->createRegistration($email);
-				$this->mailService->sendTokenByMail($registration);
-			} else {
-				$this->registrationService->generateNewToken($reg);
-				$this->mailService->sendTokenByMail($reg);
-				return new TemplateResponse('registration', 'message', ['msg' =>
-					$this->l10n->t('There is already a pending registration with this email, a new verification email has been sent to the address.')
-				], 'guest');
+			} catch (RegistrationException $e) {
+				return $this->showEmailForm($email, $e->getMessage());
 			}
-		} catch (RegistrationException $e) {
-			return new TemplateResponse('registration', 'message', ['msg' =>
-				$e->getMessage().'<br/>'.$e->getHint()
-			], 'guest');
 		}
 
+		try {
+			$this->mailService->sendTokenByMail($registration);
+		} catch (RegistrationException $e) {
+			return $this->showEmailForm($email, $e->getMessage());
+		}
 
-		return new TemplateResponse('registration', 'message', ['msg' =>
-			$this->l10n->t('Verification email successfully sent.')
-		], 'guest');
+		return new RedirectResponse(
+			$this->urlgenerator->linkToRoute(
+				'registration.register.showVerificationForm',
+				['secret' => $registration->getClientSecret()]
+			)
+		);
 	}
 
 	/**
 	 * @NoCSRFRequired
 	 * @PublicPage
 	 *
-	 * @param $token
+	 * @param string $secret
+	 * @param string $message
 	 * @return TemplateResponse
 	 */
-	public function verifyToken($token) {
+	public function showVerificationForm(string $secret, string $message = ''): TemplateResponse {
+		try {
+			$this->registrationService->getRegistrationForSecret($secret);
+		} catch (RegistrationException $e) {
+			return new TemplateResponse('core', 'error', [
+				'errors' => [
+					$this->l10n->t('The verification secret does not exist anymore'),
+				],
+			], 'error');
+		}
+
+		return new TemplateResponse('registration', 'form/verification', [
+			'message' => $message,
+		], 'guest');
+	}
+
+	/**
+	 * @PublicPage
+	 * @AnonRateThrottle(limit=5, period=1)
+	 *
+	 * @param string $secret
+	 * @param string $token
+	 * @return Response
+	 */
+	public function submitVerificationForm(string $secret, string $token): Response {
+		try {
+			$registration = $this->registrationService->getRegistrationForSecret($secret);
+
+			if ($registration->getToken() !== $token) {
+				return $this->showVerificationForm(
+					$secret,
+					$this->l10n->t('The entered verification code is wrong')
+				);
+			}
+		} catch (RegistrationException $e) {
+			return new TemplateResponse('core', 'error', [
+				'errors' => [
+					$this->l10n->t('The verification secret does not exist anymore'),
+				],
+			], 'error');
+		}
+
+		return new RedirectResponse(
+			$this->urlgenerator->linkToRoute(
+				'registration.register.showUserForm',
+				[
+					'secret' => $secret,
+					'token' => $token,
+				]
+			)
+		);
+	}
+
+	/**
+	 * @NoCSRFRequired
+	 * @PublicPage
+	 *
+	 * @param string $secret
+	 * @param string $token
+	 * @return TemplateResponse
+	 */
+	public function showUserForm(string $secret, string $token): TemplateResponse {
+		try {
+			$registration = $this->registrationService->getRegistrationForSecret($secret);
+
+			if ($registration->getToken() !== $token) {
+				throw new RegistrationException('Invalid verification token');
+			}
+		} catch (RegistrationException $e) {
+			return new TemplateResponse('core', 'error', [
+				'errors' => [
+					$this->l10n->t('The verification secret does not exist anymore or the verification token is invalid'),
+				],
+			], 'error');
+		}
+
 		try {
 			/** @var Registration $registration */
 			$registration = $this->registrationService->verifyToken($token);
@@ -131,7 +207,7 @@ class RegisterController extends Controller {
 				);
 			}
 
-			return new TemplateResponse('registration', 'form', [
+			return new TemplateResponse('registration', 'form/user', [
 				'email' => $registration->getEmail(),
 				'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
 				'token' => $registration->getToken(),
@@ -148,7 +224,7 @@ class RegisterController extends Controller {
 	 * @param $token
 	 * @return RedirectResponse|TemplateResponse
 	 */
-	public function createAccount($token) {
+	public function submitUserForm($token) {
 		$registration = $this->registrationService->getRegistrationForToken($token);
 		if ($this->config->getAppValue('registration', 'email_is_login', '0') === '1') {
 			$username = $registration->getEmail();

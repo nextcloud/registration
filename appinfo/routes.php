@@ -13,14 +13,16 @@
 return [
 	'routes' => [
 		['name' => 'settings#admin', 'url' => '/settings', 'verb' => 'POST'],
-		['name' => 'register#askEmail', 'url' => '/', 'verb' => 'GET'],
-		['name' => 'register#validateEmail', 'url' => '/', 'verb' => 'POST'],
-		['name' => 'register#verifyToken', 'url' => '/verify/{token}', 'verb' => 'GET'],
-		['name' => 'register#createAccount', 'url' => '/verify/{token}', 'verb' => 'POST']
+		['name' => 'register#showEmailForm', 'url' => '/', 'verb' => 'GET'],
+		['name' => 'register#submitEmailForm', 'url' => '/', 'verb' => 'POST'],
+		['name' => 'register#showVerificationForm', 'url' => '/verify/{secret}', 'verb' => 'GET'],
+		['name' => 'register#submitVerificationForm', 'url' => '/verify/{secret}', 'verb' => 'POST'],
+		['name' => 'register#showUserForm', 'url' => '/register/{secret}/{token}', 'verb' => 'GET'],
+		['name' => 'register#submitUserForm', 'url' => '/register/{secret}/{token}', 'verb' => 'POST'],
 	],
 	'ocs' => [
 		['root' => '/registration', 'name' => 'api#validate', 'url' => '/v1/validate', 'verb' => 'POST'],
 		['root' => '/registration', 'name' => 'api#status', 'url' => '/v1/status', 'verb' => 'POST'],
-		['root' => '/registration', 'name' => 'api#register', 'url' => '/v1/register', 'verb' => 'POST']
+		['root' => '/registration', 'name' => 'api#register', 'url' => '/v1/register', 'verb' => 'POST'],
 	]
 ];

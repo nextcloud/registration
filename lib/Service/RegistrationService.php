@@ -135,24 +135,24 @@ class RegistrationService {
 			$registration->setPassword($password);
 		}
 		$this->registrationMapper->generateNewToken($registration);
-		if ($password !== '' && $username !== '') {
-			$this->registrationMapper->generateClientSecret($registration);
-		}
+		$this->registrationMapper->generateClientSecret($registration);
 		$this->registrationMapper->insert($registration);
 		return $registration;
 	}
 
 	/**
 	 * @param string $email
-	 * @return Registration|true if there is a pending reg with this email, return the pending reg, if there are no problems with the email, return true.
 	 * @throws RegistrationException
 	 */
-	public function validateEmail($email) {
+	public function validateEmail(string $email): void {
 		$this->mailService->validateEmail($email);
 
 		// check for pending registrations
 		try {
-			return $this->registrationMapper->find($email);//if not found DB will throw a exception
+			$this->registrationMapper->find($email);//if not found DB will throw a exception
+			throw new RegistrationException(
+				$this->l10n->t('A user has already taken this email, maybe you already have an account?')
+			);
 		} catch (DoesNotExistException $e) {
 		}
 
@@ -171,7 +171,6 @@ class RegistrationService {
 				)
 			);
 		}
-		return true;
 	}
 
 	/**
@@ -235,10 +234,10 @@ class RegistrationService {
 	 * Find registration entity for token
 	 *
 	 * @param string $token
-	 * @return string
+	 * @return Registration
 	 * @throws RegistrationException
 	 */
-	public function verifyToken($token) {
+	public function verifyToken(string $token): Registration {
 		try {
 			return $this->registrationMapper->findByToken($token);
 		} catch (DoesNotExistException $exception) {
@@ -327,18 +326,29 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $token
+	 * @param string $email
 	 * @return Registration
+	 * @throws DoesNotExistException
 	 */
-	public function getRegistrationForToken($token) {
+	public function getRegistrationForEmail(string $email): Registration {
+		return $this->registrationMapper->find($email);
+	}
+
+	/**
+	 * @param string $token
+	 * @return Registration
+	 * @throws DoesNotExistException
+	 */
+	public function getRegistrationForToken(string $token): Registration {
 		return $this->registrationMapper->findByToken($token);
 	}
 
 	/**
-	 * @param $secret
+	 * @param string $secret
 	 * @return Registration
+	 * @throws DoesNotExistException
 	 */
-	public function getRegistrationForSecret($secret) {
+	public function getRegistrationForSecret(string $secret): Registration {
 		return $this->registrationMapper->findBySecret($secret);
 	}
 
