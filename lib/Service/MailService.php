@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
@@ -26,9 +29,7 @@
 namespace OCA\Registration\Service;
 
 use OCA\Registration\Db\Registration;
-use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Defaults;
-use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\ILogger;
@@ -46,19 +47,21 @@ class MailService {
 	private $defaults;
 	/** @var IL10N */
 	private $l10n;
-	/** @var IConfig */
-	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
 	/** @var ILogger */
 	private $logger;
 
-	public function __construct(IURLGenerator $urlGenerator, IMailer $mailer, Defaults $defaults, IL10N $l10n, IConfig $config, IGroupManager $groupManager, ILogger $logger) {
+	public function __construct(IURLGenerator $urlGenerator,
+								IMailer $mailer,
+								Defaults $defaults,
+								IL10N $l10n,
+								IGroupManager $groupManager,
+								ILogger $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->defaults = $defaults;
 		$this->l10n = $l10n;
-		$this->config = $config;
 		$this->groupManager = $groupManager;
 		$this->logger = $logger;
 	}
@@ -67,7 +70,7 @@ class MailService {
 	 * @param string $email
 	 * @throws RegistrationException
 	 */
-	public function validateEmail($email) {
+	public function validateEmail(string $email): void {
 		if (!$this->mailer->validateMailAddress($email)) {
 			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
 		}
@@ -75,115 +78,131 @@ class MailService {
 
 	/**
 	 * @param Registration $registration
-	 * @return bool
 	 * @throws RegistrationException
 	 */
-	public function sendTokenByMail(Registration $registration) {
-		$link = $this->urlGenerator->linkToRoute('registration.register.verifyToken', ['token' => $registration->getToken()]);
-		$link = $this->urlGenerator->getAbsoluteURL($link);
-		$template_var = [
-			'link' => $link,
-			'sitename' => $this->defaults->getName()
-		];
-		$html_template = new TemplateResponse('registration', 'email.validate_html', $template_var, 'blank');
-		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', 'email.validate_plaintext', $template_var, 'blank');
-		$plaintext_part = $plaintext_template->render();
+	public function sendTokenByMail(Registration $registration): void {
+		$link = $this->urlGenerator->linkToRouteAbsolute('registration.register.verifyToken', ['token' => $registration->getToken()]);
 		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
+
+		$template = $this->mailer->createEMailTemplate('registration_verify', [
+			'link' => $link,
+			'token' => $registration->getToken(),
+			'sitename' => $this->defaults->getName(),
+		]);
+
+		$template->setSubject($subject);
+		$template->addHeader();
+		$template->addHeading($this->l10n->t('Registration'));
+
+		$body = $this->l10n->t('Email address verified, you can now complete your registration.');
+		$template->addBodyText(
+			htmlspecialchars($body . ' ' . $this->l10n->t('Click the button below to continue.')),
+			$body
+		);
+
+		$template->addBodyButton(
+			$this->l10n->t('Continue registration'),
+			$link
+		);
+		$template->addFooter();
 
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();
 		$message->setFrom([$from => $this->defaults->getName()]);
 		$message->setTo([$registration->getEmail()]);
-		$message->setSubject($subject);
-		$message->setPlainBody($plaintext_part);
-		$message->setHtmlBody($html_part);
+		$message->useTemplate($template);
 		$failed_recipients = $this->mailer->send($message);
 		if (!empty($failed_recipients)) {
 			throw new RegistrationException($this->l10n->t('A problem occurred sending email, please contact your administrator.'));
 		}
 	}
 
-	/**
-	 * @param string $userId
-	 * @param string $userGroupId
-	 * @param bool $userIsEnabled
-	 */
-	public function notifyAdmins($userId, $userIsEnabled, $userGroupId) {
+	public function notifyAdmins(string $userId, bool $userIsEnabled, string $userGroupId): void {
 		// Notify admin
-		$admin_users = $this->groupManager->get('admin')->getUsers();
+		$adminUsers = $this->groupManager->get('admin')->getUsers();
 
 		// if the user is disabled and belongs to a group
 		// add subadmins of this group to notification list
-		if (!$userIsEnabled and $userGroupId) {
+		if (!$userIsEnabled && $userGroupId) {
 			$group = $this->groupManager->get($userGroupId);
-			$subadmin_users = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
-			foreach ($subadmin_users as $user) {
-				if (!in_array($user, $admin_users)) {
-					$admin_users[] = $user;
+			$subAdmins = $this->groupManager->getSubAdmin()->getGroupsSubAdmins($group);
+			foreach ($subAdmins as $subAdmin) {
+				if (!in_array($subAdmin, $adminUsers, true)) {
+					$adminUsers[] = $subAdmin;
 				}
 			}
 		}
 
-		$to_arr = [];
-		foreach ($admin_users as $au) {
-			$au_email = $au->getEMailAddress();
-			if ($au_email && $au->isEnabled()) {
-				$to_arr[$au_email] = $au->getDisplayName();
+		$toArr = [];
+		foreach ($adminUsers as $adminUser) {
+			$email = $adminUser->getEMailAddress();
+			if ($email && $adminUser->isEnabled()) {
+				$toArr[$email] = $adminUser->getDisplayName();
 			}
 		}
+
 		try {
-			$this->sendNewUserNotifEmail($to_arr, $userId, $userIsEnabled);
+			$this->sendNewUserNotifyEmail($toArr, $userId, $userIsEnabled);
 		} catch (\Exception $e) {
 			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
 		}
 	}
 
 	/**
-	 * Sends new user notification email to admin
+	 * Sends new user notification email to given user list
+	 *
 	 * @param array $to
 	 * @param string $username the new user
 	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifEmail(array $to, $username, $userIsEnabled) {
-		if ($this->config->getAppValue('core', 'vendor', '') === 'nextcloud') {
-			$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersList');
-		} else {
-			$link = $this->urlGenerator->linkToRouteAbsolute('user_management.users');
-		}
-		$template_var = [
+	private function sendNewUserNotifyEmail(array $to, string $username, bool $userIsEnabled): void {
+		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersListByGroup', [
+			'group' => 'disabled',
+		]);
+		$template = $this->mailer->createEMailTemplate('registration_admin', [
+			'link' => $link,
 			'user' => $username,
 			'sitename' => $this->defaults->getName(),
-			'link' => $link,
-		];
+		]);
 
-		// handle user enableness
+		$subject = $this->l10n->t('New user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
+
+		$template->setSubject($subject);
+		$template->addHeader();
+		$template->addHeading($this->l10n->t('New user registered'));
+
 		if ($userIsEnabled) {
-			$html_template_file = 'email.newuser_html';
-			$plaintext_template_file = 'email.newuser_plaintext';
+			$template->addBodyText(
+				$this->l10n->t('"%1$s" registered a new account on %2$s.', [
+					$username,
+					$this->defaults->getName(),
+				])
+			);
 		} else {
-			$html_template_file = 'email.newuser.disabled_html';
-			$plaintext_template_file = 'email.newuser.disabled_plaintext';
-		}
+			$template->addBodyText(
+				$this->l10n->t('"%1$s" registered a new account on %2$s and needs to be enabled.', [
+					$username,
+					$this->defaults->getName(),
+				])
+			);
 
-		$html_template = new TemplateResponse('registration', $html_template_file, $template_var, 'blank');
-		$html_part = $html_template->render();
-		$plaintext_template = new TemplateResponse('registration', $plaintext_template_file, $template_var, 'blank');
-		$plaintext_part = $plaintext_template->render();
-		$subject = $this->l10n->t('A new user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
+			$template->addBodyButton(
+				$this->l10n->t('Enable now'),
+				$link
+			);
+		}
+		$template->addFooter();
 
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();
 		$message->setFrom([$from => $this->defaults->getName()]);
 		$message->setTo([]);
 		$message->setBcc($to);
-		$message->setSubject($subject);
-		$message->setPlainBody($plaintext_part);
-		$message->setHtmlBody($html_part);
-		$failed_recipients = $this->mailer->send($message);
-		if (!empty($failed_recipients)) {
-			throw new RegistrationException('Failed recipients: '.print_r($failed_recipients, true));
+		$message->useTemplate($template);
+		$failedRecipients = $this->mailer->send($message);
+		if (!empty($failedRecipients)) {
+			throw new RegistrationException('Failed recipients: ' . print_r($failedRecipients, true));
 		}
 	}
 }

@@ -121,8 +121,7 @@ class RegisterControllerTest extends TestCase {
 			->with("registration", 'allowed_domains', '')
 			->willReturn('');
 		$this->mailService->expects($this->once())
-			->method('sendTokenByMail')
-			->willReturn(true);
+			->method('sendTokenByMail');
 
 		$this->assertEquals($this->registrationService->validateEmail($email), true);
 
