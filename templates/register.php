@@ -1,6 +1,7 @@
 <?php
-\OCP\Util::addStyle('registration', 'style');
-\OCP\Util::addStyle('core', 'guest');
+/** @var array $_ */
+/** @var \OCP\IL10N $l */
+style('registration', 'style');
 if ($_['entered']): ?>
 	<?php if (empty($_['errormsg'])): ?>
 		<ul class="success">
@@ -21,6 +22,10 @@ if ($_['entered']): ?>
 				</p>
 				<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
 				<input type="submit" id="submit" value="<?php p($l->t('Request verification link')); ?>" />
+
+				<a id="lost-password-back" href="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('core.login.showLoginForm')) ?>">
+					<?php p($l->t('Back to login')); ?>
+				</a>
 			</fieldset>
 		</form>
 	<?php endif; ?>
@@ -44,6 +49,10 @@ if ($_['entered']): ?>
 			</p>
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
 			<input type="submit" id="submit" value="<?php p($l->t('Request verification link')); ?>" />
+
+			<a id="lost-password-back" href="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('core.login.showLoginForm')) ?>">
+				<?php p($l->t('Back to login')); ?>
+			</a>
 		</fieldset>
 	</form>
 <?php endif; ?>

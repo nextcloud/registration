@@ -1,7 +1,8 @@
 <?php
-\OCP\Util::addStyle('core', 'guest');
-\OCP\Util::addStyle('registration', 'style');
-\OCP\Util::addScript('registration', 'form');
+/** @var array $_ */
+/** @var \OCP\IL10N $l */
+style('registration', 'style');
+script('registration', 'form');
 ?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', ['token'=>$_['token']])) ?>" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
