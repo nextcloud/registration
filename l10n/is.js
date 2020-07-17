@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Notandanafn",
     "Password" : "Lykilorð",
     "Create account" : "Stofna aðgang",
-    "Email" : "Tölvupóstur"
+    "Email" : "Tölvupóstur",
+    "Back to login" : "Til baka í innskráningu"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

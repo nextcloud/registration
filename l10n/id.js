@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Nama pengguna",
     "Password" : "Kata kunci",
     "Create account" : "Buat akun",
-    "Email" : "Surel"
+    "Email" : "Surel",
+    "Back to login" : "Kembali ke log masuk"
 },
 "nplurals=1; plural=0;");

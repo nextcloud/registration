@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Erabiltzaile-izena",
     "Password" : "Pasahitza",
     "Create account" : "Kontua sortu",
-    "Email" : "Helbide elektronikoa"
+    "Email" : "Helbide elektronikoa",
+    "Back to login" : "Itzuli saio hasierara"
 },
 "nplurals=2; plural=(n != 1);");

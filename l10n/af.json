@@ -5,6 +5,7 @@
     "Username" : "Gebruikersnaam",
     "Password" : "Wagwoord",
     "Create account" : "Skep rekening",
-    "Email" : "E-pos"
+    "Email" : "E-pos",
+    "Back to login" : "Terug na aanmelding"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

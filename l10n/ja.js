@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "ユーザー名",
     "Password" : "パスワード",
     "Create account" : "アカウント作成",
-    "Email" : "メール"
+    "Email" : "メール",
+    "Back to login" : "ログインに戻る"
 },
 "nplurals=1; plural=0;");

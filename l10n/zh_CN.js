@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "用户名",
     "Password" : "密码",
     "Create account" : "创建账号",
-    "Email" : "电子邮箱"
+    "Email" : "电子邮箱",
+    "Back to login" : "返回登录"
 },
 "nplurals=1; plural=0;");

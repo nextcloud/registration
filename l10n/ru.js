@@ -11,8 +11,8 @@ OC.L10N.register(
     "No such group" : "Отсутствует такая группа",
     "The email address you entered is not valid" : "Адрес электронной почты, введённый вами, недействителен",
     "Verify your %s registration request" : "Подтвердите ваш запрос на регистрацию на %s",
+    "Registration" : "Регистрация",
     "A problem occurred sending email, please contact your administrator." : "Возникла ошибка отправки электронной почты. Пожалуйста, сообщите об этом администратору.",
-    "A new user \"%s\" has created an account on %s" : "Новый пользователь \"%s\" создал учётную запись на %s",
     "A user has already taken this email, maybe you already have an account?" : "Кто-то уже использует эту электронную почту, возможно у вас уже есть учётная запись?",
     "You can <a href=\"%s\">log in now</a>." : "Вы можете <a href=\"%s\">войти сейчас</a>.",
     "Registration is only allowed for the following domains: " : "Регистрация разрешена только для следующих доменов:",
@@ -23,7 +23,6 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "Не удалось создать пользователя, обнаружены проблемы с пользовательским бэкэнд.",
     "Unable to set user email: " : "Не удалось установить адрес электронной почты пользователя:",
     "Failed to delete pending registration request" : "Не удалось удалить не завершённый запрос на регистрацию",
-    "Registration" : "Регистрация",
     "This app allows users to self-register a new account using their e-mail address." : "Это приложение позволяет пользователям самостоятельно зарегистрировать новую учётную запись, используя адрес электронной почты.",
     "Default group that all registered users belong" : "Группа по умолчанию для всех зарегистрированных пользователей",
     "None" : "Пусто",
@@ -31,8 +30,6 @@ OC.L10N.register(
     "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Введите список разрешённых доменов через точку с запятой. Пример: nextcloud.com;example.com",
     "Require admin approval?" : "Требуется подтверждение администратора?",
     "Registration is only allowed for the following domains:" : "Регистрация разрешена только для следующих доменов:",
-    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Новый пользователь \"%s\" создал учётную запись на %s и ожидает подтверждения администратора",
-    "To create a new account on %s, just click the following link:" : "Чтобы создать учётную запись на %s, просто пройдите по следующей ссылке:",
     "Welcome, you can create your account below." : "Добро пожаловать, вы можете создать учётную запись ниже.",
     "Username" : "Имя пользователя",
     "Password" : "Пароль",
@@ -42,6 +39,9 @@ OC.L10N.register(
     "Request verification link" : "Запросить ссылку для подтверждения",
     "Please re-enter a valid email address" : "Пожалуйста, повторно введите действующий адрес электронной почты",
     "You will receive an email with a verification link" : "Вы получите письмо со ссылкой для подтверждения",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Введите список разрешённых доменов через точку с запятой. Пример: owncloud.com;github.com"
+    "A new user \"%s\" has created an account on %s" : "Новый пользователь \"%s\" создал учётную запись на %s",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Введите список разрешённых доменов через точку с запятой. Пример: owncloud.com;github.com",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Новый пользователь \"%s\" создал учётную запись на %s и ожидает подтверждения администратора",
+    "To create a new account on %s, just click the following link:" : "Чтобы создать учётную запись на %s, просто пройдите по следующей ссылке:"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");
