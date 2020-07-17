@@ -227,6 +227,9 @@ class RegisterController extends Controller {
 			return $this->showUserForm($secret, $token, $username, $exception->getMessage());
 		}
 
+		// Delete registration
+		$this->registrationService->deleteRegistration($registration);
+
 		if ($user->isEnabled()) {
 			$this->registrationService->loginUser($user->getUID(), $user->getUID(), $password);
 

@@ -322,17 +322,6 @@ class RegistrationService {
 			$user->setEnabled(false);
 		}
 
-		// Delete pending registration if no client secret is stored
-		// with client secret implies registered via API
-		// without client secret implies registered via form
-		// if registered via API, the registration request will be deleted in apicontroller::status
-		if ($registration->getClientSecret() === null) {
-			$res = $this->registrationMapper->delete($registration);
-			if ($res === false) {
-				throw new RegistrationException($this->l10n->t('Failed to delete pending registration request'));
-			}
-		}
-
 		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
 		return $user;
 	}
