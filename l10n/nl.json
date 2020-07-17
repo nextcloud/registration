@@ -5,6 +5,7 @@
     "Username" : "Gebruikersnaam",
     "Password" : "Wachtwoord",
     "Create account" : "Account aanmaken",
-    "Email" : "Email"
+    "Email" : "Email",
+    "Back to login" : "Terug naar inloggen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

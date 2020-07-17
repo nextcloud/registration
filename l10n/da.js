@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Brugernavn",
     "Password" : "Adgangskode",
     "Create account" : "Opret konto",
-    "Email" : "Email"
+    "Email" : "Email",
+    "Back to login" : "Tilbage til log in"
 },
 "nplurals=2; plural=(n != 1);");

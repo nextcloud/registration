@@ -5,6 +5,7 @@
     "Username" : "Uporabniško ime",
     "Password" : "Geslo",
     "Create account" : "Ustvari račun",
-    "Email" : "Elektronski naslov"
+    "Email" : "Elektronski naslov",
+    "Back to login" : "Nazaj na prijavo"
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

@@ -10,8 +10,8 @@ OC.L10N.register(
     "No such group" : "Nincs ilyen csoport",
     "The email address you entered is not valid" : "A megadott email cím érvénytelen",
     "Verify your %s registration request" : "Ellenőrizze a %sregisztrációs kérelmét.",
+    "Registration" : "Regisztráció",
     "A problem occurred sending email, please contact your administrator." : "Váratlan hiba lépett fel az email küldéskor, kérem lépjen kapcsolatba a rendszergazdával.",
-    "A new user \"%s\" has created an account on %s" : "Egy új felhasználó \"%s\" lett létrehozva a %shozzáféréshez",
     "A user has already taken this email, maybe you already have an account?" : "Egy felhasználó már használja ezt az email címet, lehet, hogy  van már hozzáférése?",
     "Registration is only allowed for the following domains: " : "A regisztráció csak a következő domainekszámára engedélyezett:",
     "Please provide a valid display name." : "Kérlek érvényes nevet adj meg.",
@@ -21,7 +21,6 @@ OC.L10N.register(
     "Unable to set user email: " : "Nem lehet beállítani az email címet:",
     "Failed to delete pending registration request" : "Nem sikerült törölni a függőben lévő regisztrációs kérelmet",
     "Registration app auto setup" : "Regisztrációs alkalmazás automatikus beállítása",
-    "Registration" : "Regisztráció",
     "None" : "Nincs",
     "Allowed mail address domains for registration" : "Engedélyezett regisztrációs email név domainek",
     "Require admin approval?" : "Szükséges rendszergazdai engedély?",
@@ -32,7 +31,9 @@ OC.L10N.register(
     "Thank you for registering, you should receive a verification link in a few minutes." : "Köszönjük a regisztrációt, nemsoká egy ellenőrző hivatkozást kapsz.",
     "Email" : "E-mail",
     "Request verification link" : "Ellenőrző hivatkozás kérése",
+    "Back to login" : "Vissza a bejelentkezéshez",
     "Please re-enter a valid email address" : "Kérlek add meg újra az email címedet",
-    "You will receive an email with a verification link" : "Nemsoká emailt kapsz egy ellenőrző linkkel"
+    "You will receive an email with a verification link" : "Nemsoká emailt kapsz egy ellenőrző linkkel",
+    "A new user \"%s\" has created an account on %s" : "Egy új felhasználó \"%s\" lett létrehozva a %shozzáféréshez"
 },
 "nplurals=2; plural=(n != 1);");

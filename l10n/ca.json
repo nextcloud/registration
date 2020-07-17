@@ -5,6 +5,7 @@
     "Username" : "Nom d'usuari",
     "Password" : "Contrasenya",
     "Create account" : "Crea un compte",
-    "Email" : "Correu"
+    "Email" : "Correu",
+    "Back to login" : "Torna a accedir"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

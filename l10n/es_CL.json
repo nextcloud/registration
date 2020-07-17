@@ -5,6 +5,7 @@
     "Username" : "Usuario",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Email" : "Correo electrónico"
+    "Email" : "Correo electrónico",
+    "Back to login" : "Regresar al inicio de sesión"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

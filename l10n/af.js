@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Gebruikersnaam",
     "Password" : "Wagwoord",
     "Create account" : "Skep rekening",
-    "Email" : "E-pos"
+    "Email" : "E-pos",
+    "Back to login" : "Terug na aanmelding"
 },
 "nplurals=2; plural=(n != 1);");
