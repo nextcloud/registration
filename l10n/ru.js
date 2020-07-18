@@ -37,6 +37,7 @@ OC.L10N.register(
     "Thank you for registering, you should receive a verification link in a few minutes." : "Спасибо за регистрацию, вы получите ссылку для подтверждения через несколько минут.",
     "Email" : "Адрес эл. почты",
     "Request verification link" : "Запросить ссылку для подтверждения",
+    "Back to login" : "Вернуться на страницу входа",
     "Please re-enter a valid email address" : "Пожалуйста, повторно введите действующий адрес электронной почты",
     "You will receive an email with a verification link" : "Вы получите письмо со ссылкой для подтверждения",
     "A new user \"%s\" has created an account on %s" : "Новый пользователь \"%s\" создал учётную запись на %s",
