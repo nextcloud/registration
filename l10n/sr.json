@@ -37,6 +37,7 @@
     "Thank you for registering, you should receive a verification link in a few minutes." : "Хвала на регистрацији, требало бисте да добијете везу за верификацију за неколико минута.",
     "Email" : "Е-пошта",
     "Request verification link" : "Захтевај везу за верификацију",
+    "Back to login" : "Назад на пријаву",
     "Please re-enter a valid email address" : "Унесите поново исправну адресу е-поште",
     "You will receive an email with a verification link" : "Примићете е-мејл са везом за верификацију",
     "A new user \"%s\" has created an account on %s" : "Нови корисник „%s” је направио налог на %s",

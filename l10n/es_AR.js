@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Nombre de usuario",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Email" : "Correo electrónico"
+    "Email" : "Correo electrónico",
+    "Back to login" : "Volver para iniciar sesión"
 },
 "nplurals=2; plural=(n != 1);");

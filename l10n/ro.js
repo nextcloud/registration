@@ -6,6 +6,7 @@ OC.L10N.register(
     "Username" : "Nume utilizator",
     "Password" : "Parolă",
     "Create account" : "Crează cont",
-    "Email" : "Email"
+    "Email" : "Email",
+    "Back to login" : "Înapoi la autentificare"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

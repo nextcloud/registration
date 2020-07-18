@@ -7,6 +7,7 @@ OC.L10N.register(
     "Username" : "Потребител",
     "Password" : "Парола",
     "Create account" : "Създаване на профил",
-    "Email" : "Имейл"
+    "Email" : "Имейл",
+    "Back to login" : "Обратно към вписване"
 },
 "nplurals=2; plural=(n != 1);");
