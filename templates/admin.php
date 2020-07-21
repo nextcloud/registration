@@ -26,9 +26,13 @@ foreach ($_['groups'] as $group) {
 	</p>
 
 	<div style="margin-top: 10px;">
-		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
+		<p>
+			<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
 	echo " checked";
 } ?>>
-		<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?></label>
+			<label for="admin_approval_required"><?php p($l->t('Require admin approval?')); ?></label>
+		</p>
+
+		<em><?php p($l->t('Enabling "admin approval" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled.'));?></em>
 	</div>
 </form>
