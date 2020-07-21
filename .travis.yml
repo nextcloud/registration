@@ -21,7 +21,7 @@ addons:
 env:
   global:
     - CORE_BRANCH=master
-    - APP_NAME=notifications
+    - APP_NAME=registration
   matrix:
     - DB=sqlite
 
@@ -36,12 +36,6 @@ matrix:
       env: DB=mysql
     - php: 7.3
       env: DB=pgsql
-    - php: 7.2
-      env: DB=sqlite CORE_BRANCH=stable19
-    - php: 7.2
-      env: DB=sqlite CORE_BRANCH=stable18
-    - php: 7.2
-      env: DB=sqlite CORE_BRANCH=stable17
   fast_finish: true
 
 before_install:
