@@ -1,9 +1,9 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "רישום",
     "Saved" : "נשמר",
     "No such group" : "אין קבוצה כזאת",
+    "Register" : "רישום",
     "The email address you entered is not valid" : "כתובת הדוא״ל שסופקה אינה תקנית",
     "Verify your %s registration request" : "נא לתקף את בקשת הרישום שלך אל %s",
     "A problem occurred sending email, please contact your administrator." : "אירעה תקלה בשליחת הדוא״ל, נא ליצור קשר עם הנהלת המערכת שלך.",

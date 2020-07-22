@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Nýskráning",
     "Saved" : "Vistað",
+    "Register" : "Nýskráning",
     "None" : "Ekkert",
     "Username" : "Notandanafn",
     "Password" : "Lykilorð",

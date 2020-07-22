@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "რეგისტრაცია",
     "Saved" : "შენახულია",
+    "Register" : "რეგისტრაცია",
     "None" : "არც ერთი",
     "Username" : "მომხმარებელი",
     "Password" : "პაროლი",

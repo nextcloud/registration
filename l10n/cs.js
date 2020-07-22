@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Zaregistrovat",
     "Your registration is pending. Please confirm your email address." : "Vaše registrace čeká. Potvrďte svou e-mailovou adresu.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Pod tímto e-mailem už zde čeká registrace – na adresu byl odeslán nový ověřovací e-mail.",
     "Verification email successfully sent." : "Ověřovací e-mail byl úspěšně odeslán.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet byl úspěšně vytvořen, ale ještě čeká na schválení správcem.",
     "Saved" : "Uloženo",
     "No such group" : "Taková skupina neexistuje",
+    "Register" : "Zaregistrovat",
     "The email address you entered is not valid" : "Zadaná e-mailová adresa není platná",
     "Verify your %s registration request" : "Ověřte váš požadavek na registraci %s",
     "Registration" : "Registrace",

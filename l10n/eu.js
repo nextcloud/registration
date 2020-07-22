@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Erregistratu",
     "Saved" : "Gordeta",
+    "Register" : "Erregistratu",
     "None" : "Bat ere ez",
     "Username" : "Erabiltzaile-izena",
     "Password" : "Pasahitza",

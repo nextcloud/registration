@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Đăng ký",
     "Saved" : "Đã lưu",
+    "Register" : "Đăng ký",
     "None" : "Không có",
     "Username" : "Tên đăng nhập",
     "Password" : "Mật khẩu",

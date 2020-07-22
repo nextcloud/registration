@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Εγγραφή",
     "Saved" : "Αποθηκεύτηκε",
+    "Register" : "Εγγραφή",
     "None" : "Κανένα",
     "Username" : "Όνομα χρήστη",
     "Password" : "Κωδικός πρόσβασης",

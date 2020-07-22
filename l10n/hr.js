@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registriraj se",
     "Saved" : "Spremljeno",
+    "Register" : "Registriraj se",
     "None" : "Nema",
     "Username" : "Korisničko ime",
     "Password" : "Zaporka",

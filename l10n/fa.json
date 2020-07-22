@@ -1,5 +1,4 @@
 { "translations": {
-    "Register" : "ثبت‌نام",
     "Your registration is pending. Please confirm your email address." : "ثبت‌نام شما در حالت انتظار است. لطفا نشانی رایانامه خود را تأیید کنید.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "ثبت‌نام دیگری با همین رایانامه در حالت انتظار است، رایانامهٔ جدیدی جهت اعتبارسنجی به همین نشانی فرستاده شده است.",
     "Verification email successfully sent." : "رایانامهٔ اعتبارسنجی با موفقیت فرستاده شد.",
@@ -7,6 +6,7 @@
     "Your account has been successfully created, but it still needs approval from an administrator." : "حساب شما با موفقیت ساخته شده است اما هنوز نیاز به تأیید یک مدیر دارد.",
     "Saved" : "ذخیره شد",
     "No such group" : "چنین گروهی وجود ندارد",
+    "Register" : "ثبت‌نام",
     "The email address you entered is not valid" : "نشانی رایانامه‌ای که وارد کرده‌اید معتبر نیست",
     "Verify your %s registration request" : "اعتبار درخواست ثبت‌نام %s را تایید کنید",
     "Registration" : "ثبت‌نام",
