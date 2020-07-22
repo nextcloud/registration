@@ -1,13 +1,13 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Regisztráció",
     "Your registration is pending. Please confirm your email address." : "A regisztrációja függőben van. Kérem erősítse meg az email címét.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Ezzel az email címmel már függőben van egy regisztrációs kérelem, egy új ellenörző emailt küldtünk a megadott címre.",
     "Verification email successfully sent." : "Ellenőrző email sikeresen elküldve.",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Hozzáférése sikeresen elkészült, azonban még szükséges a rendszergazda jóváhagyására.",
     "Saved" : "Mentve",
     "No such group" : "Nincs ilyen csoport",
+    "Register" : "Regisztráció",
     "The email address you entered is not valid" : "A megadott email cím érvénytelen",
     "Verify your %s registration request" : "Ellenőrizze a %sregisztrációs kérelmét.",
     "Registration" : "Regisztráció",

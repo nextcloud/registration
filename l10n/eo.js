@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registriĝi",
     "Saved" : "Konservita",
+    "Register" : "Registriĝi",
     "None" : "Nenio",
     "Username" : "Uzantnomo",
     "Password" : "Pasvorto",

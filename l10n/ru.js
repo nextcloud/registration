@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Регистрация",
     "Your registration is pending. Please confirm your email address." : "Ваша регистрация не закончена. Пожалуйста, подтвердите ваш адрес электронной почты.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Регистрация с данным адресом электронной почты уже существует и не закончена, новое проверочное письмо было отправлено на данный адрес.",
     "Verification email successfully sent." : "Проверочное письмо успешно отправлено.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Ваша учётная запись была успешно создана, но она должна быть утверждена администратором.",
     "Saved" : "Сохранено",
     "No such group" : "Отсутствует такая группа",
+    "Register" : "Регистрация",
     "The email address you entered is not valid" : "Адрес электронной почты, введённый вами, недействителен",
     "Verify your %s registration request" : "Подтвердите ваш запрос на регистрацию на %s",
     "Registration" : "Регистрация",

@@ -1,7 +1,7 @@
 { "translations": {
-    "Register" : "Registrarse",
     "Your registration is pending. Please confirm your email address." : "Su registro está pendiente. Por favor, confirme su dirección de correo.",
     "Saved" : "Guardado",
+    "Register" : "Registrarse",
     "None" : "Ninguno",
     "Username" : "Usuario",
     "Password" : "Contraseña",

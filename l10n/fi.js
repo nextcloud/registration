@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Rekisteröidy",
     "Your registration is pending. Please confirm your email address." : "Rekisteröitymisesi odottaa. Vahvista sähköpostiosoitteesi.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tällä sähköpostiosoitteella on jo odottava rekisteröityminen. Uusi vahvistusviesti lähetettiin sähköpostitse.",
     "Verification email successfully sent." : "Vahvistusviesti lähetetty onnistuneesti.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Tilisi on luotu onnistuneesti, mutta se tarvitsee vielä hyväksynnän ylläpitäjältä.",
     "Saved" : "Tallennettu",
     "No such group" : "Ei kyseistä ryhmää",
+    "Register" : "Rekisteröidy",
     "The email address you entered is not valid" : "Kirjoittamasi sähköpostiosoite ei ole kelvollinen",
     "Registration" : "Rekisteröinti",
     "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä ilmeni virhe, ole yhteydessä ylläpitoon.",

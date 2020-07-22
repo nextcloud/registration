@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registrera",
     "Saved" : "Sparad",
+    "Register" : "Registrera",
     "None" : "Ingen",
     "Username" : "Användarnamn",
     "Password" : "Lösenord",

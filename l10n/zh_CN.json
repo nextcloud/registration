@@ -1,8 +1,8 @@
 { "translations": {
-    "Register" : "注册",
     "Verification email successfully sent." : "验证邮件已成功发送",
     "Saved" : "已保存",
     "No such group" : "无此群组",
+    "Register" : "注册",
     "The email address you entered is not valid" : "您输入的电子邮件地址不正确",
     "Registration" : "注册",
     "Unable to set user email: " : "无法设置用户电子邮件：",

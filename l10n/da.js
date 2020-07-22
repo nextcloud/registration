@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registér",
     "Saved" : "Gemt",
+    "Register" : "Registér",
     "None" : "Ingen",
     "Username" : "Brugernavn",
     "Password" : "Adgangskode",

@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Daftar",
     "Saved" : "Disimpan",
+    "Register" : "Daftar",
     "None" : "Tidak ada",
     "Username" : "Nama pengguna",
     "Password" : "Kata kunci",

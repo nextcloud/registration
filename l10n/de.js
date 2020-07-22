@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registrieren",
     "Your registration is pending. Please confirm your email address." : "Deine Registrierung steht noch aus. Bitte bestätige Deine E-Mail-Adresse.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Es gibt bereits eine ausstehende Registrierung unter dieser E-Mail-Adresse, eine neue Bestätigungs-E-Mail wurde an die Adresse geschickt.",
     "Verification email successfully sent." : "Bestätigungsmail erfolgreich gesendet.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Dein Konto wurde erfolgreich erstellt, muss aber noch von einem Administrator bestätigt werden.",
     "Saved" : "Gespeichert",
     "No such group" : "Gruppe nicht vorhanden",
+    "Register" : "Registrieren",
     "The email address you entered is not valid" : "Die eingegebene E-Mail-Adresse ist ungültig",
     "Verify your %s registration request" : "Bestätige Deine %s Registrierungsanfrage",
     "Registration" : "Registrierung",
@@ -37,7 +37,7 @@ OC.L10N.register(
     "Default group that all registered users belong" : "Standardgruppe, zu der alle registrierten Benutzer gehören",
     "None" : "Keine",
     "Allowed mail address domains for registration" : "Zulässige Mail-Adressdomänen für die Registrierung",
-    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Gebe eine durch Semikolons getrennte Liste der zulässigen Domains ein. Z. B.: nextcloud.com; example.com",
+    "Enter a semicolon-separated list of allowed domains. Example: nextcloud.com;example.com" : "Gebe eine durch Semikolons getrennte Liste der zulässigen Domains ein. Z. B.: nextcloud.com;example.com",
     "Require admin approval?" : "Genehmigung durch Administrator erforderlich?",
     "Registration is only allowed for the following domains:" : "Die Registrierung ist nur für folgende Domains zulässig:",
     "Welcome, you can create your account below." : "Willkommen, Du kannst dein Konto nachfolgend erstellen.",
@@ -51,7 +51,7 @@ OC.L10N.register(
     "Please re-enter a valid email address" : "Bitte eine gültige E-Mail-Adresse erneut eingeben",
     "You will receive an email with a verification link" : "Du erhältst eine E-Mail mit einem Bestätigungslink",
     "A new user \"%s\" has created an account on %s" : "Ein neuer Benutzer \"%s\" hat ein Konto auf %s erstellt",
-    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Gib eine durch Semikolons getrennte Liste der zulässigen Domains ein. Beispiel: nextcloud.com; example.com",
+    "Enter a semicolon-separated list of allowed domains. Example: owncloud.com;github.com" : "Gib eine durch Semikolons getrennte Liste der zulässigen Domains ein. Beispiel: nextcloud.com;example.com",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Ein neuer Benutzer \"%s\" hat ein Konto auf %s erstellt und wartet auf Freischaltung durch einen Administrator",
     "To create a new account on %s, just click the following link:" : "Um ein neues Konto für %s zu erstellen, klicke einfach auf den folgenden Link:"
 },

@@ -1,5 +1,4 @@
 { "translations": {
-    "Register" : "Registrovať",
     "Your registration is pending. Please confirm your email address." : "Vaša registrácia čaká. Prosím potvrďte Vašu emailovú adresu.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tento e-mail už čaká na registráciu, na túto adresu bol odoslaný nový verifikačný e-mail.",
     "Verification email successfully sent." : "Overovací e-mail bol úspešne odoslaný.",
@@ -7,6 +6,7 @@
     "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet bol úspešne vytvorený, stále však potrebuje súhlas správcu.",
     "Saved" : "Uložené",
     "No such group" : "Takáto skupina neexistuje",
+    "Register" : "Registrovať",
     "The email address you entered is not valid" : "Zadaná e-mailová adresa nie je platná",
     "Verify your %s registration request" : "Overte svoju žiadosť o registráciu %s",
     "Registration" : "Registrácia",

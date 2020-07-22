@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Registrar",
     "Your registration is pending. Please confirm your email address." : "Seu registro está pendente. Por favor, confirme seu endereço de e-mail.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Já existe um registro pendente para este e-mail, um novo e-mail de verificação foi enviado para o endereço.",
     "Verification email successfully sent." : "E-mail de verificação enviado.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Sua conta foi criada mas ainda precisa da aprovação de um administrador.",
     "Saved" : "Salvo",
     "No such group" : "Esse grupo não existe",
+    "Register" : "Registrar",
     "The email address you entered is not valid" : "O e-mail digitado é inválido",
     "Verify your %s registration request" : "Verifique sua requisição de registro %s",
     "Registration" : "Registro",

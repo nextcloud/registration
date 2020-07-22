@@ -1,5 +1,4 @@
 { "translations": {
-    "Register" : "Registra",
     "Your registration is pending. Please confirm your email address." : "La tua registrazione è in attesa. Conferma il tuo indirizzo di posta.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Esiste già una registrazione in attesa con questo indirizzo email, un nuovo messaggio di posta di verifica è stato inviato al tuo indirizzo.",
     "Verification email successfully sent." : "Email di verifica inviata correttamente.",
@@ -7,6 +6,7 @@
     "Your account has been successfully created, but it still needs approval from an administrator." : "Il tuo account è stato creato correttamente, ma necessita ancora di approvazione da parte dell'amministratore.",
     "Saved" : "Salvato",
     "No such group" : "Nessun gruppo",
+    "Register" : "Registra",
     "The email address you entered is not valid" : "L'indirizzo di posta che hai digitato non è valido",
     "Verify your %s registration request" : "Verifica la tua richiesta di registrazione a %s",
     "Registration" : "Registrazione",

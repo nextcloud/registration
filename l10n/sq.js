@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Regjistrohu",
     "Saved" : "Ruajtur",
+    "Register" : "Regjistrohu",
     "None" : "Asnjë",
     "Username" : "Username",
     "Password" : "Fjalëkalim",

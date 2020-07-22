@@ -1,6 +1,6 @@
 { "translations": {
-    "Register" : "Vpis računa",
     "Saved" : "Shranjeno",
+    "Register" : "Vpis računa",
     "Invalid verification URL. No registration request with this verification URL is found." : "Naslov URL za overitev ni veljaven. Ni mogoče najti zahteve za overitev za vpisani naslov URL.",
     "Unable to create user, there are problems with the user backend." : "Ni mogoče ustvariti uporabnika, zaznane so težave z ozadnjim programom.",
     "Unable to set user email: " : "Ni mogoče nastaviti elektronskega naslova uporabnika:",

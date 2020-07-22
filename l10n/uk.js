@@ -1,8 +1,8 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Зареєструватися",
     "Saved" : "Збережено",
+    "Register" : "Зареєструватися",
     "None" : "Відсутній",
     "Username" : "Ім'я користувача",
     "Password" : "Пароль",

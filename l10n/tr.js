@@ -1,7 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "Hesap Aç",
     "Your registration is pending. Please confirm your email address." : "Hesap açma başvurunuz bekliyor. Lütfen e-posta adresinizi doğrulayın.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Daha önce bu e-posta adresiyle yapılmış bir hesap açma başvurusu var. Adrese yeni bir doğrulama e-postası gönderildi.",
     "Verification email successfully sent." : "Doğrulama e-postası gönderildi.",
@@ -9,6 +8,7 @@ OC.L10N.register(
     "Your account has been successfully created, but it still needs approval from an administrator." : "Hesabınız açıldı ancak bir yönetici tarafından onaylanması bekleniyor.",
     "Saved" : "Kaydedildi",
     "No such group" : "Böyle bir grup yok",
+    "Register" : "Hesap Aç",
     "The email address you entered is not valid" : "Yazdığınız e-posta adresi geçersiz",
     "Verify your %s registration request" : "%s hesap açma başvurunuzu doğrulayın",
     "Registration" : "Hesap açma",

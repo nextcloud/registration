@@ -1,5 +1,4 @@
 { "translations": {
-    "Register" : "Rexistrar",
     "Your registration is pending. Please confirm your email address." : "O seu rexistro está pendente. Confirme o seu enderezo de correo-e.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Xa hai un rexistro pendente con este correo-e. Enviouse un novo correo-e de verificación ao enderezo.",
     "Verification email successfully sent." : "Enviouse correctamente o correo-e de verificación.",
@@ -7,6 +6,7 @@
     "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación dun administrador.",
     "Saved" : "Gardada",
     "No such group" : "Non hai este grupo",
+    "Register" : "Rexistrar",
     "The email address you entered is not valid" : "O enderezo de correo-e que introduciu non é válido",
     "Verify your %s registration request" : "Verifique a súa %s solicitude de rexistro",
     "Registration" : "Rexistro",

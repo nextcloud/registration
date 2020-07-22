@@ -1,10 +1,10 @@
 OC.L10N.register(
     "registration",
     {
-    "Register" : "註冊",
     "Verification email successfully sent." : "驗證電子郵件已經成功傳送。",
     "Saved" : "已儲存",
     "No such group" : "沒有此群組",
+    "Register" : "註冊",
     "The email address you entered is not valid" : "您輸入的電子郵件地址不是有效的",
     "Verify your %s registration request" : "驗證您的%s註冊需求",
     "Registration" : "註冊",
