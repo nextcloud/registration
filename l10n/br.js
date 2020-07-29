@@ -1,7 +1,7 @@
 OC.L10N.register(
     "registration",
     {
-    "Saved" : "Enrolet",
+    "Saved" : "Enrollet",
     "None" : "Hini ebet",
     "Username" : "anv implijer",
     "Password" : "Ger-tremen",
