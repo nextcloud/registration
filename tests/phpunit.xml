@@ -9,7 +9,8 @@
 	<!-- filters for code coverage -->
 	<filter>
 		<whitelist>
-			<directory suffix=".php">../</directory>
+			<directory suffix=".php">../../registration/appinfo</directory>
+			<directory suffix=".php">../../registration/lib</directory>
 		</whitelist>
 	</filter>
 </phpunit>
