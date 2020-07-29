@@ -30,12 +30,16 @@ use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
 use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\RedirectResponse;
+use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
+use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use ChristophWurst\Nextcloud\Testing\TestCase;
+use OCP\IUser;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class RegisterControllerTest extends TestCase {
@@ -466,5 +470,241 @@ class RegisterControllerTest extends TestCase {
 			->willReturn($response);
 
 		self::assertSame($response, $controller->showUserForm($secret, $token));
+	}
+
+	public function testSubmitUserFormInvalidSecretAndToken(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'validateSecretAndTokenErrorPage',
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willThrowException(new RegistrationException('Invalid secret or token'));
+
+		$response = $this->createMock(TemplateResponse::class);
+		$controller->expects($this->once())
+			->method('validateSecretAndTokenErrorPage')
+			->willReturn($response);
+
+		self::assertSame($response, $controller->submitUserForm($secret, $token, '', ''));
+	}
+
+	public function testSubmitUserFormCreateAccountException(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+		$username = 'user';
+		$password = 'password';
+
+		$registration = Registration::fromParams([
+			'email' => 'nextcloud@example.tld',
+		]);
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'showUserForm'
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willReturn($registration);
+
+		$response = $this->createMock(TemplateResponse::class);
+		$controller->expects($this->once())
+			->method('showUserForm')
+			->willReturn($response);
+
+		$this->registrationService->expects($this->once())
+			->method('createAccount')
+			->with($registration, $username, $password)
+			->willThrowException(new RegistrationException('Invalid account data'));
+
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
+	}
+
+	public function testSubmitUserFormRequiresAdminApproval(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+		$username = 'user';
+		$password = 'password';
+
+		$registration = Registration::fromParams([
+			'email' => 'nextcloud@example.tld',
+		]);
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'showUserForm'
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willReturn($registration);
+
+		$user = $this->createMock(IUser::class);
+		$user->method('isEnabled')
+			->willReturn(false);
+
+		$this->registrationService->expects($this->once())
+			->method('createAccount')
+			->with($registration, $username, $password)
+			->willReturn($user);
+
+		$this->registrationService->expects($this->once())
+			->method('deleteRegistration')
+			->with($registration);
+
+		$response = $controller->submitUserForm($secret, $token, $username, $password);
+
+		self::assertInstanceOf(StandaloneTemplateResponse::class, $response);
+		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
+		self::assertSame('approval-required', $response->getTemplateName());
+	}
+
+	public function testSubmitUserFormSuccessful(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+		$username = 'user';
+		$password = 'password';
+
+		$registration = Registration::fromParams([
+			'email' => 'nextcloud@example.tld',
+		]);
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'showUserForm'
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willReturn($registration);
+
+		$user = $this->createMock(IUser::class);
+		$user->method('isEnabled')
+			->willReturn(true);
+		$user->method('getUID')
+			->willReturn($username);
+
+		$this->registrationService->expects($this->once())
+			->method('createAccount')
+			->with($registration, $username, $password)
+			->willReturn($user);
+
+		$this->registrationService->expects($this->once())
+			->method('deleteRegistration')
+			->with($registration);
+
+		$this->registrationService->expects($this->once())
+			->method('loginUser')
+			->with($username, $username, $password);
+
+		$response = $controller->submitUserForm($secret, $token, $username, $password);
+
+		self::assertInstanceOf(RedirectToDefaultAppResponse::class, $response);
+	}
+
+	public function testSubmitUserFormSuccessfulLoginFlow2(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+		$username = 'user';
+		$password = 'password';
+
+		$registration = Registration::fromParams([
+			'email' => 'nextcloud@example.tld',
+		]);
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'showUserForm'
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willReturn($registration);
+
+		$user = $this->createMock(IUser::class);
+		$user->method('isEnabled')
+			->willReturn(true);
+		$user->method('getUID')
+			->willReturn($username);
+
+		$this->registrationService->expects($this->once())
+			->method('createAccount')
+			->with($registration, $username, $password)
+			->willReturn($user);
+
+		$this->registrationService->expects($this->once())
+			->method('deleteRegistration')
+			->with($registration);
+
+		$this->registrationService->expects($this->once())
+			->method('loginUser')
+			->with($username, $username, $password);
+
+		$this->loginFlowService->method('isUsingLoginFlow')
+			->with(2)
+			->willReturn(true);
+
+		$response = $this->createMock(StandaloneTemplateResponse::class);
+		$this->loginFlowService->method('tryLoginFlowV2')
+			->with($user)
+			->willReturn($response);
+
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
+	}
+
+	public function testSubmitUserFormSuccessfulLoginFlow1(): void {
+		$secret = '123456789';
+		$token = 'abcdefghi';
+		$username = 'user';
+		$password = 'password';
+
+		$registration = Registration::fromParams([
+			'email' => 'nextcloud@example.tld',
+		]);
+
+		$controller = $this->getController([
+			'validateSecretAndToken',
+			'showUserForm'
+		]);
+
+		$controller->expects($this->once())
+			->method('validateSecretAndToken')
+			->willReturn($registration);
+
+		$user = $this->createMock(IUser::class);
+		$user->method('isEnabled')
+			->willReturn(true);
+		$user->method('getUID')
+			->willReturn($username);
+
+		$this->registrationService->expects($this->once())
+			->method('createAccount')
+			->with($registration, $username, $password)
+			->willReturn($user);
+
+		$this->registrationService->expects($this->once())
+			->method('deleteRegistration')
+			->with($registration);
+
+		$this->registrationService->expects($this->once())
+			->method('loginUser')
+			->with($username, $username, $password);
+
+		$this->loginFlowService->method('isUsingLoginFlow')
+			->withConsecutive([2], [1])
+			->willReturnOnConsecutiveCalls(false, true);
+
+		$response = $this->createMock(RedirectResponse::class);
+		$response->method('getStatus')
+			->willReturn(Http::STATUS_SEE_OTHER);
+		$this->loginFlowService->method('tryLoginFlowV1')
+			->willReturn($response);
+
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
 	}
 }
