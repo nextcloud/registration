@@ -34,7 +34,6 @@ use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use OCP\IConfig;
-use OCP\IL10N;
 
 class RegisterController extends Controller {
 

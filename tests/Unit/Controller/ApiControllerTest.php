@@ -157,7 +157,11 @@ class ApiControllerTest extends TestCase {
 		$registration = new Registration();
 		$registration->setEmailConfirmed(true);
 		$registration->setClientSecret('mysecret');
+		$registration->setUsername('user');
+		$registration->setPassword('password');
 		$user = $this->createMock(IUser::class);
+		$user->method('getUID')
+			->willReturn('user');
 		$this->registrationService
 			->method('getRegistrationForSecret')
 			->with('mysecret')

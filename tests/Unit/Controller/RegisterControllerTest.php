@@ -35,6 +35,7 @@ use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
@@ -50,6 +51,8 @@ class RegisterControllerTest extends TestCase {
 	private $l10n;
 	/** @var IURLGenerator|MockObject */
 	private $urlGenerator;
+	/** @var IConfig|MockObject */
+	private $config;
 	/** @var RegistrationService|MockObject */
 	private $registrationService;
 	/** @var LoginFlowService|MockObject */
@@ -62,6 +65,7 @@ class RegisterControllerTest extends TestCase {
 		$this->request = $this->createMock(IRequest::class);
 		$this->l10n = $this->createMock(IL10N::class);
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
+		$this->config = $this->createMock(IConfig::class);
 		$this->registrationService = $this->createMock(RegistrationService::class);
 		$this->loginFlowService = $this->createMock(LoginFlowService::class);
 		$this->mailService = $this->createMock(MailService::class);
@@ -84,6 +88,7 @@ class RegisterControllerTest extends TestCase {
 				$this->request,
 				$this->l10n,
 				$this->urlGenerator,
+				$this->config,
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService
@@ -97,6 +102,7 @@ class RegisterControllerTest extends TestCase {
 				$this->request,
 				$this->l10n,
 				$this->urlGenerator,
+				$this->config,
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService,
@@ -446,6 +452,7 @@ class RegisterControllerTest extends TestCase {
 
 		self::assertSame([
 			'email' => $email,
+			'email_is_login' => false,
 			'username' => $username,
 			'message' => $message,
 		], $response->getParams());

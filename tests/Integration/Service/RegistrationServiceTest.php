@@ -61,6 +61,9 @@ class RegistrationServiceTest extends TestCase {
 	/** @var ICrypto */
 	private $crypto;
 
+	/** @var RegistrationService */
+	private $service;
+
 	public function setUp(): void {
 		parent::setUp();
 		$this->mailService = $this->createMock(MailService::class);
@@ -107,13 +110,10 @@ class RegistrationServiceTest extends TestCase {
 
 		$this->config->expects($this->once())
 			->method('getAppValue')
-			->with("registration", 'allowed_domains', '')
+			->with('registration', 'allowed_domains', '')
 			->willReturn('');
 
-		$ret = $this->service->validateEmail($email);
-
-		//$this->assertInstanceOf(Registration::class, $ret);
-		$this->assertTrue($ret);
+		$this->service->validateEmail($email);
 	}
 
 	public function testValidateNewEmailWithinAllowedDomain() {
@@ -121,17 +121,22 @@ class RegistrationServiceTest extends TestCase {
 
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->with("registration", 'allowed_domains', '')
+			->with('registration', 'allowed_domains', '')
 			->willReturn('example.com');
 
-		$ret = $this->service->validateEmail($email);
-		$this->assertTrue($ret, print_r($ret, true));
+		$this->service->validateEmail($email);
 	}
+
 	/**
 	 * @depends testValidateNewEmailWithinAllowedDomain
 	 */
 	public function testValidateNewEmailNotWithinAllowedDomain() {
 		$email2 = 'bbbb@gmail.com';
+
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->with('registration', 'allowed_domains', '')
+			->willReturn('example.com');
 
 		$this->expectException(RegistrationException::class);
 		$this->service->validateEmail($email2);
@@ -143,17 +148,23 @@ class RegistrationServiceTest extends TestCase {
 
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->with("registration", 'allowed_domains', '')
+			->with('registration', 'allowed_domains', '')
 			->willReturn('example.com;gmail.com');
 
-		$this->assertTrue($this->service->validateEmail($email));
-		$this->assertTrue($this->service->validateEmail($email2));
+		$this->service->validateEmail($email);
+		$this->service->validateEmail($email2);
 	}
+
 	/**
 	 * @depends testValidateNewEmailWithinMultipleAllowedDomain
 	 */
 	public function testValidateNewEmailNotWithinMultipleAllowedDomain() {
 		$email2 = 'cccc@yahoo.com';
+
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->with('registration', 'allowed_domains', '')
+			->willReturn('example.com;gmail.com');
 
 		$this->expectException(RegistrationException::class);
 		$this->service->validateEmail($email2);
@@ -180,10 +191,8 @@ class RegistrationServiceTest extends TestCase {
 		$email = 'aaaa@example.com';
 
 		$this->service->createRegistration($email, 'alice');
-		$ret = $this->service->validateEmail($email);
-
-		$this->assertInstanceOf(Registration::class, $ret);
-		$this->assertEquals($email, $ret->getEmail());
+		$this->expectException(RegistrationException::class);
+		$this->service->validateEmail($email);
 	}
 
 	public function testCreateAccountWebForm() {

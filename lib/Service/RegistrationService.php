@@ -215,14 +215,14 @@ class RegistrationService {
 	 * @return bool
 	 */
 	public function checkAllowedDomains(string $email): bool {
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		if ($allowed_domains !== '') {
-			$allowed_domains = explode(';', $allowed_domains);
+		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		if ($allowedDomains !== '') {
+			$allowedDomains = explode(';', $allowedDomains);
 			$allowed = false;
-			foreach ($allowed_domains as $domain) {
-				$maildomain = explode("@", $email)[1];
-				// valid domain, everythings fine
-				if ($maildomain === $domain) {
+			foreach ($allowedDomains as $domain) {
+				[,$mailDomain] = explode('@', $email, 2);
+				// valid domain, everything's fine
+				if ($mailDomain === $domain) {
 					$allowed = true;
 					break;
 				}
@@ -236,9 +236,9 @@ class RegistrationService {
 	 * @return string[]
 	 */
 	public function getAllowedDomains(): array {
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		$allowed_domains = explode(';', $allowed_domains);
-		return $allowed_domains;
+		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowedDomains = explode(';', $allowedDomains);
+		return $allowedDomains;
 	}
 
 	/**
