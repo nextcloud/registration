@@ -1,10 +1,24 @@
 { "translations": {
+    "Your registration is pending. Please confirm your email address." : "您的注册被搁置，请检查您的电子邮件地址",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "此电子邮件地址已经有一个搁置的注册请求，新的验证邮件已发送至该地址",
     "Verification email successfully sent." : "验证邮件已成功发送",
+    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "您的账户已创建成功，<a href=\"%s\">点击登录</a>",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "您的账户已创建成功，等待管理员审批中。",
     "Saved" : "已保存",
     "No such group" : "无此群组",
     "Register" : "注册",
     "The email address you entered is not valid" : "您输入的电子邮件地址不正确",
     "Registration" : "注册",
+    "Email address verified, you can now complete your registration." : "电子邮件地址验证成功，现在您可以完成您的注册了。",
+    "Click the button below to continue." : "点击下面的按钮继续",
+    "Continue registration" : "继续注册",
+    "A problem occurred sending email, please contact your administrator." : "发送电子邮件时遇到了错误，请联系管理员",
+    "New user registered" : "新的用户已注册",
+    "Enable now" : "现在启用",
+    "You can <a href=\"%s\">log in now</a>." : "您可以<a href=\"%s\">登录</a>了。",
+    "Registration is only allowed for the following domains: " : "仅支持使用以下域名注册：",
+    "Please provide a valid user name." : "请提供一个可用的用户名",
+    "The username you have chosen already exists." : "您输入的用户名已存在",
     "Unable to set user email: " : "无法设置用户电子邮件：",
     "Default group that all registered users belong" : "注册的用户所属的默认群组",
     "None" : "无",
@@ -15,6 +29,7 @@
     "Email" : "电子邮件",
     "Request verification link" : "请求验证链接",
     "Back to login" : "返回登录",
-    "Please re-enter a valid email address" : "请重新输入正确的电子邮件地址"
+    "Please re-enter a valid email address" : "请重新输入正确的电子邮件地址",
+    "You will receive an email with a verification link" : "您将会接收到一条带有验证链接的电子邮件"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
