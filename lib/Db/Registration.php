@@ -47,7 +47,7 @@ use OCP\AppFramework\Db\Entity;
  */
 class Registration extends Entity {
 	public $id;
-	public $email;
+	protected $email;
 	protected $username;
 	protected $displayname;
 	protected $password;

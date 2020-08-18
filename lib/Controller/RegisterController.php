@@ -131,7 +131,11 @@ class RegisterController extends Controller {
 				);
 			}
 
-			return new TemplateResponse('registration', 'form', ['email' => $registration->getEmail(), 'token' => $registration->getToken()], 'guest');
+			return new TemplateResponse('registration', 'form', [
+				'email' => $registration->getEmail(),
+				'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
+				'token' => $registration->getToken(),
+			], 'guest');
 		} catch (RegistrationException $exception) {
 			return $this->renderError($exception->getMessage(), $exception->getHint());
 		}
@@ -147,7 +151,7 @@ class RegisterController extends Controller {
 	public function createAccount($token) {
 		$registration = $this->registrationService->getRegistrationForToken($token);
 		if ($this->config->getAppValue('registration', 'email_is_login', '0') === '1') {
-			$username = $registration->email;
+			$username = $registration->getEmail();
 		} else {
 			$username = $this->request->getParam('username');
 		}
