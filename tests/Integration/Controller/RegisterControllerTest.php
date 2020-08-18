@@ -108,6 +108,7 @@ class RegisterControllerTest extends TestCase {
 			$this->request,
 			$this->l10n,
 			$this->urlGenerator,
+			$this->config,
 			$this->registrationService,
 			$this->mailService
 		);

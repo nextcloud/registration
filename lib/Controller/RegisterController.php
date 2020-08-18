@@ -21,6 +21,7 @@ use \OCP\AppFramework\Http\TemplateResponse;
 use \OCP\AppFramework\Http\RedirectResponse;
 use \OCP\AppFramework\Controller;
 use OCP\IURLGenerator;
+use \OCP\IConfig;
 use \OCP\IL10N;
 
 class RegisterController extends Controller {
@@ -29,6 +30,8 @@ class RegisterController extends Controller {
 	private $l10n;
 	/** @var IURLGenerator */
 	private $urlgenerator;
+	/** @var IConfig */
+	private $config;
 	/** @var RegistrationService */
 	private $registrationService;
 	/** @var MailService */
@@ -40,12 +43,14 @@ class RegisterController extends Controller {
 		IRequest $request,
 		IL10N $l10n,
 		IURLGenerator $urlgenerator,
+		IConfig $config,
 		RegistrationService $registrationService,
 		MailService $mailService
 	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
 		$this->urlgenerator = $urlgenerator;
+		$this->config = $config;
 		$this->registrationService = $registrationService;
 		$this->mailService = $mailService;
 	}
@@ -126,7 +131,11 @@ class RegisterController extends Controller {
 				);
 			}
 
-			return new TemplateResponse('registration', 'form', ['email' => $registration->getEmail(), 'token' => $registration->getToken()], 'guest');
+			return new TemplateResponse('registration', 'form', [
+				'email' => $registration->getEmail(),
+				'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
+				'token' => $registration->getToken(),
+			], 'guest');
 		} catch (RegistrationException $exception) {
 			return $this->renderError($exception->getMessage(), $exception->getHint());
 		}
@@ -140,9 +149,13 @@ class RegisterController extends Controller {
 	 * @return RedirectResponse|TemplateResponse
 	 */
 	public function createAccount($token) {
-		$username = $this->request->getParam('username');
-		$password = $this->request->getParam('password');
 		$registration = $this->registrationService->getRegistrationForToken($token);
+		if ($this->config->getAppValue('registration', 'email_is_login', '0') === '1') {
+			$username = $registration->getEmail();
+		} else {
+			$username = $this->request->getParam('username');
+		}
+		$password = $this->request->getParam('password');
 
 		try {
 			$user = $this->registrationService->createAccount($registration, $username, $password);
