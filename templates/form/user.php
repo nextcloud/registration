@@ -23,7 +23,7 @@ script('registration', 'form');
 			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 		</p>
 
-		<?php if ($_['email_is_login']) { ?>
+		<?php if (!$_['email_is_login']) { ?>
 		<p class="groupmiddle">
 			<input type="text" name="username" id="username" value="<?php if (!empty($_['entered_data']['user'])) {
 	p($_['entered_data']['user']);
@@ -31,6 +31,8 @@ script('registration', 'form');
 			<label for="username" class="infield"><?php p($l->t('Username')); ?></label>
 			<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
+		<?php } else { ?>
+			<input type="hidden" name="username" value="<?php p($_['email']); ?>" />
 		<?php } ?>
 
 		<p class="groupbottom">

@@ -1,8 +1,14 @@
-#body-login #email, #body-login #username, #body-login #password {
+#body-login #email,
+#body-login #token,
+#body-login #username,
+#body-login #password {
 	width: calc(100% - 56px);
 	padding-left: 36px;
 }
-#email-icon, #username-icon, #password-icon {
+#email-icon,
+#token-icon,
+#username-icon,
+#password-icon {
 	position: absolute;
 	left: 16px;
 	top: 22px;

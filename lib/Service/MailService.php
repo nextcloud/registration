@@ -81,7 +81,10 @@ class MailService {
 	 * @throws RegistrationException
 	 */
 	public function sendTokenByMail(Registration $registration): void {
-		$link = $this->urlGenerator->linkToRouteAbsolute('registration.register.verifyToken', ['token' => $registration->getToken()]);
+		$link = $this->urlGenerator->linkToRouteAbsolute('registration.register.showUserForm', [
+			'secret' => $registration->getClientSecret(),
+			'token' => $registration->getToken(),
+		]);
 		$subject = $this->l10n->t('Verify your %s registration request', [$this->defaults->getName()]);
 
 		$template = $this->mailer->createEMailTemplate('registration_verify', [
@@ -98,6 +101,10 @@ class MailService {
 		$template->addBodyText(
 			htmlspecialchars($body . ' ' . $this->l10n->t('Click the button below to continue.')),
 			$body
+		);
+
+		$template->addBodyText(
+			$this->l10n->t('Verification code: %s', $registration->getToken())
 		);
 
 		$template->addBodyButton(

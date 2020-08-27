@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
@@ -34,12 +37,11 @@ use OC\Authentication\Token\IToken;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
-use \OCP\AppFramework\Http\TemplateResponse;
-use \OCP\AppFramework\Http\RedirectResponse;
 use OCP\ILogger;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
+use OCP\IUser;
 use OCP\Security\ICrypto;
 use OCP\Session\Exceptions\SessionNotAvailableException;
 use \OCP\IUserManager;
@@ -70,7 +72,7 @@ class RegistrationService {
 	/** @var ISecureRandom */
 	private $random;
 	/** @var IUserSession  */
-	private $usersession;
+	private $userSession;
 	/** @var IRequest */
 	private $request;
 	/** @var ILogger */
@@ -82,9 +84,23 @@ class RegistrationService {
 	/** @var ICrypto */
 	private $crypto;
 
-	public function __construct($appName, MailService $mailService, IL10N $l10n, IURLGenerator $urlGenerator,
-								RegistrationMapper $registrationMapper, IUserManager $userManager, IConfig $config, IGroupManager $groupManager,
-								ISecureRandom $random, IUserSession $us, IRequest $request, ILogger $logger, ISession $session, IProvider $tokenProvider, ICrypto $crypto) {
+	public function __construct(
+		string $appName,
+		MailService $mailService,
+		IL10N $l10n,
+		IURLGenerator $urlGenerator,
+		RegistrationMapper $registrationMapper,
+		IUserManager $userManager,
+		IConfig $config,
+		IGroupManager $groupManager,
+		ISecureRandom $random,
+		IUserSession $userSession,
+		IRequest $request,
+		ILogger $logger,
+		ISession $session,
+		IProvider $tokenProvider,
+		ICrypto $crypto
+	) {
 		$this->appName = $appName;
 		$this->mailService = $mailService;
 		$this->l10n = $l10n;
@@ -94,7 +110,7 @@ class RegistrationService {
 		$this->config = $config;
 		$this->groupManager = $groupManager;
 		$this->random = $random;
-		$this->usersession = $us;
+		$this->userSession = $userSession;
 		$this->request = $request;
 		$this->logger = $logger;
 		$this->session = $session;
@@ -102,21 +118,16 @@ class RegistrationService {
 		$this->crypto = $crypto;
 	}
 
-	/**
-	 * @param Registration $registration
-	 */
-	public function confirmEmail(Registration $registration) {
+	public function confirmEmail(Registration $registration): void {
 		$registration->setEmailConfirmed(true);
 		$this->registrationMapper->update($registration);
 	}
 
-	/**
-	 * @param Registration $registration
-	 */
-	public function generateNewToken(Registration $registration) {
+	public function generateNewToken(Registration $registration): void {
 		$this->registrationMapper->generateNewToken($registration);
 		$this->registrationMapper->update($registration);
 	}
+
 	/**
 	 * Create registration request, used by both the API and form
 	 * @param string $email
@@ -125,7 +136,7 @@ class RegistrationService {
 	 * @param string $displayname
 	 * @return Registration
 	 */
-	public function createRegistration($email, $username="", $password="", $displayname="") {
+	public function createRegistration(string $email, string $username = '', string $password = '', string $displayname = ''): Registration {
 		$registration = new Registration();
 		$registration->setEmail($email);
 		$registration->setUsername($username);
@@ -135,24 +146,24 @@ class RegistrationService {
 			$registration->setPassword($password);
 		}
 		$this->registrationMapper->generateNewToken($registration);
-		if ($password !== '' && $username !== '') {
-			$this->registrationMapper->generateClientSecret($registration);
-		}
+		$this->registrationMapper->generateClientSecret($registration);
 		$this->registrationMapper->insert($registration);
 		return $registration;
 	}
 
 	/**
 	 * @param string $email
-	 * @return Registration|true if there is a pending reg with this email, return the pending reg, if there are no problems with the email, return true.
 	 * @throws RegistrationException
 	 */
-	public function validateEmail($email) {
+	public function validateEmail(string $email): void {
 		$this->mailService->validateEmail($email);
 
 		// check for pending registrations
 		try {
-			return $this->registrationMapper->find($email);//if not found DB will throw a exception
+			$this->registrationMapper->find($email);//if not found DB will throw a exception
+			throw new RegistrationException(
+				$this->l10n->t('A user has already taken this email, maybe you already have an account?')
+			);
 		} catch (DoesNotExistException $e) {
 		}
 
@@ -171,15 +182,14 @@ class RegistrationService {
 				)
 			);
 		}
-		return true;
 	}
 
 	/**
 	 * @param string $displayname
 	 * @throws RegistrationException
 	 */
-	public function validateDisplayname($displayname) {
-		if ($displayname === "") {
+	public function validateDisplayname(string $displayname): void {
+		if ($displayname === '') {
 			throw new RegistrationException($this->l10n->t('Please provide a valid display name.'));
 		}
 	}
@@ -188,7 +198,7 @@ class RegistrationService {
 	 * @param string $username
 	 * @throws RegistrationException
 	 */
-	public function validateUsername($username) {
+	public function validateUsername(string $username): void {
 		if ($username === "") {
 			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
 		}
@@ -204,15 +214,15 @@ class RegistrationService {
 	 * @param string $email
 	 * @return bool
 	 */
-	public function checkAllowedDomains($email) {
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		if ($allowed_domains !== '') {
-			$allowed_domains = explode(';', $allowed_domains);
+	public function checkAllowedDomains(string $email): bool {
+		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		if ($allowedDomains !== '') {
+			$allowedDomains = explode(';', $allowedDomains);
 			$allowed = false;
-			foreach ($allowed_domains as $domain) {
-				$maildomain = explode("@", $email)[1];
-				// valid domain, everythings fine
-				if ($maildomain === $domain) {
+			foreach ($allowedDomains as $domain) {
+				[,$mailDomain] = explode('@', $email, 2);
+				// valid domain, everything's fine
+				if ($mailDomain === $domain) {
 					$allowed = true;
 					break;
 				}
@@ -223,22 +233,22 @@ class RegistrationService {
 	}
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
-	public function getAllowedDomains() {
-		$allowed_domains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		$allowed_domains = explode(';', $allowed_domains);
-		return $allowed_domains;
+	public function getAllowedDomains(): array {
+		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowedDomains = explode(';', $allowedDomains);
+		return $allowedDomains;
 	}
 
 	/**
 	 * Find registration entity for token
 	 *
 	 * @param string $token
-	 * @return string
+	 * @return Registration
 	 * @throws RegistrationException
 	 */
-	public function verifyToken($token) {
+	public function verifyToken(string $token): Registration {
 		try {
 			return $this->registrationMapper->findByToken($token);
 		} catch (DoesNotExistException $exception) {
@@ -248,12 +258,12 @@ class RegistrationService {
 
 	/**
 	 * @param $registration
-	 * @param string $username
-	 * @param string $password
-	 * @return \OCP\IUser
+	 * @param string|null $username
+	 * @param string|null $password
+	 * @return IUser
 	 * @throws RegistrationException|InvalidTokenException
 	 */
-	public function createAccount(Registration $registration, $username = null, $password = null) {
+	public function createAccount(Registration $registration, ?string $username = null, ?string $password = null): IUser {
 		if ($password === null && $registration->getPassword() === null) {
 			$generatedPassword = $this->generateRandomDeviceToken();
 			$registration->setPassword($this->crypto->encrypt($generatedPassword));
@@ -281,6 +291,7 @@ class RegistrationService {
 			throw new RegistrationException($this->l10n->t('Unable to create user, there are problems with the user backend.'));
 		}
 		$userId = $user->getUID();
+
 		// Set user email
 		try {
 			$user->setEMailAddress($registration->getEmail());
@@ -289,37 +300,26 @@ class RegistrationService {
 		}
 
 		// Add user to group
-		$registered_user_group = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
-		if ($registered_user_group !== 'none') {
-			$group = $this->groupManager->get($registered_user_group);
+		$registeredUserGroup = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+		if ($registeredUserGroup !== 'none') {
+			$group = $this->groupManager->get($registeredUserGroup);
 			if ($group === null) {
 				// This might happen if $registered_user_group is deleted after setting the value
 				// Here I choose to log error instead of stopping the user to register
-				$this->logger->error("You specified newly registered users be added to '$registered_user_group' group, but it does not exist.");
+				$this->logger->error("You specified newly registered users be added to '$registeredUserGroup' group, but it does not exist.");
 				$groupId = '';
 			} else {
 				$group->addUser($user);
 				$groupId = $group->getGID();
 			}
 		} else {
-			$groupId = "";
+			$groupId = '';
 		}
 
 		// disable user if this is requested by config
-		$admin_approval_required = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
-		if ($admin_approval_required === "yes") {
+		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
+		if ($adminApprovalRequired === 'yes') {
 			$user->setEnabled(false);
-		}
-
-		// Delete pending registration if no client secret is stored
-		// with client secret implies registered via API
-		// without client secret implies registered via form
-		// if registered via API, the registration request will be deleted in apicontroller::status
-		if ($registration->getClientSecret() === null) {
-			$res = $this->registrationMapper->delete($registration);
-			if ($res === false) {
-				throw new RegistrationException($this->l10n->t('Failed to delete pending registration request'));
-			}
 		}
 
 		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
@@ -327,34 +327,37 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $token
+	 * @param string $email
 	 * @return Registration
+	 * @throws DoesNotExistException
 	 */
-	public function getRegistrationForToken($token) {
+	public function getRegistrationForEmail(string $email): Registration {
+		return $this->registrationMapper->find($email);
+	}
+
+	/**
+	 * @param string $token
+	 * @return Registration
+	 * @throws DoesNotExistException
+	 */
+	public function getRegistrationForToken(string $token): Registration {
 		return $this->registrationMapper->findByToken($token);
 	}
 
 	/**
-	 * @param $secret
+	 * @param string $secret
 	 * @return Registration
+	 * @throws DoesNotExistException
 	 */
-	public function getRegistrationForSecret($secret) {
+	public function getRegistrationForSecret(string $secret): Registration {
 		return $this->registrationMapper->findBySecret($secret);
 	}
 
-	/**
-	 * @param Registration $registation
-	 * @return null|\OCP\IUser
-	 */
-	public function getUserAccount(Registration $registation) {
-		$user = $this->userManager->get($registation->getUsername());
-		return $user;
+	public function getUserAccount(Registration $registration): ?IUser {
+		return $this->userManager->get($registration->getUsername());
 	}
 
-	/**
-	 * @param Registration $registration
-	 */
-	public function deleteRegistration(Registration $registration) {
+	public function deleteRegistration(Registration $registration): void {
 		$this->registrationMapper->delete($registration);
 	}
 
@@ -365,7 +368,7 @@ class RegistrationService {
 	 *
 	 * @return string
 	 */
-	private function generateRandomDeviceToken() {
+	private function generateRandomDeviceToken(): string {
 		$groups = [];
 		for ($i = 0; $i < 5; $i++) {
 			$groups[] = $this->random->generate(5, ISecureRandom::CHAR_HUMAN_READABLE);
@@ -378,7 +381,7 @@ class RegistrationService {
 	 * @return string
 	 * @throws RegistrationException
 	 */
-	public function generateAppPassword($uid) {
+	public function generateAppPassword(string $uid): string {
 		$name = $this->l10n->t('Registration app auto setup');
 		try {
 			$sessionId = $this->session->getId();
@@ -404,40 +407,25 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $userId
-	 * @param $username
-	 * @param $password
-	 * @param $decrypt
-	 * @return RedirectResponse|TemplateResponse
+	 * @param string $userId
+	 * @param string $username
+	 * @param string $password
+	 * @param bool $decrypt
 	 */
-	public function loginUser($userId, $username, $password, $decrypt = false) {
+	public function loginUser(string $userId, string $username, string $password, bool $decrypt = false): void {
 		if ($decrypt) {
 			$password = $this->crypto->decrypt($password);
 		}
-		if (method_exists($this->usersession, 'createSessionToken')) {
-			$this->usersession->login($username, $password);
-			$this->usersession->createSessionToken($this->request, $userId, $username, $password);
-			return new RedirectResponse($this->urlGenerator->linkTo('', 'index.php'));
-		} elseif (\OC_User::login($username, $password)) {
-			$this->cleanupLoginTokens($userId);
-			// FIXME unsetMagicInCookie will fail from session already closed, so now we always remember
-			$logintoken = $this->random->generate(32);
-			$this->config->setUserValue($userId, 'login_token', $logintoken, time());
-			\OC_User::setMagicInCookie($userId, $logintoken);
-			\OC_Util::redirectToDefaultPage();
-		}
-		// Render message in case redirect failed
-		return new TemplateResponse('registration', 'message',
-			['msg' => $this->l10n->t('Your account has been successfully created, you can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])]
-			, 'guest'
-		);
+
+		$this->userSession->login($username, $password);
+		$this->userSession->createSessionToken($this->request, $userId, $username, $password);
 	}
 
 	/**
 	 * Replicates OC::cleanupLoginTokens() since it's protected
 	 * @param string $userId
 	 */
-	public function cleanupLoginTokens($userId) {
+	public function cleanupLoginTokens(string $userId): void {
 		$cutoff = time() - $this->config->getSystemValue('remember_login_cookie_lifetime', 60 * 60 * 24 * 15);
 		$tokens = $this->config->getUserKeys($userId, 'login_token');
 		foreach ($tokens as $token) {
