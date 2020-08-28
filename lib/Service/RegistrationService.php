@@ -222,7 +222,21 @@ class RegistrationService {
 
 			foreach ($allowedDomains as $domain) {
 				// valid domain, everything's fine
-				if ($mailDomain === $domain) {
+
+				// Wildcards
+				if (strpos($domain, '*') !== false) {
+					// *.example.com
+					// Make save for regex:
+					// \*\.example\.com
+					$regexDomain = preg_quote($domain, '\\');
+					// Replace "\*" with an actual regex wildcard and set start and end:
+					// /^.+\.example\.com$/
+					$regexDomain = '/^' . str_replace('\\*', '.+', $regexDomain) . '$/';
+
+					if (preg_match($regexDomain, $mailDomain)) {
+						return true;
+					}
+				} elseif ($mailDomain === $domain) {
 					return true;
 				}
 			}
