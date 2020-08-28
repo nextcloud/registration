@@ -46,9 +46,16 @@ class SettingsController extends Controller {
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
 	 * @param bool|null $admin_approval_required newly registered users have to be validated by an admin
 	 * @param bool|null $email_is_login email address is forced as user id
+	 * @param bool|null $domains_is_blocklist is the domain list an allow or block list
+	 * @param bool|null $show_domains should the email list be shown to the user or not
 	 * @return DataResponse
 	 */
-	public function admin(string $registered_user_group, string $allowed_domains, ?bool $admin_approval_required, ?bool $email_is_login) {
+	public function admin(string $registered_user_group,
+						  string $allowed_domains,
+						  ?bool $admin_approval_required,
+						  ?bool $email_is_login,
+						  ?bool $domains_is_blocklist,
+						  ?bool $show_domains) {
 		// handle domains
 		if (($allowed_domains === '') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
@@ -56,11 +63,10 @@ class SettingsController extends Controller {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 
-		// handle admin validation
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
-
-		// handle email is login
 		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'domains_is_blocklist', $domains_is_blocklist ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'show_domains', $show_domains ? 'yes' : 'no');
 
 		// handle groups
 		$groups = $this->groupmanager->search('');

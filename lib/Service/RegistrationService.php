@@ -34,6 +34,7 @@ use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
+use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -174,12 +175,41 @@ class RegistrationService {
 			);
 		}
 
-		if (!$this->checkAllowedDomains($email)) {
+		if ($this->config->getAppValue($this->appName, 'allowed_domains', '') === '') {
+			return;
+		}
+
+		$emailIsInDomainList = $this->checkAllowedDomains($email);
+		$blockDomains = $this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes';
+		$showDomains = $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes';
+
+		if (!$blockDomains && !$emailIsInDomainList) {
+			if ($showDomains) {
+				throw new RegistrationException(
+					$this->l10n->t(
+						'Registration is only allowed with the following domains:'
+					) . ' ' . implode(', ', explode(';',
+						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+					))
+				);
+			}
 			throw new RegistrationException(
-				$this->l10n->t(
-					'Registration is only allowed for the following domains: ' .
-					$this->config->getAppValue($this->appName, 'allowed_domains', '')
-				)
+				$this->l10n->t('Registration with this email domain is not allowed.')
+			);
+		}
+
+		if ($blockDomains && $emailIsInDomainList) {
+			if ($showDomains) {
+				throw new RegistrationException(
+					$this->l10n->t(
+						'Registration is not allowed with the following domains:'
+					) . ' ' . implode(', ', explode(';',
+						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+					))
+				);
+			}
+			throw new RegistrationException(
+				$this->l10n->t('Registration with this email domain is not allowed.')
 			);
 		}
 	}

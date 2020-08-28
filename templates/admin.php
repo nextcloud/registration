@@ -28,7 +28,21 @@ foreach ($_['groups'] as $group) {
 			<input type="text" id="allowed_domains" name="allowed_domains" value="<?php p($_['allowed']);?>" placeholder="nextcloud.com;*.example.com">
 		</label>
 	</p>
-	<em><?php p($l->t('Enter a semicolon-separated list of allowed domains, * for wildcard. Example: %s', ['nextcloud.com;*.example.com']));?></em>
+	<em><?php p($l->t('Enter a semicolon-separated list of allowed email domains, * for wildcard. Example: %s', ['nextcloud.com;*.example.com']));?></em>
+
+	<p>
+		<input type="checkbox" id="domains_is_blocklist" class="checkbox" name="domains_is_blocklist" <?php if ($_['domains_is_blocklist'] === 'yes') {
+	echo ' checked';
+} ?>>
+		<label for="domains_is_blocklist"><?php p($l->t('Block listed email domains instead of allowing them')); ?></label>
+	</p>
+
+	<p>
+		<input type="checkbox" id="show_domains" class="checkbox" name="show_domains" <?php if ($_['show_domains'] === 'yes') {
+	echo ' checked';
+} ?>>
+		<label for="show_domains"><?php p($l->t('Show the allowed/blocked email domains to users')); ?></label>
+	</p>
 
 	<p>
 		<input type="checkbox" id="email_is_login" class="checkbox" name="email_is_login" <?php if ($_['email_is_login'] === 'yes') {

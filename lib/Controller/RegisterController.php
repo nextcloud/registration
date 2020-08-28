@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace OCA\Registration\Controller;
 
 use Exception;
+use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\LoginFlowService;
 use OCA\Registration\Service\MailService;
@@ -78,9 +79,26 @@ class RegisterController extends Controller {
 	 * @return TemplateResponse
 	 */
 	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
+		$emailHint = '';
+		if ($this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes') {
+			if ($this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes') {
+				$emailHint = $this->l10n->t(
+					'Registration is not allowed with the following domains:'
+				) . ' ' . implode(', ', explode(';',
+					$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+				));
+			} else {
+				$emailHint = $this->l10n->t(
+					'Registration is only allowed with the following domains:'
+				) . ' ' . implode(', ', explode(';',
+					$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+				));
+			}
+		}
+
 		$params = [
 			'email' => $email,
-			'message' => $message,
+			'message' => $message ?: $emailHint,
 		];
 		return new TemplateResponse('registration', 'form/email', $params, 'guest');
 	}
