@@ -32,16 +32,16 @@ foreach ($_['groups'] as $group) {
 
 	<p>
 		<input type="checkbox" id="email_is_login" class="checkbox" name="email_is_login" <?php if ($_['email_is_login'] === 'yes') {
-			echo ' checked';
-		} ?>>
+	echo ' checked';
+} ?>>
 		<label for="email_is_login"><?php p($l->t('Force email as login name')); ?></label>
 	</p>
 
 	<h3><?php p($l->t('Admin approval')); ?></h3>
 	<p>
 		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === 'yes') {
-			echo ' checked';
-		} ?>>
+	echo ' checked';
+} ?>>
 		<label for="admin_approval_required"><?php p($l->t('Require admin approval')); ?></label>
 	</p>
 
