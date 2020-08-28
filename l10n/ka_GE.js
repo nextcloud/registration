@@ -4,9 +4,9 @@ OC.L10N.register(
     "Saved" : "შენახულია",
     "Register" : "რეგისტრაცია",
     "None" : "არც ერთი",
+    "Email" : "ელ-ფოსტა",
     "Username" : "მომხმარებელი",
     "Password" : "პაროლი",
-    "Create account" : "ანგარიშის შექმნა",
-    "Email" : "ელ-ფოსტა"
+    "Create account" : "ანგარიშის შექმნა"
 },
 "nplurals=2; plural=(n!=1);");

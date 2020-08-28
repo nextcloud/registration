@@ -4,10 +4,11 @@ OC.L10N.register(
     "Saved" : "Lagret",
     "Register" : "Registrer",
     "None" : "Ingen",
+    "Email" : "E-post",
+    "Back to login" : "Tilbake til innlogging",
     "Username" : "Brukernavn",
     "Password" : "Passord",
     "Create account" : "Opprett konto",
-    "Email" : "E-post",
-    "Back to login" : "Tilbake til innlogging"
+    "Verify" : "Verifiser"
 },
 "nplurals=2; plural=(n != 1);");

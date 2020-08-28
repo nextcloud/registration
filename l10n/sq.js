@@ -4,9 +4,10 @@ OC.L10N.register(
     "Saved" : "Ruajtur",
     "Register" : "Regjistrohu",
     "None" : "Asnjë",
+    "Email" : "email",
     "Username" : "Username",
     "Password" : "Fjalëkalim",
     "Create account" : "Krijo llogari",
-    "Email" : "email"
+    "Verify" : "Verifiko"
 },
 "nplurals=2; plural=(n != 1);");

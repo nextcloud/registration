@@ -4,9 +4,10 @@ OC.L10N.register(
     "Saved" : "Guardado",
     "Register" : "Registrar",
     "None" : "Ninguno",
+    "Email" : "Correo electrónico",
     "Username" : "Usuario",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Email" : "Correo electrónico"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

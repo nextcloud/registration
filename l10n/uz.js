@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Saqlangan",
     "Username" : "Foydalanuvchi nomi",
-    "Password" : "Parol"
+    "Password" : "Parol",
+    "Verify" : "Tasdiqlang"
 },
 "nplurals=1; plural=0;");

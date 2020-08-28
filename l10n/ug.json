@@ -1,7 +1,7 @@
 { "translations": {
     "None" : "يوق",
+    "Email" : "تورخەت",
     "Username" : "ئىشلەتكۈچى ئاتى",
-    "Password" : "ئىم",
-    "Email" : "تورخەت"
+    "Password" : "ئىم"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
