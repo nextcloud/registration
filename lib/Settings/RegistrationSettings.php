@@ -60,13 +60,17 @@ class RegistrationSettings implements ISettings {
 		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 
 		// handle admin validation
-		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', "no");
+		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
+
+		// handle admin validation
+		$emailIsLogin = $this->config->getAppValue($this->appName, 'email_is_login', 'no');
 
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $groupIds,
 			'current' => $assignedGroups,
 			'allowed' => $allowedDomains,
-			'approval_required' => $adminApprovalRequired
+			'approval_required' => $adminApprovalRequired,
+			'email_is_login' => $emailIsLogin,
 		], '');
 	}
 

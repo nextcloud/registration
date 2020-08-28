@@ -28,14 +28,19 @@ foreach ($_['groups'] as $group) {
 			<input type="text" id="allowed_domains" name="allowed_domains" value="<?php p($_['allowed']);?>" placeholder="nextcloud.com;*.example.com">
 		</label>
 	</p>
+	<em><?php p($l->t('Enter a semicolon-separated list of allowed domains, * for wildcard. Example: %s', ['nextcloud.com;*.example.com']));?></em>
+
 	<p>
-		<em><?php p($l->t('Enter a semicolon-separated list of allowed domains, * for wildcard. Example: %s', ['nextcloud.com;*.example.com']));?></em>
+		<input type="checkbox" id="email_is_login" class="checkbox" name="email_is_login" <?php if ($_['email_is_login'] === 'yes') {
+			echo ' checked';
+		} ?>>
+		<label for="email_is_login"><?php p($l->t('Force email as login name')); ?></label>
 	</p>
 
 	<h3><?php p($l->t('Admin approval')); ?></h3>
 	<p>
-		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === "yes") {
-			echo " checked";
+		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === 'yes') {
+			echo ' checked';
 		} ?>>
 		<label for="admin_approval_required"><?php p($l->t('Require admin approval')); ?></label>
 	</p>

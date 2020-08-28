@@ -194,7 +194,7 @@ class RegisterController extends Controller {
 
 		return new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
-			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', '0') === '1',
+			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
 			'username' => $username,
 			'message' => $message,
 		], 'guest');
@@ -218,7 +218,7 @@ class RegisterController extends Controller {
 			return $this->validateSecretAndTokenErrorPage();
 		}
 
-		if ($this->config->getAppValue('registration', 'email_is_login', '0') === '1') {
+		if ($this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes') {
 			$username = $registration->getEmail();
 		}
 

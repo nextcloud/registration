@@ -44,19 +44,23 @@ class SettingsController extends Controller {
 	 *
 	 * @param string $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
-	 * @param bool $admin_approval_required newly registered users have to be validated by an admin
+	 * @param bool|null $admin_approval_required newly registered users have to be validated by an admin
+	 * @param bool|null $email_is_login email address is forced as user id
 	 * @return DataResponse
 	 */
-	public function admin($registered_user_group, $allowed_domains, $admin_approval_required) {
+	public function admin(string $registered_user_group, string $allowed_domains, ?bool $admin_approval_required, ?bool $email_is_login) {
 		// handle domains
-		if (($allowed_domains==='') || ($allowed_domains === null)) {
+		if (($allowed_domains === '') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
 		} else {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
 		}
 
 		// handle admin validation
-		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? "yes" : "no");
+		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
+
+		// handle email is login
+		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
 
 		// handle groups
 		$groups = $this->groupmanager->search('');
