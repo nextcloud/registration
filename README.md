@@ -1,7 +1,7 @@
 # Registration
 This app allows users to register a new account.
 
-![Registration form](https://raw.githubusercontent.com/nextcloud/registration/master/appinfo/screenshot.png)
+![Registration form](https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif)
 
 # Install from appstore
 

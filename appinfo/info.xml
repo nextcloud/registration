@@ -35,7 +35,9 @@ Send BTC to `33pStaSaf4sDUA8XBAHTq7ZDQpCVFQArxQ`
 	<website>https://github.com/nextcloud/registration</website>
 	<bugs>https://github.com/nextcloud/registration/issues</bugs>
 	<repository>https://github.com/nextcloud/registration</repository>
-	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/appinfo/screenshot.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/screenshot.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/admin-settings.png</screenshot>
 	<dependencies>
 		<nextcloud min-version="20" max-version="20" />
 	</dependencies>
