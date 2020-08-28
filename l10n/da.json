@@ -2,10 +2,11 @@
     "Saved" : "Gemt",
     "Register" : "Registér",
     "None" : "Ingen",
+    "Email" : "Email",
+    "Back to login" : "Tilbage til log in",
     "Username" : "Brugernavn",
     "Password" : "Adgangskode",
     "Create account" : "Opret konto",
-    "Email" : "Email",
-    "Back to login" : "Tilbage til log in"
+    "Verify" : "Bekræft"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -3,9 +3,10 @@ OC.L10N.register(
     {
     "Saved" : "Guardáu",
     "None" : "Dengún",
+    "Email" : "email",
     "Username" : "Nome d'usuariu",
     "Password" : "Password",
     "Create account" : "Crear cuenta",
-    "Email" : "email"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

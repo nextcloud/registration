@@ -1,7 +1,7 @@
 { "translations": {
     "Saved" : "Goymt",
+    "Email" : "T-post",
     "Username" : "Brúkaranavn",
-    "Password" : "Loyniorð",
-    "Email" : "T-post"
+    "Password" : "Loyniorð"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -3,9 +3,10 @@ OC.L10N.register(
     {
     "Saved" : "Хадгалах",
     "None" : "юу ч үгүй",
+    "Email" : "Цахим шуудан",
     "Username" : "Хэрэглэгчийн нэр",
     "Password" : "Нууц үг",
     "Create account" : "Аккаунт үүсгэх",
-    "Email" : "Цахим шуудан"
+    "Verify" : "Шалнгах"
 },
 "nplurals=2; plural=(n != 1);");

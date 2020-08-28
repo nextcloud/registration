@@ -4,10 +4,11 @@ OC.L10N.register(
     "Saved" : "Konservita",
     "Register" : "Registriĝi",
     "None" : "Nenio",
+    "Email" : "Retpoŝtadreso",
+    "Back to login" : "Antaŭen al ensaluto",
     "Username" : "Uzantnomo",
     "Password" : "Pasvorto",
     "Create account" : "Krei konton",
-    "Email" : "Retpoŝtadreso",
-    "Back to login" : "Antaŭen al ensaluto"
+    "Verify" : "Kontroli"
 },
 "nplurals=2; plural=(n != 1);");

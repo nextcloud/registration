@@ -2,10 +2,10 @@
     "Saved" : "Bewaar",
     "Register" : "Registreer",
     "None" : "Geen",
+    "Email" : "E-pos",
+    "Back to login" : "Terug na aanmelding",
     "Username" : "Gebruikersnaam",
     "Password" : "Wagwoord",
-    "Create account" : "Skep rekening",
-    "Email" : "E-pos",
-    "Back to login" : "Terug na aanmelding"
+    "Create account" : "Skep rekening"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

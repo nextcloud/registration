@@ -1,6 +1,6 @@
 { "translations": {
+    "Email" : "email",
     "Username" : "یوزر نیم",
-    "Password" : "پاسورڈ",
-    "Email" : "email"
+    "Password" : "پاسورڈ"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

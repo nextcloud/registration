@@ -2,10 +2,11 @@
     "Saved" : "Запазено",
     "Register" : "Регистрация",
     "None" : "Без",
+    "Email" : "Имейл",
+    "Back to login" : "Обратно към вписване",
     "Username" : "Потребител",
     "Password" : "Парола",
     "Create account" : "Създаване на профил",
-    "Email" : "Имейл",
-    "Back to login" : "Обратно към вписване"
+    "Verify" : "Потвърждаване"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
