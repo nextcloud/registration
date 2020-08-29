@@ -7,6 +7,7 @@ OC.L10N.register(
     "Email" : "ელ-ფოსტა",
     "Username" : "მომხმარებელი",
     "Password" : "პაროლი",
-    "Create account" : "ანგარიშის შექმნა"
+    "Create account" : "ანგარიშის შექმნა",
+    "Verify" : "დამოწმება"
 },
 "nplurals=2; plural=(n!=1);");
