@@ -60,7 +60,6 @@ class RegistrationServiceTest extends TestCase {
 	private $tokenProvider;
 	/** @var ICrypto */
 	private $crypto;
-
 	/** @var RegistrationService */
 	private $service;
 
@@ -105,69 +104,75 @@ class RegistrationServiceTest extends TestCase {
 		);
 	}
 
-	public function testValidateNewEmail() {
-		$email = 'aaaa@example.com';
+	public function dataValidateEmail(): array {
+		return [
+			['aaaa@example.com', '', 'no'],
+			['aaaa@example.com', 'example.com', 'no'],
+			['aaaa@example.com', 'eXample.com', 'no'],
+			['aaaa@eXample.com', 'example.com', 'no'],
+			['aaaa@example.com', 'example.com;example.tld', 'no'],
+			['aaaa@example.com', 'example.tld;example.com', 'no'],
+			['aaaa@cloud.example.com', '*.example.com', 'no'],
+			['aaaa@cloud.example.com', 'cloud.example.*', 'no'],
 
-		$this->config->expects($this->once())
-			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('');
-
-		$this->service->validateEmail($email);
-	}
-
-	public function testValidateNewEmailWithinAllowedDomain() {
-		$email = 'aaaa@example.com';
-
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('example.com');
-
-		$this->service->validateEmail($email);
+			['aaaa@example.com', '', 'yes'],
+			['aaaa@example.com', 'nextcloud.com', 'yes'],
+			['aaaa@example.com', 'nextcloud.com;example.tld', 'yes'],
+		];
 	}
 
 	/**
-	 * @depends testValidateNewEmailWithinAllowedDomain
+	 * @dataProvider dataValidateEmail
+	 * @param string $email
+	 * @param string $allowedDomains
+	 * @param string $blocked
+	 * @throws RegistrationException
 	 */
-	public function testValidateNewEmailNotWithinAllowedDomain() {
-		$email2 = 'bbbb@gmail.com';
-
+	public function testValidateEmail(string $email, string $allowedDomains, string $blocked) {
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('example.com');
-
-		$this->expectException(RegistrationException::class);
-		$this->service->validateEmail($email2);
-	}
-
-	public function testValidateNewEmailWithinMultipleAllowedDomain() {
-		$email = 'aaaa@example.com';
-		$email2 = 'bbbb@gmail.com';
-
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('example.com;gmail.com');
+			->willReturnMap([
+				['registration', 'allowed_domains', '', $allowedDomains],
+				['registration', 'domains_is_blocklist', 'no', $blocked],
+				['registration', 'show_domains', 'no', 'no'],
+			]);
 
 		$this->service->validateEmail($email);
-		$this->service->validateEmail($email2);
+	}
+
+	public function dataValidateEmailThrows(): array {
+		return [
+			['aaaa@example.com', 'nextcloud.com;example.tld', 'no'],
+			['aaaa@example.com', 'nextcloud.com', 'no'],
+
+			['aaaa@example.com', 'example.com', 'yes'],
+			['aaaa@example.com', 'eXample.com', 'yes'],
+			['aaaa@eXample.com', 'example.com', 'yes'],
+			['aaaa@example.com', 'example.com;example.tld', 'yes'],
+			['aaaa@example.com', 'example.tld;example.com', 'yes'],
+			['aaaa@cloud.example.com', '*.example.com', 'yes'],
+			['aaaa@cloud.example.com', 'cloud.example.*', 'yes'],
+		];
 	}
 
 	/**
-	 * @depends testValidateNewEmailWithinMultipleAllowedDomain
+	 * @dataProvider dataValidateEmailThrows
+	 * @param string $email
+	 * @param string $allowedDomains
+	 * @param string $blocked
+	 * @throws RegistrationException
 	 */
-	public function testValidateNewEmailNotWithinMultipleAllowedDomain() {
-		$email2 = 'cccc@yahoo.com';
-
+	public function testValidateEmailThrows(string $email, string $allowedDomains, string $blocked) {
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
-			->with('registration', 'allowed_domains', '')
-			->willReturn('example.com;gmail.com');
+			->willReturnMap([
+				['registration', 'allowed_domains', '', $allowedDomains],
+				['registration', 'domains_is_blocklist', 'no', $blocked],
+				['registration', 'show_domains', 'no', 'no'],
+			]);
 
 		$this->expectException(RegistrationException::class);
-		$this->service->validateEmail($email2);
+		$this->service->validateEmail($email);
 	}
 
 	public function testCreatePendingReg() {

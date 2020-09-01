@@ -1,0 +1,13 @@
+input,
+select {
+	width: 33%;
+	min-width: 250px;
+}
+
+h3 {
+	margin-top: 25px;
+}
+
+p {
+	margin-top: 15px;
+}

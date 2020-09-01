@@ -34,6 +34,7 @@ use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
+use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -174,12 +175,41 @@ class RegistrationService {
 			);
 		}
 
-		if (!$this->checkAllowedDomains($email)) {
+		if ($this->config->getAppValue($this->appName, 'allowed_domains', '') === '') {
+			return;
+		}
+
+		$emailIsInDomainList = $this->checkAllowedDomains($email);
+		$blockDomains = $this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes';
+		$showDomains = $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes';
+
+		if (!$blockDomains && !$emailIsInDomainList) {
+			if ($showDomains) {
+				throw new RegistrationException(
+					$this->l10n->t(
+						'Registration is only allowed with the following domains:'
+					) . ' ' . implode(', ', explode(';',
+						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+					))
+				);
+			}
 			throw new RegistrationException(
-				$this->l10n->t(
-					'Registration is only allowed for the following domains: ' .
-					$this->config->getAppValue($this->appName, 'allowed_domains', '')
-				)
+				$this->l10n->t('Registration with this email domain is not allowed.')
+			);
+		}
+
+		if ($blockDomains && $emailIsInDomainList) {
+			if ($showDomains) {
+				throw new RegistrationException(
+					$this->l10n->t(
+						'Registration is not allowed with the following domains:'
+					) . ' ' . implode(', ', explode(';',
+						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
+					))
+				);
+			}
+			throw new RegistrationException(
+				$this->l10n->t('Registration with this email domain is not allowed.')
 			);
 		}
 	}
@@ -217,17 +247,30 @@ class RegistrationService {
 	public function checkAllowedDomains(string $email): bool {
 		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 		if ($allowedDomains !== '') {
-			$allowedDomains = explode(';', $allowedDomains);
-			$allowed = false;
+			[,$mailDomain] = explode('@', strtolower($email), 2);
+			$allowedDomains = explode(';', strtolower($allowedDomains));
+
 			foreach ($allowedDomains as $domain) {
-				[,$mailDomain] = explode('@', $email, 2);
 				// valid domain, everything's fine
-				if ($mailDomain === $domain) {
-					$allowed = true;
-					break;
+
+				// Wildcards
+				if (strpos($domain, '*') !== false) {
+					// *.example.com
+					// Make save for regex:
+					// \*\.example\.com
+					$regexDomain = preg_quote($domain, '\\');
+					// Replace "\*" with an actual regex wildcard and set start and end:
+					// /^.+\.example\.com$/
+					$regexDomain = '/^' . str_replace('\\*', '.+', $regexDomain) . '$/';
+
+					if (preg_match($regexDomain, $mailDomain)) {
+						return true;
+					}
+				} elseif ($mailDomain === $domain) {
+					return true;
 				}
 			}
-			return $allowed;
+			return false;
 		}
 		return true;
 	}
