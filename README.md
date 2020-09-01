@@ -12,7 +12,7 @@ From your Nextcloud instance, click: your profile to the upper right -> Apps -> 
 - Add users to a given group
 - Allow-list with email domains (including wildcard) to register with
 - Admins will be notified via email for new user creation or require approval
-- Supports Nextcloud's Client Login Flow v1 and v2 - Allowing registration in the mobile Apps and Desktop clients
+- Supports Nextcloud's Client [Login Flow v1 and v2](https://docs.nextcloud.com/server/stable/developer_manual/client_apis/LoginFlow/index.html) - Allowing registration in the mobile Apps and Desktop clients
 
 # Web form registration flow
 
@@ -21,10 +21,6 @@ From your Nextcloud instance, click: your profile to the upper right -> Apps -> 
 3. User clicks on the verification link
 4. User is lead to a form where they can choose their username and password
 5. New account is created and is logged in automatically
-
-# OCS API registration flow
-
-The [OCS Api](https://gist.github.com/juliushaertl/5a1d1132e7370b5ad38fbd6da3cae5b8) is deprecated, use the Nextcloud [Login Flow](https://docs.nextcloud.com/server/stable/developer_manual/client_apis/LoginFlow/index.html) instead.
 
 # Donate
 
