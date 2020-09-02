@@ -18,7 +18,6 @@ OC.L10N.register(
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" は新規アカウント%2$sで登録されました。",
     "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" が新しいアカウント %2$s で登録されましたが、有効化が必要です。",
     "Enable now" : "今すぐ有効化",
-    "Registration is only allowed for the following domains: " : "以下のドメインからのみ登録を許可します:",
     "Please provide a valid display name." : "有効な表示名を入力してください。",
     "Please provide a valid user name." : "有効なユーザー名を入力してください。",
     "The username you have chosen already exists." : "選択したユーザー名はすでに存在しています。",
@@ -31,6 +30,7 @@ OC.L10N.register(
     "Create account" : "アカウント作成",
     "Verify" : "検証",
     "Verification email successfully sent." : "確認メールを送信しました。",
-    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "アカウントが正常に作成されました。こちらから<a href=\"%s\">ログイン</a>できます"
+    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "アカウントが正常に作成されました。こちらから<a href=\"%s\">ログイン</a>できます",
+    "Registration is only allowed for the following domains: " : "以下のドメインからのみ登録を許可します:"
 },
 "nplurals=1; plural=0;");

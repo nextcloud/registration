@@ -13,13 +13,10 @@
     "New user registered" : "新的用户已注册",
     "Enable now" : "现在启用",
     "You can <a href=\"%s\">log in now</a>." : "您可以<a href=\"%s\">登录</a>了。",
-    "Registration is only allowed for the following domains: " : "仅支持使用以下域名注册：",
     "Please provide a valid user name." : "请提供一个可用的用户名",
     "The username you have chosen already exists." : "您输入的用户名已存在",
     "Unable to set user email: " : "无法设置用户电子邮件：",
-    "Default group that all registered users belong" : "注册的用户所属的默认群组",
     "None" : "无",
-    "Require admin approval?" : "是否要求管理员批准？",
     "Your account has been successfully created, but it still needs approval from an administrator." : "您的账户已创建成功，等待管理员审批中。",
     "Email" : "电子邮件",
     "Request verification link" : "请求验证链接",
@@ -30,6 +27,9 @@
     "Verify" : "验证",
     "Verification email successfully sent." : "验证邮件已成功发送",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "您的账户已创建成功，<a href=\"%s\">点击登录</a>",
+    "Registration is only allowed for the following domains: " : "仅支持使用以下域名注册：",
+    "Default group that all registered users belong" : "注册的用户所属的默认群组",
+    "Require admin approval?" : "是否要求管理员批准？",
     "Please re-enter a valid email address" : "请重新输入正确的电子邮件地址",
     "You will receive an email with a verification link" : "您将会接收到一条带有验证链接的电子邮件"
 },"pluralForm" :"nplurals=1; plural=0;"
