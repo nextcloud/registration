@@ -285,21 +285,6 @@ class RegistrationService {
 	}
 
 	/**
-	 * Find registration entity for token
-	 *
-	 * @param string $token
-	 * @return Registration
-	 * @throws RegistrationException
-	 */
-	public function verifyToken(string $token): Registration {
-		try {
-			return $this->registrationMapper->findByToken($token);
-		} catch (DoesNotExistException $exception) {
-			throw new RegistrationException($this->l10n->t('Invalid verification URL. No registration request with this verification URL is found.', 404));
-		}
-	}
-
-	/**
 	 * @param $registration
 	 * @param string|null $username
 	 * @param string|null $password
@@ -379,25 +364,12 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param string $token
-	 * @return Registration
-	 * @throws DoesNotExistException
-	 */
-	public function getRegistrationForToken(string $token): Registration {
-		return $this->registrationMapper->findByToken($token);
-	}
-
-	/**
 	 * @param string $secret
 	 * @return Registration
 	 * @throws DoesNotExistException
 	 */
 	public function getRegistrationForSecret(string $secret): Registration {
 		return $this->registrationMapper->findBySecret($secret);
-	}
-
-	public function getUserAccount(Registration $registration): ?IUser {
-		return $this->userManager->get($registration->getUsername());
 	}
 
 	public function deleteRegistration(Registration $registration): void {
@@ -462,20 +434,5 @@ class RegistrationService {
 
 		$this->userSession->login($username, $password);
 		$this->userSession->createSessionToken($this->request, $userId, $username, $password);
-	}
-
-	/**
-	 * Replicates OC::cleanupLoginTokens() since it's protected
-	 * @param string $userId
-	 */
-	public function cleanupLoginTokens(string $userId): void {
-		$cutoff = time() - $this->config->getSystemValue('remember_login_cookie_lifetime', 60 * 60 * 24 * 15);
-		$tokens = $this->config->getUserKeys($userId, 'login_token');
-		foreach ($tokens as $token) {
-			$time = $this->config->getUserValue($userId, 'login_token', $token);
-			if ($time < $cutoff) {
-				$this->config->deleteUserValue($userId, 'login_token', $token);
-			}
-		}
 	}
 }

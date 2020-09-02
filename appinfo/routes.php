@@ -20,9 +20,4 @@ return [
 		['name' => 'register#showUserForm', 'url' => '/register/{secret}/{token}', 'verb' => 'GET'],
 		['name' => 'register#submitUserForm', 'url' => '/register/{secret}/{token}', 'verb' => 'POST'],
 	],
-	'ocs' => [
-		['root' => '/registration', 'name' => 'api#validate', 'url' => '/v1/validate', 'verb' => 'POST'],
-		['root' => '/registration', 'name' => 'api#status', 'url' => '/v1/status', 'verb' => 'POST'],
-		['root' => '/registration', 'name' => 'api#register', 'url' => '/v1/register', 'verb' => 'POST'],
-	]
 ];
