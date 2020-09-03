@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Your registration is pending. Please confirm your email address." : "A regisztrációja függőben van. Kérem erősítse meg az email címét.",
-    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Ezzel az email címmel már függőben van egy regisztrációs kérelem, egy új ellenörző emailt küldtünk a megadott címre.",
     "Saved" : "Mentve",
     "No such group" : "Nincs ilyen csoport",
     "Register" : "Regisztráció",
@@ -27,6 +25,8 @@ OC.L10N.register(
     "Password" : "Jelszó",
     "Create account" : "Fiók létrehozása",
     "Verify" : "Ellenőrzés",
+    "Your registration is pending. Please confirm your email address." : "A regisztrációja függőben van. Kérem erősítse meg az email címét.",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Ezzel az email címmel már függőben van egy regisztrációs kérelem, egy új ellenörző emailt küldtünk a megadott címre.",
     "Verification email successfully sent." : "Ellenőrző email sikeresen elküldve.",
     "A new user \"%s\" has created an account on %s" : "Egy új felhasználó \"%s\" lett létrehozva a %shozzáféréshez",
     "Registration is only allowed for the following domains: " : "A regisztráció csak a következő domainekszámára engedélyezett:",

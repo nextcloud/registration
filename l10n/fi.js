@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Your registration is pending. Please confirm your email address." : "Rekisteröitymisesi odottaa. Vahvista sähköpostiosoitteesi.",
-    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tällä sähköpostiosoitteella on jo odottava rekisteröityminen. Uusi vahvistusviesti lähetettiin sähköpostitse.",
     "Saved" : "Tallennettu",
     "No such group" : "Ei kyseistä ryhmää",
     "Register" : "Rekisteröidy",
@@ -35,6 +33,8 @@ OC.L10N.register(
     "Password" : "Salasana",
     "Create account" : "Luo tili",
     "Verify" : "Vahvista",
+    "Your registration is pending. Please confirm your email address." : "Rekisteröitymisesi odottaa. Vahvista sähköpostiosoitteesi.",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tällä sähköpostiosoitteella on jo odottava rekisteröityminen. Uusi vahvistusviesti lähetettiin sähköpostitse.",
     "Verification email successfully sent." : "Vahvistusviesti lähetetty onnistuneesti.",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Tilisi on luotu onnistuneesti, voit <a href=\"%s\">kirjautua sisään</a>.",
     "A new user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" loi tilin palveluun %s",
