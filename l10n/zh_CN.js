@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Your registration is pending. Please confirm your email address." : "您的注册被搁置，请检查您的电子邮件地址",
-    "There is already a pending registration with this email, a new verification email has been sent to the address." : "此电子邮件地址已经有一个搁置的注册请求，新的验证邮件已发送至该地址",
     "Saved" : "已保存",
     "No such group" : "无此群组",
     "Register" : "注册",
@@ -27,6 +25,8 @@ OC.L10N.register(
     "Password" : "密码",
     "Create account" : "创建账号",
     "Verify" : "验证",
+    "Your registration is pending. Please confirm your email address." : "您的注册被搁置，请检查您的电子邮件地址",
+    "There is already a pending registration with this email, a new verification email has been sent to the address." : "此电子邮件地址已经有一个搁置的注册请求，新的验证邮件已发送至该地址",
     "Verification email successfully sent." : "验证邮件已成功发送",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "您的账户已创建成功，<a href=\"%s\">点击登录</a>",
     "Registration is only allowed for the following domains: " : "仅支持使用以下域名注册：",
