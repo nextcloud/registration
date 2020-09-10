@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Saved" : "Shranjeno",
     "Register" : "Vpis računa",
+    "Enable now" : "Omogoči takoj",
+    "You can <a href=\"%s\">log in now</a>." : "Zdaj se lahko <a href=\"%s\">prijavite</a>.",
+    "Please provide a valid display name." : "Vpisati je treba veljavno prikazno ime.",
     "Unable to create user, there are problems with the user backend." : "Ni mogoče ustvariti uporabnika, zaznane so težave z ozadnjim programom.",
     "Unable to set user email: " : "Ni mogoče nastaviti elektronskega naslova uporabnika:",
     "None" : "Brez",
