@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains:" : "El registro no está permitido para los siguientes dominios:",
+    "Registration is only allowed with the following domains:" : "El registro solo está permitido para los siguientes dominios:",
     "The entered verification code is wrong" : "El código de verificación introducido no es correcto",
     "The verification failed." : "La verificación ha fallado.",
     "Saved" : "Guardado",
@@ -21,6 +23,7 @@ OC.L10N.register(
     "Enable now" : "Habilitar ahora",
     "A user has already taken this email, maybe you already have an account?" : "Un usuario ya ha registrado este correo. ¿Puede ser que ya se haya registrado anteriormente?",
     "You can <a href=\"%s\">log in now</a>." : "Puedes <a href=\"%s\">entrar ahora</a>.",
+    "Registration with this email domain is not allowed." : "No se permite el registro con ese dominio de email.",
     "Please provide a valid display name." : "Por favor, indique un nombre válido para mostrar.",
     "Please provide a valid user name." : "Por favor, indique un nombre de usuario válido.",
     "The username you have chosen already exists." : "El nombre de usuario que ha elegido ya existe.",
@@ -28,7 +31,11 @@ OC.L10N.register(
     "Unable to set user email: " : "No se puede configurar el correo electrónico del usuario:",
     "Registration app auto setup" : "Configuración automática de la aplicación de registro",
     "This app allows users to self-register a new account using their e-mail address." : "Esta app permite a los usuarios autoregistrar una nueva cuenta usando su dirección de correo.",
+    "User registration\n\nThis app allows users to register a new account.\n\n# Features\n\n- Add users to a given group\n- Allow-list with email domains (including wildcard) to register with\n- Admins will be notified via email for new user creation or require approval\n- Supports Nextcloud's Client Login Flow v1 and v2 - allowing registration in the mobile Apps and Desktop clients\n\n# Web form registration flow\n\n1. User enters their email address\n2. Verification link is sent to the email address\n3. User clicks on the verification link\n4. User is lead to a form where they can choose their username and password\n5. New account is created and is logged in automatically" : "Registro de usuario\n\nEsta aplicación permite a los usuarios registrar una nueva cuenta.\n\n# Características\n\n- Añadir usuarios a un grupo determinado\n- Lista de dominios de correo electrónico permitidos (incluye comodines) para registrarse\n- Los administradores serán notificados por correo electrónico para la creación de nuevos usuarios o requerir aprobación\n- Soporta Nextcloud's Client Login Flow v1 and v2 - Permitiendo el registro en las aplicaciones móviles y clientes de escritorio\n\n# Pasos para el registro web\n\n1. El usuario introduce su dirección de correo electrónico\n2. El enlace de verificación se envía a la dirección de correo electrónico\n3. El usuario hace clic en el enlace de verificación\n4. Se lleva al usuario a un formulario donde puede elegir su nombre de usuario y contraseña\n5. Se crea la nueva cuenta y se inicia sesión automáticamente",
+    "Registered users default group" : "Grupo predeterminado para usuarios registrados",
     "None" : "Ninguno",
+    "Allowed email domains" : "Dominios de email permitidos",
+    "Enter a semicolon-separated list of allowed email domains, * for wildcard. Example: %s" : "Introduce una lista de los dominios de correo electrónico permitidos separados por punto y coma, * como comodín. Ejemplo: %s",
     "Force email as login name" : "Forzar el email como nombre de usuario",
     "Admin approval" : "Aprobación del administrador",
     "Require admin approval" : "Requerir aprovación del administrador",
