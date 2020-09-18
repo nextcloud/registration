@@ -1,4 +1,6 @@
 { "translations": {
+    "The entered verification code is wrong" : "Zadaný overovací kód je nesprávny",
+    "The verification failed." : "Overenie zlyhalo.",
     "Saved" : "Uložené",
     "No such group" : "Takáto skupina neexistuje",
     "Register" : "Registrovať",
@@ -7,6 +9,7 @@
     "Registration" : "Registrácia",
     "Email address verified, you can now complete your registration." : "Registráciu môžete dokončiť, e-mailová adresa je overená.",
     "Click the button below to continue." : "Pokračujte kliknutím na tlačidlo nižšie.",
+    "Verification code: %s" : "Overovací kód: %s",
     "Continue registration" : "Pokračujte v registrácii",
     "A problem occurred sending email, please contact your administrator." : "Pri odosielaní e-mailu sa vyskytol problém. Kontaktujte svojho správcu.",
     "New user \"%s\" has created an account on %s" : "Nový používateľ „%s“ vytvoril účet na %s",
@@ -32,6 +35,7 @@
     "Username" : "Užívateľské meno",
     "Password" : "Heslo",
     "Create account" : "Vytvoriť účet",
+    "Verification code" : "Overovací kód",
     "Verify" : "Overiť",
     "Your registration is pending. Please confirm your email address." : "Vaša registrácia čaká. Prosím potvrďte Vašu emailovú adresu.",
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Tento e-mail už čaká na registráciu, na túto adresu bol odoslaný nový verifikačný e-mail.",
