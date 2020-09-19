@@ -36,6 +36,8 @@ OC.L10N.register(
     "None" : "Ninguno",
     "Allowed email domains" : "Dominios de email permitidos",
     "Enter a semicolon-separated list of allowed email domains, * for wildcard. Example: %s" : "Introduce una lista de los dominios de correo electrónico permitidos separados por punto y coma, * como comodín. Ejemplo: %s",
+    "Block listed email domains instead of allowing them" : "Bloquear los dominios de correos listados en lugar de permitirlos",
+    "Show the allowed/blocked email domains to users" : "Mostrar los dominios de correo bloqueados/permitidos a los usuarios",
     "Force email as login name" : "Forzar el email como nombre de usuario",
     "Admin approval" : "Aprobación del administrador",
     "Require admin approval" : "Requerir aprovación del administrador",
