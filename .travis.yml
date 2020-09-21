@@ -1,7 +1,6 @@
 sudo: false
 language: php
 php:
-  - 7.2
   - 7.3
   - 7.4
 
@@ -20,10 +19,10 @@ addons:
 
 env:
   global:
-    - CORE_BRANCH=master
     - APP_NAME=registration
-  matrix:
+    - CORE_BRANCH=master
     - DB=sqlite
+  matrix:
 
 branches:
   only:
@@ -36,6 +35,8 @@ matrix:
       env: DB=mysql
     - php: 7.3
       env: DB=pgsql
+    - php: 7.2
+      env: CORE_BRANCH=stable20
   fast_finish: true
 
 before_install:
