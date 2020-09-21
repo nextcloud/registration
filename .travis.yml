@@ -1,7 +1,6 @@
 sudo: false
 language: php
 php:
-  - 7.2
   - 7.3
   - 7.4
 
@@ -36,6 +35,8 @@ matrix:
       env: DB=mysql
     - php: 7.3
       env: DB=pgsql
+    - php: 7.2
+      env: CORE_BRANCH=stable20
   fast_finish: true
 
 before_install:
