@@ -19,9 +19,9 @@ addons:
 
 env:
   global:
-    - CORE_BRANCH=master
     - APP_NAME=registration
   matrix:
+    - CORE_BRANCH=master
     - DB=sqlite
 
 branches:
@@ -36,7 +36,7 @@ matrix:
     - php: 7.3
       env: DB=pgsql
     - php: 7.2
-      env: CORE_BRANCH=stable20
+      env: DB=sqlite;CORE_BRANCH=stable20
   fast_finish: true
 
 before_install:
