@@ -1,11 +1,28 @@
 { "translations": {
     "Saved" : "Зачувано",
+    "Register" : "Регистрирај се",
+    "The email address you entered is not valid" : "Адресата на е-пошта не е правилно внесена",
+    "Verify your %s registration request" : "Потврдете го башето барање за регистрација на %s",
+    "Registration" : "Регистрација",
+    "A problem occurred sending email, please contact your administrator." : "Неочекувана грешка при испраќање на е-пошта. Контактирајте го администраторот.",
+    "New user \"%s\" has created an account on %s" : "Нов корисник \"%s\" е креиран на %s",
+    "A user has already taken this email, maybe you already have an account?" : "Некој корисник веќе ја користи оваа адреса на Е-пошта, можеби веќе имате креирана сметка?",
+    "Please provide a valid user name." : "Внесете валидно корисничко име.",
+    "The username you have chosen already exists." : "Корисничкото име е веќе во употреба.",
     "None" : "Ништо",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот.",
     "Email" : "Е-пошта",
+    "Request verification link" : "Побарај линк за верификација",
     "Back to login" : "Врати се на страната за најавување",
+    "Welcome, you can create your account below." : "Добредојдовте, сега можете да ги внесете вашите податоци и да креирате сметка.",
     "Username" : "Корисничко име",
     "Password" : "Лозинка",
     "Create account" : "Креирај сметка",
-    "Verify" : "Потврди"
+    "Verify" : "Потврди",
+    "Verification email successfully sent." : "Испратена порака со линк за верификација.",
+    "A new user \"%s\" has created an account on %s" : "Нов корисник \"%s\" е креиран на %s",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Нов корисник \"%s\" е креиран на %s и чека одоброение за пристап од администраторот",
+    "To create a new account on %s, just click the following link:" : "За да се регистрирате на %s, следете го следниот линк:",
+    "You will receive an email with a verification link" : "Ќе добиете порака со линк за верификација"
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }
