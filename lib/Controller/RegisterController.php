@@ -105,7 +105,7 @@ class RegisterController extends Controller {
 
 	/**
 	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $email
 	 * @return TemplateResponse
@@ -162,7 +162,7 @@ class RegisterController extends Controller {
 
 	/**
 	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $secret
 	 * @param string $token
@@ -221,7 +221,7 @@ class RegisterController extends Controller {
 	/**
 	 * @PublicPage
 	 * @UseSession
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $secret
 	 * @param string $token
