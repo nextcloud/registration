@@ -66,7 +66,7 @@ class ApiController extends OCSController {
 
 	/**
 	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $username
 	 * @param string $displayname
@@ -134,7 +134,7 @@ class ApiController extends OCSController {
 
 	/**
 	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $username
 	 * @param string $displayname

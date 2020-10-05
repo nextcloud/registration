@@ -69,7 +69,7 @@ class RegisterController extends Controller {
 	/**
 	 * User POST email, if email is valid and not duplicate, we send token by mail
 	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=1)
+	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $email
 	 * @return TemplateResponse
