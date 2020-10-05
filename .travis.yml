@@ -1,9 +1,9 @@
 sudo: false
 language: php
 php:
-  - 7.1
   - 7.2
   - 7.3
+  - 7.4snapshot
 
 cache:
   directories:
@@ -20,37 +20,28 @@ addons:
 
 env:
   global:
+    - CORE_BRANCH=stable19
     - PHP_COVERAGE=FALSE
   matrix:
-    # Nextcloud 16+
-    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=sqlite
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable18  DB=sqlite
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable17  DB=sqlite
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable16  DB=sqlite
-
-    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=mysql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable18  DB=mysql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable17  DB=mysql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable16  DB=mysql
-
-    - CORE_TYPE=nextcloud CORE_BRANCH=master    DB=pgsql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable18  DB=pgsql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable17  DB=pgsql
-    - CORE_TYPE=nextcloud CORE_BRANCH=stable16  DB=pgsql
-
-    # ownCloud 10.4+
-    # ownCloud does not seem to maintain old stable branches anymore, so I can only test master
-    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=sqlite
-
-    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=mysql
-
-    - CORE_TYPE=owncloud CORE_BRANCH=master     DB=pgsql
+    # Nextcloud 19+
+    - CORE_TYPE=nextcloud DB=sqlite
 
 matrix:
   fast_finish: true
-  exclude:
-
   include:
+    # Older Nextcloud versions
+    - php: 7.3
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable18 DB=sqlite
+    - php: 7.2
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable17 DB=sqlite
+    - php: 7.1
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable16 DB=sqlite
+
+    # Other Databases
+    - php: 7.3
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable19 DB=mysql
+    - php: 7.3
+      env: CORE_TYPE=nextcloud CORE_BRANCH=stable19 DB=pgsql
 
 before_install:
   # XDebug is only needed if we report coverage -> speeds up other builds
