@@ -39,8 +39,6 @@ matrix:
       env: CORE_TYPE=nextcloud CORE_BRANCH=stable18 DB=sqlite
     - php: 7.2
       env: CORE_TYPE=nextcloud CORE_BRANCH=stable17 DB=sqlite
-    - php: 7.1
-      env: CORE_TYPE=nextcloud CORE_BRANCH=stable16 DB=sqlite
 
     # Other Databases
     - php: 7.3
