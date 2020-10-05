@@ -26,6 +26,11 @@ env:
     # Nextcloud 19+
     - CORE_TYPE=nextcloud DB=sqlite
 
+branches:
+  only:
+    - master
+    - /^stable\d+(\.\d+)?$/
+
 matrix:
   fast_finish: true
   include:
