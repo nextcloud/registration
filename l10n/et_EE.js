@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Salvestatud",
+    "Register" : "Registreeru",
     "None" : "Pole",
     "Email" : "Epost",
     "Username" : "Kasutajanimi",
