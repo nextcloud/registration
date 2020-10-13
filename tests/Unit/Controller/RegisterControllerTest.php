@@ -125,6 +125,7 @@ class RegisterControllerTest extends TestCase {
 	public function testShowEmailForm(string $email, string $message): void {
 		$controller = $this->getController();
 		$response = $controller->showEmailForm($email, $message);
+		$disable_email_verification = $this->config->getAppValue("registration", 'disable_email_verification', 'no');
 
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/email', $response->getTemplateName());
@@ -132,6 +133,7 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame([
 			'email' => $email,
 			'message' => $message,
+			'disable_email_verification' => $disable_email_verification,
 		], $response->getParams());
 	}
 

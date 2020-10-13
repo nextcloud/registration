@@ -63,6 +63,7 @@ class RegistrationSettings implements ISettings {
 		$emailIsLogin = $this->config->getAppValue($this->appName, 'email_is_login', 'no');
 		$domainsIsBlocklist = $this->config->getAppValue($this->appName, 'domains_is_blocklist', 'no');
 		$showDomains = $this->config->getAppValue($this->appName, 'show_domains', 'no');
+		$disableEmailVerification = $this->config->getAppValue($this->appName, 'disable_email_verification', 'no');
 
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $groupIds,
@@ -72,6 +73,7 @@ class RegistrationSettings implements ISettings {
 			'email_is_login' => $emailIsLogin,
 			'domains_is_blocklist' => $domainsIsBlocklist,
 			'show_domains' => $showDomains,
+			'disable_email_verification' => $disableEmailVerification,
 		], '');
 	}
 

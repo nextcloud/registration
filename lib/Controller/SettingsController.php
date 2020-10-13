@@ -55,7 +55,8 @@ class SettingsController extends Controller {
 						  ?bool $admin_approval_required,
 						  ?bool $email_is_login,
 						  ?bool $domains_is_blocklist,
-						  ?bool $show_domains) {
+						  ?bool $show_domains,
+						  ?bool $disable_email_verification) {
 		// handle domains
 		if (($allowed_domains === '') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
@@ -67,6 +68,7 @@ class SettingsController extends Controller {
 		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'domains_is_blocklist', $domains_is_blocklist ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_domains', $show_domains ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'disable_email_verification', $disable_email_verification ? 'yes' : 'no');
 
 		// handle groups
 		$groups = $this->groupmanager->search('');
