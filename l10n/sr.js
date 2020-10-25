@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains:" : "Регистрација није дозвољена за следеће домене:",
+    "Registration is only allowed with the following domains:" : "Регистрација је дозвољена само за следеће домене:",
     "Saved" : "Сачувано",
     "No such group" : "Нема ове групе",
     "Register" : "Региструј се",
