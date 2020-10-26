@@ -3,7 +3,7 @@
 /** @var \OCP\IL10N $l */
 style('registration', 'style');
 script('registration', 'form');
-?><form action="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('registration.register.createAccount', ['token'=>$_['token']])) ?>" method="post">
+?><form action="" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
 		<?php if (!empty($_['errormsgs'])) {?>
