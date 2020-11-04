@@ -54,7 +54,7 @@ OC.L10N.register(
     "Verification code" : "Overitvena koda",
     "Verify" : "Overi",
     "Your registration is pending. Please confirm your email address." : "Vpis v oblak je na čakanju. Najprej je treba potrditi elektronski naslov.",
-    "Verification email successfully sent." : "Sporočilo z overitveno povezavo je uspešno poslana.",
+    "Verification email successfully sent." : "Sporočilo z overitveno povezavo je uspešno poslano.",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Račun je uspešno ustvarjen, zdaj se lahko <a href=\"%s\">prijavite</a>.",
     "Invalid verification URL. No registration request with this verification URL is found." : "Naslov URL za overitev ni veljaven. Ni mogoče najti zahteve za overitev za vpisani naslov URL.",
     "Allowed mail address domains for registration" : "Dovoljeni naslovi poštnih domen za vpis",
