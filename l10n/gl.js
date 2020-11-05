@@ -47,7 +47,7 @@ OC.L10N.register(
     "Email" : "Correo-e",
     "Request verification link" : "Solicitar unha ligazón de verificación",
     "Back to login" : "Volver ao acceso",
-    "Welcome, you can create your account below." : "Benvido/a, pode crear a súa conta a continuación.",
+    "Welcome, you can create your account below." : "Benvido/a, pode crear a súa conta deseguido.",
     "Username" : "Nome de usuario",
     "Password" : "Contrasinal",
     "Create account" : "Crear unha conta",
