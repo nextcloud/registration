@@ -26,6 +26,9 @@ This app allows users to register a new account.
 	<version>0.5.1</version>
 	<licence>agpl</licence>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
+	<types>
+		<prevent_group_restriction />
+	</types>
 	<category>security</category>
 	<category>tools</category>
 	<website>https://github.com/nextcloud/registration</website>
