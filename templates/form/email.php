@@ -19,9 +19,9 @@ style('registration', 'style');
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
 			<input type="submit" id="submit" value="<?php
 				if ($_['disable_email_verification'] === 'yes') {
-					echo p($l->t('Start register process'));
+					p($l->t('Continue'));
 				} else {
-					echo p($l->t('Request verification link'));
+					p($l->t('Request verification link'));
 				}?>" />
 
 			<a id="lost-password-back" href="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('core.login.showLoginForm')) ?>">
