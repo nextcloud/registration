@@ -137,20 +137,20 @@ class RegisterController extends Controller {
 					]
 				)
 			);
-		} else {
-			try {
-				$this->mailService->sendTokenByMail($registration);
-			} catch (RegistrationException $e) {
-				return $this->showEmailForm($email, $e->getMessage());
-			}
-	
-			return new RedirectResponse(
-				$this->urlGenerator->linkToRoute(
-					'registration.register.showVerificationForm',
-					['secret' => $registration->getClientSecret()]
-				)
-			);
 		}
+
+		try {
+			$this->mailService->sendTokenByMail($registration);
+		} catch (RegistrationException $e) {
+			return $this->showEmailForm($email, $e->getMessage());
+		}
+
+		return new RedirectResponse(
+			$this->urlGenerator->linkToRoute(
+				'registration.register.showVerificationForm',
+				['secret' => $registration->getClientSecret()]
+			)
+		);
 	}
 
 	/**
