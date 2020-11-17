@@ -99,6 +99,7 @@ class RegisterController extends Controller {
 		$params = [
 			'email' => $email,
 			'message' => $message ?: $emailHint,
+			'disable_email_verification' => $this->config->getAppValue($this->appName, 'disable_email_verification', 'no')
 		];
 		return new TemplateResponse('registration', 'form/email', $params, 'guest');
 	}
@@ -124,6 +125,18 @@ class RegisterController extends Controller {
 			}
 
 			$registration = $this->registrationService->createRegistration($email);
+		}
+
+		if ($this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes') {
+			return new RedirectResponse(
+				$this->urlGenerator->linkToRoute(
+					'registration.register.showUserForm',
+					[
+						'secret' => $registration->getClientSecret(),
+						'token' => $registration->getToken()
+					]
+				)
+			);
 		}
 
 		try {

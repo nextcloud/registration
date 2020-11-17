@@ -17,7 +17,12 @@ style('registration', 'style');
 				<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 			</p>
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
-			<input type="submit" id="submit" value="<?php p($l->t('Request verification link')); ?>" />
+			<input type="submit" id="submit" value="<?php
+				if ($_['disable_email_verification'] === 'yes') {
+					p($l->t('Continue'));
+				} else {
+					p($l->t('Request verification link'));
+				}?>" />
 
 			<a id="lost-password-back" href="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('core.login.showLoginForm')) ?>">
 				<?php p($l->t('Back to login')); ?>

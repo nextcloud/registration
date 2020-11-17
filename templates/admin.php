@@ -22,6 +22,14 @@ foreach ($_['groups'] as $group) {
 		</label>
 	</p>
 
+	<h3><?php p($l->t('Disable Email Verification')); ?></h3>
+	<p>
+		<input type="checkbox" id="disable_email_verification" class="checkbox" name="disable_email_verification" <?php if ($_['disable_email_verification'] === 'yes') {
+	echo ' checked';
+} ?>>
+		<label for="disable_email_verification"><?php p($l->t('Let user can register directly without email verification')); ?></label>
+	</p>
+
 	<h3><?php p($l->t('Allowed email domains')); ?></h3>
 	<p>
 		<label>
