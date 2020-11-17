@@ -6,11 +6,9 @@ script('registration', 'form');
 ?><form action="" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>
-		<?php if (!empty($_['errormsgs'])) {?>
+		<?php if (!empty($_['message'])) {?>
 		<ul class="error">
-			<?php foreach ($_['errormsgs'] as $errormsg) { ?>
-			<li><?php p($errormsg); ?></li>
-			<?php } ?>
+			<li><?php p($_['message']); ?></li>
 		</ul>
 		<?php } else { ?>
 		<ul class="msg">
