@@ -24,7 +24,7 @@ OC.L10N.register(
     "A user has already taken this email, maybe you already have an account?" : "Un usuario xa utilizou este correo-e, quizais ten xa unha conta?",
     "You can <a href=\"%s\">log in now</a>." : "Pode <a href=\"%s\">iniciar sesión agora</a>.",
     "Registration with this email domain is not allowed." : "Non está permitido o rexistro con este dominio de correo electrónico.",
-    "Please provide a valid display name." : "Indique un nome que amosar válido.",
+    "Please provide a valid display name." : "Indique un nome válido para amosar",
     "Please provide a valid user name." : "Indique un nome de usuario válido.",
     "The username you have chosen already exists." : "O nome de usuario que escolleu xa existe.",
     "Unable to create user, there are problems with the user backend." : "Non é posíbel crear o usuario, hai problemas coa infraestrutura do usuario.",
