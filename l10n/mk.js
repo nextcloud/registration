@@ -33,6 +33,7 @@ OC.L10N.register(
     "Let user can register directly without email verification" : "Дозволи им на корисниците да се регистрираат веднаш без верификација на е-пошта адресата",
     "Allowed email domains" : "Дозволени е-пошта домени",
     "Show the allowed/blocked email domains to users" : "Прикажи дозволени/блокирани е-пошта домени на корисниците",
+    "Force email as login name" : "Наметни е-пошта за корисничко име",
     "Admin approval" : "Одобрување од администратор",
     "Require admin approval" : "Потребно е одобрување од администратор",
     "Approval required" : "Потребно е одобрување",
