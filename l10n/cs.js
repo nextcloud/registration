@@ -45,6 +45,7 @@ OC.L10N.register(
     "Approval required" : "Je zapotřebí schválení",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet byl úspěšně vytvořen, ale ještě čeká na schválení správcem.",
     "Email" : "E-mail",
+    "Continue" : "Pokračovat",
     "Request verification link" : "Odkaz pro ověření",
     "Back to login" : "Zpět na přihlášení",
     "Welcome, you can create your account below." : "Vítejte, níže si můžete vytvořit účet pro vás.",
