@@ -222,12 +222,15 @@ class RegisterController extends Controller {
 		} catch (RegistrationException $e) {
 			return $this->validateSecretAndTokenErrorPage();
 		}
+		
+		$additional_hint = $this->config->getAppValue('registration', 'additional_hint');
 
 		return new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
 			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
 			'username' => $username,
 			'message' => $message,
+			'additional_hint' => $additional_hint,
 		], 'guest');
 	}
 

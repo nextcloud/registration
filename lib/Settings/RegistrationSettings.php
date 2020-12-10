@@ -56,9 +56,14 @@ class RegistrationSettings implements ISettings {
 		}
 		$assignedGroups = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
 
+		// handle additional hint
+		$additional_hint = $this->config->getAppValue($this->appName, 'additional_hint', '');
+		$email_verification_hint = $this->config->getAppValue($this->appName, 'email_verification_hint', '');
+
 		// handle domains
 		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 
+		$username_policy_regex = $this->config->getAppValue($this->appName, 'username_policy_regex', '');
 		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
 		$emailIsLogin = $this->config->getAppValue($this->appName, 'email_is_login', 'no');
 		$domainsIsBlocklist = $this->config->getAppValue($this->appName, 'domains_is_blocklist', 'no');
@@ -68,6 +73,9 @@ class RegistrationSettings implements ISettings {
 		return new TemplateResponse('registration', 'admin', [
 			'groups' => $groupIds,
 			'current' => $assignedGroups,
+			'additional_hint' => $additional_hint,
+			'email_verification_hint' => $email_verification_hint,
+			'username_policy_regex' => $username_policy_regex,
 			'allowed' => $allowedDomains,
 			'approval_required' => $adminApprovalRequired,
 			'email_is_login' => $emailIsLogin,

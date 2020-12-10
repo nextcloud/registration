@@ -33,6 +33,10 @@ input[type="submit"] {
 	text-decoration: underline;
 }
 
+.error {
+	margin-bottom: 15px;
+}
+
 .groupofone {
 	position: relative;
 }
