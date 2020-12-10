@@ -15,6 +15,14 @@ script('registration', 'form');
 			<li><?php p($l->t('Welcome, you can create your account below.'));?></li>
 		</ul>
 		<?php } ?>
+
+		<?php if (!empty($_['additional_hint'])): ?>
+			<ul class="error">
+				<li><?php p($_['additional_hint']); ?></li>
+			</ul>		
+		<?php endif; ?>
+
+
 		<p class="grouptop">
 			<input type="email" name="email" id="email" value="<?php p($_['email']); ?>" disabled />
 			<label for="email" class="infield"><?php p($_['email']); ?></label>

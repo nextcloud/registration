@@ -59,6 +59,29 @@ foreach ($_['groups'] as $group) {
 		<label for="email_is_login"><?php p($l->t('Force email as login name')); ?></label>
 	</p>
 
+	<h3><?php p($l->t('Username Policy')); ?></h3>
+	<p>
+		<label>
+			<input type="text" id="username_policy_regex" name="username_policy_regex" value="<?php p($_['username_policy_regex']);?>" placeholder="/^[a-z-]+\.[a-z-]+$/">
+		</label>
+	</p>
+	<em><?php p($l->t('If configured usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.'));?></em>
+
+	<h3><?php p($l->t('User Instructions')); ?></h3>
+	<p>
+		<label>
+			<input type="text" id="additional_hint" name="additional_hint" value="<?php p($_['additional_hint']);?>" placeholder="Please create your username following the scheme 'firstname.lastname'.">
+		</label>
+	</p>
+	<em><?php p($l->t('Add additional user instructions (e.g. for choosing their usernames). If configured the text is displayed in the account creation step of the registration process.'));?></em>
+
+	<p>
+		<label>
+			<input type="text" id="email_verification_hint" name="email_verification_hint" value="<?php p($_['email_verification_hint']);?>" placeholder="Please create your username following the scheme 'firstname.lastname'.">
+		</label>
+	</p>
+	<em><?php p($l->t('Add additional user instructions (e.g. for choosing their usernames). If configured the text is embedded in the the verification-Email.'));?></em>
+
 	<h3><?php p($l->t('Admin approval')); ?></h3>
 	<p>
 		<input type="checkbox" id="admin_approval_required" class="checkbox" name="admin_approval_required" <?php if ($_['approval_required'] === 'yes') {

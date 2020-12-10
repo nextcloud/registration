@@ -44,6 +44,9 @@ class SettingsController extends Controller {
 	 *
 	 * @param string $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
+	 * @param string $additional_hint show Text at user-creation form
+	 * @param string $email_verification_hint if filled embed Text in Verification mail send to user
+	 * @param string $username_policy_regex optional regex to check usernames against a pattern
 	 * @param bool|null $admin_approval_required newly registered users have to be validated by an admin
 	 * @param bool|null $email_is_login email address is forced as user id
 	 * @param bool|null $domains_is_blocklist is the domain list an allow or block list
@@ -52,6 +55,9 @@ class SettingsController extends Controller {
 	 */
 	public function admin(string $registered_user_group,
 						  string $allowed_domains,
+						  string $additional_hint,
+						  string $email_verification_hint,
+						  string $username_policy_regex,
 						  ?bool $admin_approval_required,
 						  ?bool $email_is_login,
 						  ?bool $domains_is_blocklist,
@@ -62,6 +68,30 @@ class SettingsController extends Controller {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');
 		} else {
 			$this->config->setAppValue($this->appName, 'allowed_domains', $allowed_domains);
+		}
+
+		// handle hints
+		if (($additional_hint === '') || ($additional_hint === null)) {
+			$this->config->deleteAppValue($this->appName, 'additional_hint');
+		} else {
+			$this->config->setAppValue($this->appName, 'additional_hint', $additional_hint);
+		}
+
+		if (($email_verification_hint === '') || ($email_verification_hint === null)) {
+			$this->config->deleteAppValue($this->appName, 'email_verification_hint');
+		} else {
+			$this->config->setAppValue($this->appName, 'email_verification_hint', $email_verification_hint);
+		}
+
+		//handle regex
+		if (($username_policy_regex === '') || ($username_policy_regex === null)) {
+			$this->config->deleteAppValue($this->appName, 'username_policy_regex');
+		} elseif ((@preg_match($username_policy_regex, null) === false)) {
+			// validate regex
+			// TODO: Create SettingsException Class, throw it & show it to user
+			
+		} else {
+			$this->config->setAppValue($this->appName, 'username_policy_regex', $username_policy_regex);
 		}
 
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');

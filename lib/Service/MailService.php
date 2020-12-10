@@ -36,6 +36,7 @@ use OCP\ILogger;
 use OCP\IURLGenerator;
 use OCP\Mail\IMailer;
 use OCP\Util;
+use OCP\IConfig;
 
 class MailService {
 
@@ -51,15 +52,19 @@ class MailService {
 	private $groupManager;
 	/** @var ILogger */
 	private $logger;
+	/** @var IConfig */
+	private $config;
 
 	public function __construct(IURLGenerator $urlGenerator,
 								IMailer $mailer,
 								Defaults $defaults,
 								IL10N $l10n,
 								IGroupManager $groupManager,
+								IConfig $config,
 								ILogger $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
+		$this->config = $config;
 		$this->defaults = $defaults;
 		$this->l10n = $l10n;
 		$this->groupManager = $groupManager;
@@ -102,6 +107,14 @@ class MailService {
 			htmlspecialchars($body . ' ' . $this->l10n->t('Click the button below to continue.')),
 			$body
 		);
+		
+		// if the parameter is set through the settings panel add to body text
+		$email_verification_hint = $this->config->getAppValue('registration', 'email_verification_hint');
+ 		if (($email_verification_hint === '') || ($email_verification_hint === null)) {
+			// do nothing if the parameter isn't set
+			} else {
+				$template->addBodyText($email_verification_hint);
+		}; 
 
 		$template->addBodyText(
 			$this->l10n->t('Verification code: %s', $registration->getToken())
