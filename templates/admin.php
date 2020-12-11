@@ -62,7 +62,7 @@ foreach ($_['groups'] as $group) {
 	<h3><?php p($l->t('Username Policy')); ?></h3>
 	<p>
 		<label>
-			<input type="text" id="username_policy_regex" name="username_policy_regex" value="<?php p($_['username_policy_regex']);?>" placeholder="/^[a-z-]+\.[a-z-]+$/">
+			<input type="text" id="username_policy_regex" name="username_policy_regex" value="<?php p($_['username_policy_regex']);?>" placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/">
 		</label>
 	</p>
 	<em><?php p($l->t('If configured usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.'));?></em>
