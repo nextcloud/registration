@@ -59,7 +59,7 @@ foreach ($_['groups'] as $group) {
 		<label for="email_is_login"><?php p($l->t('Force email as login name')); ?></label>
 	</p>
 
-	<h3><?php p($l->t('Username Policy')); ?></h3>
+	<h3><?php p($l->t('Username policy')); ?></h3>
 	<p>
 		<label>
 			<input type="text" id="username_policy_regex" name="username_policy_regex" value="<?php p($_['username_policy_regex']);?>" placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/">
