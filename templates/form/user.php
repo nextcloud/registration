@@ -17,7 +17,7 @@ script('registration', 'form');
 		<?php } ?>
 
 		<?php if (!empty($_['additional_hint'])): ?>
-			<ul class="error">
+			<ul class="msg">
 				<li><?php p($_['additional_hint']); ?></li>
 			</ul>		
 		<?php endif; ?>
