@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.6.0 – 2020-12-14
+### Added
+ - Allow forcing user name patterns and providing hints on the registration form and email (by @pxlfrk )
+    [#259](https://github.com/nextcloud/registration/pull/259)
+ - Compatibility with Nextcloud 21
+
 ## 0.5.2 – 2020-11-30
 ### Fixed
  - Fix compatibility with password policy app
