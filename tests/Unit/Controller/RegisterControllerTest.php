@@ -457,6 +457,7 @@ class RegisterControllerTest extends TestCase {
 			'email_is_login' => false,
 			'username' => $username,
 			'message' => $message,
+			'additional_hint' => null,
 		], $response->getParams());
 	}
 

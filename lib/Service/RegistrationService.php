@@ -234,10 +234,8 @@ class RegistrationService {
 		}
 
 		$regex = $this->config->getAppValue($this->appName, 'username_policy_regex', '');
-		if (!($regex === '')) {
-			if (preg_match($regex, $username) === 0) {
-				throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
-			}
+		if ($regex && preg_match($regex, $username) === 0) {
+			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
 		}
 
 		if ($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {

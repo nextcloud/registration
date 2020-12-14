@@ -67,6 +67,11 @@ class RegistrationServiceTest extends TestCase {
 		parent::setUp();
 		$this->mailService = $this->createMock(MailService::class);
 		$this->l10n = $this->createMock(IL10N::class);
+		$this->l10n->expects($this->any())
+			->method('t')
+			->willReturnCallback(function ($text, $parameters = []) {
+				return vsprintf($text, $parameters);
+			});
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
 		#$this->userManager = $this->createMock(IUserManager::class);
 		$this->userManager = \OC::$server->getUserManager();
@@ -233,7 +238,8 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmailConfirmed(true);
 
 		$this->expectException(RegistrationException::class);
-		$resulting_user = $this->service->createAccount($reg, 'alice1', 'asdf');
+		$this->expectExceptionMessage('The username you have chosen already exists.');
+		$this->service->createAccount($reg, 'alice1', 'asdf');
 	}
 
 	/*
@@ -256,13 +262,39 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmailConfirmed(true);
 
 		$this->expectException(RegistrationException::class);
-		$resulting_user = $this->service->createAccount($reg);
+		$this->expectExceptionMessage('The username you have chosen already exists.');
+		$this->service->createAccount($reg);
+	}
+
+	/**
+	 * @depends testDuplicateUsernameApi
+	 */
+	public function testUsernameDoesntMatchPattern() {
+
+
+		$this->config->expects($this->atLeastOnce())
+			->method('getAppValue')
+			->willReturnMap([
+				['registration', 'username_policy_regex', '', '/^[a-z]\.[a-z]+$/'],
+			]);
+
+		$reg = new Registration();
+		$reg->setEmail("pppp@example.com");
+		$reg->setUsername("alice23");
+		$reg->setDisplayname("Alice");
+		$reg->setPassword("asdf");
+		$reg->setEmailConfirmed(true);
+
+		$this->expectException(RegistrationException::class);
+		$this->expectExceptionMessage('Please provide a valid user name.');
+		$this->service->createAccount($reg);
 	}
 
 	public function settingsCallback1($app, $key, $default) {
 		$map = [
 			'registered_user_group' => 'none',
-			'admin_approval_required' => 'no'
+			'admin_approval_required' => 'no',
+			'username_policy_regex' => '',
 		];
 
 		return $map[$key];
