@@ -233,6 +233,11 @@ class RegistrationService {
 			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
 		}
 
+		$regex = $this->config->getAppValue($this->appName, 'username_policy_regex', '');
+		if ($regex && preg_match($regex, $username) === 0) {
+			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
+		}
+
 		if ($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {
 			throw new RegistrationException($this->l10n->t('The username you have chosen already exists.'));
 		}
