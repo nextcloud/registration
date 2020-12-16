@@ -38,6 +38,8 @@
     "Block listed email domains instead of allowing them" : "Interdire les domaines de messagerie suivants (au lieu de les autoriser) :",
     "Show the allowed/blocked email domains to users" : "Afficher aux utilisateurs les domaines de courriels autorisés / interdits.",
     "Force email as login name" : "Forcer l'utilisation de l'email comme identifiant",
+    "Username policy" : "Politique pour les identifiants",
+    "User instructions" : "Consignes à l'utilisateur",
     "Admin approval" : "Approbation de l'administrateur",
     "Require admin approval" : "Demander l'approbation de l'administrateur",
     "Enabling \"admin approval\" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled." : "Activer \"Approbation de l'administrateur\" empêchera les inscriptions depuis les clients mobile et bureau car les identifiants ne peuvent pas être vérifiés par le client tant que l'utilisateur n'est pas manuellement activé.",
