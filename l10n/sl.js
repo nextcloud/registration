@@ -42,6 +42,7 @@ OC.L10N.register(
     "Show the allowed/blocked email domains to users" : "Pokaži dovoljene/blokirane domene uporabnikom",
     "Force email as login name" : "Vsili uporabo elektronske pošte kot uporabniško ime",
     "Username policy" : "Pravila uporabniškega imena",
+    "User instructions" : "Uporabniška navodila",
     "Admin approval" : "Skrbniška potrditev ",
     "Require admin approval" : "Zahtevaj skrbniško potrditev pred omogočanjem",
     "Enabling \"admin approval\" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled." : "Omogočenje »skrbniške potrditve« prepreči vpis iz mobilne ali namizne naprave za dokončanje, saj poveril ni mogoče preveriti  s programom, dokler je uporabnik omogočen.",
