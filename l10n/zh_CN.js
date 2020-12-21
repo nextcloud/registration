@@ -43,7 +43,6 @@ OC.L10N.register(
     "Show the allowed/blocked email domains to users" : "向用户显示允许/阻止的电子邮件域名",
     "Force email as login name" : "强制使用电子邮件作为登录名称",
     "Username policy" : "用户名政策",
-    "If configured usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "如果配置了该选项，将通过正则表达式进行验证用户名。如果验证失败，则会提示用户一个通用错误。请确保你的正则表达式工作正常。",
     "User instructions" : "用户指令",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "警告：用户指令将不会被翻译，而是按照如下配置显示给所有用户，不管他们的实际语言是什么。",
     "Add additional user instructions (e.g. for choosing their usernames). If configured the text is displayed in the account creation step of the registration process." : "添加额外的用户指令(例如选择用户名)。如果配置好，该文本会被显示在账号注册过程的创建步骤中。",

@@ -41,7 +41,6 @@
     "Show the allowed/blocked email domains to users" : "Mostrar los dominios de correo bloqueados/permitidos a los usuarios",
     "Force email as login name" : "Forzar el email como nombre de usuario",
     "Username policy" : "Política de nombre de usuario",
-    "If configured usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Si está configurado, los nombres de usuario se validarán mediante la expresión regular. Si la validación falla, se mostrará al usuario un error genérico. Asegúrese de que su expresión regular esté funcionando correctamente.",
     "User instructions" : "Intrucciones del usuario",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Precaución: Las instrucciones de usuario no se traducirán y, por lo tanto, se mostrarán como se configura a continuación para todos los usuarios, independientemente de su idioma actual.",
     "Add additional user instructions (e.g. for choosing their usernames). If configured the text is displayed in the account creation step of the registration process." : "Agregue instrucciones de usuario adicionales (por ejemplo, para elegir sus nombres de usuario). Si está configurado, el texto se muestra en el paso de creación de cuenta del proceso de registro.",
