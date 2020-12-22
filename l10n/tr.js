@@ -43,6 +43,7 @@ OC.L10N.register(
     "Show the allowed/blocked email domains to users" : "İzin verilen ya da engellenen e-posta etki alanları kullanıcılara görüntülensin",
     "Force email as login name" : "Oturum açma kullanıcı adı olarak e-posta adresi kullanılsın",
     "Username policy" : "Kullanıcı adı ilkesi",
+    "If configured, usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Yapılandırılmış ise, kullanıcı adları kurallı ifade ile doğrulanır. Doğrulama yapılamadığında, kullanıcıya genel bir hata iletisi görüntülenir. Kurallı ifadenizin doğru çalıştığından emin olun.",
     "User instructions" : "Kullanıcı yönergeleri",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Dikkat: Kullanıcı yönergeleri çevrilmez. Bu nedenle tüm kullanıcılara, geçerli dillerine bakılmaksızın aşağıda yapılandırılmış yönergeler görüntülenir.",
     "Add additional user instructions (e.g. for choosing their usernames). If configured the text is displayed in the account creation step of the registration process." : "Ek kullanıcı yönergeleri ekleyin (kullanıcı adının seçilmesi gibi). Yapılandırılmış ise, bu metin hesap açma işleminin hesap oluşturma adımında görüntülenir.",

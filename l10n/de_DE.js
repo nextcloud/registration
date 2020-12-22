@@ -43,6 +43,7 @@ OC.L10N.register(
     "Show the allowed/blocked email domains to users" : "Benutzern die zulässigen/blockierten E-Mail-Domäns anzeigen",
     "Force email as login name" : "E-Mail als Anmeldename erzwingen",
     "Username policy" : "Richtlinien für Benutzernamen",
+    "If configured, usernames will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Wenn konfiguriert, werden Benutzernamen durch den regulären Ausdruck überprüft. Wenn die Validierung fehlschlägt, wird der Benutzer mit einem generischen Fehler aufgefordert. Stellen Sie sicher, dass Ihr Regex korrekt funktioniert.",
     "User instructions" : "Benutzeranweisungen",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Achtung: Die Benutzeranweisungen werden nicht übersetzt und daher für alle Benutzer unabhängig von ihrer tatsächlichen Sprache wie unten konfiguriert angezeigt.",
     "Add additional user instructions (e.g. for choosing their usernames). If configured the text is displayed in the account creation step of the registration process." : "Fügen Sie zusätzliche Anweisungen für Benutzer hinzu (z. B. für die Wahl ihres Benutzernamen). Wenn konfiguriert, wird der Text im Schritt \"Kontoerstellung\" des Registrierungsvorgangs angezeigt.",
