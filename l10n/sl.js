@@ -5,6 +5,7 @@ OC.L10N.register(
     "Registration is only allowed with the following domains:" : "Vpis je dovoljen le za navedene domene:",
     "The entered verification code is wrong" : "Vpisana koda za overitev je napačna.",
     "The verification failed." : "Overitev je spodletela.",
+    "Invalid username policy regex" : "Neveljaven logični izraz pravil uporabniškega imena",
     "Saved" : "Shranjeno",
     "No such group" : "Ni take skupine",
     "Register" : "Vpis računa",
@@ -62,6 +63,7 @@ OC.L10N.register(
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "Za ta elektronski naslov je že zabeležena zahteva za vpis. Na podan naslov je poslana nova povezava za overitev.",
     "Verification email successfully sent." : "Sporočilo z overitveno povezavo je uspešno poslano.",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Račun je uspešno ustvarjen, zdaj se lahko <a href=\"%s\">prijavite</a>.",
+    "A new user \"%s\" has created an account on %s" : "Nov uporabnik »%s« je ustvaril račun na %s.",
     "Registration is only allowed for the following domains: " : "Vpis je dovoljen le za navedene domene:",
     "Invalid verification URL. No registration request with this verification URL is found." : "Naslov URL za overitev ni veljaven. Ni mogoče najti zahteve za overitev za vpisani naslov URL.",
     "Failed to delete pending registration request" : "Brisanje zahteve na čakanju za vpis je spodletelo.",
@@ -69,6 +71,7 @@ OC.L10N.register(
     "Allowed mail address domains for registration" : "Dovoljeni naslovi poštnih domen za vpis",
     "Require admin approval?" : "Ali naj bo zahtevana skrbniška odobritev?",
     "Registration is only allowed for the following domains:" : "Vpis je dovoljen le za navedene domene:",
+    "A new user \"%s\" has created an account on %s and awaits admin approbation" : "Nov uporabnik »%s« je ustvaril račun na %s in čaka na skrbniško potrditev.",
     "Thank you for registering, you should receive a verification link in a few minutes." : "Zahvaljujemo se vam za vpis. V nekaj minutah bi morali prejeti overitveno povezavo.",
     "Please re-enter a valid email address" : "Ponovno vpišite veljavni elektronski naslov",
     "You will receive an email with a verification link" : "Prejeli boste elektronsko sporočilo z overitveno povezavo"
