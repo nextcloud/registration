@@ -270,8 +270,6 @@ class RegistrationServiceTest extends TestCase {
 	 * @depends testDuplicateUsernameApi
 	 */
 	public function testUsernameDoesntMatchPattern() {
-
-
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
 			->willReturnMap([
