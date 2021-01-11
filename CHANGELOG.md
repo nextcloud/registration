@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.6.1 – 2021-01-08
+### Added
+ - Compatibility with Nextcloud 21 beta 5
+
 ## 0.6.0 – 2020-12-14
 ### Added
  - Allow forcing user name patterns and providing hints on the registration form and email (by @pxlfrk )

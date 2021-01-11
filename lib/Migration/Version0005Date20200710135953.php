@@ -25,7 +25,7 @@ declare(strict_types=1);
 namespace OCA\Registration\Migration;
 
 use Closure;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\Types;
 use OCP\DB\ISchemaWrapper;
 use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
@@ -43,34 +43,34 @@ class Version0005Date20200710135953 extends SimpleMigrationStep {
 
 		if (!$schema->hasTable('registration')) {
 			$table = $schema->createTable('registration');
-			$table->addColumn('id', Type::INTEGER, [
+			$table->addColumn('id', Types::INTEGER, [
 				'autoincrement' => true,
 				'notnull' => true,
 				'unsigned' => true,
 			]);
-			$table->addColumn('email', Type::STRING, [
+			$table->addColumn('email', Types::STRING, [
 				'notnull' => true,
 			]);
-			$table->addColumn('username', Type::STRING, [
+			$table->addColumn('username', Types::STRING, [
 				'notnull' => false,
 			]);
-			$table->addColumn('password', Type::STRING, [
+			$table->addColumn('password', Types::STRING, [
 				'notnull' => false,
 			]);
-			$table->addColumn('displayname', Type::STRING, [
+			$table->addColumn('displayname', Types::STRING, [
 				'notnull' => false,
 			]);
-			$table->addColumn('email_confirmed', Type::BOOLEAN, [
+			$table->addColumn('email_confirmed', Types::BOOLEAN, [
 				'notnull' => false,
 				'default' => false,
 			]);
-			$table->addColumn('token', Type::STRING, [
+			$table->addColumn('token', Types::STRING, [
 				'notnull' => true,
 			]);
-			$table->addColumn('client_secret', Type::STRING, [
+			$table->addColumn('client_secret', Types::STRING, [
 				'notnull' => false,
 			]);
-			$table->addColumn('requested', Type::DATETIME, [
+			$table->addColumn('requested', Types::DATETIME_MUTABLE, [
 				'notnull' => true,
 			]);
 			$table->setPrimaryKey(['id']);
