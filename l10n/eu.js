@@ -45,6 +45,7 @@ OC.L10N.register(
     "Approval required" : "Onarpena beharrezkoa da",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Zure kontua ondo sortu da, baina oraindik administratzaile batek onartzea behar du.",
     "Email" : "Helbide elektronikoa",
+    "Continue" : "Jarraitu",
     "Request verification link" : "Eskatu egiaztatze esteka",
     "Back to login" : "Itzuli saio hasierara",
     "Welcome, you can create your account below." : "Ongi etorri, behean zure kontua sor dezakezu.",
