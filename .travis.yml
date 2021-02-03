@@ -20,7 +20,7 @@ addons:
 env:
   global:
     - APP_NAME=registration
-    - CORE_BRANCH=master
+    - CORE_BRANCH=stable21
     - DB=sqlite
   matrix:
 
