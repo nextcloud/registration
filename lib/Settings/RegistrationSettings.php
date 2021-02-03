@@ -44,7 +44,6 @@ class RegistrationSettings implements ISettings {
 		$this->appName = $appName;
 		$this->config = $config;
 		$this->groupManager = $groupManager;
-		$this->appName = $appName;
 	}
 
 	public function getForm(): TemplateResponse {
@@ -86,7 +85,7 @@ class RegistrationSettings implements ISettings {
 	}
 
 	public function getSection(): string {
-		return 'additional';
+		return 'registration';
 	}
 
 	public function getPriority(): int {
