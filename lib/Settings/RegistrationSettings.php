@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
+use OCA\Registration\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use OCP\IGroupManager;
@@ -44,7 +45,6 @@ class RegistrationSettings implements ISettings {
 		$this->appName = $appName;
 		$this->config = $config;
 		$this->groupManager = $groupManager;
-		$this->appName = $appName;
 	}
 
 	public function getForm(): TemplateResponse {
@@ -86,7 +86,7 @@ class RegistrationSettings implements ISettings {
 	}
 
 	public function getSection(): string {
-		return 'additional';
+		return Application::APP_ID;
 	}
 
 	public function getPriority(): int {

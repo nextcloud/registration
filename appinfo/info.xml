@@ -42,5 +42,6 @@ This app allows users to register a new account.
 	</dependencies>
 	<settings>
 		<admin>OCA\Registration\Settings\RegistrationSettings</admin>
+		<admin-section>OCA\Registration\Settings\RegistrationSettingsSection</admin-section>
 	</settings>
 </info>
