@@ -38,7 +38,7 @@ class RegistrationSettingsSection implements IIconSection {
 		$this->l10n = $l10n;
 		$this->urlGenerator = $urlGenerator;
 	}
-	
+
 	/**
 	 * Section ID to be set in Settings
 	 * @return string
@@ -46,7 +46,7 @@ class RegistrationSettingsSection implements IIconSection {
 	public function getID(): string {
 		return 'registration';
 	}
-	
+
 	/**
 	 * Section Name to be displayed
 	 * @return string
@@ -54,7 +54,7 @@ class RegistrationSettingsSection implements IIconSection {
 	public function getName(): string {
 		return $this->l10n->t('Registration');
 	}
-	
+
 	/**
 	 * Return Priority of section 0-100
 	 * @return int
@@ -62,12 +62,12 @@ class RegistrationSettingsSection implements IIconSection {
 	public function getPriority(): int {
 		return 80;
 	}
-	
+
 	/**
 	 * Pass the relative path to the icon
 	 * @return string
 	 */
 	public function getIcon(): string {
-		return $this->urlGenerator->imagePath('registration', 'app.svg');
+		return $this->urlGenerator->imagePath('registration', 'app-dark.svg');
 	}
 }
