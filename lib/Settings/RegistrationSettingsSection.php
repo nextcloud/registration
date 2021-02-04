@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2021 Jonas Rittershofer <jotoeri@users.noreply.github.com>
  *
@@ -23,6 +26,7 @@
 
 namespace OCA\Registration\Settings;
 
+use OCA\Registration\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
@@ -44,7 +48,7 @@ class RegistrationSettingsSection implements IIconSection {
 	 * @return string
 	 */
 	public function getID(): string {
-		return 'registration';
+		return Application::APP_ID;
 	}
 
 	/**
@@ -68,6 +72,6 @@ class RegistrationSettingsSection implements IIconSection {
 	 * @return string
 	 */
 	public function getIcon(): string {
-		return $this->urlGenerator->imagePath('registration', 'app-dark.svg');
+		return $this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg');
 	}
 }

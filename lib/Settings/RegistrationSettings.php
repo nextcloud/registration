@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
+use OCA\Registration\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use OCP\IGroupManager;
@@ -85,7 +86,7 @@ class RegistrationSettings implements ISettings {
 	}
 
 	public function getSection(): string {
-		return 'registration';
+		return Application::APP_ID;
 	}
 
 	public function getPriority(): int {
