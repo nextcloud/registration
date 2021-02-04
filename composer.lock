@@ -4,29 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e610e4ea129d14cc709c49ad95321a1",
+    "content-hash": "2dcacac7d06640a5eb8447e010da49ef",
     "packages": [],
     "packages-dev": [
         {
             "name": "christophwurst/nextcloud_testing",
-            "version": "0.10.0",
+            "version": "v0.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ChristophWurst/nextcloud_testing.git",
-                "reference": "a5b30f95ef199b2fa80ff51b0e5bad48bfd0501c"
+                "reference": "f16ffe407e734ab6a8cd16e7ba7d1e2bad8cfefc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ChristophWurst/nextcloud_testing/zipball/a5b30f95ef199b2fa80ff51b0e5bad48bfd0501c",
-                "reference": "a5b30f95ef199b2fa80ff51b0e5bad48bfd0501c",
+                "url": "https://api.github.com/repos/ChristophWurst/nextcloud_testing/zipball/f16ffe407e734ab6a8cd16e7ba7d1e2bad8cfefc",
+                "reference": "f16ffe407e734ab6a8cd16e7ba7d1e2bad8cfefc",
                 "shasum": ""
             },
             "require": {
-                "php-webdriver/webdriver": "^1.7",
-                "phpunit/phpunit": "^8.0"
+                "php": "^7.2|^8.0",
+                "php-webdriver/webdriver": "^1.9",
+                "phpunit/phpunit": "^8.0|^9.0"
             },
             "require-dev": {
-                "christophwurst/nextcloud": "^15.0"
+                "christophwurst/nextcloud": "^17.0"
             },
             "type": "library",
             "autoload": {
@@ -45,7 +46,7 @@
                 }
             ],
             "description": "Simple and fast unit and integration testing framework for Nextcloud, based on PHPUnit",
-            "time": "2020-01-20T13:20:58+00:00"
+            "time": "2021-01-28T10:28:10+00:00"
         },
         {
             "name": "composer/semver",
@@ -743,34 +744,36 @@
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.8.2",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
-                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab"
+                "reference": "e3633154554605274cc9d59837f55a7427d72003"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
-                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/e3633154554605274cc9d59837f55a7427d72003",
+                "reference": "e3633154554605274cc9d59837f55a7427d72003",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-zip": "*",
-                "php": "^5.6 || ~7.0",
+                "php": "^5.6 || ~7.0 || ^8.0",
                 "symfony/polyfill-mbstring": "^1.12",
                 "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0"
             },
+            "replace": {
+                "facebook/webdriver": "*"
+            },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "jakub-onderka/php-parallel-lint": "^1.0",
-                "php-coveralls/php-coveralls": "^2.0",
-                "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
-                "sminnee/phpunit-mock-objects": "^3.4",
+                "ondram/ci-detector": "^2.1 || ^3.5",
+                "php-coveralls/php-coveralls": "^2.4",
+                "php-mock/php-mock-phpunit": "^1.1 || ^2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^7 || ^8 || ^9",
                 "squizlabs/php_codesniffer": "^3.5",
                 "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0"
             },
@@ -780,7 +783,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8.x-dev"
+                    "dev-main": "1.8.x-dev"
                 }
             },
             "autoload": {
@@ -804,7 +807,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2020-03-04T14:40:12+00:00"
+            "time": "2020-11-19T15:21:05+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
