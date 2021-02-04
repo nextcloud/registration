@@ -49,8 +49,5 @@ install:
   - . ${BUILD_APP_MODULE_DIR}/tests/scripts/core-setup.sh
 
 script:
-  # Run app code checker but do not fail, as we have to use private API for now
-  - . ${BUILD_APP_MODULE_DIR}/tests/scripts/app-check-code.sh || true
-
   # Run PHP tests
   - . ${BUILD_APP_MODULE_DIR}/tests/scripts/phpunit.sh
