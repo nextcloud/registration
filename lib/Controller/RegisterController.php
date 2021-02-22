@@ -143,6 +143,8 @@ class RegisterController extends Controller {
 			$this->mailService->sendTokenByMail($registration);
 		} catch (RegistrationException $e) {
 			return $this->showEmailForm($email, $e->getMessage());
+		} catch (\Exception $e) {
+			return $this->showEmailForm($email, $this->l10n->t('A problem occurred sending email, please contact your administrator.'));
 		}
 
 		return new RedirectResponse(
@@ -222,7 +224,7 @@ class RegisterController extends Controller {
 		} catch (RegistrationException $e) {
 			return $this->validateSecretAndTokenErrorPage();
 		}
-		
+
 		$additional_hint = $this->config->getAppValue('registration', 'additional_hint');
 
 		return new TemplateResponse('registration', 'form/user', [
