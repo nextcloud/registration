@@ -9,7 +9,7 @@ OC.L10N.register(
     "Saved" : "已儲存",
     "No such group" : "沒有此群組",
     "Register" : "註冊",
-    "The email address you entered is not valid" : "您輸入的電子郵件地址不是有效的",
+    "The email address you entered is not valid" : "您輸入的電郵地址是無效的",
     "Verify your %s registration request" : "驗證您的%s註冊需求",
     "Registration" : "註冊",
     "Email address verified, you can now complete your registration." : "電子郵件地址已經驗證，您現在可以完成您的註冊。",
