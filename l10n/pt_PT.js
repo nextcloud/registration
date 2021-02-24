@@ -1,12 +1,12 @@
 OC.L10N.register(
     "registration",
     {
+    "A problem occurred sending email, please contact your administrator." : "Ocorreu um problema ao enviar o e-mail, por favor, contacte o seu administrador.",
     "Saved" : "Guardado",
     "Register" : "Registar",
     "The email address you entered is not valid" : "O endereço de e-mail que inseriu não é válido",
     "Verify your %s registration request" : "Verifique o seu pedido de registo %s",
     "Registration" : "Registo",
-    "A problem occurred sending email, please contact your administrator." : "Ocorreu um problema ao enviar o e-mail, por favor, contacte o seu administrador.",
     "You can <a href=\"%s\">log in now</a>." : "Agora, pode <a href=\"%s\">iniciar a sessão</a>.",
     "This app allows users to self-register a new account using their e-mail address." : "Esta aplicação permite que os utilizadores registem automaticamente uma nova conta utilizando o próprio endereçod e e-mail.",
     "None" : "Nenhum",

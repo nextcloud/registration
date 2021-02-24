@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Izen ematea ez da onartzen domeinu hauekin:",
     "Registration is only allowed with the following domains:" : "Izen ematea domeinu hauekin bakarrik onartzen da:",
+    "A problem occurred sending email, please contact your administrator." : "Arazo bat egon da e-posta bidaltzean, jarri harremanetan zure administratzailearekin.",
     "The entered verification code is wrong" : "Sarturiko egiaztatze kodea ez da zuzena",
     "The verification failed." : "Egiaztatzeak huts egin du.",
     "Saved" : "Gordeta",
@@ -13,7 +14,6 @@
     "Click the button below to continue." : "Egin klik beheko botoian jarraitzeko.",
     "Verification code: %s" : "Egiaztatze kodea: %s",
     "Continue registration" : "Jarraitu izen ematearekin",
-    "A problem occurred sending email, please contact your administrator." : "Arazo bat egon da e-posta bidaltzean, jarri harremanetan zure administratzailearekin.",
     "New user \"%s\" has created an account on %s" : "\"%s\" erabiltzaile berriak kontua sortu du %s(e)n",
     "New user registered" : "Erabiltzaile berria erregistratu da",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" erabiltzaileak kontu berria erregistratu du %2$s(e)n.",

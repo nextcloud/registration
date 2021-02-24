@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Η εγγραφή δεν επιτρέπεται στους ακόλουθους τομείς:",
     "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:",
+    "A problem occurred sending email, please contact your administrator." : "Παρουσιάστηκε πρόβλημα κατά την αποστολή email, παρακαλούμε επικοινωνήστε με τον διαχειριστή.",
     "The entered verification code is wrong" : "Ο κωδικός επαλήθευσης που έχετε εισαγάγει είναι λάθος",
     "The verification failed." : "Η επαλήθευση απέτυχε.",
     "Invalid username policy regex" : "Μη έγκυρο regex πολιτικής ονόματος χρήστη",
@@ -14,7 +15,6 @@
     "Click the button below to continue." : "Κάντε κλικ στο παρακάτω κουμπί για συνέχεια.",
     "Verification code: %s" : "Κωδικός επαλήθευσης: %s",
     "Continue registration" : "Συνεχίστε την εγγραφή",
-    "A problem occurred sending email, please contact your administrator." : "Παρουσιάστηκε πρόβλημα κατά την αποστολή email, παρακαλούμε επικοινωνήστε με τον διαχειριστή.",
     "New user \"%s\" has created an account on %s" : "Ένας νέος χρήστης, ο «%s» έχει δημιουργήσει έναν λογαριασμό στο %s",
     "New user registered" : "Εγγράφηκε νέος χρήστης",
     "\"%1$s\" registered a new account on %2$s." : "Ο \"%1$s\" καταχώρησε έναν νέο λογαριασμό στις %2$s.",

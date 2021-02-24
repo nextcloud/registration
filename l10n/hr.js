@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Registracija nije dopuštena za sljedeće domene:",
     "Registration is only allowed with the following domains:" : "Registracija je dopuštena samo za sljedeće domene:",
+    "A problem occurred sending email, please contact your administrator." : "Došlo je do pogreške pri slanju poruke e-pošte, obratite se svom administratoru.",
     "The entered verification code is wrong" : "Unesen je pogrešan kontrolni kôd",
     "The verification failed." : "Provjera nije uspjela.",
     "Invalid username policy regex" : "Nevažeći regex pravila o korisničkim imenima",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Kliknite gumb u nastavku za nastavak.",
     "Verification code: %s" : "Kontrolni kôd: %s",
     "Continue registration" : "Nastavi registraciju",
-    "A problem occurred sending email, please contact your administrator." : "Došlo je do pogreške pri slanju poruke e-pošte, obratite se svom administratoru.",
     "New user \"%s\" has created an account on %s" : "Novi korisnik „%s“ stvorio je račun na %s",
     "New user registered" : "Registriran je novi korisnik",
     "\"%1$s\" registered a new account on %2$s." : "„%1$s“ je registrirao novi račun na %2$s.",

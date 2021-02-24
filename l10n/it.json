@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "La registrazione non è consentita per i seguenti domini:",
     "Registration is only allowed with the following domains:" : "La registrazione è consentita solo con i seguenti domini:",
+    "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio del messaggio, contatta il tuo amministratore.",
     "The entered verification code is wrong" : "Il codice di verifica inserito è errato",
     "The verification failed." : "La verifica non è riuscita.",
     "Invalid username policy regex" : "Espressione regolare dei criteri del nome utente non valida",
@@ -14,7 +15,6 @@
     "Click the button below to continue." : "Fai clic sul pulsante seguente per continuare.",
     "Verification code: %s" : "Codice di verifica: %s",
     "Continue registration" : "Continua la registrazione",
-    "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio del messaggio, contatta il tuo amministratore.",
     "New user \"%s\" has created an account on %s" : "Il nuovo utente \"%s\" ha creato un account su %s",
     "New user registered" : "Nuovo utente registrato",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" ha registrato un nuovo account su %2$s.",

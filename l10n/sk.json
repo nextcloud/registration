@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Registrácia nie je povolená s nasledujúcimi doménami",
     "Registration is only allowed with the following domains:" : "Registrácia je povolená iba na nasledujúcich doménach",
+    "A problem occurred sending email, please contact your administrator." : "Pri odosielaní e-mailu sa vyskytol problém. Kontaktujte svojho správcu.",
     "The entered verification code is wrong" : "Zadaný overovací kód je nesprávny",
     "The verification failed." : "Overenie zlyhalo.",
     "Invalid username policy regex" : "Neplatný regulárny výraz politiky používateľského mena",
@@ -14,7 +15,6 @@
     "Click the button below to continue." : "Pokračujte kliknutím na tlačidlo nižšie.",
     "Verification code: %s" : "Overovací kód: %s",
     "Continue registration" : "Pokračujte v registrácii",
-    "A problem occurred sending email, please contact your administrator." : "Pri odosielaní e-mailu sa vyskytol problém. Kontaktujte svojho správcu.",
     "New user \"%s\" has created an account on %s" : "Nový používateľ „%s“ vytvoril účet na %s",
     "New user registered" : "Nový užívateľ je zaregistrovaný",
     "\"%1$s\" registered a new account on %2$s." : "„%1$s“ zaregistroval nový účet na %2$s.",

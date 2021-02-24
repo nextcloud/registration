@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "التسجيل غير مسموح بـ خوادم البريد التالية:",
     "Registration is only allowed with the following domains:" : "التسجيل مسموح بـ خوادم البريد التالية فقط:",
+    "A problem occurred sending email, please contact your administrator." : "حدث خطأ اثناء ارسال البريد، يرجى التواصل مع مسؤول النظام.",
     "The entered verification code is wrong" : "رمز التحقق المدخل غير صحيح",
     "The verification failed." : "التحقق فشل.",
     "Saved" : "تم الحفظ",
@@ -15,7 +16,6 @@ OC.L10N.register(
     "Click the button below to continue." : "اضغط على الزر التالي للمتابعة.",
     "Verification code: %s" : "رمز التفعيل: %s",
     "Continue registration" : "متابعة التسجيل",
-    "A problem occurred sending email, please contact your administrator." : "حدث خطأ اثناء ارسال البريد، يرجى التواصل مع مسؤول النظام.",
     "New user \"%s\" has created an account on %s" : "مستخدم جديد \"%s\" قام بإنشاء حساب في %s",
     "New user registered" : "تم تسجيل مستخدم جديد",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" سجل حساب جديد في %2$s.",

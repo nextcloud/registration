@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Регистрација није дозвољена за следеће домене:",
     "Registration is only allowed with the following domains:" : "Регистрација је дозвољена само за следеће домене:",
+    "A problem occurred sending email, please contact your administrator." : "Десила се грешка приликом слања е-поште, контактирајте администратора.",
     "Saved" : "Сачувано",
     "No such group" : "Нема ове групе",
     "Register" : "Региструј се",
@@ -12,7 +13,6 @@ OC.L10N.register(
     "Email address verified, you can now complete your registration." : "Е-мејл адреса верификована, сада можете довршити регистрацију.",
     "Click the button below to continue." : "Кликните дугме испод да наставите.",
     "Continue registration" : "Настави регистрацију",
-    "A problem occurred sending email, please contact your administrator." : "Десила се грешка приликом слања е-поште, контактирајте администратора.",
     "New user \"%s\" has created an account on %s" : "Нови корисник „%s” је направио налог на %s",
     "New user registered" : "Регистрација новог корисника",
     "\"%1$s\" registered a new account on %2$s." : "„%1$s” је регистровао нови налог на %2$s.",

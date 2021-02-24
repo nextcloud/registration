@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Registrace není povolena z následujících domén:",
     "Registration is only allowed with the following domains:" : "Registrace je povolena pouze z následujících domén:",
+    "A problem occurred sending email, please contact your administrator." : "Vyskytl se problém s odesíláním e-mailu – prosím obraťte se na správce tohoto serveru.",
     "The entered verification code is wrong" : "Zadaný kód pro ověření je chybný",
     "The verification failed." : "Ověření se nezdařilo.",
     "Invalid username policy regex" : "Neplatný regulární výraz zásady pro uživatelská jména",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Pokračujte kliknutím na tlačítko níže.",
     "Verification code: %s" : "Kód pro ověření: %s",
     "Continue registration" : "Pokračovat v registraci",
-    "A problem occurred sending email, please contact your administrator." : "Vyskytl se problém s odesíláním e-mailu – prosím obraťte se na správce tohoto serveru.",
     "New user \"%s\" has created an account on %s" : "Nový uživatel „%s“ si vytvořil(a) účet na %s",
     "New user registered" : "Zaregistrován nový uživatel",
     "\"%1$s\" registered a new account on %2$s." : "„%1$s“ si zaregistroval(a) nový účet na %2$s.",

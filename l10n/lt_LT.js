@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "A problem occurred sending email, please contact your administrator." : "Siunčiant el. laišką atsirado problemų, susisiekite su savo administratoriumi.",
     "Saved" : "Įrašyta",
     "No such group" : "Tokios grupės nėra",
     "Register" : "Registruotis",
@@ -10,7 +11,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Norėdami tęsti, spustelėkite mygtuką žemiau.",
     "Verification code: %s" : "Patvirtinimo kodas: %s",
     "Continue registration" : "Tęsti registraciją",
-    "A problem occurred sending email, please contact your administrator." : "Siunčiant el. laišką atsirado problemų, susisiekite su savo administratoriumi.",
     "Enable now" : "Įjungti dabar",
     "None" : "Nėra",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius.",

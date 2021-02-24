@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
     "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
+    "A problem occurred sending email, please contact your administrator." : "Неочекувана грешка при испраќање на е-пошта. Контактирајте го администраторот.",
     "The entered verification code is wrong" : "Внесениот код за верификација не е точен",
     "The verification failed." : "Неуспешна верификација.",
     "Saved" : "Зачувано",
@@ -13,7 +14,6 @@
     "Click the button below to continue." : "Кликнете на копчето подолу за да продолжите.",
     "Verification code: %s" : "Код за верификација: %s",
     "Continue registration" : "Продолжи со регистрацијата",
-    "A problem occurred sending email, please contact your administrator." : "Неочекувана грешка при испраќање на е-пошта. Контактирајте го администраторот.",
     "New user \"%s\" has created an account on %s" : "Нов корисник \"%s\" е креиран на %s",
     "New user registered" : "Регистриран е нов корисник",
     "Enable now" : "Овозможи сега",

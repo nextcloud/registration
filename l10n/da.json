@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Registrering er ikke tilladt med de følgende domæner:",
     "Registration is only allowed with the following domains:" : "Regisrering er kun tilladt med de følgende domæner:",
+    "A problem occurred sending email, please contact your administrator." : "Uventet fejl ved afsendelse, venligst kontakt din administrator",
     "The entered verification code is wrong" : "Den indtastede verificerings kode er forkert",
     "The verification failed." : "Verificeringen fejlede.",
     "Saved" : "Gemt",
@@ -13,7 +14,6 @@
     "Click the button below to continue." : "Klik på knappen nedenfor for at fortsætte.",
     "Verification code: %s" : "Verifikations kode: %s",
     "Continue registration" : "Fortsæt registrering",
-    "A problem occurred sending email, please contact your administrator." : "Uventet fejl ved afsendelse, venligst kontakt din administrator",
     "New user \"%s\" has created an account on %s" : "Ny bruger \"%s\" har oprettet en konto på %s",
     "New user registered" : "Ny bruger registreret",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" registrerede en ny konto på %2$s.",

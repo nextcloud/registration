@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "אסור להירשם בדומיינים הבאים:",
     "Registration is only allowed with the following domains:" : "הרשמה מותרת רק בדומיינים הבאים:",
+    "A problem occurred sending email, please contact your administrator." : "אירעה תקלה בשליחת הדוא״ל, נא ליצור קשר עם הנהלת המערכת שלך.",
     "The entered verification code is wrong" : "קוד האימות שהוזן שגוי",
     "The verification failed." : "האימות נכשל.",
     "Invalid username policy regex" : "regex לא חוקי בנושא מדיניות שם משתמש",
@@ -14,7 +15,6 @@
     "Click the button below to continue." : "לחץ על הלחצן למטה כדי להמשיך.",
     "Verification code: %s" : "קוד אימות: %s",
     "Continue registration" : "המשך רישום",
-    "A problem occurred sending email, please contact your administrator." : "אירעה תקלה בשליחת הדוא״ל, נא ליצור קשר עם הנהלת המערכת שלך.",
     "New user \"%s\" has created an account on %s" : "משתמש חדש \"%s\" יצר חשבון ב-%s",
     "New user registered" : "נרשם משתמש חדש",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" רשם חשבון חדש ב-%2$s.",

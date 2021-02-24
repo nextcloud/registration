@@ -1,6 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains:" : "Vpis za navedene domene ni dovoljen:",
     "Registration is only allowed with the following domains:" : "Vpis je dovoljen le za navedene domene:",
+    "A problem occurred sending email, please contact your administrator." : "Med pošiljanjem elektronskega sporočila je prišlo do napake. Stopite v stik s skrbnikom sistema.",
     "The entered verification code is wrong" : "Vpisana koda za overitev je napačna.",
     "The verification failed." : "Overitev je spodletela.",
     "Invalid username policy regex" : "Neveljaven logični izraz pravil uporabniškega imena",
@@ -14,7 +15,6 @@
     "Click the button below to continue." : "Kliknite na gumb za nadaljevanje.",
     "Verification code: %s" : "Overitvena koda: %s",
     "Continue registration" : "Nadaljuj z vpisom",
-    "A problem occurred sending email, please contact your administrator." : "Med pošiljanjem elektronskega sporočila je prišlo do napake. Stopite v stik s skrbnikom sistema.",
     "New user \"%s\" has created an account on %s" : "Nov uporabnik »%s« je ustvaril račun na %s.",
     "New user registered" : "Vpisan je nov uporabnik",
     "\"%1$s\" registered a new account on %2$s." : "»%1$s« je vpisal nov račun na %2$s.",

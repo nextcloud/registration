@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Registratie is niet toegestaan ​​voor de volgende domeinen:",
     "Registration is only allowed with the following domains:" : "Registratie is alleen toegestaan ​​voor de volgende domeinen:",
+    "A problem occurred sending email, please contact your administrator." : "Er is een probleem opgetreden bij het verzenden van e-mail. Neem contact op met uw beheerder.",
     "The entered verification code is wrong" : "De ingevoerde verificatiecode is niet correct",
     "The verification failed." : "De verificatie is niet gelukt.",
     "Invalid username policy regex" : "Ongeldige gebruikersnaambeleid regex",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Klik op onderstaande knop om verder te gaan.",
     "Verification code: %s" : "Verificatiecode: %s",
     "Continue registration" : "Hervat registratie",
-    "A problem occurred sending email, please contact your administrator." : "Er is een probleem opgetreden bij het verzenden van e-mail. Neem contact op met uw beheerder.",
     "New user \"%s\" has created an account on %s" : "Nieuwe gebruiker \"%s\" heeft een account aangemaakt op %s",
     "New user registered" : "Nieuwe gebruiker geregistreerd",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" heeft een nieuw account geregistreerd op %2$s.",
