@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Rekisteröinti ei ole sallittu seuraavilla verkkotunnuksilla:",
     "Registration is only allowed with the following domains:" : "Rekisteröinti on sallittu vain seuraavilla verkkotunnuksilla:",
+    "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä ilmeni virhe, ole yhteydessä ylläpitoon.",
     "The entered verification code is wrong" : "Annettu vahvistuskoodi on väärä",
     "The verification failed." : "Vahvistus epäonnistui.",
     "Saved" : "Tallennettu",
@@ -15,7 +16,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Napsauta alla olevaa painiketta jatkaaksesi.",
     "Verification code: %s" : "Vahvistuskoodi: %s",
     "Continue registration" : "Jatka rekisteröintiä",
-    "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä ilmeni virhe, ole yhteydessä ylläpitoon.",
     "New user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" loi tilin palveluun %s",
     "New user registered" : "Uusi käyttäjä rekisteröitynyt",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" rekisteröi uuden tilin palveluun %2$s.",

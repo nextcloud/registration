@@ -1,13 +1,13 @@
 OC.L10N.register(
     "registration",
     {
+    "A problem occurred sending email, please contact your administrator." : "Váratlan hiba lépett fel az email küldéskor, kérem lépjen kapcsolatba a rendszergazdával.",
     "Saved" : "Mentve",
     "No such group" : "Nincs ilyen csoport",
     "Register" : "Regisztráció",
     "The email address you entered is not valid" : "A megadott email cím érvénytelen",
     "Verify your %s registration request" : "Ellenőrizze a %sregisztrációs kérelmét.",
     "Registration" : "Regisztráció",
-    "A problem occurred sending email, please contact your administrator." : "Váratlan hiba lépett fel az email küldéskor, kérem lépjen kapcsolatba a rendszergazdával.",
     "A user has already taken this email, maybe you already have an account?" : "Egy felhasználó már használja ezt az email címet, lehet, hogy  van már hozzáférése?",
     "Please provide a valid display name." : "Kérlek érvényes nevet adj meg.",
     "Please provide a valid user name." : "Kérlek add meg a felhasználó nevet.",

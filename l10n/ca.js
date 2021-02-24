@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
     "Registration is only allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
+    "A problem occurred sending email, please contact your administrator." : "S'ha produït un problema en enviar un correu electrònic, poseu-vos en contacte amb l'administrador.",
     "The entered verification code is wrong" : "El codi de verificació introduït és incorrecte",
     "The verification failed." : "Ha fallat la verificació.",
     "Saved" : "S'ha desat",
@@ -15,7 +16,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Fer clic al botó de sota per continuar.",
     "Verification code: %s" : "Codi de verificació: %s",
     "Continue registration" : "Continuar el registre",
-    "A problem occurred sending email, please contact your administrator." : "S'ha produït un problema en enviar un correu electrònic, poseu-vos en contacte amb l'administrador.",
     "New user \"%s\" has created an account on %s" : "El nou usuari \"%s\" ha creat un compte a %s",
     "New user registered" : "Nou usuari registrat",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" ha registrat un compte nou en %2$s.",

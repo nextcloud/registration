@@ -1,4 +1,5 @@
 { "translations": {
+    "A problem occurred sending email, please contact your administrator." : "メールの送信に問題が発生しました。管理者に連絡してください。",
     "Saved" : "保存済み",
     "No such group" : "そのようなグループがありません",
     "Register" : "登録",
@@ -8,7 +9,6 @@
     "Email address verified, you can now complete your registration." : "メールアドレスが確認され、登録が完了しました。",
     "Click the button below to continue." : "続行するには、下のボタンをクリックしてください。",
     "Continue registration" : "続けて登録する",
-    "A problem occurred sending email, please contact your administrator." : "メールの送信に問題が発生しました。管理者に連絡してください。",
     "New user \"%s\" has created an account on %s" : "新しいユーザー \"%s\" がアカウント %sで作成されました。",
     "New user registered" : "新規ユーザー登録",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" は新規アカウント%2$sで登録されました。",

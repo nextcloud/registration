@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Die Registrierung ist für folgende Domains nicht zulässig:",
     "Registration is only allowed with the following domains:" : "Die Registrierung ist nur für folgende Domains zulässig:",
+    "A problem occurred sending email, please contact your administrator." : "Es ist ein Fehler beim Senden der E-Mail aufgetreten. Bitte den Administrator kontaktieren.",
     "The entered verification code is wrong" : "Der eingegebene Überprüfungscode ist falsch",
     "The verification failed." : "Die Überprüfung ist fehlgeschlagen.",
     "Invalid username policy regex" : "ungültiger regulärer Ausdruck für die Benutzernamen-Richtlinie",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Zum Fortsetzen auf die untenstehende Schaltfläche klicken.",
     "Verification code: %s" : "Überprüfungscode: %s",
     "Continue registration" : "Registrierung fortsetzen",
-    "A problem occurred sending email, please contact your administrator." : "Es ist ein Fehler beim Senden der E-Mail aufgetreten. Bitte den Administrator kontaktieren.",
     "New user \"%s\" has created an account on %s" : "Neuer Benutzer \"%s\" hat ein Konto auf %s erstellt",
     "New user registered" : "Neuer Benutzer angemeldet",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" hat ein neues Konto auf %2$s erstellt.",

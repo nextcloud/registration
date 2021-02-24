@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "不允許以下網域註冊：",
     "Registration is only allowed with the following domains:" : "僅允許以下網域註冊：",
+    "A problem occurred sending email, please contact your administrator." : "傳送電子郵件時遇到錯誤，請聯絡您的管理員。",
     "The entered verification code is wrong" : "輸入的驗證碼錯誤",
     "The verification failed." : "驗證失敗。",
     "Invalid username policy regex" : "無效的使用者名稱政策正規表示式",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "點下方按鈕以繼續。",
     "Verification code: %s" : "驗證碼：%s",
     "Continue registration" : "繼續註冊",
-    "A problem occurred sending email, please contact your administrator." : "傳送電子郵件時遇到錯誤，請聯絡您的管理員。",
     "New user \"%s\" has created an account on %s" : "新使用者「%s」已在 %s 上建立了帳號",
     "New user registered" : "新使用者已註冊",
     "\"%1$s\" registered a new account on %2$s." : "「%1$s」在 %2$s 上註冊了新帳號。",

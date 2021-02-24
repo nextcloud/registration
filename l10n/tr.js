@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains:" : "Şu etki alanları ile hesap açılamaz:",
     "Registration is only allowed with the following domains:" : "Yalnız şu etki alanları ile hesap açılabilir:",
+    "A problem occurred sending email, please contact your administrator." : "E-posta gönderilirken bir sorun çıktı. Lütfen BT yöneticiniz ile görüşün.",
     "The entered verification code is wrong" : "Yazdığınız doğrulama kodu geçersiz",
     "The verification failed." : "Doğrulanamadı.",
     "Invalid username policy regex" : "Geçersiz kullanıcı adı ilkesi kurallı ifadesi",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "İşlemi sürdürmek için aşağıdaki düğmeye tıklayın.",
     "Verification code: %s" : "Doğrulama kodu: %s",
     "Continue registration" : "Hesap açma işlemini sürdür",
-    "A problem occurred sending email, please contact your administrator." : "E-posta gönderilirken bir sorun çıktı. Lütfen BT yöneticiniz ile görüşün.",
     "New user \"%s\" has created an account on %s" : "\"%s\" kullanıcı hesabı %s üzerinde açıldı",
     "New user registered" : "Yeni kullanıcı hesabı açıldı",
     "\"%1$s\" registered a new account on %2$s." : "\"%1$s\", %2$s üzerinde yeni bir hesap açtı.",
