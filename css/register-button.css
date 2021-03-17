@@ -4,7 +4,7 @@
 
 #alternative-logins .register-button:only-child {
 	width: 220px;
-	margin-left: 70px !important;
+	margin: 0 auto;
 }
 
 #alternative-logins .register-button.hidden {
