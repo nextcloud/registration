@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.7.0 – 2021-03-22
+### Fixed
+- Some layout issues when the screen is integrated into the Nextcloud mobile apps
+  [#277](https://github.com/nextcloud/registration/pull/277)
+  [#276](https://github.com/nextcloud/registration/pull/276)
+
 ## 0.7.0 – 2021-02-23
 ### Added
  - Compatibility with Nextcloud 21
