@@ -214,11 +214,13 @@ class RegisterController extends Controller {
 	 *
 	 * @param string $secret
 	 * @param string $token
-	 * @param string $username
+	 * @param string $loginname
+	 * @param string $fullname
+	 * @param string $phone
 	 * @param string $message
 	 * @return TemplateResponse
 	 */
-	public function showUserForm(string $secret, string $token, string $username = '', string $message = ''): TemplateResponse {
+	public function showUserForm(string $secret, string $token, string $loginname = '', string $fullname = '', string $phone = '', string $password = '', string $message = ''): TemplateResponse {
 		try {
 			$registration = $this->validateSecretAndToken($secret, $token);
 		} catch (RegistrationException $e) {
@@ -230,8 +232,13 @@ class RegisterController extends Controller {
 		return new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
 			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
-			'username' => $username,
+			'loginname' => $loginname,
+			'fullname' => $fullname,
+			'show_fullname' => $this->config->getAppValue('registration', 'enfore_fullname', 'no') === 'yes',
+			'phone' => $phone,
+			'show_phone' => $this->config->getAppValue('registration', 'enfore_phone', 'no') === 'yes',
 			'message' => $message,
+			'password' => $password,
 			'additional_hint' => $additional_hint,
 		], 'guest');
 	}
@@ -243,11 +250,13 @@ class RegisterController extends Controller {
 	 *
 	 * @param string $secret
 	 * @param string $token
-	 * @param string $username
+	 * @param string $loginname
+	 * @param string $fullname
+	 * @param string $phone
 	 * @param string $password
 	 * @return RedirectResponse|TemplateResponse
 	 */
-	public function submitUserForm(string $secret, string $token, string $username, string $password): Response {
+	public function submitUserForm(string $secret, string $token, string $loginname, string $fullname, string $phone, string $password): Response {
 		try {
 			$registration = $this->validateSecretAndToken($secret, $token);
 		} catch (RegistrationException $e) {
@@ -255,13 +264,13 @@ class RegisterController extends Controller {
 		}
 
 		if ($this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes') {
-			$username = $registration->getEmail();
+			$loginname = $registration->getEmail();
 		}
 
 		try {
-			$user = $this->registrationService->createAccount($registration, $username, $password);
+			$user = $this->registrationService->createAccount($registration, $loginname, $fullname, $phone, $password);
 		} catch (Exception $exception) {
-			return $this->showUserForm($secret, $token, $username, $exception->getMessage());
+			return $this->showUserForm($secret, $token, $loginname, $fullname, $phone, $password, $exception->getMessage());
 		}
 
 		// Delete registration

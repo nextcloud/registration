@@ -1,13 +1,17 @@
 #body-login #email,
 #body-login #token,
-#body-login #username,
+#body-login #loginname,
+#body-login #fullname,
+#body-login #phone,
 #body-login #password {
 	width: calc(100% - 56px);
 	padding-left: 36px;
 }
 #email-icon,
 #token-icon,
-#username-icon,
+#loginname-icon,
+#fullname-icon,
+#phone-icon,
 #password-icon {
 	position: absolute;
 	left: 16px;
@@ -16,8 +20,8 @@
 	filter: alpha(opacity=30);
 	opacity: .3;
 }
-#username-icon {
-	top: 17px;
+#email-icon {
+	top: 27px;
 }
 
 input[type="submit"] {
@@ -40,4 +44,8 @@ input[type="submit"] {
 
 .groupofone {
 	position: relative;
+}
+
+.toggle-password {
+	top: 22px !important;
 }
