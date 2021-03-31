@@ -20,4 +20,11 @@ $(document).ready(function() {
       event.preventDefault();
     }
   });
+  $('#email_is_login').change(function(event) {
+    if (event.target.checked) {
+      $('.login-name-policy').addClass('hidden');
+    } else {
+      $('.login-name-policy').removeClass('hidden');
+    }
+  });
 });
