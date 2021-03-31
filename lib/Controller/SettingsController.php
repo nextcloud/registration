@@ -12,6 +12,7 @@
 
 namespace OCA\Registration\Controller;
 
+use OCP\IGroup;
 use \OCP\IRequest;
 use \OCP\AppFramework\Http\DataResponse;
 use \OCP\AppFramework\Http;
@@ -42,7 +43,7 @@ class SettingsController extends Controller {
 	/**
 	 * @AdminRequired
 	 *
-	 * @param string $registered_user_group all newly registered user will be put in this group
+	 * @param string|null $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
 	 * @param string $additional_hint show Text at user-creation form
 	 * @param string $email_verification_hint if filled embed Text in Verification mail send to user
@@ -53,7 +54,7 @@ class SettingsController extends Controller {
 	 * @param bool|null $show_domains should the email list be shown to the user or not
 	 * @return DataResponse
 	 */
-	public function admin(string $registered_user_group,
+	public function admin(?string $registered_user_group,
 						  string $allowed_domains,
 						  string $additional_hint,
 						  string $email_verification_hint,
@@ -104,13 +105,7 @@ class SettingsController extends Controller {
 		$this->config->setAppValue($this->appName, 'show_domains', $show_domains ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'disable_email_verification', $disable_email_verification ? 'yes' : 'no');
 
-		// handle groups
-		$groups = $this->groupmanager->search('');
-		$group_id_list = [];
-		foreach ($groups as $group) {
-			$group_id_list[] = $group->getGid();
-		}
-		if ($registered_user_group === 'none') {
+		if ($registered_user_group === null) {
 			$this->config->deleteAppValue($this->appName, 'registered_user_group');
 			return new DataResponse([
 				'data' => [
@@ -118,7 +113,10 @@ class SettingsController extends Controller {
 				],
 				'status' => 'success',
 			]);
-		} elseif (in_array($registered_user_group, $group_id_list)) {
+		}
+
+		$group = $this->groupmanager->get($registered_user_group);
+		if ($group instanceof IGroup) {
 			$this->config->setAppValue($this->appName, 'registered_user_group', $registered_user_group);
 			return new DataResponse([
 				'data' => [
@@ -126,13 +124,13 @@ class SettingsController extends Controller {
 				],
 				'status' => 'success',
 			]);
-		} else {
-			return new DataResponse([
-				'data' => [
-					'message' => $this->l10n->t('No such group'),
-				],
-				'status' => 'error',
-			], Http::STATUS_NOT_FOUND);
 		}
+
+		return new DataResponse([
+			'data' => [
+				'message' => $this->l10n->t('No such group'),
+			],
+			'status' => 'error',
+		], Http::STATUS_NOT_FOUND);
 	}
 }

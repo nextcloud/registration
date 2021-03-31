@@ -1,0 +1,289 @@
+<!--
+  - @copyright Copyright (c) 2018 Roeland Jago Douma <roeland@famdouma.nl>
+  -
+  - @author Roeland Jago Douma <roeland@famdouma.nl>
+  -
+  - @license GNU AGPL version 3 or any later version
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU Affero General Public License as
+  - published by the Free Software Foundation, either version 3 of the
+  - License, or (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  - GNU Affero General Public License for more details.
+  -
+  - You should have received a copy of the GNU Affero General Public License
+  - along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -
+  -->
+<template>
+	<div id="registration_settings_form">
+		<div class="section">
+			<h2>{{ t('registration', 'Registration settings') }}</h2>
+			<p>
+				<input id="admin_approval"
+					v-model="adminApproval"
+					type="checkbox"
+					name="admin_approval"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="admin_approval">{{ t('registration', 'Require admin approval') }}</label>
+			</p>
+			<em>{{ t('registration', 'Enabling "admin approval" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled.') }}</em>
+
+			<p>
+				<label for="registered_user_group">
+					{{ t('registration', 'Registered users default group') }}
+				</label>
+			</p>
+			<Multiselect
+				id="registered_user_group"
+				v-model="registeredUserGroup"
+				:placeholder="t('registration', 'Select group')"
+				:options="groups"
+				:disabled="loading"
+				:searchable="true"
+				:tag-width="60"
+				:loading="loadingGroups"
+				:allow-empty="true"
+				:close-on-select="false"
+				track-by="id"
+				label="displayname"
+				@search-change="searchGroup"
+				@change="saveData" />
+		</div>
+
+		<div class="section">
+			<h2>{{ t('registration', 'Email settings') }}</h2>
+
+			<h4>{{ domainListLabel }}</h4>
+			<input v-model="allowedDomains"
+				type="text"
+				name="allowed_domains"
+				:disabled="loading"
+				placeholder="nextcloud.com;*.example.com"
+				:aria-label="t('registration', 'Allowed email domain')"
+				@input="debounceSavingSlow">
+
+			<p>
+				<input id="domains_is_blocklist"
+					v-model="domainsIsBlocklist"
+					type="checkbox"
+					name="domains_is_blocklist"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="domains_is_blocklist">{{ t('registration', 'Block listed email domains instead of allowing them') }}</label>
+			</p>
+
+			<p>
+				<input id="show_domains"
+					v-model="showDomains"
+					type="checkbox"
+					name="show_domains"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="show_domains">{{ showDomainListLabel }}</label>
+			</p>
+
+			<p>
+				<input id="disable_email_verification"
+					v-model="disableEmailVerification"
+					type="checkbox"
+					name="disable_email_verification"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="disable_email_verification">{{ t('registration', 'Disable email verification') }}</label>
+			</p>
+
+			<p>
+				<input id="email_is_login"
+					v-model="emailIsLogin"
+					type="checkbox"
+					name="email_is_login"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="email_is_login">{{ t('registration', 'Force email as login name') }}</label>
+			</p>
+		</div>
+
+		<div
+			v-if="!emailIsLogin"
+			class="section">
+			<h2>{{ t('registration', 'Login name settings') }}</h2>
+
+			<h3>{{ t('registration', 'Login name policy') }}</h3>
+			<p>
+				<input v-model="usernamePolicyRegex"
+					type="text"
+					name="username_policy_regex"
+					:disabled="loading"
+					placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
+					:aria-label="t('registration', 'Regular expression to validate login names')"
+					@input="debounceSavingSlow">
+			</p>
+			<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
+		</div>
+
+		<div class="section">
+			<h2>{{ t('registration', 'User instructions') }}</h2>
+			<em>{{ t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.') }}</em>
+
+			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
+			<p>
+				<input v-model="additionalHint"
+					type="text"
+					name="additional_hint"
+					:disabled="loading"
+					placeholder="Please create your username following the scheme 'firstname.lastname'."
+					:aria-label="t('registration', 'A short message that is shown to the user in the registration process.')"
+					@input="debounceSavingSlow">
+			</p>
+			<em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.') }}</em>
+
+			<h3>{{ t('registration', 'Verification email instructions') }}</h3>
+			<p>
+				<input v-model="emailVerificationHint"
+					type="text"
+					name="email_verification_hint"
+					:disabled="loading"
+					placeholder="Please create your username following the scheme 'firstname.lastname'."
+					:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
+					@input="debounceSavingSlow">
+			</p>
+			<em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em>
+		</div>
+	</div>
+</template>
+
+<script>
+import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
+import axios from '@nextcloud/axios'
+import { showError, showSuccess } from '@nextcloud/dialogs'
+import { loadState } from '@nextcloud/initial-state'
+import { generateOcsUrl, generateUrl } from '@nextcloud/router'
+import debounce from 'debounce'
+
+export default {
+	name: 'AdminSettings',
+
+	components: {
+		Multiselect,
+	},
+
+	data() {
+		return {
+			loading: false,
+			loadingGroups: false,
+			adminApproval: false,
+			registeredUserGroup: '',
+			allowedDomains: '',
+			domainsIsBlocklist: false,
+			showDomains: false,
+			disableEmailVerification: false,
+			emailIsLogin: false,
+			usernamePolicyRegex: '',
+			additionalHint: '',
+			emailVerificationHint: '',
+			groups: [],
+		}
+	},
+
+	computed: {
+		domainListLabel() {
+			if (this.domainsIsBlocklist) {
+				return t('registration', 'Blocked email domains')
+			}
+
+			return t('registration', 'Allowed email domains')
+		},
+		showDomainListLabel() {
+			if (this.domainsIsBlocklist) {
+				return t('registration', 'Show the blocked email domains to users')
+			}
+
+			return t('registration', 'Show the allowed email domains to users')
+		},
+	},
+
+	mounted() {
+		this.adminApproval = loadState('registration', 'admin_approval_required')
+		this.registeredUserGroup = loadState('registration', 'registered_user_group')
+		this.allowedDomains = loadState('registration', 'allowed_domains')
+		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
+		this.showDomains = loadState('registration', 'show_domains')
+		this.disableEmailVerification = loadState('registration', 'disable_email_verification')
+		this.emailIsLogin = loadState('registration', 'email_is_login')
+		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
+		this.additionalHint = loadState('registration', 'additional_hint')
+		this.emailVerificationHint = loadState('registration', 'email_verification_hint')
+
+		this.searchGroup('')
+	},
+	methods: {
+		debounceSavingSlow: debounce(function() {
+			this.saveData()
+		}, 2000),
+
+		async saveData() {
+			this.loading = true
+			try {
+				const response = await axios.post(generateUrl('/apps/registration/settings'), {
+					admin_approval_required: this.adminApproval,
+					registered_user_group: this.registeredUserGroup?.id,
+					allowed_domains: this.allowedDomains,
+					domains_is_blocklist: this.domainsIsBlocklist,
+					show_domains: this.showDomains,
+					disable_email_verification: this.disableEmailVerification,
+					email_is_login: this.emailIsLogin,
+					username_policy_regex: this.usernamePolicyRegex,
+					additional_hint: this.additionalHint,
+					email_verification_hint: this.emailVerificationHint,
+				})
+
+				if (response?.data?.status === 'success' && response?.data?.data?.message) {
+					showSuccess(response.data.data.message)
+				} else if (response?.data?.data?.message) {
+					showError(response.data.data.message)
+				} else {
+					showError(t('registration', 'An error occurred while saving the settings'))
+				}
+			} catch (e) {
+				if (e.response?.data?.data?.message) {
+					showError(e.response.data.data.message)
+				} else {
+					showError(t('registration', 'An error occurred while saving the settings'))
+					console.error(e)
+				}
+			}
+
+			this.loading = false
+		},
+
+		searchGroup: debounce(async function(query) {
+			this.loadingGroups = true
+			try {
+				const response = await axios.get(generateOcsUrl('cloud', 2) + 'groups/details', {
+					search: query,
+					limit: 20,
+					offset: 0,
+				})
+				this.groups = response.data.ocs.data.groups.sort(function(a, b) {
+					return a.displayname.localeCompare(b.displayname)
+				})
+			} catch (err) {
+				console.error('Could not fetch groups', err)
+			} finally {
+				this.loadingGroups = false
+			}
+		}, 500),
+	},
+}
+</script>
