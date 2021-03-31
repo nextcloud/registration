@@ -386,15 +386,17 @@ class RegistrationService {
 		}
 
 		// Set phone number in account data
-		$account = $this->accountManager->getAccount($user);
-		$property = $account->getProperty(IAccountManager::PROPERTY_PHONE);
-		$account->setProperty(
-			IAccountManager::PROPERTY_PHONE,
-			$phone,
-			$property->getScope(),
-			IAccountManager::NOT_VERIFIED
-		);
-		$this->accountManager->updateAccount($account);
+		if (method_exists($this->accountManager, 'updateAccount')) {
+			$account = $this->accountManager->getAccount($user);
+			$property = $account->getProperty(IAccountManager::PROPERTY_PHONE);
+			$account->setProperty(
+				IAccountManager::PROPERTY_PHONE,
+				$phone,
+				$property->getScope(),
+				IAccountManager::NOT_VERIFIED
+			);
+			$this->accountManager->updateAccount($account);
+		}
 
 		// Add user to group
 		$registeredUserGroup = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
