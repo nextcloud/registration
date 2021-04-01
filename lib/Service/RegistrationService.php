@@ -30,6 +30,10 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Service;
 
+use InvalidArgumentException;
+use libphonenumber\NumberParseException;
+use libphonenumber\PhoneNumber;
+use libphonenumber\PhoneNumberUtil;
 use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
@@ -37,6 +41,7 @@ use OC\Authentication\Token\IToken;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
+use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\ILogger;
 use OCP\IRequest;
@@ -66,6 +71,8 @@ class RegistrationService {
 	private $registrationMapper;
 	/** @var IUserManager */
 	private $userManager;
+	/** @var IAccountManager */
+	private $accountManager;
 	/** @var IConfig */
 	private $config;
 	/** @var IGroupManager */
@@ -92,6 +99,7 @@ class RegistrationService {
 		IURLGenerator $urlGenerator,
 		RegistrationMapper $registrationMapper,
 		IUserManager $userManager,
+		IAccountManager $accountManager,
 		IConfig $config,
 		IGroupManager $groupManager,
 		ISecureRandom $random,
@@ -108,6 +116,7 @@ class RegistrationService {
 		$this->urlGenerator = $urlGenerator;
 		$this->registrationMapper = $registrationMapper;
 		$this->userManager = $userManager;
+		$this->accountManager = $accountManager;
 		$this->config = $config;
 		$this->groupManager = $groupManager;
 		$this->random = $random;
@@ -229,17 +238,44 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateUsername(string $username): void {
-		if ($username === "") {
-			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
+		if ($username === '') {
+			throw new RegistrationException($this->l10n->t('Please provide a valid login name.'));
 		}
 
 		$regex = $this->config->getAppValue($this->appName, 'username_policy_regex', '');
 		if ($regex && preg_match($regex, $username) === 0) {
-			throw new RegistrationException($this->l10n->t('Please provide a valid user name.'));
+			throw new RegistrationException($this->l10n->t('Please provide a valid login name.'));
 		}
 
 		if ($this->registrationMapper->usernameIsPending($username) || $this->userManager->get($username) !== null) {
-			throw new RegistrationException($this->l10n->t('The username you have chosen already exists.'));
+			throw new RegistrationException($this->l10n->t('The login name you have chosen already exists.'));
+		}
+	}
+
+	/**
+	 * @param string $phone
+	 * @throws RegistrationException
+	 */
+	public function validatePhoneNumber(string $phone): void {
+		$defaultRegion = $this->config->getSystemValueString('default_phone_region', '');
+
+		if ($defaultRegion === '') {
+			// When no default region is set, only +49… numbers are valid
+			if (strpos($phone, '+') !== 0) {
+				throw new RegistrationException($this->l10n->t('The phone number needs to contain the country code.'));
+			}
+
+			$defaultRegion = 'EN';
+		}
+
+		$phoneUtil = PhoneNumberUtil::getInstance();
+		try {
+			$phoneNumber = $phoneUtil->parse($phone, $defaultRegion);
+			if (!$phoneNumber instanceof PhoneNumber || !$phoneUtil->isValidNumber($phoneNumber)) {
+				throw new RegistrationException($this->l10n->t('The phone number is invalid.'));
+			}
+		} catch (NumberParseException $e) {
+			throw new RegistrationException($this->l10n->t('The phone number is invalid.'));
 		}
 	}
 
@@ -290,46 +326,82 @@ class RegistrationService {
 	}
 
 	/**
-	 * @param $registration
-	 * @param string|null $username
+	 * @param Registration $registration
+	 * @param string|null $loginName
+	 * @param string|null $fullName
+	 * @param string|null $phone
 	 * @param string|null $password
 	 * @return IUser
-	 * @throws RegistrationException|InvalidTokenException
+	 * @throws RegistrationException|InvalidArgumentException
 	 */
-	public function createAccount(Registration $registration, ?string $username = null, ?string $password = null): IUser {
-		if ($password === null && $registration->getPassword() === null) {
-			$generatedPassword = $this->generateRandomDeviceToken();
-			$registration->setPassword($this->crypto->encrypt($generatedPassword));
-		}
-
-		if ($username === null) {
-			$username = $registration->getUsername();
+	public function createAccount(Registration $registration, ?string $loginName = null, ?string $fullName = null, ?string $phone = null, ?string $password = null): IUser {
+		if ($loginName === null) {
+			$loginName = $registration->getUsername();
 		}
 
 		if ($registration->getPassword() !== null) {
 			$password = $this->crypto->decrypt($registration->getPassword());
 		}
 
-		$this->validateUsername($username);
+		if (!$password) {
+			throw new RegistrationException($this->l10n->t('Please provide a password.'));
+		}
+
+		$this->validateUsername($loginName);
+
+		if ($this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes'
+			&& $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes') {
+			$this->validateDisplayname($fullName);
+		}
+
+		if (class_exists(PhoneNumberUtil::class)
+			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+			if ($phone) {
+				$this->validatePhoneNumber($phone);
+			} elseif ($this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes') {
+				throw new RegistrationException($this->l10n->t('Please provide a valid phone number.'));
+			}
+		}
 
 		/* TODO
 		 * createUser tests username validity once, but validateUsername already checked it,
 		 * but createUser doesn't check if there is a pending registration with that name
 		 *
 		 * And validateUsername will throw RegistrationException while
-		 * createUser throws \InvalidTokenException in NC, \Exception in OC
+		 * createUser throws \InvalidArgumentException
 		 */
-		$user = $this->userManager->createUser($username, $password);
+		$user = $this->userManager->createUser($loginName, $password);
 		if ($user === false) {
 			throw new RegistrationException($this->l10n->t('Unable to create user, there are problems with the user backend.'));
 		}
 		$userId = $user->getUID();
+
 
 		// Set user email
 		try {
 			$user->setEMailAddress($registration->getEmail());
 		} catch (\Exception $e) {
 			throw new RegistrationException($this->l10n->t('Unable to set user email: ' . $e->getMessage()));
+		}
+
+		// Set display name
+		if ($fullName && $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes') {
+			$user->setDisplayName($fullName);
+		}
+
+		// Set phone number in account data
+		if (method_exists($this->accountManager, 'updateAccount')
+			&& $phone
+			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+			$account = $this->accountManager->getAccount($user);
+			$property = $account->getProperty(IAccountManager::PROPERTY_PHONE);
+			$account->setProperty(
+				IAccountManager::PROPERTY_PHONE,
+				$phone,
+				$property->getScope(),
+				IAccountManager::NOT_VERIFIED
+			);
+			$this->accountManager->updateAccount($account);
 		}
 
 		// Add user to group

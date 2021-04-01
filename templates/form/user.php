@@ -19,7 +19,7 @@ script('registration', 'form');
 		<?php if (!empty($_['additional_hint'])): ?>
 			<ul class="msg">
 				<li><?php p($_['additional_hint']); ?></li>
-			</ul>		
+			</ul>
 		<?php endif; ?>
 
 
@@ -30,19 +30,45 @@ script('registration', 'form');
 		</p>
 
 		<?php if (!$_['email_is_login']) { ?>
+			<p class="groupmiddle">
+				<input type="text" name=loginname" id="loginname" value="<?php if (!empty($_['login'])) {
+	p($_['login']);
+} ?>" placeholder="<?php p($l->t('Login name')); ?>" />
+				<label for="loginname" class="infield"><?php p($l->t('Login name')); ?></label>
+				<img id="loginname-icon" class="svg" src="<?php print_unescaped(image_path('', 'categories/auth.svg')); ?>" alt=""/>
+			</p>
+		<?php } else { ?>
+			<input type="hidden" name="loginname" value="<?php p($_['email']); ?>" />
+		<?php } ?>
+
+		<?php if ($_['show_fullname']) { ?>
 		<p class="groupmiddle">
-			<input type="text" name="username" id="username" value="<?php if (!empty($_['entered_data']['user'])) {
-	p($_['entered_data']['user']);
-} ?>" placeholder="<?php p($l->t('Username')); ?>" />
-			<label for="username" class="infield"><?php p($l->t('Username')); ?></label>
-			<img id="username-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
+			<input type="text" name="fullname" id="fullname" value="<?php if (!empty($_['fullname'])) {
+	p($_['fullname']);
+} ?>" placeholder="<?php p($l->t('Full name')); ?>" />
+			<label for="fullname" class="infield"><?php p($l->t('Full name')); ?></label>
+			<img id="fullname-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
 		<?php } else { ?>
-			<input type="hidden" name="username" value="<?php p($_['email']); ?>" />
+			<input type="hidden" name="fullname" value="" />
+		<?php } ?>
+
+		<?php if ($_['show_phone']) { ?>
+			<p class="groupmiddle">
+				<input type="text" name="phone" id="phone" value="<?php if (!empty($_['phone'])) {
+	p($_['phone']);
+} ?>" placeholder="<?php p($l->t('Phone number')); ?>" />
+				<label for="phone" class="infield"><?php p($l->t('Phone number')); ?></label>
+				<img id="phone-icon" class="svg" src="<?php print_unescaped(image_path('', 'clients/phone.svg')); ?>" alt=""/>
+			</p>
+		<?php } else { ?>
+			<input type="hidden" name="phone" value="" />
 		<?php } ?>
 
 		<p class="groupbottom">
-			<input type="password" name="password" id="password" placeholder="<?php p($l->t('Password')); ?>"/>
+			<input type="password" name="password" id="password" value="<?php if (!empty($_['password'])) {
+	p($_['password']);
+} ?>" placeholder="<?php p($l->t('Password')); ?>"/>
 			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img id="password-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
 			<a id="showadminpass" href="#" class="toggle-password">

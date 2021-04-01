@@ -20,9 +20,11 @@ style('registration', 'style');
 			<input type="submit" id="submit" value="<?php
 				if ($_['disable_email_verification'] === 'yes') {
 					p($l->t('Continue'));
+				} elseif ($_['is_login_flow']) {
+					p($l->t('Request verification code'));
 				} else {
 					p($l->t('Request verification link'));
-				}?>" />
+				} ?>" />
 
 			<a id="lost-password-back" href="<?php print_unescaped(\OC::$server->getURLGenerator()->linkToRoute('core.login.showLoginForm')) ?>">
 				<?php p($l->t('Back to login')); ?>

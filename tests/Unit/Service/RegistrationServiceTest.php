@@ -7,6 +7,7 @@ use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
+use OCP\Accounts\IAccountManager;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
@@ -42,13 +43,15 @@ class RegistrationServiceTest extends TestCase {
 	private $registrationMapper;
 	/** @var IUserManager */
 	private $userManager;
+	/** @var IAccountManager */
+	private $accountManager;
 	/** @var IConfig */
 	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
 	/** @var ISecureRandom */
 	private $random;
-	/** @var IUserSession  */
+	/** @var IUserSession */
 	private $usersession;
 	/** @var IRequest */
 	private $request;
@@ -75,6 +78,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
 		#$this->userManager = $this->createMock(IUserManager::class);
 		$this->userManager = \OC::$server->getUserManager();
+		$this->accountManager = $this->createMock(IAccountManager::class);
 		$this->config = $this->createMock(IConfig::class);
 		$this->groupManager = \OC::$server->getGroupManager();
 		$this->random = \OC::$server->getSecureRandom();
@@ -97,6 +101,7 @@ class RegistrationServiceTest extends TestCase {
 			$this->urlGenerator,
 			$this->registrationMapper,
 			$this->userManager,
+			$this->accountManager,
 			$this->config,
 			$this->groupManager,
 			$this->random,
@@ -219,7 +224,7 @@ class RegistrationServiceTest extends TestCase {
 
 
 		$form_input_username = 'alice1';
-		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'asdf');
+		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'Full name', '+49 800 / 1110111', 'asdf');
 
 		$this->assertInstanceOf(IUser::class, $resulting_user);
 		$this->assertEquals($form_input_username, $resulting_user->getUID());
@@ -238,8 +243,8 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmailConfirmed(true);
 
 		$this->expectException(RegistrationException::class);
-		$this->expectExceptionMessage('The username you have chosen already exists.');
-		$this->service->createAccount($reg, 'alice1', 'asdf');
+		$this->expectExceptionMessage('The login name you have chosen already exists.');
+		$this->service->createAccount($reg, 'alice1', 'Full name', '+49 800 / 1110111', 'asdf');
 	}
 
 	/*
@@ -258,12 +263,16 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmail("pppp@example.com");
 		$reg->setUsername("alice1");
 		$reg->setDisplayname("Alice");
-		$reg->setPassword("asdf");
+		$reg->setPassword("crypto(asdf)");
 		$reg->setEmailConfirmed(true);
 
+		$this->crypto->method('decrypt')
+			->with('crypto(asdf)')
+			->willReturn('asdf');
+
 		$this->expectException(RegistrationException::class);
-		$this->expectExceptionMessage('The username you have chosen already exists.');
-		$this->service->createAccount($reg);
+		$this->expectExceptionMessage('The login name you have chosen already exists.');
+		$this->service->createAccount($reg, null, 'Full name', '+49 800 / 1110111');
 	}
 
 	/**
@@ -280,12 +289,16 @@ class RegistrationServiceTest extends TestCase {
 		$reg->setEmail("pppp@example.com");
 		$reg->setUsername("alice23");
 		$reg->setDisplayname("Alice");
-		$reg->setPassword("asdf");
+		$reg->setPassword("crypto(asdf)");
 		$reg->setEmailConfirmed(true);
 
+		$this->crypto->method('decrypt')
+			->with('crypto(asdf)')
+			->willReturn('asdf');
+
 		$this->expectException(RegistrationException::class);
-		$this->expectExceptionMessage('Please provide a valid user name.');
-		$this->service->createAccount($reg);
+		$this->expectExceptionMessage('Please provide a valid login name.');
+		$this->service->createAccount($reg, null, 'Full name', '+49 800 / 1110111');
 	}
 
 	public function settingsCallback1($app, $key, $default) {
@@ -293,6 +306,10 @@ class RegistrationServiceTest extends TestCase {
 			'registered_user_group' => 'none',
 			'admin_approval_required' => 'no',
 			'username_policy_regex' => '',
+			'show_fullname' => 'yes',
+			'enforce_fullname' => 'no',
+			'show_phone' => 'yes',
+			'enforce_phone' => 'no',
 		];
 
 		return $map[$key];

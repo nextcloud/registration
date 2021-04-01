@@ -127,6 +127,9 @@ class RegisterControllerTest extends TestCase {
 		$response = $controller->showEmailForm($email, $message);
 		$disable_email_verification = $this->config->getAppValue('registration', 'disable_email_verification', 'no');
 
+		$this->loginFlowService->method('isUsingLoginFlow')
+			->willReturn(false);
+
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/email', $response->getTemplateName());
 
@@ -134,6 +137,7 @@ class RegisterControllerTest extends TestCase {
 			'email' => $email,
 			'message' => $message,
 			'disable_email_verification' => $disable_email_verification,
+			'is_login_flow' => false,
 		], $response->getParams());
 	}
 
@@ -434,6 +438,9 @@ class RegisterControllerTest extends TestCase {
 		$secret = '123456789';
 		$token = 'abcdefghi';
 		$email = 'nextcloud@example.tld';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
+		$password = '123456';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -443,11 +450,17 @@ class RegisterControllerTest extends TestCase {
 			'validateSecretAndToken'
 		]);
 
+		$this->config->method('getAppValue')
+			->willReturnMap([
+				['registration', 'show_fullname', 'no', 'yes'],
+				['registration', 'show_phone', 'no', 'yes'],
+			]);
+
 		$controller->expects($this->once())
 			->method('validateSecretAndToken')
 			->willReturn($registration);
 
-		$response = $controller->showUserForm($secret, $token, $username, $message);
+		$response = $controller->showUserForm($secret, $token, $username, $fullname, $phone, $password, $message);
 
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/user', $response->getTemplateName());
@@ -455,8 +468,13 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame([
 			'email' => $email,
 			'email_is_login' => false,
-			'username' => $username,
+			'loginname' => $username,
+			'fullname' => $fullname,
+			'show_fullname' => true,
+			'phone' => $phone,
+			'show_phone' => true,
 			'message' => $message,
+			'password' => $password,
 			'additional_hint' => null,
 		], $response->getParams());
 	}
@@ -500,7 +518,7 @@ class RegisterControllerTest extends TestCase {
 			->method('validateSecretAndTokenErrorPage')
 			->willReturn($response);
 
-		self::assertSame($response, $controller->submitUserForm($secret, $token, '', ''));
+		self::assertSame($response, $controller->submitUserForm($secret, $token, '', '', '', ''));
 	}
 
 	public function testSubmitUserFormCreateAccountException(): void {
@@ -508,6 +526,8 @@ class RegisterControllerTest extends TestCase {
 		$token = 'abcdefghi';
 		$username = 'user';
 		$password = 'password';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -529,10 +549,10 @@ class RegisterControllerTest extends TestCase {
 
 		$this->registrationService->expects($this->once())
 			->method('createAccount')
-			->with($registration, $username, $password)
+			->with($registration, $username, $fullname, $phone, $password)
 			->willThrowException(new RegistrationException('Invalid account data'));
 
-		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password));
 	}
 
 	public function testSubmitUserFormRequiresAdminApproval(): void {
@@ -540,6 +560,8 @@ class RegisterControllerTest extends TestCase {
 		$token = 'abcdefghi';
 		$username = 'user';
 		$password = 'password';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -560,14 +582,14 @@ class RegisterControllerTest extends TestCase {
 
 		$this->registrationService->expects($this->once())
 			->method('createAccount')
-			->with($registration, $username, $password)
+			->with($registration, $username, $fullname, $phone, $password)
 			->willReturn($user);
 
 		$this->registrationService->expects($this->once())
 			->method('deleteRegistration')
 			->with($registration);
 
-		$response = $controller->submitUserForm($secret, $token, $username, $password);
+		$response = $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password);
 
 		self::assertInstanceOf(StandaloneTemplateResponse::class, $response);
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
@@ -579,6 +601,8 @@ class RegisterControllerTest extends TestCase {
 		$token = 'abcdefghi';
 		$username = 'user';
 		$password = 'password';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -601,7 +625,7 @@ class RegisterControllerTest extends TestCase {
 
 		$this->registrationService->expects($this->once())
 			->method('createAccount')
-			->with($registration, $username, $password)
+			->with($registration, $username, $fullname, $phone, $password)
 			->willReturn($user);
 
 		$this->registrationService->expects($this->once())
@@ -612,7 +636,7 @@ class RegisterControllerTest extends TestCase {
 			->method('loginUser')
 			->with($username, $username, $password);
 
-		$response = $controller->submitUserForm($secret, $token, $username, $password);
+		$response = $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password);
 
 		self::assertInstanceOf(RedirectToDefaultAppResponse::class, $response);
 	}
@@ -622,6 +646,8 @@ class RegisterControllerTest extends TestCase {
 		$token = 'abcdefghi';
 		$username = 'user';
 		$password = 'password';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -644,7 +670,7 @@ class RegisterControllerTest extends TestCase {
 
 		$this->registrationService->expects($this->once())
 			->method('createAccount')
-			->with($registration, $username, $password)
+			->with($registration, $username, $fullname, $phone, $password)
 			->willReturn($user);
 
 		$this->registrationService->expects($this->once())
@@ -664,7 +690,7 @@ class RegisterControllerTest extends TestCase {
 			->with($user)
 			->willReturn($response);
 
-		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password));
 	}
 
 	public function testSubmitUserFormSuccessfulLoginFlow1(): void {
@@ -672,6 +698,8 @@ class RegisterControllerTest extends TestCase {
 		$token = 'abcdefghi';
 		$username = 'user';
 		$password = 'password';
+		$fullname = 'Full name';
+		$phone = '0123 / 456789';
 
 		$registration = Registration::fromParams([
 			'email' => 'nextcloud@example.tld',
@@ -694,7 +722,7 @@ class RegisterControllerTest extends TestCase {
 
 		$this->registrationService->expects($this->once())
 			->method('createAccount')
-			->with($registration, $username, $password)
+			->with($registration, $username, $fullname, $phone, $password)
 			->willReturn($user);
 
 		$this->registrationService->expects($this->once())
@@ -715,6 +743,6 @@ class RegisterControllerTest extends TestCase {
 		$this->loginFlowService->method('tryLoginFlowV1')
 			->willReturn($response);
 
-		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $password));
+		self::assertSame($response, $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password));
 	}
 }
