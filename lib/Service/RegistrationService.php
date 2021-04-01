@@ -354,7 +354,8 @@ class RegistrationService {
 			$this->validateDisplayname($fullName);
 		}
 
-		if ($this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+		if (class_exists(PhoneNumberUtil::class)
+			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
 			if ($phone) {
 				$this->validatePhoneNumber($phone);
 			} elseif ($this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes') {

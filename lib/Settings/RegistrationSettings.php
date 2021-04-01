@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
+use libphonenumber\PhoneNumberUtil;
 use OCA\Registration\AppInfo\Application;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -109,7 +110,7 @@ class RegistrationSettings implements ISettings {
 		// FIXME Always true when Nextcloud 22 or 21.0.1 is minimum requirement
 		$this->initialState->provideInitialState(
 			'can_show_phone',
-			method_exists($this->accountManager, 'updateAccount')
+			method_exists($this->accountManager, 'updateAccount') && class_exists(PhoneNumberUtil::class)
 		);
 		$this->initialState->provideInitialState(
 			'show_phone',
