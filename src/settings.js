@@ -24,8 +24,7 @@ import AdminSettings from './AdminSettings.vue'
 Vue.prototype.t = t
 Vue.prototype.OC = OC
 
-const app = new Vue({
+export const app = new Vue({
+	el: '#registration_settings_form',
 	render: h => h(AdminSettings),
-}).$mount('#registration_settings_form')
-
-export { app }
+})
