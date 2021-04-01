@@ -11,7 +11,6 @@ use OCP\Accounts\IAccountManager;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
-use OCP\ILogger;
 use OC\Authentication\Token\IProvider;
 use OCP\IRequest;
 use OCP\Security\ISecureRandom;
@@ -24,6 +23,7 @@ use OCP\IUserSession;
 
 use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
 use ChristophWurst\Nextcloud\Testing\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * class RegistrationServiceTest
@@ -55,7 +55,7 @@ class RegistrationServiceTest extends TestCase {
 	private $usersession;
 	/** @var IRequest */
 	private $request;
-	/** @var ILogger */
+	/** @var LoggerInterface */
 	private $logger;
 	/** @var ISession */
 	private $session;
@@ -84,7 +84,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->random = \OC::$server->getSecureRandom();
 		$this->usersession = $this->createMock(IUserSession::class);
 		$this->request = $this->createMock(IRequest::class);
-		$this->logger = $this->createMock(ILogger::class);
+		$this->logger = $this->createMock(LoggerInterface::class);
 		$this->session = $this->createMock(ISession::class);
 		$this->tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);

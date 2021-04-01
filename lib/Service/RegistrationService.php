@@ -43,7 +43,6 @@ use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\ILogger;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
@@ -56,6 +55,7 @@ use \OCP\IGroupManager;
 use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Security\ISecureRandom;
+use Psr\Log\LoggerInterface;
 
 class RegistrationService {
 
@@ -83,7 +83,7 @@ class RegistrationService {
 	private $userSession;
 	/** @var IRequest */
 	private $request;
-	/** @var ILogger */
+	/** @var LoggerInterface */
 	private $logger;
 	/** @var ISession */
 	private $session;
@@ -105,7 +105,7 @@ class RegistrationService {
 		ISecureRandom $random,
 		IUserSession $userSession,
 		IRequest $request,
-		ILogger $logger,
+		LoggerInterface $logger,
 		ISession $session,
 		IProvider $tokenProvider,
 		ICrypto $crypto

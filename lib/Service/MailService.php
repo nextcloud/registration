@@ -32,11 +32,11 @@ use OCA\Registration\Db\Registration;
 use OCP\Defaults;
 use OCP\IGroupManager;
 use OCP\IL10N;
-use OCP\ILogger;
 use OCP\IURLGenerator;
 use OCP\Mail\IMailer;
 use OCP\Util;
 use OCP\IConfig;
+use Psr\Log\LoggerInterface;
 
 class MailService {
 
@@ -52,7 +52,7 @@ class MailService {
 	private $groupManager;
 	/** @var LoginFlowService */
 	private $loginFlowService;
-	/** @var ILogger */
+	/** @var LoggerInterface */
 	private $logger;
 	/** @var IConfig */
 	private $config;
@@ -64,7 +64,7 @@ class MailService {
 								IGroupManager $groupManager,
 								IConfig $config,
 								LoginFlowService $loginFlowService,
-								ILogger $logger) {
+								LoggerInterface $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->config = $config;
