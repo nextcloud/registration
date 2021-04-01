@@ -161,7 +161,8 @@
 				<label for="enforce_fullname">{{ t('registration', 'Enforce full name field') }}</label>
 			</p>
 
-			<p>
+			<p
+				v-if="canShowPhone">
 				<input id="show_phone"
 					v-model="showPhone"
 					type="checkbox"
@@ -173,7 +174,7 @@
 			</p>
 
 			<p
-				v-if="showPhone"
+				v-if="canShowPhone && showPhone"
 				class="indent">
 				<input id="enforce_phone"
 					v-model="enforcePhone"
@@ -250,6 +251,7 @@ export default {
 			usernamePolicyRegex: '',
 			showFullname: false,
 			enforceFullname: false,
+			canShowPhone: false,
 			showPhone: false,
 			enforcePhone: false,
 			additionalHint: '',
@@ -285,6 +287,7 @@ export default {
 		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
 		this.showFullname = loadState('registration', 'show_fullname')
 		this.enforceFullname = loadState('registration', 'enforce_fullname')
+		this.canShowPhone = loadState('registration', 'can_show_phone')
 		this.showPhone = loadState('registration', 'show_phone')
 		this.enforcePhone = loadState('registration', 'enforce_phone')
 		this.additionalHint = loadState('registration', 'additional_hint')

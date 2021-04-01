@@ -26,6 +26,7 @@ declare(strict_types=1);
 namespace OCA\Registration\Settings;
 
 use OCA\Registration\AppInfo\Application;
+use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
@@ -38,6 +39,8 @@ class RegistrationSettings implements ISettings {
 	private $config;
 	/** @var IGroupManager */
 	private $groupManager;
+	/** @var IAccountManager */
+	private $accountManager;
 	/** @var IInitialState */
 	private $initialState;
 	/** @var string */
@@ -46,10 +49,12 @@ class RegistrationSettings implements ISettings {
 	public function __construct(string $appName,
 								IConfig $config,
 								IGroupManager $groupManager,
+								IAccountManager $accountManager,
 								IInitialState $initialState) {
 		$this->appName = $appName;
 		$this->config = $config;
 		$this->groupManager = $groupManager;
+		$this->accountManager = $accountManager;
 		$this->initialState = $initialState;
 	}
 
@@ -100,6 +105,11 @@ class RegistrationSettings implements ISettings {
 		$this->initialState->provideInitialState(
 			'enforce_fullname',
 			$this->config->getAppValue($this->appName, 'enforce_fullname', 'no') === 'yes'
+		);
+		// FIXME Always true when Nextcloud 22 or 21.0.1 is minimum requirement
+		$this->initialState->provideInitialState(
+			'can_show_phone',
+			method_exists($this->accountManager, 'updateAccount')
 		);
 		$this->initialState->provideInitialState(
 			'show_phone',
