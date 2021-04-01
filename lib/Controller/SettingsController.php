@@ -61,6 +61,10 @@ class SettingsController extends Controller {
 						  string $username_policy_regex,
 						  ?bool $admin_approval_required,
 						  ?bool $email_is_login,
+						  ?bool $show_fullname,
+						  ?bool $enforce_fullname,
+						  ?bool $show_phone,
+						  ?bool $enforce_phone,
 						  ?bool $domains_is_blocklist,
 						  ?bool $show_domains,
 						  ?bool $disable_email_verification) {
@@ -101,6 +105,10 @@ class SettingsController extends Controller {
 
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'show_fullname', $show_fullname ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'enforce_fullname', $enforce_fullname ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'show_phone', $show_phone ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'enforce_phone', $enforce_phone ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'domains_is_blocklist', $domains_is_blocklist ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_domains', $show_domains ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'disable_email_verification', $disable_email_verification ? 'yes' : 'no');

@@ -54,13 +54,6 @@ class RegistrationSettings implements ISettings {
 	}
 
 	public function getForm(): TemplateResponse {
-		// handle groups
-		$groups = $this->groupManager->search('');
-		$groupIds = [];
-		foreach ($groups as $group) {
-			$groupIds[] = $group->getGid();
-		}
-
 		$this->initialState->provideInitialState(
 			'registered_user_group',
 			$this->getGroupDetailArray($this->config->getAppValue($this->appName, 'registered_user_group', 'none'))
@@ -87,14 +80,34 @@ class RegistrationSettings implements ISettings {
 			'disable_email_verification',
 			$this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes'
 		);
+
 		$this->initialState->provideInitialState(
 			'email_is_login',
 			$this->config->getAppValue($this->appName, 'email_is_login', 'no') === 'yes'
 		);
-
 		$this->initialState->provideInitialState(
 			'username_policy_regex',
 			$this->config->getAppValue($this->appName, 'username_policy_regex')
+		);
+		$this->initialState->provideInitialState(
+			'username_policy_regex',
+			$this->config->getAppValue($this->appName, 'username_policy_regex')
+		);
+		$this->initialState->provideInitialState(
+			'show_fullname',
+			$this->config->getAppValue($this->appName, 'show_fullname', 'no') === 'yes'
+		);
+		$this->initialState->provideInitialState(
+			'enforce_fullname',
+			$this->config->getAppValue($this->appName, 'enforce_fullname', 'no') === 'yes'
+		);
+		$this->initialState->provideInitialState(
+			'show_phone',
+			$this->config->getAppValue($this->appName, 'show_phone', 'no') === 'yes'
+		);
+		$this->initialState->provideInitialState(
+			'enforce_phone',
+			$this->config->getAppValue($this->appName, 'enforce_phone', 'no') === 'yes'
 		);
 
 		$this->initialState->provideInitialState(

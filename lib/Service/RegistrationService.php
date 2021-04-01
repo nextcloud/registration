@@ -349,14 +349,17 @@ class RegistrationService {
 
 		$this->validateUsername($loginName);
 
-		if ($this->config->getAppValue('registration', 'enfore_fullname', 'no') === 'yes') {
+		if ($this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes'
+			&& $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes') {
 			$this->validateDisplayname($fullName);
 		}
 
-		if ($phone) {
-			$this->validatePhoneNumber($phone);
-		} elseif ($this->config->getAppValue('registration', 'enfore_phone', 'no') === 'yes') {
-			throw new RegistrationException($this->l10n->t('Please provide a valid phone number.'));
+		if ($this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+			if ($phone) {
+				$this->validatePhoneNumber($phone);
+			} elseif ($this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes') {
+				throw new RegistrationException($this->l10n->t('Please provide a valid phone number.'));
+			}
 		}
 
 		/* TODO
@@ -381,12 +384,14 @@ class RegistrationService {
 		}
 
 		// Set display name
-		if ($fullName) {
+		if ($fullName && $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes') {
 			$user->setDisplayName($fullName);
 		}
 
 		// Set phone number in account data
-		if (method_exists($this->accountManager, 'updateAccount')) {
+		if (method_exists($this->accountManager, 'updateAccount')
+			&& $phone
+			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
 			$account = $this->accountManager->getAccount($user);
 			$property = $account->getProperty(IAccountManager::PROPERTY_PHONE);
 			$account->setProperty(

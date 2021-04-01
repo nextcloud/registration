@@ -39,35 +39,39 @@
 				<label for="registered_user_group">
 					{{ t('registration', 'Registered users default group') }}
 				</label>
+				<Multiselect
+					id="registered_user_group"
+					v-model="registeredUserGroup"
+					:placeholder="t('registration', 'Select group')"
+					:options="groups"
+					:disabled="loading"
+					:searchable="true"
+					:tag-width="60"
+					:loading="loadingGroups"
+					:allow-empty="true"
+					:close-on-select="false"
+					track-by="id"
+					label="displayname"
+					@search-change="searchGroup"
+					@change="saveData" />
 			</p>
-			<Multiselect
-				id="registered_user_group"
-				v-model="registeredUserGroup"
-				:placeholder="t('registration', 'Select group')"
-				:options="groups"
-				:disabled="loading"
-				:searchable="true"
-				:tag-width="60"
-				:loading="loadingGroups"
-				:allow-empty="true"
-				:close-on-select="false"
-				track-by="id"
-				label="displayname"
-				@search-change="searchGroup"
-				@change="saveData" />
 		</div>
 
 		<div class="section">
 			<h2>{{ t('registration', 'Email settings') }}</h2>
 
-			<h4>{{ domainListLabel }}</h4>
-			<input v-model="allowedDomains"
-				type="text"
-				name="allowed_domains"
-				:disabled="loading"
-				placeholder="nextcloud.com;*.example.com"
-				:aria-label="t('registration', 'Allowed email domain')"
-				@input="debounceSavingSlow">
+			<p>
+				<label for="allowed_domains">{{ domainListLabel }}</label>
+				<input
+					id="allowed_domains"
+					v-model="allowedDomains"
+					type="text"
+					name="allowed_domains"
+					:disabled="loading"
+					placeholder="nextcloud.com;*.example.com"
+					:aria-label="t('registration', 'Allowed email domain')"
+					@input="debounceSavingSlow">
+			</p>
 
 			<p>
 				<input id="domains_is_blocklist"
@@ -101,6 +105,10 @@
 					@change="saveData">
 				<label for="disable_email_verification">{{ t('registration', 'Disable email verification') }}</label>
 			</p>
+		</div>
+
+		<div class="section">
+			<h2>{{ t('registration', 'User settings') }}</h2>
 
 			<p>
 				<input id="email_is_login"
@@ -112,24 +120,70 @@
 					@change="saveData">
 				<label for="email_is_login">{{ t('registration', 'Force email as login name') }}</label>
 			</p>
-		</div>
+			<template
+				v-if="!emailIsLogin">
+				<p>
+					<label for="username_policy_regex">{{ t('registration', 'Login name policy') }}</label>
+					<input
+						id="username_policy_regex"
+						v-model="usernamePolicyRegex"
+						type="text"
+						name="username_policy_regex"
+						:disabled="loading"
+						placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
+						:aria-label="t('registration', 'Regular expression to validate login names')"
+						@input="debounceSavingSlow">
+				</p>
+				<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
+			</template>
 
-		<div
-			v-if="!emailIsLogin"
-			class="section">
-			<h2>{{ t('registration', 'Login name settings') }}</h2>
-
-			<h3>{{ t('registration', 'Login name policy') }}</h3>
 			<p>
-				<input v-model="usernamePolicyRegex"
-					type="text"
-					name="username_policy_regex"
+				<input id="show_fullname"
+					v-model="showFullname"
+					type="checkbox"
+					name="show_fullname"
+					class="checkbox"
 					:disabled="loading"
-					placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
-					:aria-label="t('registration', 'Regular expression to validate login names')"
-					@input="debounceSavingSlow">
+					@change="saveData">
+				<label for="show_fullname">{{ t('registration', 'Show full name field') }}</label>
 			</p>
-			<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
+
+			<p
+				v-if="showFullname"
+				class="indent">
+				<input id="enforce_fullname"
+					v-model="enforceFullname"
+					type="checkbox"
+					name="enforce_fullname"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="enforce_fullname">{{ t('registration', 'Enforce full name field') }}</label>
+			</p>
+
+			<p>
+				<input id="show_phone"
+					v-model="showPhone"
+					type="checkbox"
+					name="show_phone"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="show_phone">{{ t('registration', 'Show phone field') }}</label>
+			</p>
+
+			<p
+				v-if="showPhone"
+				class="indent">
+				<input id="enforce_phone"
+					v-model="enforcePhone"
+					type="checkbox"
+					name="enforce_phone"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="enforce_phone">{{ t('registration', 'Enforce phone field') }}</label>
+			</p>
 		</div>
 
 		<div class="section">
@@ -167,6 +221,7 @@
 import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
+import '@nextcloud/dialogs/styles/toast.scss'
 import { loadState } from '@nextcloud/initial-state'
 import { generateOcsUrl, generateUrl } from '@nextcloud/router'
 import debounce from 'debounce'
@@ -182,6 +237,9 @@ export default {
 		return {
 			loading: false,
 			loadingGroups: false,
+			groups: [],
+			saveNotification: null,
+
 			adminApproval: false,
 			registeredUserGroup: '',
 			allowedDomains: '',
@@ -190,9 +248,12 @@ export default {
 			disableEmailVerification: false,
 			emailIsLogin: false,
 			usernamePolicyRegex: '',
+			showFullname: false,
+			enforceFullname: false,
+			showPhone: false,
+			enforcePhone: false,
 			additionalHint: '',
 			emailVerificationHint: '',
-			groups: [],
 		}
 	},
 
@@ -222,6 +283,10 @@ export default {
 		this.disableEmailVerification = loadState('registration', 'disable_email_verification')
 		this.emailIsLogin = loadState('registration', 'email_is_login')
 		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
+		this.showFullname = loadState('registration', 'show_fullname')
+		this.enforceFullname = loadState('registration', 'enforce_fullname')
+		this.showPhone = loadState('registration', 'show_phone')
+		this.enforcePhone = loadState('registration', 'enforce_phone')
 		this.additionalHint = loadState('registration', 'additional_hint')
 		this.emailVerificationHint = loadState('registration', 'email_verification_hint')
 
@@ -234,6 +299,10 @@ export default {
 
 		async saveData() {
 			this.loading = true
+			if (this.saveNotification) {
+				await this.saveNotification.hideToast()
+			}
+
 			try {
 				const response = await axios.post(generateUrl('/apps/registration/settings'), {
 					admin_approval_required: this.adminApproval,
@@ -244,22 +313,26 @@ export default {
 					disable_email_verification: this.disableEmailVerification,
 					email_is_login: this.emailIsLogin,
 					username_policy_regex: this.usernamePolicyRegex,
+					show_fullname: this.showFullname,
+					enforce_fullname: this.enforceFullname,
+					show_phone: this.showPhone,
+					enforce_phone: this.enforcePhone,
 					additional_hint: this.additionalHint,
 					email_verification_hint: this.emailVerificationHint,
 				})
 
 				if (response?.data?.status === 'success' && response?.data?.data?.message) {
-					showSuccess(response.data.data.message)
+					this.saveNotification = showSuccess(response.data.data.message)
 				} else if (response?.data?.data?.message) {
-					showError(response.data.data.message)
+					this.saveNotification = showError(response.data.data.message)
 				} else {
-					showError(t('registration', 'An error occurred while saving the settings'))
+					this.saveNotification = showError(t('registration', 'An error occurred while saving the settings'))
 				}
 			} catch (e) {
 				if (e.response?.data?.data?.message) {
-					showError(e.response.data.data.message)
+					this.saveNotification = showError(e.response.data.data.message)
 				} else {
-					showError(t('registration', 'An error occurred while saving the settings'))
+					this.saveNotification = showError(t('registration', 'An error occurred while saving the settings'))
 					console.error(e)
 				}
 			}
@@ -287,3 +360,17 @@ export default {
 	},
 }
 </script>
+
+<style scoped lang="scss">
+
+p {
+	label {
+		display: block;
+	}
+
+	&.indent {
+		padding-left: 28px;
+	}
+}
+
+</style>
