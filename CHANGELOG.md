@@ -1,7 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## 0.7.0 – 2021-03-22
+## 1.1.0 – 2021-04-01
+### Added
+- Added settings to display and enforce a full name field on the registration form
+  [#280](https://github.com/nextcloud/registration/pull/280)
+- Added settings to display and enforce a phone number field on the registration form (Requires Nextcloud 21.0.1)
+  [#280](https://github.com/nextcloud/registration/pull/280)
+  
+### Changed
+- Reorganized the administration settings bringing in structure to the list of settings and hiding settings that exclude each others correctly
+
+## 1.0.0 – 2021-03-22
 ### Fixed
 - Some layout issues when the screen is integrated into the Nextcloud mobile apps
   [#277](https://github.com/nextcloud/registration/pull/277)
