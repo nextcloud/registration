@@ -323,7 +323,7 @@ class RegisterController extends Controller {
 	protected function validateSecretAndTokenErrorPage(): TemplateResponse {
 		return new TemplateResponse('core', 'error', [
 			'errors' => [
-				$this->l10n->t('The verification failed.'),
+				['error' => $this->l10n->t('The verification failed.')],
 			],
 		], 'error');
 	}
