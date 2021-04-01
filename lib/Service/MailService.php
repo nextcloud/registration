@@ -50,6 +50,8 @@ class MailService {
 	private $l10n;
 	/** @var IGroupManager */
 	private $groupManager;
+	/** @var LoginFlowService */
+	private $loginFlowService;
 	/** @var ILogger */
 	private $logger;
 	/** @var IConfig */
@@ -61,6 +63,7 @@ class MailService {
 								IL10N $l10n,
 								IGroupManager $groupManager,
 								IConfig $config,
+								LoginFlowService $loginFlowService,
 								ILogger $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
@@ -68,6 +71,7 @@ class MailService {
 		$this->defaults = $defaults;
 		$this->l10n = $l10n;
 		$this->groupManager = $groupManager;
+		$this->loginFlowService = $loginFlowService;
 		$this->logger = $logger;
 	}
 
@@ -103,11 +107,17 @@ class MailService {
 		$template->addHeading($this->l10n->t('Registration'));
 
 		$body = $this->l10n->t('Email address verified, you can now complete your registration.');
-		$template->addBodyText(
-			htmlspecialchars($body . ' ' . $this->l10n->t('Click the button below to continue.')),
-			$body
-		);
-		
+		if (!$this->loginFlowService->isUsingLoginFlow()) {
+			$template->addBodyText(
+				htmlspecialchars($body . ' ' . $this->l10n->t('Click the button below to continue.')),
+				$body
+			);
+		} else {
+			$template->addBodyText(
+				$body
+			);
+		}
+
 		// if the parameter is set through the settings panel add to body text
 		$email_verification_hint = $this->config->getAppValue('registration', 'email_verification_hint');
 		if (!empty($email_verification_hint)) {
@@ -118,10 +128,12 @@ class MailService {
 			$this->l10n->t('Verification code: %s', $registration->getToken())
 		);
 
-		$template->addBodyButton(
-			$this->l10n->t('Continue registration'),
-			$link
-		);
+		if (!$this->loginFlowService->isUsingLoginFlow()) {
+			$template->addBodyButton(
+				$this->l10n->t('Continue registration'),
+				$link
+			);
+		}
 		$template->addFooter();
 
 		$from = Util::getDefaultEmailAddress('register');
