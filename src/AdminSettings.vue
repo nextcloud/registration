@@ -21,8 +21,8 @@
   -->
 <template>
 	<div id="registration_settings_form">
-		<div class="section">
-			<h2>{{ t('registration', 'Registration settings') }}</h2>
+		<SettingsSection
+			:title="t('registration', 'Registration settings')">
 			<p>
 				<input id="admin_approval"
 					v-model="adminApproval"
@@ -55,11 +55,10 @@
 					@search-change="searchGroup"
 					@change="saveData" />
 			</p>
-		</div>
+		</SettingsSection>
 
-		<div class="section">
-			<h2>{{ t('registration', 'Email settings') }}</h2>
-
+		<SettingsSection
+			:title="t('registration', 'Email settings')">
 			<p>
 				<label for="allowed_domains">{{ domainListLabel }}</label>
 				<input
@@ -105,11 +104,10 @@
 					@change="saveData">
 				<label for="disable_email_verification">{{ t('registration', 'Disable email verification') }}</label>
 			</p>
-		</div>
+		</SettingsSection>
 
-		<div class="section">
-			<h2>{{ t('registration', 'User settings') }}</h2>
-
+		<SettingsSection
+			:title="t('registration', 'User settings')">
 			<p>
 				<input id="email_is_login"
 					v-model="emailIsLogin"
@@ -185,12 +183,11 @@
 					@change="saveData">
 				<label for="enforce_phone">{{ t('registration', 'Enforce phone field') }}</label>
 			</p>
-		</div>
+		</SettingsSection>
 
-		<div class="section">
-			<h2>{{ t('registration', 'User instructions') }}</h2>
-			<em>{{ t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.') }}</em>
-
+		<SettingsSection
+			:title="t('registration', 'User instructions')"
+			:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
 			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
 			<p>
 				<input v-model="additionalHint"
@@ -214,12 +211,13 @@
 					@input="debounceSavingSlow">
 			</p>
 			<em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em>
-		</div>
+		</SettingsSection>
 	</div>
 </template>
 
 <script>
 import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
+import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -232,6 +230,7 @@ export default {
 
 	components: {
 		Multiselect,
+		SettingsSection,
 	},
 
 	data() {
