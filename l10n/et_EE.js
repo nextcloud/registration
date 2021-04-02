@@ -3,11 +3,11 @@ OC.L10N.register(
     {
     "Saved" : "Salvestatud",
     "Register" : "Registreeru",
-    "None" : "Pole",
     "Email" : "Epost",
-    "Username" : "Kasutajanimi",
     "Password" : "Parool",
     "Create account" : "Loo konto",
-    "Verify" : "Kontrolli"
+    "Verify" : "Kontrolli",
+    "None" : "Pole",
+    "Username" : "Kasutajanimi"
 },
 "nplurals=2; plural=(n != 1);");

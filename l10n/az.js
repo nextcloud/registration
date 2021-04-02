@@ -2,10 +2,10 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Saxlanıldı",
-    "None" : "Heç bir",
     "Email" : "Email",
-    "Username" : "İstifadəçi adı",
     "Password" : "Şifrə",
-    "Create account" : "Hesab yarat"
+    "Create account" : "Hesab yarat",
+    "None" : "Heç bir",
+    "Username" : "İstifadəçi adı"
 },
 "nplurals=2; plural=(n != 1);");

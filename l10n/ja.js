@@ -24,15 +24,9 @@ OC.L10N.register(
     "Enable now" : "今すぐ有効化",
     "Registration with this email domain is not allowed." : "このメールドメインでの登録は許可されていません。",
     "Please provide a valid display name." : "有効な表示名を入力してください。",
-    "Please provide a valid user name." : "有効なユーザー名を入力してください。",
-    "The username you have chosen already exists." : "選択したユーザー名はすでに存在しています。",
-    "None" : "なし",
-    "Disable Email Verification" : "メール確認の無効化",
-    "Let user can register directly without email verification" : "ユーザーにメール確認を省いて直接登録することを許可します",
     "Your account has been successfully created, but it still needs approval from an administrator." : "アカウントは正常に作成されましたが、管理者の承認が必要です。",
     "Email" : "メール",
     "Back to login" : "ログインに戻る",
-    "Username" : "ユーザー名",
     "Password" : "パスワード",
     "Create account" : "アカウント作成",
     "Verify" : "検証",
@@ -40,6 +34,10 @@ OC.L10N.register(
     "There is already a pending registration with this email, a new verification email has been sent to the address." : "このメールではすでに保留中の登録があり、新しい確認メールがアドレスに送信されています。",
     "Verification email successfully sent." : "確認メールを送信しました。",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "アカウントが正常に作成されました。こちらから<a href=\"%s\">ログイン</a>できます",
-    "Registration is only allowed for the following domains: " : "以下のドメインからのみ登録を許可します:"
+    "Registration is only allowed for the following domains: " : "以下のドメインからのみ登録を許可します:",
+    "Please provide a valid user name." : "有効なユーザー名を入力してください。",
+    "The username you have chosen already exists." : "選択したユーザー名はすでに存在しています。",
+    "None" : "なし",
+    "Username" : "ユーザー名"
 },
 "nplurals=1; plural=0;");

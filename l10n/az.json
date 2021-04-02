@@ -1,9 +1,9 @@
 { "translations": {
     "Saved" : "Saxlanıldı",
-    "None" : "Heç bir",
     "Email" : "Email",
-    "Username" : "İstifadəçi adı",
     "Password" : "Şifrə",
-    "Create account" : "Hesab yarat"
+    "Create account" : "Hesab yarat",
+    "None" : "Heç bir",
+    "Username" : "İstifadəçi adı"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

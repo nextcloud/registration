@@ -1,9 +1,9 @@
 { "translations": {
     "Saved" : "Salveguardate",
-    "None" : "Nulle",
     "Email" : "E-posta",
-    "Username" : "Nomine de usator",
     "Password" : "Contrasigno",
-    "Create account" : "Crear conto"
+    "Create account" : "Crear conto",
+    "None" : "Nulle",
+    "Username" : "Nomine de usator"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

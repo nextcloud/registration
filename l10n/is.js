@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Saved" : "Vistað",
     "Register" : "Nýskráning",
-    "None" : "Ekkert",
     "Email" : "Tölvupóstur",
     "Back to login" : "Til baka í innskráningu",
-    "Username" : "Notandanafn",
     "Password" : "Lykilorð",
     "Create account" : "Stofna aðgang",
-    "Verify" : "Sannprófa"
+    "Verify" : "Sannprófa",
+    "None" : "Ekkert",
+    "Username" : "Notandanafn"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

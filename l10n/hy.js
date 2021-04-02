@@ -3,8 +3,8 @@ OC.L10N.register(
     {
     "Saved" : "Պահված",
     "Email" : "Էլ․փոստ",
-    "Username" : "Օգտանուն",
     "Password" : "Գաղտնաբառ",
-    "Create account" : "Ստեղծել հաշիվ"
+    "Create account" : "Ստեղծել հաշիվ",
+    "Username" : "Օգտանուն"
 },
 "nplurals=2; plural=(n != 1);");

@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Saved" : "Guardado",
     "Register" : "Registrar",
-    "None" : "Ninguno",
     "Email" : "Correo electrónico",
     "Back to login" : "Volver para iniciar sesión",
-    "Username" : "Nombre de usuario",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "None" : "Ninguno",
+    "Username" : "Nombre de usuario"
 },
 "nplurals=2; plural=(n != 1);");

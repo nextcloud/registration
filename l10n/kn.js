@@ -2,9 +2,9 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "﻿ಉಳಿಸಿದ",
-    "None" : "﻿ಯಾವುದೂ ಇಲ್ಲ",
     "Email" : "﻿ಇ-ಅಂಚೆ",
-    "Username" : "﻿ಬಳಕೆಯ ಹೆಸರು",
-    "Password" : "ಗುಪ್ತ ಪದ"
+    "Password" : "ಗುಪ್ತ ಪದ",
+    "None" : "﻿ಯಾವುದೂ ಇಲ್ಲ",
+    "Username" : "﻿ಬಳಕೆಯ ಹೆಸರು"
 },
 "nplurals=2; plural=(n > 1);");
