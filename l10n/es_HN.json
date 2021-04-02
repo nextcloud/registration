@@ -1,11 +1,11 @@
 { "translations": {
     "Saved" : "Guardado",
     "Register" : "Registrar",
-    "None" : "Ninguno",
     "Email" : "Correo electrónico",
-    "Username" : "Usuario",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "None" : "Ninguno",
+    "Username" : "Usuario"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

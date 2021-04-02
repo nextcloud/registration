@@ -3,11 +3,11 @@ OC.L10N.register(
     {
     "Saved" : "Ruajtur",
     "Register" : "Regjistrohu",
-    "None" : "Asnjë",
     "Email" : "email",
-    "Username" : "Username",
     "Password" : "Fjalëkalim",
     "Create account" : "Krijo llogari",
-    "Verify" : "Verifiko"
+    "Verify" : "Verifiko",
+    "None" : "Asnjë",
+    "Username" : "Username"
 },
 "nplurals=2; plural=(n != 1);");

@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Saved" : "Запазено",
     "Register" : "Регистрация",
-    "None" : "Без",
     "Email" : "Имейл",
     "Back to login" : "Обратно към вписване",
-    "Username" : "Потребител",
     "Password" : "Парола",
     "Create account" : "Създаване на профил",
-    "Verify" : "Потвърждаване"
+    "Verify" : "Потвърждаване",
+    "None" : "Без",
+    "Username" : "Потребител"
 },
 "nplurals=2; plural=(n != 1);");

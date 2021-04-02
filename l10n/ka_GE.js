@@ -3,11 +3,11 @@ OC.L10N.register(
     {
     "Saved" : "შენახულია",
     "Register" : "რეგისტრაცია",
-    "None" : "არც ერთი",
     "Email" : "ელ-ფოსტა",
-    "Username" : "მომხმარებელი",
     "Password" : "პაროლი",
     "Create account" : "ანგარიშის შექმნა",
-    "Verify" : "დამოწმება"
+    "Verify" : "დამოწმება",
+    "None" : "არც ერთი",
+    "Username" : "მომხმარებელი"
 },
 "nplurals=2; plural=(n!=1);");

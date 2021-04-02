@@ -1,11 +1,11 @@
 { "translations": {
     "Saved" : "Salvestatud",
     "Register" : "Registreeru",
-    "None" : "Pole",
     "Email" : "Epost",
-    "Username" : "Kasutajanimi",
     "Password" : "Parool",
     "Create account" : "Loo konto",
-    "Verify" : "Kontrolli"
+    "Verify" : "Kontrolli",
+    "None" : "Pole",
+    "Username" : "Kasutajanimi"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
