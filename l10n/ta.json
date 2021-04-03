@@ -1,8 +1,0 @@
-{ "translations": {
-    "Email" : "மின்னஞ்சல்",
-    "Password" : "கடவுச்சொல்",
-    "Create account" : "கணக்கை உருவாக்குக",
-    "None" : "ஒன்றுமில்லை",
-    "Username" : "பயனாளர் பெயர்"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
-}

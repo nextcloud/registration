@@ -24,6 +24,8 @@
     "You can <a href=\"%s\">log in now</a>." : "Zdaj se lahko <a href=\"%s\">prijavite</a>.",
     "Registration with this email domain is not allowed." : "Vpis s elektronskim naslovom s te domene ni dovoljen.",
     "Please provide a valid display name." : "Vpisati je treba veljavno prikazno ime.",
+    "Please provide a valid login name." : "Vpisati je treba veljavno uporabniško ime.",
+    "The login name you have chosen already exists." : "Izbrano uporabniško ime že obstaja.",
     "Unable to create user, there are problems with the user backend." : "Ni mogoče ustvariti uporabnika, zaznane so težave z ozadnjim programom.",
     "Unable to set user email: " : "Ni mogoče nastaviti elektronskega naslova uporabnika:",
     "Registration app auto setup" : "Samodejna nastavitev programa za vpisovanje",
