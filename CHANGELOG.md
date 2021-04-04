@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.1 – 2021-04-04
+### Fixed
+- Fix registration with loginname field
+  [#284](https://github.com/nextcloud/registration/pull/284)
+
 ## 1.1.0 – 2021-04-01
 ### Added
 - Added settings to display and enforce a full name field on the registration form
