@@ -31,8 +31,8 @@ script('registration', 'form');
 
 		<?php if (!$_['email_is_login']) { ?>
 			<p class="groupmiddle">
-				<input type="text" name=loginname" id="loginname" value="<?php if (!empty($_['login'])) {
-	p($_['login']);
+				<input type="text" name="loginname" id="loginname" value="<?php if (!empty($_['loginname'])) {
+	p($_['loginname']);
 } ?>" placeholder="<?php p($l->t('Login name')); ?>" />
 				<label for="loginname" class="infield"><?php p($l->t('Login name')); ?></label>
 				<img id="loginname-icon" class="svg" src="<?php print_unescaped(image_path('', 'categories/auth.svg')); ?>" alt=""/>
