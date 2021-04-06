@@ -13,5 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	$('form').submit(() => {
 		// prevent duplicate form submissions
 		$(this).find(':submit').attr('disabled', 'disabled')
+		$(this).find(':submit')[0].value = t('registration', 'Loading …')
 	})
 })
