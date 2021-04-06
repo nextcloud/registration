@@ -2,7 +2,7 @@
 /** @var array $_ */
 /** @var \OCP\IL10N $l */
 style('registration', 'style');
-script('registration', 'form');
+script('registration', 'registration-form');
 ?><form action="" method="post">
 	<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 	<fieldset>

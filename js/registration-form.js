@@ -1,0 +1,2 @@
+!function(){"use strict";document.addEventListener("DOMContentLoaded",(function(){var t=this;$("#showadminpass").click((function(){var t=$("#password");"password"===t.attr("type")?t.attr("type","text"):t.attr("type","password")})),$("form").submit((function(){$(t).find(":submit").attr("disabled","disabled")}))}))}();
+//# sourceMappingURL=registration-form.js.map?v=b4e5899c354021f3c609
