@@ -45,7 +45,7 @@ script('registration', 'registration-form');
 		<p class="groupmiddle">
 			<input type="text" name="fullname" id="fullname" value="<?php if (!empty($_['fullname'])) {
 	p($_['fullname']);
-} ?>" placeholder="<?php p($l->t('Full name')); ?>" />
+} ?>" placeholder="<?php p($l->t('Full name')); ?>" <?php if ($_['enforce_fullname']) { p('required'); } ?> />
 			<label for="fullname" class="infield"><?php p($l->t('Full name')); ?></label>
 			<img id="fullname-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/user.svg')); ?>" alt=""/>
 		</p>
@@ -57,7 +57,7 @@ script('registration', 'registration-form');
 			<p class="groupmiddle">
 				<input type="text" name="phone" id="phone" value="<?php if (!empty($_['phone'])) {
 	p($_['phone']);
-} ?>" placeholder="<?php p($l->t('Phone number')); ?>" />
+} ?>" placeholder="<?php p($l->t('Phone number')); ?>" <?php if ($_['enforce_phone']) { p('required'); } ?> />
 				<label for="phone" class="infield"><?php p($l->t('Phone number')); ?></label>
 				<img id="phone-icon" class="svg" src="<?php print_unescaped(image_path('', 'clients/phone.svg')); ?>" alt=""/>
 			</p>
