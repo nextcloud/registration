@@ -1,2 +1,2 @@
-!function(){"use strict";document.addEventListener("DOMContentLoaded",(function(){var i=this;$("#showadminpass").click((function(){var t=$("#password");"password"===t.attr("type")?t.attr("type","text"):t.attr("type","password")})),$("form").submit((function(){$(i).find(":submit").attr("disabled","disabled"),$(i).find(":submit")[0].value=t("registration","Loading …")}))}))}();
-//# sourceMappingURL=registration-form.js.map?v=9934ad4775c110e9376d
+(()=>{"use strict";document.addEventListener("DOMContentLoaded",(function(){var s=this;$("#showadminpass").click((function(){var t=$("#password");"password"===t.attr("type")?t.attr("type","text"):t.attr("type","password")})),$("form").submit((function(){$(s).find(":submit").attr("disabled","disabled"),$(s).find(":submit")[0].value=t("registration","Loading …")}))}))})();
+//# sourceMappingURL=registration-form.js.map?v=8f58dd9152db66c95a4e
