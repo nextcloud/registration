@@ -2,6 +2,7 @@
 /** @var array $_ */
 /** @var \OCP\IL10N $l */
 style('registration', 'style');
+script('registration', 'registration-form');
 ?>
 	<form action="" method="post">
 		<fieldset>
