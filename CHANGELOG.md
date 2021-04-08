@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.2 – 2021-04-08
+### Fixed
+- Disable submit button up on submitting the form
+  [#286](https://github.com/nextcloud/registration/pull/286)
+- Add HTML5 required property to fields that can not be empty
+  [#286](https://github.com/nextcloud/registration/pull/286)
+- Some browsers fail to render the administration settings
+  [#286](https://github.com/nextcloud/registration/pull/286)
+
 ## 1.1.1 – 2021-04-04
 ### Fixed
 - Fix registration with loginname field
