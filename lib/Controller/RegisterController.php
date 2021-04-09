@@ -19,6 +19,9 @@ namespace OCA\Registration\Controller;
 use Exception;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
+use OCA\Registration\Events\PassedFormEvent;
+use OCA\Registration\Events\ShowFormEvent;
+use OCA\Registration\Events\ValidateFormEvent;
 use OCA\Registration\Service\LoginFlowService;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
@@ -31,6 +34,7 @@ use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
@@ -50,6 +54,8 @@ class RegisterController extends Controller {
 	private $mailService;
 	/** @var LoginFlowService */
 	private $loginFlowService;
+	/** @var IEventDispatcher */
+	private $eventDispatcher;
 
 	public function __construct(
 		string $appName,
@@ -59,7 +65,8 @@ class RegisterController extends Controller {
 		IConfig $config,
 		RegistrationService $registrationService,
 		LoginFlowService $loginFlowService,
-		MailService $mailService
+		MailService $mailService,
+		IEventDispatcher $eventDispatcher
 	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
@@ -68,6 +75,7 @@ class RegisterController extends Controller {
 		$this->registrationService = $registrationService;
 		$this->loginFlowService = $loginFlowService;
 		$this->mailService = $mailService;
+		$this->eventDispatcher = $eventDispatcher;
 	}
 
 	/**
@@ -96,6 +104,8 @@ class RegisterController extends Controller {
 			}
 		}
 
+		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_EMAIL));
+
 		$params = [
 			'email' => $email,
 			'message' => $message ?: $emailHint,
@@ -113,6 +123,13 @@ class RegisterController extends Controller {
 	 * @return TemplateResponse
 	 */
 	public function submitEmailForm(string $email): Response {
+		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_EMAIL);
+		$this->eventDispatcher->dispatchTyped($validateFormEvent);
+
+		if (!empty($validateFormEvent->getErrors())) {
+			return $this->showEmailForm($email, implode(' ', $validateFormEvent->getErrors()));
+		}
+
 		try {
 			// Registration already in progress, update token and continue with verification
 			$registration = $this->registrationService->getRegistrationForEmail($email);
@@ -129,6 +146,8 @@ class RegisterController extends Controller {
 		}
 
 		if ($this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes') {
+			$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $registration->getClientSecret()));
+
 			return new RedirectResponse(
 				$this->urlGenerator->linkToRoute(
 					'registration.register.showUserForm',
@@ -147,6 +166,8 @@ class RegisterController extends Controller {
 		} catch (\Exception $e) {
 			return $this->showEmailForm($email, $this->l10n->t('A problem occurred sending email, please contact your administrator.'));
 		}
+
+		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $registration->getClientSecret()));
 
 		return new RedirectResponse(
 			$this->urlGenerator->linkToRoute(
@@ -170,6 +191,8 @@ class RegisterController extends Controller {
 		} catch (DoesNotExistException $e) {
 			return $this->validateSecretAndTokenErrorPage();
 		}
+
+		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_VERIFICATION, $secret));
 
 		return new TemplateResponse('registration', 'form/verification', [
 			'message' => $message,
@@ -197,6 +220,15 @@ class RegisterController extends Controller {
 		} catch (DoesNotExistException $e) {
 			return $this->validateSecretAndTokenErrorPage();
 		}
+
+		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_VERIFICATION, $secret);
+		$this->eventDispatcher->dispatchTyped($validateFormEvent);
+
+		if (!empty($validateFormEvent->getErrors())) {
+			return $this->showVerificationForm($secret, implode(' ', $validateFormEvent->getErrors()));
+		}
+
+		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_VERIFICATION, $secret));
 
 		return new RedirectResponse(
 			$this->urlGenerator->linkToRoute(
@@ -229,6 +261,8 @@ class RegisterController extends Controller {
 		}
 
 		$additional_hint = $this->config->getAppValue('registration', 'additional_hint');
+
+		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_USER, $secret));
 
 		return new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
@@ -270,6 +304,13 @@ class RegisterController extends Controller {
 			$loginname = $registration->getEmail();
 		}
 
+		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_USER, $secret);
+		$this->eventDispatcher->dispatchTyped($validateFormEvent);
+
+		if (!empty($validateFormEvent->getErrors())) {
+			return $this->showUserForm($secret, $token, $loginname, $fullname, $phone, $password, implode(' ', $validateFormEvent->getErrors()));
+		}
+
 		try {
 			$user = $this->registrationService->createAccount($registration, $loginname, $fullname, $phone, $password);
 		} catch (Exception $exception) {
@@ -278,6 +319,8 @@ class RegisterController extends Controller {
 
 		// Delete registration
 		$this->registrationService->deleteRegistration($registration);
+
+		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $secret, $user));
 
 		if ($user->isEnabled()) {
 			$this->registrationService->loginUser($user->getUID(), $user->getUID(), $password);
