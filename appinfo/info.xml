@@ -3,7 +3,7 @@
 	xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>registration</id>
 	<name>Registration</name>
-	<summary>This app allows users to self-register a new account using their e-mail address.</summary>
+	<summary>This app allows users to self-register a new account using their email address.</summary>
 	<description><![CDATA[User registration
 
 This app allows users to register a new account.
