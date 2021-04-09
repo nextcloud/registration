@@ -66,6 +66,7 @@
     "Show the blocked email domains to users" : "Zobrazit uživatelům blokované e-mailové domény",
     "Show the allowed email domains to users" : "Zobrazit uživatelům umožněné e-mailové domény",
     "An error occurred while saving the settings" : "Došlo k chybě při ukládání nastavení",
+    "Loading …" : "Načítání…",
     "Approval required" : "Je zapotřebí schválení",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet byl úspěšně vytvořen, ale ještě čeká na schválení správcem.",
     "Email" : "E-mail",

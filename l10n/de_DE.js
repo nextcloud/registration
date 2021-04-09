@@ -68,6 +68,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Benutzern die blockierten E-Mail-Domäns anzeigen",
     "Show the allowed email domains to users" : "Benutzern die erlaubten E-Mail-Domäns anzeigen",
     "An error occurred while saving the settings" : "Fehler beim Speichern der Einstellungen",
+    "Loading …" : "Lade …",
     "Approval required" : "Genehmigung erforderlich",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Ihr Konto wurde erfolgreich erstellt, muss aber noch von einem Administrator genehmigt werden.",
     "Email" : "E-Mail",

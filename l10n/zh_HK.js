@@ -66,6 +66,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "向用戶顯示封鎖的電子郵件網域",
     "Show the allowed email domains to users" : "向用戶顯示允許的電子郵件網域",
     "An error occurred while saving the settings" : "保存設置時發生錯誤",
+    "Loading …" : "加載中...",
     "Approval required" : "需要批准",
     "Your account has been successfully created, but it still needs approval from an administrator." : "您的賬號已成功建立，但仍需要管理員批准。",
     "Email" : "電郵地址",
