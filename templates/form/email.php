@@ -17,6 +17,9 @@ script('registration', 'registration-form');
 				<label for="email" class="infield"><?php p($l->t('Email')); ?></label>
 				<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
 			</p>
+
+			<div id="terms_of_service"></div>
+
 			<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
 			<input type="submit" id="submit" value="<?php
 				if ($_['disable_email_verification'] === 'yes') {
