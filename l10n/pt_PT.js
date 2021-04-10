@@ -8,7 +8,6 @@ OC.L10N.register(
     "Verify your %s registration request" : "Verifique o seu pedido de registo %s",
     "Registration" : "Registo",
     "You can <a href=\"%s\">log in now</a>." : "Agora, pode <a href=\"%s\">iniciar a sessão</a>.",
-    "This app allows users to self-register a new account using their e-mail address." : "Esta aplicação permite que os utilizadores registem automaticamente uma nova conta utilizando o próprio endereçod e e-mail.",
     "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador.",
     "Email" : "E-mail",
     "Back to login" : "Voltar à entrada",
@@ -19,6 +18,7 @@ OC.L10N.register(
     "Verification email successfully sent." : "O e-mail de verificação foi enviado com sucesso.",
     "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "A sua conta foi criada com sucesso, agora pode <a href=\"%s\">iniciar a sessão</a>.",
     "A new user \"%s\" has created an account on %s" : "Um novo utilizador \"%s\" criou uma conta em %s",
+    "This app allows users to self-register a new account using their e-mail address." : "Esta aplicação permite que os utilizadores registem automaticamente uma nova conta utilizando o próprio endereçod e e-mail.",
     "None" : "Nenhum",
     "Username" : "Nome de utilizador"
 },
