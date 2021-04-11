@@ -35,6 +35,7 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "无法创建用户，用户后端存在问题。",
     "Unable to set user email: " : "无法设置用户电子邮件：",
     "Registration app auto setup" : "注册应用自动设置",
+    "This app allows users to self-register a new account using their email address." : "这个应用程序允许用户使用他们的电子邮件地址自行注册一个新账户。 ",
     "User registration\n\nThis app allows users to register a new account.\n\n# Features\n\n- Add users to a given group\n- Allow-list with email domains (including wildcard) to register with\n- Admins will be notified via email for new user creation or require approval\n- Supports Nextcloud's Client Login Flow v1 and v2 - allowing registration in the mobile Apps and Desktop clients\n\n# Web form registration flow\n\n1. User enters their email address\n2. Verification link is sent to the email address\n3. User clicks on the verification link\n4. User is lead to a form where they can choose their username and password\n5. New account is created and is logged in automatically" : "用户注册\n\n这个应用程序允许用户注册一个新的账号。\n\n# 功能\n\n- 将用户添加到指定组中\n- 允许注册的电子邮件域名（包括通配符）列表\n- 管理员将通过电子邮件通知新用户的创建或批准。\n- 支持 Nextcloud 的客户端登录流程 v1 和 v2 -- 允许在移动应用和桌面客户端中注册。\n\n# 网络表格注册流程\n\n1. 用户输入自己的电子邮件地址\n2. 验证链接被发送到电子邮件地址\n3. 用户点击验证链接\n4. 用户会被引导到一个表格，在这里他们可以选择自己的用户名和密码。\n5. 新账户创建并自动登录。",
     "Registration settings" : "注册设置",
     "Require admin approval" : "需要管理员批准",
