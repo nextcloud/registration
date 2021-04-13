@@ -35,6 +35,7 @@ use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -59,6 +60,8 @@ class RegisterControllerTest extends TestCase {
 	private $loginFlowService;
 	/** @var MailService|MockObject */
 	private $mailService;
+	/** @var IEventDispatcher|MockObject */
+	private $eventDispatcher;
 
 	public function setUp(): void {
 		parent::setUp();
@@ -69,6 +72,7 @@ class RegisterControllerTest extends TestCase {
 		$this->registrationService = $this->createMock(RegistrationService::class);
 		$this->loginFlowService = $this->createMock(LoginFlowService::class);
 		$this->mailService = $this->createMock(MailService::class);
+		$this->eventDispatcher = $this->createMock(IEventDispatcher::class);
 
 		$this->l10n->expects($this->any())
 			->method('t')
@@ -91,7 +95,8 @@ class RegisterControllerTest extends TestCase {
 				$this->config,
 				$this->registrationService,
 				$this->loginFlowService,
-				$this->mailService
+				$this->mailService,
+				$this->eventDispatcher
 			);
 		}
 
@@ -106,6 +111,7 @@ class RegisterControllerTest extends TestCase {
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService,
+				$this->eventDispatcher,
 			])
 			->getMock();
 	}
