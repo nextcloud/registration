@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Saved" : "Saved",
     "Register" : "Register",
+    "Enforce full name field" : "Full name field is mandatory",
+    "Enforce phone field" : "Phone number field is mandatory",
     "Email" : "Email",
     "Back to login" : "Back to login",
     "Password" : "Password",

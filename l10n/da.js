@@ -29,7 +29,6 @@ OC.L10N.register(
     "Unable to set user email: " : "Kan ikke oprette bruger email:",
     "Registration app auto setup" : "Registrering app automatisk setup",
     "Require admin approval" : "Kræv administratorgodkendelse",
-    "Enabling \"admin approval\" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled." : "Aktivering af \"administratorgodkendelse\" forhindrer, at registreringer fra mobile og desktop-klienter gennemføres, da legitimationsoplysningerne ikke kan verificeres af klienten, før brugeren blev aktiveret.",
     "Registered users default group" : "Regisrerede brugeres standard gruppe",
     "Block listed email domains instead of allowing them" : "Bloker listede email domæner istedet for at tillade dem",
     "Force email as login name" : "Gennemtving email som logonnavn",
