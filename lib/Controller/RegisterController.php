@@ -320,7 +320,7 @@ class RegisterController extends Controller {
 		// Delete registration
 		$this->registrationService->deleteRegistration($registration);
 
-		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $secret, $user));
+		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_USER, $secret, $user));
 
 		if ($user->isEnabled()) {
 			$this->registrationService->loginUser($user->getUID(), $user->getUID(), $password);
