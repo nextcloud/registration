@@ -27,9 +27,9 @@ namespace OCA\Registration\Events;
 use OCP\EventDispatcher\Event;
 
 abstract class AFormEvent extends Event {
-	const STEP_EMAIL = 'email';
-	const STEP_VERIFICATION = 'verification';
-	const STEP_USER = 'user';
+	public const STEP_EMAIL = 'email';
+	public const STEP_VERIFICATION = 'verification';
+	public const STEP_USER = 'user';
 
 	/** @var string */
 	protected $step;
