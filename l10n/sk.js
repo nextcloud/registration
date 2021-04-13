@@ -29,7 +29,6 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "Používateľa nie je možné vytvoriť – vyskytol sa problém s podpornou vrstvou pre správu používateľských účtov.",
     "Unable to set user email: " : "E-mail používateľa nie je možné nastaviť: ",
     "Registration app auto setup" : "Automatické nastavenie registračnej aplikácie",
-    "Enabling \"admin approval\" will prevent registrations from mobile and desktop clients to complete as the credentials can not be verified by the client until the user was enabled." : "Povolenie „schválenia správcom“ zabráni dokončeniu registrácií klientov v mobilných zariadeniach a počítačoch, pretože klient nebude môcť overiť poverenia, kým nebude používateľ povolený.",
     "Registered users default group" : "Predvolená skupina registrovaných používateľov",
     "User instructions" : "Pokyny pre používateľa",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Upozornenie: Pokyny pre používateľov nebudú preložené, a preto sa zobrazia tak, ako sú nakonfigurované nižšie, pre všetkých používateľov bez ohľadu na ich skutočný jazyk.",
