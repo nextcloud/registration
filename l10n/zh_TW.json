@@ -37,6 +37,7 @@
     "User registration\n\nThis app allows users to register a new account.\n\n# Features\n\n- Add users to a given group\n- Allow-list with email domains (including wildcard) to register with\n- Admins will be notified via email for new user creation or require approval\n- Supports Nextcloud's Client Login Flow v1 and v2 - allowing registration in the mobile Apps and Desktop clients\n\n# Web form registration flow\n\n1. User enters their email address\n2. Verification link is sent to the email address\n3. User clicks on the verification link\n4. User is lead to a form where they can choose their username and password\n5. New account is created and is logged in automatically" : "使用者註冊\n\n此應用程式讓使用者可以註冊新帳號。\n\n# 功能\n\n- 將使用者新增到指定的群組\n- 允許註冊的電子郵件網域（包含萬用字元）清單\n- 管理員在新使用者建立或要求批准時會收到電子郵件通知\n- 支援 Nextcloud 的客戶端登入流程 v1 與 v2 - 允許在行動裝置應用程式與桌面客戶端中註冊\n\n# 網路表單註冊流程\n\n1. 使用者輸入他們的電子郵件地址\n2. 傳送驗證連結到電子郵件地址\n3. 使用者點擊驗證連結\n4. 使用者會被引導到一份表單，他們可以在該處選取他們的使用者名稱與密碼\n5. 新帳號建立並自動登入",
     "Registration settings" : "註冊設定",
     "Require admin approval" : "需要管理員批准",
+    "Enabling \"admin approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "啟用「管理員批准」將會讓行動裝置與桌面客戶端無法完成註冊，因為在啟用使用者前，客戶端無法驗證憑證。",
     "Registered users default group" : "註冊使用者的預設群組",
     "Select group" : "選取群組",
     "Email settings" : "電子郵件設定",
