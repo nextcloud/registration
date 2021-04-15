@@ -23,7 +23,7 @@ This app allows users to register a new account.
 4. User is lead to a form where they can choose their username and password
 5. New account is created and is logged in automatically
 		]]></description>
-	<version>1.1.2</version>
+	<version>1.2.0</version>
 	<licence>agpl</licence>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
 	<types>

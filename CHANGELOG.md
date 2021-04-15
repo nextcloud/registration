@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.2.0 – 2021-04-15
+### Added
+- Allow apps to hook into the registration flow, e.g. Terms of Service
+  [#293](https://github.com/nextcloud/registration/pull/293)
+
 ## 1.1.2 – 2021-04-08
 ### Fixed
 - Disable submit button up on submitting the form
