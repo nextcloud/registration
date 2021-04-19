@@ -35,6 +35,7 @@ OC.L10N.register(
     "Registration settings" : "Izen emate ezarpenak",
     "Require admin approval" : "Eskatu administratzaileak onartzea",
     "Registered users default group" : "Izen ematen duten erabiltzaileen talde lehenetsia",
+    "Select group" : "Hautatu taldea",
     "Email settings" : "E-posta ezarpenak",
     "Block listed email domains instead of allowing them" : "Blokeatu zerrendako e-posta domeinuak onartu beharrean",
     "User settings" : "Erabiltzailearen ezarpenak",
