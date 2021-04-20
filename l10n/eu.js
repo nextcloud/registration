@@ -38,6 +38,7 @@ OC.L10N.register(
     "Select group" : "Hautatu taldea",
     "Email settings" : "E-posta ezarpenak",
     "Block listed email domains instead of allowing them" : "Blokeatu zerrendako e-posta domeinuak onartu beharrean",
+    "Disable email verification" : "Desgaitu e-posta egiaztapena",
     "User settings" : "Erabiltzailearen ezarpenak",
     "Force email as login name" : "Behartu e-posta izatea saioa hasteko izena",
     "User instructions" : "Erabiltzaile jarraibideak",
