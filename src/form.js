@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 	// Password toggle
-	$('#showadminpass').click(() => {
+	$('#showadminpass').click((e) => {
+		e.preventDefault()
 		const passwordTextField = $('#password')
 		if (passwordTextField.attr('type') === 'password') {
 			passwordTextField.attr('type', 'text')
