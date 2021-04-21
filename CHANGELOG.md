@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.2.1 – 2021-04-21
+### Fixed
+- Don't append # to the URL so the Android WebView doesn't chock on it.
+
 ## 1.2.0 – 2021-04-15
 ### Added
 - Allow apps to hook into the registration flow, e.g. Terms of Service
