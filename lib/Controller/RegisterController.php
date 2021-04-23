@@ -29,6 +29,7 @@ use OCA\Registration\Service\RegistrationService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\Response;
@@ -264,7 +265,7 @@ class RegisterController extends Controller {
 
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_USER, $secret));
 
-		return new TemplateResponse('registration', 'form/user', [
+		$response = new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
 			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
 			'loginname' => $loginname,
@@ -278,6 +279,14 @@ class RegisterController extends Controller {
 			'password' => $password,
 			'additional_hint' => $additional_hint,
 		], 'guest');
+
+		if ($this->loginFlowService->isUsingLoginFlow(1)) {
+			$csp = new ContentSecurityPolicy();
+			$csp->addAllowedFormActionDomain('nc://*');
+			$response->setContentSecurityPolicy($csp);
+		}
+
+		return $response;
 	}
 
 	/**
