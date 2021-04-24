@@ -111,6 +111,7 @@ class RegisterController extends Controller {
 		$params = [
 			'email' => $email,
 			'message' => $message ?: $emailHint,
+			'email_is_optional' => $this->config->getAppValue($this->appName, 'email_is_optional', 'no'),
 			'disable_email_verification' => $this->config->getAppValue($this->appName, 'disable_email_verification', 'no'),
 			'is_login_flow' => $this->loginFlowService->isUsingLoginFlow(),
 		];
@@ -269,6 +270,7 @@ class RegisterController extends Controller {
 		$response = new TemplateResponse('registration', 'form/user', [
 			'email' => $registration->getEmail(),
 			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
+			'email_is_optional' => $this->config->getAppValue('registration', 'email_is_optional', 'no') === 'yes',
 			'loginname' => $loginname,
 			'fullname' => $fullname,
 			'show_fullname' => $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes',
