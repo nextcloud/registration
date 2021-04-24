@@ -39,6 +39,8 @@
     "Disable email verification" : "Desgaitu e-posta egiaztapena",
     "User settings" : "Erabiltzailearen ezarpenak",
     "Force email as login name" : "Behartu e-posta izatea saioa hasteko izena",
+    "Login name policy" : "Saio-hasiera izenaren politika",
+    "Show full name field" : "Erakutsi izen osoaren eremua",
     "User instructions" : "Erabiltzaile jarraibideak",
     "Allowed email domains" : "Onartzen diren e-posta domeinuak",
     "Loading …" : "Kargatzen...",
