@@ -473,6 +473,7 @@ class RegisterControllerTest extends TestCase {
 
 		self::assertSame([
 			'email' => $email,
+			'email_is_optional' => false,
 			'email_is_login' => false,
 			'loginname' => $username,
 			'fullname' => $fullname,
