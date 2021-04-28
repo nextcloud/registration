@@ -86,7 +86,10 @@ class RegistrationSettings implements ISettings {
 			'disable_email_verification',
 			$this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes'
 		);
-
+		$this->initialState->provideInitialState(
+			'email_is_optional',
+			$this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes'
+		);
 		$this->initialState->provideInitialState(
 			'email_is_login',
 			$this->config->getAppValue($this->appName, 'email_is_login', 'no') === 'yes'

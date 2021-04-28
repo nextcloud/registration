@@ -60,6 +60,17 @@
 		<SettingsSection
 			:title="t('registration', 'Email settings')">
 			<p>
+				<input id="email_is_optional"
+					v-model="emailIsOptional"
+					type="checkbox"
+					name="email_is_optional"
+					class="checkbox"
+					:disabled="loading"
+					@change="saveData">
+				<label for="email_is_optional">{{ t('registration', 'Email is optional') }}</label>
+			</p>
+
+			<p>
 				<label for="allowed_domains">{{ domainListLabel }}</label>
 				<input
 					id="allowed_domains"
@@ -94,7 +105,7 @@
 				<label for="show_domains">{{ showDomainListLabel }}</label>
 			</p>
 
-			<p>
+			<p v-if="!emailIsOptional">
 				<input id="disable_email_verification"
 					v-model="disableEmailVerification"
 					type="checkbox"
@@ -108,7 +119,7 @@
 
 		<SettingsSection
 			:title="t('registration', 'User settings')">
-			<p>
+			<p v-if="!emailIsOptional">
 				<input id="email_is_login"
 					v-model="emailIsLogin"
 					type="checkbox"
@@ -245,6 +256,7 @@ export default {
 			allowedDomains: '',
 			domainsIsBlocklist: false,
 			showDomains: false,
+			emailIsOptional: false,
 			disableEmailVerification: false,
 			emailIsLogin: false,
 			usernamePolicyRegex: '',
@@ -281,6 +293,7 @@ export default {
 		this.allowedDomains = loadState('registration', 'allowed_domains')
 		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
 		this.showDomains = loadState('registration', 'show_domains')
+		this.emailIsOptional = loadState('registration', 'email_is_optional')
 		this.disableEmailVerification = loadState('registration', 'disable_email_verification')
 		this.emailIsLogin = loadState('registration', 'email_is_login')
 		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
@@ -312,8 +325,9 @@ export default {
 					allowed_domains: this.allowedDomains,
 					domains_is_blocklist: this.domainsIsBlocklist,
 					show_domains: this.showDomains,
-					disable_email_verification: this.disableEmailVerification,
-					email_is_login: this.emailIsLogin,
+					email_is_optional: this.emailIsOptional,
+					disable_email_verification: this.emailIsOptional || this.disableEmailVerification,
+					email_is_login: !this.emailIsOptional && this.emailIsLogin,
 					username_policy_regex: this.usernamePolicyRegex,
 					show_fullname: this.showFullname,
 					enforce_fullname: this.enforceFullname,

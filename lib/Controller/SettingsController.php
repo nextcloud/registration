@@ -49,6 +49,7 @@ class SettingsController extends Controller {
 	 * @param string $email_verification_hint if filled embed Text in Verification mail send to user
 	 * @param string $username_policy_regex optional regex to check usernames against a pattern
 	 * @param bool|null $admin_approval_required newly registered users have to be validated by an admin
+	 * @param bool|null $email_is_optional email address is not required
 	 * @param bool|null $email_is_login email address is forced as user id
 	 * @param bool|null $domains_is_blocklist is the domain list an allow or block list
 	 * @param bool|null $show_domains should the email list be shown to the user or not
@@ -60,6 +61,7 @@ class SettingsController extends Controller {
 						  string $email_verification_hint,
 						  string $username_policy_regex,
 						  ?bool $admin_approval_required,
+						  ?bool $email_is_optional,
 						  ?bool $email_is_login,
 						  ?bool $show_fullname,
 						  ?bool $enforce_fullname,
@@ -104,7 +106,8 @@ class SettingsController extends Controller {
 		}
 
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
-		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'email_is_optional', $email_is_optional ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'email_is_login', !$email_is_optional && $email_is_login ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_fullname', $show_fullname ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'enforce_fullname', $enforce_fullname ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_phone', $show_phone ? 'yes' : 'no');
