@@ -9,7 +9,7 @@ OC.L10N.register(
     "Invalid username policy regex" : "Geçersiz kullanıcı adı ilkesi kurallı ifadesi",
     "Saved" : "Kaydedildi",
     "No such group" : "Böyle bir grup yok",
-    "Register" : "Hesap Aç",
+    "Register" : "Hesap aç",
     "The email address you entered is not valid" : "Yazdığınız e-posta adresi geçersiz",
     "Verify your %s registration request" : "%s hesap açma başvurunuzu doğrulayın",
     "Registration" : "Hesap açma",
@@ -104,7 +104,7 @@ OC.L10N.register(
     "Registration is only allowed for the following domains:" : "Yalnız şu etki alanları ile hesap açılabilir:",
     "A new user \"%s\" has created an account on %s and awaits admin approbation" : "\"%s\" kullanıcı hesabı %s üzerinde açıldı ve onaylanmayı bekliyor",
     "To create a new account on %s, just click the following link:" : "%s üzerinde yeni bir hesap açmak için şu bağlantıya tıklayın:",
-    "Username" : "Kullanıcı Adı",
+    "Username" : "Kullanıcı adı",
     "Thank you for registering, you should receive a verification link in a few minutes." : "Hesap açtığınız için teşekkürler. Bir kaç dakika içinde bir doğrulama e-postası almalısınız.",
     "Please re-enter a valid email address" : "Lütfen yeniden geçerli bir e-posta adresi yazın",
     "You will receive an email with a verification link" : "Doğrulama bağlantısını içeren bir e-posta alacaksınız"
