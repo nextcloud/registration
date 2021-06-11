@@ -32,7 +32,7 @@ OC.L10N.register(
     "The phone number is invalid." : "Die Telefonnummer ist ungültig.",
     "Please provide a password." : "Bitte gib ein Passwort an.",
     "Please provide a valid phone number." : "Bitte gib eine gültige Telefonnummer an.",
-    "Unable to create user, there are problems with the user backend." : "Benutzer kann nicht erstellt werden, da es Probleme mit Benutzer-Backend gibt.",
+    "Unable to create user, there are problems with the user backend." : "Benutzer konnte nicht erstellt werden, da es Probleme mit Benutzer-Backend gibt.",
     "Unable to set user email: " : "Benutzer-E-Mail konnte nicht gesetzt werden: ",
     "Registration app auto setup" : "Automatische Einrichtung der Registrierungs-App",
     "This app allows users to self-register a new account using their email address." : "Mit dieser App können Benutzer selbst ein neues Konto mithilfe ihrer E-Mail-Adresse erstellen.",
