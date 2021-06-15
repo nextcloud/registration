@@ -1,8 +1,26 @@
 {
+	"autoload-dev": {
+		"psr-4": {
+			"OCP\\": "vendor/christophwurst/nextcloud/OCP",
+			"OCA\\Registration\\": "lib/"
+		}
+	},
+	"name": "nextcloud/registration",
+	"description": "registration",
+	"license": "AGPL",
+	"require": {
+	},
 	"scripts": {
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
 		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -not -path './tests/integration/vendor/*' -print0 | xargs -0 -n1 php -l"
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"platform": {
+			"php": "7.2"
+		}
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^8.0",
