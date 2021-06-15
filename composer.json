@@ -5,7 +5,7 @@
 		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -not -path './tests/integration/vendor/*' -print0 | xargs -0 -n1 php -l"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.0",
+		"phpunit/phpunit": "^9.5",
 		"nextcloud/coding-standard": "^0.5.0",
 		"christophwurst/nextcloud_testing": "^0.12.3"
 	}
