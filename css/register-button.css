@@ -1,10 +1,14 @@
-#alternative-logins .button.register-button {
+#alternative-logins:not(.alternative-logins) .button.register-button {
 	color: var(--color-primary-element);
+}
+#alternative-logins.alternative-logins .button.register-button {
+	color: var(--color-primary-text);
 }
 
 #alternative-logins .register-button:only-child {
-	width: 220px;
+	width: 260px;
 	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 #alternative-logins .register-button.hidden {
