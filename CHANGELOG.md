@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.3.0 – 2021-06-17
+### Added
+- Compatibility with Nextcloud 22
+
 ## 1.2.1 – 2021-04-21
 ### Fixed
 - Don't append # to the URL so the Android WebView doesn't chock on it.
