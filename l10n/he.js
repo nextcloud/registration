@@ -2,7 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Registration is not allowed with the following domains:" : "אסור להירשם בדומיינים הבאים:",
-    "Registration is only allowed with the following domains:" : "הרשמה מותרת רק בדומיינים הבאים:",
+    "Registration is only allowed with the following domains:" : "הרשמה מותרת רק משמות התחום הבאים:",
     "A problem occurred sending email, please contact your administrator." : "אירעה תקלה בשליחת הדוא״ל, נא ליצור קשר עם הנהלת המערכת שלך.",
     "The entered verification code is wrong" : "קוד האימות שהוזן שגוי",
     "The verification failed." : "האימות נכשל.",
