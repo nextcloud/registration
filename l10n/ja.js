@@ -38,7 +38,7 @@ OC.L10N.register(
     "Approval required" : "承認をリクエストしました",
     "Your account has been successfully created, but it still needs approval from an administrator." : "アカウントは正常に作成されましたが、管理者の承認が必要です。",
     "Email" : "メール",
-    "Request verification code" : "認証コードを要求する",
+    "Request verification code" : "検証コードを要求する",
     "Back to login" : "ログインに戻る",
     "Phone number" : "電話番号",
     "Password" : "パスワード",
