@@ -206,11 +206,11 @@
 					type="text"
 					name="email_verification_hint"
 					:disabled="loading"
-					placeholder="Please create your username following the scheme 'firstname.lastname'."
+					placeholder="Welcome to Nextcloud. Please verify your email address to continue with the registration."
 					:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
 					@input="debounceSavingSlow">
 			</p>
-			<em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em>
+			<em>{{ t('registration', 'Add additional user instructions (e.g. a welcome message or some hint on how to complete registration). If configured the text is embedded in the verification-email.') }}</em>
 		</SettingsSection>
 	</div>
 </template>
