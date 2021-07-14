@@ -57,6 +57,7 @@ OC.L10N.register(
     "User instructions" : "Pokyny pre používateľa",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Upozornenie: Pokyny pre používateľov nebudú preložené, a preto sa zobrazia tak, ako sú nakonfigurované nižšie, pre všetkých používateľov bez ohľadu na ich skutočný jazyk.",
     "Registration form instructions" : "Formulár inštrukcií k registrácii",
+    "Verification email instructions" : "Formulár inštrukcií k registrácii",
     "Blocked email domains" : "Blokované e-mailové domény",
     "Allowed email domains" : "Povolené e-mailové domény",
     "An error occurred while saving the settings" : "Nastala chyba počas ukladania nastavení",
