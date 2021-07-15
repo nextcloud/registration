@@ -4,8 +4,6 @@ OC.L10N.register(
     "Saved" : "Lagra",
     "Email" : "E-post",
     "Password" : "Passord",
-    "Create account" : "Opprett konto",
-    "None" : "Ingen",
-    "Username" : "Brukarnamn"
+    "Create account" : "Opprett konto"
 },
 "nplurals=2; plural=(n != 1);");

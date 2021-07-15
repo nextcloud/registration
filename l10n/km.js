@@ -4,8 +4,6 @@ OC.L10N.register(
     "Saved" : "បាន​រក្សាទុក",
     "Email" : "អ៊ីមែល",
     "Password" : "ពាក្យសម្ងាត់",
-    "Create account" : "បង្កើតគណនី",
-    "None" : "គ្មាន",
-    "Username" : "ឈ្មោះ​អ្នកប្រើ"
+    "Create account" : "បង្កើតគណនី"
 },
 "nplurals=1; plural=0;");

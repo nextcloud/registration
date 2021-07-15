@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Обратно към вписване",
     "Password" : "Парола",
     "Create account" : "Създаване на профил",
-    "Verify" : "Потвърждаване",
-    "None" : "Без",
-    "Username" : "Потребител"
+    "Verify" : "Потвърждаване"
 },
 "nplurals=2; plural=(n != 1);");

@@ -4,8 +4,6 @@ OC.L10N.register(
     "Saved" : "Gespäichert",
     "Email" : "Email",
     "Password" : "Passwuert",
-    "Create account" : "Kont uleeën",
-    "None" : "Keng",
-    "Username" : "Benotzernumm"
+    "Create account" : "Kont uleeën"
 },
 "nplurals=2; plural=(n != 1);");

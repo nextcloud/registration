@@ -9,8 +9,6 @@ OC.L10N.register(
     "Back to login" : "Back to login",
     "Password" : "Password",
     "Create account" : "Create account",
-    "Verify" : "Verify",
-    "None" : "None",
-    "Username" : "Username"
+    "Verify" : "Verify"
 },
 "nplurals=2; plural=(n != 1);");

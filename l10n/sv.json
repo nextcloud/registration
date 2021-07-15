@@ -52,8 +52,6 @@
     "Back to login" : "Tillbaka till inloggning",
     "Password" : "Lösenord",
     "Create account" : "Skapa konto",
-    "Verify" : "Verifiera",
-    "None" : "Ingen",
-    "Username" : "Användarnamn"
+    "Verify" : "Verifiera"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

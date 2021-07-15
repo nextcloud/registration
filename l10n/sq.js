@@ -6,8 +6,6 @@ OC.L10N.register(
     "Email" : "email",
     "Password" : "Fjalëkalim",
     "Create account" : "Krijo llogari",
-    "Verify" : "Verifiko",
-    "None" : "Asnjë",
-    "Username" : "Username"
+    "Verify" : "Verifiko"
 },
 "nplurals=2; plural=(n != 1);");

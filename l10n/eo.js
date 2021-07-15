@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Antaŭen al ensaluto",
     "Password" : "Pasvorto",
     "Create account" : "Krei konton",
-    "Verify" : "Kontroli",
-    "None" : "Nenio",
-    "Username" : "Uzantnomo"
+    "Verify" : "Kontroli"
 },
 "nplurals=2; plural=(n != 1);");

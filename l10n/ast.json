@@ -3,8 +3,6 @@
     "Email" : "email",
     "Password" : "Password",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar",
-    "None" : "Dengún",
-    "Username" : "Nome d'usuariu"
+    "Verify" : "Verificar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

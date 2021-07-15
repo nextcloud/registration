@@ -40,15 +40,6 @@
     "Password" : "Adgangskode",
     "Create account" : "Opret konto",
     "Verification code" : "Verifikations kode",
-    "Verify" : "Bekræft",
-    "Your registration is pending. Please confirm your email address." : "Din registrering venter. Venligst bekræft din email adresse.",
-    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Der er allerede en ventende registrering med denne email, en ny verifikations email er blevet sendt til adressen.",
-    "Verification email successfully sent." : "Verifikations mailen er sendt.",
-    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Din konto er oprettet, du kan nu <a href=\"%s\">logge ind</a>.",
-    "Please provide a valid user name." : "Venligs angiv et godkendt brugernavn.",
-    "The username you have chosen already exists." : "Brugernavnet du har valgt eksisterer allerede.",
-    "This app allows users to self-register a new account using their e-mail address." : "Denne app tillader brugere selv at registrerer en ny konto ved at bruger deres email adresse.",
-    "None" : "Ingen",
-    "Username" : "Brugernavn"
+    "Verify" : "Bekræft"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

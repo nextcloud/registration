@@ -4,8 +4,6 @@ OC.L10N.register(
     "Saved" : "Salveguardate",
     "Email" : "E-posta",
     "Password" : "Contrasigno",
-    "Create account" : "Crear conto",
-    "None" : "Nulle",
-    "Username" : "Nomine de usator"
+    "Create account" : "Crear conto"
 },
 "nplurals=2; plural=(n != 1);");

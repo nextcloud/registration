@@ -6,8 +6,6 @@ OC.L10N.register(
     "Back to login" : "Atpakaļ uz pieteikšanos",
     "Password" : "Parole",
     "Create account" : "Izveidot kontu",
-    "Verify" : "Verificēt",
-    "None" : "Nav",
-    "Username" : "Lietotājvārds"
+    "Verify" : "Verificēt"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

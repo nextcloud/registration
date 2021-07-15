@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Til baka í innskráningu",
     "Password" : "Lykilorð",
     "Create account" : "Stofna aðgang",
-    "Verify" : "Sannprófa",
-    "None" : "Ekkert",
-    "Username" : "Notandanafn"
+    "Verify" : "Sannprófa"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

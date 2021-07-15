@@ -54,8 +54,6 @@ OC.L10N.register(
     "Back to login" : "Tillbaka till inloggning",
     "Password" : "Lösenord",
     "Create account" : "Skapa konto",
-    "Verify" : "Verifiera",
-    "None" : "Ingen",
-    "Username" : "Användarnamn"
+    "Verify" : "Verifiera"
 },
 "nplurals=2; plural=(n != 1);");

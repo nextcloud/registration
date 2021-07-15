@@ -4,8 +4,6 @@ OC.L10N.register(
     "Saved" : "Enregistrat",
     "Email" : "Adreça corrièl",
     "Password" : "Senhal",
-    "Create account" : "Crear un compte",
-    "None" : "Pas cap",
-    "Username" : "Nom d’utilizaire"
+    "Create account" : "Crear un compte"
 },
 "nplurals=2; plural=(n > 1);");

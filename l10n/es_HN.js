@@ -6,8 +6,6 @@ OC.L10N.register(
     "Email" : "Correo electrónico",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar",
-    "None" : "Ninguno",
-    "Username" : "Usuario"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

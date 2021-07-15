@@ -5,8 +5,6 @@ OC.L10N.register(
     "Email" : "Цахим шуудан",
     "Password" : "Нууц үг",
     "Create account" : "Аккаунт үүсгэх",
-    "Verify" : "Шалнгах",
-    "None" : "юу ч үгүй",
-    "Username" : "Хэрэглэгчийн нэр"
+    "Verify" : "Шалнгах"
 },
 "nplurals=2; plural=(n != 1);");

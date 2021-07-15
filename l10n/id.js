@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Kembali ke log masuk",
     "Password" : "Kata kunci",
     "Create account" : "Buat akun",
-    "Verify" : "Verifikasi",
-    "None" : "Tidak ada",
-    "Username" : "Nama pengguna"
+    "Verify" : "Verifikasi"
 },
 "nplurals=1; plural=0;");
