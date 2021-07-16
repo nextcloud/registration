@@ -12,6 +12,8 @@ OC.L10N.register(
     "Verification code: %s" : "Patvirtinimo kodas: %s",
     "Continue registration" : "Tęsti registraciją",
     "Enable now" : "Įjungti dabar",
+    "You can <a href=\"%s\">log in now</a>." : "Dabar, galite <a href=\"%s\">prisijungti</a>.",
+    "Loading …" : "Įkeliama…",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius.",
     "Email" : "El. paštas",
     "Back to login" : "Grįžti prie prisijungimo",
