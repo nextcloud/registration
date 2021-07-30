@@ -77,7 +77,7 @@ OC.L10N.register(
     "Request verification link" : "Bestätigungslink anfordern",
     "Back to login" : "Zurück zur Anmeldung",
     "Welcome, you can create your account below." : "Willkommen, Du kannst Dein Konto nachfolgend erstellen.",
-    "Login name" : "Anmeldebild",
+    "Login name" : "Anmeldename",
     "Full name" : "Vollständiger Name",
     "Phone number" : "Telefonnummer",
     "Password" : "Passwort",
