@@ -427,7 +427,7 @@ class RegistrationService {
 			$user->setEnabled(false);
 		}
 
-		$this->mailService->notifyAdmins($userId, $user->isEnabled(), $groupId);
+		$this->mailService->notifyAdmins($userId, $user->getEMailAddress(), $user->isEnabled(), $groupId);
 		return $user;
 	}
 
