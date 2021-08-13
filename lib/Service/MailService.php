@@ -147,7 +147,7 @@ class MailService {
 		}
 	}
 
-	public function notifyAdmins(string $userId, bool $userIsEnabled, string $userGroupId): void {
+	public function notifyAdmins(string $userId, string $userEMailAddress, bool $userIsEnabled, string $userGroupId): void {
 		// Notify admin
 		$adminUsers = $this->groupManager->get('admin')->getUsers();
 
@@ -172,7 +172,7 @@ class MailService {
 		}
 
 		try {
-			$this->sendNewUserNotifyEmail($toArr, $userId, $userIsEnabled);
+			$this->sendNewUserNotifyEmail($toArr, $userId, $userEMailAddress, $userIsEnabled);
 		} catch (\Exception $e) {
 			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
 		}
@@ -186,7 +186,7 @@ class MailService {
 	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifyEmail(array $to, string $username, bool $userIsEnabled): void {
+	private function sendNewUserNotifyEmail(array $to, string $username, string $userEMailAddress, bool $userIsEnabled): void {
 		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersListByGroup', [
 			'group' => 'disabled',
 		]);
@@ -204,15 +204,17 @@ class MailService {
 
 		if ($userIsEnabled) {
 			$template->addBodyText(
-				$this->l10n->t('"%1$s" registered a new account on %2$s.', [
+				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s.', [
 					$username,
+					$userEMailAddress,
 					$this->defaults->getName(),
 				])
 			);
 		} else {
 			$template->addBodyText(
-				$this->l10n->t('"%1$s" registered a new account on %2$s and needs to be enabled.', [
+				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s and needs to be enabled.', [
 					$username,
+					$userEMailAddress,
 					$this->defaults->getName(),
 				])
 			);
