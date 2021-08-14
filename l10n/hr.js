@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Nastavi registraciju",
     "New user \"%s\" has created an account on %s" : "Novi korisnik „%s“ stvorio je račun na %s",
     "New user registered" : "Registriran je novi korisnik",
-    "\"%1$s\" registered a new account on %2$s." : "„%1$s“ je registrirao novi račun na %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "„%1$s“ je registrirao novi račun na %2$s i treba ga omogućiti.",
     "Enable now" : "Omogući sad",
     "A user has already taken this email, maybe you already have an account?" : "Postoji korisnik s ovom adresom e-pošte, možda ste već otvorili račun?",
     "You can <a href=\"%s\">log in now</a>." : "Sad se možete <a href=\"%s\">prijaviti</a>.",

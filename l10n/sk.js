@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Pokračujte v registrácii",
     "New user \"%s\" has created an account on %s" : "Nový používateľ „%s“ vytvoril účet na %s",
     "New user registered" : "Nový užívateľ je zaregistrovaný",
-    "\"%1$s\" registered a new account on %2$s." : "„%1$s“ zaregistroval nový účet na %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "„%1$s“ zaregistroval nový účet na %2$s a je potrebné ho povoliť.",
     "Enable now" : "Povoliť teraz",
     "A user has already taken this email, maybe you already have an account?" : "Niekto už tento e-mail použil, nemáte už účet?",
     "You can <a href=\"%s\">log in now</a>." : "Teraz sa môžete <a href=\"%s\">prihlásiť</a>.",

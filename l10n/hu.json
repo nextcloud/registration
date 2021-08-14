@@ -17,8 +17,6 @@
     "Continue registration" : "Regisztráció folytatása",
     "New user \"%s\" has created an account on %s" : "A \"%s\" új felhasználó létrehozott egy fiókot a(z) %s webhelyen",
     "New user registered" : "Új felhasználó regisztrálva",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" új fiókot regisztrált a(z) %2$s oldalon.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" új fiókot regisztrált a(z) %2$s webhelyen amelyet engedélyezni kell.",
     "Enable now" : "Engedélyezés",
     "A user has already taken this email, maybe you already have an account?" : "Egy felhasználó már használja ezt az email címet, lehet, hogy  van már hozzáférése?",
     "You can <a href=\"%s\">log in now</a>." : "<a href=\"%s\"> Most bejelentkezhet </a>.",

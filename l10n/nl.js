@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Hervat registratie",
     "New user \"%s\" has created an account on %s" : "Nieuwe gebruiker \"%s\" heeft een account aangemaakt op %s",
     "New user registered" : "Nieuwe gebruiker geregistreerd",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" heeft een nieuw account geregistreerd op %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" heeft een nieuw account geregistreerd op %2$s en moet worden ingeschakeld.",
     "Enable now" : "Nu inschakelen",
     "A user has already taken this email, maybe you already have an account?" : "Een gebruiker heeft dit e-mailadres al gebruikt, misschien heeft u al een account?",
     "You can <a href=\"%s\">log in now</a>." : "Je kan <a href=\"%s\">nu inloggen</a>.",

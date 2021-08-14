@@ -17,8 +17,6 @@
     "Continue registration" : "続けて登録する",
     "New user \"%s\" has created an account on %s" : "新しいユーザー \"%s\" がアカウント %sで作成されました。",
     "New user registered" : "新規ユーザー登録",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" は新規アカウント%2$sで登録されました。",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" が新しいアカウント %2$s で登録されましたが、有効化が必要です。",
     "Enable now" : "今すぐ有効化",
     "Registration with this email domain is not allowed." : "このメールドメインでの登録は許可されていません。",
     "Please provide a valid display name." : "有効な表示名を入力してください。",

@@ -17,8 +17,6 @@
     "Continue registration" : "Συνεχίστε την εγγραφή",
     "New user \"%s\" has created an account on %s" : "Ένας νέος χρήστης, ο «%s» έχει δημιουργήσει έναν λογαριασμό στο %s",
     "New user registered" : "Εγγράφηκε νέος χρήστης",
-    "\"%1$s\" registered a new account on %2$s." : "Ο \"%1$s\" καταχώρησε έναν νέο λογαριασμό στις %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "Ο \"%1$s\" καταχώρησε έναν νέο λογαριασμό στις %2$s και χρειάζεται ενεργοποίηση.",
     "Enable now" : "Ενεργοποίηση τώρα",
     "A user has already taken this email, maybe you already have an account?" : "Ένας χρήστης χρησιμοποιεί αυτό το email, έχετε ήδη λογαριασμό;",
     "You can <a href=\"%s\">log in now</a>." : "Μπορείτε <a href=\"%s\">να συνδεθείτε</a>.",

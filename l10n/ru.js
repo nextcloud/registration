@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Продолжить регистрацию",
     "New user \"%s\" has created an account on %s" : "Новый пользователь «%s» создал учётную запись на сервере %s",
     "New user registered" : "Новый пользователь зарегистрировался",
-    "\"%1$s\" registered a new account on %2$s." : "«%1$s» зарегистрировал учётную запись на сервере %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "Требуется подтверждение новой учётной записи «%1$s», созданной на сервере %2$s.",
     "Enable now" : "Включить сейчас",
     "A user has already taken this email, maybe you already have an account?" : "Кто-то уже использует эту электронную почту, возможно у вас уже есть учётная запись?",
     "You can <a href=\"%s\">log in now</a>." : "Вы можете <a href=\"%s\">войти сейчас</a>.",

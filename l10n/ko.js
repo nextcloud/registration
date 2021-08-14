@@ -18,8 +18,6 @@ OC.L10N.register(
     "Continue registration" : "등록 계속하기",
     "New user \"%s\" has created an account on %s" : "새 사용자 \"%s\"이(가) %s에 계정을 만들었습니다",
     "New user registered" : "새 사용자가 등록되었습니다",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\"이(가) %2$s에 새 계정을 만들었습니다.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\"이(가) %2$s에 새 계정을 만들었으며 활성화가 필요합니다.",
     "Enable now" : "지금 활성화하기",
     "A user has already taken this email, maybe you already have an account?" : "중복된 이메일입니다. 혹은 이미 당신이 계정을 가지고 있을 수 있습니다.",
     "You can <a href=\"%s\">log in now</a>." : "이제 <a href=\"%s\">로그인</a>할 수 있습니다.",

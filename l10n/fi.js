@@ -18,8 +18,6 @@ OC.L10N.register(
     "Continue registration" : "Jatka rekisteröintiä",
     "New user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" loi tilin palveluun %s",
     "New user registered" : "Uusi käyttäjä rekisteröitynyt",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" rekisteröi uuden tilin palveluun %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" rekisteröi uuden tilin palveluun %2$s, mutta tili vaatii vielä käyttöönoton.",
     "Enable now" : "Ota käyttöön nyt",
     "A user has already taken this email, maybe you already have an account?" : "Tämä sähköpostiosoite on jo käyttäjän käytössä. Kenties sinulla on jo olemassa tili.",
     "You can <a href=\"%s\">log in now</a>." : "Voit nyt <a href=\"%s\">kirjautua sisään</a>.",

@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Continuar co rexistro",
     "New user \"%s\" has created an account on %s" : "O novo usuario «%s» creou unha conta en %s",
     "New user registered" : "Novo usuario rexistrado ",
-    "\"%1$s\" registered a new account on %2$s." : "«%1$s» rexistrou unha nova conta en %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "«%1$s» rexistrou unha nova conta en %2$s e precisa ser activada.",
     "Enable now" : "Activar agora",
     "A user has already taken this email, maybe you already have an account?" : "Un usuario xa utilizou este correo-e, quizais ten xa unha conta?",
     "You can <a href=\"%s\">log in now</a>." : "Pode <a href=\"%s\">iniciar sesión agora</a>.",

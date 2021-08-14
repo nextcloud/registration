@@ -18,8 +18,6 @@ OC.L10N.register(
     "Continue registration" : "متابعة التسجيل",
     "New user \"%s\" has created an account on %s" : "مستخدم جديد \"%s\" قام بإنشاء حساب في %s",
     "New user registered" : "تم تسجيل مستخدم جديد",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" سجل حساب جديد في %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" سجل حساب جديد في %2$s يحتاج للتفعيل.",
     "Enable now" : "تفعيل الآن",
     "A user has already taken this email, maybe you already have an account?" : "مستخدم آخر قام بإستخدام هذا البريد، ربما لديك حساب؟",
     "You can <a href=\"%s\">log in now</a>." : "بإمكانك <a href=\"%s\">تسجيل الدخول الآن</a>.",

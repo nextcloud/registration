@@ -19,8 +19,6 @@ OC.L10N.register(
     "Continue registration" : "Fortsätt registrering",
     "New user \"%s\" has created an account on %s" : "Ny användare \"%s\" har skapat ett konto på %s",
     "New user registered" : "Ny användare registrerad",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" registrerade ett nytt konto på %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" registrerade ett nytt konto på %2$s och måste aktiveras.",
     "Enable now" : "Aktivera nu",
     "A user has already taken this email, maybe you already have an account?" : "En använder har redan registrerat denna e-postadressen, kanske har du redan skapat ett konto?",
     "You can <a href=\"%s\">log in now</a>." : "Du kan <a href=\"%s\">logga in</a> nu.",
