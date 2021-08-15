@@ -19,6 +19,8 @@ OC.L10N.register(
     "Continue registration" : "繼續註冊",
     "New user \"%s\" has created an account on %s" : "新用戶「%s」已在 %s 上建立了賬號",
     "New user registered" : "新用戶已註冊",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\"（%2$s）在 %3$s 上註冊了新賬號。",
+    "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\"（%2$s）在 %3$s 上註冊了新賬號，需要啟用。",
     "Enable now" : "現在啟用",
     "A user has already taken this email, maybe you already have an account?" : "已有使用此電子郵件的用戶，也許您已經有賬號了？",
     "You can <a href=\"%s\">log in now</a>." : "您現在可以<a href=\"%s\">登入</a>。",

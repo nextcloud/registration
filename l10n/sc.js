@@ -19,6 +19,8 @@ OC.L10N.register(
     "Continue registration" : "Sighi sa registratzione",
     "New user \"%s\" has created an account on %s" : "S'utente nou \"%s\" at creadu unu contu in %s",
     "New user registered" : "Utente nou registradu",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) registradu unu contu nou in %3$s.",
+    "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) registradu unu contu nou in %3$s e tocat de ddu ativare.",
     "Enable now" : "Ativa immoe",
     "A user has already taken this email, maybe you already have an account?" : "Custu indiritzu dd'at giai impreadu un'àteru utente, fortzis tenes giai unu contu?",
     "You can <a href=\"%s\">log in now</a>." : "Immoe podes <a href=\"%s\">intrare</a>.",
