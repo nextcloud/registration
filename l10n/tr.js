@@ -19,6 +19,8 @@ OC.L10N.register(
     "Continue registration" : "Hesap açma işlemini sürdür",
     "New user \"%s\" has created an account on %s" : "\"%s\" kullanıcı hesabı %s üzerinde açıldı",
     "New user registered" : "Yeni kullanıcı hesabı açıldı",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s), %3$s üzerinde yeni bir hesap açtı.",
+    "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s), %3$s üzerinde açtığı yeni hesabın etkinleştirilmesi gerekiyor.",
     "Enable now" : "Şimdi etkinleştir",
     "A user has already taken this email, maybe you already have an account?" : "Bu e-posta adresini kullanan başka bir kullanıcı zaten var. Daha önce hesap açmış olabilir misiniz?",
     "You can <a href=\"%s\">log in now</a>." : "Artık <a href=\"%s\">oturum açabilirsiniz</a>.",

@@ -17,6 +17,8 @@
     "Continue registration" : "继续注册",
     "New user \"%s\" has created an account on %s" : "新用户 “%s” 已在%s上创建了一个账号",
     "New user registered" : "新的用户已注册",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) 在 %3$s 上注册了一个新账号",
+    "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) 在 %3$s 上注册了一个新账号且需要被启用。",
     "Enable now" : "现在启用",
     "A user has already taken this email, maybe you already have an account?" : "一个用户已经使用过此电子邮件，也许您已经有一个账号？",
     "You can <a href=\"%s\">log in now</a>." : "您可以<a href=\"%s\">登录</a>了。",

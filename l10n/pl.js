@@ -19,6 +19,8 @@ OC.L10N.register(
     "Continue registration" : "Kontynuuj rejestrację",
     "New user \"%s\" has created an account on %s" : "Nowy użytkownik \"%s\" utworzył konto w %s",
     "New user registered" : "Zarejestrowano nowego użytkownika",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) zarejestrował nowe konto na %3$s.",
+    "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) zarejestrował nowe konto na %3$s i wymaga włączenia.",
     "Enable now" : "Włącz teraz",
     "A user has already taken this email, maybe you already have an account?" : "Użytkownik otrzymał już tego e-maila, może masz już konto?",
     "You can <a href=\"%s\">log in now</a>." : "Możesz się teraz <a href=\"%s\">zalogować</a>.",
