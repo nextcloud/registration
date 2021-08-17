@@ -23,6 +23,7 @@ OC.L10N.register(
     "You can <a href=\"%s\">log in now</a>." : "Сега можете да се <a href=\"%s\">најавите</a>.",
     "Registration with this email domain is not allowed." : "Регистрација со оваа е-пошта адреса не е дозволена.",
     "Please provide a valid display name." : "Внесете валидно име.",
+    "Please provide a valid login name." : "Внесете валидно име за најавување.",
     "Unable to set user email: " : "Неуспешно поставување на е-пошта адреса на корисникот:",
     "Require admin approval" : "Потребно е одобрување од администратор",
     "Registered users default group" : "Стандардна група за регистрирани корисници",
