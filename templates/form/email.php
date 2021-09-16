@@ -11,7 +11,6 @@ if (isset($_SESSION["captcha"]) && $_SESSION["captcha"] != "") {
 	$captcha = rand(1000, 9999);
 	$_SESSION["captcha"] = $captcha;
 }
-
 ?>
 <form action="" method="post">
 	<fieldset>

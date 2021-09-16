@@ -287,8 +287,8 @@ class RegistrationService {
 	 * @return void
 	 */
 	public function validateCaptcha(string $captcha): void {
-			$session_captcha = $_SESSION['captcha'] ??  "";
-			if( (int)$session_captcha !== (int)$captcha){
+			$sessionCaptcha = $_SESSION['captcha'] ??  "";
+			if( (int)$sessionCaptcha !== (int)$captcha){
 				throw new RegistrationException($this->l10n->t('Invalid Captcha'));
 			}
 	}
