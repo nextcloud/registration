@@ -71,6 +71,11 @@ class RegistrationSettings implements ISettings {
 		);
 
 		$this->initialState->provideInitialState(
+			'admin_register_captcha',
+			$this->config->getAppValue($this->appName, 'admin_register_captcha', 'no') === 'yes'
+		);
+
+		$this->initialState->provideInitialState(
 			'allowed_domains',
 			$this->config->getAppValue($this->appName, 'allowed_domains')
 		);

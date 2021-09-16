@@ -31,8 +31,19 @@ input[type="submit"] {
 
 .msg {
 	color: white;
-	margin: 5px;
+	font-size: 20px;
 }
+
+.cpt-p{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.cpt-label{
+	color: white;
+	font-size: 20px;
+}
+
 .msg a {
 	color: white;
 	text-decoration: underline;
