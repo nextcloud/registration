@@ -34,7 +34,7 @@ if (isset($_SESSION["captcha"]) && $_SESSION["captcha"] != "") {
 
 		<div id="terms_of_service"></div>
 
-		<?php if ($_['admin_registe_captcha'] === "yes"): ?>
+		<?php if ($_['admin_register_captcha'] === "yes"): ?>
 			<p class="cpt-p">
 				<label
 					class="cpt-label"><?php p($l->t('Captcha')); ?><?php echo $captcha; ?></label>

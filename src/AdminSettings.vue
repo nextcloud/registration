@@ -36,14 +36,14 @@
 			<em>{{ t('registration', 'Enabling "admin approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em>
 
 			<p>
-				<input id="admin_registe_captcha"
-					   v-model="adminRegisteCaptcha"
+				<input id="admin_register_captcha"
+					   v-model="adminRegisterCaptcha"
 					   type="checkbox"
-					   name="admin_registe_captcha"
+					   name="admin_register_captcha"
 					   class="checkbox"
 					   :disabled="loading"
 					   @change="saveData">
-				<label for="admin_registe_captcha">Show Captcha</label>
+				<label for="admin_register_captcha">Show Captcha</label>
 			</p>
 			<em> In order to show the Captcha in the page registration </em>
 
@@ -253,7 +253,7 @@ export default {
 			saveNotification: null,
 
 			adminApproval: false,
-			adminRegisteCaptcha: false,
+			adminRegisterCaptcha: false,
 			registeredUserGroup: '',
 			allowedDomains: '',
 			domainsIsBlocklist: false,
@@ -290,7 +290,7 @@ export default {
 
 	mounted() {
 		this.adminApproval = loadState('registration', 'admin_approval_required')
-		this.adminRegisteCaptcha = loadState('registration', 'admin_registe_captcha')
+		this.adminRegisterCaptcha = loadState('registration', 'admin_register_captcha')
 		this.registeredUserGroup = loadState('registration', 'registered_user_group')
 		this.allowedDomains = loadState('registration', 'allowed_domains')
 		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
@@ -322,7 +322,7 @@ export default {
 			try {
 				const response = await axios.post(generateUrl('/apps/registration/settings'), {
 					admin_approval_required: this.adminApproval,
-					admin_registe_captcha: this.adminRegisteCaptcha,
+					admin_register_captcha: this.adminRegisterCaptcha,
 					registered_user_group: this.registeredUserGroup?.id,
 					allowed_domains: this.allowedDomains,
 					domains_is_blocklist: this.domainsIsBlocklist,
