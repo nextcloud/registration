@@ -111,6 +111,7 @@ class RegisterController extends Controller {
 			'email' => $email,
 			'message' => $message ?: $emailHint,
 			'disable_email_verification' => $this->config->getAppValue($this->appName, 'disable_email_verification', 'no'),
+			'admin_registe_captcha' => $this->config->getAppValue($this->appName, 'admin_registe_captcha', 'no'),
 			'is_login_flow' => $this->loginFlowService->isUsingLoginFlow(),
 		];
 		return new TemplateResponse('registration', 'form/email', $params, 'guest');
@@ -124,6 +125,16 @@ class RegisterController extends Controller {
 	 * @return TemplateResponse
 	 */
 	public function submitEmailForm(string $email): Response {
+		$adminRegisteCaptcha = $this->config->getAppValue($this->appName, 'admin_registe_captcha', 'no');
+		if($adminRegisteCaptcha === 'yes'){
+			$captcha = $_POST['captcha'] ?? "";
+			try {
+				$this->registrationService->validateCaptcha($captcha);
+			}catch (RegistrationException $e){
+				return $this->showEmailForm($email, $e->getMessage());
+			}
+		}
+
 		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_EMAIL);
 		$this->eventDispatcher->dispatchTyped($validateFormEvent);
 
@@ -303,6 +314,7 @@ class RegisterController extends Controller {
 	 * @return RedirectResponse|TemplateResponse
 	 */
 	public function submitUserForm(string $secret, string $token, string $loginname, string $fullname, string $phone, string $password): Response {
+
 		try {
 			$registration = $this->validateSecretAndToken($secret, $token);
 		} catch (RegistrationException $e) {

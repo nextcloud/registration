@@ -60,6 +60,7 @@ class SettingsController extends Controller {
 						  string $email_verification_hint,
 						  string $username_policy_regex,
 						  ?bool $admin_approval_required,
+						  ?bool $admin_registe_captcha,
 						  ?bool $email_is_login,
 						  ?bool $show_fullname,
 						  ?bool $enforce_fullname,
@@ -104,6 +105,7 @@ class SettingsController extends Controller {
 		}
 
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'admin_registe_captcha', $admin_registe_captcha ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'email_is_login', $email_is_login ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_fullname', $show_fullname ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'enforce_fullname', $enforce_fullname ? 'yes' : 'no');

@@ -6,7 +6,13 @@ This app allows users to register a new account.
 # Install from appstore
 
 From your Nextcloud instance, click: your profile to the upper right -> Apps -> Tools (in the left column), find Registration, click Enable
+# Install from github
 
+```
+git clone https://github.com/nextcloud/registration.git
+
+enable app with occ: sudo -u www-data php /var/www/nextcloud/occ app:enable registration
+```
 # Features
 
 - Add users to a given group

@@ -56,6 +56,7 @@ use \OCP\IL10N;
 use \OCP\IConfig;
 use \OCP\Security\ISecureRandom;
 use Psr\Log\LoggerInterface;
+use Exception;
 
 class RegistrationService {
 
@@ -277,6 +278,19 @@ class RegistrationService {
 		} catch (NumberParseException $e) {
 			throw new RegistrationException($this->l10n->t('The phone number is invalid.'));
 		}
+	}
+
+	/**
+	 * Check captcha text
+	 * @param string $captcha
+	 * @throws RegistrationException
+	 * @return void
+	 */
+	public function validateCaptcha(string $captcha): void {
+			$session_captcha = $_SESSION['captcha'] ??  "";
+			if( (int)$session_captcha !== (int)$captcha){
+				throw new RegistrationException($this->l10n->t('Invalid Captcha'));
+			}
 	}
 
 	/**
