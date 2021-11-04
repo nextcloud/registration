@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace OCA\Registration\Controller;
 
 use Exception;
+use OC\HintException;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Events\PassedFormEvent;
@@ -322,6 +323,8 @@ class RegisterController extends Controller {
 
 		try {
 			$user = $this->registrationService->createAccount($registration, $loginname, $fullname, $phone, $password);
+		} catch (HintException $exception) {
+			return $this->showUserForm($secret, $token, $loginname, $fullname, $phone, $password, $exception->getHint());
 		} catch (Exception $exception) {
 			return $this->showUserForm($secret, $token, $loginname, $fullname, $phone, $password, $exception->getMessage());
 		}
