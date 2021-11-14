@@ -48,7 +48,7 @@ OC.L10N.register(
     "Force email as login name" : "E-Mail als Anmeldename erzwingen",
     "Login name policy" : "Richtlinien für Benutzernamen",
     "Regular expression to validate login names" : "Regulärer Ausdruck für die Validierung der Benutzernamen",
-    "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Wenn konfiguriert, werden Anmeldenamen durch den regulären Ausdruck validiert. Wenn die Validierung fehlschlägt, wird dem Benutzer eine generische Fehlermeldung angezeigt. Stelle sicher, dass dein regulärer Ausdruck korrekt funktioniert.",
+    "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Wenn konfiguriert, werden Anmeldenamen durch den regulären Ausdruck validiert. Wenn die Validierung fehlschlägt, wird dem Benutzer eine generische Fehlermeldung angezeigt. Stelle sicher, dass Dein regulärer Ausdruck korrekt funktioniert.",
     "Show full name field" : "Zeige Feld für vollständigen Namen an",
     "Enforce full name field" : "Erzwinge Feld für vollständigen Namen",
     "Show phone field" : "Zeige Feld für die Telefonnummer an",
