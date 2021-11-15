@@ -56,7 +56,7 @@ OC.L10N.register(
     "Show phone field" : "Zobrazit kolonku telefonní číslo",
     "Enforce phone field" : "Vynutit vyplnění kolonky telefon",
     "User instructions" : "Pokyny pro uživatele",
-    "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Upozornění: Pokyny pro uživatele nebudou přeloženy, a proto se zobrazí tak, jak je nakonfigurováno níže, pro všechny uživatele bez ohledu na jejich skutečný jazyk.",
+    "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Upozornění: Pokyny pro uživatele nebudou přeloženy, a proto se zobrazí tak, jak je nastaveno níže, pro všechny uživatele bez ohledu na jejich skutečný jazyk.",
     "Registration form instructions" : "Pokyny pro registrační formulář",
     "A short message that is shown to the user in the registration process." : "Krátká zpráva, která je zobrazena uživateli v průběhu registrace.",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "Přidejte další pokyny pro uživatele (např. ohledně volby jejich uživatelského jména). Pokud je nastaveno, text je zobrazen v kroku vytváření účtu v rámci procesu registrace.",
