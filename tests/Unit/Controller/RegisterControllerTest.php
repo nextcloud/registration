@@ -132,6 +132,7 @@ class RegisterControllerTest extends TestCase {
 		$controller = $this->getController();
 		$response = $controller->showEmailForm($email, $message);
 		$disable_email_verification = $this->config->getAppValue('registration', 'disable_email_verification', 'no');
+		$email_is_optional = $this->config->getAppValue('registration', 'email_is_optional', 'no');
 
 		$this->loginFlowService->method('isUsingLoginFlow')
 			->willReturn(false);
@@ -142,6 +143,7 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame([
 			'email' => $email,
 			'message' => $message,
+			'email_is_optional' => $email_is_optional,
 			'disable_email_verification' => $disable_email_verification,
 			'is_login_flow' => false,
 		], $response->getParams());
@@ -474,6 +476,7 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame([
 			'email' => $email,
 			'email_is_login' => false,
+			'email_is_optional' => false,
 			'loginname' => $username,
 			'fullname' => $fullname,
 			'show_fullname' => true,

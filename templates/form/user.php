@@ -22,12 +22,13 @@ script('registration', 'registration-form');
 			</ul>
 		<?php endif; ?>
 
-
-		<p class="grouptop">
-			<input type="email" name="email" id="email" value="<?php p($_['email']); ?>" disabled />
-			<label for="email" class="infield"><?php p($_['email']); ?></label>
-			<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
-		</p>
+		<?php if (!$_['email_is_optional'] || !empty($_['email'])) { ?>
+			<p class="grouptop">
+				<input type="email" name="email" id="email" value="<?php p($_['email']); ?>" disabled />
+				<label for="email" class="infield"><?php p($_['email']); ?></label>
+				<img id="email-icon" class="svg" src="<?php print_unescaped(image_path('', 'actions/mail.svg')); ?>" alt=""/>
+			</p>
+		<?php } ?>
 
 		<?php if (!$_['email_is_login']) { ?>
 			<p class="groupmiddle">

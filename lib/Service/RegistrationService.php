@@ -166,6 +166,10 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail(string $email): void {
+		if ($email === '' && $this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes') {
+			return;
+		}
+
 		$this->mailService->validateEmail($email);
 
 		// check for pending registrations

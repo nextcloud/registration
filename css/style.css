@@ -7,6 +7,11 @@
 	width: calc(100% - 56px);
 	padding-left: 36px;
 }
+
+#body-login #password {
+	box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+}
+
 #email-icon,
 #token-icon,
 #loginname-icon,
@@ -47,5 +52,5 @@ input[type="submit"] {
 }
 
 .toggle-password {
-	top: 22px !important;
+	top: 7px !important;
 }
