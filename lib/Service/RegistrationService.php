@@ -166,7 +166,7 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail(string $email): void {
-		if ($this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes' && empty(trim($email))) {
+		if ($email === '' && $this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes') {
 			return;
 		}
 

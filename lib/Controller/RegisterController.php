@@ -140,6 +140,7 @@ class RegisterController extends Controller {
 		} catch (DoesNotExistException $e) {
 			// No registration in progress
 			try {
+				$email = trim($email);
 				$this->registrationService->validateEmail($email);
 			} catch (RegistrationException $e) {
 				return $this->showEmailForm($email, $e->getMessage());
