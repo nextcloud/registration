@@ -5,8 +5,6 @@
     "Back to login" : "Volver para iniciar sesión",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar",
-    "None" : "Ninguno",
-    "Username" : "Nombre de usuario"
+    "Verify" : "Verificar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

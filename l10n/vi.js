@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Quay lại trang đăng nhập",
     "Password" : "Mật khẩu",
     "Create account" : "Tạo tài khoản",
-    "Verify" : "Xác minh",
-    "None" : "Không có",
-    "Username" : "Tên đăng nhập"
+    "Verify" : "Xác minh"
 },
 "nplurals=1; plural=0;");

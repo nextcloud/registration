@@ -6,8 +6,6 @@ OC.L10N.register(
     "Email" : "Epost",
     "Password" : "Parool",
     "Create account" : "Loo konto",
-    "Verify" : "Kontrolli",
-    "None" : "Pole",
-    "Username" : "Kasutajanimi"
+    "Verify" : "Kontrolli"
 },
 "nplurals=2; plural=(n != 1);");

@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Tilbake til innlogging",
     "Password" : "Passord",
     "Create account" : "Opprett konto",
-    "Verify" : "Verifiser",
-    "None" : "Ingen",
-    "Username" : "Brukernavn"
+    "Verify" : "Verifiser"
 },
 "nplurals=2; plural=(n != 1);");

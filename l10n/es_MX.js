@@ -7,8 +7,6 @@ OC.L10N.register(
     "Back to login" : "Regresar al inicio de sesión",
     "Password" : "Contraseña",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar",
-    "None" : "Ninguno",
-    "Username" : "Usuario"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

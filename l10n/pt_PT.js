@@ -13,13 +13,6 @@ OC.L10N.register(
     "Back to login" : "Voltar à entrada",
     "Password" : "Palavra-passe",
     "Create account" : "Criar conta",
-    "Verify" : "Verificar",
-    "Your registration is pending. Please confirm your email address." : "O seu registo está pendente. Por favor, confirme o seu endereço de e-mail.",
-    "Verification email successfully sent." : "O e-mail de verificação foi enviado com sucesso.",
-    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "A sua conta foi criada com sucesso, agora pode <a href=\"%s\">iniciar a sessão</a>.",
-    "A new user \"%s\" has created an account on %s" : "Um novo utilizador \"%s\" criou uma conta em %s",
-    "This app allows users to self-register a new account using their e-mail address." : "Esta aplicação permite que os utilizadores registem automaticamente uma nova conta utilizando o próprio endereçod e e-mail.",
-    "None" : "Nenhum",
-    "Username" : "Nome de utilizador"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

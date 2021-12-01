@@ -18,8 +18,6 @@ OC.L10N.register(
     "Continue registration" : "Fortsæt registrering",
     "New user \"%s\" has created an account on %s" : "Ny bruger \"%s\" har oprettet en konto på %s",
     "New user registered" : "Ny bruger registreret",
-    "\"%1$s\" registered a new account on %2$s." : "\"%1$s\" registrerede en ny konto på %2$s.",
-    "\"%1$s\" registered a new account on %2$s and needs to be enabled." : "\"%1$s\" registrerede en ny konto på %2$s og skal aktiveres.",
     "Enable now" : "Aktiver nu",
     "A user has already taken this email, maybe you already have an account?" : "En bruger har allerede benyttet denne email, måske du allerede har en konto?",
     "You can <a href=\"%s\">log in now</a>." : "Du kan <a href=\"%s\">logge ind nu</a>.",
@@ -42,15 +40,6 @@ OC.L10N.register(
     "Password" : "Adgangskode",
     "Create account" : "Opret konto",
     "Verification code" : "Verifikations kode",
-    "Verify" : "Bekræft",
-    "Your registration is pending. Please confirm your email address." : "Din registrering venter. Venligst bekræft din email adresse.",
-    "There is already a pending registration with this email, a new verification email has been sent to the address." : "Der er allerede en ventende registrering med denne email, en ny verifikations email er blevet sendt til adressen.",
-    "Verification email successfully sent." : "Verifikations mailen er sendt.",
-    "Your account has been successfully created, you can <a href=\"%s\">log in now</a>." : "Din konto er oprettet, du kan nu <a href=\"%s\">logge ind</a>.",
-    "Please provide a valid user name." : "Venligs angiv et godkendt brugernavn.",
-    "The username you have chosen already exists." : "Brugernavnet du har valgt eksisterer allerede.",
-    "This app allows users to self-register a new account using their e-mail address." : "Denne app tillader brugere selv at registrerer en ny konto ved at bruger deres email adresse.",
-    "None" : "Ingen",
-    "Username" : "Brugernavn"
+    "Verify" : "Bekræft"
 },
 "nplurals=2; plural=(n != 1);");
