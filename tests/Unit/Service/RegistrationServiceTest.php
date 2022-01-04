@@ -310,6 +310,7 @@ class RegistrationServiceTest extends TestCase {
 			'enforce_fullname' => 'no',
 			'show_phone' => 'yes',
 			'enforce_phone' => 'no',
+			'newUser.sendEmail' => 'no',
 		];
 
 		return $map[$key];

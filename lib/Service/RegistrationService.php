@@ -41,6 +41,7 @@ use OC\Authentication\Token\IToken;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
+use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\IRequest;
@@ -429,10 +430,36 @@ class RegistrationService {
 		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
 		if ($adminApprovalRequired === 'yes') {
 			$user->setEnabled(false);
+			$this->config->setUserValue($userId, Application::APP_ID,'send_welcome_mail_on_enable', 'yes');
+		} else {
+			$this->sendWelcomeMail($user);
 		}
 
 		$this->mailService->notifyAdmins($userId, $user->getEMailAddress(), $user->isEnabled(), $groupId);
 		return $user;
+	}
+
+	public function sendWelcomeMail(IUser $user): void {
+		$this->config->deleteUserValue($user->getUID(), Application::APP_ID, 'send_welcome_mail_on_enable');
+
+		if ($this->config->getAppValue('core', 'newUser.sendEmail', 'yes') === 'yes') {
+			/** @var NewUserMailHelper $helper */
+			$helper = \OC::$server->get(NewUserMailHelper::class);
+
+			try {
+				$emailTemplate = $helper->generateTemplate($user);
+				$helper->sendMail($user, $emailTemplate);
+			} catch (\Exception $e) {
+				// Catching this so at least admins are notified
+				$this->logger->error(
+					'Unable to send the invitation mail to {user}',
+					[
+						'user' => $user->getUID(),
+						'exception' => $e,
+					]
+				);
+			}
+		}
 	}
 
 	/**
