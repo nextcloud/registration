@@ -440,6 +440,8 @@ class RegistrationService {
 	}
 
 	public function sendWelcomeMail(IUser $user): void {
+		$this->config->deleteUserValue($user->getUID(), Application::APP_ID, 'send_welcome_mail_on_enable');
+
 		if ($this->config->getAppValue('core', 'newUser.sendEmail', 'yes') === 'yes') {
 			/** @var NewUserMailHelper $helper */
 			$helper = \OC::$server->get(NewUserMailHelper::class);
