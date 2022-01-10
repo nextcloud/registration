@@ -38,6 +38,8 @@ OC.L10N.register(
     "Email" : "メール",
     "Request verification code" : "検証コードを要求する",
     "Back to login" : "ログインに戻る",
+    "Login name" : "ログイン名",
+    "Full name" : "氏名",
     "Phone number" : "電話番号",
     "Password" : "パスワード",
     "Create account" : "アカウント作成",
