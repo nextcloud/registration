@@ -9,8 +9,8 @@
 		"watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
 		"lint": "eslint --ext .js,.vue src",
 		"lint:fix": "eslint --ext .js,.vue src --fix",
-		"stylelint": "stylelint src",
-		"stylelint:fix": "stylelint src --fix"
+		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
+		"stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
 	},
 	"dependencies": {
 		"@nextcloud/axios": "^1.6.0",

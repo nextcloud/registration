@@ -21,15 +21,16 @@
 	position: absolute;
 	left: 16px;
 	top: 22px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=30)';
 	filter: alpha(opacity=30);
 	opacity: .3;
 }
+
 #email-icon {
 	top: 27px;
 }
 
-input[type="submit"] {
+input[type='submit'] {
 	width: calc(100% - 10px) !important;
 	white-space: normal;
 }
@@ -38,6 +39,7 @@ input[type="submit"] {
 	color: white;
 	margin: 5px;
 }
+
 .msg a {
 	color: white;
 	text-decoration: underline;

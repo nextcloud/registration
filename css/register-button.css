@@ -1,6 +1,7 @@
 #alternative-logins:not(.alternative-logins) .button.register-button {
 	color: var(--color-primary-element);
 }
+
 #alternative-logins.alternative-logins .button.register-button {
 	color: var(--color-primary-text);
 }
