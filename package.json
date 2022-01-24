@@ -9,8 +9,8 @@
 		"watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
 		"lint": "eslint --ext .js,.vue src",
 		"lint:fix": "eslint --ext .js,.vue src --fix",
-		"stylelint": "stylelint src",
-		"stylelint:fix": "stylelint src --fix"
+		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
+		"stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
 	},
 	"dependencies": {
 		"@nextcloud/axios": "^1.6.0",
@@ -32,7 +32,7 @@
 		"@nextcloud/babel-config": "^1.0.0-beta.1",
 		"@nextcloud/browserslist-config": "^2.1.0",
 		"@nextcloud/eslint-config": "^7.0.2",
-		"@nextcloud/stylelint-config": "^1.0.0-beta.0",
+		"@nextcloud/stylelint-config": "^2.1.2",
 		"@nextcloud/webpack-vue-config": "^4.0.3"
 	}
 }
