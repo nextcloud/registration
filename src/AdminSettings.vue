@@ -21,8 +21,7 @@
   -->
 <template>
 	<div id="registration_settings_form">
-		<SettingsSection
-			:title="t('registration', 'Registration settings')">
+		<SettingsSection :title="t('registration', 'Registration settings')">
 			<p>
 				<input id="admin_approval"
 					v-model="adminApproval"
@@ -39,8 +38,7 @@
 				<label for="registered_user_group">
 					{{ t('registration', 'Registered users default group') }}
 				</label>
-				<Multiselect
-					id="registered_user_group"
+				<Multiselect id="registered_user_group"
 					v-model="registeredUserGroup"
 					:placeholder="t('registration', 'Select group')"
 					:options="groups"
@@ -57,8 +55,7 @@
 			</p>
 		</SettingsSection>
 
-		<SettingsSection
-			:title="t('registration', 'Email settings')">
+		<SettingsSection :title="t('registration', 'Email settings')">
 			<p>
 				<input id="email_is_optional"
 					v-model="emailIsOptional"
@@ -72,8 +69,7 @@
 
 			<p>
 				<label for="allowed_domains">{{ domainListLabel }}</label>
-				<input
-					id="allowed_domains"
+				<input id="allowed_domains"
 					v-model="allowedDomains"
 					type="text"
 					name="allowed_domains"
@@ -117,8 +113,7 @@
 			</p>
 		</SettingsSection>
 
-		<SettingsSection
-			:title="t('registration', 'User settings')">
+		<SettingsSection :title="t('registration', 'User settings')">
 			<p v-if="!emailIsOptional">
 				<input id="email_is_login"
 					v-model="emailIsLogin"
@@ -129,12 +124,10 @@
 					@change="saveData">
 				<label for="email_is_login">{{ t('registration', 'Force email as login name') }}</label>
 			</p>
-			<template
-				v-if="!emailIsLogin">
+			<template v-if="!emailIsLogin">
 				<p>
 					<label for="username_policy_regex">{{ t('registration', 'Login name policy') }}</label>
-					<input
-						id="username_policy_regex"
+					<input id="username_policy_regex"
 						v-model="usernamePolicyRegex"
 						type="text"
 						name="username_policy_regex"
@@ -157,8 +150,7 @@
 				<label for="show_fullname">{{ t('registration', 'Show full name field') }}</label>
 			</p>
 
-			<p
-				v-if="showFullname"
+			<p v-if="showFullname"
 				class="indent">
 				<input id="enforce_fullname"
 					v-model="enforceFullname"
@@ -170,8 +162,7 @@
 				<label for="enforce_fullname">{{ t('registration', 'Enforce full name field') }}</label>
 			</p>
 
-			<p
-				v-if="canShowPhone">
+			<p v-if="canShowPhone">
 				<input id="show_phone"
 					v-model="showPhone"
 					type="checkbox"
@@ -182,8 +173,7 @@
 				<label for="show_phone">{{ t('registration', 'Show phone field') }}</label>
 			</p>
 
-			<p
-				v-if="canShowPhone && showPhone"
+			<p v-if="canShowPhone && showPhone"
 				class="indent">
 				<input id="enforce_phone"
 					v-model="enforcePhone"
@@ -196,8 +186,7 @@
 			</p>
 		</SettingsSection>
 
-		<SettingsSection
-			:title="t('registration', 'User instructions')"
+		<SettingsSection :title="t('registration', 'User instructions')"
 			:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
 			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
 			<p>
