@@ -41,7 +41,7 @@ OC.L10N.register(
     "Back to login" : "العودة إلى تسجيل الدخول",
     "Welcome, you can create your account below." : "مرحبا بك، بإمكانك الآن انشاء حساب.",
     "Full name" : "الاسم الكامل",
-    "Phone number" : "رقم الهاتف",
+    "Phone number" : "رقم الجوال",
     "Password" : "كلمة السر",
     "Create account" : "إنشاء حساب",
     "Verification code" : "رمز التحقق",
