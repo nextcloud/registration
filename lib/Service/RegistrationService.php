@@ -430,7 +430,7 @@ class RegistrationService {
 		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
 		if ($adminApprovalRequired === 'yes') {
 			$user->setEnabled(false);
-			$this->config->setUserValue($userId, Application::APP_ID,'send_welcome_mail_on_enable', 'yes');
+			$this->config->setUserValue($userId, Application::APP_ID, 'send_welcome_mail_on_enable', 'yes');
 		} else {
 			$this->sendWelcomeMail($user);
 		}
