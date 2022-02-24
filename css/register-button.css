@@ -1,9 +1,3 @@
-/* Nextcloud 21 and older */
-#alternative-logins:not(.alternative-logins) .button.register-button {
-	color: var(--color-primary-element);
-}
-
-/* Nextcloud 22 and newer */
 #alternative-logins.alternative-logins .button.register-button {
 	color: var(--color-primary-text);
 }
