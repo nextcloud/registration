@@ -52,7 +52,7 @@
     "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Caso configurado, nomes de login serão validados através de uma expressão regular. Se a validação falhar, o usuário receberá uma tela de erro genérico. Certifique-se de que seu regex está funcionando corretamente.",
     "Show full name field" : "Mostrar campo de nome completo",
     "Enforce full name field" : "Forçar campo de nome completo",
-    "Show phone field" : "Mostrar compo de telefone",
+    "Show phone field" : "Mostrar campo de telefone",
     "Enforce phone field" : "Forçar campo de telefone",
     "User instructions" : "Instruções ao usuário",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Cuidado: As instruções do usuário não serão traduzidas e, portanto, serão exibidas conforme configurado abaixo para todos os usuários, independentemente do idioma real.",
