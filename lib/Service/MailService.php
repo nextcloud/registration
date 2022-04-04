@@ -147,7 +147,7 @@ class MailService {
 		}
 	}
 
-	public function notifyAdmins(string $userId, string $userEMailAddress, bool $userIsEnabled, string $userGroupId): void {
+	public function notifyAdmins(string $userId, ?string $userEMailAddress, bool $userIsEnabled, string $userGroupId): void {
 		// Notify admin
 		$adminUsers = $this->groupManager->get('admin')->getUsers();
 
@@ -186,7 +186,7 @@ class MailService {
 	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifyEmail(array $to, string $username, string $userEMailAddress, bool $userIsEnabled): void {
+	private function sendNewUserNotifyEmail(array $to, string $username, ?string $userEMailAddress, bool $userIsEnabled): void {
 		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersListByGroup', [
 			'group' => 'disabled',
 		]);
@@ -206,7 +206,7 @@ class MailService {
 			$template->addBodyText(
 				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s.', [
 					$username,
-					$userEMailAddress,
+					$userEMailAddress ?? $this->l10n->t('no email address given'),
 					$this->defaults->getName(),
 				])
 			);
@@ -214,7 +214,7 @@ class MailService {
 			$template->addBodyText(
 				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s and needs to be enabled.', [
 					$username,
-					$userEMailAddress,
+					$userEMailAddress ?? $this->l10n->t('no email address given'),
 					$this->defaults->getName(),
 				])
 			);
