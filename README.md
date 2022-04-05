@@ -11,7 +11,7 @@ From your Nextcloud instance, click: your profile to the upper right -> Apps -> 
 
 - Add users to a given group
 - Allow-list with email domains (including wildcard) to register with
-- Admins will be notified via email for new user creation or require approval
+- Administrator will be notified via email for new user creation or require approval
 - Supports Nextcloud's Client [Login Flow v1 and v2](https://docs.nextcloud.com/server/stable/developer_manual/client_apis/LoginFlow/index.html) - allowing registration in the mobile Apps and Desktop clients
 
 # Web form registration flow
