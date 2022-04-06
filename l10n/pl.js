@@ -19,6 +19,7 @@ OC.L10N.register(
     "Continue registration" : "Kontynuuj rejestrację",
     "New user \"%s\" has created an account on %s" : "Nowy użytkownik \"%s\" utworzył konto w %s",
     "New user registered" : "Zarejestrowano nowego użytkownika",
+    "no email address given" : "nie podano adresu e-mail",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) zarejestrował nowe konto na %3$s.",
     "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) zarejestrował nowe konto na %3$s i wymaga włączenia.",
     "Enable now" : "Włącz teraz",

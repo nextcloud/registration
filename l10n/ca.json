@@ -17,6 +17,7 @@
     "Continue registration" : "Continuar el registre",
     "New user \"%s\" has created an account on %s" : "El nou usuari \"%s\" ha creat un compte a %s",
     "New user registered" : "Nou usuari registrat",
+    "no email address given" : "No s'ha donat cap correu",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) va registrar un nou compte el %3$s.",
     "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) va registrar un nou compte el %3$s i s'ha d'habilitar.",
     "Enable now" : "Habilita ara",
