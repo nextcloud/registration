@@ -24,7 +24,6 @@
     "Unable to create user, there are problems with the user backend." : "Kan ikke oprette bruger, der er problemer med brugerens backend.",
     "Unable to set user email: " : "Kan ikke oprette bruger email:",
     "Registration app auto setup" : "Registrering app automatisk setup",
-    "Require admin approval" : "Kræv administratorgodkendelse",
     "Registered users default group" : "Regisrerede brugeres standard gruppe",
     "Block listed email domains instead of allowing them" : "Bloker listede email domæner istedet for at tillade dem",
     "Force email as login name" : "Gennemtving email som logonnavn",

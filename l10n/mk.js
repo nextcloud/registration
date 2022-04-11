@@ -25,7 +25,6 @@ OC.L10N.register(
     "Please provide a valid display name." : "Внесете валидно име.",
     "Please provide a valid login name." : "Внесете валидно име за најавување.",
     "Unable to set user email: " : "Неуспешно поставување на е-пошта адреса на корисникот:",
-    "Require admin approval" : "Потребно е одобрување од администратор",
     "Registered users default group" : "Стандардна група за регистрирани корисници",
     "Force email as login name" : "Наметни е-пошта за корисничко име",
     "Allowed email domains" : "Дозволени е-пошта домени",

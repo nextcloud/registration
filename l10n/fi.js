@@ -33,7 +33,6 @@ OC.L10N.register(
     "Please provide a valid phone number." : "Anna kelvollinen puhelinnumero",
     "Unable to set user email: " : "Käyttäjän sähköpostiosoitteen asettaminen ei onnistunut:",
     "Registration settings" : "Rekisteröintiasetukset",
-    "Require admin approval" : "Vaadi ylläpitäjän hyväksyntä",
     "Select group" : "Valitse ryhmä",
     "Email settings" : "Sähköpostiasetukset",
     "Disable email verification" : "Poista sähköpostivahvistus käytöstä",

@@ -22,7 +22,6 @@ OC.L10N.register(
     "Enable now" : "今すぐ有効化",
     "Registration with this email domain is not allowed." : "このメールドメインでの登録は許可されていません。",
     "Please provide a valid display name." : "有効な表示名を入力してください。",
-    "Require admin approval" : "管理者の承認制にする",
     "Registered users default group" : "登録するユーザーのデフォルトグループ",
     "Select group" : "グループを選択",
     "Email settings" : "メール設定",
