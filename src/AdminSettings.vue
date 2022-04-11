@@ -30,9 +30,9 @@
 					class="checkbox"
 					:disabled="loading"
 					@change="saveData">
-				<label for="admin_approval">{{ t('registration', 'Require admin approval') }}</label>
+				<label for="admin_approval">{{ t('registration', 'Require administrator approval') }}</label>
 			</p>
-			<em>{{ t('registration', 'Enabling "admin approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em>
+			<em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em>
 
 			<p>
 				<label for="registered_user_group">

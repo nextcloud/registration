@@ -12,7 +12,7 @@ This app allows users to register a new account.
 
 - Add users to a given group
 - Allow-list with email domains (including wildcard) to register with
-- Admins will be notified via email for new user creation or require approval
+- Administrator will be notified via email for new user creation or require approval
 - Supports Nextcloud's Client Login Flow v1 and v2 - allowing registration in the mobile Apps and Desktop clients
 
 # Web form registration flow
