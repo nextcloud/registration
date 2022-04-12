@@ -35,11 +35,15 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	protected $url;
 	/** @var IL10N */
 	protected $l;
+	/** @var \OC_Defaults */
+	protected $theming;
 
 	public function __construct(IURLGenerator $url,
-								IL10N $l) {
+								IL10N $l,
+								\OC_Defaults $theming) {
 		$this->url = $url;
 		$this->l = $l;
+		$this->theming = $theming;
 	}
 
 	public function getLabel(): string {
@@ -56,5 +60,6 @@ class RegistrationLoginOption implements IAlternativeLogin {
 
 	public function load(): void {
 		Util::addStyle(Application::APP_ID, 'register-button');
+		Util::addHeader('style', [], ':root { --color-primary-text: ' . $this->theming->getTextColorPrimary() . '; }');
 	}
 }
