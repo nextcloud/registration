@@ -18,6 +18,7 @@ OC.L10N.register(
     "Email" : "El. paštas",
     "Back to login" : "Grįžti prie prisijungimo",
     "Welcome, you can create your account below." : "Sveiki, žemiau galite susikurti paskyrą.",
+    "Phone number" : "Telefono numeris",
     "Password" : "Slaptažodis",
     "Create account" : "Sukurti paskyrą",
     "Verify" : "Patikrinti"
