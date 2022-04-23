@@ -42,6 +42,7 @@ OC.L10N.register(
     "Select group" : "Valitse ryhmä",
     "Email settings" : "Sähköpostiasetukset",
     "Email is optional" : "Sähköpostiosoite on valinnainen",
+    "Allowed email domain" : "Sähköpostien sallitut verkkotunnukset",
     "Disable email verification" : "Poista sähköpostivahvistus käytöstä",
     "User settings" : "Käyttäjäasetukset",
     "Force email as login name" : "Pakota sähköpostiosoite kirjautumisnimeksi",
