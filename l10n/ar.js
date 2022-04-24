@@ -30,6 +30,7 @@ OC.L10N.register(
     "Block listed email domains instead of allowing them" : "حظر قائمة خوادم البريد بدلا من السماح",
     "Force email as login name" : "فرض الدخول عبر البريد الالكتروني بدل اسم المستخدم",
     "Allowed email domains" : "خوادم البريد المسموح بها",
+    "Loading …" : "جاري التحميل …",
     "Approval required" : "الموافقة مطلوبة",
     "Your account has been successfully created, but it still needs approval from an administrator." : "تم انشاء حسابك بنجاح، تم ارسال طلب الموافقه للادارة.",
     "Email" : "البريد الإلكترونى",

@@ -56,8 +56,12 @@ OC.L10N.register(
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Obs: Användarinstruktioner översätts ej och kommer därför att visas så som de syns nedanför för alla användare, oavsett vilket språk de faktiskt har.",
     "Registration form instructions" : "Instruktioner för registreringsformulär",
     "A short message that is shown to the user in the registration process." : "Ett kort meddelande som visas för användaren i registreringsprocessen.",
+    "Loading …" : "Läser in …",
     "Email" : "E-post",
+    "Continue" : "Fortsätt",
     "Back to login" : "Tillbaka till inloggning",
+    "Full name" : "Fullständigt namn",
+    "Phone number" : "Telefonnummer",
     "Password" : "Lösenord",
     "Create account" : "Skapa konto",
     "Verify" : "Verifiera"

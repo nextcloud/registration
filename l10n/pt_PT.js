@@ -8,9 +8,13 @@ OC.L10N.register(
     "Verify your %s registration request" : "Verifique o seu pedido de registo %s",
     "Registration" : "Registo",
     "You can <a href=\"%s\">log in now</a>." : "Agora, pode <a href=\"%s\">iniciar a sessão</a>.",
+    "Loading …" : "A carregar...",
     "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador.",
     "Email" : "E-mail",
+    "Continue" : "Continuar",
     "Back to login" : "Voltar à entrada",
+    "Full name" : "Nome completo",
+    "Phone number" : "Número de telefone",
     "Password" : "Palavra-passe",
     "Create account" : "Criar conta",
     "Verify" : "Verificar"

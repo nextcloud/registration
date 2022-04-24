@@ -4,7 +4,10 @@ OC.L10N.register(
     "Saved" : "Disimpan",
     "Register" : "Daftar",
     "Email" : "Surel",
+    "Continue" : "Lanjutkan",
     "Back to login" : "Kembali ke log masuk",
+    "Full name" : "Nama lengkap",
+    "Phone number" : "Nomor telefon",
     "Password" : "Kata kunci",
     "Create account" : "Buat akun",
     "Verify" : "Verifikasi"

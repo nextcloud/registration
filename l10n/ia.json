@@ -1,0 +1,9 @@
+{ "translations": {
+    "Saved" : "Salveguardate",
+    "Email" : "E-posta",
+    "Full name" : "Nomine complete",
+    "Phone number" : "Numero de telephono",
+    "Password" : "Contrasigno",
+    "Create account" : "Crear conto"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

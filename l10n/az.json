@@ -1,0 +1,8 @@
+{ "translations": {
+    "Saved" : "Saxlanıldı",
+    "Email" : "Email",
+    "Full name" : "Tam ad",
+    "Password" : "Şifrə",
+    "Create account" : "Hesab yarat"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -4,6 +4,9 @@ OC.L10N.register(
     "Saved" : "Salvestatud",
     "Register" : "Registreeru",
     "Email" : "Epost",
+    "Continue" : "Jätka",
+    "Full name" : "Täisnimi",
+    "Phone number" : "Telefoninumber",
     "Password" : "Parool",
     "Create account" : "Loo konto",
     "Verify" : "Kontrolli"
