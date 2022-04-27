@@ -1,5 +1,6 @@
 #alternative-logins.alternative-logins .button.register-button {
-	color: var(--color-primary-text);
+	color: #ffffff !important;
+	background-color: #0082c9;
 }
 
 #alternative-logins.alternative-logins .button.register-button:focus {
