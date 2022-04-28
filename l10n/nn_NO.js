@@ -6,6 +6,7 @@ OC.L10N.register(
     "Continue" : "Gå vidare",
     "Full name" : "Fult namn",
     "Password" : "Passord",
-    "Create account" : "Opprett konto"
+    "Create account" : "Opprett konto",
+    "Verify" : "Stadfest"
 },
 "nplurals=2; plural=(n != 1);");
