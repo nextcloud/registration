@@ -2,7 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Registration is not allowed with the following domains:" : "Şu etki alanları ile hesap açılamaz:",
-    "Registration is only allowed with the following domains:" : "Yalnız şu etki alanları ile hesap açılabilir:",
+    "Registration is only allowed with the following domains:" : "Yalnızca şu etki alanları ile hesap açılabilir:",
     "A problem occurred sending email, please contact your administrator." : "E-posta gönderilirken bir sorun çıktı. Lütfen BT yöneticiniz ile görüşün.",
     "The entered verification code is wrong" : "Yazdığınız doğrulama kodu geçersiz",
     "The verification failed." : "Doğrulanamadı.",
