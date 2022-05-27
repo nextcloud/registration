@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "บันทึกแล้ว",
+    "Register" : "ลงทะเบียน",
     "Email" : "อีเมล",
     "Continue" : "ดำเนินการต่อ",
     "Back to login" : "กลับสู่หน้าเข้าสู่ระบบ",
