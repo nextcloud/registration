@@ -5,6 +5,7 @@ declare(strict_types=1);
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -28,6 +29,7 @@ namespace OCA\Registration\Db;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\QBMapper;
+use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
 
@@ -121,5 +123,12 @@ class RegistrationMapper extends QBMapper {
 	public function generateClientSecret(Registration $registration): void {
 		$token = $this->random->generate(32, ISecureRandom::CHAR_HUMAN_READABLE);
 		$registration->setClientSecret($token);
+	}
+
+	public function deleteOlderThan(\DateTime $date): void {
+		$query = $this->db->getQueryBuilder();
+		$query->delete($this->getTableName())
+			->where($query->expr()->lt('requested', $query->createNamedParameter($date, IQueryBuilder::PARAM_DATE)))
+			->executeStatement();
 	}
 }
