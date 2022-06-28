@@ -5,6 +5,7 @@ OC.L10N.register(
     "Register" : "Register",
     "Enforce full name field" : "Full name field is mandatory",
     "Enforce phone field" : "Phone number field is mandatory",
+    "Loading …" : "Loading …",
     "Email" : "Email",
     "Continue" : "Continue",
     "Back to login" : "Back to login",

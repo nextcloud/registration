@@ -43,6 +43,7 @@ OC.L10N.register(
     "Email settings" : "Sähköpostiasetukset",
     "Email is optional" : "Sähköpostiosoite on valinnainen",
     "Allowed email domain" : "Sähköpostien sallitut verkkotunnukset",
+    "Block listed email domains instead of allowing them" : "Estä listatut sähköpostin verkkotunnukset sen sijaan, että ne sallittaisiin",
     "Disable email verification" : "Poista sähköpostivahvistus käytöstä",
     "User settings" : "Käyttäjäasetukset",
     "Force email as login name" : "Pakota sähköpostiosoite kirjautumisnimeksi",
