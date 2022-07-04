@@ -27,6 +27,7 @@
     "Registration app auto setup" : "Configuración automática da aplicación de rexistro",
     "Registered users default group" : "Grupo predeterminado de usuarios rexistrados",
     "Block listed email domains instead of allowing them" : "Bloquear os dominios de correo-e listados no canto de permitilos",
+    "User settings" : "Axustes de usuario",
     "Force email as login name" : "Forzar o correo-e como nome de inicio de sesión",
     "User instructions" : "Instrucións do usuario",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Precaución: as instrucións do usuario non se traducirán e, polo tanto, amosaranse como se configura a continuación para todos os usuarios independentemente do seu idioma real.",
