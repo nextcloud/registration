@@ -19,7 +19,7 @@
 		"@nextcloud/router": "^2.0.0",
 		"@nextcloud/vue": "^5.0.0",
 		"debounce": "^1.2.1",
-		"vue": "^2.6.12"
+		"vue": "^2.7.4"
 	},
 	"browserslist": [
 		"extends @nextcloud/browserslist-config"
