@@ -64,6 +64,6 @@ class Registration extends Entity {
 		$this->addType('emailConfirmed', 'boolean');
 		$this->addType('token', 'string');
 		$this->addType('clientSecret', 'string');
-		$this->addType('requested', 'string'); // TODO datetime is not supported?
+		$this->addType('requested', 'datetime');
 	}
 }
