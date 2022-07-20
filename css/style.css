@@ -12,6 +12,10 @@
 	box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
 }
 
+.nc-25 #body-login #password {
+	box-shadow: none !important;
+}
+
 #email-icon,
 #token-icon,
 #loginname-icon,
@@ -21,13 +25,16 @@
 	position: absolute;
 	left: 16px;
 	top: 22px;
-	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=30)';
 	filter: alpha(opacity=30);
 	opacity: .3;
 }
 
 #email-icon {
 	top: 27px;
+}
+
+.nc-25 #email-icon {
+	top: 22px;
 }
 
 input[type='submit'] {
@@ -45,6 +52,14 @@ input[type='submit'] {
 	text-decoration: underline;
 }
 
+.nc-25 .msg {
+    color: var(--color-main-text);
+}
+
+.nc-25 .msg a {
+    color: var(--color-main-text);
+}
+
 .error {
 	margin-bottom: 15px;
 }
@@ -53,6 +68,12 @@ input[type='submit'] {
 	position: relative;
 }
 
-.toggle-password {
-	top: 7px !important;
+.nc-25 .groupbutton {
+    position: relative;
+}
+
+.nc-25 .toggle-password {
+    position: absolute;
+    right: 0;
+    top: 5px;
 }

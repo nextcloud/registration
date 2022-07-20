@@ -4,6 +4,7 @@
 style('registration', 'style');
 script('registration', 'registration-form');
 ?>
+<div class="login-box">
 	<form action="" method="post">
 		<fieldset>
 			<?php if ($_['message']): ?>
@@ -43,3 +44,4 @@ script('registration', 'registration-form');
 			</a>
 		</fieldset>
 	</form>
+</div>
