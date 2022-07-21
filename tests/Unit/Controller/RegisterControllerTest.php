@@ -154,7 +154,7 @@ class RegisterControllerTest extends TestCase {
 				['email_is_optional', $email_is_optional],
 				['disable_email_verification', $disable_email_verification],
 				['is_login_flow', false],
-			 );
+			);
 	}
 
 	public function testSubmitEmailForm(): void {

@@ -37,8 +37,8 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	protected $theming;
 
 	public function __construct(IURLGenerator $url,
-								IL10N $l,
-								\OC_Defaults $theming) {
+		IL10N $l,
+		\OC_Defaults $theming) {
 		$this->url = $url;
 		$this->l = $l;
 		$this->theming = $theming;
