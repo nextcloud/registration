@@ -35,6 +35,7 @@ use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IConfig;
 use OCP\IL10N;
@@ -62,6 +63,8 @@ class RegisterControllerTest extends TestCase {
 	private $mailService;
 	/** @var IEventDispatcher|MockObject */
 	private $eventDispatcher;
+	/** @var IInitialState|MockObject */
+	private $initialState;
 
 	public function setUp(): void {
 		parent::setUp();
@@ -73,10 +76,11 @@ class RegisterControllerTest extends TestCase {
 		$this->loginFlowService = $this->createMock(LoginFlowService::class);
 		$this->mailService = $this->createMock(MailService::class);
 		$this->eventDispatcher = $this->createMock(IEventDispatcher::class);
+		$this->initialState = $this->createMock(IInitialState::class);
 
 		$this->l10n->expects($this->any())
 			->method('t')
-			->willReturnCallback(function ($text, $parameters = []) {
+			->willReturnCallback(function ($text, $parameters = []): string {
 				return vsprintf($text, $parameters);
 			});
 	}
@@ -96,7 +100,8 @@ class RegisterControllerTest extends TestCase {
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService,
-				$this->eventDispatcher
+				$this->eventDispatcher,
+				$this->initialState
 			);
 		}
 
@@ -112,6 +117,7 @@ class RegisterControllerTest extends TestCase {
 				$this->loginFlowService,
 				$this->mailService,
 				$this->eventDispatcher,
+				$this->initialState,
 			])
 			->getMock();
 	}
@@ -140,13 +146,15 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/email', $response->getTemplateName());
 
-		self::assertSame([
-			'email' => $email,
-			'message' => $message,
-			'email_is_optional' => $email_is_optional,
-			'disable_email_verification' => $disable_email_verification,
-			'is_login_flow' => false,
-		], $response->getParams());
+		self::assertSame([], $response->getParams());
+		$this->initialState->method('provideInitialState')
+			->withConsecutive(
+				['email', $email],
+				['message', $message],
+				['email_is_optional', $email_is_optional],
+				['disable_email_verification', $disable_email_verification],
+				['is_login_flow', false],
+			 );
 	}
 
 	public function testSubmitEmailForm(): void {
@@ -320,10 +328,10 @@ class RegisterControllerTest extends TestCase {
 
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/verification', $response->getTemplateName());
+		$this->initialState->method('provideInitialState')
+			->with('message', $message);
 
-		self::assertSame([
-			'message' => $message,
-		], $response->getParams());
+		self::assertSame([], $response->getParams());
 	}
 
 	public function testShowVerificationFormInvalidSecret(): void {
@@ -473,21 +481,24 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame(TemplateResponse::RENDER_AS_GUEST, $response->getRenderAs());
 		self::assertSame('form/user', $response->getTemplateName());
 
-		self::assertSame([
-			'email' => $email,
-			'email_is_login' => false,
-			'email_is_optional' => false,
-			'loginname' => $username,
-			'fullname' => $fullname,
-			'show_fullname' => true,
-			'enforce_fullname' => false,
-			'phone' => $phone,
-			'show_phone' => true,
-			'enforce_phone' => false,
-			'message' => $message,
-			'password' => $password,
-			'additional_hint' => null,
-		], $response->getParams());
+		self::assertSame([], $response->getParams());
+
+		$this->initialState->method('provideInitialState')
+			->withConsecutive(
+				['email', $email],
+				['email_is_login', false],
+				['email_is_optional', false],
+				['loginname', $username],
+				['fullname', $fullname],
+				['show_fullname', true],
+				['enforce_fullname', false],
+				['phone', $phone],
+				['show_phone', true],
+				['enforce_phone', false],
+				['message', $message],
+				['password', $password],
+				['additional_hint', null],
+			);
 	}
 
 	public function testShowUserFormInvalidSecretAndToken(): void {

@@ -59,7 +59,5 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	}
 
 	public function load(): void {
-		Util::addStyle(Application::APP_ID, 'register-button');
-		Util::addHeader('style', [], ':root { --color-primary-text: ' . $this->theming->getTextColorPrimary() . '; }');
 	}
 }
