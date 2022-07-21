@@ -23,11 +23,9 @@ declare(strict_types=1);
 
 namespace OCA\Registration;
 
-use OCA\Registration\AppInfo\Application;
 use OCP\Authentication\IAlternativeLogin;
 use OCP\IL10N;
 use OCP\IURLGenerator;
-use OCP\Util;
 
 class RegistrationLoginOption implements IAlternativeLogin {
 
