@@ -37,31 +37,25 @@
 
 				<p v-if="!emailIsOptional || email.length > 0" class="input">
 					<input id="email"
+						v-model="email"
 						type="email"
 						class="input__field"
 						name="email"
-						:value="email"
 						disabled>
 					<label for="email" class="infield">{{ t('registration', 'Email') }}></label>
-					<img id="email-icon"
-						class="input__icon"
-						:src="emailIconPath"
-						alt="">
+					<Email :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 
 				<p v-if="!emailIsLogin" class="input">
 					<input id="loginname"
+						v-model="loginname"
 						type="text"
 						name="loginname"
 						class="input__field"
-						:value="loginname"
 						:placeholder="t('registration', 'Login name')"
 						required>
 					<label for="loginname" class="infield">{{ t('registration', 'Login name') }}</label>
-					<img id="loginname-icon"
-						class="input__icon"
-						:src="authIconPath"
-						alt="">
+					<Key :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 				<input v-else
 					type="hidden"
@@ -70,17 +64,14 @@
 
 				<p v-if="showFullname" class="input">
 					<input id="fullname"
+						v-model="fullname"
 						type="text"
 						name="fullname"
 						class="input__field"
-						:value="fullname"
 						:placeholder="t('registration', 'Full name')"
 						:required="enforceFullname">
 					<label for="fullname" class="infield">{{ t('registration', 'Full name') }}</label>
-					<img id="fullname-icon"
-						class="input__icon"
-						:src="userIconPath"
-						alt="">
+					<Account :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 				<input v-else
 					type="hidden"
@@ -89,17 +80,14 @@
 
 				<p v-if="showPhone" class="groupmiddle input">
 					<input id="phone"
+						v-model="phone"
 						type="text"
 						name="phone"
 						class="input__field"
-						:value="phone"
 						:placeholder="t('registration', 'Phone number')"
 						:required="enforcePhone">
 					<label for="phone" class="infield">{{ t('registration', 'Phone number') }}</label>
-					<img id="phone-icon"
-						class="input__icon"
-						:src="phoneIconPath"
-						alt="">
+					<Phone :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 				<input v-else
 					type="hidden"
@@ -108,21 +96,19 @@
 
 				<p class="groupbottom input">
 					<input id="password"
-						type="password"
+						v-model="password"
+						:type="passwordInputType"
 						class="input__field"
 						name="password"
-						:value="password"
 						:placeholder="t('registration', 'Password')"
 						required>
 					<label for="password" class="infield">{{ t('registration', 'Password') }}</label>
-					<img id="password-icon"
-						class="svg input__icon"
-						:src="passwordIconPath"
-						alt="">
+					<Lock :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
 					<Button class="toggle-password"
 						type="tertiary-no-background"
 						:aria-label="isPasswordHidden ? t('registration', 'Show password') : t('registration', 'Hide password')"
-						@click.stop.prevent="togglePassword">
+						@click.stop.prevent="togglePassword"
+						@keydown.enter="togglePassword">
 						<template #icon>
 							<Eye v-if="isPasswordHidden" :size="20" />
 							<EyeOff v-else :size="20" />
@@ -133,9 +119,9 @@
 					native-type="submit"
 					type="primary"
 					:wide="true"
-					:disabled="submitting"
+					:disabled="submitting || password.length === 0"
 					@click="submit">
-					{{ t('registration', 'Create account') }}
+					{{ submitting ? t('registration', 'Loading') : t('registration', 'Create account') }}
 				</Button>
 			</fieldset>
 		</form>
@@ -145,10 +131,14 @@
 <script>
 import { getRequestToken } from '@nextcloud/auth'
 import Button from '@nextcloud/vue/dist/Components/Button'
-import { generateFilePath } from '@nextcloud/router'
 import { loadState } from '@nextcloud/initial-state'
 import Eye from 'vue-material-design-icons/Eye'
 import EyeOff from 'vue-material-design-icons/EyeOff'
+import Email from 'vue-material-design-icons/Email'
+import Lock from 'vue-material-design-icons/Lock'
+import Phone from 'vue-material-design-icons/Phone'
+import Account from 'vue-material-design-icons/Account'
+import Key from 'vue-material-design-icons/Key'
 
 export default {
 	name: 'User',
@@ -157,6 +147,11 @@ export default {
 		Button,
 		Eye,
 		EyeOff,
+		Email,
+		Lock,
+		Phone,
+		Account,
+		Key,
 	},
 
 	data() {
@@ -182,23 +177,6 @@ export default {
 		}
 	},
 
-	computed: {
-		emailIconPath() {
-			return generateFilePath('core', 'img', 'actions/mail.svg')
-		},
-		phoneIconPath() {
-			return generateFilePath('core', 'img', 'clients/phone.svg')
-		},
-		userIconPath() {
-			return generateFilePath('core', 'img', 'actions/user.svg')
-		},
-		authIconPath() {
-			return generateFilePath('core', 'img', 'categories/auth.svg')
-		},
-		passwordIconPath() {
-			return generateFilePath('core', 'img', 'actions/password.svg')
-		},
-	},
 	methods: {
 		togglePassword() {
 			if (this.passwordInputType === 'password') {
@@ -208,7 +186,11 @@ export default {
 			}
 		},
 		submit() {
+			// prevent sending the request twice
 			this.submitting = true
+			setTimeout(() => {
+				this.submitting = false
+			}, 1000)
 		},
 	},
 }
@@ -227,9 +209,7 @@ export default {
 	&__icon {
 		position: absolute;
 		left: 16px;
-		top: 22px;
-		filter: alpha(opacity=30);
-		opacity: .3;
+		top: 20px;
 	}
 }
 

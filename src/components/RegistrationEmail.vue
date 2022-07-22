@@ -37,7 +37,7 @@
 						autofocus>
 					<label v-if="emailIsOptional" for="email" class="infield">{{ t('registration', 'Email (optional)') }}</label>
 					<label v-else for="email" class="infield">{{ t('registration', 'Email') }}</label>
-					<img class="svg email__icon" :src="emailIconPath" alt="">
+					<Email :size="20" class="email__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 
 				<div id="terms_of_service" />
@@ -61,14 +61,15 @@
 <script>
 import { getRequestToken } from '@nextcloud/auth'
 import Button from '@nextcloud/vue/dist/Components/Button'
-import { generateFilePath } from '@nextcloud/router'
 import { loadState } from '@nextcloud/initial-state'
+import Email from 'vue-material-design-icons/Email'
 
 export default {
 	name: 'RegistrationEmail',
 
 	components: {
 		Button,
+		Email,
 	},
 
 	data() {
@@ -87,9 +88,6 @@ export default {
 			return this.emailIsOptional
 				? t('registration', 'Email (optional)')
 				: t('registration', 'Email')
-		},
-		emailIconPath() {
-			return generateFilePath('core', 'img', 'actions/mail.svg')
 		},
 		submitValue() {
 			if (this.emailIsOptional || this.disableEmailVerification) {
@@ -117,9 +115,7 @@ export default {
 	&__icon {
 		position: absolute;
 		left: 16px;
-		top: 22px;
-		filter: alpha(opacity=30);
-		opacity: .3;
+		top: 20px;
 	}
 }
 </style>

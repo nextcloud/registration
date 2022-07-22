@@ -36,7 +36,7 @@
 						required
 						autofocus>
 					<label for="token" class="infield">{{ t('registration', 'Verification code') }}</label>
-					<img class="svg token__icon" :src="verifyIconPath" alt="">
+					<ShieldCheck :size="20" class="token__icon" fill-color="var(--color-placeholder-dark)" />
 				</p>
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
@@ -58,14 +58,15 @@
 <script>
 import { getRequestToken } from '@nextcloud/auth'
 import Button from '@nextcloud/vue/dist/Components/Button'
-import { generateFilePath } from '@nextcloud/router'
 import { loadState } from '@nextcloud/initial-state'
+import ShieldCheck from 'vue-material-design-icons/ShieldCheck'
 
 export default {
 	name: 'Verification',
 
 	components: {
 		Button,
+		ShieldCheck,
 	},
 
 	data() {
@@ -74,12 +75,6 @@ export default {
 			requesttoken: getRequestToken(),
 			loginFormLink: loadState('registration', 'loginFormLink'),
 		}
-	},
-
-	computed: {
-		verifyIconPath() {
-			return generateFilePath('registration', 'img', 'verify.svg')
-		},
 	},
 }
 </script>
@@ -97,9 +92,7 @@ export default {
 	&__icon {
 		position: absolute;
 		left: 16px;
-		top: 22px;
-		filter: alpha(opacity=30);
-		opacity: .3;
+		top: 20px;
 	}
 }
 </style>

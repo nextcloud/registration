@@ -24,7 +24,7 @@ if (document.getElementById('registration_verification')) {
 	})
 }
 
-if (document.getElementById('registration_verification')) {
+if (document.getElementById('registration_user')) {
 	view = new Vue({
 		el: '#registration_user',
 		render: h => h(User),
