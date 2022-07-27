@@ -39,8 +39,8 @@ class ExpireRegistrations extends TimedJob {
 	protected $config;
 
 	public function __construct(ITimeFactory $time,
-								RegistrationMapper $registrationMapper,
-								IConfig $config) {
+		RegistrationMapper $registrationMapper,
+		IConfig $config) {
 		parent::__construct($time);
 
 		// Run once per day

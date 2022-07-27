@@ -23,11 +23,9 @@ declare(strict_types=1);
 
 namespace OCA\Registration;
 
-use OCA\Registration\AppInfo\Application;
 use OCP\Authentication\IAlternativeLogin;
 use OCP\IL10N;
 use OCP\IURLGenerator;
-use OCP\Util;
 
 class RegistrationLoginOption implements IAlternativeLogin {
 
@@ -39,8 +37,8 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	protected $theming;
 
 	public function __construct(IURLGenerator $url,
-								IL10N $l,
-								\OC_Defaults $theming) {
+		IL10N $l,
+		\OC_Defaults $theming) {
 		$this->url = $url;
 		$this->l = $l;
 		$this->theming = $theming;
@@ -59,7 +57,5 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	}
 
 	public function load(): void {
-		Util::addStyle(Application::APP_ID, 'register-button');
-		Util::addHeader('style', [], ':root { --color-primary-text: ' . $this->theming->getTextColorPrimary() . '; }');
 	}
 }

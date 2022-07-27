@@ -58,13 +58,13 @@ class MailService {
 	private $config;
 
 	public function __construct(IURLGenerator $urlGenerator,
-								IMailer $mailer,
-								Defaults $defaults,
-								IL10N $l10n,
-								IGroupManager $groupManager,
-								IConfig $config,
-								LoginFlowService $loginFlowService,
-								LoggerInterface $logger) {
+		IMailer $mailer,
+		Defaults $defaults,
+		IL10N $l10n,
+		IGroupManager $groupManager,
+		IConfig $config,
+		LoginFlowService $loginFlowService,
+		LoggerInterface $logger) {
 		$this->urlGenerator = $urlGenerator;
 		$this->mailer = $mailer;
 		$this->config = $config;

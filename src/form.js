@@ -1,19 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
-	// Password toggle
-	$('#showadminpass').click((e) => {
-		e.preventDefault()
-		const passwordTextField = $('#password')
-		if (passwordTextField.attr('type') === 'password') {
-			passwordTextField.attr('type', 'text')
-		} else {
-			passwordTextField.attr('type', 'password')
-		}
-	})
+// SPDX-FileCopyrightText: 2022 Carl Schwan <carl@carlschwan.eu>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	// Disable submit after first click
-	$('form').submit(() => {
-		// prevent duplicate form submissions
-		$(this).find(':submit').attr('disabled', 'disabled')
-		$(this).find(':submit')[0].value = t('registration', 'Loading …')
+import Vue from 'vue'
+import RegistrationEmail from './components/RegistrationEmail.vue'
+import Verification from './components/Verification.vue'
+import User from './components/User.vue'
+
+Vue.prototype.t = t
+Vue.prototype.OC = OC
+
+let view = null
+if (document.getElementById('registration_email')) {
+	view = new Vue({
+		el: '#registration_email',
+		render: h => h(RegistrationEmail),
 	})
-})
+}
+
+if (document.getElementById('registration_verification')) {
+	view = new Vue({
+		el: '#registration_verification',
+		render: h => h(Verification),
+	})
+}
+
+if (document.getElementById('registration_user')) {
+	view = new Vue({
+		el: '#registration_user',
+		render: h => h(User),
+	})
+}
+
+export default view

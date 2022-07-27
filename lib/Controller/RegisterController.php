@@ -11,6 +11,7 @@ declare(strict_types=1);
  * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  * @author Julius Härtl <jus@bitgrid.net>
  * @author 2020 Joas Schilling <coding@schilljs.com>
+ * @author 2022 Carl Schwan <carl@carlschwan.eu>
  * @copyright Pellaeon Lin 2014
  */
 
@@ -36,6 +37,7 @@ use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -43,21 +45,14 @@ use OCP\IURLGenerator;
 use OCP\IConfig;
 
 class RegisterController extends Controller {
-
-	/** @var IL10N */
-	private $l10n;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var IConfig */
-	private $config;
-	/** @var RegistrationService */
-	private $registrationService;
-	/** @var MailService */
-	private $mailService;
-	/** @var LoginFlowService */
-	private $loginFlowService;
-	/** @var IEventDispatcher */
-	private $eventDispatcher;
+	private IL10N $l10n;
+	private IURLGenerator $urlGenerator;
+	private IConfig $config;
+	private RegistrationService $registrationService;
+	private MailService $mailService;
+	private LoginFlowService $loginFlowService;
+	private IEventDispatcher $eventDispatcher;
+	private IInitialState $initialState;
 
 	public function __construct(
 		string $appName,
@@ -68,7 +63,8 @@ class RegisterController extends Controller {
 		RegistrationService $registrationService,
 		LoginFlowService $loginFlowService,
 		MailService $mailService,
-		IEventDispatcher $eventDispatcher
+		IEventDispatcher $eventDispatcher,
+		IInitialState $initialState
 	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;
@@ -78,15 +74,12 @@ class RegisterController extends Controller {
 		$this->loginFlowService = $loginFlowService;
 		$this->mailService = $mailService;
 		$this->eventDispatcher = $eventDispatcher;
+		$this->initialState = $initialState;
 	}
 
 	/**
 	 * @NoCSRFRequired
 	 * @PublicPage
-	 *
-	 * @param string $email
-	 * @param string $message
-	 * @return TemplateResponse
 	 */
 	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
 		$emailHint = '';
@@ -108,22 +101,18 @@ class RegisterController extends Controller {
 
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_EMAIL));
 
-		$params = [
-			'email' => $email,
-			'message' => $message ?: $emailHint,
-			'email_is_optional' => $this->config->getAppValue($this->appName, 'email_is_optional', 'no'),
-			'disable_email_verification' => $this->config->getAppValue($this->appName, 'disable_email_verification', 'no'),
-			'is_login_flow' => $this->loginFlowService->isUsingLoginFlow(),
-		];
-		return new TemplateResponse('registration', 'form/email', $params, 'guest');
+		$this->initialState->provideInitialState('email', $email);
+		$this->initialState->provideInitialState('message', $message ?: $emailHint);
+		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes');
+		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes');
+		$this->initialState->provideInitialState('isLoginFlow', $this->loginFlowService->isUsingLoginFlow());
+		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
+		return new TemplateResponse('registration', 'form/email', [], 'guest');
 	}
 
 	/**
 	 * @PublicPage
 	 * @AnonRateThrottle(limit=5, period=300)
-	 *
-	 * @param string $email
-	 * @return TemplateResponse
 	 */
 	public function submitEmailForm(string $email): Response {
 		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_EMAIL);
@@ -184,10 +173,6 @@ class RegisterController extends Controller {
 	/**
 	 * @NoCSRFRequired
 	 * @PublicPage
-	 *
-	 * @param string $secret
-	 * @param string $message
-	 * @return TemplateResponse
 	 */
 	public function showVerificationForm(string $secret, string $message = ''): TemplateResponse {
 		try {
@@ -197,10 +182,10 @@ class RegisterController extends Controller {
 		}
 
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_VERIFICATION, $secret));
+		$this->initialState->provideInitialState('message', $message);
+		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
 
-		return new TemplateResponse('registration', 'form/verification', [
-			'message' => $message,
-		], 'guest');
+		return new TemplateResponse('registration', 'form/verification', [], 'guest');
 	}
 
 	/**
@@ -248,14 +233,6 @@ class RegisterController extends Controller {
 	/**
 	 * @NoCSRFRequired
 	 * @PublicPage
-	 *
-	 * @param string $secret
-	 * @param string $token
-	 * @param string $loginname
-	 * @param string $fullname
-	 * @param string $phone
-	 * @param string $message
-	 * @return TemplateResponse
 	 */
 	public function showUserForm(string $secret, string $token, string $loginname = '', string $fullname = '', string $phone = '', string $password = '', string $message = ''): TemplateResponse {
 		try {
@@ -268,21 +245,22 @@ class RegisterController extends Controller {
 
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_USER, $secret));
 
-		$response = new TemplateResponse('registration', 'form/user', [
-			'email' => $registration->getEmail(),
-			'email_is_login' => $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes',
-			'email_is_optional' => $this->config->getAppValue('registration', 'email_is_optional', 'no') === 'yes',
-			'loginname' => $loginname,
-			'fullname' => $fullname,
-			'show_fullname' => $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes',
-			'enforce_fullname' => $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes',
-			'phone' => $phone,
-			'show_phone' => $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes',
-			'enforce_phone' => $this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes',
-			'message' => $message,
-			'password' => $password,
-			'additional_hint' => $additional_hint,
-		], 'guest');
+		$this->initialState->provideInitialState('email', $registration->getEmail());
+		$this->initialState->provideInitialState('emailIsLogin', $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes');
+		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValue('registration', 'email_is_optional', 'no') === 'yes');
+		$this->initialState->provideInitialState('loginname', $loginname);
+		$this->initialState->provideInitialState('fullname', $fullname);
+		$this->initialState->provideInitialState('showFullname', $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes');
+		$this->initialState->provideInitialState('enforceFullname', $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes');
+		$this->initialState->provideInitialState('phone', $phone);
+		$this->initialState->provideInitialState('showPhone', $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes');
+		$this->initialState->provideInitialState('enforcePhone', $this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes');
+		$this->initialState->provideInitialState('message', $message);
+		$this->initialState->provideInitialState('password', $password);
+		$this->initialState->provideInitialState('additionalHint', $additional_hint);
+		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
+
+		$response = new TemplateResponse('registration', 'form/user', [], 'guest');
 
 		if ($this->loginFlowService->isUsingLoginFlow(1)) {
 			$csp = new ContentSecurityPolicy();

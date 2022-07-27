@@ -48,10 +48,10 @@ class RegistrationSettings implements ISettings {
 	protected $appName;
 
 	public function __construct(string $appName,
-								IConfig $config,
-								IGroupManager $groupManager,
-								IAccountManager $accountManager,
-								IInitialState $initialState) {
+		IConfig $config,
+		IGroupManager $groupManager,
+		IAccountManager $accountManager,
+		IInitialState $initialState) {
 		$this->appName = $appName;
 		$this->config = $config;
 		$this->groupManager = $groupManager;

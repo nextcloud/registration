@@ -56,20 +56,20 @@ class SettingsController extends Controller {
 	 * @return DataResponse
 	 */
 	public function admin(?string $registered_user_group,
-						  string $allowed_domains,
-						  string $additional_hint,
-						  string $email_verification_hint,
-						  string $username_policy_regex,
-						  ?bool $admin_approval_required,
-						  ?bool $email_is_optional,
-						  ?bool $email_is_login,
-						  ?bool $show_fullname,
-						  ?bool $enforce_fullname,
-						  ?bool $show_phone,
-						  ?bool $enforce_phone,
-						  ?bool $domains_is_blocklist,
-						  ?bool $show_domains,
-						  ?bool $disable_email_verification) {
+		string $allowed_domains,
+		string $additional_hint,
+		string $email_verification_hint,
+		string $username_policy_regex,
+		?bool $admin_approval_required,
+		?bool $email_is_optional,
+		?bool $email_is_login,
+		?bool $show_fullname,
+		?bool $enforce_fullname,
+		?bool $show_phone,
+		?bool $enforce_phone,
+		?bool $domains_is_blocklist,
+		?bool $show_domains,
+		?bool $disable_email_verification) {
 		// handle domains
 		if (($allowed_domains === '') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');

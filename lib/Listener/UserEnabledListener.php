@@ -37,7 +37,7 @@ class UserEnabledListener implements IEventListener {
 	private $registrationService;
 
 	public function __construct(IConfig $config,
-								RegistrationService $registrationService) {
+		RegistrationService $registrationService) {
 		$this->config = $config;
 		$this->registrationService = $registrationService;
 	}
