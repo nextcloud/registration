@@ -14,16 +14,17 @@ OC.L10N.register(
     "Enable now" : "Įjungti dabar",
     "You can <a href=\"%s\">log in now</a>." : "Dabar, galite <a href=\"%s\">prisijungti</a>.",
     "User settings" : "Naudotojo nustatymai",
-    "Loading …" : "Įkeliama…",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius.",
     "Email" : "El. paštas",
-    "Continue" : "Tęsti",
     "Back to login" : "Grįžti prie prisijungimo",
+    "Continue" : "Tęsti",
     "Welcome, you can create your account below." : "Sveiki, žemiau galite susikurti paskyrą.",
     "Full name" : "Vardas, pavardė",
     "Phone number" : "Telefono numeris",
     "Password" : "Slaptažodis",
+    "Show password" : "Rodyti slaptažodį",
+    "Loading" : "Įkeliama",
     "Create account" : "Sukurti paskyrą",
-    "Verify" : "Patikrinti"
+    "Verify" : "Patikrinti",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius."
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

@@ -3,13 +3,14 @@ OC.L10N.register(
     {
     "Saved" : "Збережено",
     "Register" : "Зареєструватися",
-    "Loading …" : "Завантаження...",
     "Email" : "Ел.пошта",
-    "Continue" : "Продовжити",
     "Back to login" : "Повернутися на сторінку входу",
+    "Continue" : "Продовжити",
     "Full name" : "Повна назва",
     "Phone number" : "Номер телефону",
     "Password" : "Пароль",
+    "Show password" : "Показати пароль",
+    "Loading" : "Завантаження",
     "Create account" : "Створити запис",
     "Verify" : "Перевірити"
 },

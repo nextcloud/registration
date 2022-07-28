@@ -3,11 +3,12 @@ OC.L10N.register(
     {
     "Saved" : "Saglabāts",
     "Email" : "E-pasts",
-    "Continue" : "Turpināt",
     "Back to login" : "Atpakaļ uz pieteikšanos",
+    "Continue" : "Turpināt",
     "Full name" : "Pilns vārds",
     "Phone number" : "Tālruņa numurs",
     "Password" : "Parole",
+    "Loading" : "Ielādē",
     "Create account" : "Izveidot kontu",
     "Verify" : "Verificēt"
 },

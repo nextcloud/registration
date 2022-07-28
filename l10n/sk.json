@@ -64,22 +64,23 @@
     "Show the blocked email domains to users" : "Zobraziť blokované e-mailové domény užívateľom",
     "Show the allowed email domains to users" : "Zobraziť blokované e-mailové domény užívateľom",
     "An error occurred while saving the settings" : "Nastala chyba počas ukladania nastavení",
-    "Loading …" : "Načítava sa...",
-    "Approval required" : "Vyžaduje sa súhlas",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet bol úspešne vytvorený, stále však potrebuje súhlas správcu.",
     "Email (optional)" : "E-mail (voliteľné)",
     "Email" : "E-mail",
+    "Back to login" : "Späť na prihlásenie",
     "Continue" : "Pokračovať",
     "Request verification code" : "Vyžiadať overovací kód",
     "Request verification link" : "Odkaz pre overenie",
-    "Back to login" : "Späť na prihlásenie",
     "Welcome, you can create your account below." : "Vitajte, účet si môžete vytvoriť nižšie.",
     "Login name" : "Prihlasovacie meno",
     "Full name" : "Meno a priezvisko",
     "Phone number" : "Telefónne číslo",
     "Password" : "Heslo",
+    "Show password" : "Zobraziť heslo",
+    "Loading" : "Načítava sa",
     "Create account" : "Vytvoriť účet",
     "Verification code" : "Overovací kód",
-    "Verify" : "Overiť"
+    "Verify" : "Overiť",
+    "Approval required" : "Vyžaduje sa súhlas",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet bol úspešne vytvorený, stále však potrebuje súhlas správcu."
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 }

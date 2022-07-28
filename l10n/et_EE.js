@@ -8,6 +8,7 @@ OC.L10N.register(
     "Full name" : "Täisnimi",
     "Phone number" : "Telefoninumber",
     "Password" : "Parool",
+    "Loading" : "Laadimine",
     "Create account" : "Loo konto",
     "Verify" : "Kontrolli"
 },

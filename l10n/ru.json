@@ -68,22 +68,22 @@
     "Show the blocked email domains to users" : "Показывать пользователям заблокированные домены эл. почты",
     "Show the allowed email domains to users" : "Показывать пользователям разрешенные домены эл. почты",
     "An error occurred while saving the settings" : "Произошла ошибка при сохранении настроек",
-    "Loading …" : "Загрузка…",
-    "Approval required" : "Требуется подтверждение",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваша учётная запись была успешно создана, но она должна быть утверждена администратором.",
     "Email (optional)" : "Электронная почта (необязательно)",
     "Email" : "Адрес эл. почты",
+    "Back to login" : "Вернуться на страницу входа",
     "Continue" : "Продолжить",
     "Request verification code" : "Запросить проверочный код",
     "Request verification link" : "Запросить ссылку для подтверждения",
-    "Back to login" : "Вернуться на страницу входа",
     "Welcome, you can create your account below." : "Добро пожаловать, вы можете создать учётную запись ниже.",
     "Login name" : "Имя для входа",
     "Full name" : "Полное имя",
     "Phone number" : "Номер телефона",
     "Password" : "Пароль",
+    "Show password" : "Показать пароль",
     "Create account" : "Создать учётную запись",
     "Verification code" : "Код подтверждения",
-    "Verify" : "Подтвердить"
+    "Verify" : "Подтвердить",
+    "Approval required" : "Требуется подтверждение",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваша учётная запись была успешно создана, но она должна быть утверждена администратором."
 },"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
 }

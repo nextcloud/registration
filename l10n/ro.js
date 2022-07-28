@@ -2,13 +2,14 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Salvat",
-    "Loading …" : "Se încarcă…",
     "Email" : "Email",
-    "Continue" : "Continuă",
     "Back to login" : "Înapoi la autentificare",
+    "Continue" : "Continuă",
     "Full name" : "Nume complet",
     "Phone number" : "Număr telefon",
     "Password" : "Parolă",
+    "Show password" : "Arată parola",
+    "Loading" : "Loading",
     "Create account" : "Crează cont",
     "Verify" : "Verifică"
 },

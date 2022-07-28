@@ -62,21 +62,22 @@
     "Show the blocked email domains to users" : "Pokaži uporabnikom blokirane domene",
     "Show the allowed email domains to users" : "Pokaži uporabnikom dovoljene domene",
     "An error occurred while saving the settings" : "Prišlo je do napake med shranjevanjem nastavitev",
-    "Loading …" : "Poteka nalaganje …",
-    "Approval required" : "Zahtevana je potrditev",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Račun je uspešno ustvarjen, a bo treba počakati na odobrite skrbnika.",
     "Email" : "Elektronski naslov",
+    "Back to login" : "Nazaj na prijavo",
     "Continue" : "Nadaljuj",
     "Request verification code" : "Zahtevaj overitveno kodo",
     "Request verification link" : "Zahtevaj overitveno povezavo",
-    "Back to login" : "Nazaj na prijavo",
     "Welcome, you can create your account below." : "Dobrodošli, z vpisom podatkov lahko ustvarite nov račun.",
     "Login name" : "Prijavno ime",
     "Full name" : "Polno ime",
     "Phone number" : "Telefonska številka",
     "Password" : "Geslo",
+    "Show password" : "Pokaži geslo",
+    "Loading" : "Poteka nalaganje",
     "Create account" : "Ustvari račun",
     "Verification code" : "Overitvena koda",
-    "Verify" : "Overi"
+    "Verify" : "Overi",
+    "Approval required" : "Zahtevana je potrditev",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Račun je uspešno ustvarjen, a bo treba počakati na odobrite skrbnika."
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

@@ -26,19 +26,21 @@
     "Registered users default group" : "Стандардна група за регистрирани корисници",
     "Force email as login name" : "Наметни е-пошта за корисничко име",
     "Allowed email domains" : "Дозволени е-пошта домени",
-    "Loading …" : "Се вчитува…",
-    "Approval required" : "Потребно е одобрување",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот.",
     "Email" : "Е-пошта",
+    "Back to login" : "Врати се на страната за најавување",
     "Continue" : "Продолжи",
     "Request verification link" : "Побарај линк за верификација",
-    "Back to login" : "Врати се на страната за најавување",
     "Welcome, you can create your account below." : "Добредојдовте, сега можете да ги внесете вашите податоци и да креирате сметка.",
     "Full name" : "Цело име",
     "Phone number" : "Телефонски број",
     "Password" : "Лозинка",
+    "Show password" : "Прикажи лозинка",
+    "Hide password" : "Сокриј лозинка",
+    "Loading" : "Се вчитува",
     "Create account" : "Креирај сметка",
     "Verification code" : "Код за верификација",
-    "Verify" : "Потврди"
+    "Verify" : "Потврди",
+    "Approval required" : "Потребно е одобрување",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот."
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

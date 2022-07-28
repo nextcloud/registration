@@ -2,12 +2,12 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Хадгалах",
-    "Loading …" : "Уншиж байна...",
     "Email" : "Цахим шуудан",
     "Continue" : "үргэлжлүүлэх",
     "Full name" : "бүтэн нэр",
     "Phone number" : "Утасны дугаар",
     "Password" : "Нууц үг",
+    "Loading" : "Loading",
     "Create account" : "Аккаунт үүсгэх",
     "Verify" : "Шалнгах"
 },

@@ -61,22 +61,23 @@
     "Show the blocked email domains to users" : "Näytä estettyjen sähköpostiosoitteiden verkkotunnukset käyttäjille",
     "Show the allowed email domains to users" : "Näytä sallittujen sähköpostiosoitteiden verkkotunnukset käyttäjille",
     "An error occurred while saving the settings" : "Tapahtui virhe asetuksia tallentaessa",
-    "Loading …" : "Ladataan…",
-    "Approval required" : "Hyväksyntä vaaditaan",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Tilisi on luotu onnistuneesti, mutta se tarvitsee vielä hyväksynnän ylläpitäjältä.",
     "Email (optional)" : "Sähköpostiosoite (valinnainen)",
     "Email" : "Sähköposti",
+    "Back to login" : "Palaa kirjautumiseen",
     "Continue" : "Jatka",
     "Request verification code" : "Pyydä vahvistuskoodia",
     "Request verification link" : "Pyydä vahvistuslinkkiä",
-    "Back to login" : "Palaa kirjautumiseen",
     "Welcome, you can create your account below." : "Tervetuloa, voit luoda tilin alla.",
     "Login name" : "Kirjautumisnimi",
     "Full name" : "Koko nimi",
     "Phone number" : "Puhelinnumero",
     "Password" : "Salasana",
+    "Show password" : "Näytä salasana",
+    "Loading" : "Ladataan",
     "Create account" : "Luo tili",
     "Verification code" : "Vahvistuskoodi",
-    "Verify" : "Vahvista"
+    "Verify" : "Vahvista",
+    "Approval required" : "Hyväksyntä vaaditaan",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Tilisi on luotu onnistuneesti, mutta se tarvitsee vielä hyväksynnän ylläpitäjältä."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

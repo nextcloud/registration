@@ -8,15 +8,16 @@ OC.L10N.register(
     "Verify your %s registration request" : "Verifique o seu pedido de registo %s",
     "Registration" : "Registo",
     "You can <a href=\"%s\">log in now</a>." : "Agora, pode <a href=\"%s\">iniciar a sessão</a>.",
-    "Loading …" : "A carregar...",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador.",
     "Email" : "E-mail",
-    "Continue" : "Continuar",
     "Back to login" : "Voltar à entrada",
+    "Continue" : "Continuar",
     "Full name" : "Nome completo",
     "Phone number" : "Número de telefone",
     "Password" : "Palavra-passe",
+    "Show password" : "Mostrar senha",
+    "Loading" : "A carregar",
     "Create account" : "Criar conta",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

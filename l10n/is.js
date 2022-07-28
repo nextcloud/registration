@@ -3,13 +3,14 @@ OC.L10N.register(
     {
     "Saved" : "Vistað",
     "Register" : "Nýskráning",
-    "Loading …" : "Hleð inn …",
     "Email" : "Tölvupóstur",
-    "Continue" : "Halda áfram",
     "Back to login" : "Til baka í innskráningu",
+    "Continue" : "Halda áfram",
     "Full name" : "Fullt nafn",
     "Phone number" : "Símanúmer",
     "Password" : "Lykilorð",
+    "Show password" : "Sýna lykilorð",
+    "Loading" : "Hleð inn",
     "Create account" : "Stofna aðgang",
     "Verify" : "Sannprófa"
 },

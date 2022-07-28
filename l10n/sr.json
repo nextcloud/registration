@@ -20,17 +20,18 @@
     "Unable to create user, there are problems with the user backend." : "Не могу да направим корисника, постоји проблем са позадинским механизмом за кориснике.",
     "Unable to set user email: " : "Не могу да поставим адресу корисника:",
     "Registration app auto setup" : "Аутоматско подешавање апликације Регистрације",
-    "Loading …" : "Учитавање…",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора.",
     "Email" : "Е-пошта",
+    "Back to login" : "Назад на пријаву",
     "Continue" : "Настави",
     "Request verification link" : "Захтевај везу за верификацију",
-    "Back to login" : "Назад на пријаву",
     "Welcome, you can create your account below." : "Добродошли, можете да направите налог испод.",
     "Full name" : "Пуно име",
     "Phone number" : "Број телефона",
     "Password" : "Лозинка",
+    "Show password" : "Прикажи лозинку",
+    "Loading" : "Учитавам",
     "Create account" : "Направите налог",
-    "Verify" : "Провери"
+    "Verify" : "Провери",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора."
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

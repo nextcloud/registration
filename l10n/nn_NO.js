@@ -6,6 +6,7 @@ OC.L10N.register(
     "Continue" : "Gå vidare",
     "Full name" : "Fult namn",
     "Password" : "Passord",
+    "Loading" : "Loading",
     "Create account" : "Opprett konto",
     "Verify" : "Stadfest"
 },

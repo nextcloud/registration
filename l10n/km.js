@@ -5,6 +5,7 @@ OC.L10N.register(
     "Email" : "អ៊ីមែល",
     "Continue" : "បន្ត",
     "Password" : "ពាក្យសម្ងាត់",
+    "Loading" : "Loading",
     "Create account" : "បង្កើតគណនី"
 },
 "nplurals=1; plural=0;");
