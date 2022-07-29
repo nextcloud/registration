@@ -78,6 +78,7 @@ OC.L10N.register(
     "Phone number" : "Telefoonnummer",
     "Password" : "Wachtwoord",
     "Show password" : "Toon wachtwoord",
+    "Loading" : "Laden",
     "Create account" : "Account aanmaken",
     "Verification code" : "Verificatiecode",
     "Verify" : "Verifiëren",

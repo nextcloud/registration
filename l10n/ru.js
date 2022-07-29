@@ -82,6 +82,7 @@ OC.L10N.register(
     "Phone number" : "Номер телефона",
     "Password" : "Пароль",
     "Show password" : "Показать пароль",
+    "Loading" : "Загрузка",
     "Create account" : "Создать учётную запись",
     "Verification code" : "Код подтверждения",
     "Verify" : "Подтвердить",

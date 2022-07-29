@@ -14,6 +14,7 @@ OC.L10N.register(
     "Phone number" : "شماره تلفن",
     "Password" : "کلمه عبور",
     "Show password" : "نمایش گذرواژه",
+    "Loading" : "در حال بار گزاری",
     "Create account" : "ساخت حساب",
     "Verify" : "تأیید کنید",
     "Your account has been successfully created, but it still needs approval from an administrator." : "حساب شما با موفقیت ساخته شده است اما هنوز نیاز به تأیید یک مدیر دارد."

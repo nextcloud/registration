@@ -8,6 +8,7 @@ OC.L10N.register(
     "Full name" : "Nombre completo",
     "Phone number" : "Número telefónico",
     "Password" : "Contraseña",
+    "Loading" : "Cargando",
     "Create account" : "Crear cuenta",
     "Verify" : "Verificar"
 },

@@ -5,6 +5,8 @@ OC.L10N.register(
     "Email" : "විද්‍යුත් තැපෑල",
     "Full name" : "සම්පූර්ණ නම",
     "Phone number" : "දුරකථන අංකය",
-    "Password" : "මුර පදය"
+    "Password" : "මුර පදය",
+    "Show password" : "මුරපදය පෙන්වන්න",
+    "Loading" : "පූරණය වෙමින්"
 },
 "nplurals=2; plural=(n != 1);");
