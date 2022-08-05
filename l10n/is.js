@@ -10,6 +10,7 @@ OC.L10N.register(
     "Phone number" : "Símanúmer",
     "Password" : "Lykilorð",
     "Show password" : "Sýna lykilorð",
+    "Hide password" : "Fela lykilorð",
     "Loading" : "Hleð inn",
     "Create account" : "Stofna aðgang",
     "Verify" : "Sannprófa"
