@@ -75,6 +75,7 @@ OC.L10N.register(
     "Phone number" : "Puhelinnumero",
     "Password" : "Salasana",
     "Show password" : "Näytä salasana",
+    "Hide password" : "Piilota salasana",
     "Loading" : "Ladataan",
     "Create account" : "Luo tili",
     "Verification code" : "Vahvistuskoodi",
