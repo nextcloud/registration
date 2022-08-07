@@ -82,6 +82,7 @@ OC.L10N.register(
     "Phone number" : "Telefonnummer",
     "Password" : "PassordP",
     "Show password" : "Vis passord",
+    "Hide password" : "Skjul passord",
     "Loading" : "Laster",
     "Create account" : "Opprett konto",
     "Verification code" : "Verifiseringskode",
