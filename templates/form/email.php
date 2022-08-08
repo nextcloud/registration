@@ -4,5 +4,4 @@
 \OCP\Util::addScript('registration', 'registration-form')
 ?>
 
-
 <div id="registration_email"></div>
