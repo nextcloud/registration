@@ -3,7 +3,7 @@
 /** @var \OCP\IL10N $l */
 style('registration', 'style');
 ?>
-<div class="error">
+<div class="guest-box">
 	<h2><?php p($l->t('Approval required')) ?></h2>
 	<ul>
 		<li>

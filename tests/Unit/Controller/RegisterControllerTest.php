@@ -135,6 +135,11 @@ class RegisterControllerTest extends TestCase {
 	 * @param string $message
 	 */
 	public function testShowEmailForm(string $email, string $message): void {
+		$this->config->method('getAppValue')
+			->willReturnMap([
+				['registration', 'allowed_domains', '', ''],
+			]);
+
 		$controller = $this->getController();
 		$response = $controller->showEmailForm($email, $message);
 		$disable_email_verification = $this->config->getAppValue('registration', 'disable_email_verification', 'no');
