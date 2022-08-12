@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Registrering er ikke tillatt med følgende domener:",
-    "Registration is only allowed with the following domains:" : "Registrering er kun tillatt med følgende domener:",
     "A problem occurred sending email, please contact your administrator." : "Kunne ikke sende mail, kontakt administrator.",
     "The entered verification code is wrong" : "Verifiseringskoden som er tastet inn er feil",
     "The verification failed." : "Verifiseringen feilet.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Aktiver nå",
     "A user has already taken this email, maybe you already have an account?" : "Det finnes allerede en bruker med denne epost-adressen,  har du kanskje en konto allerede?",
     "You can <a href=\"%s\">log in now</a>." : "Du kan <a href=\"%s\">logge inn nå</a>.",
+    "Registration is only allowed with the following domains:" : "Registrering er kun tillatt med følgende domener:",
     "Registration with this email domain is not allowed." : "Registrering med dette epost-domenet er ikke tillatt.",
+    "Registration is not allowed with the following domains:" : "Registrering er ikke tillatt med følgende domener:",
     "Please provide a valid display name." : "Vennligst fyll inn et gyldig visningsnavn",
     "Please provide a valid login name." : "Vennligst oppgi et gyldig innloggingsnavn.",
     "The login name you have chosen already exists." : "Innloggingsnavnet du har valgt eksisterer allerede.",

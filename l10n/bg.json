@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Не е разрешена регистрацията със следните домейни:",
-    "Registration is only allowed with the following domains:" : "Регистрацията е разрешена само със следните домейни:",
     "A problem occurred sending email, please contact your administrator." : "Възникна грешка при изпращането на имейл, моля, свържете се с вашия администратор.",
     "The entered verification code is wrong" : "Въведеният код за потвърждение е грешен",
     "The verification failed." : "Неуспешно потвърждение.",
@@ -23,7 +21,9 @@
     "Enable now" : "Активиране сега",
     "A user has already taken this email, maybe you already have an account?" : "Потребител вече е заел този имейл, може би вече имате профил?",
     "You can <a href=\"%s\">log in now</a>." : " Може да се<a href=\"%s\">впишете сега</a>.",
+    "Registration is only allowed with the following domains:" : "Регистрацията е разрешена само със следните домейни:",
     "Registration with this email domain is not allowed." : "Регистрацията с този имейл домейн не е разрешена.",
+    "Registration is not allowed with the following domains:" : "Не е разрешена регистрацията със следните домейни:",
     "Please provide a valid display name." : "Моля, посочете валидно име за показване.",
     "Please provide a valid login name." : "Моля, посочете валидно име за вход.",
     "The login name you have chosen already exists." : "Името за вход, което сте избрали, вече съществува.",

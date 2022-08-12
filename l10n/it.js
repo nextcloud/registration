@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "La registrazione non è consentita per i seguenti domini:",
-    "Registration is only allowed with the following domains:" : "La registrazione è consentita solo con i seguenti domini:",
     "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio del messaggio, contatta il tuo amministratore.",
     "The entered verification code is wrong" : "Il codice di verifica inserito è errato",
     "The verification failed." : "La verifica non è riuscita.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Abilita ora",
     "A user has already taken this email, maybe you already have an account?" : "Un utente ha già utilizzato questo indirizzo, forse hai già un account?",
     "You can <a href=\"%s\">log in now</a>." : "Ora puoi <a href=\"%s\">accedere</a>.",
+    "Registration is only allowed with the following domains:" : "La registrazione è consentita solo con i seguenti domini:",
     "Registration with this email domain is not allowed." : "La registrazione con questo dominio di posta non è consentita.",
+    "Registration is not allowed with the following domains:" : "La registrazione non è consentita per i seguenti domini:",
     "Please provide a valid display name." : "Fornisci un nome visualizzato valido.",
     "Please provide a valid login name." : "Fornisci un nome di accesso valido.",
     "The login name you have chosen already exists." : "Il nome di accesso che hai scelto esiste già.",

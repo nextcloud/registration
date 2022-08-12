@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Rekisteröinti ei ole sallittu seuraavilla verkkotunnuksilla:",
-    "Registration is only allowed with the following domains:" : "Rekisteröinti on sallittu vain seuraavilla verkkotunnuksilla:",
     "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä ilmeni virhe, ole yhteydessä ylläpitoon.",
     "The entered verification code is wrong" : "Annettu vahvistuskoodi on väärä",
     "The verification failed." : "Vahvistus epäonnistui.",
@@ -23,7 +21,9 @@
     "Enable now" : "Ota käyttöön nyt",
     "A user has already taken this email, maybe you already have an account?" : "Tämä sähköpostiosoite on jo käyttäjän käytössä. Kenties sinulla on jo olemassa tili.",
     "You can <a href=\"%s\">log in now</a>." : "Voit nyt <a href=\"%s\">kirjautua sisään</a>.",
+    "Registration is only allowed with the following domains:" : "Rekisteröinti on sallittu vain seuraavilla verkkotunnuksilla:",
     "Registration with this email domain is not allowed." : "Rekisteröinti tällä domainilla ei ole sallittua.",
+    "Registration is not allowed with the following domains:" : "Rekisteröinti ei ole sallittu seuraavilla verkkotunnuksilla:",
     "Please provide a valid display name." : "Kirjoita kelvollinen näyttönimi.",
     "Please provide a valid login name." : "Syötä kelvollinen kirjautumisnimi.",
     "The login name you have chosen already exists." : "Valitsemasi kirjautumisnimi on jo olemassa.",

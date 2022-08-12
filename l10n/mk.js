@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
-    "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
     "A problem occurred sending email, please contact your administrator." : "Неочекувана грешка при испраќање на е-пошта. Контактирајте го администраторот.",
     "The entered verification code is wrong" : "Внесениот код за верификација не е точен",
     "The verification failed." : "Неуспешна верификација.",
@@ -21,7 +19,9 @@ OC.L10N.register(
     "Enable now" : "Овозможи сега",
     "A user has already taken this email, maybe you already have an account?" : "Некој корисник веќе ја користи оваа адреса на Е-пошта, можеби веќе имате креирана сметка?",
     "You can <a href=\"%s\">log in now</a>." : "Сега можете да се <a href=\"%s\">најавите</a>.",
+    "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
     "Registration with this email domain is not allowed." : "Регистрација со оваа е-пошта адреса не е дозволена.",
+    "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
     "Please provide a valid display name." : "Внесете валидно име.",
     "Please provide a valid login name." : "Внесете валидно име за најавување.",
     "Unable to set user email: " : "Неуспешно поставување на е-пошта адреса на корисникот:",

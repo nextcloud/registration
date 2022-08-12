@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Rejestracja nie jest dozwolona z następujących domen:",
-    "Registration is only allowed with the following domains:" : "Rejestracja jest dozwolona tylko z następujących domen:",
     "A problem occurred sending email, please contact your administrator." : "Wystąpił problem z wysłaniem wiadomości e-mail, skontaktuj się z administratorem.",
     "The entered verification code is wrong" : "Wprowadzony kod weryfikacyjny jest nieprawidłowy",
     "The verification failed." : "Weryfikacja nie powiodła się.",
@@ -23,7 +21,9 @@
     "Enable now" : "Włącz teraz",
     "A user has already taken this email, maybe you already have an account?" : "Użytkownik otrzymał już tego e-maila, może masz już konto?",
     "You can <a href=\"%s\">log in now</a>." : "Możesz się teraz <a href=\"%s\">zalogować</a>.",
+    "Registration is only allowed with the following domains:" : "Rejestracja jest dozwolona tylko z następujących domen:",
     "Registration with this email domain is not allowed." : "Rejestracja z tej domeny e-maila jest niedozwolona.",
+    "Registration is not allowed with the following domains:" : "Rejestracja nie jest dozwolona z następujących domen:",
     "Please provide a valid display name." : "Podaj prawidłową nazwę wyświetlaną.",
     "Please provide a valid login name." : "Podaj prawidłową nazwę logowania.",
     "The login name you have chosen already exists." : "Wybrana nazwa logowania już istnieje.",

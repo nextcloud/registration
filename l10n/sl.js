@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Vpis za navedene domene ni dovoljen:",
-    "Registration is only allowed with the following domains:" : "Vpis je dovoljen le za navedene domene:",
     "A problem occurred sending email, please contact your administrator." : "Med pošiljanjem elektronskega sporočila je prišlo do napake. Stopite v stik s skrbnikom sistema.",
     "The entered verification code is wrong" : "Vpisana koda za overitev je napačna.",
     "The verification failed." : "Overitev je spodletela.",
@@ -23,7 +21,9 @@ OC.L10N.register(
     "Enable now" : "Omogoči račun",
     "A user has already taken this email, maybe you already have an account?" : "Uporabnik s tem elektronskim naslovom že ima ustvarjen račun. Je prijava morda že zaključena?",
     "You can <a href=\"%s\">log in now</a>." : "Zdaj se lahko <a href=\"%s\">prijavite</a>.",
+    "Registration is only allowed with the following domains:" : "Vpis je dovoljen le za navedene domene:",
     "Registration with this email domain is not allowed." : "Vpis s elektronskim naslovom s te domene ni dovoljen.",
+    "Registration is not allowed with the following domains:" : "Vpis za navedene domene ni dovoljen:",
     "Please provide a valid display name." : "Vpisati je treba veljavno prikazno ime.",
     "Please provide a valid login name." : "Vpisati je treba veljavno uporabniško ime.",
     "The login name you have chosen already exists." : "Izbrano uporabniško ime že obstaja.",

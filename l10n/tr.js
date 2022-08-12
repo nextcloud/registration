@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Şu etki alanları ile hesap açılamaz:",
-    "Registration is only allowed with the following domains:" : "Yalnızca şu etki alanları ile hesap açılabilir:",
     "A problem occurred sending email, please contact your administrator." : "E-posta gönderilirken bir sorun çıktı. Lütfen BT yöneticiniz ile görüşün.",
     "The entered verification code is wrong" : "Yazdığınız doğrulama kodu geçersiz",
     "The verification failed." : "Doğrulanamadı.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Şimdi etkinleştir",
     "A user has already taken this email, maybe you already have an account?" : "Bu e-posta adresini kullanan başka bir kullanıcı zaten var. Daha önce hesap açmış olabilir misiniz?",
     "You can <a href=\"%s\">log in now</a>." : "Artık <a href=\"%s\">oturum açabilirsiniz</a>.",
+    "Registration is only allowed with the following domains:" : "Yalnızca şu etki alanları ile hesap açılabilir:",
     "Registration with this email domain is not allowed." : "Bu e-posta etki alanı ile hesap açılamaz:",
+    "Registration is not allowed with the following domains:" : "Şu etki alanları ile hesap açılamaz:",
     "Please provide a valid display name." : "Lütfen geçerli bir görüntülenecek ad yazın.",
     "Please provide a valid login name." : "Lütfen geçerli bir kullanıcı adı yazın.",
     "The login name you have chosen already exists." : "Seçtiğiniz kullanıcı adı zaten var.",

@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "不允许在以下域名中注册：",
-    "Registration is only allowed with the following domains:" : "仅支持使用以下域名注册：",
     "A problem occurred sending email, please contact your administrator." : "发送电子邮件时遇到了错误，请联系管理员",
     "The entered verification code is wrong" : "输入的验证码错误",
     "The verification failed." : "验证失败。",
@@ -22,7 +20,9 @@
     "Enable now" : "现在启用",
     "A user has already taken this email, maybe you already have an account?" : "一个用户已经使用过此电子邮件，也许您已经有一个账号？",
     "You can <a href=\"%s\">log in now</a>." : "您可以<a href=\"%s\">登录</a>了。",
+    "Registration is only allowed with the following domains:" : "仅支持使用以下域名注册：",
     "Registration with this email domain is not allowed." : "不允许使用此电子邮件域名注册。",
+    "Registration is not allowed with the following domains:" : "不允许在以下域名中注册：",
     "Please provide a valid display name." : "请提供一个有效的显示名称。",
     "Please provide a valid login name." : "请提供一个有效的登录名。 ",
     "The login name you have chosen already exists." : "你选择的登录名已经存在。",

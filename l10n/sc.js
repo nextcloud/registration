@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Sa registratzione no est permitida pro is domìnios in fatu: ",
-    "Registration is only allowed with the following domains:" : "Sa registratzione est cunsentida isceti cun is domìnios in fatu.",
     "A problem occurred sending email, please contact your administrator." : "B'at àpidu unu problema imbiende unu messàgiu, cuntata a s'amministratzione.",
     "The entered verification code is wrong" : "Su còdighe de verìfica insertado no est curretu",
     "The verification failed." : "Sa verìfica no est resèssida.",
@@ -24,7 +22,9 @@ OC.L10N.register(
     "Enable now" : "Ativa immoe",
     "A user has already taken this email, maybe you already have an account?" : "Custu indiritzu dd'at giai impreadu un'àteru utente, fortzis tenes giai unu contu?",
     "You can <a href=\"%s\">log in now</a>." : "Immoe podes <a href=\"%s\">intrare</a>.",
+    "Registration is only allowed with the following domains:" : "Sa registratzione est cunsentida isceti cun is domìnios in fatu.",
     "Registration with this email domain is not allowed." : "Sa registratzione cun custu domìniu de posta eletrònica non est permìtida.",
+    "Registration is not allowed with the following domains:" : "Sa registratzione no est permitida pro is domìnios in fatu: ",
     "Please provide a valid display name." : "Fruni unu nùmene visualizadu bàlidu.",
     "Please provide a valid login name." : "Fruni unu nùmene de intrada bàlidu.",
     "The login name you have chosen already exists." : "Su nùmene de intrada chi as seberadu b'est giai.",

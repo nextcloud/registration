@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Izen ematea ez da onartzen domeinu hauekin:",
-    "Registration is only allowed with the following domains:" : "Izen ematea domeinu hauekin bakarrik onartzen da:",
     "A problem occurred sending email, please contact your administrator." : "Arazo bat egon da e-posta bidaltzean, jarri harremanetan zure administratzailearekin.",
     "The entered verification code is wrong" : "Sarturiko egiaztatze kodea ez da zuzena",
     "The verification failed." : "Egiaztatzeak huts egin du.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Gaitu orain",
     "A user has already taken this email, maybe you already have an account?" : "Erabiltzaile batek hartua du e-posta hau, agian baduzu kontu bat dagoeneko?",
     "You can <a href=\"%s\">log in now</a>." : "Proba dezakezu <a href=\"%s\">saioa hastea</a>.",
+    "Registration is only allowed with the following domains:" : "Izen ematea domeinu hauekin bakarrik onartzen da:",
     "Registration with this email domain is not allowed." : "E-posta domeinu honekin izen ematea ez dago onartuta.",
+    "Registration is not allowed with the following domains:" : "Izen ematea ez da onartzen domeinu hauekin:",
     "Please provide a valid display name." : "Eman baliozko bistaratzeko izen bat.",
     "Please provide a valid login name." : "Eman saioa hasteko baliozko izena.",
     "The login name you have chosen already exists." : "Aukeratu duzun saio izena dagoeneko existitzen da.",

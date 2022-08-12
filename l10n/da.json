@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Registrering er ikke tilladt med de følgende domæner:",
-    "Registration is only allowed with the following domains:" : "Regisrering er kun tilladt med de følgende domæner:",
     "A problem occurred sending email, please contact your administrator." : "Uventet fejl ved afsendelse, venligst kontakt din administrator",
     "The entered verification code is wrong" : "Den indtastede verificerings kode er forkert",
     "The verification failed." : "Verificeringen fejlede.",
@@ -19,7 +17,9 @@
     "Enable now" : "Aktiver nu",
     "A user has already taken this email, maybe you already have an account?" : "En bruger har allerede benyttet denne email, måske du allerede har en konto?",
     "You can <a href=\"%s\">log in now</a>." : "Du kan <a href=\"%s\">logge ind nu</a>.",
+    "Registration is only allowed with the following domains:" : "Regisrering er kun tilladt med de følgende domæner:",
     "Registration with this email domain is not allowed." : "Registrering med dette email domæne er ikke tilladt.",
+    "Registration is not allowed with the following domains:" : "Registrering er ikke tilladt med de følgende domæner:",
     "Please provide a valid display name." : "Venligst angiv et godkendt visningsnavn.",
     "Unable to create user, there are problems with the user backend." : "Kan ikke oprette bruger, der er problemer med brugerens backend.",
     "Unable to set user email: " : "Kan ikke oprette bruger email:",

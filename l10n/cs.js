@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Registrace není povolena z následujících domén:",
-    "Registration is only allowed with the following domains:" : "Registrace je povolena pouze z následujících domén:",
     "A problem occurred sending email, please contact your administrator." : "Vyskytl se problém s odesíláním e-mailu – prosím obraťte se na správce tohoto serveru.",
     "The entered verification code is wrong" : "Zadaný kód pro ověření je chybný",
     "The verification failed." : "Ověření se nezdařilo.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Zapnout nyní",
     "A user has already taken this email, maybe you already have an account?" : "Existující uživatel už používá tento e-mail. Možná už zde účet máte?",
     "You can <a href=\"%s\">log in now</a>." : "Nyní se můžete <a href=\"%s\">přihlásit</a>.",
+    "Registration is only allowed with the following domains:" : "Registrace je povolena pouze z následujících domén:",
     "Registration with this email domain is not allowed." : "Registrace s touto e-mailovou doménou není povolena.",
+    "Registration is not allowed with the following domains:" : "Registrace není povolena z následujících domén:",
     "Please provide a valid display name." : "Prosím zadejte platné zobrazované jméno.",
     "Please provide a valid login name." : "Zadejte platné uživatelské jméno.",
     "The login name you have chosen already exists." : "Uživatelské jméno, které jste zvolili už používá někdo jiný.",

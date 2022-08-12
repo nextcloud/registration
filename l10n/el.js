@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Η εγγραφή δεν επιτρέπεται στους ακόλουθους τομείς:",
-    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:",
     "A problem occurred sending email, please contact your administrator." : "Παρουσιάστηκε πρόβλημα κατά την αποστολή email, παρακαλούμε επικοινωνήστε με τον διαχειριστή.",
     "The entered verification code is wrong" : "Ο κωδικός επαλήθευσης που έχετε εισαγάγει είναι λάθος",
     "The verification failed." : "Η επαλήθευση απέτυχε.",
@@ -22,7 +20,9 @@ OC.L10N.register(
     "Enable now" : "Ενεργοποίηση τώρα",
     "A user has already taken this email, maybe you already have an account?" : "Ένας χρήστης χρησιμοποιεί αυτό το email, έχετε ήδη λογαριασμό;",
     "You can <a href=\"%s\">log in now</a>." : "Μπορείτε <a href=\"%s\">να συνδεθείτε</a>.",
+    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:",
     "Registration with this email domain is not allowed." : "Δεν επιτρέπεται η εγγραφή με αυτόν τον τομέα ηλεκτρονικής διεύθυνσης.",
+    "Registration is not allowed with the following domains:" : "Η εγγραφή δεν επιτρέπεται στους ακόλουθους τομείς:",
     "Please provide a valid display name." : "Παρακαλούμε καταχωρίστε ένα έγκυρο εμφανιζόμενο όνομα.",
     "Unable to create user, there are problems with the user backend." : "Δεν είναι δυνατή η δημιουργία χρήστη, υπάρχουν προβλήματα με το backend του χρήστη.",
     "Unable to set user email: " : "Δεν είναι δυνατός ο ορισμός του διεύθυνσης ηλεκτρονικού ταχυδρομείου του χρήστη: ",

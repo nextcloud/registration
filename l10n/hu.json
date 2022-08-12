@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "A regisztráció a következő domainek számára nem engedélyezett:",
-    "Registration is only allowed with the following domains:" : "A regisztráció csak a következő domainek számára engedélyezett:",
     "A problem occurred sending email, please contact your administrator." : "Váratlan hiba lépett fel az e-mail küldése során, lépjen kapcsolatba a rendszergazdával.",
     "The entered verification code is wrong" : "A megadott ellenőrzőkód hibás",
     "The verification failed." : "Sikertelen ellenőrzés.",
@@ -23,7 +21,9 @@
     "Enable now" : "Engedélyezés most",
     "A user has already taken this email, maybe you already have an account?" : "Egy felhasználó már használja ezt az e-mail-címet, lehet, hogy már van fiókja?",
     "You can <a href=\"%s\">log in now</a>." : "<a href=\"%s\">Most bejelentkezhet</a>.",
+    "Registration is only allowed with the following domains:" : "A regisztráció csak a következő domainek számára engedélyezett:",
     "Registration with this email domain is not allowed." : "Az ezzel az e-mail-domainnel történő regisztráció nem megengedett.",
+    "Registration is not allowed with the following domains:" : "A regisztráció a következő domainek számára nem engedélyezett:",
     "Please provide a valid display name." : "Érvényes megjelenítendő nevet adjon meg.",
     "Please provide a valid login name." : "Adjon meg egy érvényes bejelentkezési nevet.",
     "The login name you have chosen already exists." : "A választott bejelentkezési név már létezik.",

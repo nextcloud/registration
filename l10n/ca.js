@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
-    "Registration is only allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
     "A problem occurred sending email, please contact your administrator." : "S'ha produït un problema en enviar un correu electrònic, poseu-vos en contacte amb l'administrador.",
     "The entered verification code is wrong" : "El codi de verificació introduït és incorrecte",
     "The verification failed." : "Ha fallat la verificació.",
@@ -25,7 +23,9 @@ OC.L10N.register(
     "Enable now" : "Habilita ara",
     "A user has already taken this email, maybe you already have an account?" : "Un usuari ja te aquest correu electrònic, potser ja teniu un compte?",
     "You can <a href=\"%s\">log in now</a>." : "Podeu <a href=\"%s\">iniciar sessió ara</a>.",
+    "Registration is only allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
     "Registration with this email domain is not allowed." : "No es permet el registre amb aquest domini de correu electrònic.",
+    "Registration is not allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
     "Please provide a valid display name." : "Proporcioneu un nom de visualització vàlid.",
     "Please provide a valid login name." : "Proporcioneu un nom d'inici de sessió vàlid.",
     "The login name you have chosen already exists." : "El nom d'inici de sessió que heu triat ja existeix.",

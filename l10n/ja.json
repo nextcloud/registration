@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "登録は以下のドメインには許可されていません:",
-    "Registration is only allowed with the following domains:" : "登録は以下のドメインにのみ許可されています:",
     "A problem occurred sending email, please contact your administrator." : "メールの送信に問題が発生しました。管理者に連絡してください。",
     "The entered verification code is wrong" : "入力された確認コードが違います",
     "The verification failed." : "確認に失敗しました。",
@@ -23,7 +21,9 @@
     "Enable now" : "今すぐ有効化",
     "A user has already taken this email, maybe you already have an account?" : "既に使用されているメールアドレスのようです、アカウントをお持ちではありませんか？",
     "You can <a href=\"%s\">log in now</a>." : "<a href=\"%s\">今すぐログイン</a>できます。",
+    "Registration is only allowed with the following domains:" : "登録は以下のドメインにのみ許可されています:",
     "Registration with this email domain is not allowed." : "このメールドメインでの登録は許可されていません。",
+    "Registration is not allowed with the following domains:" : "登録は以下のドメインには許可されていません:",
     "Please provide a valid display name." : "有効な表示名を入力してください。",
     "Please provide a valid login name." : "有効なログイン名を入力してください。",
     "The login name you have chosen already exists." : "選択されたログイン名は既に存在しています。",

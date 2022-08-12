@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Registracija nije dopuštena za sljedeće domene:",
-    "Registration is only allowed with the following domains:" : "Registracija je dopuštena samo za sljedeće domene:",
     "A problem occurred sending email, please contact your administrator." : "Došlo je do pogreške pri slanju poruke e-pošte, obratite se svom administratoru.",
     "The entered verification code is wrong" : "Unesen je pogrešan kontrolni kôd",
     "The verification failed." : "Provjera nije uspjela.",
@@ -20,7 +18,9 @@
     "Enable now" : "Omogući sad",
     "A user has already taken this email, maybe you already have an account?" : "Postoji korisnik s ovom adresom e-pošte, možda ste već otvorili račun?",
     "You can <a href=\"%s\">log in now</a>." : "Sad se možete <a href=\"%s\">prijaviti</a>.",
+    "Registration is only allowed with the following domains:" : "Registracija je dopuštena samo za sljedeće domene:",
     "Registration with this email domain is not allowed." : "Registracija nije dopuštena s ovom domenom e-pošte.",
+    "Registration is not allowed with the following domains:" : "Registracija nije dopuštena za sljedeće domene:",
     "Please provide a valid display name." : "Unesite važeće ime za prikaz.",
     "Please provide a valid login name." : "Unesite važeće ime za prijavu.",
     "The login name you have chosen already exists." : "Odabrano ime za prijavu već postoji.",

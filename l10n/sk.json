@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Registrácia nie je povolená s nasledujúcimi doménami",
-    "Registration is only allowed with the following domains:" : "Registrácia je povolená iba na nasledujúcich doménach",
     "A problem occurred sending email, please contact your administrator." : "Pri odosielaní e-mailu sa vyskytol problém. Kontaktujte svojho správcu.",
     "The entered verification code is wrong" : "Zadaný overovací kód je nesprávny",
     "The verification failed." : "Overenie zlyhalo.",
@@ -22,7 +20,9 @@
     "Enable now" : "Povoliť teraz",
     "A user has already taken this email, maybe you already have an account?" : "Niekto už tento e-mail použil, nemáte už účet?",
     "You can <a href=\"%s\">log in now</a>." : "Teraz sa môžete <a href=\"%s\">prihlásiť</a>.",
+    "Registration is only allowed with the following domains:" : "Registrácia je povolená iba na nasledujúcich doménach",
     "Registration with this email domain is not allowed." : "Registrácia pomocou tejto e-mailovej domény nie je povolená",
+    "Registration is not allowed with the following domains:" : "Registrácia nie je povolená s nasledujúcimi doménami",
     "Please provide a valid display name." : "Zadajte platné zobrazované meno.",
     "Please provide a valid login name." : "Zadajte platné používateľské meno.",
     "The login name you have chosen already exists." : "Používateľské meno, ktoré ste si vybrali, už existuje.",

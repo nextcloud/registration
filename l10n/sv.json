@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Registrering är inte tillåten med följande domäner:",
-    "Registration is only allowed with the following domains:" : "Registrering är endast tillåten med följande domäner:",
     "A problem occurred sending email, please contact your administrator." : "Ett fel uppstod vid skickande av e-post, vänligen kontakta din administratör.",
     "The entered verification code is wrong" : "Den angivna verifikationskoden är felaktig",
     "The verification failed." : "Verifikationen misslyckades.",
@@ -22,7 +20,9 @@
     "Enable now" : "Aktivera nu",
     "A user has already taken this email, maybe you already have an account?" : "En använder har redan registrerat denna e-postadressen, kanske har du redan skapat ett konto?",
     "You can <a href=\"%s\">log in now</a>." : "Du kan <a href=\"%s\">logga in</a> nu.",
+    "Registration is only allowed with the following domains:" : "Registrering är endast tillåten med följande domäner:",
     "Registration with this email domain is not allowed." : "Registrering med denna e-postdomän är inte tillåten.",
+    "Registration is not allowed with the following domains:" : "Registrering är inte tillåten med följande domäner:",
     "Please provide a valid display name." : "Vänligen ange ett giltigt visningsnamn.",
     "Please provide a valid login name." : "Vänligen ange ett giltigt användarnamn.",
     "The login name you have chosen already exists." : "Användarnamnet du har valt finns redan.",
