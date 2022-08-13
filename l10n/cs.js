@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "Registrace není povolena z následujících domén: %s",
+    "Registration is only allowed with the following domains: %s" : "Registrace je povolena pouze z následujících domén: %s",
     "A problem occurred sending email, please contact your administrator." : "Vyskytl se problém s odesíláním e-mailu – prosím obraťte se na správce tohoto serveru.",
     "The entered verification code is wrong" : "Zadaný kód pro ověření je chybný",
     "The verification failed." : "Ověření se nezdařilo.",
