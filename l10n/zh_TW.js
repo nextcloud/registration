@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "不允許使用以下的網域註冊：%s",
+    "Registration is only allowed with the following domains: %s" : "僅允許使用以下網域註冊：%s",
     "A problem occurred sending email, please contact your administrator." : "傳送電子郵件時遇到錯誤，請聯絡您的管理員。",
     "The entered verification code is wrong" : "輸入的驗證碼錯誤",
     "The verification failed." : "驗證失敗。",
