@@ -43,12 +43,12 @@
 				<div id="terms_of_service" />
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
-				<Button id="submit"
+				<ButtonVue id="submit"
 					native-type="submit"
 					type="primary"
 					:wide="true">
 					{{ submitValue }}
-				</Button>
+				</ButtonVue>
 
 				<a id="lost-password-back" :href="loginFormLink">
 					{{ t('registration', 'Back to login') }}
@@ -60,15 +60,15 @@
 
 <script>
 import { getRequestToken } from '@nextcloud/auth'
-import Button from '@nextcloud/vue/dist/Components/Button'
+import ButtonVue from '@nextcloud/vue/dist/Components/Button.js'
 import { loadState } from '@nextcloud/initial-state'
-import Email from 'vue-material-design-icons/Email'
+import Email from 'vue-material-design-icons/Email.vue'
 
 export default {
 	name: 'RegistrationEmail',
 
 	components: {
-		Button,
+		ButtonVue,
 		Email,
 	},
 

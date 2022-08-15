@@ -216,8 +216,8 @@
 </template>
 
 <script>
-import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
-import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
+import Multiselect from '@nextcloud/vue/dist/Components/Multiselect.js'
+import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection.js'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import '@nextcloud/dialogs/styles/toast.scss'

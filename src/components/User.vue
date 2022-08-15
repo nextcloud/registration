@@ -104,7 +104,7 @@
 						required>
 					<label for="password" class="infield">{{ t('registration', 'Password') }}</label>
 					<Lock :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-					<Button class="toggle-password"
+					<ButtonVue class="toggle-password"
 						type="tertiary-no-background"
 						:aria-label="isPasswordHidden ? t('registration', 'Show password') : t('registration', 'Hide password')"
 						@click.stop.prevent="togglePassword"
@@ -113,7 +113,7 @@
 							<Eye v-if="isPasswordHidden" :size="20" />
 							<EyeOff v-else :size="20" />
 						</template>
-					</Button>
+					</ButtonVue>
 				</p>
 				<Button id="submit"
 					native-type="submit"
@@ -130,21 +130,21 @@
 
 <script>
 import { getRequestToken } from '@nextcloud/auth'
-import Button from '@nextcloud/vue/dist/Components/Button'
+import ButtonVue from '@nextcloud/vue/dist/Components/Button.js'
 import { loadState } from '@nextcloud/initial-state'
-import Eye from 'vue-material-design-icons/Eye'
-import EyeOff from 'vue-material-design-icons/EyeOff'
-import Email from 'vue-material-design-icons/Email'
-import Lock from 'vue-material-design-icons/Lock'
-import Phone from 'vue-material-design-icons/Phone'
-import Account from 'vue-material-design-icons/Account'
-import Key from 'vue-material-design-icons/Key'
+import Eye from 'vue-material-design-icons/Eye.vue'
+import EyeOff from 'vue-material-design-icons/EyeOff.vue'
+import Email from 'vue-material-design-icons/Email.vue'
+import Lock from 'vue-material-design-icons/Lock.vue'
+import Phone from 'vue-material-design-icons/Phone.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import Key from 'vue-material-design-icons/Key.vue'
 
 export default {
 	name: 'User',
 
 	components: {
-		Button,
+		ButtonVue,
 		Eye,
 		EyeOff,
 		Email,
