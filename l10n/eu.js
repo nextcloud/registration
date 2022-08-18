@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "Izen ematea ez da onartzen domeinu hauekin: %s",
+    "Registration is only allowed with the following domains: %s" : "Izen ematea domeinu hauekin bakarrik onartzen da: %s",
     "A problem occurred sending email, please contact your administrator." : "Arazo bat egon da e-posta bidaltzean, jarri harremanetan zure administratzailearekin.",
     "The entered verification code is wrong" : "Sarturiko egiaztatze kodea ez da zuzena",
     "The verification failed." : "Egiaztatzeak huts egin du.",
