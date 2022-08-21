@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "A regisztráció a következő domainek számára nem engedélyezett: %s",
+    "Registration is only allowed with the following domains: %s" : "A regisztráció csak a következő domainek számára engedélyezett: %s",
     "A problem occurred sending email, please contact your administrator." : "Váratlan hiba lépett fel az e-mail küldése során, lépjen kapcsolatba a rendszergazdával.",
     "The entered verification code is wrong" : "A megadott ellenőrzőkód hibás",
     "The verification failed." : "Sikertelen ellenőrzés.",
