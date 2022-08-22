@@ -122,6 +122,8 @@ class RegistrationServiceTest extends TestCase {
 			['aaaa@eXample.com', 'example.com', 'no'],
 			['aaaa@example.com', 'example.com;example.tld', 'no'],
 			['aaaa@example.com', 'example.tld;example.com', 'no'],
+			['aaaa@example.tld', 'example.tld ; example.com', 'no'],
+			['aaaa@example.com', 'example.tld ; example.com', 'no'],
 			['aaaa@cloud.example.com', '*.example.com', 'no'],
 			['aaaa@cloud.example.com', 'cloud.example.*', 'no'],
 
