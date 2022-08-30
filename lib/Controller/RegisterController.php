@@ -83,9 +83,9 @@ class RegisterController extends Controller {
 	 */
 	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
 		$emailHint = '';
-		$domainList = $this->config->getAppValue(Application::APP_ID, 'allowed_domains', '');
-		$domainList = implode(', ', explode(';', $domainList));
-		if ($domainList && $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes') {
+		$domainList = $this->registrationService->getAllowedDomains();
+		if (!empty($domainList) && $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes') {
+			$domainList = implode(', ', $domainList);
 			if ($this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes') {
 				$emailHint = $this->l10n->t(
 					'Registration is not allowed with the following domains: %s',

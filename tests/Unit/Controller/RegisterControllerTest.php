@@ -135,10 +135,8 @@ class RegisterControllerTest extends TestCase {
 	 * @param string $message
 	 */
 	public function testShowEmailForm(string $email, string $message): void {
-		$this->config->method('getAppValue')
-			->willReturnMap([
-				['registration', 'allowed_domains', '', ''],
-			]);
+		$this->registrationService->method('getAllowedDomains')
+			->willReturn([]);
 
 		$controller = $this->getController();
 		$response = $controller->showEmailForm($email, $message);

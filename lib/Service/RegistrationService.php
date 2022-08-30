@@ -189,7 +189,7 @@ class RegistrationService {
 			);
 		}
 
-		if ($this->config->getAppValue($this->appName, 'allowed_domains', '') === '') {
+		if (empty($this->getAllowedDomains())) {
 			return;
 		}
 
@@ -201,10 +201,9 @@ class RegistrationService {
 			if ($showDomains) {
 				throw new RegistrationException(
 					$this->l10n->t(
-						'Registration is only allowed with the following domains:'
-					) . ' ' . implode(', ', explode(';',
-						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
-					))
+						'Registration is only allowed with the following domains: %s',
+						[implode(', ', $this->getAllowedDomains())]
+					)
 				);
 			}
 			throw new RegistrationException(
@@ -216,10 +215,9 @@ class RegistrationService {
 			if ($showDomains) {
 				throw new RegistrationException(
 					$this->l10n->t(
-						'Registration is not allowed with the following domains:'
-					) . ' ' . implode(', ', explode(';',
-						$this->config->getAppValue(Application::APP_ID, 'allowed_domains', '')
-					))
+						'Registration is not allowed with the following domains: %s',
+						[implode(', ', $this->getAllowedDomains())]
+					)
 				);
 			}
 			throw new RegistrationException(
@@ -291,10 +289,9 @@ class RegistrationService {
 	 * @return bool
 	 */
 	public function checkAllowedDomains(string $email): bool {
-		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
-		if ($allowedDomains !== '') {
+		$allowedDomains = $this->getAllowedDomains();
+		if (!empty($allowedDomains)) {
 			[,$mailDomain] = explode('@', strtolower($email), 2);
-			$allowedDomains = explode(';', strtolower($allowedDomains));
 
 			foreach ($allowedDomains as $domain) {
 				// valid domain, everything's fine
@@ -327,6 +324,9 @@ class RegistrationService {
 	public function getAllowedDomains(): array {
 		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
 		$allowedDomains = explode(';', $allowedDomains);
+		$allowedDomains = array_map('trim', $allowedDomains);
+		$allowedDomains = array_filter($allowedDomains);
+		$allowedDomains = array_map('strtolower', $allowedDomains);
 		return $allowedDomains;
 	}
 
