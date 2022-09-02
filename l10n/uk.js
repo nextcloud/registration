@@ -10,6 +10,7 @@ OC.L10N.register(
     "Phone number" : "Номер телефону",
     "Password" : "Пароль",
     "Show password" : "Показати пароль",
+    "Hide password" : "Приховати пароль",
     "Loading" : "Завантаження",
     "Create account" : "Створити запис",
     "Verify" : "Перевірити"
