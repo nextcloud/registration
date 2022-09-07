@@ -1,10 +1,11 @@
 OC.L10N.register(
     "registration",
     {
-    "Saved" : "Saqlangan",
-    "Continue" : "Davom etish",
-    "Password" : "Parol",
-    "Loading" : "Yuklanmoqda",
-    "Verify" : "Tasdiqlang"
+    "Saved" : "Saved",
+    "Continue" : "Continue",
+    "Full name" : "Full name",
+    "Password" : "Password",
+    "Loading" : "Loading",
+    "Verify" : "Verify"
 },
 "nplurals=1; plural=0;");
