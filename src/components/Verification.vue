@@ -23,33 +23,32 @@
 	<div class="guest-box">
 		<form action="" method="post">
 			<fieldset>
-				<div v-if="message !== ''" class="notecard error">
+				<NcNoteCard v-if="message !== ''" type="error">
 					{{ message }}
-				</div>
+				</NcNoteCard>
 
-				<p class="token">
-					<input id="token"
-						type="text"
-						name="token"
-						class="token__field"
-						:placeholder="t('registration', 'Verification code')"
-						required
-						autofocus>
-					<label for="token" class="infield">{{ t('registration', 'Verification code') }}</label>
-					<ShieldCheck :size="20" class="token__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				<NcTextField type="text"
+					name="token"
+					:label="t('registration', 'Verification code')"
+					:label-visible="true"
+					required
+					autofocus>
+					<ShieldCheck :size="20" fill-color="var(--color-placeholder-dark)" />
+				</NcTextField>
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
-				<ButtonVue id="submit"
+				<NcButton id="submit"
 					native-type="submit"
 					type="primary"
 					:wide="true">
 					{{ t('registration', 'Verify') }}
-				</ButtonVue>
+				</NcButton>
 
-				<a id="lost-password-back" :href="loginFormLink">
+				<NcButton type="tertiary"
+					:href="loginFormLink"
+					:wide="true">
 					{{ t('registration', 'Back to login') }}
-				</a>
+				</NcButton>
 			</fieldset>
 		</form>
 	</div>
@@ -57,15 +56,19 @@
 
 <script>
 import { getRequestToken } from '@nextcloud/auth'
-import ButtonVue from '@nextcloud/vue/dist/Components/Button.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import { loadState } from '@nextcloud/initial-state'
 import ShieldCheck from 'vue-material-design-icons/ShieldCheck.vue'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 export default {
 	name: 'Verification',
 
 	components: {
-		ButtonVue,
+		NcButton,
+		NcTextField,
+		NcNoteCard,
 		ShieldCheck,
 	},
 
@@ -80,19 +83,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.token {
-	position: relative;
+.guest-box {
+	text-align: left;
+}
 
-	&__field {
-		margin-bottom: 12px;
-		width: calc(100% - 56px);
-		padding-left: 36px;
-	}
+fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
 
-	&__icon {
-		position: absolute;
-		left: 16px;
-		top: 20px;
-	}
+.button-vue--vue-tertiary {
+	box-sizing: border-box;
 }
 </style>
