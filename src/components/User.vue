@@ -24,105 +24,85 @@
 		<form action="" method="post">
 			<input type="hidden" name="requesttoken" :value="requesttoken">
 			<fieldset>
-				<div v-if="message !== ''" class="notecard error">
+				<NcNoteCard v-if="message !== ''" type="error">
 					{{ message }}
-				</div>
+				</NcNoteCard>
 				<p v-else>
 					{{ t('registration', 'Welcome, you can create your account below.') }}
 				</p>
 
-				<div v-if="additionalHint" class="notecard success">
+				<NcNoteCard v-if="additionalHint" type="success">
 					{{ additionalHint }}
-				</div>
+				</NcNoteCard>
 
-				<p v-if="!emailIsOptional || email.length > 0" class="input">
-					<input id="email"
-						v-model="email"
-						type="email"
-						class="input__field"
-						name="email"
-						disabled>
-					<label for="email" class="infield">{{ t('registration', 'Email') }}></label>
+				<NcTextField v-if="!emailIsOptional || email.length > 0"
+					:value.sync="email"
+					type="email"
+					:label="t('registration', 'Email')"
+					:label-visible="true"
+					name="email"
+					disabled>
 					<Email :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				</NcTextField>
 
-				<p v-if="!emailIsLogin" class="input">
-					<input id="loginname"
-						v-model="loginname"
-						type="text"
-						name="loginname"
-						class="input__field"
-						:placeholder="t('registration', 'Login name')"
-						required>
-					<label for="loginname" class="infield">{{ t('registration', 'Login name') }}</label>
+				<NcTextField v-if="!emailIsLogin"
+					:value.sync="loginname"
+					type="text"
+					name="loginname"
+					:label="t('registration', 'Login name')"
+					:label-visible="true"
+					required>
 					<Key :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				</NcTextField>
 				<input v-else
 					type="hidden"
 					name="loginname"
 					:value="email">
 
-				<p v-if="showFullname" class="input">
-					<input id="fullname"
-						v-model="fullname"
-						type="text"
-						name="fullname"
-						class="input__field"
-						:placeholder="t('registration', 'Full name')"
-						:required="enforceFullname">
-					<label for="fullname" class="infield">{{ t('registration', 'Full name') }}</label>
+				<NcTextField v-if="showFullname"
+					:value.sync="fullname"
+					type="text"
+					name="fullname"
+					:label="t('registration', 'Full name')"
+					:label-visible="true"
+					:required="enforceFullname">
 					<Account :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				</NcTextField>
 				<input v-else
 					type="hidden"
 					name="fullname"
 					value="">
 
-				<p v-if="showPhone" class="groupmiddle input">
-					<input id="phone"
-						v-model="phone"
-						type="text"
-						name="phone"
-						class="input__field"
-						:placeholder="t('registration', 'Phone number')"
-						:required="enforcePhone">
-					<label for="phone" class="infield">{{ t('registration', 'Phone number') }}</label>
+				<NcTextField v-if="showPhone"
+					:value.sync="phone"
+					type="text"
+					name="phone"
+					:label="t('registration', 'Phone number')"
+					:label-visible="true"
+					:required="enforcePhone">
 					<Phone :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				</NcTextField>
 				<input v-else
 					type="hidden"
 					name="phone"
 					value="">
 
-				<p class="groupbottom input">
-					<input id="password"
-						v-model="password"
-						:type="passwordInputType"
-						class="input__field"
-						name="password"
-						:placeholder="t('registration', 'Password')"
-						required>
-					<label for="password" class="infield">{{ t('registration', 'Password') }}</label>
+				<NcPasswordField :value.sync="password"
+					:label="t('registration', 'Password')"
+					:label-visible="true"
+					name="password"
+					required>
 					<Lock :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
-					<ButtonVue class="toggle-password"
-						type="tertiary-no-background"
-						:aria-label="isPasswordHidden ? t('registration', 'Show password') : t('registration', 'Hide password')"
-						@click.stop.prevent="togglePassword"
-						@keydown.enter="togglePassword">
-						<template #icon>
-							<Eye v-if="isPasswordHidden" :size="20" />
-							<EyeOff v-else :size="20" />
-						</template>
-					</ButtonVue>
-				</p>
-				<Button id="submit"
+				</NcPasswordField>
+
+				<NcButton id="submit"
 					native-type="submit"
 					type="primary"
 					:wide="true"
 					:disabled="submitting || password.length === 0"
 					@click="submit">
 					{{ submitting ? t('registration', 'Loading') : t('registration', 'Create account') }}
-				</Button>
+				</NcButton>
 			</fieldset>
 		</form>
 	</div>
@@ -130,10 +110,11 @@
 
 <script>
 import { getRequestToken } from '@nextcloud/auth'
-import ButtonVue from '@nextcloud/vue/dist/Components/Button.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcPasswordField from '@nextcloud/vue/dist/Components/NcPasswordField.js'
 import { loadState } from '@nextcloud/initial-state'
-import Eye from 'vue-material-design-icons/Eye.vue'
-import EyeOff from 'vue-material-design-icons/EyeOff.vue'
 import Email from 'vue-material-design-icons/Email.vue'
 import Lock from 'vue-material-design-icons/Lock.vue'
 import Phone from 'vue-material-design-icons/Phone.vue'
@@ -144,9 +125,10 @@ export default {
 	name: 'User',
 
 	components: {
-		ButtonVue,
-		Eye,
-		EyeOff,
+		NcButton,
+		NcNoteCard,
+		NcTextField,
+		NcPasswordField,
 		Email,
 		Lock,
 		Phone,
@@ -197,26 +179,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.input {
-	position: relative;
-
-	&__field {
-		margin-bottom: 12px;
-		width: calc(100% - 56px);
-		padding-left: 36px;
-	}
-
-	&__icon {
-		position: absolute;
-		left: 16px;
-		top: 20px;
-	}
+.guest-box {
+	text-align: left;
 }
 
-.toggle-password {
-	position: absolute;
-	top: 6px;
-	right: 10px;
-	color: var(--color-text-lighter);
+fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.button-vue--vue-tertiary {
+	box-sizing: border-box;
 }
 </style>

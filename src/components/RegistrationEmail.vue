@@ -23,36 +23,34 @@
 	<div class="guest-box">
 		<form action="" method="post">
 			<fieldset>
-				<div v-if="message !== ''" class="notecard error">
+				<NcNoteCard v-if="message !== ''" type="error">
 					{{ message }}
-				</div>
+				</NcNoteCard>
 
-				<p class="email">
-					<input id="email"
-						type="email"
-						name="email"
-						class="email__field"
-						:placeholder="emailPlaceholder"
-						required
-						autofocus>
-					<label v-if="emailIsOptional" for="email" class="infield">{{ t('registration', 'Email (optional)') }}</label>
-					<label v-else for="email" class="infield">{{ t('registration', 'Email') }}</label>
-					<Email :size="20" class="email__icon" fill-color="var(--color-placeholder-dark)" />
-				</p>
+				<NcTextField name="email"
+					type="email"
+					:label="emailLabel"
+					:label-visible="true"
+					required
+					autofocus>
+					<Email :size="20" fill-color="var(--color-placeholder-dark)" />
+				</NcTextField>
 
 				<div id="terms_of_service" />
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
-				<ButtonVue id="submit"
+				<NcButton id="submit"
 					native-type="submit"
 					type="primary"
 					:wide="true">
 					{{ submitValue }}
-				</ButtonVue>
+				</NcButton>
 
-				<a id="lost-password-back" :href="loginFormLink">
+				<NcButton type="tertiary"
+					:href="loginFormLink"
+					:wide="true">
 					{{ t('registration', 'Back to login') }}
-				</a>
+				</NcButton>
 			</fieldset>
 		</form>
 	</div>
@@ -60,7 +58,9 @@
 
 <script>
 import { getRequestToken } from '@nextcloud/auth'
-import ButtonVue from '@nextcloud/vue/dist/Components/Button.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { loadState } from '@nextcloud/initial-state'
 import Email from 'vue-material-design-icons/Email.vue'
 
@@ -68,7 +68,9 @@ export default {
 	name: 'RegistrationEmail',
 
 	components: {
-		ButtonVue,
+		NcButton,
+		NcTextField,
+		NcNoteCard,
 		Email,
 	},
 
@@ -84,7 +86,7 @@ export default {
 	},
 
 	computed: {
-		emailPlaceholder() {
+		emailLabel() {
 			return this.emailIsOptional
 				? t('registration', 'Email (optional)')
 				: t('registration', 'Email')
@@ -103,19 +105,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.email {
-	position: relative;
+.guest-box {
+	text-align: left;
+}
 
-	&__field {
-		margin-bottom: 12px;
-		width: calc(100% - 56px);
-		padding-left: 36px;
-	}
+fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
 
-	&__icon {
-		position: absolute;
-		left: 16px;
-		top: 20px;
-	}
+.button-vue--vue-tertiary {
+	box-sizing: border-box;
 }
 </style>
