@@ -1,14 +1,12 @@
 { "translations": {
     "Saved" : "Guardado",
     "Register" : "Registrar",
-    "Email" : "Correo electrónico",
     "Back to login" : "Regresar al inicio de sesión",
+    "Email" : "Correo electrónico",
     "Continue" : "Continuar",
     "Full name" : "Nombre completo",
     "Phone number" : "Número telefónico",
     "Password" : "Contraseña",
-    "Show password" : "Mostrar contraseña",
-    "Hide password" : "Ocultar contraseña",
     "Loading" : "Cargando",
     "Create account" : "Crear cuenta",
     "Verify" : "Verificar"

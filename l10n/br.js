@@ -2,13 +2,12 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Enrollet",
-    "Email" : "Postel",
     "Back to login" : "Distro d'ar mon-tre",
+    "Email" : "Postel",
     "Continue" : "Kendec'hel",
     "Full name" : "Tout an anv",
     "Phone number" : "Niverenn pellgomzer",
     "Password" : "Ger-tremen",
-    "Show password" : "Diskouez ar ger-tremen",
     "Loading" : "Kargañ",
     "Verify" : "Gwiriañ"
 },

@@ -1,14 +1,12 @@
 { "translations": {
     "Saved" : "Збережено",
     "Register" : "Зареєструватися",
-    "Email" : "Ел.пошта",
     "Back to login" : "Повернутися на сторінку входу",
+    "Email" : "Ел.пошта",
     "Continue" : "Продовжити",
     "Full name" : "Повна назва",
     "Phone number" : "Номер телефону",
     "Password" : "Пароль",
-    "Show password" : "Показати пароль",
-    "Hide password" : "Приховати пароль",
     "Loading" : "Завантаження",
     "Create account" : "Створити запис",
     "Verify" : "Перевірити"

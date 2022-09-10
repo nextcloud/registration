@@ -13,7 +13,6 @@ OC.L10N.register(
     "Full name" : "نام کامل",
     "Phone number" : "شماره تلفن",
     "Password" : "کلمه عبور",
-    "Show password" : "نمایش گذرواژه",
     "Loading" : "در حال بار گزاری",
     "Create account" : "ساخت حساب",
     "Verify" : "تأیید کنید",

@@ -3,8 +3,8 @@ OC.L10N.register(
     {
     "Saved" : "Konservita",
     "Register" : "Registriĝi",
-    "Email" : "Retpoŝtadreso",
     "Back to login" : "Antaŭen al ensaluto",
+    "Email" : "Retpoŝtadreso",
     "Continue" : "Daŭrigi",
     "Full name" : "Plena nomo",
     "Phone number" : "Telefonnumero",

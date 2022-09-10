@@ -3,13 +3,12 @@ OC.L10N.register(
     {
     "Saved" : "Guardado",
     "Register" : "Registrar",
-    "Email" : "Correo electrónico",
     "Back to login" : "Volver para iniciar sesión",
+    "Email" : "Correo electrónico",
     "Continue" : "Continuar",
     "Full name" : "Nombre completo",
     "Phone number" : "Número telefónico",
     "Password" : "Contraseña",
-    "Show password" : "Mostrar contraseña",
     "Loading" : "Cargando",
     "Create account" : "Crear cuenta",
     "Verify" : "Verificar"

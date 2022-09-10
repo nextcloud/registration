@@ -2,8 +2,8 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Saglabāts",
-    "Email" : "E-pasts",
     "Back to login" : "Atpakaļ uz pieteikšanos",
+    "Email" : "E-pasts",
     "Continue" : "Turpināt",
     "Full name" : "Pilns vārds",
     "Phone number" : "Tālruņa numurs",
