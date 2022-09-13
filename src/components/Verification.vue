@@ -33,7 +33,7 @@
 					:label-visible="true"
 					required
 					autofocus>
-					<ShieldCheck :size="20" fill-color="var(--color-placeholder-dark)" />
+					<ShieldCheck :size="20" />
 				</NcTextField>
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">

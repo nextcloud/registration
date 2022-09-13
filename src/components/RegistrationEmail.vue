@@ -33,7 +33,7 @@
 					:label-visible="true"
 					required
 					autofocus>
-					<Email :size="20" fill-color="var(--color-placeholder-dark)" />
+					<Email :size="20" />
 				</NcTextField>
 
 				<div id="terms_of_service" />
