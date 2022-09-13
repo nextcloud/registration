@@ -42,7 +42,7 @@
 					:label-visible="true"
 					name="email"
 					disabled>
-					<Email :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
+					<Email :size="20" class="input__icon" />
 				</NcTextField>
 
 				<NcTextField v-if="!emailIsLogin"
@@ -52,7 +52,7 @@
 					:label="t('registration', 'Login name')"
 					:label-visible="true"
 					required>
-					<Key :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
+					<Key :size="20" class="input__icon" />
 				</NcTextField>
 				<input v-else
 					type="hidden"
@@ -66,7 +66,7 @@
 					:label="t('registration', 'Full name')"
 					:label-visible="true"
 					:required="enforceFullname">
-					<Account :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
+					<Account :size="20" class="input__icon" />
 				</NcTextField>
 				<input v-else
 					type="hidden"
@@ -80,7 +80,7 @@
 					:label="t('registration', 'Phone number')"
 					:label-visible="true"
 					:required="enforcePhone">
-					<Phone :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
+					<Phone :size="20" class="input__icon" />
 				</NcTextField>
 				<input v-else
 					type="hidden"
@@ -92,7 +92,7 @@
 					:label-visible="true"
 					name="password"
 					required>
-					<Lock :size="20" class="input__icon" fill-color="var(--color-placeholder-dark)" />
+					<Lock :size="20" class="input__icon" />
 				</NcPasswordField>
 
 				<NcButton id="submit"
