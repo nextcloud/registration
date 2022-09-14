@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "Rekisteröinti ei ole sallittu seuraavilla verkkotunnuksilla: %s",
+    "Registration is only allowed with the following domains: %s" : "Rekisteröinti on sallittu vain seuraavilla verkkotunnuksilla: %s",
     "A problem occurred sending email, please contact your administrator." : "Sähköpostia lähettäessä ilmeni virhe, ole yhteydessä ylläpitoon.",
     "The entered verification code is wrong" : "Annettu vahvistuskoodi on väärä",
     "The verification failed." : "Vahvistus epäonnistui.",
