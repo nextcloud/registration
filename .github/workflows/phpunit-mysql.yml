@@ -22,8 +22,8 @@ jobs:
       # do not stop on another job's failure
       fail-fast: false
       matrix:
-        php-versions: ['7.4', '8.0']
-        server-versions: ['master']
+        php-versions: ['7.4', '8.0', '8.1']
+        server-versions: ['master', 'stable25']
 
     services:
       mysql:
