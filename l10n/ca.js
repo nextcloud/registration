@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "No es permet el registre amb els dominis següents: %s",
+    "Registration is only allowed with the following domains: %s" : "El registre només es permet amb els dominis següents: %s",
     "A problem occurred sending email, please contact your administrator." : "S'ha produït un problema en enviar un correu electrònic, poseu-vos en contacte amb l'administrador.",
     "The entered verification code is wrong" : "El codi de verificació introduït és incorrecte",
     "The verification failed." : "Ha fallat la verificació.",
