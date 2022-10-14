@@ -14,15 +14,15 @@
 	},
 	"dependencies": {
 		"@nextcloud/auth": "^2.0.0",
-		"@nextcloud/axios": "^2.0.0",
-		"@nextcloud/dialogs": "^3.1.1",
+		"@nextcloud/axios": "^2.1.0",
+		"@nextcloud/dialogs": "^3.2.0",
 		"@nextcloud/initial-state": "^2.0.0",
 		"@nextcloud/router": "^2.0.0",
-		"@nextcloud/vue": "^7.0.0-beta.1",
+		"@nextcloud/vue": "^7.0.0",
 		"debounce": "^1.2.1",
-		"vue": "^2.7.4",
+		"vue": "^2.7.13",
 		"vue-material-design-icons": "^5.1.2",
-		"vue-template-compiler": "^2.7.10"
+		"vue-template-compiler": "^2.7.13"
 	},
 	"browserslist": [
 		"extends @nextcloud/browserslist-config"
