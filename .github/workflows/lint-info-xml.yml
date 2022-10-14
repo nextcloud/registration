@@ -9,8 +9,16 @@ on:
   pull_request:
   push:
     branches:
+      - main
       - master
       - stable*
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lint-info-xml-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   xml-linters:
@@ -19,7 +27,7 @@ jobs:
     name: info.xml lint
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: Download schema
         run: wget https://raw.githubusercontent.com/nextcloud/appstore/master/nextcloudappstore/api/v1/release/info.xsd
