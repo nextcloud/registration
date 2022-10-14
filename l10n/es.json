@@ -1,4 +1,6 @@
 { "translations": {
+    "Registration is not allowed with the following domains: %s" : "El registro no está permitido para los siguientes dominios: %s",
+    "Registration is only allowed with the following domains: %s" : "El registro solo está permitido para los siguientes dominios: %s",
     "A problem occurred sending email, please contact your administrator." : "Ha ocurrido un error enviando el correo. Por favor contacte con el administrador.",
     "The entered verification code is wrong" : "El código de verificación introducido no es correcto",
     "The verification failed." : "La verificación ha fallado.",
