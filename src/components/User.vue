@@ -21,7 +21,7 @@
   -->
 <template>
 	<div class="guest-box">
-		<form action="" method="post">
+		<form action="" method="post" @submit="onSubmit">
 			<input type="hidden" name="requesttoken" :value="requesttoken">
 			<fieldset>
 				<NcNoteCard v-if="message !== ''" type="error">
@@ -99,8 +99,7 @@
 					native-type="submit"
 					type="primary"
 					:wide="true"
-					:disabled="submitting || password.length === 0"
-					@click="submit">
+					:disabled="submitting || password.length === 0">
 					{{ submitting ? t('registration', 'Loading') : t('registration', 'Create account') }}
 				</NcButton>
 			</fieldset>
@@ -167,12 +166,9 @@ export default {
 				this.passwordInputType = 'password'
 			}
 		},
-		submit() {
+		onSubmit() {
 			// prevent sending the request twice
 			this.submitting = true
-			setTimeout(() => {
-				this.submitting = false
-			}, 1000)
 		},
 	},
 }
