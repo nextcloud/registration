@@ -5,12 +5,18 @@
 
 name: Lint
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+      - stable*
 
 permissions:
   contents: read
 
-concurrency:
+concurrency: 
   group: lint-php-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
