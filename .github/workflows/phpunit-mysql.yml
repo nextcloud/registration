@@ -19,10 +19,16 @@ on:
       - 'composer.json'
       - 'composer.lock'
 
+  push:
+    branches:
+      - main
+      - master
+      - stable*
+
 permissions:
   contents: read
 
-concurrency:
+concurrency: 
   group: phpunit-mysql-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
