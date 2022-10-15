@@ -8,6 +8,7 @@ OC.L10N.register(
     "Full name" : "Emri i plotë",
     "Phone number" : "Numri i telefonit",
     "Password" : "Fjalëkalim",
+    "Loading" : "Duke ngarkuar",
     "Create account" : "Krijo llogari",
     "Verify" : "Verifiko"
 },

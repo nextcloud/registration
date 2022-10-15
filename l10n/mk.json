@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
-    "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
     "A problem occurred sending email, please contact your administrator." : "Неочекувана грешка при испраќање на е-пошта. Контактирајте го администраторот.",
     "The entered verification code is wrong" : "Внесениот код за верификација не е точен",
     "The verification failed." : "Неуспешна верификација.",
@@ -26,19 +24,22 @@
     "Registered users default group" : "Стандардна група за регистрирани корисници",
     "Force email as login name" : "Наметни е-пошта за корисничко име",
     "Allowed email domains" : "Дозволени е-пошта домени",
-    "Loading …" : "Се вчитува…",
-    "Approval required" : "Потребно е одобрување",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот.",
+    "Back to login" : "Врати се на страната за најавување",
     "Email" : "Е-пошта",
     "Continue" : "Продолжи",
     "Request verification link" : "Побарај линк за верификација",
-    "Back to login" : "Врати се на страната за најавување",
     "Welcome, you can create your account below." : "Добредојдовте, сега можете да ги внесете вашите податоци и да креирате сметка.",
     "Full name" : "Цело име",
     "Phone number" : "Телефонски број",
     "Password" : "Лозинка",
+    "Loading" : "Се вчитува",
     "Create account" : "Креирај сметка",
     "Verification code" : "Код за верификација",
-    "Verify" : "Потврди"
+    "Verify" : "Потврди",
+    "Approval required" : "Потребно е одобрување",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот.",
+    "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
+    "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
+    "Loading …" : "Се вчитува…"
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

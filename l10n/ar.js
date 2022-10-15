@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "التسجيل غير مسموح بـ خوادم البريد التالية:",
-    "Registration is only allowed with the following domains:" : "التسجيل مسموح بـ خوادم البريد التالية فقط:",
     "A problem occurred sending email, please contact your administrator." : "حدث خطأ اثناء ارسال البريد، يرجى التواصل مع مسؤول النظام.",
     "The entered verification code is wrong" : "رمز التحقق المدخل غير صحيح",
     "The verification failed." : "التحقق فشل.",
@@ -30,20 +28,20 @@ OC.L10N.register(
     "Block listed email domains instead of allowing them" : "حظر قائمة خوادم البريد بدلا من السماح",
     "Force email as login name" : "فرض الدخول عبر البريد الالكتروني بدل اسم المستخدم",
     "Allowed email domains" : "خوادم البريد المسموح بها",
-    "Loading …" : "جاري التحميل …",
-    "Approval required" : "الموافقة مطلوبة",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "تم انشاء حسابك بنجاح، تم ارسال طلب الموافقه للادارة.",
+    "Back to login" : "العودة إلى تسجيل الدخول",
     "Email" : "البريد الإلكترونى",
     "Continue" : "متابعة",
     "Request verification code" : "طلب رمز التحقق",
     "Request verification link" : "طلب رابط التحقق",
-    "Back to login" : "العودة إلى تسجيل الدخول",
     "Welcome, you can create your account below." : "مرحبا بك، بإمكانك الآن انشاء حساب.",
     "Full name" : "الاسم الكامل",
     "Phone number" : "رقم الجوال",
     "Password" : "كلمة السر",
+    "Loading" : "جاري التحميل",
     "Create account" : "إنشاء حساب",
     "Verification code" : "رمز التحقق",
-    "Verify" : "تحقق"
+    "Verify" : "تحقق",
+    "Approval required" : "الموافقة مطلوبة",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "تم انشاء حسابك بنجاح، تم ارسال طلب الموافقه للادارة."
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

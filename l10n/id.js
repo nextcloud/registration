@@ -3,12 +3,13 @@ OC.L10N.register(
     {
     "Saved" : "Disimpan",
     "Register" : "Daftar",
+    "Back to login" : "Kembali ke log masuk",
     "Email" : "Surel",
     "Continue" : "Lanjutkan",
-    "Back to login" : "Kembali ke log masuk",
     "Full name" : "Nama lengkap",
     "Phone number" : "Nomor telefon",
     "Password" : "Kata kunci",
+    "Loading" : "Memuat",
     "Create account" : "Buat akun",
     "Verify" : "Verifikasi"
 },

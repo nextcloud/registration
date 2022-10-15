@@ -1,12 +1,13 @@
 OC.L10N.register(
     "registration",
     {
-    "Loading …" : "ກຳລັງໂຫຼດ",
+    "Back to login" : "ກັບຄືນເຂົ້າສູ່ລະບົບ",
     "Email" : "ອິເມວ",
     "Continue" : "ສືບຕໍ່",
-    "Back to login" : "ກັບຄືນເຂົ້າສູ່ລະບົບ",
     "Full name" : "ຊື່ເຕັມ",
     "Phone number" : "ເບີໂທລະສັບ",
-    "Password" : "ລະຫັດຜ່ານ"
+    "Password" : "ລະຫັດຜ່ານ",
+    "Loading" : "ການໂຫຼດ",
+    "Loading …" : "ກຳລັງໂຫຼດ"
 },
 "nplurals=1; plural=0;");

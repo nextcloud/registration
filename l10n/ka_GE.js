@@ -8,6 +8,7 @@ OC.L10N.register(
     "Full name" : "სრული სახელი",
     "Phone number" : "ტელეფონის ნომერი",
     "Password" : "პაროლი",
+    "Loading" : "იტვირთება",
     "Create account" : "ანგარიშის შექმნა",
     "Verify" : "დამოწმება"
 },

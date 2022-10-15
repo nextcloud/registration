@@ -1,0 +1,9 @@
+{ "translations": {
+    "Saved" : "Saved",
+    "Continue" : "Continue",
+    "Full name" : "Full name",
+    "Password" : "Password",
+    "Loading" : "Loading",
+    "Verify" : "Verify"
+},"pluralForm" :"nplurals=1; plural=0;"
+}

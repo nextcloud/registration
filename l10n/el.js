@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Η εγγραφή δεν επιτρέπεται στους ακόλουθους τομείς:",
-    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:",
     "A problem occurred sending email, please contact your administrator." : "Παρουσιάστηκε πρόβλημα κατά την αποστολή email, παρακαλούμε επικοινωνήστε με τον διαχειριστή.",
     "The entered verification code is wrong" : "Ο κωδικός επαλήθευσης που έχετε εισαγάγει είναι λάθος",
     "The verification failed." : "Η επαλήθευση απέτυχε.",
@@ -34,19 +32,20 @@ OC.L10N.register(
     "User instructions" : "Οδηγίες χρήστη",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Προσοχή: Οι οδηγίες χρήστη δεν θα μεταφραστούν και επομένως θα εμφανίζονται όπως διαμορφώνονται παρακάτω για όλους τους χρήστες ανεξάρτητα από την πραγματική γλώσσα τους.",
     "Allowed email domains" : "Επιτρεπόμενοι τομείς διευθύνσεων ηλεκτρονικής αλληλογραφίας",
-    "Loading …" : "Φόρτωση...",
-    "Approval required" : "Απαιτείται έγκριση",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία, αλλά εξακολουθεί να χρειάζεται έγκριση από έναν διαχειριστή.",
+    "Back to login" : "Πίσω στην είσοδο",
     "Email" : "Ηλεκτρονική αλληλογραφία",
     "Continue" : "Συνεχίστε",
     "Request verification link" : "Αίτηση συνδέσμου επαλήθευσης",
-    "Back to login" : "Πίσω στην είσοδο",
     "Welcome, you can create your account below." : "Καλώς ορίσατε, μπορείτε να δημιουργήσετε τον λογαριασμό σας παρακάτω.",
     "Full name" : "Πλήρες όνομα",
     "Phone number" : "Αριθμός τηλεφώνου",
     "Password" : "Συνθηματικό",
+    "Loading" : "Γίνεται φόρτωση",
     "Create account" : "Δημιουργία λογαριασμού",
     "Verification code" : "Κωδικός επαλήθευσης",
-    "Verify" : "Επαλήθευση"
+    "Verify" : "Επαλήθευση",
+    "Approval required" : "Απαιτείται έγκριση",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία, αλλά εξακολουθεί να χρειάζεται έγκριση από έναν διαχειριστή.",
+    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:"
 },
 "nplurals=2; plural=(n != 1);");

@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Registrering er ikke tilladt med de følgende domæner:",
-    "Registration is only allowed with the following domains:" : "Regisrering er kun tilladt med de følgende domæner:",
     "A problem occurred sending email, please contact your administrator." : "Uventet fejl ved afsendelse, venligst kontakt din administrator",
     "The entered verification code is wrong" : "Den indtastede verificerings kode er forkert",
     "The verification failed." : "Verificeringen fejlede.",
@@ -30,19 +28,19 @@ OC.L10N.register(
     "Block listed email domains instead of allowing them" : "Bloker listede email domæner istedet for at tillade dem",
     "Force email as login name" : "Gennemtving email som logonnavn",
     "Allowed email domains" : "Tilladte email domæner",
-    "Loading …" : "Loading …",
-    "Approval required" : "Godkendelse kræves",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto er blevet oprettet, men skal stadig godkendes af en administrator.",
+    "Back to login" : "Tilbage til log in",
     "Email" : "Email",
     "Continue" : "Fortsæt",
     "Request verification link" : "Send verifikations link",
-    "Back to login" : "Tilbage til log in",
     "Welcome, you can create your account below." : "Velkommen, du kan oprette din konto nedenfor.",
     "Full name" : "Fulde navn",
     "Phone number" : "Telefonnummer",
     "Password" : "Adgangskode",
+    "Loading" : "Indlæser",
     "Create account" : "Opret konto",
     "Verification code" : "Verifikations kode",
-    "Verify" : "Bekræft"
+    "Verify" : "Bekræft",
+    "Approval required" : "Godkendelse kræves",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto er blevet oprettet, men skal stadig godkendes af en administrator."
 },
 "nplurals=2; plural=(n != 1);");

@@ -3,14 +3,15 @@ OC.L10N.register(
     {
     "Saved" : "Đã lưu",
     "Register" : "Đăng ký",
-    "Loading …" : "Đang tải...",
+    "Back to login" : "Quay lại trang đăng nhập",
     "Email" : "Thư điện tử",
     "Continue" : "Tiếp tục",
-    "Back to login" : "Quay lại trang đăng nhập",
     "Full name" : "Tên đầy đủ",
     "Phone number" : "Số điện thoại",
     "Password" : "Mật khẩu",
+    "Loading" : "Đang tải",
     "Create account" : "Tạo tài khoản",
-    "Verify" : "Xác minh"
+    "Verify" : "Xác minh",
+    "Loading …" : "Đang tải …"
 },
 "nplurals=1; plural=0;");

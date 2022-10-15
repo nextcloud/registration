@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Non está permitido o rexistro cos seguintes dominios:",
-    "Registration is only allowed with the following domains:" : "O rexistro só está permitido cos seguintes dominios:",
     "A problem occurred sending email, please contact your administrator." : "Produciuse un problema ao enviar correo-e. Póñase en contacto co seu administrador.",
     "The entered verification code is wrong" : "O código de verificación introducido é incorrecto",
     "The verification failed." : "Produciuse un fallo na verificación.",
@@ -32,19 +30,22 @@
     "User instructions" : "Instrucións do usuario",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Precaución: as instrucións do usuario non se traducirán e, polo tanto, amosaranse como se configura a continuación para todos os usuarios independentemente do seu idioma real.",
     "Allowed email domains" : "Dominios de correo-e permitidos",
-    "Loading …" : "Cargando…",
-    "Approval required" : "É necesaria a aprobación",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación dun administrador.",
+    "Back to login" : "Volver ao acceso",
     "Email" : "Correo-e",
     "Continue" : "Continuar",
     "Request verification link" : "Solicitar unha ligazón de verificación",
-    "Back to login" : "Volver ao acceso",
     "Welcome, you can create your account below." : "Benvido/a, pode crear a súa conta deseguido.",
     "Full name" : "Nome completo",
     "Phone number" : "Número de teléfono",
     "Password" : "Contrasinal",
+    "Loading" : "Cargando",
     "Create account" : "Crear unha conta",
     "Verification code" : "Código de verificación",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "Approval required" : "É necesaria a aprobación",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación dun administrador.",
+    "Registration is not allowed with the following domains:" : "Non está permitido o rexistro cos seguintes dominios:",
+    "Registration is only allowed with the following domains:" : "O rexistro só está permitido cos seguintes dominios:",
+    "Loading …" : "Cargando…"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

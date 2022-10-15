@@ -3,13 +3,13 @@ OC.L10N.register(
     {
     "Saved" : "Bewaar",
     "Register" : "Registreer",
-    "Loading …" : "Laai …",
+    "Back to login" : "Terug na aanmelding",
     "Email" : "E-pos",
     "Continue" : "Gaan voort",
-    "Back to login" : "Terug na aanmelding",
     "Full name" : "Volle naam",
     "Phone number" : "Telefoonnommer",
     "Password" : "Wagwoord",
+    "Loading" : "Laai tans..",
     "Create account" : "Skep rekening"
 },
 "nplurals=2; plural=(n != 1);");

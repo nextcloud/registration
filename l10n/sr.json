@@ -1,6 +1,4 @@
 { "translations": {
-    "Registration is not allowed with the following domains:" : "Регистрација није дозвољена за следеће домене:",
-    "Registration is only allowed with the following domains:" : "Регистрација је дозвољена само за следеће домене:",
     "A problem occurred sending email, please contact your administrator." : "Десила се грешка приликом слања е-поште, контактирајте администратора.",
     "Saved" : "Сачувано",
     "No such group" : "Нема ове групе",
@@ -20,17 +18,20 @@
     "Unable to create user, there are problems with the user backend." : "Не могу да направим корисника, постоји проблем са позадинским механизмом за кориснике.",
     "Unable to set user email: " : "Не могу да поставим адресу корисника:",
     "Registration app auto setup" : "Аутоматско подешавање апликације Регистрације",
-    "Loading …" : "Учитавање…",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора.",
+    "Back to login" : "Назад на пријаву",
     "Email" : "Е-пошта",
     "Continue" : "Настави",
     "Request verification link" : "Захтевај везу за верификацију",
-    "Back to login" : "Назад на пријаву",
     "Welcome, you can create your account below." : "Добродошли, можете да направите налог испод.",
     "Full name" : "Пуно име",
     "Phone number" : "Број телефона",
     "Password" : "Лозинка",
+    "Loading" : "Учитавам",
     "Create account" : "Направите налог",
-    "Verify" : "Провери"
+    "Verify" : "Провери",
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора.",
+    "Registration is not allowed with the following domains:" : "Регистрација није дозвољена за следеће домене:",
+    "Registration is only allowed with the following domains:" : "Регистрација је дозвољена само за следеће домене:",
+    "Loading …" : "Учитавање…"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

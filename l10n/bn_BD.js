@@ -5,6 +5,7 @@ OC.L10N.register(
     "Email" : "ইমেইল",
     "Continue" : "চালিয়ে যাও",
     "Password" : "কূটশব্দ",
+    "Loading" : "Loading",
     "Create account" : "একাউন্ট তেরী কর"
 },
 "nplurals=2; plural=(n != 1);");

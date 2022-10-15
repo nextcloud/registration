@@ -3,13 +3,13 @@ OC.L10N.register(
     {
     "Saved" : "Konservita",
     "Register" : "Registriĝi",
-    "Loading …" : "Ŝargas …",
+    "Back to login" : "Antaŭen al ensaluto",
     "Email" : "Retpoŝtadreso",
     "Continue" : "Daŭrigi",
-    "Back to login" : "Antaŭen al ensaluto",
     "Full name" : "Plena nomo",
     "Phone number" : "Telefonnumero",
     "Password" : "Pasvorto",
+    "Loading" : "Ŝargado",
     "Create account" : "Krei konton",
     "Verify" : "Kontroli"
 },

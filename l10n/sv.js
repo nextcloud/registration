@@ -1,8 +1,6 @@
 OC.L10N.register(
     "registration",
     {
-    "Registration is not allowed with the following domains:" : "Registrering är inte tillåten med följande domäner:",
-    "Registration is only allowed with the following domains:" : "Registrering är endast tillåten med följande domäner:",
     "A problem occurred sending email, please contact your administrator." : "Ett fel uppstod vid skickande av e-post, vänligen kontakta din administratör.",
     "The entered verification code is wrong" : "Den angivna verifikationskoden är felaktig",
     "The verification failed." : "Verifikationen misslyckades.",
@@ -40,7 +38,6 @@ OC.L10N.register(
     "Registered users default group" : "Standardgrupp för registrerade användare",
     "Select group" : "Välj grupp",
     "Email settings" : "E-postinställningar",
-    "Allowed email domain" : "Tillåten e-postdomän",
     "Block listed email domains instead of allowing them" : "Blockera angivna e-postdomäner istället för att acceptera dem",
     "Disable email verification" : "Inaktivera e-postverifikation",
     "User settings" : "Användarinställningar",
@@ -56,14 +53,18 @@ OC.L10N.register(
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Obs: Användarinstruktioner översätts ej och kommer därför att visas så som de syns nedanför för alla användare, oavsett vilket språk de faktiskt har.",
     "Registration form instructions" : "Instruktioner för registreringsformulär",
     "A short message that is shown to the user in the registration process." : "Ett kort meddelande som visas för användaren i registreringsprocessen.",
-    "Loading …" : "Läser in …",
+    "Back to login" : "Tillbaka till inloggning",
     "Email" : "E-post",
     "Continue" : "Fortsätt",
-    "Back to login" : "Tillbaka till inloggning",
     "Full name" : "Fullständigt namn",
     "Phone number" : "Telefonnummer",
     "Password" : "Lösenord",
+    "Loading" : "Läser in",
     "Create account" : "Skapa konto",
-    "Verify" : "Verifiera"
+    "Verify" : "Verifiera",
+    "Registration is not allowed with the following domains:" : "Registrering är inte tillåten med följande domäner:",
+    "Registration is only allowed with the following domains:" : "Registrering är endast tillåten med följande domäner:",
+    "Allowed email domain" : "Tillåten e-postdomän",
+    "Loading …" : "Läser in …"
 },
 "nplurals=2; plural=(n != 1);");
