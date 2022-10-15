@@ -39,6 +39,9 @@ OC.L10N.register(
     "Verification code" : "Код за верификација",
     "Verify" : "Потврди",
     "Approval required" : "Потребно е одобрување",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашата сметка е успешно креирана, но сепак треба одобрение од администраторот.",
+    "Registration is not allowed with the following domains:" : "Регистрацијата не е дозволена од следниве домени:",
+    "Registration is only allowed with the following domains:" : "Регистрацијата е дозволена од следниве домени:",
+    "Loading …" : "Се вчитува…"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

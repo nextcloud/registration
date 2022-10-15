@@ -83,6 +83,7 @@ OC.L10N.register(
     "Verification code" : "Überprüfungscode",
     "Verify" : "Überprüfen",
     "Approval required" : "Genehmigung erforderlich",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Dein Konto wurde erfolgreich erstellt, muss aber noch von einem Administrator genehmigt werden."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Dein Konto wurde erfolgreich erstellt, muss aber noch von einem Administrator genehmigt werden.",
+    "Allowed email domain" : "Erlaubte E-Mail-Domain"
 },
 "nplurals=2; plural=(n != 1);");

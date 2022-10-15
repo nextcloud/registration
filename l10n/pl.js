@@ -85,6 +85,10 @@ OC.L10N.register(
     "Verification code" : "Kod weryfikacyjny",
     "Verify" : "Zweryfikuj",
     "Approval required" : "Wymagana akceptacja",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Twoje konto zostało pomyślnie utworzone, ale jeszcze wymaga zatwierdzenia przez administratora."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Twoje konto zostało pomyślnie utworzone, ale jeszcze wymaga zatwierdzenia przez administratora.",
+    "Registration is not allowed with the following domains:" : "Rejestracja nie jest dozwolona z następujących domen:",
+    "Registration is only allowed with the following domains:" : "Rejestracja jest dozwolona tylko z następujących domen:",
+    "Allowed email domain" : "Dozwolona domena e-mail",
+    "Loading …" : "Wczytywanie…"
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

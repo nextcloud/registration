@@ -85,6 +85,10 @@ OC.L10N.register(
     "Verification code" : "Egiaztatze kodea",
     "Verify" : "Egiaztatu",
     "Approval required" : "Onarpena beharrezkoa da",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Zure kontua ondo sortu da, baina oraindik administratzaile batek onartzea behar du."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Zure kontua ondo sortu da, baina oraindik administratzaile batek onartzea behar du.",
+    "Registration is not allowed with the following domains:" : "Izen ematea ez da onartzen domeinu hauekin:",
+    "Registration is only allowed with the following domains:" : "Izen ematea domeinu hauekin bakarrik onartzen da:",
+    "Allowed email domain" : "Baimendutako e-posta domeinua",
+    "Loading …" : "Kargatzen …"
 },
 "nplurals=2; plural=(n != 1);");

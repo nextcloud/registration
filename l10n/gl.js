@@ -45,6 +45,9 @@ OC.L10N.register(
     "Verification code" : "Código de verificación",
     "Verify" : "Verificar",
     "Approval required" : "É necesaria a aprobación",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación dun administrador."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación dun administrador.",
+    "Registration is not allowed with the following domains:" : "Non está permitido o rexistro cos seguintes dominios:",
+    "Registration is only allowed with the following domains:" : "O rexistro só está permitido cos seguintes dominios:",
+    "Loading …" : "Cargando…"
 },
 "nplurals=2; plural=(n != 1);");

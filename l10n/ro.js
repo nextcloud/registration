@@ -10,6 +10,7 @@ OC.L10N.register(
     "Password" : "Parolă",
     "Loading" : "Loading",
     "Create account" : "Crează cont",
-    "Verify" : "Verifică"
+    "Verify" : "Verifică",
+    "Loading …" : "Se încarcă…"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

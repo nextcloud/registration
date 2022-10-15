@@ -85,6 +85,10 @@ OC.L10N.register(
     "Verification code" : "Ellenőrzőkód",
     "Verify" : "Ellenőrzés",
     "Approval required" : "Jóváhagyás szükséges",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "A fiókja sikeresen elkészült, azonban még szükséges egy rendszergazda jóváhagyására."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "A fiókja sikeresen elkészült, azonban még szükséges egy rendszergazda jóváhagyására.",
+    "Registration is not allowed with the following domains:" : "A regisztráció a következő domainek számára nem engedélyezett:",
+    "Registration is only allowed with the following domains:" : "A regisztráció csak a következő domainek számára engedélyezett:",
+    "Allowed email domain" : "Engedélyezett e-mail-domain",
+    "Loading …" : "Betöltés…"
 },
 "nplurals=2; plural=(n != 1);");

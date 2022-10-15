@@ -83,6 +83,10 @@
     "Verification code" : "Código de verificação",
     "Verify" : "Verificar",
     "Approval required" : "Aprovação necessária",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Sua conta foi criada mas ainda precisa da aprovação de um administrador."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Sua conta foi criada mas ainda precisa da aprovação de um administrador.",
+    "Registration is not allowed with the following domains:" : "O registro não é permitido para os seguintes domínios:",
+    "Registration is only allowed with the following domains:" : "O registro só é permitido para os seguintes domínios:",
+    "Allowed email domain" : "Domínio de e-mail permitido",
+    "Loading …" : "Carregando …"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

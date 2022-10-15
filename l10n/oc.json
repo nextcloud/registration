@@ -10,6 +10,7 @@
     "Password" : "Senhal",
     "Loading" : "Cargament",
     "Create account" : "Crear un compte",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "Loading …" : "Cargament…"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

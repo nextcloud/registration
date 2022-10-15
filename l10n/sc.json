@@ -75,6 +75,10 @@
     "Verification code" : "Còdighe de verìfica",
     "Verify" : "Verìfica",
     "Approval required" : "Aprovu rechertu",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Su contu tuo est istadu creadu in manera curreta, ma servit ancora s'aprovu de s'amministradore."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Su contu tuo est istadu creadu in manera curreta, ma servit ancora s'aprovu de s'amministradore.",
+    "Registration is not allowed with the following domains:" : "Sa registratzione no est permitida pro is domìnios in fatu: ",
+    "Registration is only allowed with the following domains:" : "Sa registratzione est cunsentida isceti cun is domìnios in fatu.",
+    "Allowed email domain" : "Domìniu de posta cunsentidu",
+    "Loading …" : "Carrigamentu …"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

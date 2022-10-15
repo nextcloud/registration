@@ -75,6 +75,10 @@ OC.L10N.register(
     "Verification code" : "Kontrolni kod",
     "Verify" : "Provjeri",
     "Approval required" : "Potrebno je odobrenje",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Vaš je račun uspješno stvoren ali potrebno je odobrenje administratora."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Vaš je račun uspješno stvoren ali potrebno je odobrenje administratora.",
+    "Registration is not allowed with the following domains:" : "Registracija nije dopuštena za sljedeće domene:",
+    "Registration is only allowed with the following domains:" : "Registracija je dopuštena samo za sljedeće domene:",
+    "Allowed email domain" : "Dopuštena domena e-pošte",
+    "Loading …" : "Učitavanje…"
 },
 "nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;");

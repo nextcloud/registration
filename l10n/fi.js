@@ -78,6 +78,10 @@ OC.L10N.register(
     "Verification code" : "Vahvistuskoodi",
     "Verify" : "Vahvista",
     "Approval required" : "Hyväksyntä vaaditaan",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Tilisi on luotu onnistuneesti, mutta se tarvitsee vielä hyväksynnän ylläpitäjältä."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Tilisi on luotu onnistuneesti, mutta se tarvitsee vielä hyväksynnän ylläpitäjältä.",
+    "Registration is not allowed with the following domains:" : "Rekisteröinti ei ole sallittu seuraavilla verkkotunnuksilla:",
+    "Registration is only allowed with the following domains:" : "Rekisteröinti on sallittu vain seuraavilla verkkotunnuksilla:",
+    "Allowed email domain" : "Sähköpostien sallitut verkkotunnukset",
+    "Loading …" : "Ladataan…"
 },
 "nplurals=2; plural=(n != 1);");

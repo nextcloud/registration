@@ -83,6 +83,10 @@ OC.L10N.register(
     "Verification code" : "Код подтверждения",
     "Verify" : "Подтвердить",
     "Approval required" : "Требуется подтверждение",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваша учётная запись была успешно создана, но она должна быть утверждена администратором."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваша учётная запись была успешно создана, но она должна быть утверждена администратором.",
+    "Registration is not allowed with the following domains:" : "Для следующих доменов регистрация не разрешена:",
+    "Registration is only allowed with the following domains:" : "Регистрация разрешена только для следующих доменов:",
+    "Allowed email domain" : "Разрешённые домены эл. почты",
+    "Loading …" : "Загрузка …"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

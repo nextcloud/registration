@@ -16,6 +16,7 @@ OC.L10N.register(
     "Loading" : "در حال بار گزاری",
     "Create account" : "ساخت حساب",
     "Verify" : "تأیید کنید",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "حساب شما با موفقیت ساخته شده است اما هنوز نیاز به تأیید یک مدیر دارد."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "حساب شما با موفقیت ساخته شده است اما هنوز نیاز به تأیید یک مدیر دارد.",
+    "Loading …" : "بارگذاری …"
 },
 "nplurals=2; plural=(n > 1);");
