@@ -46,6 +46,8 @@ OC.L10N.register(
     "Verify" : "Επαλήθευση",
     "Approval required" : "Απαιτείται έγκριση",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Ο λογαριασμός σας δημιουργήθηκε με επιτυχία, αλλά εξακολουθεί να χρειάζεται έγκριση από έναν διαχειριστή.",
-    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:"
+    "Registration is not allowed with the following domains:" : "Η εγγραφή δεν επιτρέπεται στους ακόλουθους τομείς:",
+    "Registration is only allowed with the following domains:" : "Η εγγραφή επιτρέπεται μόνο στους ακόλουθους τομείς:",
+    "Loading …" : "Φόρτωση …"
 },
 "nplurals=2; plural=(n != 1);");

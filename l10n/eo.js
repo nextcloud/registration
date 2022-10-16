@@ -11,6 +11,7 @@ OC.L10N.register(
     "Password" : "Pasvorto",
     "Loading" : "Ŝargado",
     "Create account" : "Krei konton",
-    "Verify" : "Kontroli"
+    "Verify" : "Kontroli",
+    "Loading …" : "Ŝargas …"
 },
 "nplurals=2; plural=(n != 1);");
