@@ -86,6 +86,9 @@ OC.L10N.register(
     "Verify" : "Überprüfen",
     "Approval required" : "Genehmigung erforderlich",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Ihr Konto wurde erfolgreich erstellt, muss aber noch von einem Administrator genehmigt werden.",
-    "Allowed email domain" : "Erlaubte E-Mail-Domain"
+    "Registration is not allowed with the following domains:" : "Die Registrierung ist für folgende Domains nicht zulässig:",
+    "Registration is only allowed with the following domains:" : "Die Registrierung ist nur für folgende Domains zulässig:",
+    "Allowed email domain" : "Erlaubte E-Mail-Domain",
+    "Loading …" : "Lade …"
 },
 "nplurals=2; plural=(n != 1);");

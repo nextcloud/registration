@@ -11,6 +11,7 @@ OC.L10N.register(
     "Password" : "Contraseña",
     "Loading" : "Cargando",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar"
+    "Verify" : "Verificar",
+    "Loading …" : "Cargando …"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

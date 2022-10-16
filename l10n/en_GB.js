@@ -13,6 +13,7 @@ OC.L10N.register(
     "Password" : "Password",
     "Loading" : "Loading",
     "Create account" : "Create account",
-    "Verify" : "Verify"
+    "Verify" : "Verify",
+    "Loading …" : "Loading …"
 },
 "nplurals=2; plural=(n != 1);");

@@ -39,6 +39,9 @@
     "Verification code" : "Verifikations kode",
     "Verify" : "Bekræft",
     "Approval required" : "Godkendelse kræves",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto er blevet oprettet, men skal stadig godkendes af en administrator."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto er blevet oprettet, men skal stadig godkendes af en administrator.",
+    "Registration is not allowed with the following domains:" : "Registrering er ikke tilladt med de følgende domæner:",
+    "Registration is only allowed with the following domains:" : "Regisrering er kun tilladt med de følgende domæner:",
+    "Loading …" : "Loading …"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

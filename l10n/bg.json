@@ -83,6 +83,10 @@
     "Verification code" : "Код за потвърждение",
     "Verify" : "Потвърждаване",
     "Approval required" : "Нужно е одобрение",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашият профил е създаден успешно, но все още се нуждае от одобрение от администратор."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Вашият профил е създаден успешно, но все още се нуждае от одобрение от администратор.",
+    "Registration is not allowed with the following domains:" : "Не е разрешена регистрацията със следните домейни:",
+    "Registration is only allowed with the following domains:" : "Регистрацията е разрешена само със следните домейни:",
+    "Allowed email domain" : "Позволен имейл домейн",
+    "Loading …" : "Зареждане …"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

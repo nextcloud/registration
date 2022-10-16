@@ -85,6 +85,10 @@ OC.L10N.register(
     "Verification code" : "Codi de verificació",
     "Verify" : "Verifica",
     "Approval required" : "Aprovació necessària",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "El compte s'ha creat correctament, però encara necessita l'aprovació d'un administrador."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "El compte s'ha creat correctament, però encara necessita l'aprovació d'un administrador.",
+    "Registration is not allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
+    "Registration is only allowed with the following domains:" : "Només es permet registrar-se per als dominis següents:",
+    "Allowed email domain" : "Domini de correu electrònic permès",
+    "Loading …" : "Carregant …"
 },
 "nplurals=2; plural=(n != 1);");
