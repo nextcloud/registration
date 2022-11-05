@@ -21,7 +21,6 @@ OC.L10N.register(
     "Password" : "Lykilorð",
     "Loading" : "Hleð inn",
     "Create account" : "Stofna aðgang",
-    "Verify" : "Sannprófa",
-    "Loading …" : "Hleð inn …"
+    "Verify" : "Sannprófa"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

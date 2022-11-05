@@ -77,10 +77,6 @@
     "Verification code" : "验证码",
     "Verify" : "验证",
     "Approval required" : "需要批准",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "您的账户已创建成功，等待管理员审批中。",
-    "Registration is not allowed with the following domains:" : "不允许在以下域名中注册：",
-    "Registration is only allowed with the following domains:" : "仅支持使用以下域名注册：",
-    "Allowed email domain" : "允许的电子邮件域",
-    "Loading …" : "正在加载 …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "您的账户已创建成功，等待管理员审批中。"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

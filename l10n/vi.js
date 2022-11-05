@@ -11,7 +11,6 @@ OC.L10N.register(
     "Password" : "Mật khẩu",
     "Loading" : "Đang tải",
     "Create account" : "Tạo tài khoản",
-    "Verify" : "Xác minh",
-    "Loading …" : "Đang tải …"
+    "Verify" : "Xác minh"
 },
 "nplurals=1; plural=0;");

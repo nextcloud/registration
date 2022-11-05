@@ -81,10 +81,6 @@
     "Verification code" : "Verificatiecode",
     "Verify" : "Verifiëren",
     "Approval required" : "Toestemming vereist",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Je account werd aangemaakt, maar moet nog goedgekeurd worden door een administrator.",
-    "Registration is not allowed with the following domains:" : "Registratie is niet toegestaan ​​voor de volgende domeinen:",
-    "Registration is only allowed with the following domains:" : "Registratie is alleen toegestaan ​​voor de volgende domeinen:",
-    "Allowed email domain" : "Toegestane e-mailadres domein",
-    "Loading …" : "Laden …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Je account werd aangemaakt, maar moet nog goedgekeurd worden door een administrator."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

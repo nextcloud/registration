@@ -7,7 +7,6 @@ OC.L10N.register(
     "Full name" : "ຊື່ເຕັມ",
     "Phone number" : "ເບີໂທລະສັບ",
     "Password" : "ລະຫັດຜ່ານ",
-    "Loading" : "ການໂຫຼດ",
-    "Loading …" : "ກຳລັງໂຫຼດ"
+    "Loading" : "ການໂຫຼດ"
 },
 "nplurals=1; plural=0;");

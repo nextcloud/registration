@@ -85,10 +85,6 @@ OC.L10N.register(
     "Verification code" : "Ověřovací kód",
     "Verify" : "Ověřit",
     "Approval required" : "Je zapotřebí schválení",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet byl úspěšně vytvořen, ale ještě čeká na schválení správcem.",
-    "Registration is not allowed with the following domains:" : "Registrace není povolena z následujících domén:",
-    "Registration is only allowed with the following domains:" : "Registrace je povolena pouze z následujících domén:",
-    "Allowed email domain" : "Povolené e-mailové domény",
-    "Loading …" : "Načítání…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Váš účet byl úspěšně vytvořen, ale ještě čeká na schválení správcem."
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

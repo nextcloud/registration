@@ -6,7 +6,6 @@ OC.L10N.register(
     "Full name" : "සම්පූර්ණ නම",
     "Phone number" : "දුරකථන අංකය",
     "Password" : "මුර පදය",
-    "Loading" : "පූරණය වෙමින්",
-    "Loading …" : "පූරණය වෙමින් …"
+    "Loading" : "පූරණය වෙමින්"
 },
 "nplurals=2; plural=(n != 1);");

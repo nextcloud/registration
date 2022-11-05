@@ -9,7 +9,6 @@ OC.L10N.register(
     "Password" : "Нууц үг",
     "Loading" : "Loading",
     "Create account" : "Аккаунт үүсгэх",
-    "Verify" : "Шалнгах",
-    "Loading …" : "Уншиж байна..."
+    "Verify" : "Шалнгах"
 },
 "nplurals=2; plural=(n != 1);");

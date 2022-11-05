@@ -83,10 +83,6 @@ OC.L10N.register(
     "Verification code" : "Codice di verifica",
     "Verify" : "Verifica",
     "Approval required" : "Approvazione richiesta",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Il tuo account è stato creato correttamente, ma necessita ancora di approvazione da parte dell'amministratore.",
-    "Registration is not allowed with the following domains:" : "La registrazione non è consentita per i seguenti domini:",
-    "Registration is only allowed with the following domains:" : "La registrazione è consentita solo con i seguenti domini:",
-    "Allowed email domain" : "Dominio di posta consentito",
-    "Loading …" : "Caricamento …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Il tuo account è stato creato correttamente, ma necessita ancora di approvazione da parte dell'amministratore."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

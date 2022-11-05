@@ -10,7 +10,6 @@ OC.L10N.register(
     "Phone number" : "Telefoonnommer",
     "Password" : "Wagwoord",
     "Loading" : "Laai tans..",
-    "Create account" : "Skep rekening",
-    "Loading …" : "Laai …"
+    "Create account" : "Skep rekening"
 },
 "nplurals=2; plural=(n != 1);");

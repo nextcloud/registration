@@ -72,10 +72,6 @@ OC.L10N.register(
     "Verification code" : "인증 코드",
     "Verify" : "검사",
     "Approval required" : "승인이 필요함",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "계정이 성공적으로 생성되었지만, 관리자의 승인이 필요합니다.",
-    "Registration is not allowed with the following domains:" : "다음의 도메인으로 등록할 수 없음: ",
-    "Registration is only allowed with the following domains:" : "다음의 도메인으로만 등록할 수 있음:",
-    "Allowed email domain" : "허용된 이메일 도메인",
-    "Loading …" : "불러오는 중 …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "계정이 성공적으로 생성되었지만, 관리자의 승인이 필요합니다."
 },
 "nplurals=1; plural=0;");

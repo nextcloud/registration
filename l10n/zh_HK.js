@@ -85,10 +85,6 @@ OC.L10N.register(
     "Verification code" : "驗證碼",
     "Verify" : "核對",
     "Approval required" : "需要批准",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "您的賬號已成功建立，但仍需要管理員批准。",
-    "Registration is not allowed with the following domains:" : "不允許以下網域註冊：",
-    "Registration is only allowed with the following domains:" : "僅允許以下網域註冊：",
-    "Allowed email domain" : "允許的電子郵件網域",
-    "Loading …" : "加載中 …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "您的賬號已成功建立，但仍需要管理員批准。"
 },
 "nplurals=1; plural=0;");

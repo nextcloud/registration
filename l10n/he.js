@@ -73,10 +73,6 @@ OC.L10N.register(
     "Verification code" : "קוד אימות",
     "Verify" : "אימות",
     "Approval required" : "נדרש אישור",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "חשבונך נוצר בהצלחה, אך הוא עדיין זקוק לאישור מנהל מערכת.",
-    "Registration is not allowed with the following domains:" : "אסור להירשם בדומיינים הבאים:",
-    "Registration is only allowed with the following domains:" : "הרשמה מותרת רק משמות התחום הבאים:",
-    "Allowed email domain" : "שם תחום מותר לדוא״ל",
-    "Loading …" : "בטעינה…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "חשבונך נוצר בהצלחה, אך הוא עדיין זקוק לאישור מנהל מערכת."
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");

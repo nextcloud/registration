@@ -61,10 +61,6 @@ OC.L10N.register(
     "Password" : "Lösenord",
     "Loading" : "Läser in",
     "Create account" : "Skapa konto",
-    "Verify" : "Verifiera",
-    "Registration is not allowed with the following domains:" : "Registrering är inte tillåten med följande domäner:",
-    "Registration is only allowed with the following domains:" : "Registrering är endast tillåten med följande domäner:",
-    "Allowed email domain" : "Tillåten e-postdomän",
-    "Loading …" : "Läser in …"
+    "Verify" : "Verifiera"
 },
 "nplurals=2; plural=(n != 1);");

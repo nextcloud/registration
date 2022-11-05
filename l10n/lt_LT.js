@@ -28,7 +28,6 @@ OC.L10N.register(
     "Loading" : "Įkeliama",
     "Create account" : "Sukurti paskyrą",
     "Verify" : "Patikrinti",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius.",
-    "Loading …" : "Įkeliama…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Jūsų paskyra sėkmingai sukurta, tačiau ją vis dar turi patvirtinti administratorius."
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

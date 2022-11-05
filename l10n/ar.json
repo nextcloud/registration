@@ -40,9 +40,6 @@
     "Verification code" : "رمز التحقق",
     "Verify" : "تحقق",
     "Approval required" : "الموافقة مطلوبة",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "تم انشاء حسابك بنجاح، تم ارسال طلب الموافقه للادارة.",
-    "Registration is not allowed with the following domains:" : "التسجيل غير مسموح بـ خوادم البريد التالية:",
-    "Registration is only allowed with the following domains:" : "التسجيل مسموح بـ خوادم البريد التالية فقط:",
-    "Loading …" : "جاري التحميل …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "تم انشاء حسابك بنجاح، تم ارسال طلب الموافقه للادارة."
 },"pluralForm" :"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }

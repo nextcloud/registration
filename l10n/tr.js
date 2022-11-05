@@ -85,10 +85,6 @@ OC.L10N.register(
     "Verification code" : "Doğrulama kodu",
     "Verify" : "Doğrula",
     "Approval required" : "Onay gerekli",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Hesabınız açıldı ancak bir yönetici tarafından onaylanması bekleniyor.",
-    "Registration is not allowed with the following domains:" : "Şu etki alanları ile hesap açılamaz:",
-    "Registration is only allowed with the following domains:" : "Yalnızca şu etki alanları ile hesap açılabilir:",
-    "Allowed email domain" : "İzin verilen e-posta etki alanı",
-    "Loading …" : "Yükleniyor…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Hesabınız açıldı ancak bir yönetici tarafından onaylanması bekleniyor."
 },
 "nplurals=2; plural=(n > 1);");

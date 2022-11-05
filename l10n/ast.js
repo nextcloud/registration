@@ -9,7 +9,6 @@ OC.L10N.register(
     "Password" : "Password",
     "Loading" : "Cargando",
     "Create account" : "Crear cuenta",
-    "Verify" : "Verificar",
-    "Loading …" : "Cargando..."
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n != 1);");

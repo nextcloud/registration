@@ -75,10 +75,6 @@
     "Verification code" : "Overitvena koda",
     "Verify" : "Overi",
     "Approval required" : "Zahtevana je potrditev",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Račun je uspešno ustvarjen, a bo treba počakati na odobrite skrbnika.",
-    "Registration is not allowed with the following domains:" : "Vpis za navedene domene ni dovoljen:",
-    "Registration is only allowed with the following domains:" : "Vpis je dovoljen le za navedene domene:",
-    "Allowed email domain" : "Dovoli domene poštnih naslovov",
-    "Loading …" : "Poteka nalaganje …"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Račun je uspešno ustvarjen, a bo treba počakati na odobrite skrbnika."
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

@@ -29,9 +29,6 @@
     "Loading" : "Учитавам",
     "Create account" : "Направите налог",
     "Verify" : "Провери",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора.",
-    "Registration is not allowed with the following domains:" : "Регистрација није дозвољена за следеће домене:",
-    "Registration is only allowed with the following domains:" : "Регистрација је дозвољена само за следеће домене:",
-    "Loading …" : "Учитавање…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Ваш налог је успешно направљен, али и даље је потребно одобрење администратора."
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

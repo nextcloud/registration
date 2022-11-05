@@ -17,7 +17,6 @@ OC.L10N.register(
     "Loading" : "A carregar",
     "Create account" : "Criar conta",
     "Verify" : "Verificar",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador.",
-    "Loading …" : "A carregar..."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "A sua conta foi criada com sucesso, mas esta ainda precisa da aprovação de uma administrador."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

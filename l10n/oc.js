@@ -12,7 +12,6 @@ OC.L10N.register(
     "Password" : "Senhal",
     "Loading" : "Cargament",
     "Create account" : "Crear un compte",
-    "Verify" : "Verificar",
-    "Loading …" : "Cargament…"
+    "Verify" : "Verificar"
 },
 "nplurals=2; plural=(n > 1);");

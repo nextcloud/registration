@@ -85,10 +85,6 @@ OC.L10N.register(
     "Verification code" : "Verifiseringskode",
     "Verify" : "Verifiser",
     "Approval required" : "Krever godkjenning",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto har blitt laget, men trenger godkjenning fra en administrator.",
-    "Registration is not allowed with the following domains:" : "Registrering er ikke tillatt med følgende domener:",
-    "Registration is only allowed with the following domains:" : "Registrering er kun tillatt med følgende domener:",
-    "Allowed email domain" : "Tillatt e-post-domene",
-    "Loading …" : "Laster ..."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto har blitt laget, men trenger godkjenning fra en administrator."
 },
 "nplurals=2; plural=(n != 1);");

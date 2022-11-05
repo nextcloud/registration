@@ -81,10 +81,6 @@
     "Verification code" : "検証コード",
     "Verify" : "検証",
     "Approval required" : "承認が必要です",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "アカウントは正常に作成されましたが、管理者の承認が必要です。",
-    "Registration is not allowed with the following domains:" : "登録は以下のドメインには許可されていません:",
-    "Registration is only allowed with the following domains:" : "登録は以下のドメインにのみ許可されています:",
-    "Allowed email domain" : "許可するメールドメイン",
-    "Loading …" : "読み込み中…"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "アカウントは正常に作成されましたが、管理者の承認が必要です。"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
