@@ -24,6 +24,7 @@ OC.L10N.register(
     "Please provide a valid login name." : "Внесете валидно име за најавување.",
     "Unable to set user email: " : "Неуспешно поставување на е-пошта адреса на корисникот:",
     "Registered users default group" : "Стандардна група за регистрирани корисници",
+    "User settings" : "Кориснички параметри",
     "Force email as login name" : "Наметни е-пошта за корисничко име",
     "Allowed email domains" : "Дозволени е-пошта домени",
     "Back to login" : "Врати се на страната за најавување",
