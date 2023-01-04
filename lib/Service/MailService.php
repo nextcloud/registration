@@ -33,6 +33,7 @@ use OCP\Defaults;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\IURLGenerator;
+use OCP\L10N\IFactory as IL10NFactory;
 use OCP\Mail\IMailer;
 use OCP\Util;
 use OCP\IConfig;
@@ -48,6 +49,8 @@ class MailService {
 	private $defaults;
 	/** @var IL10N */
 	private $l10n;
+	/** @var IL10NFactory */
+	private $l10nFactory;
 	/** @var IGroupManager */
 	private $groupManager;
 	/** @var LoginFlowService */
@@ -163,18 +166,17 @@ class MailService {
 			}
 		}
 
-		$toArr = [];
 		foreach ($adminUsers as $adminUser) {
 			$email = $adminUser->getEMailAddress();
 			if ($email && $adminUser->isEnabled()) {
-				$toArr[$email] = $adminUser->getDisplayName();
-			}
-		}
+				$language = $this->l10nFactory->getUserLanguage($adminUser);
 
-		try {
-			$this->sendNewUserNotifyEmail($toArr, $userId, $userEMailAddress, $userIsEnabled);
-		} catch (\Exception $e) {
-			$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
+				try {
+					$this->sendNewUserNotifyEmail([$email => $adminUser->getDisplayName()], $userId, $userEMailAddress, $userIsEnabled, $language);
+				} catch (\Exception $e) {
+					$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
+				}
+			}
 		}
 	}
 
@@ -186,7 +188,9 @@ class MailService {
 	 * @param bool $userIsEnabled the new user account is enabled
 	 * @throws \Exception
 	 */
-	private function sendNewUserNotifyEmail(array $to, string $username, ?string $userEMailAddress, bool $userIsEnabled): void {
+	private function sendNewUserNotifyEmail(array $to, string $username, ?string $userEMailAddress, bool $userIsEnabled, string $language): void {
+		$l = $this->l10nFactory->get('registration', $language);
+
 		$link = $this->urlGenerator->linkToRouteAbsolute('settings.Users.usersListByGroup', [
 			'group' => 'disabled',
 		]);
@@ -196,31 +200,31 @@ class MailService {
 			'sitename' => $this->defaults->getName(),
 		]);
 
-		$subject = $this->l10n->t('New user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
+		$subject = $l->t('New user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
 
 		$template->setSubject($subject);
 		$template->addHeader();
-		$template->addHeading($this->l10n->t('New user registered'));
+		$template->addHeading($l->t('New user registered'));
 
 		if ($userIsEnabled) {
 			$template->addBodyText(
-				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s.', [
+				$l->t('"%1$s" (%2$s) registered a new account on %3$s.', [
 					$username,
-					$userEMailAddress ?? $this->l10n->t('no email address given'),
+					$userEMailAddress ?? $l->t('no email address given'),
 					$this->defaults->getName(),
 				])
 			);
 		} else {
 			$template->addBodyText(
-				$this->l10n->t('"%1$s" (%2$s) registered a new account on %3$s and needs to be enabled.', [
+				$l->t('"%1$s" (%2$s) registered a new account on %3$s and needs to be enabled.', [
 					$username,
-					$userEMailAddress ?? $this->l10n->t('no email address given'),
+					$userEMailAddress ?? $l->t('no email address given'),
 					$this->defaults->getName(),
 				])
 			);
 
 			$template->addBodyButton(
-				$this->l10n->t('Enable now'),
+				$l->t('Enable now'),
 				$link
 			);
 		}
@@ -229,8 +233,7 @@ class MailService {
 		$from = Util::getDefaultEmailAddress('register');
 		$message = $this->mailer->createMessage();
 		$message->setFrom([$from => $this->defaults->getName()]);
-		$message->setTo([]);
-		$message->setBcc($to);
+		$message->setTo($to);
 		$message->useTemplate($template);
 		$failedRecipients = $this->mailer->send($message);
 		if (!empty($failedRecipients)) {
