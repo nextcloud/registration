@@ -52,7 +52,8 @@
 					:label="t('registration', 'Login name')"
 					:label-visible="true"
 					required>
-					<Key :size="20" class="input__icon" />
+					<Key v-if="showFullname" :size="20" class="input__icon" />
+					<Account v-else :size="20" class="input__icon" />
 				</NcTextField>
 				<input v-else
 					type="hidden"
