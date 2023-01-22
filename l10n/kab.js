@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back to login" : "Uγal γer unekcum",
     "Email" : "Imayl",
     "Continue" : "Continuer",
+    "Full name" : "Isem inek ummid",
     "Phone number" : "Uṭṭun n tiliɣri",
     "Password" : "Awal uffir"
 },
