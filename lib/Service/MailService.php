@@ -60,10 +60,12 @@ class MailService {
 	/** @var IConfig */
 	private $config;
 
-	public function __construct(IURLGenerator $urlGenerator,
+	public function __construct(
+		IURLGenerator $urlGenerator,
 		IMailer $mailer,
 		Defaults $defaults,
 		IL10N $l10n,
+		IL10NFactory $l10nFactory,
 		IGroupManager $groupManager,
 		IConfig $config,
 		LoginFlowService $loginFlowService,
@@ -73,6 +75,7 @@ class MailService {
 		$this->config = $config;
 		$this->defaults = $defaults;
 		$this->l10n = $l10n;
+		$this->l10nFactory = $l10nFactory;
 		$this->groupManager = $groupManager;
 		$this->loginFlowService = $loginFlowService;
 		$this->logger = $logger;
