@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 2.1.0 – 2023-02-16
+### Added
+- Compatibility with Nextcloud 26
+
+### Fixed
+- Send admin notification in correct language
+  [#496](https://github.com/nextcloud/registration/pull/496)
+
 ## 2.0.0 – 2022-10-14
 ### Added
 - Require Nextcloud 25
