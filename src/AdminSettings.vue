@@ -181,10 +181,12 @@ import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadi
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
-import '@nextcloud/dialogs/styles/toast.scss'
 import { loadState } from '@nextcloud/initial-state'
 import { generateOcsUrl, generateUrl } from '@nextcloud/router'
 import debounce from 'debounce'
+
+// Styles
+import '@nextcloud/dialogs/dist/index.css'
 
 export default {
 	name: 'AdminSettings',
