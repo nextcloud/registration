@@ -20,6 +20,7 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "Не могу да направим корисника, постоји проблем са позадинским механизмом за кориснике.",
     "Unable to set user email: " : "Не могу да поставим адресу корисника:",
     "Registration app auto setup" : "Аутоматско подешавање апликације Регистрације",
+    "User settings" : "Корисничка подешавања",
     "Back to login" : "Назад на пријаву",
     "Email" : "Е-пошта",
     "Continue" : "Настави",
