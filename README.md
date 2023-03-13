@@ -4,7 +4,7 @@ While there are many things that could be done to further improve this app, this
 
 - We assess the main functionality as done
 - We are not updating this app for future releases
-- We are welcoming anyone who would like to take over this app.
+- We are welcoming anyone who would like to take over this app, reach out in this issue: https://github.com/nextcloud/registration/issues/524
 
 We would be more than excited, if you would like to collaborate with us. We would love to welcome co-maintainers.
 
