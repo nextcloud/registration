@@ -40,7 +40,13 @@ jobs:
       matrix:
         php-versions: ['8.0', '8.1', '8.2']
         server-versions: ['master']
-
+        include:
+          - php-versions: '8.0'
+            server-versions: 'stable27'
+          - php-versions: '8.0'
+            server-versions: 'stable26'
+          - php-versions: '7.4'
+            server-versions: 'stable25'
     services:
       mysql:
         image: ghcr.io/nextcloud/continuous-integration-mariadb-10.6:latest
