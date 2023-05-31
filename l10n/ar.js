@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "A problem occurred sending email, please contact your administrator." : "حدث خطأ اثناء ارسال البريد، يرجى التواصل مع مسؤول النظام.",
     "The entered verification code is wrong" : "رمز التحقق المدخل غير صحيح",
-    "The verification failed." : "التحقق فشل.",
+    "The verification failed." : "فشل التحقق.",
     "Saved" : "تم الحفظ",
     "No such group" : "المجموعة غير موجودة",
     "Register" : "تسجيل",
