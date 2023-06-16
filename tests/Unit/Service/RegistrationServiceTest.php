@@ -2,6 +2,9 @@
 
 namespace OCA\Registration\Tests\Unit\Service;
 
+use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
+use ChristophWurst\Nextcloud\Testing\TestCase;
+use OC\Authentication\Token\IProvider;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Service\MailService;
@@ -11,18 +14,15 @@ use OCP\Accounts\IAccountManager;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
-use OC\Authentication\Token\IProvider;
 use OCP\IRequest;
-use OCP\Security\ISecureRandom;
-use OCP\Security\ICrypto;
 use OCP\ISession;
-use OCP\IUser;
 use OCP\IURLGenerator;
+use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IUserSession;
 
-use ChristophWurst\Nextcloud\Testing\DatabaseTransaction;
-use ChristophWurst\Nextcloud\Testing\TestCase;
+use OCP\Security\ICrypto;
+use OCP\Security\ISecureRandom;
 use Psr\Log\LoggerInterface;
 
 /**

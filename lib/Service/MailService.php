@@ -30,13 +30,13 @@ namespace OCA\Registration\Service;
 
 use OCA\Registration\Db\Registration;
 use OCP\Defaults;
+use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory as IL10NFactory;
 use OCP\Mail\IMailer;
 use OCP\Util;
-use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 
 class MailService {

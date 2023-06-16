@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Tests\Unit\Controller;
 
+use ChristophWurst\Nextcloud\Testing\TestCase;
 use OCA\Registration\Controller\RegisterController;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Service\LoginFlowService;
@@ -41,7 +42,6 @@ use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
-use ChristophWurst\Nextcloud\Testing\TestCase;
 use OCP\IUser;
 use PHPUnit\Framework\MockObject\MockObject;
 
