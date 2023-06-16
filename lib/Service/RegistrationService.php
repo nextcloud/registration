@@ -30,6 +30,12 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Service;
 
+use \OCP\IConfig;
+use \OCP\IGroupManager;
+use \OCP\IL10N;
+use \OCP\IUserManager;
+use \OCP\IUserSession;
+use \OCP\Security\ISecureRandom;
 use InvalidArgumentException;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber;
@@ -50,12 +56,6 @@ use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\Security\ICrypto;
 use OCP\Session\Exceptions\SessionNotAvailableException;
-use \OCP\IUserManager;
-use \OCP\IUserSession;
-use \OCP\IGroupManager;
-use \OCP\IL10N;
-use \OCP\IConfig;
-use \OCP\Security\ISecureRandom;
 use Psr\Log\LoggerInterface;
 
 class RegistrationService {
