@@ -4,7 +4,7 @@ OC.L10N.register(
     "Registration is not allowed with the following domains: %s" : "Non se permite o rexistro cos seguintes dominios: %s",
     "Registration is only allowed with the following domains: %s" : "O rexistro só se permite cos seguintes dominios: %s",
     "A problem occurred sending email, please contact your administrator." : "Produciuse un problema ao enviar correo-e. Póñase en contacto co seu administrador.",
-    "The entered verification code is wrong" : "O código de verificación introducido é incorrecto",
+    "The entered verification code is wrong" : "O código de verificación introducido é erróneo",
     "The verification failed." : "Produciuse un fallo na verificación.",
     "Invalid username policy regex" : "Directiva de nomes de usuario non válidos e expresións regulares",
     "Saved" : "Gardada",
