@@ -6,6 +6,7 @@ OC.L10N.register(
     "Full name" : "Tam ad",
     "Password" : "Şifrə",
     "Loading" : "Loading",
-    "Create account" : "Hesab yarat"
+    "Create account" : "Hesab yarat",
+    "Verify" : "Təsdiq et"
 },
 "nplurals=2; plural=(n != 1);");
