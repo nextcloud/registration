@@ -51,7 +51,7 @@ OC.L10N.register(
     "Force email as login name" : "Forzar o correo-e como nome de inicio de sesión",
     "Login name policy" : "Directiva de nome de acceso",
     "Regular expression to validate login names" : "Expresión regular para validar nomes de acceso",
-    "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Se está configurado, os nomes de acceso validaranse mediante a expresión regular. Se a validación falla, o usuario recibe un erro xenérico. Asegúrese de que a súa expresión regular funciona correctamente.",
+    "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly." : "Se está configurado, os nomes de acceso validaranse mediante a expresión regular. Se a validación falla, o usuario recibe un aviso de erro xenérico. Asegúrese de que a súa expresión regular funciona correctamente.",
     "Show full name field" : "Amosar o campo de nome completo",
     "Enforce full name field" : "Impor o campo de nome completo",
     "Show phone field" : "Amosar o campo de teléfono",
