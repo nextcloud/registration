@@ -2,7 +2,9 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Wedi'u cadw",
+    "Register" : "Cofrestru",
     "Email" : "E-bost",
+    "Full name" : "Enw llawn",
     "Password" : "Cyfrinair",
     "Loading" : "Llwytho",
     "Create account" : "Creu cyfrif"
