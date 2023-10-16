@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "Registratie is niet toegestaan met de volgende domeinen: %s",
+    "Registration is only allowed with the following domains: %s" : "Registratie is alleen toegestaan met de volgende domeinen: %s",
     "A problem occurred sending email, please contact your administrator." : "Er is een probleem opgetreden bij het verzenden van e-mail. Neem contact op met je beheerder.",
     "The entered verification code is wrong" : "De ingevoerde verificatiecode is niet correct",
     "The verification failed." : "De verificatie is niet gelukt.",
