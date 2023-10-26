@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Đã lưu",
     "Register" : "Đăng ký",
+    "User settings" : "Thiết lập người dùng",
     "Back to login" : "Quay lại trang đăng nhập",
     "Email" : "Thư điện tử",
     "Continue" : "Tiếp tục",
