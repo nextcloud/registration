@@ -4,6 +4,7 @@ OC.L10N.register(
     "The verification failed." : "La verificación falló.",
     "Registration" : "Rexistru",
     "An error occurred while saving the settings" : "Prodúxose un error mentanto se guardaba la configuración",
+    "Continue" : "Siguir",
     "Full name" : "Nome completu",
     "Phone number" : "Númberu de teléfonu",
     "Password" : "Contraseña"
