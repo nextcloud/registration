@@ -24,6 +24,6 @@
 	"require-dev": {
 		"phpunit/phpunit": "^9.5",
 		"nextcloud/coding-standard": "^1.0.0",
-		"christophwurst/nextcloud_testing": "^0.12.4"
+		"christophwurst/nextcloud_testing": "^1.0.0"
 	}
 }
