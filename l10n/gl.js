@@ -84,7 +84,7 @@ OC.L10N.register(
     "Create account" : "Crear unha conta",
     "Verification code" : "Código de verificación",
     "Verify" : "Verificar",
-    "Approval required" : "Precisase aprobación",
+    "Approval required" : "Precísase de aprobación",
     "Your account has been successfully created, but it still needs approval from an administrator." : "A súa conta creouse correctamente, mais aínda precisa da aprobación da administración desta instancia."
 },
 "nplurals=2; plural=(n != 1);");
