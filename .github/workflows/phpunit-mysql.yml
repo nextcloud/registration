@@ -40,19 +40,6 @@ jobs:
       matrix:
         php-versions: ['8.0', '8.1', '8.2', '8.3']
         server-versions: ['master', 'stable28']
-        include:
-          - php-versions: '8.3'
-            server-versions: 'master'
-          - php-versions: '8.3'
-            server-versions: 'stable28'
-          - php-versions: '8.0'
-            server-versions: 'stable28'
-          - php-versions: '8.0'
-            server-versions: 'stable27'
-          - php-versions: '8.0'
-            server-versions: 'stable26'
-          - php-versions: '7.4'
-            server-versions: 'stable25'
     services:
       mysql:
         image: ghcr.io/nextcloud/continuous-integration-mariadb-10.6:latest
@@ -74,14 +61,14 @@ jobs:
           echo "SELECT @@sql_mode;" | mysql -h 127.0.0.1 -P 4444 -u root -prootpassword
 
       - name: Checkout server
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           submodules: true
           repository: nextcloud/server
           ref: ${{ matrix.server-versions }}
 
       - name: Checkout app
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           path: apps/${{ env.APP_NAME }}
 
