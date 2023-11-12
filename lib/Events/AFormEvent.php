@@ -5,6 +5,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2021 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,16 +33,8 @@ abstract class AFormEvent extends Event {
 	public const STEP_VERIFICATION = 'verification';
 	public const STEP_USER = 'user';
 
-	/** @var string */
-	protected $step;
-
-	/** @var string */
-	protected $registrationId;
-
-	public function __construct(string $step, string $registrationId = '') {
+	public function __construct(protected string $step, protected string $registrationId = '') {
 		parent::__construct();
-		$this->step = $step;
-		$this->registrationId = $registrationId;
 	}
 
 	public function getStep(): string {

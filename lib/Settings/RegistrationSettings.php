@@ -5,6 +5,7 @@ declare(strict_types=1);
  * @copyright Copyright (c) 2017 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  *
  * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -25,38 +26,21 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
-use libphonenumber\PhoneNumberUtil;
 use OCA\Registration\AppInfo\Application;
-use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\IGroup;
 use OCP\IGroupManager;
 use OCP\Settings\ISettings;
+use OCP\Util;
 
 class RegistrationSettings implements ISettings {
-	/** @var IConfig */
-	private $config;
-	/** @var IGroupManager */
-	private $groupManager;
-	/** @var IAccountManager */
-	private $accountManager;
-	/** @var IInitialState */
-	private $initialState;
-	/** @var string */
-	protected $appName;
 
-	public function __construct(string $appName,
-		IConfig $config,
-		IGroupManager $groupManager,
-		IAccountManager $accountManager,
-		IInitialState $initialState) {
-		$this->appName = $appName;
-		$this->config = $config;
-		$this->groupManager = $groupManager;
-		$this->accountManager = $accountManager;
-		$this->initialState = $initialState;
+	public function __construct(protected string $appName,
+		private IConfig $config,
+		private IGroupManager $groupManager,
+		private IInitialState $initialState) {
 	}
 
 	public function getForm(): TemplateResponse {
@@ -110,11 +94,6 @@ class RegistrationSettings implements ISettings {
 			'enforce_fullname',
 			$this->config->getAppValue($this->appName, 'enforce_fullname', 'no') === 'yes'
 		);
-		// FIXME Always true when Nextcloud 22 or 21.0.1 is minimum requirement
-		$this->initialState->provideInitialState(
-			'can_show_phone',
-			method_exists($this->accountManager, 'updateAccount') && class_exists(PhoneNumberUtil::class)
-		);
 		$this->initialState->provideInitialState(
 			'show_phone',
 			$this->config->getAppValue($this->appName, 'show_phone', 'no') === 'yes'
@@ -132,6 +111,9 @@ class RegistrationSettings implements ISettings {
 			'email_verification_hint',
 			$this->config->getAppValue($this->appName, 'email_verification_hint')
 		);
+
+		Util::addScript('registration', 'registration-settings');
+		Util::addStyle('registration', 'settings');
 
 		return new TemplateResponse('registration', 'admin', [], TemplateResponse::RENDER_AS_BLANK);
 	}

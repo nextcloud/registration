@@ -21,7 +21,7 @@
   -->
 <template>
 	<div id="registration_settings_form">
-		<NcSettingsSection :title="t('registration', 'Registration settings')">
+		<NcSettingsSection :name="t('registration', 'Registration settings')">
 			<NcCheckboxRadioSwitch :checked.sync="adminApproval"
 				type="switch"
 				:disabled="loading"
@@ -37,7 +37,7 @@
 						{{ t('registration', 'Registered users default group') }}
 					</label>
 				</div>
-				<NcMultiselect id="registered_user_group"
+				<NcSelect id="registered_user_group"
 					v-model="registeredUserGroup"
 					:placeholder="t('registration', 'Select group')"
 					:options="groups"
@@ -45,16 +45,14 @@
 					:searchable="true"
 					:tag-width="60"
 					:loading="loadingGroups"
-					:allow-empty="true"
 					:close-on-select="false"
-					track-by="id"
 					label="displayname"
-					@search-change="searchGroup"
-					@change="saveData" />
+					@search="searchGroup"
+					@input="saveData" />
 			</div>
 		</NcSettingsSection>
 
-		<NcSettingsSection :title="t('registration', 'Email settings')">
+		<NcSettingsSection :name="t('registration', 'Email settings')">
 			<NcCheckboxRadioSwitch :checked.sync="emailIsOptional"
 				type="switch"
 				:disabled="loading"
@@ -92,7 +90,7 @@
 			</NcCheckboxRadioSwitch>
 		</NcSettingsSection>
 
-		<NcSettingsSection :title="t('registration', 'User settings')">
+		<NcSettingsSection :name="t('registration', 'User settings')">
 			<NcCheckboxRadioSwitch v-if="!emailIsOptional"
 				:checked.sync="emailIsLogin"
 				type="switch"
@@ -131,15 +129,14 @@
 				{{ t('registration', 'Enforce full name field') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch v-if="canShowPhone"
-				:checked.sync="showPhone"
+			<NcCheckboxRadioSwitch :checked.sync="showPhone"
 				type="switch"
 				:disabled="loading"
 				@update:checked="saveData">
 				{{ t('registration', 'Show phone field') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch v-if="canShowPhone && showPhone"
+			<NcCheckboxRadioSwitch v-if="showPhone"
 				class="indent"
 				:checked.sync="enforcePhone"
 				type="switch"
@@ -149,7 +146,7 @@
 			</NcCheckboxRadioSwitch>
 		</NcSettingsSection>
 
-		<NcSettingsSection :title="t('registration', 'User instructions')"
+		<NcSettingsSection :name="t('registration', 'User instructions')"
 			:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
 			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
 			<input v-model="additionalHint"
@@ -175,7 +172,7 @@
 </template>
 
 <script>
-import NcMultiselect from '@nextcloud/vue/dist/Components/NcMultiselect.js'
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
@@ -186,13 +183,13 @@ import { generateOcsUrl, generateUrl } from '@nextcloud/router'
 import debounce from 'debounce'
 
 // Styles
-import '@nextcloud/dialogs/dist/index.css'
+import '@nextcloud/dialogs/style.css'
 
 export default {
 	name: 'AdminSettings',
 
 	components: {
-		NcMultiselect,
+		NcSelect,
 		NcSettingsSection,
 		NcCheckboxRadioSwitch,
 		NcTextField,
@@ -216,7 +213,6 @@ export default {
 			usernamePolicyRegex: '',
 			showFullname: false,
 			enforceFullname: false,
-			canShowPhone: false,
 			showPhone: false,
 			enforcePhone: false,
 			additionalHint: '',
@@ -253,7 +249,6 @@ export default {
 		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
 		this.showFullname = loadState('registration', 'show_fullname')
 		this.enforceFullname = loadState('registration', 'enforce_fullname')
-		this.canShowPhone = loadState('registration', 'can_show_phone')
 		this.showPhone = loadState('registration', 'show_phone')
 		this.enforcePhone = loadState('registration', 'enforce_phone')
 		this.additionalHint = loadState('registration', 'additional_hint')

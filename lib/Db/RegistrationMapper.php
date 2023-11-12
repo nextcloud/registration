@@ -28,26 +28,23 @@ namespace OCA\Registration\Db;
 
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Db\QBMapper;
+use OCP\DB\Exception;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
 
 class RegistrationMapper extends QBMapper {
-
-	/** @var ISecureRandom */
-	protected $random;
-
-	public function __construct(IDBConnection $db, ISecureRandom $random) {
+	public function __construct(IDBConnection $db, protected ISecureRandom $random) {
 		parent::__construct($db, 'registration', Registration::class);
-		$this->random = $random;
 	}
 
 	/**
 	 * @param string $token
 	 * @return Registration
 	 * @throws DoesNotExistException
-	 * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
+	 * @throws MultipleObjectsReturnedException
 	 */
 	public function findByToken(string $token): Entity {
 		$query = $this->db->getQueryBuilder();
@@ -62,7 +59,7 @@ class RegistrationMapper extends QBMapper {
 	 * @param string $secret
 	 * @return Registration
 	 * @throws DoesNotExistException
-	 * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
+	 * @throws MultipleObjectsReturnedException
 	 */
 	public function findBySecret(string $secret): Entity {
 		$query = $this->db->getQueryBuilder();
@@ -103,6 +100,7 @@ class RegistrationMapper extends QBMapper {
 	/**
 	 * @param Entity $entity
 	 * @return Registration
+	 * @throws Exception
 	 */
 	public function insert(Entity $entity): Entity {
 		$entity->setRequested(date('Y-m-d H:i:s'));

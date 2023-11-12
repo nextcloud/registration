@@ -12,6 +12,7 @@ use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
 use OCP\Accounts\IAccountManager;
 use OCP\IConfig;
+use OCP\IDBConnection;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -23,6 +24,7 @@ use OCP\IUserSession;
 
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -33,83 +35,57 @@ use Psr\Log\LoggerInterface;
 class RegistrationServiceTest extends TestCase {
 	use DatabaseTransaction;
 
-	/** @var MailService */
-	private $mailService;
-	/** @var IL10N */
-	private $l10n;
-	/** @var IURLGenerator */
-	private $urlGenerator;
 	/** @var RegistrationMapper */
-	private $registrationMapper;
-	/** @var IUserManager */
-	private $userManager;
-	/** @var IAccountManager */
-	private $accountManager;
+	private RegistrationMapper $registrationMapper;
 	/** @var IConfig */
 	private $config;
-	/** @var IGroupManager */
-	private $groupManager;
-	/** @var ISecureRandom */
-	private $random;
-	/** @var IUserSession */
-	private $usersession;
-	/** @var IRequest */
-	private $request;
-	/** @var LoggerInterface */
-	private $logger;
-	/** @var ISession */
-	private $session;
-	/** @var IProvider */
-	private $tokenProvider;
-	/** @var ICrypto */
+	/** @var ICrypto | MockObject */
 	private $crypto;
-	/** @var RegistrationService */
-	private $service;
+	private RegistrationService $service;
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->mailService = $this->createMock(MailService::class);
-		$this->l10n = $this->createMock(IL10N::class);
-		$this->l10n->expects($this->any())
+		$mailService = $this->createMock(MailService::class);
+		$l10n = $this->createMock(IL10N::class);
+		$l10n->expects($this->any())
 			->method('t')
 			->willReturnCallback(function ($text, $parameters = []) {
 				return vsprintf($text, $parameters);
 			});
-		$this->urlGenerator = $this->createMock(IURLGenerator::class);
-		#$this->userManager = $this->createMock(IUserManager::class);
-		$this->userManager = \OC::$server->getUserManager();
-		$this->accountManager = $this->createMock(IAccountManager::class);
+		$urlGenerator = $this->createMock(IURLGenerator::class);
+		$userManager = \OC::$server->get(IUserManager::class);
+		$accountManager = $this->createMock(IAccountManager::class);
 		$this->config = $this->createMock(IConfig::class);
-		$this->groupManager = \OC::$server->getGroupManager();
-		$this->random = \OC::$server->getSecureRandom();
-		$this->usersession = $this->createMock(IUserSession::class);
-		$this->request = $this->createMock(IRequest::class);
-		$this->logger = $this->createMock(LoggerInterface::class);
-		$this->session = $this->createMock(ISession::class);
-		$this->tokenProvider = $this->createMock(IProvider::class);
+		$groupManager = \OC::$server->get(IGroupManager::class);
+		$random = \OC::$server->get(ISecureRandom::class);
+		$userSession = $this->createMock(IUserSession::class);
+		$request = $this->createMock(IRequest::class);
+		$logger = $this->createMock(LoggerInterface::class);
+		$session = $this->createMock(ISession::class);
+		$tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);
 
 		$this->registrationMapper = new RegistrationMapper(
-			\OC::$server->getDatabaseConnection(),
-			$this->random
+			\OC::$server->get(IDBConnection::class),
+			$random
 		);
 
 		$this->service = new RegistrationService(
 			'registration',
-			$this->mailService,
-			$this->l10n,
-			$this->urlGenerator,
+			$mailService,
+			$l10n,
+			$urlGenerator,
 			$this->registrationMapper,
-			$this->userManager,
-			$this->accountManager,
+			$userManager,
+			$accountManager,
 			$this->config,
-			$this->groupManager,
-			$this->random,
-			$this->usersession,
-			$this->request,
-			$this->logger,
-			$this->session,
-			$this->tokenProvider,
+			$groupManager,
+			$random,
+			$userSession,
+			$request,
+			$logger,
+			$session,
+			$tokenProvider,
 			$this->crypto
 		);
 	}
@@ -303,7 +279,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->service->createAccount($reg, null, 'Full name', '+49 800 / 1110111');
 	}
 
-	public function settingsCallback1($app, $key, $default) {
+	public function settingsCallback1(string $app, string $key, string $default): string {
 		$map = [
 			'registered_user_group' => 'none',
 			'admin_approval_required' => 'no',

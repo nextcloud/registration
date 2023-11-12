@@ -4,6 +4,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2021 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,15 +33,9 @@ use OCP\IConfig;
 use OCP\User\Events\UserChangedEvent;
 
 class UserEnabledListener implements IEventListener {
-	/** @var IConfig */
-	private $config;
-	/** @var RegistrationService */
-	private $registrationService;
 
-	public function __construct(IConfig $config,
-		RegistrationService $registrationService) {
-		$this->config = $config;
-		$this->registrationService = $registrationService;
+	public function __construct(private IConfig $config,
+		private RegistrationService $registrationService) {
 	}
 
 	public function handle(Event $event): void {

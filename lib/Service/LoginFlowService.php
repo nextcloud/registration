@@ -4,6 +4,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2020 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,21 +36,11 @@ use OCP\IUser;
 
 class LoginFlowService {
 
-	/** @var IRequest */
-	protected $request;
-	/** @var ISession */
-	protected $session;
-	/** @var LoginFlowV2Service */
-	protected $loginFlowV2Service;
-
 	public function __construct(
-		IRequest $request,
-		ISession $session,
-		LoginFlowV2Service $loginFlowV2Service
+		protected IRequest $request,
+		protected ISession $session,
+		protected LoginFlowV2Service $loginFlowV2Service
 	) {
-		$this->request = $request;
-		$this->session = $session;
-		$this->loginFlowV2Service = $loginFlowV2Service;
 	}
 
 	public function isUsingLoginFlow(?int $version = null): bool {
@@ -95,9 +87,9 @@ class LoginFlowService {
 	private function getServerPath(): string {
 		$serverPostfix = '';
 
-		if (strpos($this->request->getRequestUri(), '/index.php') !== false) {
+		if (str_contains($this->request->getRequestUri(), '/index.php')) {
 			$serverPostfix = substr($this->request->getRequestUri(), 0, strpos($this->request->getRequestUri(), '/index.php'));
-		} elseif (strpos($this->request->getRequestUri(), '/login/v2') !== false) {
+		} elseif (str_contains($this->request->getRequestUri(), '/login/v2')) {
 			$serverPostfix = substr($this->request->getRequestUri(), 0, strpos($this->request->getRequestUri(), '/login/v2'));
 		}
 

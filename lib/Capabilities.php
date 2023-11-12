@@ -3,6 +3,7 @@
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -28,14 +29,10 @@ use OCP\IURLGenerator;
 
 class Capabilities implements IPublicCapability {
 
-	/** @var IURLGenerator */
-	private $urlGenerator;
-
-	public function __construct(IURLGenerator $urlGenerator) {
-		$this->urlGenerator = $urlGenerator;
+	public function __construct(private IURLGenerator $urlGenerator) {
 	}
 
-	public function getCapabilities() {
+	public function getCapabilities(): array {
 		return [
 			'registration' =>
 			[

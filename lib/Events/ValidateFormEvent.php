@@ -5,6 +5,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2021 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,7 +29,7 @@ namespace OCA\Registration\Events;
 class ValidateFormEvent extends AFormEvent {
 
 	/** @var string[] */
-	protected $errors;
+	protected array $errors;
 
 	public function __construct(string $step, string $registrationId = '') {
 		parent::__construct($step, $registrationId);
