@@ -18,7 +18,7 @@
     "@nextcloud/dialogs": "^4.0.1",
     "@nextcloud/initial-state": "^2.0.0",
     "@nextcloud/router": "^2.0.0",
-    "@nextcloud/vue": "^7.0.0",
+    "@nextcloud/vue": "^8.2.0",
     "debounce": "^1.2.1",
     "vue": "^2.7.13",
     "vue-material-design-icons": "^5.1.2",
