@@ -23,7 +23,7 @@ This app allows users to register a new account.
 4. User is lead to a form where they can choose their username and password
 5. New account is created and is logged in automatically
 		]]></description>
-	<version>2.2.0</version>
+	<version>2.3.0</version>
 	<licence>agpl</licence>
 	<author>Joas Schilling</author>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
@@ -39,7 +39,7 @@ This app allows users to register a new account.
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/admin-settings.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="25" max-version="27" />
+		<nextcloud min-version="25" max-version="28" />
 	</dependencies>
 	<background-jobs>
 		<job>OCA\Registration\BackgroundJob\ExpireRegistrations</job>
