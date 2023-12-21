@@ -33,7 +33,6 @@ use OCA\Registration\Service\RegistrationService;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\RedirectResponse;
-use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
@@ -663,7 +662,8 @@ class RegisterControllerTest extends TestCase {
 
 		$response = $controller->submitUserForm($secret, $token, $username, $fullname, $phone, $password);
 
-		self::assertInstanceOf(RedirectToDefaultAppResponse::class, $response);
+		self::assertInstanceOf(RedirectResponse::class, $response);
+		self::assertSame('', $response->getRedirectURL());
 	}
 
 	public function testSubmitUserFormSuccessfulLoginFlow2(): void {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2020 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,19 +31,7 @@ use OCP\IURLGenerator;
 
 class RegistrationLoginOption implements IAlternativeLogin {
 
-	/** @var IURLGenerator */
-	protected $url;
-	/** @var IL10N */
-	protected $l;
-	/** @var \OC_Defaults */
-	protected $theming;
-
-	public function __construct(IURLGenerator $url,
-		IL10N $l,
-		\OC_Defaults $theming) {
-		$this->url = $url;
-		$this->l = $l;
-		$this->theming = $theming;
+	public function __construct(protected IURLGenerator $url, protected IL10N $l, protected \OC_Defaults $theming) {
 	}
 
 	public function getLabel(): string {

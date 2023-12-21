@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @author Julius Härtl <jus@bitgrid.net>
  * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
  * @author Lukas Reschke <lukas@statuscode.ch>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -40,16 +41,16 @@ use InvalidArgumentException;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberUtil;
-use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
-use OC\Authentication\Token\IToken;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\Authentication\Exceptions\InvalidTokenException;
+use OCP\Authentication\Token\IToken;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
@@ -60,73 +61,24 @@ use Psr\Log\LoggerInterface;
 
 class RegistrationService {
 
-	/** @var string */
-	private $appName;
-	/** @var MailService */
-	private $mailService;
-	/** @var IL10N */
-	private $l10n;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var RegistrationMapper */
-	private $registrationMapper;
-	/** @var IUserManager */
-	private $userManager;
-	/** @var IAccountManager */
-	private $accountManager;
-	/** @var IConfig */
-	private $config;
-	/** @var IGroupManager */
-	private $groupManager;
-	/** @var ISecureRandom */
-	private $random;
-	/** @var IUserSession  */
-	private $userSession;
-	/** @var IRequest */
-	private $request;
-	/** @var LoggerInterface */
-	private $logger;
-	/** @var ISession */
-	private $session;
-	/** @var IProvider */
-	private $tokenProvider;
-	/** @var ICrypto */
-	private $crypto;
-
 	public function __construct(
-		string $appName,
-		MailService $mailService,
-		IL10N $l10n,
-		IURLGenerator $urlGenerator,
-		RegistrationMapper $registrationMapper,
-		IUserManager $userManager,
-		IAccountManager $accountManager,
-		IConfig $config,
-		IGroupManager $groupManager,
-		ISecureRandom $random,
-		IUserSession $userSession,
-		IRequest $request,
-		LoggerInterface $logger,
-		ISession $session,
-		IProvider $tokenProvider,
-		ICrypto $crypto
+		private string $appName,
+		private MailService $mailService,
+		private IL10N $l10n,
+		private IURLGenerator $urlGenerator,
+		private RegistrationMapper $registrationMapper,
+		private IUserManager $userManager,
+		private IAccountManager $accountManager,
+		private IConfig $config,
+		private IGroupManager $groupManager,
+		private ISecureRandom $random,
+		private IUserSession $userSession,
+		private IRequest $request,
+		private LoggerInterface $logger,
+		private ISession $session,
+		private IProvider $tokenProvider,
+		private ICrypto $crypto
 	) {
-		$this->appName = $appName;
-		$this->mailService = $mailService;
-		$this->l10n = $l10n;
-		$this->urlGenerator = $urlGenerator;
-		$this->registrationMapper = $registrationMapper;
-		$this->userManager = $userManager;
-		$this->accountManager = $accountManager;
-		$this->config = $config;
-		$this->groupManager = $groupManager;
-		$this->random = $random;
-		$this->userSession = $userSession;
-		$this->request = $request;
-		$this->logger = $logger;
-		$this->session = $session;
-		$this->tokenProvider = $tokenProvider;
-		$this->crypto = $crypto;
 	}
 
 	public function confirmEmail(Registration $registration): void {
@@ -141,11 +93,6 @@ class RegistrationService {
 
 	/**
 	 * Create registration request, used by both the API and form
-	 * @param string $email
-	 * @param string $username
-	 * @param string $password
-	 * @param string $displayname
-	 * @return Registration
 	 */
 	public function createRegistration(string $email, string $username = '', string $password = '', string $displayname = ''): Registration {
 		$registration = new Registration();
@@ -264,7 +211,7 @@ class RegistrationService {
 
 		if ($defaultRegion === '') {
 			// When no default region is set, only +49… numbers are valid
-			if (strpos($phone, '+') !== 0) {
+			if (!str_starts_with($phone, '+')) {
 				throw new RegistrationException($this->l10n->t('The phone number needs to contain the country code.'));
 			}
 
@@ -297,7 +244,7 @@ class RegistrationService {
 				// valid domain, everything's fine
 
 				// Wildcards
-				if (strpos($domain, '*') !== false) {
+				if (str_contains($domain, '*')) {
 					// *.example.com
 					// Make save for regex:
 					// \*\.example\.com
@@ -326,8 +273,7 @@ class RegistrationService {
 		$allowedDomains = explode(';', $allowedDomains);
 		$allowedDomains = array_map('trim', $allowedDomains);
 		$allowedDomains = array_filter($allowedDomains);
-		$allowedDomains = array_map('strtolower', $allowedDomains);
-		return $allowedDomains;
+		return array_map('strtolower', $allowedDomains);
 	}
 
 	/**

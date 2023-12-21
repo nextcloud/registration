@@ -8,6 +8,7 @@ declare(strict_types=1);
  *
  * @author Julius Härtl <jus@bitgrid.net>
  * @author Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -41,44 +42,16 @@ use Psr\Log\LoggerInterface;
 
 class MailService {
 
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var IMailer */
-	private $mailer;
-	/** @var Defaults */
-	private $defaults;
-	/** @var IL10N */
-	private $l10n;
-	/** @var IL10NFactory */
-	private $l10nFactory;
-	/** @var IGroupManager */
-	private $groupManager;
-	/** @var LoginFlowService */
-	private $loginFlowService;
-	/** @var LoggerInterface */
-	private $logger;
-	/** @var IConfig */
-	private $config;
-
 	public function __construct(
-		IURLGenerator $urlGenerator,
-		IMailer $mailer,
-		Defaults $defaults,
-		IL10N $l10n,
-		IL10NFactory $l10nFactory,
-		IGroupManager $groupManager,
-		IConfig $config,
-		LoginFlowService $loginFlowService,
-		LoggerInterface $logger) {
-		$this->urlGenerator = $urlGenerator;
-		$this->mailer = $mailer;
-		$this->config = $config;
-		$this->defaults = $defaults;
-		$this->l10n = $l10n;
-		$this->l10nFactory = $l10nFactory;
-		$this->groupManager = $groupManager;
-		$this->loginFlowService = $loginFlowService;
-		$this->logger = $logger;
+		private IURLGenerator $urlGenerator,
+		private IMailer $mailer,
+		private Defaults $defaults,
+		private IL10N $l10n,
+		private IL10NFactory $l10nFactory,
+		private IGroupManager $groupManager,
+		private IConfig $config,
+		private LoginFlowService $loginFlowService,
+		private LoggerInterface $logger) {
 	}
 
 	/**

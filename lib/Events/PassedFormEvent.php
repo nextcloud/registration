@@ -5,6 +5,8 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2021 Joas Schilling <coding@schilljs.com>
  *
+ * @author Thomas Citharel <nextcloud@tcit.fr>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -28,12 +30,8 @@ use OCP\IUser;
 
 class PassedFormEvent extends AFormEvent {
 
-	/** @var IUser|null */
-	protected $user;
-
-	public function __construct(string $step, string $registrationId = '', ?IUser $user = null) {
+	public function __construct(string $step, string $registrationId = '', protected ?IUser $user = null) {
 		parent::__construct($step, $registrationId);
-		$this->user = $user;
 	}
 
 	public function getUser(): ?IUser {

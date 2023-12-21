@@ -32,11 +32,8 @@ use OCP\IConfig;
 
 class ExpireRegistrations extends TimedJob {
 
-	/** @var RegistrationMapper */
-	protected $registrationMapper;
-
-	/** @var IConfig */
-	protected $config;
+	protected RegistrationMapper $registrationMapper;
+	protected IConfig $config;
 
 	public function __construct(ITimeFactory $time,
 		RegistrationMapper $registrationMapper,
@@ -45,12 +42,7 @@ class ExpireRegistrations extends TimedJob {
 
 		// Run once per day
 		$this->setInterval(60 * 60 * 24);
-		/**
-		 * @TODO Remove check with 24+
-		 */
-		if (method_exists($this, 'setTimeSensitivity')) {
-			$this->setTimeSensitivity(self::TIME_INSENSITIVE);
-		}
+		$this->setTimeSensitivity(self::TIME_INSENSITIVE);
 
 		$this->config = $config;
 		$this->registrationMapper = $registrationMapper;

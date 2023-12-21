@@ -7,6 +7,7 @@
  *
  * @author Pellaeon Lin <pellaeon@cnmc.tw>
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  * @copyright Pellaeon Lin 2015
  */
 
@@ -23,12 +24,9 @@ use OCP\IGroup;
 
 class SettingsController extends Controller {
 
-	/** @var IL10N */
-	private $l10n;
-	/** @var IConfig */
-	private $config;
-	/** @var IGroupManager */
-	private $groupmanager;
+	private IL10N $l10n;
+	private IConfig $config;
+	private IGroupManager $groupmanager;
 	/** @var string */
 	protected $appName;
 
@@ -69,7 +67,7 @@ class SettingsController extends Controller {
 		?bool $enforce_phone,
 		?bool $domains_is_blocklist,
 		?bool $show_domains,
-		?bool $disable_email_verification) {
+		?bool $disable_email_verification): DataResponse {
 		// handle domains
 		if (($allowed_domains === '') || ($allowed_domains === null)) {
 			$this->config->deleteAppValue($this->appName, 'allowed_domains');

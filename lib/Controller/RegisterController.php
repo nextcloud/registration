@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @author Julius Härtl <jus@bitgrid.net>
  * @author 2020 Joas Schilling <coding@schilljs.com>
  * @author 2022 Carl Schwan <carl@carlschwan.eu>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  * @copyright Pellaeon Lin 2014
  */
 
 namespace OCA\Registration\Controller;
 
 use Exception;
-use OC\HintException;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Events\PassedFormEvent;
@@ -33,16 +33,17 @@ use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\RedirectResponse;
-use OCP\AppFramework\Http\RedirectToDefaultAppResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\EventDispatcher\IEventDispatcher;
+use OCP\HintException;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
+use OCP\Util;
 
 class RegisterController extends Controller {
 	private IL10N $l10n;
@@ -276,12 +277,6 @@ class RegisterController extends Controller {
 	 * @UseSession
 	 * @AnonRateThrottle(limit=5, period=300)
 	 *
-	 * @param string $secret
-	 * @param string $token
-	 * @param string $loginname
-	 * @param string $fullname
-	 * @param string $phone
-	 * @param string $password
 	 * @return RedirectResponse|TemplateResponse
 	 */
 	public function submitUserForm(string $secret, string $token, string $loginname, string $fullname, string $phone, string $password): Response {
@@ -332,17 +327,16 @@ class RegisterController extends Controller {
 				}
 			}
 
-			return new RedirectToDefaultAppResponse();
+			return new RedirectResponse($this->urlGenerator->linkToDefaultPageUrl());
 		}
+
+		Util::addStyle('registration', 'style');
 
 		// warn the user their account needs admin validation
 		return new StandaloneTemplateResponse('registration', 'approval-required', [], 'guest');
 	}
 
 	/**
-	 * @param string $secret
-	 * @param string $token
-	 * @return Registration
 	 * @throws RegistrationException
 	 */
 	protected function validateSecretAndToken(string $secret, string $token): Registration {

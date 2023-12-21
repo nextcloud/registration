@@ -3,6 +3,7 @@
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Thomas Citharel <nextcloud@tcit.fr>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -24,24 +25,11 @@
 namespace OCA\Registration\Service;
 
 class RegistrationException extends \Exception {
-	protected $hint;
-
-	/**
-	 * RegistrationException constructor.
-	 *
-	 * @param string $message
-	 * @param string $hint
-	 * @param int $code
-	 */
-	public function __construct($message, $hint = "", $code = 400) {
+	public function __construct(string $message, protected string $hint = "", int $code = 400) {
 		parent::__construct($message, $code);
-		$this->hint = $hint;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getHint() {
+	public function getHint(): string {
 		return $this->hint;
 	}
 }

@@ -43,8 +43,7 @@ class ExpireRegistrationsTest extends TestCase {
 	/** @var IConfig|MockObject */
 	private $config;
 
-	/** @var ExpireRegistrations */
-	private $backgroundJob;
+	private ExpireRegistrations $backgroundJob;
 
 	protected function setUp(): void {
 		parent::setUp();

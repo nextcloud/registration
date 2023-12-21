@@ -57,10 +57,10 @@
 <script>
 import { getRequestToken } from '@nextcloud/auth'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import { loadState } from '@nextcloud/initial-state'
-import ShieldCheck from 'vue-material-design-icons/ShieldCheck.vue'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import { loadState } from '@nextcloud/initial-state'
+import ShieldCheck from 'vue-material-design-icons/ShieldCheck.vue'
 
 export default {
 	name: 'Verification',
