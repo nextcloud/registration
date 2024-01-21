@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "以下のドメインでの登録は許可されていません。%s",
+    "Registration is only allowed with the following domains: %s" : "登録は、以下のドメインでのみ許可されます。%s",
     "A problem occurred sending email, please contact your administrator." : "メールの送信に問題が発生しました。管理者に連絡してください。",
     "The entered verification code is wrong" : "入力された確認コードが違います",
     "The verification failed." : "確認に失敗しました。",
