@@ -31,12 +31,6 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Service;
 
-use \OCP\IConfig;
-use \OCP\IGroupManager;
-use \OCP\IL10N;
-use \OCP\IUserManager;
-use \OCP\IUserSession;
-use \OCP\Security\ISecureRandom;
 use InvalidArgumentException;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber;
@@ -51,11 +45,17 @@ use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\Authentication\Exceptions\InvalidTokenException;
 use OCP\Authentication\Token\IToken;
+use OCP\IConfig;
+use OCP\IGroupManager;
+use OCP\IL10N;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
 use OCP\IUser;
+use OCP\IUserManager;
+use OCP\IUserSession;
 use OCP\Security\ICrypto;
+use OCP\Security\ISecureRandom;
 use OCP\Session\Exceptions\SessionNotAvailableException;
 use Psr\Log\LoggerInterface;
 
