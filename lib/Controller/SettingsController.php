@@ -13,14 +13,14 @@
 
 namespace OCA\Registration\Controller;
 
-use \OCP\AppFramework\Controller;
-use \OCP\AppFramework\Http;
-use \OCP\AppFramework\Http\DataResponse;
-use \OCP\IConfig;
-use \OCP\IGroupManager;
-use \OCP\IL10N;
-use \OCP\IRequest;
+use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\IConfig;
 use OCP\IGroup;
+use OCP\IGroupManager;
+use OCP\IL10N;
+use OCP\IRequest;
 
 class SettingsController extends Controller {
 
