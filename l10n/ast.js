@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "The verification failed." : "La verificación falló.",
+    "Saved" : "Guardóse",
     "Registration" : "Rexistru",
     "An error occurred while saving the settings" : "Prodúxose un error mentanto se guardaba la configuración",
     "Continue" : "Siguir",
