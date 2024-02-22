@@ -75,4 +75,4 @@ OC.L10N.register(
     "Approval required" : "נדרש אישור",
     "Your account has been successfully created, but it still needs approval from an administrator." : "חשבונך נוצר בהצלחה, אך הוא עדיין זקוק לאישור מנהל מערכת."
 },
-"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");
+"nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");
