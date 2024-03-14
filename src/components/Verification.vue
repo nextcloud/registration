@@ -32,6 +32,7 @@
 					:label="t('registration', 'Verification code')"
 					:label-visible="true"
 					required
+					value=""
 					autofocus>
 					<ShieldCheck :size="20" />
 				</NcTextField>

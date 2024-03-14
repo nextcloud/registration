@@ -32,6 +32,7 @@
 					:label="emailLabel"
 					:label-visible="true"
 					required
+					value=""
 					autofocus>
 					<Email :size="20" />
 				</NcTextField>
