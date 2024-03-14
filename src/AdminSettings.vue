@@ -153,7 +153,7 @@
 				type="text"
 				name="additional_hint"
 				:disabled="loading"
-				placeholder="Please create your username following the scheme 'firstname.lastname'."
+				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
 				:aria-label="t('registration', 'A short message that is shown to the user in the registration process.')"
 				@input="debounceSavingSlow">
 			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.') }}</em></p>
@@ -163,7 +163,7 @@
 				type="text"
 				name="email_verification_hint"
 				:disabled="loading"
-				placeholder="Please create your username following the scheme 'firstname.lastname'."
+				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
 				:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
 				@input="debounceSavingSlow">
 			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em></p>
