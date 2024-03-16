@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "向用戶顯示封鎖的電子郵件網域",
     "Show the allowed email domains to users" : "向用戶顯示允許的電子郵件網域",
     "An error occurred while saving the settings" : "保存設置時發生錯誤",
+    "Please create your username following the scheme " : "請按照結構建立您的使用者名稱",
     "Back to login" : "回到登入頁面",
     "Email (optional)" : "電郵地址（非必填）",
     "Email" : "電郵地址",

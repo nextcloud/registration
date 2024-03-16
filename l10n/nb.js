@@ -69,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Vis de blokkerte e-post-domenene for brukerne",
     "Show the allowed email domains to users" : "Vis de tillatte e-post-domenene for brukerne",
     "An error occurred while saving the settings" : "En feil oppsto ved lagring av innstillingene",
+    "Please create your username following the scheme " : "Vennligst opprett ditt brukernavn etter ordningen",
     "Back to login" : "Tilbake til innlogging",
     "Email (optional)" : "E-post (valgfritt)",
     "Email" : "E-post",

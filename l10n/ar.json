@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "إعرض نطاقات الإيميل الموقوفة على المستخدمين",
     "Show the allowed email domains to users" : "إعرض نطاقات الإيميل المسموحة على المستخدمين",
     "An error occurred while saving the settings" : "حدث خطأ أثناء حفظ الإعدادات",
+    "Please create your username following the scheme " : "يُرجى إنشاء اسمك كمستخدِم بحسب المخطط التالي",
     "Back to login" : "العودة إلى تسجيل الدخول",
     "Email (optional)" : "إيميل (اختياري)",
     "Email" : "البريد الإلكترونى",

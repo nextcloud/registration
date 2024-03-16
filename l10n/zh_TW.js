@@ -69,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "向使用者顯示封鎖的電子郵件網域",
     "Show the allowed email domains to users" : "向使用者顯示允許的電子郵件網域",
     "An error occurred while saving the settings" : "儲存設定時遇到錯誤",
+    "Please create your username following the scheme " : "請按照結構建立您的使用者名稱",
     "Back to login" : "回到登入畫面",
     "Email (optional)" : "電子郵件（選填）",
     "Email" : "電子郵件",

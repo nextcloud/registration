@@ -69,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Show the blocked email domains to users",
     "Show the allowed email domains to users" : "Show the allowed email domains to users",
     "An error occurred while saving the settings" : "An error occurred while saving the settings",
+    "Please create your username following the scheme " : "Please create your username following the scheme ",
     "Back to login" : "Back to login",
     "Email (optional)" : "Email (optional)",
     "Email" : "Email",

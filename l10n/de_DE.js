@@ -69,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Benutzern die blockierten E-Mail-Domäns anzeigen",
     "Show the allowed email domains to users" : "Benutzern die erlaubten E-Mail-Domäns anzeigen",
     "An error occurred while saving the settings" : "Es ist ein Fehler beim Speichern der Einstellungen aufgetreten",
+    "Please create your username following the scheme " : "Bitte erstellen Sie Ihren Benutzernamen nach dem folgenden Schema",
     "Back to login" : "Zurück zur Anmeldung",
     "Email (optional)" : "E-Mail (optional)",
     "Email" : "E-Mail",
