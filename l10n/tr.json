@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "Engellenen e-posta etki alanları kullanıcılara görüntülensin",
     "Show the allowed email domains to users" : "İzin verilen e-posta etki alanları kullanıcılara görüntülensin",
     "An error occurred while saving the settings" : "Ayarlar kaydedilirken bir sorun çıktı",
+    "Please create your username following the scheme " : "Lütfen şu modele uygun olarak kullanıcı adınızı oluşturun",
     "Back to login" : "Oturum açmaya geri dön",
     "Email (optional)" : "E-posta (isteğe bağlı)",
     "Email" : "E-posta",
