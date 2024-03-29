@@ -10,6 +10,7 @@ OC.L10N.register(
     "Continue" : "Siguir",
     "Full name" : "Nome completu",
     "Phone number" : "Númberu de teléfonu",
-    "Password" : "Contraseña"
+    "Password" : "Contraseña",
+    "Loading" : "Cargando"
 },
 "nplurals=2; plural=(n != 1);");
