@@ -9,6 +9,7 @@
     "Full name" : "Nome completu",
     "Phone number" : "Númberu de teléfonu",
     "Password" : "Contraseña",
-    "Loading" : "Cargando"
+    "Loading" : "Cargando",
+    "Verify" : "Verificar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
