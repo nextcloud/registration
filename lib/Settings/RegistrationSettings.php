@@ -54,6 +54,12 @@ class RegistrationSettings implements ISettings {
 			$this->config->getAppValue($this->appName, 'admin_approval_required', 'no') === 'yes'
 		);
 
+		// Define values for Admin Page (thisiszeev)
+		$this->initialState->provideInitialState(
+			'login_button_hide',
+			$this->config->getAppValue($this->appName, 'login_button_hide', 'no') === 'yes'
+		);
+
 		$this->initialState->provideInitialState(
 			'allowed_domains',
 			$this->config->getAppValue($this->appName, 'allowed_domains')

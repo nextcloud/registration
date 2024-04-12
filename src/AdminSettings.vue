@@ -31,6 +31,16 @@
 
 			<p><em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em></p>
 
+<!-- Draw elements on Admin Page for loginButtonHide (thisiszeev) -->
+		<NcCheckboxRadioSwitch :checked.sync="loginButtonHide"
+				type="switch"
+				:disabled="loading"
+				@update:checked="saveData">
+				{{ t('registration', 'Hide registration button on login page') }}
+			</NcCheckboxRadioSwitch>
+
+			<p><em>{{ t('registration', 'Enabling, "hide registration button" will ensure the registration button is not displayed on the login page. Instead new users will have to be provided with the registration link, eg. https://nextcloud.domain.tld/index.php/apps/registration/, in order to register.') }}</em></p>
+
 			<div>
 				<div class="margin-top">
 					<label for="registered_user_group">
@@ -203,6 +213,8 @@ export default {
 			saveNotification: null,
 
 			adminApproval: false,
+			// Default value for loginButtonHide (thisiszeev)
+			loginButtonHide: false,
 			registeredUserGroup: '',
 			allowedDomains: '',
 			domainsIsBlocklist: false,
@@ -239,6 +251,8 @@ export default {
 
 	mounted() {
 		this.adminApproval = loadState('registration', 'admin_approval_required')
+		// (thisiszeev)
+		this.loginButtonHide = loadState('registration', 'login_button_hide')
 		this.registeredUserGroup = loadState('registration', 'registered_user_group')
 		this.allowedDomains = loadState('registration', 'allowed_domains')
 		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
@@ -270,6 +284,8 @@ export default {
 			try {
 				const response = await axios.post(generateUrl('/apps/registration/settings'), {
 					admin_approval_required: this.adminApproval,
+					// (thisiszeev)
+					login_button_hide: this.loginButtonHide,
 					registered_user_group: this.registeredUserGroup?.id,
 					allowed_domains: this.allowedDomains,
 					domains_is_blocklist: this.domainsIsBlocklist,

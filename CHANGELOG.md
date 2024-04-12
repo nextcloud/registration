@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## Changes by Ze'ev Schurmann
+### Added
+- Added ability to hide registration link on login page
+  [#621](https://github.com/nextcloud/registration/issues/621)
+
 ## 2.4.0 - 2024-03-13
 
 ### Added
