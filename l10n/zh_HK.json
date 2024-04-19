@@ -58,7 +58,7 @@
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "注意：用戶操作指南將不會被翻譯，因此將按照以下設定的東西顯示給所有用戶，無論他們實際使用的語言是什麼。",
     "Registration form instructions" : "註冊表格填寫指南",
     "A short message that is shown to the user in the registration process." : "在註冊過程中向用戶顯示的短訊息。",
-    "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "添加其他用戶說明（例如，選擇他們的登入名稱）。如果已配置，則在註冊過程的賬戶創建步驟中顯示該文本。",
+    "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "添加其他用戶說明（例如，選擇他們的登入名稱）。如果已配置，則在註冊過程的帳戶創建步驟中顯示該文本。",
     "Verification email instructions" : "驗證電子郵件操作指南",
     "A short message that is shown to the user in the verification email." : "在驗證電子郵件中向用戶顯示的短訊息。",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email." : "新增其他用戶操作指南（例如選擇他們的登入名稱）。若設定，這些文字將會嵌入至驗證電子郵件中。",
