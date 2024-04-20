@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Guardado",
     "Register" : "Registrar",
+    "User settings" : "Configuración de usuario",
     "Back to login" : "Regresar al inicio de sesión",
     "Email" : "Correo electrónico",
     "Continue" : "Continuar",
