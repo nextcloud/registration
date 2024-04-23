@@ -21,6 +21,7 @@
     "Please provide a valid phone number." : "Forni un númberu de teléfonu válidu.",
     "Unable to create user, there are problems with the user backend." : "Nun ye posible crear l'usuariu, hai problema col backend d'usuarios.",
     "Registration settings" : "Configuración del rexistru",
+    "User settings" : "Configuración del usuariu",
     "Show full name field" : "Amosar el campu del nome",
     "Show phone field" : "Amosar el campu del númberu de teléfonu",
     "A short message that is shown to the user in the registration process." : "Un mensaxe curtiu que-yos apaez a los usuarios nel procesu de rexistru.",
