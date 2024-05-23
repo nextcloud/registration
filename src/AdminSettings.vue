@@ -31,8 +31,7 @@
 
 			<p><em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em></p>
 
-<!-- Draw elements on Admin Page for loginButtonHide (thisiszeev) -->
-		<NcCheckboxRadioSwitch :checked.sync="loginButtonHide"
+			<NcCheckboxRadioSwitch :checked.sync="loginButtonHide"
 				type="switch"
 				:disabled="loading"
 				@update:checked="saveData">
