@@ -55,6 +55,11 @@ class RegistrationSettings implements ISettings {
 		);
 
 		$this->initialState->provideInitialState(
+			'login_button_hide',
+			$this->config->getAppValue($this->appName, 'login_button_hide', 'no') === 'yes'
+		);
+
+		$this->initialState->provideInitialState(
 			'allowed_domains',
 			$this->config->getAppValue($this->appName, 'allowed_domains')
 		);
