@@ -4,7 +4,10 @@ OC.L10N.register(
     "Saved" : "Shábháil",
     "User settings" : "Socruithe úsáideora",
     "Back to login" : "Ar ais chuig logáil isteach",
+    "Email" : "Ríomhphost",
     "Continue" : "Leanúint ar aghaidh",
+    "Full name" : "Ainm iomlán",
+    "Phone number" : "Uimhir teileafón",
     "Password" : "Pasfhocal",
     "Loading" : "Ag lódáil",
     "Verify" : "Fíoraigh"
