@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Shábháil",
+    "Register" : "Clár",
     "User settings" : "Socruithe úsáideora",
     "Back to login" : "Ar ais chuig logáil isteach",
     "Email" : "Ríomhphost",
