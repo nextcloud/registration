@@ -69,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Erakutsi erabiltzaileei blokeatutako posta-domeinuak ",
     "Show the allowed email domains to users" : "Erakutsi erabiltzaileei baimendutako posta-domeinuak ",
     "An error occurred while saving the settings" : "Errore bat gertatu da ezarpenak gordetzean",
+    "Please create your username following the scheme " : "Mesedez, sortu zure erabiltzaile-izena eskema jarraituz",
     "Back to login" : "Itzuli saio hasierara",
     "Email (optional)" : "E-posta (hautazkoa)",
     "Email" : "Helbide elektronikoa",
