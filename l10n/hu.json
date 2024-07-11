@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "A letiltott e-mail domainek megjelenítése a felhasználók számára",
     "Show the allowed email domains to users" : "Az engedélyezett e-mail domainek megjelenítése a felhasználók számára",
     "An error occurred while saving the settings" : "Hiba történt a beállítások mentése során",
+    "Please create your username following the scheme " : "Kérjük, a séma szerint hozza létre a felhasználónevét",
     "Back to login" : "Vissza a bejelentkezéshez",
     "Email (optional)" : "E-mail (nem kötelező)",
     "Email" : "E-mail",
