@@ -86,6 +86,11 @@ OC.L10N.register(
     "Verification code" : "Verification code",
     "Verify" : "Verify",
     "Approval required" : "Approval required",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Your account has been successfully created, but it still needs approval from an administrator."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Your account has been successfully created, but it still needs approval from an administrator.",
+    "Only send request to group admins" : "Only send approval request to group admins",
+    "Map groups to email" : "Enable assigning default group via email address",
+    "Group mappings" : "Email to Group Mappings",
+    "Delete mapping" : "Delete mapping",
+    "Add mapping" : "Add mapping"
 },
 "nplurals=2; plural=(n != 1);");

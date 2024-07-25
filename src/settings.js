@@ -20,11 +20,17 @@
 
 import Vue from 'vue'
 import AdminSettings from './AdminSettings.vue'
+import { loadState } from '@nextcloud/initial-state'
 
 Vue.prototype.t = t
 Vue.prototype.OC = OC
 
-export const app = new Vue({
-	el: '#registration_settings_form',
-	render: h => h(AdminSettings),
+const groupMappings = loadState('registration', 'group_mappings')
+const View = Vue.extend(AdminSettings)
+const viewdata = new View({
+	propsData: {
+		groupMappings,
+	},
 })
+
+viewdata.$mount('#registration_settings_form')

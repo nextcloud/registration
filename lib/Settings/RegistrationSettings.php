@@ -26,6 +26,8 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
+use OCA\Registration\Db\GroupMapper;
+use OCA\Registration\Db\Group;
 use OCA\Registration\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
@@ -39,6 +41,7 @@ class RegistrationSettings implements ISettings {
 
 	public function __construct(protected string $appName,
 		private IConfig $config,
+		private GroupMapper $groupMapper,
 		private IGroupManager $groupManager,
 		private IInitialState $initialState) {
 	}
@@ -52,6 +55,10 @@ class RegistrationSettings implements ISettings {
 		$this->initialState->provideInitialState(
 			'admin_approval_required',
 			$this->config->getAppValue($this->appName, 'admin_approval_required', 'no') === 'yes'
+		);
+		$this->initialState->provideInitialState(
+			'admin_approval_to_group_admin_only',
+			$this->config->getAppValue($this->appName, 'admin_approval_to_group_admin_only', 'no') === 'yes'
 		);
 
 		$this->initialState->provideInitialState(
@@ -111,6 +118,25 @@ class RegistrationSettings implements ISettings {
 			'email_verification_hint',
 			$this->config->getAppValue($this->appName, 'email_verification_hint')
 		);
+
+		$this->initialState->provideInitialState(
+			'per_email_group_mapping',
+			$this->config->getAppValue($this->appName, 'per_email_group_mapping', 'no') === 'yes'
+		);
+
+		$result = [];
+		foreach ($this->groupMapper->getGroupMappings() as $mapping) {
+			try {
+				$result[] = [
+					'emailDomains' => $mapping->getEmailDomains(),
+					'groupMapping' => $this->groupManager->get($mapping->getGroupId())->getDisplayName(),
+					'id' => $mapping->getId()
+				];
+			} catch (\Exception $e) {
+				$this->logger->error('Failed to lookup group by id in groupMappings table', ['exception' => $e]);
+			}
+		}
+		$this->initialState->provideInitialState('group_mappings', $result);
 
 		Util::addScript('registration', 'registration-settings');
 		Util::addStyle('registration', 'settings');

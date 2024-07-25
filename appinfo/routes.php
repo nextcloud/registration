@@ -13,6 +13,8 @@
 return [
 	'routes' => [
 		['name' => 'settings#admin', 'url' => '/settings', 'verb' => 'POST'],
+		['name' => 'settings#addGroupMapping', 'url' => '/settings/groupmapping', 'verb' => 'POST'],
+		['name' => 'settings#deleteGroupMapping', 'url' => '/settings/groupmapping/{id}', 'verb' => 'DELETE'],
 		['name' => 'register#showEmailForm', 'url' => '/', 'verb' => 'GET'],
 		['name' => 'register#submitEmailForm', 'url' => '/', 'verb' => 'POST'],
 		['name' => 'register#showVerificationForm', 'url' => '/verify/{secret}', 'verb' => 'GET'],

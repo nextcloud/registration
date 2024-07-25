@@ -40,6 +40,8 @@ use OC\Authentication\Token\IProvider;
 use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
+use OCA\Registration\Db\Group;
+use OCA\Registration\Db\GroupMapper;
 use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -67,6 +69,7 @@ class RegistrationService {
 		private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
 		private RegistrationMapper $registrationMapper,
+		private GroupMapper $groupMapper,
 		private IUserManager $userManager,
 		private IAccountManager $accountManager,
 		private IConfig $config,
@@ -124,15 +127,14 @@ class RegistrationService {
 		try {
 			$this->registrationMapper->find($email);//if not found DB will throw a exception
 			throw new RegistrationException(
-				$this->l10n->t('A user has already taken this email, maybe you already have an account?')
+				$this->l10n->t('This email is not eligible for self-registration.')
 			);
 		} catch (DoesNotExistException $e) {
 		}
 
 		if ($this->userManager->getByEmail($email)) {
 			throw new RegistrationException(
-				$this->l10n->t('A user has already taken this email, maybe you already have an account?'),
-				$this->l10n->t('You can <a href="%s">log in now</a>.', [$this->urlGenerator->getAbsoluteURL('/')])
+				$this->l10n->t('This email is not eligible for self-registration.'),
 			);
 		}
 
@@ -154,7 +156,7 @@ class RegistrationService {
 				);
 			}
 			throw new RegistrationException(
-				$this->l10n->t('Registration with this email domain is not allowed.')
+				$this->l10n->t('This email is not eligible for self-registration.')
 			);
 		}
 
@@ -168,7 +170,7 @@ class RegistrationService {
 				);
 			}
 			throw new RegistrationException(
-				$this->l10n->t('Registration with this email domain is not allowed.')
+				$this->l10n->t('This email is not eligible for self-registration.')
 			);
 		}
 	}
@@ -277,6 +279,18 @@ class RegistrationService {
 	}
 
 	/**
+	 * Return the group mapping for an email domain, if set
+	 * 
+	 * @param string $email
+	 * @return string|null
+	 */
+	public function getGroupForDomain(string $email): ?string {
+		[,$mailDomain] = explode('@', strtolower($email), 2);
+		$matchingRule = $this->groupMapper->getGroupMappingByEmailDomain($mailDomain);
+		return ($matchingRule === null) ? null : $matchingRule->getGroupId();
+	}
+
+	/**
 	 * @param Registration $registration
 	 * @param string|null $loginName
 	 * @param string|null $fullName
@@ -327,6 +341,11 @@ class RegistrationService {
 		}
 		$userId = $user->getUID();
 
+		// disable user if this is requested by config
+		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
+		if ($adminApprovalRequired === 'yes') {
+			$user->setEnabled(false);
+		}
 
 		// Set user email
 		try {
@@ -357,6 +376,13 @@ class RegistrationService {
 
 		// Add user to group
 		$registeredUserGroup = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+		$per_domain_group_mapping = $this->config->getAppValue($this->appName, 'per_email_group_mapping', 'no');
+		if ($per_domain_group_mapping === 'yes') {
+			// If per group mapping is enabled, retrieve the group we should assign to, overriding the default
+			$newGroup = $this->getGroupForDomain($registration->getEmail());
+			if($newGroup !== null) $registeredUserGroup = $newGroup;
+		}
+
 		if ($registeredUserGroup !== 'none') {
 			$group = $this->groupManager->get($registeredUserGroup);
 			if ($group === null) {
@@ -372,10 +398,8 @@ class RegistrationService {
 			$groupId = '';
 		}
 
-		// disable user if this is requested by config
-		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
+		// setup welcome email for user
 		if ($adminApprovalRequired === 'yes') {
-			$user->setEnabled(false);
 			$this->config->setUserValue($userId, Application::APP_ID, 'send_welcome_mail_on_enable', 'yes');
 		} else {
 			$this->sendWelcomeMail($user);
