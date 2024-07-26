@@ -28,10 +28,24 @@
 				@update:checked="saveData">
 				{{ t('registration', 'Require administrator approval') }}
 			</NcCheckboxRadioSwitch>
+			<NcCheckboxRadioSwitch :checked.sync="adminApprovalToGroupAdmin"
+				v-if="adminApproval"
+				type="switch"
+				:disabled="loading"
+				@update:checked="saveData">
+				{{ t('registration', 'Only send request to group admins') }}
+			</NcCheckboxRadioSwitch>
 
 			<p><em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em></p>
 
-			<div>
+			<div class="margin-top">
+				<NcCheckboxRadioSwitch :checked.sync="perEmailGroupMapping"
+					type="switch"
+					:disabled="loading"
+					@update:checked="saveData">
+					{{ t('registration', 'Map groups to email') }}
+				</NcCheckboxRadioSwitch>
+
 				<div class="margin-top">
 					<label for="registered_user_group">
 						{{ t('registration', 'Registered users default group') }}
@@ -50,6 +64,68 @@
 					@search="searchGroup"
 					@input="saveData" />
 			</div>
+		</NcSettingsSection>
+
+		<NcSettingsSection :name="t('registration', 'Group mappings')" v-if="perEmailGroupMapping">
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>
+							{{ t('registration', 'Allowed email domains') }}
+						</th>
+						<th>
+							{{ t('registration', 'Registered users default group') }}
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="mapping in groupMappings">
+						<th>
+							{{ mapping.emailDomains }}
+						</th>
+						<th>
+							{{ mapping.groupMapping }}
+						</th>
+						<th>
+							<a class="delete"
+								:disabled="loading"
+								@click="deleteGroupMapping(mapping.id)">
+								{{ t('registration', 'Delete mapping') }}
+							</a>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+			<h3>{{ t('registration', 'Add mapping') }}</h3>
+			<form class="form-newGroupMapping" @submit.prevent="addNewGroupMapping">
+				<NcTextField id="emaildomains"
+					type="text"
+					name="emaildomains"
+					class="newgroup-inputfield"
+					placeholder="nextcloud.com;*.example.com"
+					:label-visible="true"
+					:label="t('registration', 'Allowed email domains')"
+					:value.sync="newGroupMapping.emailDomains" />
+
+				<NcSelect id="groupMapping"
+					label="displayname"
+					class="newgroup-selectfield"
+					v-model="newGroupMapping.groupMapping"
+					:placeholder="t('registration', 'Select group')"
+					:options="groups"
+					:searchable="true"
+					:tag-width="60"
+					:loading="loadingGroups"
+					:close-on-select="true"
+					@search="searchGroup" />
+
+				<NcButton native-type="submit" class="newgroup-inputfield" :disabled="loading">
+					{{ t('registration', 'Add mapping') }}
+				</NcButton>
+			</form>
 		</NcSettingsSection>
 
 		<NcSettingsSection :name="t('registration', 'Email settings')">
@@ -176,6 +252,7 @@ import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
@@ -193,6 +270,14 @@ export default {
 		NcSettingsSection,
 		NcCheckboxRadioSwitch,
 		NcTextField,
+		NcButton
+	},
+
+	props: {
+		groupMappings: {
+			type: Array,
+			required: true,
+		},
 	},
 
 	data() {
@@ -203,6 +288,7 @@ export default {
 			saveNotification: null,
 
 			adminApproval: false,
+			adminApprovalToGroupAdmin: false,
 			registeredUserGroup: '',
 			allowedDomains: '',
 			domainsIsBlocklist: false,
@@ -217,6 +303,12 @@ export default {
 			enforcePhone: false,
 			additionalHint: '',
 			emailVerificationHint: '',
+			perEmailGroupMapping: false,
+
+			newGroupMapping: {
+				emailDomains: '',
+				groupMapping: ''
+			}
 		}
 	},
 
@@ -239,6 +331,7 @@ export default {
 
 	mounted() {
 		this.adminApproval = loadState('registration', 'admin_approval_required')
+		this.adminApprovalToGroupAdmin = loadState('registration', 'admin_approval_to_group_admin_only')
 		this.registeredUserGroup = loadState('registration', 'registered_user_group')
 		this.allowedDomains = loadState('registration', 'allowed_domains')
 		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
@@ -253,6 +346,7 @@ export default {
 		this.enforcePhone = loadState('registration', 'enforce_phone')
 		this.additionalHint = loadState('registration', 'additional_hint')
 		this.emailVerificationHint = loadState('registration', 'email_verification_hint')
+		this.perEmailGroupMapping = loadState('registration', 'per_email_group_mapping')
 
 		this.searchGroup('')
 	},
@@ -270,6 +364,7 @@ export default {
 			try {
 				const response = await axios.post(generateUrl('/apps/registration/settings'), {
 					admin_approval_required: this.adminApproval,
+					admin_approval_to_group_admin_only: this.adminApprovalToGroupAdmin,
 					registered_user_group: this.registeredUserGroup?.id,
 					allowed_domains: this.allowedDomains,
 					domains_is_blocklist: this.domainsIsBlocklist,
@@ -284,6 +379,7 @@ export default {
 					enforce_phone: this.enforcePhone,
 					additional_hint: this.additionalHint,
 					email_verification_hint: this.emailVerificationHint,
+					per_email_group_mapping: this.perEmailGroupMapping
 				})
 
 				if (response?.data?.status === 'success' && response?.data?.data?.message) {
@@ -322,6 +418,72 @@ export default {
 				this.loadingGroups = false
 			}
 		}, 500),
+
+		async deleteGroupMapping(id) {
+			this.loading = true
+			if (this.saveNotification) {
+				await this.saveNotification.hideToast()
+			}
+
+			try {
+				const response = await axios.delete(generateUrl('/apps/registration/settings/groupmapping/{id}', { id }))
+				if (response?.data?.status === 'success' && response?.data?.data?.message) {
+					this.saveNotification = showSuccess(response.data.data.message)
+					this.groupMappings = this.groupMappings.filter(mapping => mapping.id !== id)
+				} else if (response?.data?.data?.message) {
+					this.saveNotification = showError(response.data.data.message)
+				} else {
+					this.saveNotification = showError(t('registration', 'An error occurred while deleting the mapping 11'))
+				}
+			} catch (e) {
+				if (e.response?.data?.data?.message) {
+					this.saveNotification = showError(e.response.data.data.message)
+				} else {
+					this.saveNotification = showError(t('registration', 'An error occurred while deleting the mapping 22'))
+					console.error(e)
+				}
+			}
+
+			this.loading = false
+		},
+
+		async addNewGroupMapping() {
+			this.loading = true
+			if (this.saveNotification) {
+				await this.saveNotification.hideToast()
+			}
+
+			try {
+				const response = await axios.post(generateUrl('/apps/registration/settings/groupmapping'), {
+					email_domains: this.newGroupMapping.emailDomains,
+					group_name: this.newGroupMapping.groupMapping?.id ?? ''
+				})
+
+				if (response?.data?.status === 'success' && response?.data?.data?.message) {
+					this.saveNotification = showSuccess(response.data.data.message)
+					this.groupMappings.push({
+						'id': response.data.data.id,
+						'emailDomains': this.newGroupMapping.emailDomains,
+						'groupMapping': this.newGroupMapping.groupMapping?.id
+					})
+					this.newGroupMapping.emailDomains = "";
+					this.newGroupMapping.groupMapping = "";
+				} else if (response?.data?.data?.message) {
+					this.saveNotification = showError(response.data.data.message)
+				} else {
+					this.saveNotification = showError(t('registration', 'An error occurred while adding the mapping'))
+				}
+			} catch (e) {
+				if (e.response?.data?.data?.message) {
+					this.saveNotification = showError(e.response.data.data.message)
+				} else {
+					this.saveNotification = showError(t('registration', 'An error occurred while adding the mapping'))
+					console.error(e)
+				}
+			}
+
+			this.loading = false
+		},
 	},
 }
 </script>
@@ -340,6 +502,21 @@ p {
 
 .margin-top {
 	margin-top: 1rem;
+}
+
+table {
+	max-width: 800px;
+}
+
+.newgroup-inputfield {
+	margin-right: 10px;
+	max-width: 250px;
+	display: inline-block !important;
+}
+
+.newgroup-selectfield {
+	margin-right: 10px;
+	display: inline-block !important;
 }
 
 </style>
