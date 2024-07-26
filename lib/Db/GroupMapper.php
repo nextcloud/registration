@@ -26,11 +26,7 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Db;
 
-use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\AppFramework\Db\Entity;
-use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\Db\QBMapper;
-use OCP\DB\Exception;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
@@ -64,7 +60,7 @@ class GroupMapper extends QBMapper {
 				->where($qb->expr()->like('email_domains', $qb->createNamedParameter("%".$emailDomain."%", IQueryBuilder::PARAM_STR)));
 
 			return $this->findEntity($qb);
-		} catch( \Exception ) {
+		} catch(\Exception) {
 			return null;
 		}
 	}

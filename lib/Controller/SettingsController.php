@@ -13,8 +13,8 @@
 
 namespace OCA\Registration\Controller;
 
-use OCA\Registration\Db\GroupMapper;
 use OCA\Registration\Db\Group;
+use OCA\Registration\Db\GroupMapper;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;

@@ -26,9 +26,8 @@ declare(strict_types=1);
 
 namespace OCA\Registration\Settings;
 
-use OCA\Registration\Db\GroupMapper;
-use OCA\Registration\Db\Group;
 use OCA\Registration\AppInfo\Application;
+use OCA\Registration\Db\GroupMapper;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;

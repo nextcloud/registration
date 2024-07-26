@@ -38,10 +38,10 @@ use libphonenumber\PhoneNumberUtil;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
 use OCA\Registration\AppInfo\Application;
-use OCA\Registration\Db\Registration;
-use OCA\Registration\Db\RegistrationMapper;
 use OCA\Registration\Db\Group;
 use OCA\Registration\Db\GroupMapper;
+use OCA\Registration\Db\Registration;
+use OCA\Registration\Db\RegistrationMapper;
 use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -280,7 +280,7 @@ class RegistrationService {
 
 	/**
 	 * Return the group mapping for an email domain, if set
-	 * 
+	 *
 	 * @param string $email
 	 * @return string|null
 	 */
@@ -380,7 +380,9 @@ class RegistrationService {
 		if ($per_domain_group_mapping === 'yes') {
 			// If per group mapping is enabled, retrieve the group we should assign to, overriding the default
 			$newGroup = $this->getGroupForDomain($registration->getEmail());
-			if($newGroup !== null) $registeredUserGroup = $newGroup;
+			if($newGroup !== null) {
+				$registeredUserGroup = $newGroup;
+			}
 		}
 
 		if ($registeredUserGroup !== 'none') {
