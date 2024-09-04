@@ -55,7 +55,7 @@
     "Show phone field" : "Amosar o campo de teléfono",
     "Enforce phone field" : "Impor o campo de teléfono",
     "User instructions" : "Instrucións do usuario",
-    "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Precaución: as instrucións do usuario non se traducirán e, polo tanto, amosaranse como se configura a continuación para todos os usuarios independentemente do seu idioma real.",
+    "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "Precaución: as instrucións do usuario non se traducirán e, por tanto, amosaranse como se configura a continuación para todos os usuarios independentemente do seu idioma real.",
     "Registration form instructions" : "Instrucións do formulario de rexistro",
     "A short message that is shown to the user in the registration process." : "Unha mensaxe curta que se lle amosa ao usuario no proceso de rexistro.",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "Engadir instrucións de usuario adicionais (p. ex.: para escoller os nomes de acceso). Se está configurado, o texto amosase no paso de creación da conta do proceso de rexistro.",
