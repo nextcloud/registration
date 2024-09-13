@@ -51,7 +51,7 @@ class ExpireRegistrations extends TimedJob {
 	public function run($argument): void {
 		$expireDays = $this->getDuration();
 		$expireDate = $this->time->getDateTime();
-		$interval = new \DateInterval("P" . $expireDays . "D");
+		$interval = new \DateInterval('P' . $expireDays . 'D');
 		$expireDate->sub($interval);
 
 		$this->registrationMapper->deleteOlderThan($expireDate);
@@ -59,7 +59,7 @@ class ExpireRegistrations extends TimedJob {
 
 	private function getDuration(): int {
 		return max(
-			(int) $this->config->getAppValue(
+			(int)$this->config->getAppValue(
 				Application::APP_ID,
 				'expire_days',
 				'30'
