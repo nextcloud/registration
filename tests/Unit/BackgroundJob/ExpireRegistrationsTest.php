@@ -67,7 +67,7 @@ class ExpireRegistrationsTest extends TestCase {
 			->with()
 			->willReturn($expireDate);
 
-		$interval = new \DateInterval("P20D");
+		$interval = new \DateInterval('P20D');
 		$expireDate->sub($interval);
 
 		$this->registrationMapper->expects($this->once())

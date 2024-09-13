@@ -190,9 +190,9 @@ class RegistrationServiceTest extends TestCase {
 
 	public function testCreateAccountWebForm() {
 		$reg = new Registration();
-		$reg->setEmail("asd@example.com");
+		$reg->setEmail('asd@example.com');
 		//$reg->setUsername("alice1");
-		$reg->setDisplayname("Alice");
+		$reg->setDisplayname('Alice');
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
@@ -214,9 +214,9 @@ class RegistrationServiceTest extends TestCase {
 	 */
 	public function testDuplicateUsernameWebForm() {
 		$reg = new Registration();
-		$reg->setEmail("pppp@example.com");
+		$reg->setEmail('pppp@example.com');
 		//$reg->setUsername("alice1");
-		$reg->setDisplayname("Alice");
+		$reg->setDisplayname('Alice');
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
@@ -238,10 +238,10 @@ class RegistrationServiceTest extends TestCase {
 	 */
 	public function testDuplicateUsernameApi() {
 		$reg = new Registration();
-		$reg->setEmail("pppp@example.com");
-		$reg->setUsername("alice1");
-		$reg->setDisplayname("Alice");
-		$reg->setPassword("crypto(asdf)");
+		$reg->setEmail('pppp@example.com');
+		$reg->setUsername('alice1');
+		$reg->setDisplayname('Alice');
+		$reg->setPassword('crypto(asdf)');
 		$reg->setEmailConfirmed(true);
 
 		$this->crypto->method('decrypt')
@@ -264,10 +264,10 @@ class RegistrationServiceTest extends TestCase {
 			]);
 
 		$reg = new Registration();
-		$reg->setEmail("pppp@example.com");
-		$reg->setUsername("alice23");
-		$reg->setDisplayname("Alice");
-		$reg->setPassword("crypto(asdf)");
+		$reg->setEmail('pppp@example.com');
+		$reg->setUsername('alice23');
+		$reg->setDisplayname('Alice');
+		$reg->setPassword('crypto(asdf)');
 		$reg->setEmailConfirmed(true);
 
 		$this->crypto->method('decrypt')
