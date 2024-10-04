@@ -4,7 +4,7 @@
     "A problem occurred sending email, please contact your administrator." : ".حدث خطأ اثناء إرسال البريد. يُرجى التواصل مع مشرف النظام.",
     "The entered verification code is wrong" : "رمز التحقق المدخل غير صحيح",
     "The verification failed." : "فشل التحقُّق.",
-    "Invalid username policy regex" : "النمط التعبيري RegEx لسياسة اسم المستخدم غير صحيح",
+    "Invalid username policy regex" : "التعبير النمطي RegEx لسياسة اسم المستخدم غير صالح",
     "Saved" : "تمّ الحفظ",
     "No such group" : "لا توجد مجموعة بهذا الاسم",
     "Register" : "تسجيل",
