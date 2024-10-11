@@ -80,7 +80,7 @@ OC.L10N.register(
     "Login name" : "اسم الدخول",
     "Full name" : "الاسم الكامل",
     "Phone number" : "رقم الجوال",
-    "Password" : "كلمة السر",
+    "Password" : "كلمة المرور",
     "Loading" : "جاري التحميل",
     "Create account" : "إنشاء حساب",
     "Verification code" : "رمز التحقق",
