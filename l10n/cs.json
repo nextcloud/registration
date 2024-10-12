@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "Zobrazit uživatelům blokované e-mailové domény",
     "Show the allowed email domains to users" : "Zobrazit uživatelům umožněné e-mailové domény",
     "An error occurred while saving the settings" : "Došlo k chybě při ukládání nastavení",
+    "Please create your username following the scheme " : "Vytvořte si prosím své uživatelské jméno podle schématu",
     "Back to login" : "Zpět na přihlášení",
     "Email (optional)" : "E-mail (volitelný)",
     "Email" : "E-mail",
