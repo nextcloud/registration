@@ -34,3 +34,9 @@ path = ["img/app-dark.svg", "img/app.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2018-2024 Google LLC"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["js/registration-data_image_svg_xml_3c_21--_20-_20SPDX-FileCopyrightText_202020_20Google_20Inc_20-_20SPDX-Lice-*.js"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2020 Google LLC"
+SPDX-License-Identifier = "Apache-2.0"
