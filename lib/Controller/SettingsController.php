@@ -1,14 +1,9 @@
 <?php
-/**
- * ownCloud - registration
- *
- * This file is licensed under the Affero General Public License version 3 or
- * later. See the COPYING file.
- *
- * @author Pellaeon Lin <pellaeon@cnmc.tw>
- * @author Julius Härtl <jus@bitgrid.net>
- * @author Thomas Citharel <nextcloud@tcit.fr>
- * @copyright Pellaeon Lin 2015
+/*
+ * SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-FileCopyrightText: 2015 Johannes Starosta <j.starosta@tu-braunschweig.de>
+ * SPDX-FileCopyrightText: 2015 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
 namespace OCA\Registration\Controller;

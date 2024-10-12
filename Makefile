@@ -1,5 +1,6 @@
 # Makefile for building the project
-
+# SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
 app_name=registration
 
 project_dir=$(CURDIR)/../$(app_name)
