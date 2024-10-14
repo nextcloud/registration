@@ -1,4 +1,45 @@
+<!--
+  - SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # Authors
 
-* Pellaeon Lin: <pellaeon@hs.ntnu.edu.tw>
-
+- Achim <39946364+pxlfrk@users.noreply.github.com>
+- Andy Scherzinger <info@andy-scherzinger.de>
+- Carl Schwan <carl@carlschwan.eu>
+- Carlos Damken <carlos@damken.com>
+- Christoph Wurst <ChristophWurst@users.noreply.github.com>
+- Côme Chilliet <91878298+come-nc@users.noreply.github.com>
+- Daniel Thwaites <danthwaites30@btinternet.com>
+- j2L4e <j2L4e@users.noreply.github.com>
+- JanDragon <40271530+JanDragon@users.noreply.github.com>
+- Joas Schilling <coding@schilljs.com>
+- Johannes Starosta <j.starosta@tu-braunschweig.de>
+- John Molakvoæ <skjnldsv@protonmail.com>
+- Jonas Rittershofer <jotoeri@users.noreply.github.com>
+- Julius Härtl <jus@bitgrid.net>
+- Laurens Stötzel <l.stoetzel@meeva.de>-
+- Leon Klingele <leon@struktur.de>
+- LiamHD <becker.matthias@gmail.com>
+- Lukas Reschke <lukas@statuscode.ch>
+- Marcin Wróblewski <wrbl606@users.noreply.github.com>
+- Marco Ambrosini <marcoambrosini@pm.me>
+- MarkyMark_Qld <mark@partlett.net>
+- Maxence Lange <maxence@artificial-owl.com>
+- Mikael <skaramicke@gmail.com>
+- MmAaXx500 <viktor.balogh2000@gmail.com>
+- mondjunge <48616831+mondjunge@users.noreply.github.com>
+- Morris Jobke <hey@morrisjobke.de>
+- Neraste <neraste.herr10@gmail.com>
+- Nicolas <nicolas.duclos@atd-quartmonde.org>
+- nienzu <ibqqz0602@gmail.com>
+- Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+- rakekniven <mark.ziegler@rakekniven.de>
+- renaudjx <renaud.jx@gmail.com>
+- Roeland Jago Douma <roeland@famdouma.nl>
+- Samuel Degoul <samuel.degoul@posteo.net>
+- Thomas Citharel <tcit@tcit.fr>
+- Thomas Imbreckx <zinks@member.fsf.org>
+- Valdnet <47037905+Valdnet@users.noreply.github.com>
+- Vincent Petry <vincent@nextcloud.com>
+- Zorn <zorn84@bk.ru>

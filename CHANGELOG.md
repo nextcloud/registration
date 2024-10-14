@@ -1,3 +1,8 @@
+<!--
+  - SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-FileCopyrightText: 2014 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # Changelog
 All notable changes to this project will be documented in this file.
 

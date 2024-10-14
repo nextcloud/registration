@@ -1,4 +1,11 @@
+<!--
+  - SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-FileCopyrightText: 2014 Pellaeon Lin <pellaeon@hs.ntnu.edu.tw>
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # 🖋️ Registration
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/registration)](https://api.reuse.software/info/github.com/nextcloud/registration)
 This app allows users to register a new account.
 
 ![Registration form](https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif)
