@@ -54,6 +54,7 @@ class SettingsController extends Controller {
 		string $email_verification_hint,
 		string $username_policy_regex,
 		?bool $admin_approval_required,
+		?bool $login_button_hide,
 		?bool $email_is_optional,
 		?bool $email_is_login,
 		?bool $show_fullname,
@@ -99,6 +100,7 @@ class SettingsController extends Controller {
 		}
 
 		$this->config->setAppValue($this->appName, 'admin_approval_required', $admin_approval_required ? 'yes' : 'no');
+		$this->config->setAppValue($this->appName, 'login_button_hide', $login_button_hide ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'email_is_optional', $email_is_optional ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'email_is_login', !$email_is_optional && $email_is_login ? 'yes' : 'no');
 		$this->config->setAppValue($this->appName, 'show_fullname', $show_fullname ? 'yes' : 'no');
