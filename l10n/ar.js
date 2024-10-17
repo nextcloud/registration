@@ -72,7 +72,7 @@ OC.L10N.register(
     "Please create your username following the scheme " : "يُرجى إنشاء اسمك كمستخدِم بحسب المخطط التالي",
     "Back to login" : "العودة إلى تسجيل الدخول",
     "Email (optional)" : "إيميل (اختياري)",
-    "Email" : "البريد الإلكترونى",
+    "Email" : "البريد الإلكتروني",
     "Continue" : "متابعة",
     "Request verification code" : "طلب رمز التحقق",
     "Request verification link" : "طلب رابط التحقق",
