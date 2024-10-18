@@ -1,6 +1,8 @@
 OC.L10N.register(
     "registration",
     {
+    "Registration is not allowed with the following domains: %s" : "La registrazione non è consentita con i seguenti domini: %s",
+    "Registration is only allowed with the following domains: %s" : "La registrazione è consentita solo con i seguenti domini: %s",
     "A problem occurred sending email, please contact your administrator." : "Si è verificato un problema durante l'invio del messaggio, contatta il tuo amministratore.",
     "The entered verification code is wrong" : "Il codice di verifica inserito è errato",
     "The verification failed." : "La verifica non è riuscita.",
@@ -67,6 +69,7 @@ OC.L10N.register(
     "Show the blocked email domains to users" : "Mostra agli utenti i domini di posta bloccati",
     "Show the allowed email domains to users" : "Mostra agli utenti i domini di posta consentiti",
     "An error occurred while saving the settings" : "Si è verificato un errore durante il salvataggio delle impostazioni",
+    "Please create your username following the scheme " : "Si prega di creare il proprio nome utente seguendo lo schema",
     "Back to login" : "Torna alla schermata di accesso",
     "Email (optional)" : "Email (facoltativa)",
     "Email" : "Email",
