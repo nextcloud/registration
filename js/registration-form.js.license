@@ -28,6 +28,9 @@ This file is generated from multiple sources. Included packages:
 - semver
 	- version: 7.6.3
 	- license: ISC
+- debounce
+	- version: 2.1.1
+	- license: MIT
 - @nextcloud/vue
 	- version: 8.18.0
 	- license: AGPL-3.0-or-later
@@ -42,9 +45,6 @@ This file is generated from multiple sources. Included packages:
 	- license: MIT
 - css-loader
 	- version: 7.1.2
-	- license: MIT
-- debounce
-	- version: 2.1.1
 	- license: MIT
 - dompurify
 	- version: 3.1.6
