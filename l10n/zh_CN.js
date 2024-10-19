@@ -33,7 +33,7 @@ OC.L10N.register(
     "Unable to create user, there are problems with the user backend." : "无法创建用户，用户后端存在问题。",
     "Unable to set user email: " : "无法设置用户电子邮件：",
     "Registration app auto setup" : "注册应用自动设置",
-    "This app allows users to self-register a new account using their email address." : "这个应用程序允许用户使用他们的电子邮件地址自行注册一个新账户。 ",
+    "This app allows users to self-register a new account using their email address." : "这个应用程序允许用户使用他们的电子邮箱地址自行注册一个新账号。 ",
     "Registration settings" : "注册设置",
     "Registered users default group" : "注册用户默认组",
     "Select group" : "选择群组",
@@ -54,7 +54,7 @@ OC.L10N.register(
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language." : "警告：用户指令将不会被翻译，而是按照如下配置显示给所有用户，不管他们的实际语言是什么。",
     "Registration form instructions" : "注册表单说明 ",
     "A short message that is shown to the user in the registration process." : "在注册过程中显示给用户的简短消息。",
-    "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "添加额外的用户说明(例如选择他们的登录名)。如果已配置，则会在注册过程的“创建帐号”步骤中显示相应文本。",
+    "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process." : "添加额外的用户说明(例如选择他们的登录名称)。如果已配置，则会在注册过程的“创建账号”步骤中显示相应文本。",
     "Verification email instructions" : "验证邮件说明",
     "A short message that is shown to the user in the verification email." : "在验证电子邮件中显示给用户的简短消息。",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email." : "添加额外的用户说明(例如选择他们的登录名)。如果进行了配置，则文本将被嵌入验证邮件中。",
@@ -79,6 +79,6 @@ OC.L10N.register(
     "Verification code" : "验证码",
     "Verify" : "验证",
     "Approval required" : "需要批准",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "您的账户已创建成功，等待管理员审批中。"
+    "Your account has been successfully created, but it still needs approval from an administrator." : "你的账号已创建成功，等待管理员批准。"
 },
 "nplurals=1; plural=0;");
