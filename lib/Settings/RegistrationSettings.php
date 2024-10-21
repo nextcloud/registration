@@ -19,10 +19,12 @@ use OCP\Util;
 
 class RegistrationSettings implements ISettings {
 
-	public function __construct(protected string $appName,
+	public function __construct(
+		protected string $appName,
 		private IConfig $config,
 		private IGroupManager $groupManager,
-		private IInitialState $initialState) {
+		private IInitialState $initialState,
+	) {
 	}
 
 	public function getForm(): TemplateResponse {

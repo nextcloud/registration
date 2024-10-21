@@ -22,7 +22,7 @@ class LoginFlowService {
 	public function __construct(
 		protected IRequest $request,
 		protected ISession $session,
-		protected LoginFlowV2Service $loginFlowV2Service
+		protected LoginFlowV2Service $loginFlowV2Service,
 	) {
 	}
 

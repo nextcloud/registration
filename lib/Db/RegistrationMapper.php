@@ -18,7 +18,10 @@ use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
 
 class RegistrationMapper extends QBMapper {
-	public function __construct(IDBConnection $db, protected ISecureRandom $random) {
+	public function __construct(
+		IDBConnection $db,
+		protected ISecureRandom $random,
+	) {
 		parent::__construct($db, 'registration', Registration::class);
 	}
 

@@ -55,7 +55,7 @@ class RegistrationService {
 		private LoggerInterface $logger,
 		private ISession $session,
 		private IProvider $tokenProvider,
-		private ICrypto $crypto
+		private ICrypto $crypto,
 	) {
 	}
 

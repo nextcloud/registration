@@ -31,7 +31,8 @@ class MailService {
 		private IGroupManager $groupManager,
 		private IConfig $config,
 		private LoginFlowService $loginFlowService,
-		private LoggerInterface $logger) {
+		private LoggerInterface $logger,
+	) {
 	}
 
 	/**
@@ -130,7 +131,7 @@ class MailService {
 				try {
 					$this->sendNewUserNotifyEmail([$email => $adminUser->getDisplayName()], $userId, $userEMailAddress, $userIsEnabled, $language);
 				} catch (\Exception $e) {
-					$this->logger->error('Sending admin notification email failed: '. $e->getMessage());
+					$this->logger->error('Sending admin notification email failed: ' . $e->getMessage());
 				}
 			}
 		}

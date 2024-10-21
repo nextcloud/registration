@@ -13,7 +13,11 @@ use OCP\IUser;
 
 class PassedFormEvent extends AFormEvent {
 
-	public function __construct(string $step, string $registrationId = '', protected ?IUser $user = null) {
+	public function __construct(
+		string $step,
+		string $registrationId = '',
+		protected ?IUser $user = null,
+	) {
 		parent::__construct($step, $registrationId);
 	}
 

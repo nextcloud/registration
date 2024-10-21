@@ -11,7 +11,9 @@ use OCP\IURLGenerator;
 
 class Capabilities implements IPublicCapability {
 
-	public function __construct(private IURLGenerator $urlGenerator) {
+	public function __construct(
+		private IURLGenerator $urlGenerator,
+	) {
 	}
 
 	public function getCapabilities(): array {

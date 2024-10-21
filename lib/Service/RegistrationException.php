@@ -7,7 +7,11 @@
 namespace OCA\Registration\Service;
 
 class RegistrationException extends \Exception {
-	public function __construct(string $message, protected string $hint = '', int $code = 400) {
+	public function __construct(
+		string $message,
+		protected string $hint = '',
+		int $code = 400,
+	) {
 		parent::__construct($message, $code);
 	}
 
