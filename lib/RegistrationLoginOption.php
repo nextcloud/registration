@@ -14,7 +14,11 @@ use OCP\IURLGenerator;
 
 class RegistrationLoginOption implements IAlternativeLogin {
 
-	public function __construct(protected IURLGenerator $url, protected IL10N $l, protected \OC_Defaults $theming) {
+	public function __construct(
+		protected IURLGenerator $url,
+		protected IL10N $l,
+		protected \OC_Defaults $theming,
+	) {
 	}
 
 	public function getLabel(): string {

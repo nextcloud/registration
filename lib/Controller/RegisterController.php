@@ -58,7 +58,7 @@ class RegisterController extends Controller {
 		LoginFlowService $loginFlowService,
 		MailService $mailService,
 		IEventDispatcher $eventDispatcher,
-		IInitialState $initialState
+		IInitialState $initialState,
 	) {
 		parent::__construct($appName, $request);
 		$this->l10n = $l10n;

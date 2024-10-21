@@ -15,7 +15,10 @@ use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
 class RegistrationSettingsSection implements IIconSection {
-	public function __construct(private IL10N $l10n, private IURLGenerator $urlGenerator) {
+	public function __construct(
+		private IL10N $l10n,
+		private IURLGenerator $urlGenerator,
+	) {
 	}
 
 	/**

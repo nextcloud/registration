@@ -16,7 +16,10 @@ abstract class AFormEvent extends Event {
 	public const STEP_VERIFICATION = 'verification';
 	public const STEP_USER = 'user';
 
-	public function __construct(protected string $step, protected string $registrationId = '') {
+	public function __construct(
+		protected string $step,
+		protected string $registrationId = '',
+	) {
 		parent::__construct();
 	}
 

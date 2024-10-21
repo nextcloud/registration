@@ -17,8 +17,10 @@ use OCP\User\Events\UserChangedEvent;
 
 class UserEnabledListener implements IEventListener {
 
-	public function __construct(private IConfig $config,
-		private RegistrationService $registrationService) {
+	public function __construct(
+		private IConfig $config,
+		private RegistrationService $registrationService,
+	) {
 	}
 
 	public function handle(Event $event): void {
