@@ -6,6 +6,7 @@ OC.L10N.register(
     "A problem occurred sending email, please contact your administrator." : "Виникла проблема із відправленням листа, зверніться, будь ласка, до адміністратора.",
     "The entered verification code is wrong" : "Введено неправильний код верифікації ",
     "The verification failed." : "Невдала верифікація.",
+    "Invalid username policy regex" : "Недійсний регулярний вираз для політики щодо імен користувача",
     "Saved" : "Збережено",
     "No such group" : "Такої групи не існує.",
     "Register" : "Зареєструватися",
