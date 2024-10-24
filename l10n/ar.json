@@ -1,7 +1,7 @@
 { "translations": {
     "Registration is not allowed with the following domains: %s" : "التسجيل غير مسموحٍ بالنسبة للنطاقات التالية: %s",
     "Registration is only allowed with the following domains: %s" : "التسجيل مسموحٌ فقط للنطاقات التالية: %s",
-    "A problem occurred sending email, please contact your administrator." : ".حدث خطأ اثناء إرسال البريد. يُرجى التواصل مع مشرف النظام.",
+    "A problem occurred sending email, please contact your administrator." : ".حدث خطأ اثناء إرسال البريد. يُرجى التواصل مع مسؤول النظام.",
     "The entered verification code is wrong" : "رمز التحقق المدخل غير صحيح",
     "The verification failed." : "فشل التحقُّق.",
     "Invalid username policy regex" : "التعبير النمطي RegEx لسياسة اسم المستخدم غير صالح",
@@ -37,7 +37,7 @@
     "This app allows users to self-register a new account using their email address." : "هذا التطبيق يسمح للمستخدم بتسجيل حسابٍ جديدٍ بنفسه باستعمال عنوان إيميله.",
     "User registration\n\nThis app allows users to register a new account.\n\n# Features\n\n- Add users to a given group\n- Allow-list with email domains (including wildcard) to register with\n- Administrator will be notified via email for new user creation or require approval\n- Supports Nextcloud's Client Login Flow v1 and v2 - allowing registration in the mobile Apps and Desktop clients\n\n# Web form registration flow\n\n1. User enters their email address\n2. Verification link is sent to the email address\n3. User clicks on the verification link\n4. User is lead to a form where they can choose their username and password\n5. New account is created and is logged in automatically" : "تسجيل المستخدم \nيتيح هذا التطبيق للمستخدم تسجيل حساب جديد \n\n# الميزات \n- إضافة مستخدمين إلى مجموعة معينة \n- تعيين قائمة نطاقات البريد الإلكتروني المسموحة للتسجيل (مع إمكانية استخدام رموز الشمول wildcards)\n- سيتم إخطار المسؤول عبر البريد الإلكتروني لإنشاء مستخدم جديد أو طلب الموافقة \n- يدعم الإصدارين v1 و v2 من \"أتمتة سير عمل عملية دخول العميل\" Client Login Flow لنكست كلاود \n- مما يسمح بالتسجيل في تطبيقات الأجهزة المحمولة وعملاء سطح المكتب \n\n# آلية سير عمل نموذج الويب الخاص بالتسجيل\n1. يقوم المستخدم بإدخال عنوان بريده الإلكتروني \n2. يتم إرسال رابط التحقق إلى عنوان البريد الإلكتروني \n3. ينقر المستخدم على رابط التحقق \n4. يتم توجيه المستخدم إلى نموذج حيث يمكنهم اختيار اسم المستخدم وكلمة المرور الخاصة بهم \n5. يتم إنشاء حساب جديد ويتم تسجيل الدخول إليه تلقائيًا.",
     "Registration settings" : "إعدادات التسجيل",
-    "Require administrator approval" : "تحتاج إلى موافقة المُشرف",
+    "Require administrator approval" : "تحتاج إلى موافقة المدير",
     "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "سيؤدي تمكين \"موافقة المسؤول\" administrator approva إلى منع عمليات التسجيل من عملاء clients الأجهزة المحمولة و سطح المكتب من الاكتمال بسبب أن العميل سيتعذر عليه التحقّق من حيثيّات الدخول حتى يتمّ تمكين المستخدم.",
     "Registered users default group" : "مجموعة الافتراضية للاعضاء المسجلين",
     "Select group" : "إختر مجموعةً",
