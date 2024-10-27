@@ -81,7 +81,7 @@ OC.L10N.register(
     "Full name" : "الاسم الكامل",
     "Phone number" : "رقم الجوال",
     "Password" : "كلمة المرور",
-    "Loading" : "جاري التحميل",
+    "Loading" : "التحميل جارٍ",
     "Create account" : "إنشاء حساب",
     "Verification code" : "رمز التحقق",
     "Verify" : "تحقق",
