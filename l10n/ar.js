@@ -22,7 +22,7 @@ OC.L10N.register(
     "no email address given" : "لم يتم إعطاء أيّ عنوان إيميل",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) سجّل مستخدماً جديداً في %3$s.",
     "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) سجّل مستخدماً جديداً في %3$s و يحتاج إلى تمكينه.",
-    "Enable now" : "فَعِّل الآن",
+    "Enable now" : "تفعيل الآن",
     "A user has already taken this email, maybe you already have an account?" : "مستخدم آخر قام بإستخدام هذا الإيمل. ربما كان لديك حساب من قبلُ؟",
     "You can <a href=\"%s\">log in now</a>." : "بإمكانك <a href=\"%s\">تسجيل الدخول الآن</a>.",
     "Registration with this email domain is not allowed." : "التسجيل عبر نطاق الإيميل هذا غير مسموح.",
