@@ -26,6 +26,7 @@ OC.L10N.register(
     "Registration app auto setup" : "Registrering app automatisk setup",
     "Registered users default group" : "Regisrerede brugeres standard gruppe",
     "Block listed email domains instead of allowing them" : "Bloker listede email domæner istedet for at tillade dem",
+    "User settings" : "Brugerindstillinger",
     "Force email as login name" : "Gennemtving email som logonnavn",
     "Allowed email domains" : "Tilladte email domæner",
     "Back to login" : "Tilbage til log in",
