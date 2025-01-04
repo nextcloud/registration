@@ -67,6 +67,7 @@
     "Show the blocked email domains to users" : "Pokaż zablokowane domeny e-mail użytkownikom",
     "Show the allowed email domains to users" : "Pokaż dozwolone domeny e-mail użytkownikom",
     "An error occurred while saving the settings" : "Wystąpił błąd podczas zapisywania ustawień",
+    "Please create your username following the scheme " : "Utwórz swoją nazwę użytkownika zgodnie ze schematem",
     "Back to login" : "Powrót do logowania",
     "Email (optional)" : "E-mail (opcjonalnie)",
     "Email" : "E-mail",
