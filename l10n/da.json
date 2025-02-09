@@ -22,6 +22,7 @@
     "Unable to create user, there are problems with the user backend." : "Kan ikke oprette bruger, der er problemer med bruger backend.",
     "Unable to set user email: " : "Kan ikke oprette bruger e-mail:",
     "Registration app auto setup" : "Registrerings app automatisk opsætning",
+    "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "Aktivering af \"administrator godkendelse\" vil forhindre at registreringer fra mobil- og desktopklienter gennemføres, da legitimationsoplysningerne ikke kan verificeres af klienten før brugeren er aktiveret.",
     "Registered users default group" : "Regisrerede brugeres standardgruppe",
     "Block listed email domains instead of allowing them" : "Bloker listede e-maildomæner i stedet for at tillade dem",
     "User settings" : "Brugerindstillinger",
