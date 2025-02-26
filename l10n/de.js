@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Registration is not allowed with the following domains: %s" : "Die Registrierung ist für folgende Domains nicht zulässig: %s",
     "Registration is only allowed with the following domains: %s" : "Die Registrierung ist nur für folgende Domains zulässig: %s",
-    "A problem occurred sending email, please contact your administrator." : "Es ist ein Fehler beim Senden der E-Mail aufgetreten. Bitte den Administrator kontaktieren.",
+    "A problem occurred sending email, please contact your administrator." : "Es ist ein Fehler beim Senden der E-Mail aufgetreten. Bitte die Administration kontaktieren.",
     "The entered verification code is wrong" : "Der eingegebene Überprüfungscode ist falsch",
     "The verification failed." : "Die Überprüfung ist fehlgeschlagen.",
     "Invalid username policy regex" : "ungültiger regulärer Ausdruck für die Benutzernamen-Richtlinie",
