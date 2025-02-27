@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Saved" : "Salvestatud",
     "Register" : "Registreeru",
-    "Back to login" : "Tagasi sisse logima",
     "Email" : "Epost",
     "Continue" : "Jätka",
+    "Back to login" : "Tagasi sisse logima",
     "Full name" : "Täisnimi",
     "Phone number" : "Telefoninumber",
     "Password" : "Parool",

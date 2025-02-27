@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Saved" : "Bewaar",
     "Register" : "Registreer",
-    "Back to login" : "Terug na aanmelding",
     "Email" : "E-pos",
     "Continue" : "Gaan voort",
+    "Back to login" : "Terug na aanmelding",
     "Full name" : "Volle naam",
     "Phone number" : "Telefoonnommer",
     "Password" : "Wagwoord",

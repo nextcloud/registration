@@ -1,9 +1,9 @@
 OC.L10N.register(
     "registration",
     {
-    "Back to login" : "Uγal γer unekcum",
     "Email" : "Imayl",
     "Continue" : "Continuer",
+    "Back to login" : "Uγal γer unekcum",
     "Full name" : "Isem inek ummid",
     "Phone number" : "Uṭṭun n tiliɣri",
     "Password" : "Awal uffir"
