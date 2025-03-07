@@ -28,6 +28,7 @@ OC.L10N.register(
     "Allowed email domains" : "Επιτρεπόμενοι τομείς διευθύνσεων ηλεκτρονικής αλληλογραφίας",
     "Registration settings" : "Ρυθμίσεις εγγραφής",
     "Registered users default group" : "Προεπιλεγμένη ομάδα εγγεγραμμένων χρηστών",
+    "Select group" : "Επιλογή ομάδας",
     "Email settings" : "Ρυθμίσεις email",
     "Block listed email domains instead of allowing them" : "Αποκλεισμός καταχωρημένων τομέων email αντί να τους επιτρέπεται.",
     "User settings" : "Ρυθμίσεις χρήστη",
