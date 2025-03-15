@@ -4,6 +4,7 @@ OC.L10N.register(
     "Saved" : "Saved",
     "Email" : "Email",
     "Continue" : "Continue",
+    "Back to login" : "Kirishga qaytish",
     "Full name" : "Full name",
     "Password" : "Password",
     "Loading" : "Loading",
