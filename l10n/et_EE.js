@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Salvestatud",
     "Register" : "Registreeru",
+    "User settings" : "Kasutaja seadistused",
     "Email" : "Epost",
     "Continue" : "Jätka",
     "Back to login" : "Tagasi sisse logima",
