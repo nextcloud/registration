@@ -97,7 +97,7 @@ class RegistrationSettings implements ISettings {
 		);
 
 		Util::addScript('registration', 'registration-settings');
-		Util::addStyle('registration', 'settings');
+		Util::addStyle('registration', 'registration-settings');
 
 		return new TemplateResponse('registration', 'admin', [], TemplateResponse::RENDER_AS_BLANK);
 	}
