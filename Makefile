@@ -49,16 +49,16 @@ appstore:
 	--exclude=.php_cs.dist \
 	--exclude=.php_cs.cache \
 	--exclude=README.md \
+	--exclude=REUSE.toml \
 	--exclude=src \
 	--exclude=.stylelintignore \
-	--exclude=stylelint.config.js \
+	--exclude=stylelint.config.cjs \
 	--exclude=.travis.yml \
 	--exclude=.tx \
 	--exclude=TESTING.md \
 	--exclude=tests \
 	--exclude=vendor \
-	--exclude=webpack.*.js \
-	--exclude=webpack.js \
+	--exclude=vite.config.js \
 	$(project_dir)/  $(sign_dir)/$(app_name)
 	@if [ -f $(cert_dir)/$(app_name).key ]; then \
 		echo "Signing app files…"; \
