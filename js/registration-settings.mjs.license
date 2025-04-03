@@ -1,0 +1,95 @@
+SPDX-License-Identifier: AGPL-3.0-or-later
+SPDX-License-Identifier: BSD-3-Clause
+SPDX-License-Identifier: GPL-3.0-or-later
+SPDX-License-Identifier: MIT
+SPDX-FileCopyrightText: @nextcloud/dialogs developers
+SPDX-FileCopyrightText: Anthony Fu <anthonyfu117@hotmail.com>
+SPDX-FileCopyrightText: Anthony Fu <https://github.com/antfu>
+SPDX-FileCopyrightText: David Clark
+SPDX-FileCopyrightText: Eric Norris (https://github.com/ericnorris)
+SPDX-FileCopyrightText: Feross Aboukhadijeh
+SPDX-FileCopyrightText: Guillaume Chau <guillaume.b.chau@gmail.com>
+SPDX-FileCopyrightText: Jacob Clevenger<https://github.com/wheatjs>
+SPDX-FileCopyrightText: James Halliday
+SPDX-FileCopyrightText: Jeff Sagal <sagalbot@gmail.com>
+SPDX-FileCopyrightText: John Molakvoæ (skjnldsv) <skjnldsv@protonmail.com>
+SPDX-FileCopyrightText: Paul Vorbach <paul@vorb.de> (http://vorb.de)
+SPDX-FileCopyrightText: Paul Vorbach <paul@vorba.ch> (http://paul.vorba.ch)
+SPDX-FileCopyrightText: Roeland Jago Douma
+SPDX-FileCopyrightText: Varun A P
+SPDX-FileCopyrightText: atomiks
+SPDX-FileCopyrightText: registration developers
+
+This file is generated from multiple sources. Included packages:
+- @floating-ui/core
+	- version: 0.3.1
+	- license: MIT
+- @floating-ui/core
+	- version: 1.6.9
+	- license: MIT
+- @floating-ui/dom
+	- version: 0.1.10
+	- license: MIT
+- @floating-ui/dom
+	- version: 1.6.13
+	- license: MIT
+- @floating-ui/utils
+	- version: 0.2.9
+	- license: MIT
+- @nextcloud/capabilities
+	- version: 1.2.0
+	- license: GPL-3.0-or-later
+- @nextcloud/dialogs
+	- version: 6.1.1
+	- license: AGPL-3.0-or-later
+- @nextcloud/vue
+	- version: 8.24.0
+	- license: AGPL-3.0-or-later
+- @nextcloud/vue-select
+	- version: 3.25.1
+	- license: MIT
+- @vueuse/components
+	- version: 11.3.0
+	- license: MIT
+- @vueuse/core
+	- version: 11.3.0
+	- license: MIT
+- @vueuse/shared
+	- version: 11.3.0
+	- license: MIT
+- charenc
+	- version: 0.0.2
+	- license: BSD-3-Clause
+- crypt
+	- version: 0.0.2
+	- license: BSD-3-Clause
+- floating-vue
+	- version: 1.0.0-beta.19
+	- license: MIT
+- focus-trap
+	- version: 7.6.4
+	- license: MIT
+- is-buffer
+	- version: 1.1.6
+	- license: MIT
+- md5
+	- version: 2.3.0
+	- license: BSD-3-Clause
+- path-browserify
+	- version: 1.0.1
+	- license: MIT
+- registration
+	- version: 2.6.0
+	- license: AGPL-3.0-or-later
+- striptags
+	- version: 3.2.0
+	- license: MIT
+- tabbable
+	- version: 6.2.0
+	- license: MIT
+- toastify-js
+	- version: 1.12.0
+	- license: MIT
+- vue-demi
+	- version: 0.14.10
+	- license: MIT

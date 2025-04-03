@@ -40,3 +40,9 @@ path = ["js/registration-data_image_svg_xml_3c_21--_20-_20SPDX-FileCopyrightText
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2020 Google LLC"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "css/**.css"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"

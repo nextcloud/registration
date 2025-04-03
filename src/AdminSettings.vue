@@ -315,6 +315,8 @@ p {
 	label {
 		display: block;
 	}
+
+	margin-top: 15px;
 }
 
 .indent {
@@ -325,4 +327,13 @@ p {
 	margin-top: 1rem;
 }
 
+input,
+select {
+	width: 33%;
+	min-width: 250px;
+}
+
+h3 {
+	margin-top: 25px;
+}
 </style>

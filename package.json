@@ -4,15 +4,15 @@
   "description": "",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress --config webpack.js",
-    "postbuild": "build-js/npm-post-build.sh",
-    "dev": "NODE_ENV=development webpack --progress --config webpack.js",
-    "watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
+    "build": "vite build --mode=production",
+    "dev": "vite build --mode=development",
+    "watch": "vite build --mode=development --watch",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
-    "stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
-    "stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
+    "stylelint": "stylelint src/**/*.scss src/**/*.vue",
+    "stylelint:fix": "stylelint src/**/*.scss src/**/*.vue --fix"
   },
+  "type": "module",
   "dependencies": {
     "@nextcloud/auth": "^2.0.0",
     "@nextcloud/axios": "^2.1.0",
@@ -33,10 +33,9 @@
     "npm": "^10.0.0"
   },
   "devDependencies": {
-    "@nextcloud/babel-config": "^1.0.0-beta.1",
     "@nextcloud/browserslist-config": "^3.0.0",
     "@nextcloud/eslint-config": "^8.1.2",
     "@nextcloud/stylelint-config": "^3.0.0",
-    "@nextcloud/webpack-vue-config": "^6.0.0"
+    "@nextcloud/vite-config": "^1.5.3"
   }
 }
