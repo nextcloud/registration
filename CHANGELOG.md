@@ -6,6 +6,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 2.7.0 - 2025-04-03
+
+### Changed
+
+- Front-end build system from Webpack to Vite
+
+### Fixed
+
+- Installation issues with symlinked licence files
+
 ## 2.6.0 - 2025-02-05
 
 ### Added
