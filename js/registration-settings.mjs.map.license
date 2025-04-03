@@ -79,7 +79,7 @@ This file is generated from multiple sources. Included packages:
 	- version: 1.0.1
 	- license: MIT
 - registration
-	- version: 2.6.0
+	- version: 2.7.0
 	- license: AGPL-3.0-or-later
 - striptags
 	- version: 3.2.0
