@@ -36,6 +36,6 @@
     "@nextcloud/browserslist-config": "^3.0.0",
     "@nextcloud/eslint-config": "^8.1.2",
     "@nextcloud/stylelint-config": "^3.0.0",
-    "@nextcloud/vite-config": "^1.5.3"
+    "@nextcloud/vite-config": "^2.3.2"
   }
 }
