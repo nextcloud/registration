@@ -49,7 +49,7 @@ OC.L10N.register(
     "Email is optional" : "Електронна адреса необов'язкова",
     "Block listed email domains instead of allowing them" : "Заблокувати перелічені домени електронної адреси замість надання дозволу",
     "Disable email verification" : "Вимкнути верифікацію за електронною адресою",
-    "User settings" : "Користувацькі налаштування",
+    "User settings" : "Налаштування користувача",
     "Force email as login name" : "Примусово зробити електронну адресу логіном ",
     "Login name policy" : "Політика щодо імен для входу (логінів)",
     "Regular expression to validate login names" : "Регулярний вираз для перевірки імен для входу (логінів)",
