@@ -82,7 +82,7 @@ OC.L10N.register(
     "Phone number" : "Telefonnummer",
     "Password" : "Passwort",
     "Loading" : "Lade",
-    "Create account" : "Benutzerkonto erstellen",
+    "Create account" : "Konto erstellen",
     "Verification code" : "Überprüfungscode",
     "Verify" : "Überprüfen",
     "Approval required" : "Genehmigung erforderlich",
