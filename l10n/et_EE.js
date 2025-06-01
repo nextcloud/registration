@@ -20,7 +20,7 @@ OC.L10N.register(
     "New user \"%s\" has created an account on %s" : "Serveris %s on registreeritud uus kasutajakonto „%s“",
     "New user registered" : "Uus kasutaja on registreeritud",
     "no email address given" : "e-posti aadressi pole lisatud",
-    "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s“ (%2$s) registreeris uue kasutajakonto %3$s serveris.",
+    "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s“ (%2$s) registreeris uue kasutajakonto teenuses %3$s.",
     "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "„%1$s“ (%2$s) registreeris uue kasutajakonto %3$s serveris ja see vajab sinupoolset kinnitamist.",
     "Enable now" : "Kinnita kohe",
     "A user has already taken this email, maybe you already have an account?" : "Ühel kasutajal juba on selline e-posti aadress kirjeldatud. Võib-olla on sul juba kasutajakonto olemas?",
