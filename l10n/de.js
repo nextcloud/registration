@@ -23,7 +23,7 @@ OC.L10N.register(
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) hat ein neues Konto auf %3$s erstellt.",
     "\"%1$s\" (%2$s) registered a new account on %3$s and needs to be enabled." : "\"%1$s\" (%2$s) hat ein neues Konto auf %3$s erstellt und muss freigeschaltet werden.",
     "Enable now" : "Jetzt aktivieren",
-    "A user has already taken this email, maybe you already have an account?" : "Ein Benutzer hat diese E-Mail bereits verwendet. Hast du vielleicht schon ein Konto?",
+    "A user has already taken this email, maybe you already have an account?" : "Ein Benutzer hat diese E-Mailadresse bereits verwendet. Hast du vielleicht schon ein Konto?",
     "You can <a href=\"%s\">log in now</a>." : "Du kannst dich nun <a href=\"%s\">Anmelden</a>.",
     "Registration with this email domain is not allowed." : "Die Registrierung mit dieser E-Mail-Domain ist nicht erlaubt.",
     "Please provide a valid display name." : "Bitte gib einen gültigen Anzeigenamen an.",
