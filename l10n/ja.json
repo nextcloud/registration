@@ -67,6 +67,7 @@
     "Verification email instructions" : "メールアドレスの確認手順",
     "A short message that is shown to the user in the verification email." : "メールアドレスの確認メールに表示される短いメッセージです。",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email." : "追加のユーザーへの手順(例: ユーザー名を選択するには、など)を追加できます。設定されている場合、確認メールに埋め込まれます。",
+    "Please create your username following the scheme " : "以下のスキームに従ってユーザー名を作成してください",
     "Email (optional)" : "メールアドレス(任意)",
     "Email" : "メール",
     "Continue" : "続ける",
