@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Saved" : "Imehifadhiwa",
     "Register" : "Sajiri",
     "Email" : "Barua pepe",
     "Continue" : "Endelea",
