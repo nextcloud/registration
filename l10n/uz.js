@@ -4,7 +4,7 @@ OC.L10N.register(
     "Saved" : "Saved",
     "Register" : "Roʻyxatdan oʻtish",
     "Email" : "Email",
-    "Continue" : "Continue",
+    "Continue" : "Davom etish",
     "Back to login" : "Kirishga qaytish",
     "Full name" : "Full name",
     "Password" : "Password",
