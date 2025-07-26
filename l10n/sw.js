@@ -9,6 +9,7 @@ OC.L10N.register(
     "Full name" : "Jina kamili",
     "Phone number" : "Namba ya simu",
     "Password" : "Nenosiri",
+    "Loading" : "Loading",
     "Verify" : "Thibitisha"
 },
 "nplurals=2; plural=(n != 1);");
