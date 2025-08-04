@@ -41,7 +41,7 @@ OC.L10N.register(
     "Blocked email domains" : "Blokerede e-maildomæner",
     "Allowed email domains" : "Tilladte e-maildomæner",
     "Show the blocked email domains to users" : "Vis brugerne de blokerede e-maildomæner",
-    "Show the allowed email domains to users" : "Vis brugerne de tilladte e-maildomæner",
+    "Show the allowed email domains to users" : "Vis brugerne de tilladte e-mail domæner",
     "An error occurred while saving the settings" : "Der opstod en fejl under ændring af indstillingerne.",
     "Registration settings" : "Indstillinger for registrering",
     "Require administrator approval" : "Kræv administratorgodkendelse",
