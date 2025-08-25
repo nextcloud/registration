@@ -4,6 +4,7 @@ OC.L10N.register(
     "Saved" : "Захавана",
     "Email" : "Электронная пошта",
     "Continue" : "Працягнуць",
+    "Back to login" : "Назад да формы ўваходу",
     "Full name" : "Поўнае імя",
     "Phone number" : "Нумар тэлефона",
     "Password" : "Пароль",
