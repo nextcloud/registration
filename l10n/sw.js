@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Imehifadhiwa",
     "Register" : "Sajiri",
+    "User settings" : "User settings",
     "Email" : "Barua pepe",
     "Continue" : "Endelea",
     "Back to login" : "Rudi kwenye uingiaji",
