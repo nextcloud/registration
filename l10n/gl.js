@@ -31,7 +31,7 @@ OC.L10N.register(
     "The login name you have chosen already exists." : "O nome de acceso que escolleu xa existe.",
     "The phone number needs to contain the country code." : "O número de teléfono debe conter o código do país.",
     "The phone number is invalid." : "O número de teléfono non é válido.",
-    "Please provide a password." : "Por favor, proporcione un contrasinal.",
+    "Please provide a password." : "Forneza un contrasinal.",
     "Please provide a valid phone number." : "Proporcione un número de teléfono válido.",
     "Unable to create user, there are problems with the user backend." : "Non é posíbel crear o usuario, hai problemas coa infraestrutura do usuario.",
     "Unable to set user email: " : "Non é posíbel definir o correo-e do usuario:",
