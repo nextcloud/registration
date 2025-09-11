@@ -1,6 +1,6 @@
 {
   "name": "registration",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "",
   "license": "AGPL-3.0-or-later",
   "scripts": {
@@ -17,7 +17,7 @@
     "@nextcloud/auth": "^2.0.0",
     "@nextcloud/axios": "^2.1.0",
     "@nextcloud/dialogs": "^6.0.1",
-    "@nextcloud/initial-state": "^2.0.0",
+    "@nextcloud/initial-state": "^3.0.0",
     "@nextcloud/router": "^3.0.0",
     "@nextcloud/vue": "^8.0.1",
     "debounce": "^2.0.0",
