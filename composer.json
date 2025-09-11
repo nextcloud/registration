@@ -12,18 +12,26 @@
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
 		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -not -path './tests/integration/vendor/*' -print0 | xargs -0 -n1 php -l",
-		"test:unit": "vendor/bin/phpunit -c tests/phpunit.xml"
+		"test:unit": "vendor/bin/phpunit -c tests/phpunit.xml",
+		"post-install-cmd": [
+			"@composer bin all install --ansi"
+		],
+		"post-update-cmd": [
+			"@composer bin all install --ansi"
+		]
 	},
 	"config": {
 		"optimize-autoloader": true,
 		"classmap-authoritative": true,
 		"platform": {
-			"php": "8.0.2"
+			"php": "8.1"
+		},
+		"allow-plugins": {
+			"bamarni/composer-bin-plugin": true
 		}
 	},
-	"require-dev": {
-		"phpunit/phpunit": "^9.5",
-		"nextcloud/coding-standard": "^1.0.0",
-		"christophwurst/nextcloud_testing": "^1.0.0"
+	"require": {
+		"php": ">= 8.1 <=8.4",
+		"bamarni/composer-bin-plugin": "^1.8"
 	}
 }
