@@ -19,8 +19,8 @@ class Capabilities implements IPublicCapability {
 
 	public function getCapabilities(): array {
 		return [
-			'registration' =>
-			[
+			'registration'
+			=> [
 				'enabled' => true,
 				'apiRoot' => $this->urlGenerator->linkTo(
 					'', 'ocs/v2.php/apps/registration/api/v1/'),

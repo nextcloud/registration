@@ -134,14 +134,21 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame('form/email', $response->getTemplateName());
 
 		self::assertSame([], $response->getParams());
+
+		$expectedCalls = [
+			['email', $email],
+			['message', $message],
+			['email_is_optional', $email_is_optional],
+			['disable_email_verification', $disable_email_verification],
+			['is_login_flow', false]
+		];
+		$i = 0;
+
 		$this->initialState->method('provideInitialState')
-			->withConsecutive(
-				['email', $email],
-				['message', $message],
-				['email_is_optional', $email_is_optional],
-				['disable_email_verification', $disable_email_verification],
-				['is_login_flow', false],
-			);
+			->willReturnCallback(function () use ($expectedCalls, &$i) {
+				$this->assertEquals($expectedCalls[$i], func_get_args());
+				$i++;
+			});
 	}
 
 	public function testSubmitEmailForm(): void {
@@ -470,22 +477,28 @@ class RegisterControllerTest extends TestCase {
 
 		self::assertSame([], $response->getParams());
 
+		$expectedCalls = [
+			['email', $email],
+			['email_is_login', false],
+			['email_is_optional', false],
+			['loginname', $username],
+			['fullname', $fullname],
+			['show_fullname', true],
+			['enforce_fullname', false],
+			['phone', $phone],
+			['show_phone', true],
+			['enforce_phone', false],
+			['message', $message],
+			['password', $password],
+			['additional_hint', null],
+		];
+		$i = 0;
+
 		$this->initialState->method('provideInitialState')
-			->withConsecutive(
-				['email', $email],
-				['email_is_login', false],
-				['email_is_optional', false],
-				['loginname', $username],
-				['fullname', $fullname],
-				['show_fullname', true],
-				['enforce_fullname', false],
-				['phone', $phone],
-				['show_phone', true],
-				['enforce_phone', false],
-				['message', $message],
-				['password', $password],
-				['additional_hint', null],
-			);
+			->willReturnCallback(function () use ($expectedCalls, &$i) {
+				$this->assertEquals($expectedCalls[$i], func_get_args());
+				$i++;
+			});
 	}
 
 	public function testShowUserFormInvalidSecretAndToken(): void {
@@ -744,8 +757,10 @@ class RegisterControllerTest extends TestCase {
 			->with($username, $username, $password);
 
 		$this->loginFlowService->method('isUsingLoginFlow')
-			->withConsecutive([2], [1])
-			->willReturnOnConsecutiveCalls(false, true);
+			->willReturnMap([
+				[2, false],
+				[1, true]
+			]);
 
 		$response = $this->createMock(RedirectResponse::class);
 		$response->method('getStatus')
