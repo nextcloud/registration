@@ -2,6 +2,7 @@ OC.L10N.register(
     "registration",
     {
     "Saved" : "Захавана",
+    "Please provide a valid display name." : "Увядзіце сапраўднае імя для паказу.",
     "Email" : "Электронная пошта",
     "Continue" : "Працягнуць",
     "Back to login" : "Назад да формы ўваходу",
