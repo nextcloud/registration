@@ -42,8 +42,8 @@
     "Show the allowed email domains to users" : "Erlaubte E-Mail-Domänen für Benutzer anzeigen",
     "An error occurred while saving the settings" : "Es ist ein Fehler beim Speichern der Einstellungen aufgetreten",
     "Registration settings" : "Einstellungen für die Registrierung",
-    "Require administrator approval" : "Genehmigung durch Administrator erforderlich",
-    "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "Die Aktivierung von \"Genehmigung durch Administrator\" verhindert, dass Registrierungen von mobilen und Desktop-Clients abgeschlossen werden können, da die Anmeldedaten vom Client nicht überprüft werden können, bevor der Benutzer aktiviert wurde.",
+    "Require administrator approval" : "Genehmigung durch die Administration erforderlich",
+    "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "Die Aktivierung von \"Genehmigung durch die Administration\" verhindert, dass Registrierungen von mobilen und Desktop-Clients abgeschlossen werden können, da die Anmeldedaten vom Client nicht überprüft werden können, bevor der Benutzer aktiviert wurde.",
     "Registered users default group" : "Standardgruppe für registrierte Benutzer",
     "Select group" : "Gruppe auswählen",
     "Email settings" : "E-Mail-Einstellungen",
@@ -84,6 +84,6 @@
     "Verification code" : "Überprüfungscode",
     "Verify" : "Überprüfen",
     "Approval required" : "Genehmigung erforderlich",
-    "Your account has been successfully created, but it still needs approval from an administrator." : "Dein Konto wurde erstellt, muss aber noch von einem Administrator genehmigt werden."
+    "Your account has been successfully created, but it still needs approval from an administrator." : "Dein Konto wurde erstellt, muss aber noch von der Administration genehmigt werden."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
