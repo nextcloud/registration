@@ -13,7 +13,7 @@ OC.L10N.register(
     "The email address you entered is not valid" : "Die eingegebene E-Mail-Adresse ist ungültig",
     "Verify your %s registration request" : "Bestätige deine %s Registrierungsanfrage",
     "Registration" : "Registrierung",
-    "Email address verified, you can now complete your registration." : "Die E-Mailadresse wurde verifiziert, du kannst nun deine Registrierung abschließen.",
+    "Email address verified, you can now complete your registration." : "Die E-Mail-Adresse wurde verifiziert, du kannst nun deine Registrierung abschließen.",
     "Click the button below to continue." : "Zum Fortsetzen auf die untenstehende Schaltfläche klicken.",
     "Verification code: %s" : "Überprüfungscode: %s",
     "Continue registration" : "Registrierung fortsetzen",
