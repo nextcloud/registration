@@ -18,6 +18,7 @@ SPDX-FileCopyrightText: Paul Vorbach <paul@vorba.ch> (http://paul.vorba.ch)
 SPDX-FileCopyrightText: Roeland Jago Douma
 SPDX-FileCopyrightText: Varun A P
 SPDX-FileCopyrightText: atomiks
+SPDX-FileCopyrightText: debounce developers
 SPDX-FileCopyrightText: registration developers
 
 This file is generated from multiple sources. Included packages:
@@ -63,6 +64,9 @@ This file is generated from multiple sources. Included packages:
 - crypt
 	- version: 0.0.2
 	- license: BSD-3-Clause
+- debounce
+	- version: 3.0.0
+	- license: MIT
 - floating-vue
 	- version: 1.0.0-beta.19
 	- license: MIT

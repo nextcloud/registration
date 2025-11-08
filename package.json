@@ -20,7 +20,7 @@
     "@nextcloud/initial-state": "^3.0.0",
     "@nextcloud/router": "^3.0.0",
     "@nextcloud/vue": "^8.0.1",
-    "debounce": "^2.0.0",
+    "debounce": "^3.0.0",
     "vue": "^2.7.15",
     "vue-material-design-icons": "^5.1.2",
     "vue-template-compiler": "^2.7.15"
