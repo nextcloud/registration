@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Register" : "ລົງທະບຽນ",
     "Email" : "ອິເມວ",
     "Continue" : "ສືບຕໍ່",
     "Back to login" : "ກັບຄືນເຂົ້າສູ່ລະບົບ",
