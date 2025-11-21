@@ -11,6 +11,7 @@ OC.L10N.register(
     "Phone number" : "ເບີໂທລະສັບ",
     "Password" : "ລະຫັດຜ່ານ",
     "Loading" : "ການໂຫຼດ",
+    "Create account" : "ສ້າງບັນຊີ",
     "Verify" : "Verify"
 },
 "nplurals=1; plural=0;");
