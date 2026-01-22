@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Disimpan",
     "Register" : "Daftar",
+    "User settings" : "Pengaturan pengguna",
     "Email" : "Email",
     "Continue" : "Lanjutkan",
     "Back to login" : "Kembali ke log masuk",
