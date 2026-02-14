@@ -27,6 +27,7 @@ use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use OCP\IUser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class RegisterControllerTest extends TestCase {
@@ -106,18 +107,14 @@ class RegisterControllerTest extends TestCase {
 			->getMock();
 	}
 
-	public function dataShowEmailForm(): array {
+	public static function dataShowEmailForm(): array {
 		return [
 			['', ''],
 			['test@example.tld', 'Registration is only allowed for the following domains: nextcloud.com'],
 		];
 	}
 
-	/**
-	 * @dataProvider dataShowEmailForm
-	 * @param string $email
-	 * @param string $message
-	 */
+	#[DataProvider('dataShowEmailForm')]
 	public function testShowEmailForm(string $email, string $message): void {
 		$this->registrationService->method('getAllowedDomains')
 			->willReturn([]);
@@ -298,17 +295,14 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame('["registration.register.showVerificationForm",{"secret":"clientSecret"}]', $response->getRedirectURL());
 	}
 
-	public function dataShowVerificationForm(): array {
+	public static function dataShowVerificationForm(): array {
 		return [
 			[''],
 			['The entered verification code is wrong'],
 		];
 	}
 
-	/**
-	 * @dataProvider dataShowVerificationForm
-	 * @param string $message
-	 */
+	#[DataProvider('dataShowVerificationForm')]
 	public function testShowVerificationForm(string $message): void {
 		$secret = '123456789';
 
@@ -431,7 +425,7 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame($response, $controller->submitVerificationForm($secret, $token));
 	}
 
-	public function dataShowUserForm(): array {
+	public static function dataShowUserForm(): array {
 		return [
 			['', ''],
 			['tester', ''],
@@ -439,11 +433,7 @@ class RegisterControllerTest extends TestCase {
 		];
 	}
 
-	/**
-	 * @dataProvider dataShowUserForm
-	 * @param string $username
-	 * @param string $message
-	 */
+	#[DataProvider('dataShowUserForm')]
 	public function testShowUserForm(string $username, string $message): void {
 		$secret = '123456789';
 		$token = 'abcdefghi';
