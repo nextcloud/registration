@@ -29,6 +29,7 @@ use OCP\IUserSession;
 
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 
@@ -95,7 +96,7 @@ class RegistrationServiceTest extends TestCase {
 		);
 	}
 
-	public function dataValidateEmail(): array {
+	public static function dataValidateEmail(): array {
 		return [
 			['aaaa@example.com', '', 'no'],
 			['aaaa@example.com', 'example.com', 'no'],
@@ -115,12 +116,9 @@ class RegistrationServiceTest extends TestCase {
 	}
 
 	/**
-	 * @dataProvider dataValidateEmail
-	 * @param string $email
-	 * @param string $allowedDomains
-	 * @param string $blocked
 	 * @throws RegistrationException
 	 */
+	#[DataProvider('dataValidateEmail')]
 	public function testValidateEmail(string $email, string $allowedDomains, string $blocked) {
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')
@@ -133,7 +131,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->service->validateEmail($email);
 	}
 
-	public function dataValidateEmailThrows(): array {
+	public static function dataValidateEmailThrows(): array {
 		return [
 			['aaaa@example.com', 'nextcloud.com;example.tld', 'no'],
 			['aaaa@example.com', 'nextcloud.com', 'no'],
@@ -149,12 +147,9 @@ class RegistrationServiceTest extends TestCase {
 	}
 
 	/**
-	 * @dataProvider dataValidateEmailThrows
-	 * @param string $email
-	 * @param string $allowedDomains
-	 * @param string $blocked
 	 * @throws RegistrationException
 	 */
+	#[DataProvider('dataValidateEmailThrows')]
 	public function testValidateEmailThrows(string $email, string $allowedDomains, string $blocked) {
 		$this->config->expects($this->atLeastOnce())
 			->method('getAppValue')

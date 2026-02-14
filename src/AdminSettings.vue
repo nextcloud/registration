@@ -5,10 +5,11 @@
 <template>
 	<div id="registration_settings_form">
 		<NcSettingsSection :name="t('registration', 'Registration settings')">
-			<NcCheckboxRadioSwitch :checked.sync="adminApproval"
+			<NcCheckboxRadioSwitch
+				v-model="adminApproval"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Require administrator approval') }}
 			</NcCheckboxRadioSwitch>
 
@@ -20,293 +21,289 @@
 						{{ t('registration', 'Registered users default group') }}
 					</label>
 				</div>
-				<NcSelect id="registered_user_group"
+				<NcSelect
+					id="registered_user_group"
 					v-model="registeredUserGroup"
 					:placeholder="t('registration', 'Select group')"
 					:options="groups"
 					:disabled="loading"
 					:searchable="true"
-					:tag-width="60"
+					:tagWidth="60"
 					:loading="loadingGroups"
-					:close-on-select="false"
+					:closeOnSelect="false"
 					label="displayname"
 					@search="searchGroup"
-					@input="saveData" />
+					@update:modelValue="saveData" />
 			</div>
 		</NcSettingsSection>
 
 		<NcSettingsSection :name="t('registration', 'Email settings')">
-			<NcCheckboxRadioSwitch :checked.sync="emailIsOptional"
+			<NcCheckboxRadioSwitch
+				v-model="emailIsOptional"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Email is optional') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcTextField :label="domainListLabel"
-				:label-visible="true"
-				:value.sync="allowedDomains"
+			<NcTextField
+				v-model="allowedDomains"
+				:label="domainListLabel"
+				:labelVisible="true"
 				:disabled="loading"
 				placeholder="nextcloud.com;*.example.com"
-				@input="debounceSavingSlow" />
+				@update:modelValue="debounceSavingSlow" />
 
-			<NcCheckboxRadioSwitch :checked.sync="domainsIsBlocklist"
+			<NcCheckboxRadioSwitch
+				v-model="domainsIsBlocklist"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Block listed email domains instead of allowing them') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch :checked.sync="showDomains"
+			<NcCheckboxRadioSwitch
+				v-model="showDomains"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ showDomainListLabel }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch v-if="!emailIsOptional"
-				:checked.sync="disableEmailVerification"
+			<NcCheckboxRadioSwitch
+				v-if="!emailIsOptional"
+				v-model="disableEmailVerification"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Disable email verification') }}
 			</NcCheckboxRadioSwitch>
 		</NcSettingsSection>
 
 		<NcSettingsSection :name="t('registration', 'User settings')">
-			<NcCheckboxRadioSwitch v-if="!emailIsOptional"
-				:checked.sync="emailIsLogin"
+			<NcCheckboxRadioSwitch
+				v-if="!emailIsOptional"
+				v-model="emailIsLogin"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Force email as login name') }}
 			</NcCheckboxRadioSwitch>
 			<template v-if="!emailIsLogin">
 				<p>
 					<label for="username_policy_regex">{{ t('registration', 'Login name policy') }}</label>
-					<input id="username_policy_regex"
+					<input
+						id="username_policy_regex"
 						v-model="usernamePolicyRegex"
 						type="text"
 						name="username_policy_regex"
 						:disabled="loading"
 						placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
 						:aria-label="t('registration', 'Regular expression to validate login names')"
-						@input="debounceSavingSlow">
+						@update:modelValue="debounceSavingSlow">
 				</p>
 				<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
 			</template>
 
-			<NcCheckboxRadioSwitch :checked.sync="showFullname"
+			<NcCheckboxRadioSwitch
+				v-model="showFullname"
 				:disabled="loading"
 				type="switch"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Show full name field') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch v-if="showFullname"
+			<NcCheckboxRadioSwitch
+				v-if="showFullname"
+				v-model="enforceFullname"
 				class="indent"
-				:checked.sync="enforceFullname"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Enforce full name field') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch :checked.sync="showPhone"
+			<NcCheckboxRadioSwitch
+				v-model="showPhone"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Show phone field') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch v-if="showPhone"
+			<NcCheckboxRadioSwitch
+				v-if="showPhone"
+				v-model="enforcePhone"
 				class="indent"
-				:checked.sync="enforcePhone"
 				type="switch"
 				:disabled="loading"
-				@update:checked="saveData">
+				@update:modelValue="saveData">
 				{{ t('registration', 'Enforce phone field') }}
 			</NcCheckboxRadioSwitch>
 		</NcSettingsSection>
 
-		<NcSettingsSection :name="t('registration', 'User instructions')"
+		<NcSettingsSection
+			:name="t('registration', 'User instructions')"
 			:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
 			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
-			<input v-model="additionalHint"
+			<input
+				v-model="additionalHint"
 				type="text"
 				name="additional_hint"
 				:disabled="loading"
 				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
 				:aria-label="t('registration', 'A short message that is shown to the user in the registration process.')"
-				@input="debounceSavingSlow">
+				@update:modelValue="debounceSavingSlow">
 			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.') }}</em></p>
 
 			<h3>{{ t('registration', 'Verification email instructions') }}</h3>
-			<input v-model="emailVerificationHint"
+			<input
+				v-model="emailVerificationHint"
 				type="text"
 				name="email_verification_hint"
 				:disabled="loading"
 				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
 				:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
-				@input="debounceSavingSlow">
+				@update:modelValue="debounceSavingSlow">
 			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em></p>
 		</NcSettingsSection>
 	</div>
 </template>
 
-<script>
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+<script lang="ts" setup>
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
+import { t } from '@nextcloud/l10n'
 import { generateOcsUrl, generateUrl } from '@nextcloud/router'
 import debounce from 'debounce'
+import { computed, onMounted, ref } from 'vue'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
+import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 // Styles
 import '@nextcloud/dialogs/style.css'
 
-export default {
-	name: 'AdminSettings',
-
-	components: {
-		NcSelect,
-		NcSettingsSection,
-		NcCheckboxRadioSwitch,
-		NcTextField,
-	},
-
-	data() {
-		return {
-			loading: false,
-			loadingGroups: false,
-			groups: [],
-			saveNotification: null,
-
-			adminApproval: false,
-			registeredUserGroup: '',
-			allowedDomains: '',
-			domainsIsBlocklist: false,
-			showDomains: false,
-			emailIsOptional: false,
-			disableEmailVerification: false,
-			emailIsLogin: false,
-			usernamePolicyRegex: '',
-			showFullname: false,
-			enforceFullname: false,
-			showPhone: false,
-			enforcePhone: false,
-			additionalHint: '',
-			emailVerificationHint: '',
-		}
-	},
-
-	computed: {
-		domainListLabel() {
-			if (this.domainsIsBlocklist) {
-				return t('registration', 'Blocked email domains')
-			}
-
-			return t('registration', 'Allowed email domains')
-		},
-		showDomainListLabel() {
-			if (this.domainsIsBlocklist) {
-				return t('registration', 'Show the blocked email domains to users')
-			}
-
-			return t('registration', 'Show the allowed email domains to users')
-		},
-	},
-
-	mounted() {
-		this.adminApproval = loadState('registration', 'admin_approval_required')
-		this.registeredUserGroup = loadState('registration', 'registered_user_group')
-		this.allowedDomains = loadState('registration', 'allowed_domains')
-		this.domainsIsBlocklist = loadState('registration', 'domains_is_blocklist')
-		this.showDomains = loadState('registration', 'show_domains')
-		this.emailIsOptional = loadState('registration', 'email_is_optional')
-		this.disableEmailVerification = loadState('registration', 'disable_email_verification')
-		this.emailIsLogin = loadState('registration', 'email_is_login')
-		this.usernamePolicyRegex = loadState('registration', 'username_policy_regex')
-		this.showFullname = loadState('registration', 'show_fullname')
-		this.enforceFullname = loadState('registration', 'enforce_fullname')
-		this.showPhone = loadState('registration', 'show_phone')
-		this.enforcePhone = loadState('registration', 'enforce_phone')
-		this.additionalHint = loadState('registration', 'additional_hint')
-		this.emailVerificationHint = loadState('registration', 'email_verification_hint')
-
-		this.searchGroup('')
-	},
-	methods: {
-		debounceSavingSlow: debounce(function() {
-			this.saveData()
-		}, 2000),
-
-		async saveData() {
-			this.loading = true
-			if (this.saveNotification) {
-				await this.saveNotification.hideToast()
-			}
-
-			try {
-				const response = await axios.post(generateUrl('/apps/registration/settings'), {
-					admin_approval_required: this.adminApproval,
-					registered_user_group: this.registeredUserGroup?.id,
-					allowed_domains: this.allowedDomains,
-					domains_is_blocklist: this.domainsIsBlocklist,
-					show_domains: this.showDomains,
-					email_is_optional: this.emailIsOptional,
-					disable_email_verification: this.emailIsOptional || this.disableEmailVerification,
-					email_is_login: !this.emailIsOptional && this.emailIsLogin,
-					username_policy_regex: this.usernamePolicyRegex,
-					show_fullname: this.showFullname,
-					enforce_fullname: this.enforceFullname,
-					show_phone: this.showPhone,
-					enforce_phone: this.enforcePhone,
-					additional_hint: this.additionalHint,
-					email_verification_hint: this.emailVerificationHint,
-				})
-
-				if (response?.data?.status === 'success' && response?.data?.data?.message) {
-					this.saveNotification = showSuccess(response.data.data.message)
-				} else if (response?.data?.data?.message) {
-					this.saveNotification = showError(response.data.data.message)
-				} else {
-					this.saveNotification = showError(t('registration', 'An error occurred while saving the settings'))
-				}
-			} catch (e) {
-				if (e.response?.data?.data?.message) {
-					this.saveNotification = showError(e.response.data.data.message)
-				} else {
-					this.saveNotification = showError(t('registration', 'An error occurred while saving the settings'))
-					console.error(e)
-				}
-			}
-
-			this.loading = false
-		},
-
-		searchGroup: debounce(async function(query) {
-			this.loadingGroups = true
-			try {
-				const response = await axios.get(generateOcsUrl('cloud/groups/details'), {
-					search: query,
-					limit: 20,
-					offset: 0,
-				})
-				this.groups = response.data.ocs.data.groups.sort(function(a, b) {
-					return a.displayname.localeCompare(b.displayname)
-				})
-			} catch (err) {
-				console.error('Could not fetch groups', err)
-			} finally {
-				this.loadingGroups = false
-			}
-		}, 500),
-	},
+type Group = {
+	id: string
+	displayname: string
+	usercount: number
+	disabled: number
+	canAdd: boolean
+	canRemove: boolean
 }
+
+const loading = ref(false)
+const loadingGroups = ref(false)
+const groups = ref<Group[]>([])
+const saveNotification = ref<unknown>(null)
+const adminApproval = ref<boolean>(loadState<boolean>('registration', 'admin_approval_required'))
+const registeredUserGroup = ref<Group>(loadState<Group>('registration', 'registered_user_group'))
+const allowedDomains = ref<string>(loadState<string>('registration', 'allowed_domains'))
+const domainsIsBlocklist = ref<boolean>(loadState<boolean>('registration', 'domains_is_blocklist'))
+const showDomains = ref<boolean>(loadState<boolean>('registration', 'show_domains'))
+const emailIsOptional = ref<boolean>(loadState<boolean>('registration', 'email_is_optional'))
+const disableEmailVerification = ref<boolean>(loadState<boolean>('registration', 'disable_email_verification'))
+const emailIsLogin = ref<boolean>(loadState<boolean>('registration', 'email_is_login'))
+const usernamePolicyRegex = ref<string>(loadState('registration', 'username_policy_regex'))
+const showFullname = ref<boolean>(loadState<boolean>('registration', 'show_fullname'))
+const enforceFullname = ref<boolean>(loadState<boolean>('registration', 'enforce_fullname'))
+const showPhone = ref<boolean>(loadState<boolean>('registration', 'show_phone'))
+const enforcePhone = ref<boolean>(loadState<boolean>('registration', 'enforce_phone'))
+const additionalHint = ref(loadState('registration', 'additional_hint'))
+const emailVerificationHint = ref(loadState('registration', 'email_verification_hint'))
+
+const domainListLabel = computed(() => {
+	if (domainsIsBlocklist.value) {
+		return t('registration', 'Blocked email domains')
+	}
+	return t('registration', 'Allowed email domains')
+})
+
+const showDomainListLabel = computed(() => {
+	if (domainsIsBlocklist.value) {
+		return t('registration', 'Show the blocked email domains to users')
+	}
+	return t('registration', 'Show the allowed email domains to users')
+})
+
+const debounceSavingSlow = debounce(function() {
+	saveData()
+}, 2000)
+
+/**
+ *
+ */
+async function saveData() {
+	loading.value = true
+	if (saveNotification.value) {
+		// @ts-expect-error-next-line
+		await saveNotification.value.hideToast()
+	}
+
+	try {
+		const response = await axios.post(generateUrl('/apps/registration/settings'), {
+			admin_approval_required: adminApproval.value,
+			registered_user_group: registeredUserGroup.value?.id,
+			allowed_domains: allowedDomains.value,
+			domains_is_blocklist: domainsIsBlocklist.value,
+			show_domains: showDomains.value,
+			email_is_optional: emailIsOptional.value,
+			disable_email_verification: emailIsOptional.value || disableEmailVerification.value,
+			email_is_login: !emailIsOptional.value && emailIsLogin.value,
+			username_policy_regex: usernamePolicyRegex.value,
+			show_fullname: showFullname.value,
+			enforce_fullname: enforceFullname.value,
+			show_phone: showPhone.value,
+			enforce_phone: enforcePhone.value,
+			additional_hint: additionalHint.value,
+			email_verification_hint: emailVerificationHint.value,
+		})
+
+		if (response?.data?.status === 'success' && response?.data?.data?.message) {
+			saveNotification.value = showSuccess(response.data.data.message)
+		} else if (response?.data?.data?.message) {
+			saveNotification.value = showError(response.data.data.message)
+		} else {
+			saveNotification.value = showError(t('registration', 'An error occurred while saving the settings'))
+		}
+	} catch (e) {
+		if (e.response?.data?.data?.message) {
+			saveNotification.value = showError(e.response.data.data.message)
+		} else {
+			saveNotification.value = showError(t('registration', 'An error occurred while saving the settings'))
+			console.error(e)
+		}
+	}
+
+	loading.value = false
+}
+
+const searchGroup = debounce(async function(query) {
+	loadingGroups.value = true
+	try {
+		const response = await axios.get(generateOcsUrl('cloud/groups/details'), {
+			params: {
+				search: query,
+				limit: 20,
+				offset: 0,
+			},
+		})
+		groups.value = response.data.ocs.data.groups.sort(function(a: Group, b: Group) {
+			return a.displayname.localeCompare(b.displayname)
+		})
+	} catch (err) {
+		console.error('Could not fetch groups', err)
+	} finally {
+		loadingGroups.value = false
+	}
+}, 500)
+
+onMounted(() => {
+	searchGroup('')
+})
 </script>
 
 <style scoped lang="scss">

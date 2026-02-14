@@ -7,5 +7,6 @@
 /tests/clover.xml
 /tests/coverage-html
 /tests/.phpunit.result.cache
+/tests/.phpunit.cache
 /vendor
 /vendor-bin/*/vendor

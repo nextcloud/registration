@@ -10,25 +10,28 @@
 					{{ message }}
 				</NcNoteCard>
 
-				<NcTextField type="text"
+				<NcTextField
+					type="text"
 					name="token"
 					:label="t('registration', 'Verification code')"
-					:label-visible="true"
+					:labelVisible="true"
 					required
-					value=""
+					modelValue=""
 					autofocus>
 					<ShieldCheck :size="20" />
 				</NcTextField>
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
-				<NcButton id="submit"
-					native-type="submit"
-					type="primary"
+				<NcButton
+					id="submit"
+					type="submit"
+					variant="primary"
 					:wide="true">
 					{{ t('registration', 'Verify') }}
 				</NcButton>
 
-				<NcButton type="tertiary"
+				<NcButton
+					variant="tertiary"
 					:href="loginFormLink"
 					:wide="true">
 					{{ t('registration', 'Back to login') }}
@@ -38,37 +41,23 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { getRequestToken } from '@nextcloud/auth'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { loadState } from '@nextcloud/initial-state'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import ShieldCheck from 'vue-material-design-icons/ShieldCheck.vue'
 
-export default {
-	name: 'Verification',
+const message = loadState<string>('registration', 'message')
+const requesttoken = getRequestToken()
+const loginFormLink = loadState<string>('registration', 'loginFormLink')
 
-	components: {
-		NcButton,
-		NcTextField,
-		NcNoteCard,
-		ShieldCheck,
-	},
-
-	data() {
-		return {
-			message: loadState('registration', 'message'),
-			requesttoken: getRequestToken(),
-			loginFormLink: loadState('registration', 'loginFormLink'),
-		}
-	},
-}
 </script>
 
 <style lang="scss" scoped>
 .guest-box {
-	text-align: left;
+	text-align: start;
 }
 
 fieldset {

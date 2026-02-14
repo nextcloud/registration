@@ -3,15 +3,15 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 SPDX-License-Identifier: GPL-3.0-or-later
 SPDX-License-Identifier: ISC
 SPDX-License-Identifier: MIT
-SPDX-FileCopyrightText: Anthony Fu <anthonyfu117@hotmail.com>
-SPDX-FileCopyrightText: Anthony Fu <https://github.com/antfu>
 SPDX-FileCopyrightText: Christoph Wurst
 SPDX-FileCopyrightText: David Myers <hello@davidmyers.dev>
 SPDX-FileCopyrightText: Dr.-Ing. Mario Heiderich, Cure53 <mario@cure53.de> (https://cure53.de/)
+SPDX-FileCopyrightText: Eduardo San Martin Morote
 SPDX-FileCopyrightText: Evan You
 SPDX-FileCopyrightText: GitHub Inc.
 SPDX-FileCopyrightText: Matt Zabriskie
 SPDX-FileCopyrightText: Nextcloud GmbH and Nextcloud contributors
+SPDX-FileCopyrightText: debounce developers
 SPDX-FileCopyrightText: escape-html developers
 
 This file is generated from multiple sources. Included packages:
@@ -25,56 +25,59 @@ This file is generated from multiple sources. Included packages:
 	- version: 0.5.0
 	- license: GPL-3.0-or-later
 - @nextcloud/event-bus
-	- version: 3.3.2
-	- license: GPL-3.0-or-later
-- @nextcloud/initial-state
-	- version: 2.2.0
+	- version: 3.3.3
 	- license: GPL-3.0-or-later
 - @nextcloud/initial-state
 	- version: 3.0.0
 	- license: GPL-3.0-or-later
 - @nextcloud/l10n
-	- version: 3.4.0
+	- version: 3.4.1
 	- license: GPL-3.0-or-later
 - @nextcloud/logger
-	- version: 3.0.2
+	- version: 3.0.3
 	- license: GPL-3.0-or-later
 - @nextcloud/router
 	- version: 3.1.0
 	- license: GPL-3.0-or-later
 - @nextcloud/vue
-	- version: 8.33.0
+	- version: 9.5.0
 	- license: AGPL-3.0-or-later
-- @vitejs/plugin-vue2
-	- version: 2.3.4
+- @vitejs/plugin-vue
+	- version: 6.0.4
 	- license: MIT
-- @vueuse/core
-	- version: 11.3.0
+- @vue/reactivity
+	- version: 3.5.28
 	- license: MIT
-- @vueuse/shared
-	- version: 11.3.0
+- @vue/runtime-core
+	- version: 3.5.28
+	- license: MIT
+- @vue/runtime-dom
+	- version: 3.5.28
+	- license: MIT
+- @vue/shared
+	- version: 3.5.28
 	- license: MIT
 - axios
-	- version: 1.12.2
+	- version: 1.13.5
+	- license: MIT
+- debounce
+	- version: 3.0.0
 	- license: MIT
 - dompurify
-	- version: 3.3.0
+	- version: 3.3.1
 	- license: (MPL-2.0 OR Apache-2.0)
 - escape-html
 	- version: 1.0.3
 	- license: MIT
 - semver
-	- version: 7.7.2
+	- version: 7.7.4
 	- license: ISC
 - vite
-	- version: 7.1.12
+	- version: 7.3.1
 	- license: MIT
 - vite-plugin-node-polyfills
 	- version: 0.24.0
 	- license: MIT
-- vue
-	- version: 2.7.16
-	- license: MIT
-- vue-demi
-	- version: 0.14.10
+- vue-router
+	- version: 5.0.2
 	- license: MIT

@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   - SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
-<phpunit bootstrap="bootstrap.php"
-		 verbose="true"
-		 convertDeprecationsToExceptions="true"
-		>
-	<testsuite name='Registration app tests'>
-		<directory suffix='Test.php'>Unit</directory>
-	</testsuite>
-	<!-- filters for code coverage -->
-	<filter>
-		<whitelist>
-			<directory suffix=".php">../../registration/appinfo</directory>
-			<directory suffix=".php">../../registration/lib</directory>
-		</whitelist>
-	</filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <testsuite name="Registration app tests">
+    <directory suffix="Test.php">Unit</directory>
+  </testsuite>
+  <!-- filters for code coverage -->
+  <source>
+    <include>
+      <directory suffix=".php">../../registration/appinfo</directory>
+      <directory suffix=".php">../../registration/lib</directory>
+    </include>
+  </source>
 </phpunit>
