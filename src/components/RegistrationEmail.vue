@@ -10,12 +10,13 @@
 					{{ message }}
 				</NcNoteCard>
 
-				<NcTextField name="email"
+				<NcTextField
+					name="email"
 					type="email"
 					:label="emailLabel"
-					:label-visible="true"
+					:labelVisible="true"
 					required
-					value=""
+					modelValue=""
 					autofocus>
 					<Email :size="20" />
 				</NcTextField>
@@ -23,14 +24,16 @@
 				<div id="terms_of_service" />
 
 				<input type="hidden" name="requesttoken" :value="requesttoken">
-				<NcButton id="submit"
-					native-type="submit"
-					type="primary"
+				<NcButton
+					id="submit"
+					type="submit"
+					variant="primary"
 					:wide="true">
 					{{ submitValue }}
 				</NcButton>
 
-				<NcButton type="tertiary"
+				<NcButton
+					variant="tertiary"
 					:href="loginFormLink"
 					:wide="true">
 					{{ t('registration', 'Back to login') }}
@@ -40,57 +43,42 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { getRequestToken } from '@nextcloud/auth'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { loadState } from '@nextcloud/initial-state'
+import { t } from '@nextcloud/l10n'
+import { computed } from 'vue'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import Email from 'vue-material-design-icons/Email.vue'
 
-export default {
-	name: 'RegistrationEmail',
+const emailIsOptional = loadState<boolean>('registration', 'emailIsOptional')
+const message = loadState<string>('registration', 'message')
+const requesttoken = getRequestToken()
+const disableEmailVerification = loadState<boolean>('registration', 'disableEmailVerification')
+const isLoginFlow = loadState<boolean>('registration', 'isLoginFlow')
+const loginFormLink = loadState<string>('registration', 'loginFormLink')
 
-	components: {
-		NcButton,
-		NcTextField,
-		NcNoteCard,
-		Email,
-	},
-
-	data() {
-		return {
-			emailIsOptional: loadState('registration', 'emailIsOptional'),
-			message: loadState('registration', 'message'),
-			requesttoken: getRequestToken(),
-			disableEmailVerification: loadState('registration', 'disableEmailVerification'),
-			isLoginFlow: loadState('registration', 'isLoginFlow'),
-			loginFormLink: loadState('registration', 'loginFormLink'),
-		}
-	},
-
-	computed: {
-		emailLabel() {
-			return this.emailIsOptional
-				? t('registration', 'Email (optional)')
-				: t('registration', 'Email')
-		},
-		submitValue() {
-			if (this.emailIsOptional || this.disableEmailVerification) {
-				return t('registration', 'Continue')
-			} else if (this.isLoginFlow) {
-				return t('registration', 'Request verification code')
-			} else {
-				return t('registration', 'Request verification link')
-			}
-		},
-	},
-}
+const emailLabel = computed(() => {
+	return emailIsOptional
+		? t('registration', 'Email (optional)')
+		: t('registration', 'Email')
+})
+const submitValue = computed(() => {
+	if (emailIsOptional || disableEmailVerification) {
+		return t('registration', 'Continue')
+	} else if (isLoginFlow) {
+		return t('registration', 'Request verification code')
+	} else {
+		return t('registration', 'Request verification link')
+	}
+})
 </script>
 
 <style lang="scss" scoped>
 .guest-box {
-	text-align: left;
+	text-align: start;
 }
 
 fieldset {

@@ -3,39 +3,41 @@
   "version": "2.8.0",
   "description": "",
   "license": "AGPL-3.0-or-later",
+  "type": "module",
   "scripts": {
     "build": "vite build --mode=production",
     "dev": "vite build --mode=development",
-    "watch": "vite build --mode=development --watch",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "stylelint": "stylelint src/**/*.scss src/**/*.vue",
-    "stylelint:fix": "stylelint src/**/*.scss src/**/*.vue --fix"
-  },
-  "type": "module",
-  "dependencies": {
-    "@nextcloud/auth": "^2.0.0",
-    "@nextcloud/axios": "^2.1.0",
-    "@nextcloud/dialogs": "^6.0.1",
-    "@nextcloud/initial-state": "^3.0.0",
-    "@nextcloud/router": "^3.0.0",
-    "@nextcloud/vue": "^8.0.1",
-    "debounce": "^3.0.0",
-    "vue": "^2.7.15",
-    "vue-material-design-icons": "^5.1.2",
-    "vue-template-compiler": "^2.7.15"
+    "stylelint:fix": "stylelint src/**/*.scss src/**/*.vue --fix",
+    "watch": "vite build --mode=development --watch"
   },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
   ],
-  "engines": {
-    "node": "^24.0.0",
-    "npm": "^11.3.0"
+  "dependencies": {
+    "@nextcloud/auth": "^2.0.0",
+    "@nextcloud/axios": "^2.1.0",
+    "@nextcloud/dialogs": "^7.3.0",
+    "@nextcloud/initial-state": "^3.0.0",
+    "@nextcloud/router": "^3.0.0",
+    "@nextcloud/vue": "^9.5.0",
+    "debounce": "^3.0.0",
+    "vue": "^3.5.28",
+    "vue-material-design-icons": "^5.1.2",
+    "vue-template-compiler": "^2.7.15"
   },
   "devDependencies": {
     "@nextcloud/browserslist-config": "^3.0.0",
-    "@nextcloud/eslint-config": "^8.1.2",
+    "@nextcloud/eslint-config": "^9.0.0-rc.8",
     "@nextcloud/stylelint-config": "^3.0.0",
-    "@nextcloud/vite-config": "^1.5.3"
+    "@nextcloud/vite-config": "^2.5.2",
+    "@vue/tsconfig": "^0.8.1",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": "^24.0.0",
+    "npm": "^11.3.0"
   }
 }

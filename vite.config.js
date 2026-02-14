@@ -6,8 +6,8 @@ import { createAppConfig } from '@nextcloud/vite-config'
 
 export default createAppConfig({
 	// entry points: {name: script}
-	form: 'src/form.js',
-	settings: 'src/settings.js',
+	form: 'src/form.ts',
+	settings: 'src/settings.ts',
 }, {
 	extractLicenseInformation: {
 		includeSourceMaps: true,
