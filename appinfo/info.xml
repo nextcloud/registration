@@ -45,7 +45,7 @@ This app allows users to register a new account.
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/admin-settings.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="31" max-version="32" />
+		<nextcloud min-version="31" max-version="33" />
 	</dependencies>
 	<background-jobs>
 		<job>OCA\Registration\BackgroundJob\ExpireRegistrations</job>
