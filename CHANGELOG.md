@@ -6,6 +6,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 2.9.0 - 2026-02-19
+
+### Added
+
+- Compatibility with Nextcloud 33
+
+### Changed
+
+- Refactor the front-end to use Vue 3
+
 ## 2.8.0 - 2025-09-11
 
 ### Added
