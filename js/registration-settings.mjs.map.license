@@ -31,7 +31,7 @@ This file is generated from multiple sources. Included packages:
 	- version: 5.2.2
 	- license: MIT
 - registration
-	- version: 2.8.0
+	- version: 2.9.0
 	- license: AGPL-3.0-or-later
 - toastify-js
 	- version: 1.12.0

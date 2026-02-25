@@ -13,7 +13,7 @@ This file is generated from multiple sources. Included packages:
 	- version: 9.5.0
 	- license: AGPL-3.0-or-later
 - registration
-	- version: 2.8.0
+	- version: 2.9.0
 	- license: AGPL-3.0-or-later
 - vue-material-design-icons
 	- version: 5.3.1
