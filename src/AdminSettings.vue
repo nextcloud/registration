@@ -3,171 +3,169 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
-	<div id="registration_settings_form">
-		<NcSettingsSection :name="t('registration', 'Registration settings')">
-			<NcCheckboxRadioSwitch
-				v-model="adminApproval"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Require administrator approval') }}
-			</NcCheckboxRadioSwitch>
+	<NcSettingsSection :name="t('registration', 'Registration settings')">
+		<NcCheckboxRadioSwitch
+			v-model="adminApproval"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Require administrator approval') }}
+		</NcCheckboxRadioSwitch>
 
-			<p><em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em></p>
+		<p><em>{{ t('registration', 'Enabling "administrator approval" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.') }}</em></p>
 
-			<div>
-				<div class="margin-top">
-					<label for="registered_user_group">
-						{{ t('registration', 'Registered users default group') }}
-					</label>
-				</div>
-				<NcSelect
-					id="registered_user_group"
-					v-model="registeredUserGroup"
-					:placeholder="t('registration', 'Select group')"
-					:options="groups"
-					:disabled="loading"
-					:searchable="true"
-					:tagWidth="60"
-					:loading="loadingGroups"
-					:closeOnSelect="false"
-					label="displayname"
-					@search="searchGroup"
-					@update:modelValue="saveData" />
+		<div>
+			<div class="margin-top">
+				<label for="registered_user_group">
+					{{ t('registration', 'Registered users default group') }}
+				</label>
 			</div>
-		</NcSettingsSection>
-
-		<NcSettingsSection :name="t('registration', 'Email settings')">
-			<NcCheckboxRadioSwitch
-				v-model="emailIsOptional"
-				type="switch"
+			<NcSelect
+				id="registered_user_group"
+				v-model="registeredUserGroup"
+				:placeholder="t('registration', 'Select group')"
+				:options="groups"
 				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Email is optional') }}
-			</NcCheckboxRadioSwitch>
+				:searchable="true"
+				:tagWidth="60"
+				:loading="loadingGroups"
+				:closeOnSelect="false"
+				label="displayname"
+				@search="searchGroup"
+				@update:modelValue="saveData" />
+		</div>
+	</NcSettingsSection>
 
-			<NcTextField
-				v-model="allowedDomains"
-				:label="domainListLabel"
-				:labelVisible="true"
-				:disabled="loading"
-				placeholder="nextcloud.com;*.example.com"
-				@update:modelValue="debounceSavingSlow" />
+	<NcSettingsSection :name="t('registration', 'Email settings')">
+		<NcCheckboxRadioSwitch
+			v-model="emailIsOptional"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Email is optional') }}
+		</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch
-				v-model="domainsIsBlocklist"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Block listed email domains instead of allowing them') }}
-			</NcCheckboxRadioSwitch>
+		<NcTextField
+			v-model="allowedDomains"
+			:label="domainListLabel"
+			:labelVisible="true"
+			:disabled="loading"
+			placeholder="nextcloud.com;*.example.com"
+			@update:modelValue="debounceSavingSlow" />
 
-			<NcCheckboxRadioSwitch
-				v-model="showDomains"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ showDomainListLabel }}
-			</NcCheckboxRadioSwitch>
+		<NcCheckboxRadioSwitch
+			v-model="domainsIsBlocklist"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Block listed email domains instead of allowing them') }}
+		</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch
-				v-if="!emailIsOptional"
-				v-model="disableEmailVerification"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Disable email verification') }}
-			</NcCheckboxRadioSwitch>
-		</NcSettingsSection>
+		<NcCheckboxRadioSwitch
+			v-model="showDomains"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ showDomainListLabel }}
+		</NcCheckboxRadioSwitch>
 
-		<NcSettingsSection :name="t('registration', 'User settings')">
-			<NcCheckboxRadioSwitch
-				v-if="!emailIsOptional"
-				v-model="emailIsLogin"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Force email as login name') }}
-			</NcCheckboxRadioSwitch>
-			<template v-if="!emailIsLogin">
-				<p>
-					<label for="username_policy_regex">{{ t('registration', 'Login name policy') }}</label>
-					<input
-						id="username_policy_regex"
-						v-model="usernamePolicyRegex"
-						type="text"
-						name="username_policy_regex"
-						:disabled="loading"
-						placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
-						:aria-label="t('registration', 'Regular expression to validate login names')"
-						@update:modelValue="debounceSavingSlow">
-				</p>
-				<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
-			</template>
+		<NcCheckboxRadioSwitch
+			v-if="!emailIsOptional"
+			v-model="disableEmailVerification"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Disable email verification') }}
+		</NcCheckboxRadioSwitch>
+	</NcSettingsSection>
 
-			<NcCheckboxRadioSwitch
-				v-model="showFullname"
-				:disabled="loading"
-				type="switch"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Show full name field') }}
-			</NcCheckboxRadioSwitch>
+	<NcSettingsSection :name="t('registration', 'User settings')">
+		<NcCheckboxRadioSwitch
+			v-if="!emailIsOptional"
+			v-model="emailIsLogin"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Force email as login name') }}
+		</NcCheckboxRadioSwitch>
+		<template v-if="!emailIsLogin">
+			<p>
+				<label for="username_policy_regex">{{ t('registration', 'Login name policy') }}</label>
+				<input
+					id="username_policy_regex"
+					v-model="usernamePolicyRegex"
+					type="text"
+					name="username_policy_regex"
+					:disabled="loading"
+					placeholder="E.g.: /^[a-z-]+\.[a-z-]+$/"
+					:aria-label="t('registration', 'Regular expression to validate login names')"
+					@update:modelValue="debounceSavingSlow">
+			</p>
+			<em>{{ t('registration', 'If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.') }}</em>
+		</template>
 
-			<NcCheckboxRadioSwitch
-				v-if="showFullname"
-				v-model="enforceFullname"
-				class="indent"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Enforce full name field') }}
-			</NcCheckboxRadioSwitch>
+		<NcCheckboxRadioSwitch
+			v-model="showFullname"
+			:disabled="loading"
+			type="switch"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Show full name field') }}
+		</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch
-				v-model="showPhone"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Show phone field') }}
-			</NcCheckboxRadioSwitch>
+		<NcCheckboxRadioSwitch
+			v-if="showFullname"
+			v-model="enforceFullname"
+			class="indent"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Enforce full name field') }}
+		</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch
-				v-if="showPhone"
-				v-model="enforcePhone"
-				class="indent"
-				type="switch"
-				:disabled="loading"
-				@update:modelValue="saveData">
-				{{ t('registration', 'Enforce phone field') }}
-			</NcCheckboxRadioSwitch>
-		</NcSettingsSection>
+		<NcCheckboxRadioSwitch
+			v-model="showPhone"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Show phone field') }}
+		</NcCheckboxRadioSwitch>
 
-		<NcSettingsSection
-			:name="t('registration', 'User instructions')"
-			:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
-			<h3>{{ t('registration', 'Registration form instructions') }}</h3>
-			<input
-				v-model="additionalHint"
-				type="text"
-				name="additional_hint"
-				:disabled="loading"
-				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
-				:aria-label="t('registration', 'A short message that is shown to the user in the registration process.')"
-				@update:modelValue="debounceSavingSlow">
-			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.') }}</em></p>
+		<NcCheckboxRadioSwitch
+			v-if="showPhone"
+			v-model="enforcePhone"
+			class="indent"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Enforce phone field') }}
+		</NcCheckboxRadioSwitch>
+	</NcSettingsSection>
 
-			<h3>{{ t('registration', 'Verification email instructions') }}</h3>
-			<input
-				v-model="emailVerificationHint"
-				type="text"
-				name="email_verification_hint"
-				:disabled="loading"
-				:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
-				:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
-				@update:modelValue="debounceSavingSlow">
-			<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em></p>
-		</NcSettingsSection>
-	</div>
+	<NcSettingsSection
+		:name="t('registration', 'User instructions')"
+		:description="t('registration', 'Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.')">
+		<h3>{{ t('registration', 'Registration form instructions') }}</h3>
+		<input
+			v-model="additionalHint"
+			type="text"
+			name="additional_hint"
+			:disabled="loading"
+			:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
+			:aria-label="t('registration', 'A short message that is shown to the user in the registration process.')"
+			@update:modelValue="debounceSavingSlow">
+		<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.') }}</em></p>
+
+		<h3>{{ t('registration', 'Verification email instructions') }}</h3>
+		<input
+			v-model="emailVerificationHint"
+			type="text"
+			name="email_verification_hint"
+			:disabled="loading"
+			:placeholder="t('registration', `Please create your username following the scheme 'firstname.lastname'.`)"
+			:aria-label="t('registration', 'A short message that is shown to the user in the verification email.')"
+			@update:modelValue="debounceSavingSlow">
+		<p><em>{{ t('registration', 'Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.') }}</em></p>
+	</NcSettingsSection>
 </template>
 
 <script lang="ts" setup>
