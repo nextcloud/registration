@@ -39,6 +39,13 @@ class Registration extends Entity {
 	protected $emailConfirmed;
 	protected $clientSecret;
 
+	/**
+	 * Set the password with hashing
+	 */
+	public function setPassword(string $password): void {
+		$this->setValue('password', password_hash($password, PASSWORD_DEFAULT));
+	}
+
 	public function __construct() {
 		$this->addType('email', 'string');
 		$this->addType('username', 'string');
