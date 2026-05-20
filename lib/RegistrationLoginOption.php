@@ -17,22 +17,25 @@ class RegistrationLoginOption implements IAlternativeLogin {
 	public function __construct(
 		protected IURLGenerator $url,
 		protected IL10N $l,
-		protected \OC_Defaults $theming,
 	) {
 	}
 
+	#[\Override]
 	public function getLabel(): string {
 		return $this->l->t('Register');
 	}
 
+	#[\Override]
 	public function getLink(): string {
 		return $this->url->linkToRoute('registration.register.showEmailForm');
 	}
 
+	#[\Override]
 	public function getClass(): string {
 		return 'register-button';
 	}
 
+	#[\Override]
 	public function load(): void {
 	}
 }

@@ -17,6 +17,9 @@ use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 use OCP\Security\ISecureRandom;
 
+/**
+ * @template-extends QBMapper<Registration>
+ */
 class RegistrationMapper extends QBMapper {
 	public function __construct(
 		IDBConnection $db,
@@ -87,6 +90,7 @@ class RegistrationMapper extends QBMapper {
 	 * @return Registration
 	 * @throws Exception
 	 */
+	#[\Override]
 	public function insert(Entity $entity): Entity {
 		$entity->setRequested(date('Y-m-d H:i:s'));
 		return parent::insert($entity);

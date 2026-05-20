@@ -15,6 +15,9 @@ use OCP\EventDispatcher\IEventListener;
 use OCP\IConfig;
 use OCP\User\Events\UserChangedEvent;
 
+/**
+ * @template-implements IEventListener<UserChangedEvent>
+ */
 class UserEnabledListener implements IEventListener {
 
 	public function __construct(
@@ -23,6 +26,7 @@ class UserEnabledListener implements IEventListener {
 	) {
 	}
 
+	#[\Override]
 	public function handle(Event $event): void {
 		if (!($event instanceof UserChangedEvent)) {
 			// Unrelated

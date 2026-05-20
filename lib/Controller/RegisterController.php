@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace OCA\Registration\Controller;
 
 use Exception;
-use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Events\PassedFormEvent;
 use OCA\Registration\Events\ShowFormEvent;
@@ -24,63 +23,48 @@ use OCA\Registration\Service\RegistrationService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\AnonRateLimit;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
+use OCP\AppFramework\Http\Attribute\UseSession;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\HintException;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use OCP\Util;
 
 class RegisterController extends Controller {
-	private IL10N $l10n;
-	private IURLGenerator $urlGenerator;
-	private IConfig $config;
-	private RegistrationService $registrationService;
-	private MailService $mailService;
-	private LoginFlowService $loginFlowService;
-	private IEventDispatcher $eventDispatcher;
-	private IInitialState $initialState;
-
 	public function __construct(
 		string $appName,
 		IRequest $request,
-		IL10N $l10n,
-		IURLGenerator $urlGenerator,
-		IConfig $config,
-		RegistrationService $registrationService,
-		LoginFlowService $loginFlowService,
-		MailService $mailService,
-		IEventDispatcher $eventDispatcher,
-		IInitialState $initialState,
+		private IL10N $l10n,
+		private IURLGenerator $urlGenerator,
+		private IAppConfig $config,
+		private RegistrationService $registrationService,
+		private LoginFlowService $loginFlowService,
+		private MailService $mailService,
+		private IEventDispatcher $eventDispatcher,
+		private IInitialState $initialState,
 	) {
 		parent::__construct($appName, $request);
-		$this->l10n = $l10n;
-		$this->urlGenerator = $urlGenerator;
-		$this->config = $config;
-		$this->registrationService = $registrationService;
-		$this->loginFlowService = $loginFlowService;
-		$this->mailService = $mailService;
-		$this->eventDispatcher = $eventDispatcher;
-		$this->initialState = $initialState;
 	}
 
-	/**
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 */
+	#[PublicPage]
+	#[NoCSRFRequired]
 	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
 		$emailHint = '';
 		$domainList = $this->registrationService->getAllowedDomains();
-		if (!empty($domainList) && $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes') {
+		if (!empty($domainList) && $this->config->getAppValueBool('show_domains')) {
 			$domainList = implode(', ', $domainList);
-			if ($this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes') {
+			if ($this->config->getAppValueBool('domains_is_blocklist')) {
 				$emailHint = $this->l10n->t(
 					'Registration is not allowed with the following domains: %s',
 					[$domainList]
@@ -97,17 +81,15 @@ class RegisterController extends Controller {
 
 		$this->initialState->provideInitialState('email', $email);
 		$this->initialState->provideInitialState('message', $message ?: $emailHint);
-		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes');
-		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes');
+		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValueBool('email_is_optional'));
+		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValueBool('disable_email_verification'));
 		$this->initialState->provideInitialState('isLoginFlow', $this->loginFlowService->isUsingLoginFlow());
 		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
 		return new TemplateResponse('registration', 'form/email', [], 'guest');
 	}
 
-	/**
-	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=300)
-	 */
+	#[PublicPage]
+	#[AnonRateLimit(limit: 5, period: 300)]
 	public function submitEmailForm(string $email): Response {
 		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_EMAIL);
 		$this->eventDispatcher->dispatchTyped($validateFormEvent);
@@ -132,7 +114,7 @@ class RegisterController extends Controller {
 			$registration = $this->registrationService->createRegistration($email);
 		}
 
-		if ($this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes') {
+		if ($this->config->getAppValueBool('disable_email_verification')) {
 			$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $registration->getClientSecret()));
 
 			return new RedirectResponse(
@@ -164,10 +146,8 @@ class RegisterController extends Controller {
 		);
 	}
 
-	/**
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 */
+	#[PublicPage]
+	#[NoCSRFRequired]
 	public function showVerificationForm(string $secret, string $message = ''): TemplateResponse {
 		try {
 			$this->registrationService->getRegistrationForSecret($secret);
@@ -183,13 +163,13 @@ class RegisterController extends Controller {
 	}
 
 	/**
-	 * @PublicPage
-	 * @AnonRateThrottle(limit=5, period=300)
 	 *
 	 * @param string $secret
 	 * @param string $token
 	 * @return Response
 	 */
+	#[PublicPage]
+	#[AnonRateLimit(limit: 5, period: 300)]
 	public function submitVerificationForm(string $secret, string $token): Response {
 		try {
 			$registration = $this->registrationService->getRegistrationForSecret($secret);
@@ -224,10 +204,8 @@ class RegisterController extends Controller {
 		);
 	}
 
-	/**
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 */
+	#[PublicPage]
+	#[NoCSRFRequired]
 	public function showUserForm(string $secret, string $token, string $loginname = '', string $fullname = '', string $phone = '', string $password = '', string $message = ''): TemplateResponse {
 		try {
 			$registration = $this->validateSecretAndToken($secret, $token);
@@ -235,20 +213,20 @@ class RegisterController extends Controller {
 			return $this->validateSecretAndTokenErrorPage();
 		}
 
-		$additional_hint = $this->config->getAppValue('registration', 'additional_hint');
+		$additional_hint = $this->config->getAppValueString('additional_hint');
 
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_USER, $secret));
 
 		$this->initialState->provideInitialState('email', $registration->getEmail());
-		$this->initialState->provideInitialState('emailIsLogin', $this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes');
-		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValue('registration', 'email_is_optional', 'no') === 'yes');
+		$this->initialState->provideInitialState('emailIsLogin', $this->config->getAppValueBool('email_is_login'));
+		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValueBool('email_is_optional'));
 		$this->initialState->provideInitialState('loginname', $loginname);
 		$this->initialState->provideInitialState('fullname', $fullname);
-		$this->initialState->provideInitialState('showFullname', $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes');
-		$this->initialState->provideInitialState('enforceFullname', $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes');
+		$this->initialState->provideInitialState('showFullname', $this->config->getAppValueBool('show_fullname'));
+		$this->initialState->provideInitialState('enforceFullname', $this->config->getAppValueBool('enforce_fullname'));
 		$this->initialState->provideInitialState('phone', $phone);
-		$this->initialState->provideInitialState('showPhone', $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes');
-		$this->initialState->provideInitialState('enforcePhone', $this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes');
+		$this->initialState->provideInitialState('showPhone', $this->config->getAppValueBool('show_phone'));
+		$this->initialState->provideInitialState('enforcePhone', $this->config->getAppValueBool('enforce_phone'));
 		$this->initialState->provideInitialState('message', $message);
 		$this->initialState->provideInitialState('password', $password);
 		$this->initialState->provideInitialState('additionalHint', $additional_hint);
@@ -265,13 +243,9 @@ class RegisterController extends Controller {
 		return $response;
 	}
 
-	/**
-	 * @PublicPage
-	 * @UseSession
-	 * @AnonRateThrottle(limit=5, period=300)
-	 *
-	 * @return RedirectResponse|TemplateResponse
-	 */
+	#[PublicPage]
+	#[UseSession]
+	#[AnonRateLimit(limit: 5, period: 300)]
 	public function submitUserForm(string $secret, string $token, string $loginname, string $fullname, string $phone, string $password): Response {
 		try {
 			$registration = $this->validateSecretAndToken($secret, $token);
@@ -279,7 +253,7 @@ class RegisterController extends Controller {
 			return $this->validateSecretAndTokenErrorPage();
 		}
 
-		if ($this->config->getAppValue('registration', 'email_is_login', 'no') === 'yes') {
+		if ($this->config->getAppValueBool('email_is_login')) {
 			$loginname = $registration->getEmail();
 		}
 

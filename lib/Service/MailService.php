@@ -10,12 +10,13 @@ declare(strict_types=1);
 namespace OCA\Registration\Service;
 
 use OCA\Registration\Db\Registration;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Defaults;
-use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\L10N\IFactory as IL10NFactory;
+use OCP\Mail\IEmailValidator;
 use OCP\Mail\IMailer;
 use OCP\Util;
 use Psr\Log\LoggerInterface;
@@ -25,11 +26,12 @@ class MailService {
 	public function __construct(
 		private IURLGenerator $urlGenerator,
 		private IMailer $mailer,
+		private IEmailValidator $emailValidator,
 		private Defaults $defaults,
 		private IL10N $l10n,
 		private IL10NFactory $l10nFactory,
 		private IGroupManager $groupManager,
-		private IConfig $config,
+		private IAppConfig $config,
 		private LoginFlowService $loginFlowService,
 		private LoggerInterface $logger,
 	) {
@@ -40,7 +42,7 @@ class MailService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail(string $email): void {
-		if (!$this->mailer->validateMailAddress($email)) {
+		if (!$this->emailValidator->isValid($email)) {
 			throw new RegistrationException($this->l10n->t('The email address you entered is not valid'));
 		}
 	}
@@ -79,7 +81,7 @@ class MailService {
 		}
 
 		// if the parameter is set through the settings panel add to body text
-		$email_verification_hint = $this->config->getAppValue('registration', 'email_verification_hint');
+		$email_verification_hint = $this->config->getAppValueString('email_verification_hint');
 		if (!empty($email_verification_hint)) {
 			$template->addBodyText($email_verification_hint);
 		};

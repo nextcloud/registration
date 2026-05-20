@@ -17,6 +17,7 @@ class Capabilities implements IPublicCapability {
 	) {
 	}
 
+	#[\Override]
 	public function getCapabilities(): array {
 		return [
 			'registration'

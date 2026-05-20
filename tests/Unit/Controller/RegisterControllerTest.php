@@ -20,9 +20,9 @@ use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\EventDispatcher\IEventDispatcher;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use OCP\IURLGenerator;
@@ -32,31 +32,22 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class RegisterControllerTest extends TestCase {
 
-	/** @var IRequest */
-	private $request;
-	/** @var IL10N|MockObject */
-	private $l10n;
-	/** @var IURLGenerator|MockObject */
-	private $urlGenerator;
-	/** @var IConfig|MockObject */
-	private $config;
-	/** @var RegistrationService|MockObject */
-	private $registrationService;
-	/** @var LoginFlowService|MockObject */
-	private $loginFlowService;
-	/** @var MailService|MockObject */
-	private $mailService;
-	/** @var IEventDispatcher|MockObject */
-	private $eventDispatcher;
-	/** @var IInitialState|MockObject */
-	private $initialState;
+	private IRequest&MockObject $request;
+	private IL10N&MockObject $l10n;
+	private IURLGenerator&MockObject $urlGenerator;
+	private IAppConfig&MockObject $config;
+	private RegistrationService&MockObject $registrationService;
+	private LoginFlowService&MockObject $loginFlowService;
+	private MailService&MockObject $mailService;
+	private IEventDispatcher&MockObject $eventDispatcher;
+	private IInitialState&MockObject $initialState;
 
 	public function setUp(): void {
 		parent::setUp();
 		$this->request = $this->createMock(IRequest::class);
 		$this->l10n = $this->createMock(IL10N::class);
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
-		$this->config = $this->createMock(IConfig::class);
+		$this->config = $this->createMock(IAppConfig::class);
 		$this->registrationService = $this->createMock(RegistrationService::class);
 		$this->loginFlowService = $this->createMock(LoginFlowService::class);
 		$this->mailService = $this->createMock(MailService::class);
@@ -121,8 +112,8 @@ class RegisterControllerTest extends TestCase {
 
 		$controller = $this->getController();
 		$response = $controller->showEmailForm($email, $message);
-		$disable_email_verification = $this->config->getAppValue('registration', 'disable_email_verification', 'no');
-		$email_is_optional = $this->config->getAppValue('registration', 'email_is_optional', 'no');
+		$disable_email_verification = $this->config->getAppValueBool('disable_email_verification');
+		$email_is_optional = $this->config->getAppValueBool('email_is_optional');
 
 		$this->loginFlowService->method('isUsingLoginFlow')
 			->willReturn(false);
@@ -450,10 +441,15 @@ class RegisterControllerTest extends TestCase {
 			'validateSecretAndToken'
 		]);
 
-		$this->config->method('getAppValue')
+		$this->config->expects($this->exactly(6))
+			->method('getAppValueBool')
 			->willReturnMap([
-				['registration', 'show_fullname', 'no', 'yes'],
-				['registration', 'show_phone', 'no', 'yes'],
+				['email_is_login', false],
+				['email_is_optional', false],
+				['show_fullname', true],
+				['enforce_fullname', false],
+				['show_phone', true],
+				['enforce_phone', false],
 			]);
 
 		$controller->expects($this->once())

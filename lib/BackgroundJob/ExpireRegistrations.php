@@ -8,30 +8,26 @@ declare(strict_types=1);
 
 namespace OCA\Registration\BackgroundJob;
 
-use OCA\Registration\AppInfo\Application;
 use OCA\Registration\Db\RegistrationMapper;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\TimedJob;
-use OCP\IConfig;
 
 class ExpireRegistrations extends TimedJob {
 
-	protected RegistrationMapper $registrationMapper;
-	protected IConfig $config;
-
-	public function __construct(ITimeFactory $time,
-		RegistrationMapper $registrationMapper,
-		IConfig $config) {
+	public function __construct(
+		ITimeFactory $time,
+		protected RegistrationMapper $registrationMapper,
+		protected IAppConfig $config,
+	) {
 		parent::__construct($time);
 
 		// Run once per day
 		$this->setInterval(60 * 60 * 24);
 		$this->setTimeSensitivity(self::TIME_INSENSITIVE);
-
-		$this->config = $config;
-		$this->registrationMapper = $registrationMapper;
 	}
 
+	#[\Override]
 	public function run($argument): void {
 		$expireDays = $this->getDuration();
 		$expireDate = $this->time->getDateTime();
@@ -42,12 +38,10 @@ class ExpireRegistrations extends TimedJob {
 	}
 
 	private function getDuration(): int {
-		return max(
-			(int)$this->config->getAppValue(
-				Application::APP_ID,
-				'expire_days',
-				'30'
-			),
+		return max($this->config->getAppValueInt(
+			'expire_days',
+			30
+		),
 			1
 		);
 	}
