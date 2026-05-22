@@ -17,7 +17,7 @@ OC.L10N.register(
     "Click the button below to continue." : "İşlemi sürdürmek için aşağıdaki düğmeye tıklayın.",
     "Verification code: %s" : "Doğrulama kodu: %s",
     "Continue registration" : "Hesap açma işlemini sürdür",
-    "New user \"%s\" has created an account on %s" : "\"%s\" kullanıcı hesabı %s üzerinde açıldı",
+    "New user \"%s\" has created an account on %s" : "\"%s\" yeni kullanıcı hesabı %s üzerinde oluşturuldu",
     "New user registered" : "Yeni kullanıcı hesabı açıldı",
     "no email address given" : "bir e-posta adresi belirtilmemiş",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s), %3$s üzerinde yeni bir hesap açtı.",
