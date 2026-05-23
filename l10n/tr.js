@@ -45,7 +45,7 @@ OC.L10N.register(
     "An error occurred while saving the settings" : "Ayarlar kaydedilirken bir sorun çıktı",
     "Registration settings" : "Hesap açma ayarları",
     "Require administrator approval" : "Yönetici onayı istensin",
-    "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "Kullanıcı etkinleştirilene kadar, kimlik bilgileri istemci tarafından doğrulanamayacağından, \"Yönetici onayı istensin\" seçeneği etkinleştirildiğinde, mobil ve bilgisayar istemcilerden yapılan kayıtların tamamlanması engellenir.",
+    "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled." : "Kullanıcı etkinleştirilene kadar, kimlik bilgileri istemci tarafından doğrulanamayacağından, \"Yönetici onayı istensin\" seçeneği açıldığında, mobil ve bilgisayar istemcilerden yapılan kayıtların tamamlanması engellenir.",
     "Registered users default group" : "Hesap açan kullanıcılar için varsayılan grup",
     "Select group" : "Grubu seçin",
     "Email settings" : "E-posta ayarları",
