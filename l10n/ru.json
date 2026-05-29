@@ -67,6 +67,7 @@
     "Verification email instructions" : "Инструкции для подтверждения электронной почты",
     "A short message that is shown to the user in the verification email." : "Короткое сообщение, которое отображается пользователю в проверочном письме.",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email." : "Добавить дополнительные инструкции для пользователя (например, для выбора имени для входа). Если настроено, текст будет встроен в письмо с подтверждением. ",
+    "Please create your username following the scheme " : "Пожалуйста, создайте своё имя пользователя по схеме",
     "Email (optional)" : "Электронная почта (необязательно)",
     "Email" : "Адрес эл. почты",
     "Continue" : "Продолжить",
