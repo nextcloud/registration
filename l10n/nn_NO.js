@@ -4,6 +4,7 @@ OC.L10N.register(
     "Saved" : "Lagra",
     "Email" : "E-post",
     "Continue" : "Gå vidare",
+    "Back to login" : "Tilbake til innlogging",
     "Full name" : "Fult namn",
     "Password" : "Passord",
     "Loading" : "Loading",
