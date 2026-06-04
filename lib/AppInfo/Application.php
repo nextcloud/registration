@@ -24,12 +24,14 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID);
 	}
 
+	#[\Override]
 	public function register(IRegistrationContext $context): void {
 		$context->registerAlternativeLogin(RegistrationLoginOption::class);
 		$context->registerCapability(Capabilities::class);
 		$context->registerEventListener(UserChangedEvent::class, UserEnabledListener::class);
 	}
 
+	#[\Override]
 	public function boot(IBootContext $context): void {
 	}
 }

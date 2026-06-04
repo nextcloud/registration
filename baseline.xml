@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
+  <file src="lib/Controller/SettingsController.php">
+    <NullArgument>
+      <code><![CDATA[null]]></code>
+    </NullArgument>
+  </file>
+  <file src="lib/Db/RegistrationMapper.php">
+    <UndefinedMagicMethod>
+      <code><![CDATA[setRequested]]></code>
+    </UndefinedMagicMethod>
+  </file>
+  <file src="lib/Service/MailService.php">
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[getSubAdmin]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="lib/Service/RegistrationService.php">
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[createSessionToken]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+</files>

@@ -10,8 +10,6 @@ declare(strict_types=1);
 namespace OCA\Registration\Service;
 
 use InvalidArgumentException;
-use libphonenumber\NumberParseException;
-use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberUtil;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
@@ -21,11 +19,13 @@ use OCA\Registration\Db\RegistrationMapper;
 use OCA\Settings\Mailer\NewUserMailHelper;
 use OCP\Accounts\IAccountManager;
 use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Authentication\Exceptions\InvalidTokenException;
 use OCP\Authentication\Token\IToken;
 use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
+use OCP\IPhoneNumberUtil;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
@@ -48,6 +48,7 @@ class RegistrationService {
 		private IUserManager $userManager,
 		private IAccountManager $accountManager,
 		private IConfig $config,
+		private IAppConfig $appConfig,
 		private IGroupManager $groupManager,
 		private ISecureRandom $random,
 		private IUserSession $userSession,
@@ -56,6 +57,7 @@ class RegistrationService {
 		private ISession $session,
 		private IProvider $tokenProvider,
 		private ICrypto $crypto,
+		private IPhoneNumberUtil $phoneNumberUtil,
 	) {
 	}
 
@@ -92,7 +94,7 @@ class RegistrationService {
 	 * @throws RegistrationException
 	 */
 	public function validateEmail(string $email): void {
-		if ($email === '' && $this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes') {
+		if ($email === '' && $this->appConfig->getAppValueBool('email_is_optional')) {
 			return;
 		}
 
@@ -114,20 +116,22 @@ class RegistrationService {
 			);
 		}
 
-		if (empty($this->getAllowedDomains())) {
+		$allowedDomains = $this->getAllowedDomains();
+
+		if (empty($allowedDomains)) {
 			return;
 		}
 
-		$emailIsInDomainList = $this->checkAllowedDomains($email);
-		$blockDomains = $this->config->getAppValue(Application::APP_ID, 'domains_is_blocklist', 'no') === 'yes';
-		$showDomains = $this->config->getAppValue(Application::APP_ID, 'show_domains', 'no') === 'yes';
+		$emailIsInDomainList = $this->checkAllowedDomains($email, $allowedDomains);
+		$blockDomains = $this->appConfig->getAppValueBool('domains_is_blocklist');
+		$showDomains = $this->appConfig->getAppValueBool('show_domains');
 
 		if (!$blockDomains && !$emailIsInDomainList) {
 			if ($showDomains) {
 				throw new RegistrationException(
 					$this->l10n->t(
 						'Registration is only allowed with the following domains: %s',
-						[implode(', ', $this->getAllowedDomains())]
+						[implode(', ', $allowedDomains)]
 					)
 				);
 			}
@@ -141,7 +145,7 @@ class RegistrationService {
 				throw new RegistrationException(
 					$this->l10n->t(
 						'Registration is not allowed with the following domains: %s',
-						[implode(', ', $this->getAllowedDomains())]
+						[implode(', ', $allowedDomains)]
 					)
 				);
 			}
@@ -170,7 +174,7 @@ class RegistrationService {
 			throw new RegistrationException($this->l10n->t('Please provide a valid login name.'));
 		}
 
-		$regex = $this->config->getAppValue($this->appName, 'username_policy_regex', '');
+		$regex = $this->appConfig->getAppValueString('username_policy_regex');
 		if ($regex && preg_match($regex, $username) === 0) {
 			throw new RegistrationException($this->l10n->t('Please provide a valid login name.'));
 		}
@@ -196,25 +200,15 @@ class RegistrationService {
 			$defaultRegion = 'EN';
 		}
 
-		$phoneUtil = PhoneNumberUtil::getInstance();
-		try {
-			$phoneNumber = $phoneUtil->parse($phone, $defaultRegion);
-			if (!$phoneNumber instanceof PhoneNumber || !$phoneUtil->isValidNumber($phoneNumber)) {
-				throw new RegistrationException($this->l10n->t('The phone number is invalid.'));
-			}
-		} catch (NumberParseException $e) {
+		if ($this->phoneNumberUtil->convertToStandardFormat($phone, $defaultRegion) === null) {
 			throw new RegistrationException($this->l10n->t('The phone number is invalid.'));
 		}
 	}
 
 	/**
 	 * check if email domain is allowed
-	 *
-	 * @param string $email
-	 * @return bool
 	 */
-	public function checkAllowedDomains(string $email): bool {
-		$allowedDomains = $this->getAllowedDomains();
+	public function checkAllowedDomains(string $email, array $allowedDomains): bool {
 		if (!empty($allowedDomains)) {
 			[,$mailDomain] = explode('@', strtolower($email), 2);
 
@@ -247,7 +241,7 @@ class RegistrationService {
 	 * @return string[]
 	 */
 	public function getAllowedDomains(): array {
-		$allowedDomains = $this->config->getAppValue($this->appName, 'allowed_domains', '');
+		$allowedDomains = $this->appConfig->getAppValueString('allowed_domains');
 		$allowedDomains = explode(';', $allowedDomains);
 		$allowedDomains = array_map('trim', $allowedDomains);
 		$allowedDomains = array_filter($allowedDomains);
@@ -278,16 +272,16 @@ class RegistrationService {
 
 		$this->validateUsername($loginName);
 
-		if ($this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes'
-			&& $this->config->getAppValue('registration', 'enforce_fullname', 'no') === 'yes') {
+		if ($this->appConfig->getAppValueBool('show_fullname')
+			&& $this->appConfig->getAppValueBool('enforce_fullname')) {
 			$this->validateDisplayname($fullName);
 		}
 
 		if (class_exists(PhoneNumberUtil::class)
-			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+			&& $this->appConfig->getAppValueBool('show_phone')) {
 			if ($phone) {
 				$this->validatePhoneNumber($phone);
-			} elseif ($this->config->getAppValue('registration', 'enforce_phone', 'no') === 'yes') {
+			} elseif ($this->appConfig->getAppValueBool('enforce_phone')) {
 				throw new RegistrationException($this->l10n->t('Please provide a valid phone number.'));
 			}
 		}
@@ -305,7 +299,6 @@ class RegistrationService {
 		}
 		$userId = $user->getUID();
 
-
 		// Set user email
 		try {
 			$user->setEMailAddress($registration->getEmail());
@@ -314,14 +307,14 @@ class RegistrationService {
 		}
 
 		// Set display name
-		if ($fullName && $this->config->getAppValue('registration', 'show_fullname', 'no') === 'yes') {
+		if ($fullName && $this->appConfig->getAppValueBool('show_fullname')) {
 			$user->setDisplayName($fullName);
 		}
 
 		// Set phone number in account data
 		if (method_exists($this->accountManager, 'updateAccount')
 			&& $phone
-			&& $this->config->getAppValue('registration', 'show_phone', 'no') === 'yes') {
+			&& $this->appConfig->getAppValueBool('show_phone')) {
 			$account = $this->accountManager->getAccount($user);
 			$property = $account->getProperty(IAccountManager::PROPERTY_PHONE);
 			$account->setProperty(
@@ -334,7 +327,7 @@ class RegistrationService {
 		}
 
 		// Add user to group
-		$registeredUserGroup = $this->config->getAppValue($this->appName, 'registered_user_group', 'none');
+		$registeredUserGroup = $this->appConfig->getAppValueString('registered_user_group', 'none');
 		if ($registeredUserGroup !== 'none') {
 			$group = $this->groupManager->get($registeredUserGroup);
 			if ($group === null) {
@@ -351,8 +344,8 @@ class RegistrationService {
 		}
 
 		// disable user if this is requested by config
-		$adminApprovalRequired = $this->config->getAppValue($this->appName, 'admin_approval_required', 'no');
-		if ($adminApprovalRequired === 'yes') {
+		$adminApprovalRequired = $this->appConfig->getAppValueBool('admin_approval_required');
+		if ($adminApprovalRequired) {
 			$user->setEnabled(false);
 			$this->config->setUserValue($userId, Application::APP_ID, 'send_welcome_mail_on_enable', 'yes');
 		} else {

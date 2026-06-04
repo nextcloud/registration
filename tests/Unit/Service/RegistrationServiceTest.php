@@ -16,19 +16,21 @@ use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
 use OCP\Accounts\IAccountManager;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\IConfig;
 use OCP\IDBConnection;
 use OCP\IGroupManager;
 use OCP\IL10N;
+use OCP\IPhoneNumberUtil;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\IUserManager;
 use OCP\IUserSession;
-
 use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
+use OCP\Server;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
@@ -41,12 +43,11 @@ use Psr\Log\LoggerInterface;
 class RegistrationServiceTest extends TestCase {
 	use DatabaseTransaction;
 
-	/** @var RegistrationMapper */
 	private RegistrationMapper $registrationMapper;
-	/** @var IConfig */
-	private $config;
-	/** @var ICrypto | MockObject */
-	private $crypto;
+	private IConfig&MockObject $config;
+	private IAppConfig&MockObject $appConfig;
+	private ICrypto&MockObject $crypto;
+	private IPhoneNumberUtil $phoneNumberUtil;
 	private RegistrationService $service;
 
 	public function setUp(): void {
@@ -62,6 +63,7 @@ class RegistrationServiceTest extends TestCase {
 		$userManager = \OC::$server->get(IUserManager::class);
 		$accountManager = $this->createMock(IAccountManager::class);
 		$this->config = $this->createMock(IConfig::class);
+		$this->appConfig = $this->createMock(IAppConfig::class);
 		$groupManager = \OC::$server->get(IGroupManager::class);
 		$random = \OC::$server->get(ISecureRandom::class);
 		$userSession = $this->createMock(IUserSession::class);
@@ -70,6 +72,7 @@ class RegistrationServiceTest extends TestCase {
 		$session = $this->createMock(ISession::class);
 		$tokenProvider = $this->createMock(IProvider::class);
 		$this->crypto = $this->createMock(ICrypto::class);
+		$this->phoneNumberUtil = Server::get(IPhoneNumberUtil::class);
 
 		$this->registrationMapper = new RegistrationMapper(
 			\OC::$server->get(IDBConnection::class),
@@ -85,6 +88,7 @@ class RegistrationServiceTest extends TestCase {
 			$userManager,
 			$accountManager,
 			$this->config,
+			$this->appConfig,
 			$groupManager,
 			$random,
 			$userSession,
@@ -92,26 +96,27 @@ class RegistrationServiceTest extends TestCase {
 			$logger,
 			$session,
 			$tokenProvider,
-			$this->crypto
+			$this->crypto,
+			$this->phoneNumberUtil
 		);
 	}
 
 	public static function dataValidateEmail(): array {
 		return [
-			['aaaa@example.com', '', 'no'],
-			['aaaa@example.com', 'example.com', 'no'],
-			['aaaa@example.com', 'eXample.com', 'no'],
-			['aaaa@eXample.com', 'example.com', 'no'],
-			['aaaa@example.com', 'example.com;example.tld', 'no'],
-			['aaaa@example.com', 'example.tld;example.com', 'no'],
-			['aaaa@example.tld', 'example.tld ; example.com', 'no'],
-			['aaaa@example.com', 'example.tld ; example.com', 'no'],
-			['aaaa@cloud.example.com', '*.example.com', 'no'],
-			['aaaa@cloud.example.com', 'cloud.example.*', 'no'],
+			['aaaa@example.com', '', false],
+			['aaaa@example.com', 'example.com', false],
+			['aaaa@example.com', 'eXample.com', false],
+			['aaaa@eXample.com', 'example.com', false],
+			['aaaa@example.com', 'example.com;example.tld', false],
+			['aaaa@example.com', 'example.tld;example.com', false],
+			['aaaa@example.tld', 'example.tld ; example.com', false],
+			['aaaa@example.com', 'example.tld ; example.com', false],
+			['aaaa@cloud.example.com', '*.example.com', false],
+			['aaaa@cloud.example.com', 'cloud.example.*', false],
 
-			['aaaa@example.com', '', 'yes'],
-			['aaaa@example.com', 'nextcloud.com', 'yes'],
-			['aaaa@example.com', 'nextcloud.com;example.tld', 'yes'],
+			['aaaa@example.com', '', true],
+			['aaaa@example.com', 'nextcloud.com', true],
+			['aaaa@example.com', 'nextcloud.com;example.tld', true],
 		];
 	}
 
@@ -119,13 +124,17 @@ class RegistrationServiceTest extends TestCase {
 	 * @throws RegistrationException
 	 */
 	#[DataProvider('dataValidateEmail')]
-	public function testValidateEmail(string $email, string $allowedDomains, string $blocked) {
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
+	public function testValidateEmail(string $email, string $allowedDomains, bool $blocked) {
+		$this->appConfig->expects($this->once())
+			->method('getAppValueString')
+			->with('allowed_domains')
+			->willReturn($allowedDomains);
+
+		$this->appConfig->expects($this->exactly($allowedDomains === '' ? 0 : 2))
+			->method('getAppValueBool')
 			->willReturnMap([
-				['registration', 'allowed_domains', '', $allowedDomains],
-				['registration', 'domains_is_blocklist', 'no', $blocked],
-				['registration', 'show_domains', 'no', 'no'],
+				['domains_is_blocklist', $blocked],
+				['show_domains', false],
 			]);
 
 		$this->service->validateEmail($email);
@@ -133,16 +142,16 @@ class RegistrationServiceTest extends TestCase {
 
 	public static function dataValidateEmailThrows(): array {
 		return [
-			['aaaa@example.com', 'nextcloud.com;example.tld', 'no'],
-			['aaaa@example.com', 'nextcloud.com', 'no'],
+			['aaaa@example.com', 'nextcloud.com;example.tld', false],
+			['aaaa@example.com', 'nextcloud.com', false],
 
-			['aaaa@example.com', 'example.com', 'yes'],
-			['aaaa@example.com', 'eXample.com', 'yes'],
-			['aaaa@eXample.com', 'example.com', 'yes'],
-			['aaaa@example.com', 'example.com;example.tld', 'yes'],
-			['aaaa@example.com', 'example.tld;example.com', 'yes'],
-			['aaaa@cloud.example.com', '*.example.com', 'yes'],
-			['aaaa@cloud.example.com', 'cloud.example.*', 'yes'],
+			['aaaa@example.com', 'example.com', true],
+			['aaaa@example.com', 'eXample.com', true],
+			['aaaa@eXample.com', 'example.com', true],
+			['aaaa@example.com', 'example.com;example.tld', true],
+			['aaaa@example.com', 'example.tld;example.com', true],
+			['aaaa@cloud.example.com', '*.example.com', true],
+			['aaaa@cloud.example.com', 'cloud.example.*', true],
 		];
 	}
 
@@ -150,13 +159,17 @@ class RegistrationServiceTest extends TestCase {
 	 * @throws RegistrationException
 	 */
 	#[DataProvider('dataValidateEmailThrows')]
-	public function testValidateEmailThrows(string $email, string $allowedDomains, string $blocked) {
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
+	public function testValidateEmailThrows(string $email, string $allowedDomains, bool $blocked) {
+		$this->appConfig->expects($this->once())
+			->method('getAppValueString')
+			->with('allowed_domains')
+			->willReturn($allowedDomains);
+
+		$this->appConfig->expects($this->exactly(2))
+			->method('getAppValueBool')
 			->willReturnMap([
-				['registration', 'allowed_domains', '', $allowedDomains],
-				['registration', 'domains_is_blocklist', 'no', $blocked],
-				['registration', 'show_domains', 'no', 'no'],
+				['domains_is_blocklist', $blocked],
+				['show_domains', false],
 			]);
 
 		$this->expectException(RegistrationException::class);
@@ -196,10 +209,26 @@ class RegistrationServiceTest extends TestCase {
 		//$reg->setPassword("asdf");
 		$reg->setEmailConfirmed(true);
 
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
-			->will($this->returnCallback([$this, 'settingsCallback1']));
+		$this->appConfig->expects($this->exactly(2))
+			->method('getAppValueString')
+			->willReturnMap([
+				['registered_user_group', 'none', 'none'],
+				['username_policy_regex', ''],
+			]);
 
+		$this->appConfig->expects($this->exactly(6))
+			->method('getAppValueBool')
+			->willReturnMap([
+				['show_fullname', true],
+				['enforce_fullname', false],
+				['show_phone', true],
+				['enforce_phone', false],
+				['admin_approval_required', false],
+			]);
+
+		$this->config->expects($this->once())
+			->method('getAppValue')
+			->with('core', 'newUser.sendEmail');
 
 		$form_input_username = 'alice1';
 		$resulting_user = $this->service->createAccount($reg, $form_input_username, 'Full name', '+49 800 / 1110111', 'asdf');
@@ -257,10 +286,10 @@ class RegistrationServiceTest extends TestCase {
 	 * @depends testDuplicateUsernameApi
 	 */
 	public function testUsernameDoesntMatchPattern() {
-		$this->config->expects($this->atLeastOnce())
-			->method('getAppValue')
+		$this->appConfig->expects($this->atLeastOnce())
+			->method('getAppValueString')
 			->willReturnMap([
-				['registration', 'username_policy_regex', '', '/^[a-z]\.[a-z]+$/'],
+				['username_policy_regex', '', '/^[a-z]\.[a-z]+$/'],
 			]);
 
 		$reg = new Registration();
@@ -277,20 +306,5 @@ class RegistrationServiceTest extends TestCase {
 		$this->expectException(RegistrationException::class);
 		$this->expectExceptionMessage('Please provide a valid login name.');
 		$this->service->createAccount($reg, null, 'Full name', '+49 800 / 1110111');
-	}
-
-	public function settingsCallback1(string $app, string $key, string $default): string {
-		$map = [
-			'registered_user_group' => 'none',
-			'admin_approval_required' => 'no',
-			'username_policy_regex' => '',
-			'show_fullname' => 'yes',
-			'enforce_fullname' => 'no',
-			'show_phone' => 'yes',
-			'enforce_phone' => 'no',
-			'newUser.sendEmail' => 'no',
-		];
-
-		return $map[$key];
 	}
 }

@@ -5,11 +5,12 @@ declare(strict_types=1);
  * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 namespace OCA\Registration\Migration;
 
 use Closure;
-use Doctrine\DBAL\Types\Types;
 use OCP\DB\ISchemaWrapper;
+use OCP\DB\Types;
 use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
 
@@ -20,6 +21,7 @@ class Version0005Date20200710135953 extends SimpleMigrationStep {
 	 * @param array $options
 	 * @return null|ISchemaWrapper
 	 */
+	#[\Override]
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
@@ -53,7 +55,7 @@ class Version0005Date20200710135953 extends SimpleMigrationStep {
 			$table->addColumn('client_secret', Types::STRING, [
 				'notnull' => false,
 			]);
-			$table->addColumn('requested', Types::DATETIME_MUTABLE, [
+			$table->addColumn('requested', Types::DATETIME, [
 				'notnull' => true,
 			]);
 			$table->setPrimaryKey(['id']);

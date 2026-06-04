@@ -6,26 +6,21 @@ declare(strict_types=1);
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+
 namespace OCA\Registration\Tests\Unit\BackgroundJob;
 
-use OCA\Registration\AppInfo\Application;
 use OCA\Registration\BackgroundJob\ExpireRegistrations;
 use OCA\Registration\Db\RegistrationMapper;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Utility\ITimeFactory;
-use OCP\IConfig;
 use PHPUnit\Framework\MockObject\MockObject;
 use Test\TestCase;
 
 class ExpireRegistrationsTest extends TestCase {
 
-	/** @var RegistrationMapper | MockObject */
-	private $registrationMapper;
-
-	/** @var ITimeFactory | MockObject */
-	private $timeFactory;
-
-	/** @var IConfig|MockObject */
-	private $config;
+	private RegistrationMapper&MockObject $registrationMapper;
+	private ITimeFactory&MockObject $timeFactory;
+	private IAppConfig&MockObject $config;
 
 	private ExpireRegistrations $backgroundJob;
 
@@ -34,16 +29,16 @@ class ExpireRegistrationsTest extends TestCase {
 
 		$this->registrationMapper = $this->createMock(RegistrationMapper::class);
 		$this->timeFactory = $this->createMock(ITimeFactory::class);
-		$this->config = $this->createMock(IConfig::class);
+		$this->config = $this->createMock(IAppConfig::class);
 
 		$this->backgroundJob = new ExpireRegistrations($this->timeFactory, $this->registrationMapper, $this->config);
 	}
 
 	public function testRun() {
 		$this->config->expects($this->once())
-			->method('getAppValue')
-			->with(Application::APP_ID, 'expire_days', '30')
-			->willReturn('20');
+			->method('getAppValueInt')
+			->with('expire_days', 30)
+			->willReturn(20);
 
 		$expireDate = new \DateTime();
 		$this->timeFactory->expects($this->once())

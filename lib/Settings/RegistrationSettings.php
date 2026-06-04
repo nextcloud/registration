@@ -10,8 +10,8 @@ namespace OCA\Registration\Settings;
 
 use OCA\Registration\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
-use OCP\IConfig;
 use OCP\IGroup;
 use OCP\IGroupManager;
 use OCP\Settings\ISettings;
@@ -21,79 +21,80 @@ class RegistrationSettings implements ISettings {
 
 	public function __construct(
 		protected string $appName,
-		private IConfig $config,
+		private IAppConfig $config,
 		private IGroupManager $groupManager,
 		private IInitialState $initialState,
 	) {
 	}
 
+	#[\Override]
 	public function getForm(): TemplateResponse {
 		$this->initialState->provideInitialState(
 			'registered_user_group',
-			$this->getGroupDetailArray($this->config->getAppValue($this->appName, 'registered_user_group', 'none'))
+			$this->getGroupDetailArray($this->config->getAppValueString('registered_user_group', 'none'))
 		);
 
 		$this->initialState->provideInitialState(
 			'admin_approval_required',
-			$this->config->getAppValue($this->appName, 'admin_approval_required', 'no') === 'yes'
+			$this->config->getAppValueBool('admin_approval_required')
 		);
 
 		$this->initialState->provideInitialState(
 			'allowed_domains',
-			$this->config->getAppValue($this->appName, 'allowed_domains')
+			$this->config->getAppValueString('allowed_domains')
 		);
 		$this->initialState->provideInitialState(
 			'domains_is_blocklist',
-			$this->config->getAppValue($this->appName, 'domains_is_blocklist', 'no') === 'yes'
+			$this->config->getAppValueBool('domains_is_blocklist')
 		);
 		$this->initialState->provideInitialState(
 			'show_domains',
-			$this->config->getAppValue($this->appName, 'show_domains', 'no') === 'yes'
+			$this->config->getAppValueBool('show_domains')
 		);
 		$this->initialState->provideInitialState(
 			'disable_email_verification',
-			$this->config->getAppValue($this->appName, 'disable_email_verification', 'no') === 'yes'
+			$this->config->getAppValueBool('disable_email_verification')
 		);
 		$this->initialState->provideInitialState(
 			'email_is_optional',
-			$this->config->getAppValue($this->appName, 'email_is_optional', 'no') === 'yes'
+			$this->config->getAppValueBool('email_is_optional')
 		);
 		$this->initialState->provideInitialState(
 			'email_is_login',
-			$this->config->getAppValue($this->appName, 'email_is_login', 'no') === 'yes'
+			$this->config->getAppValueBool('email_is_login')
 		);
 		$this->initialState->provideInitialState(
 			'username_policy_regex',
-			$this->config->getAppValue($this->appName, 'username_policy_regex')
+			$this->config->getAppValueString('username_policy_regex')
 		);
 		$this->initialState->provideInitialState(
 			'username_policy_regex',
-			$this->config->getAppValue($this->appName, 'username_policy_regex')
+			$this->config->getAppValueString('username_policy_regex')
 		);
 		$this->initialState->provideInitialState(
 			'show_fullname',
-			$this->config->getAppValue($this->appName, 'show_fullname', 'no') === 'yes'
+			$this->config->getAppValueBool('show_fullname')
 		);
 		$this->initialState->provideInitialState(
 			'enforce_fullname',
-			$this->config->getAppValue($this->appName, 'enforce_fullname', 'no') === 'yes'
+			$this->config->getAppValueBool('enforce_fullname')
 		);
 		$this->initialState->provideInitialState(
 			'show_phone',
-			$this->config->getAppValue($this->appName, 'show_phone', 'no') === 'yes'
+			$this->config->getAppValueBool('show_phone')
 		);
 		$this->initialState->provideInitialState(
 			'enforce_phone',
-			$this->config->getAppValue($this->appName, 'enforce_phone', 'no') === 'yes'
+			$this->config->getAppValueBool('enforce_phone')
 		);
 
 		$this->initialState->provideInitialState(
 			'additional_hint',
-			$this->config->getAppValue($this->appName, 'additional_hint')
+			$this->config->getAppValueString('additional_hint')
 		);
 		$this->initialState->provideInitialState(
 			'email_verification_hint',
-			$this->config->getAppValue($this->appName, 'email_verification_hint')
+			$this->config->getAppValueString('email_verification_hint')
 		);
 
 		Util::addScript('registration', 'registration-settings');
@@ -102,10 +103,12 @@ class RegistrationSettings implements ISettings {
 		return new TemplateResponse('registration', 'admin', [], TemplateResponse::RENDER_AS_BLANK);
 	}
 
+	#[\Override]
 	public function getSection(): string {
 		return Application::APP_ID;
 	}
 
+	#[\Override]
 	public function getPriority(): int {
 		return 50;
 	}

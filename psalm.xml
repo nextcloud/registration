@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="4"
+    resolveFromConfigFile="true"
+    phpVersion="8.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
+    errorBaseline="baseline.xml"
+>
+    <projectFiles>
+        <directory name="lib" />
+        <ignoreFiles>
+            <directory name="vendor" />
+			<directory name="vendor-bin" />
+        </ignoreFiles>
+    </projectFiles>
+	<extraFiles>
+		<directory name="vendor" />
+	</extraFiles>
+	<issueHandlers>
+		<UndefinedClass>
+			<errorLevel type="suppress">
+				<referencedClass name="OC" />
+				<referencedClass name="OC\Authentication\Token\IProvider" />
+				<referencedClass name="OC\Authentication\Exceptions\PasswordlessTokenException" />
+				<referencedClass name="OC\Core\Controller\ClientFlowLoginController" />
+				<referencedClass name="OC\Core\Controller\ClientFlowLoginV2Controller" />
+				<referencedClass name="OC\Core\Service\LoginFlowV2Service" />
+				<referencedClass name="OCA\Settings\Mailer\NewUserMailHelper" />
+			</errorLevel>
+		</UndefinedClass>
+		<UndefinedDocblockClass>
+			<errorLevel type="suppress">
+				<referencedClass name="Doctrine\DBAL\Schema\Table" />
+				<referencedClass name="OC\Core\Controller\ClientFlowLoginController" />
+				<referencedClass name="OCA\Settings\Mailer\NewUserMailHelper" />
+			</errorLevel>
+		</UndefinedDocblockClass>
+	</issueHandlers>
+</psalm>

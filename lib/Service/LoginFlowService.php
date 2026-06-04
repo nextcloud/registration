@@ -41,7 +41,7 @@ class LoginFlowService {
 	public function tryLoginFlowV1(): ?Response {
 		/** @var ClientFlowLoginController $controller */
 		$container = \OC::$server->getRegisteredAppContainer('core');
-		$controller = $container->query(ClientFlowLoginController::class);
+		$controller = $container->get(ClientFlowLoginController::class);
 		return $controller->generateAppPassword(
 			$this->session->get(ClientFlowLoginController::STATE_NAME)
 		);
