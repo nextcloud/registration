@@ -67,6 +67,7 @@
     "Verification email instructions" : "Verification email instructions",
     "A short message that is shown to the user in the verification email." : "A short message that is shown to the user in the verification email.",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email." : "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.",
+    "Please create your username following the scheme " : "لطفاً نام کاربری خود را بر اساس این الگو بسازید ",
     "Email (optional)" : "Email (optional)",
     "Email" : "رایانامه",
     "Continue" : "ادامه دادن",
