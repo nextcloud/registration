@@ -6,6 +6,25 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 3.0.0 - 2026-02-19
+
+### Added
+
+- Compatibility with Nextcloud 34
+
+### Changed
+
+- Modernized backend code a lot using latest available PHP & Nextcloud features
+- Update dependencies
+
+### Fixed
+
+- Duplicate ID in admin settings
+
+### Removed
+
+- Compatibility with Nextcloud 31
+
 ## 2.9.0 - 2026-02-19
 
 ### Added
