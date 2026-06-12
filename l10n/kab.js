@@ -1,12 +1,16 @@
 OC.L10N.register(
     "registration",
     {
+    "Saved" : "Yettwasekles",
+    "Register" : "Jerred",
     "Email" : "Imayl",
     "Continue" : "Kemmel",
     "Back to login" : "Uɣal ar tuqqna",
     "Full name" : "Isem-inek·inem ummid",
     "Phone number" : "Uṭṭun n tiliɣri",
     "Password" : "Awal n uɛeddi",
-    "Create account" : "Snulfu-d amiḍan"
+    "Loading" : "Yessalay-d",
+    "Create account" : "Snulfu-d amiḍan",
+    "Verify" : "Senqed"
 },
 "nplurals=2; plural=(n != 1);");
