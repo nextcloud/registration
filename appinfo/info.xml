@@ -29,7 +29,7 @@ This app allows users to register a new account.
 5. New account is created and is logged in automatically
 		]]></description>
 	<version>3.0.0</version>
-	<licence>agpl</licence>
+	<licence>AGPL-3.0-or-later</licence>
 	<author mail="nextcloud@tcit.fr" homepage="https://tcit.fr">Thomas Citharel</author>
 	<author>Joas Schilling</author>
 	<author mail="pellaeon@cnmc.tw" homepage="https://nyllep.wordpress.com/about-2">Pellaeon Lin</author>
