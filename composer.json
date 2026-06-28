@@ -7,7 +7,7 @@
 	},
 	"name": "nextcloud/registration",
 	"description": "registration",
-	"license": "AGPL",
+	"license": "AGPL-3.0-or-later",
 	"scripts": {
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
