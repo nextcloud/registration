@@ -159,7 +159,7 @@ class MailService {
 			'sitename' => $this->defaults->getName(),
 		]);
 
-		$subject = $l->t('New user "%s" has created an account on %s', [$username, $this->defaults->getName()]);
+		$subject = $l->t('New user "%1$s" has created an account on %2$s', [$username, $this->defaults->getName()]);
 
 		$template->setSubject($subject);
 		$template->addHeader();
