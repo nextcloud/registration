@@ -15,7 +15,6 @@
     "Click the button below to continue." : "Натисніть кнопку нижче, щоб продовжити.",
     "Verification code: %s" : "Код верифікації: %s",
     "Continue registration" : "Продовжити реєстрацію",
-    "New user \"%s\" has created an account on %s" : "Новий користувач \"%s\" створив обліковий запис на %s.",
     "New user registered" : "Зареєструвався новий користувач",
     "no email address given" : "Не надано електронну адресу",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) зареєстрував новий обліковий запис на %3$s.",

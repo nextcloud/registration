@@ -16,7 +16,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Кликнете на копчето подолу за да продолжите.",
     "Verification code: %s" : "Код за верификација: %s",
     "Continue registration" : "Продолжи со регистрацијата",
-    "New user \"%s\" has created an account on %s" : "Нов корисник \"%s\" е креиран на %s",
     "New user registered" : "Регистриран е нов корисник",
     "no email address given" : "Не е внесена адреса за е-пошта",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) регистрираше нова сметка на %3$s.",

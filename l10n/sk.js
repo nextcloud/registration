@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Pokračujte kliknutím na tlačidlo nižšie.",
     "Verification code: %s" : "Overovací kód: %s",
     "Continue registration" : "Pokračujte v registrácii",
-    "New user \"%s\" has created an account on %s" : "Nový používateľ „%s“ vytvoril účet na %s",
     "New user registered" : "Nový užívateľ je zaregistrovaný",
     "no email address given" : "nie je zadaná žiadna e-mail adresa",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) zaregistroval nový účet na %3$s.",

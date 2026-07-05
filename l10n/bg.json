@@ -15,7 +15,6 @@
     "Click the button below to continue." : "Щракнете върху долния бутон, за да продължите.",
     "Verification code: %s" : "Код за потвърждение: %s",
     "Continue registration" : "Продължаване на регистрацията",
-    "New user \"%s\" has created an account on %s" : "Нов потребител „ %s“ създаде профил на %s",
     "New user registered" : "Регистриран е нов потребител",
     "no email address given" : "няма подаден имейл адрес",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s“ (%2$s) регистрира нов профил на %3$s и трябва да бъде активиран.",

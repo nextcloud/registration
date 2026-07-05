@@ -15,7 +15,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Kliknite gumb u nastavku za nastavak.",
     "Verification code: %s" : "Kontrolni kôd: %s",
     "Continue registration" : "Nastavi registraciju",
-    "New user \"%s\" has created an account on %s" : "Novi korisnik „%s“ stvorio je račun na %s",
     "New user registered" : "Registriran je novi korisnik",
     "Enable now" : "Omogući sad",
     "A user has already taken this email, maybe you already have an account?" : "Postoji korisnik s ovom adresom e-pošte, možda ste već otvorili račun?",

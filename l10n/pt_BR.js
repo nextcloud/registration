@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Clique no botão abaixo para continuar.",
     "Verification code: %s" : "Código de verificação: %s",
     "Continue registration" : "Continuar registro",
-    "New user \"%s\" has created an account on %s" : "O novo usuário \"%s\" criou uma conta em %s",
     "New user registered" : "Um novo usuário registrou-se",
     "no email address given" : "nenhum endereço de e-mail fornecido",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) registrou uma nova conta em %3$s.",

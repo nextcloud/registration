@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Napsauta alla olevaa painiketta jatkaaksesi.",
     "Verification code: %s" : "Vahvistuskoodi: %s",
     "Continue registration" : "Jatka rekisteröintiä",
-    "New user \"%s\" has created an account on %s" : "Uusi käyttäjä \"%s\" loi tilin palveluun %s",
     "New user registered" : "Uusi käyttäjä rekisteröitynyt",
     "no email address given" : "sähköpostiosoitetta ei annettu",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) rekisteröi uuden tilin %3$s.",

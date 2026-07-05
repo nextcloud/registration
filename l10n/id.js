@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Klik tombol di bawah ini untuk melanjutkan.",
     "Verification code: %s" : "Kode verifikasi: %s",
     "Continue registration" : "Lanjutkan pendaftaran",
-    "New user \"%s\" has created an account on %s" : "Pengguna baru \"%s\" telah membuat akun di %s",
     "New user registered" : "Pengguna baru terdaftar",
     "no email address given" : "tidak ada alamat email yang diberikan",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) mendaftarkan akun baru di %3$s.",

@@ -15,7 +15,6 @@
     "Click the button below to continue." : "Кликните дугме испод да наставите.",
     "Verification code: %s" : "Кôд за потврђивање: %s",
     "Continue registration" : "Настави регистрацију",
-    "New user \"%s\" has created an account on %s" : "Нови корисник „%s” је направио налог на %s",
     "New user registered" : "Регистрација новог корисника",
     "no email address given" : "није наведена и-мејл адреса",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s” (%2$s) је регистровао нови налог на %3$s.",

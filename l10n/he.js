@@ -15,7 +15,6 @@ OC.L10N.register(
     "Click the button below to continue." : "לחץ על הלחצן למטה כדי להמשיך.",
     "Verification code: %s" : "קוד אימות: %s",
     "Continue registration" : "המשך רישום",
-    "New user \"%s\" has created an account on %s" : "משתמש חדש \"%s\" יצר חשבון ב-%s",
     "New user registered" : "נרשם משתמש חדש",
     "Enable now" : "להפעיל עכשיו",
     "A user has already taken this email, maybe you already have an account?" : "משתמש כבר לקח דוא\"ל זה. אולי כבר יש לך חשבון?",

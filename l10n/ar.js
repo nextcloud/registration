@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "إضغط على الزّرّ التالي للمتابعة.",
     "Verification code: %s" : "رمز التفعيل: %s",
     "Continue registration" : "متابعة التسجيل",
-    "New user \"%s\" has created an account on %s" : "مستخدم جديد \"%s\" قام بإنشاء حساب في %s",
     "New user registered" : "تمّ تسجيل مستخدم جديد",
     "no email address given" : "لم يتم إعطاء أيّ عنوان إيميل",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) سجّل مستخدماً جديداً في %3$s.",

@@ -15,7 +15,6 @@
     "Click the button below to continue." : "Egin klik beheko botoian jarraitzeko.",
     "Verification code: %s" : "Egiaztatze kodea: %s",
     "Continue registration" : "Jarraitu izen ematearekin",
-    "New user \"%s\" has created an account on %s" : "\"%s\" erabiltzaile berriak kontua sortu du %s(e)n",
     "New user registered" : "Erabiltzaile berria erregistratu da",
     "no email address given" : "ez da helbide elektronikorik eman",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\"(%2$s)-(e)k kontu berria erregistratu du %3$s-n.",

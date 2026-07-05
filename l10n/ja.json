@@ -15,7 +15,6 @@
     "Click the button below to continue." : "続行するには、下のボタンをクリックしてください。",
     "Verification code: %s" : "確認コード: %s",
     "Continue registration" : "続けて登録する",
-    "New user \"%s\" has created an account on %s" : "新しいユーザー \"%s\" がアカウント %sで作成されました。",
     "New user registered" : "新規ユーザー登録",
     "no email address given" : "メールアドレスが入力されていません",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s)は%3$sに新規アカウントを登録しました。",

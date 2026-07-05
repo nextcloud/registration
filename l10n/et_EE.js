@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Jätkamiseks klõpsi siintoodud nuppu.",
     "Verification code: %s" : "Kinnituskood: %s",
     "Continue registration" : "Jätka registreerimist",
-    "New user \"%s\" has created an account on %s" : "Serveris %s on registreeritud uus kasutajakonto „%s“",
     "New user registered" : "Uus kasutaja on registreeritud",
     "no email address given" : "e-posti aadressi pole lisatud",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s“ (%2$s) registreeris uue kasutajakonto teenuses %3$s.",

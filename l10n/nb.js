@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Klikk på knappen under for å fortsette.",
     "Verification code: %s" : "Verifiseringskode: %s",
     "Continue registration" : "Fortsett registreringen",
-    "New user \"%s\" has created an account on %s" : "Ny bruker \"%s\" har laget en konto på %s",
     "New user registered" : "Ny bruker registrert",
     "no email address given" : "e-postadresse ikke satt",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s) registrerte en ny konto på %3$s.",

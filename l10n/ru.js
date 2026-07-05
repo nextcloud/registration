@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Нажмите расположенную ниже кнопку для продолжения.",
     "Verification code: %s" : "Код подтверждения: %s",
     "Continue registration" : "Продолжить регистрацию",
-    "New user \"%s\" has created an account on %s" : "Новый пользователь «%s» создал учётную запись на сервере %s",
     "New user registered" : "Новый пользователь зарегистрировался",
     "no email address given" : "адрес электронной почты не указан",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "%1$s\" (%2$s) зарегистрировал(а) новую учётную запись на %3$s.",

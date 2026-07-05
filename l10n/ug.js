@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "داۋاملاشتۇرۇش ئۈچۈن تۆۋەندىكى كۇنۇپكىنى بېسىڭ.",
     "Verification code: %s" : "دەلىللەش كودى: %s",
     "Continue registration" : "داۋاملىق تىزىملىتىڭ",
-    "New user \"%s\" has created an account on %s" : "يېڭى ئىشلەتكۈچى \"\"%s بولسا %s دا ھېسابات قۇردى",
     "New user registered" : "يېڭى ئىشلەتكۈچى تىزىملاتتى",
     "no email address given" : "ئېلېكترونلۇق خەت ئادرېسى بېرىلمىگەن",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (\"%2$s\") بولسا %3$sدە يېڭى ھېسابات تىزىملاتتى.",

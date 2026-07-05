@@ -17,7 +17,6 @@ OC.L10N.register(
     "Click the button below to continue." : "Norėdami tęsti, spustelėkite mygtuką žemiau.",
     "Verification code: %s" : "Patvirtinimo kodas: %s",
     "Continue registration" : "Tęsti registraciją",
-    "New user \"%s\" has created an account on %s" : "Naujas vartotojas „%s“ sukūrė paskyrą %s",
     "New user registered" : "Naujas vartotojas užregistruotas",
     "no email address given" : "nenurodytas el. pašto adresas",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "„%1$s“ (%2$s) užregistravo naują paskyrą %3$s.",
