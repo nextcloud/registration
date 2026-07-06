@@ -15,6 +15,7 @@
     "Click the button below to continue." : "Cliceáil ar an gcnaipe thíos chun leanúint ar aghaidh.",
     "Verification code: %s" : "Cód fíoraithe: %s",
     "Continue registration" : "Leanúint ar aghaidh leis an gclárú",
+    "New user \"%1$s\" has created an account on %2$s" : "Tá cuntas cruthaithe ag an úsáideoir nua \"%1$s\" ar %2$s",
     "New user registered" : "Úsáideoir nua cláraithe",
     "no email address given" : "níor tugadh seoladh ríomhphoist",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "Chláraigh \"%1$s\" (%2$s) cuntas nua ar %3$s.",
