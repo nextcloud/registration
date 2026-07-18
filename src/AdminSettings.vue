@@ -29,7 +29,7 @@
 				:searchable="true"
 				:tagWidth="60"
 				:loading="loadingGroups"
-				:closeOnSelect="false"
+				:keepOpen="true"
 				label="displayname"
 				@search="searchGroup"
 				@update:modelValue="saveData" />
