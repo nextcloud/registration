@@ -45,16 +45,16 @@ This file is generated from multiple sources. Included packages:
 	- version: 6.0.7
 	- license: MIT
 - @vue/reactivity
-	- version: 3.5.35
+	- version: 3.5.40
 	- license: MIT
 - @vue/runtime-core
-	- version: 3.5.35
+	- version: 3.5.40
 	- license: MIT
 - @vue/runtime-dom
-	- version: 3.5.35
+	- version: 3.5.40
 	- license: MIT
 - @vue/shared
-	- version: 3.5.35
+	- version: 3.5.40
 	- license: MIT
 - axios
 	- version: 1.17.0
