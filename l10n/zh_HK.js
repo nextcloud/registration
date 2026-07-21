@@ -17,6 +17,7 @@ OC.L10N.register(
     "Click the button below to continue." : "點下方按鈕以繼續。",
     "Verification code: %s" : "驗證碼：%s",
     "Continue registration" : "繼續註冊",
+    "New user \"%1$s\" has created an account on %2$s" : "新用戶「%1$s」已在 %2$s 上建立了賬號",
     "New user registered" : "新用戶已註冊",
     "no email address given" : "未提供電郵地址",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\"（%2$s）在 %3$s 上註冊了新賬號。",
