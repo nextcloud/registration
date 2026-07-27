@@ -17,6 +17,7 @@ OC.L10N.register(
     "Click the button below to continue." : "Κάντε κλικ στο παρακάτω κουμπί για συνέχεια.",
     "Verification code: %s" : "Κωδικός επαλήθευσης: %s",
     "Continue registration" : "Συνεχίστε την εγγραφή",
+    "New user \"%1$s\" has created an account on %2$s" : "Ένας νέος χρήστης, ο «%1$s» έχει δημιουργήσει έναν λογαριασμό στο %2$s",
     "New user registered" : "Εγγράφηκε νέος χρήστης",
     "no email address given" : "δεν δόθηκε διεύθυνση ηλεκτρονικού ταχυδρομείου",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "Ο/Η «%1$s» (%2$s) εγγράφηκε νέος λογαριασμός στο %3$s.",
