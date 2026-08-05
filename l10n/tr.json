@@ -15,6 +15,7 @@
     "Click the button below to continue." : "İşlemi sürdürmek için aşağıdaki düğmeye tıklayın.",
     "Verification code: %s" : "Doğrulama kodu: %s",
     "Continue registration" : "Hesap açma işlemini sürdür",
+    "New user \"%1$s\" has created an account on %2$s" : "Yeni \"%1$s\" kullanıcısı %2$s üzerinde hesap açtı",
     "New user registered" : "Yeni kullanıcı hesabı açıldı",
     "no email address given" : "bir e-posta adresi belirtilmemiş",
     "\"%1$s\" (%2$s) registered a new account on %3$s." : "\"%1$s\" (%2$s), %3$s üzerinde yeni bir hesap açtı.",
