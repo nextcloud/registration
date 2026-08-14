@@ -12,6 +12,7 @@ use ChristophWurst\Nextcloud\Testing\TestCase;
 use OC\Authentication\Token\IProvider;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
+use OCA\Registration\Service\InvitationService;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
 use OCA\Registration\Service\RegistrationService;
@@ -97,7 +98,8 @@ class RegistrationServiceTest extends TestCase {
 			$session,
 			$tokenProvider,
 			$this->crypto,
-			$this->phoneNumberUtil
+			$this->phoneNumberUtil,
+			$this->createMock(InvitationService::class)
 		);
 	}
 
@@ -125,10 +127,14 @@ class RegistrationServiceTest extends TestCase {
 	 */
 	#[DataProvider('dataValidateEmail')]
 	public function testValidateEmail(string $email, string $allowedDomains, bool $blocked) {
-		$this->appConfig->expects($this->once())
+		$this->appConfig->expects($this->atLeastOnce())
 			->method('getAppValueString')
-			->with('allowed_domains')
-			->willReturn($allowedDomains);
+			->willReturnCallback(function ($key) use ($allowedDomains) {
+				if ($key === 'allowed_domains') {
+					return $allowedDomains;
+				}
+				return '';
+			});
 
 		$this->appConfig->expects($this->exactly($allowedDomains === '' ? 0 : 2))
 			->method('getAppValueBool')

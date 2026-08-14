@@ -53,6 +53,14 @@
 			placeholder="nextcloud.com;*.example.com"
 			@update:modelValue="debounceSavingSlow" />
 
+		<NcTextField
+			v-model="allowedEmails"
+			:label="emailListLabel"
+			:labelVisible="true"
+			:disabled="loading"
+			placeholder="user1@example.com;user2@example.com"
+			@update:modelValue="debounceSavingSlow" />
+
 		<NcCheckboxRadioSwitch
 			v-model="domainsIsBlocklist"
 			type="switch"
@@ -77,7 +85,18 @@
 			@update:modelValue="saveData">
 			{{ t('registration', 'Disable email verification') }}
 		</NcCheckboxRadioSwitch>
+
+		<NcCheckboxRadioSwitch
+			v-model="invitationCodeRequired"
+			type="switch"
+			:disabled="loading"
+			@update:modelValue="saveData">
+			{{ t('registration', 'Require an invitation code for all registrations') }}
+		</NcCheckboxRadioSwitch>
+		<p><em>{{ t('registration', 'If enabled, users have to enter a valid invitation code. Administrators can create invitation links and codes below.') }}</em></p>
 	</NcSettingsSection>
+
+	<InvitationSettings />
 
 	<NcSettingsSection :name="t('registration', 'User settings')">
 		<NcCheckboxRadioSwitch
@@ -180,6 +199,7 @@ import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwit
 import NcSelect from '@nextcloud/vue/components/NcSelect'
 import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
+import InvitationSettings from './components/InvitationSettings.vue'
 
 // Styles
 import '@nextcloud/dialogs/style.css'
@@ -200,11 +220,13 @@ const saveNotification = ref<unknown>(null)
 const adminApproval = ref<boolean>(loadState<boolean>('registration', 'admin_approval_required'))
 const registeredUserGroup = ref<Group>(loadState<Group>('registration', 'registered_user_group'))
 const allowedDomains = ref<string>(loadState<string>('registration', 'allowed_domains'))
+const allowedEmails = ref<string>(loadState<string>('registration', 'allowed_emails'))
 const domainsIsBlocklist = ref<boolean>(loadState<boolean>('registration', 'domains_is_blocklist'))
 const showDomains = ref<boolean>(loadState<boolean>('registration', 'show_domains'))
 const emailIsOptional = ref<boolean>(loadState<boolean>('registration', 'email_is_optional'))
 const disableEmailVerification = ref<boolean>(loadState<boolean>('registration', 'disable_email_verification'))
 const emailIsLogin = ref<boolean>(loadState<boolean>('registration', 'email_is_login'))
+const invitationCodeRequired = ref<boolean>(loadState<boolean>('registration', 'invitation_code_required'))
 const usernamePolicyRegex = ref<string>(loadState('registration', 'username_policy_regex'))
 const showFullname = ref<boolean>(loadState<boolean>('registration', 'show_fullname'))
 const enforceFullname = ref<boolean>(loadState<boolean>('registration', 'enforce_fullname'))
@@ -219,6 +241,8 @@ const domainListLabel = computed(() => {
 	}
 	return t('registration', 'Allowed email domains')
 })
+
+const emailListLabel = computed(() => t('registration', 'Allowed email addresses'))
 
 const showDomainListLabel = computed(() => {
 	if (domainsIsBlocklist.value) {
@@ -246,11 +270,13 @@ async function saveData() {
 			admin_approval_required: adminApproval.value,
 			registered_user_group: registeredUserGroup.value?.id,
 			allowed_domains: allowedDomains.value,
+			allowed_emails: allowedEmails.value,
 			domains_is_blocklist: domainsIsBlocklist.value,
 			show_domains: showDomains.value,
 			email_is_optional: emailIsOptional.value,
 			disable_email_verification: emailIsOptional.value || disableEmailVerification.value,
 			email_is_login: !emailIsOptional.value && emailIsLogin.value,
+			invitation_code_required: invitationCodeRequired.value,
 			username_policy_regex: usernamePolicyRegex.value,
 			show_fullname: showFullname.value,
 			enforce_fullname: enforceFullname.value,

@@ -19,7 +19,8 @@ Release tarballs are hosted at https://github.com/nextcloud-releases/registratio
 ## ✨ Features
 
 * 👥 Add users to a given group
-* 🛃 Allow-list with email domains (including wildcard) to register with
+* 🛃 Allow-list with email domains (including wildcard) or exact email addresses to register with
+* 🎟️ Invitation codes and invitation links: restrict who can register, limit the number of uses per link and set a storage quota for invited users
 * 🔔 Administrator will be notified via email for new user creation or require approval
 * 📱 Supports Nextcloud's Client [Login Flow v1 and v2](https://docs.nextcloud.com/server/stable/developer_manual/client_apis/LoginFlow/index.html) - allowing registration in the mobile Apps and Desktop clients
 * 📜 Integrates with [Terms of service](https://apps.nextcloud.com/apps/terms_of_service)

@@ -14,6 +14,7 @@ use libphonenumber\PhoneNumberUtil;
 use OC\Authentication\Exceptions\PasswordlessTokenException;
 use OC\Authentication\Token\IProvider;
 use OCA\Registration\AppInfo\Application;
+use OCA\Registration\Db\Invitation;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Db\RegistrationMapper;
 use OCA\Settings\Mailer\NewUserMailHelper;
@@ -58,6 +59,7 @@ class RegistrationService {
 		private IProvider $tokenProvider,
 		private ICrypto $crypto,
 		private IPhoneNumberUtil $phoneNumberUtil,
+		private InvitationService $invitationService,
 	) {
 	}
 
@@ -71,10 +73,14 @@ class RegistrationService {
 		$this->registrationMapper->update($registration);
 	}
 
+	public function updateInvitation(Registration $registration): void {
+		$this->registrationMapper->update($registration);
+	}
+
 	/**
 	 * Create registration request, used by both the API and form
 	 */
-	public function createRegistration(string $email, string $username = '', string $password = '', string $displayname = ''): Registration {
+	public function createRegistration(string $email, string $username = '', string $password = '', string $displayname = '', ?int $invitationId = null): Registration {
 		$registration = new Registration();
 		$registration->setEmail($email);
 		$registration->setUsername($username);
@@ -83,6 +89,7 @@ class RegistrationService {
 			$password = $this->crypto->encrypt($password);
 			$registration->setPassword($password);
 		}
+		$registration->setInvitationId($invitationId);
 		$this->registrationMapper->generateNewToken($registration);
 		$this->registrationMapper->generateClientSecret($registration);
 		$this->registrationMapper->insert($registration);
@@ -91,9 +98,10 @@ class RegistrationService {
 
 	/**
 	 * @param string $email
+	 * @param Invitation|null $invitation an admin-issued invitation bypasses the general allow-list
 	 * @throws RegistrationException
 	 */
-	public function validateEmail(string $email): void {
+	public function validateEmail(string $email, ?Invitation $invitation = null): void {
 		if ($email === '' && $this->appConfig->getAppValueBool('email_is_optional')) {
 			return;
 		}
@@ -116,9 +124,20 @@ class RegistrationService {
 			);
 		}
 
-		$allowedDomains = $this->getAllowedDomains();
+		// An admin-issued invitation bypasses the general allow-list
+		if ($invitation !== null) {
+			return;
+		}
 
-		if (empty($allowedDomains)) {
+		$allowedDomains = $this->getAllowedDomains();
+		$allowedEmails = $this->getAllowedEmails();
+		$emailIsInEmailList = in_array(strtolower($email), $allowedEmails, true);
+
+		if ($emailIsInEmailList) {
+			return;
+		}
+
+		if (empty($allowedDomains) && empty($allowedEmails)) {
 			return;
 		}
 
@@ -249,6 +268,17 @@ class RegistrationService {
 	}
 
 	/**
+	 * @return string[] exact email addresses allowed to register
+	 */
+	public function getAllowedEmails(): array {
+		$allowedEmails = $this->appConfig->getAppValueString('allowed_emails');
+		$allowedEmails = explode(';', $allowedEmails);
+		$allowedEmails = array_map('trim', $allowedEmails);
+		$allowedEmails = array_filter($allowedEmails);
+		return array_map('strtolower', $allowedEmails);
+	}
+
+	/**
 	 * @param Registration $registration
 	 * @param string|null $loginName
 	 * @param string|null $fullName
@@ -277,6 +307,18 @@ class RegistrationService {
 			$this->validateDisplayname($fullName);
 		}
 
+		// Load the invitation and re-validate it before creating the account
+		$invitation = null;
+		$invitationId = $registration->getInvitationId();
+		if ($invitationId !== null) {
+			try {
+				$invitation = $this->invitationService->getById($invitationId);
+				$this->invitationService->validate($invitation, $registration->getEmail());
+			} catch (DoesNotExistException $e) {
+				// The invitation was deleted in the meantime, continue without it
+			}
+		}
+
 		if (class_exists(PhoneNumberUtil::class)
 			&& $this->appConfig->getAppValueBool('show_phone')) {
 			if ($phone) {
@@ -298,6 +340,15 @@ class RegistrationService {
 			throw new RegistrationException($this->l10n->t('Unable to create user, there are problems with the user backend.'));
 		}
 		$userId = $user->getUID();
+
+		// Apply the quota and consume a use of the invitation, if any
+		if ($invitation !== null) {
+			$quota = $invitation->getQuota();
+			if ($quota !== null && $quota !== '') {
+				$user->setQuota($quota);
+			}
+			$this->invitationService->incrementUses($invitation);
+		}
 
 		// Set user email
 		try {

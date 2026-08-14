@@ -12,10 +12,12 @@ declare(strict_types=1);
 namespace OCA\Registration\Controller;
 
 use Exception;
+use OCA\Registration\Db\Invitation;
 use OCA\Registration\Db\Registration;
 use OCA\Registration\Events\PassedFormEvent;
 use OCA\Registration\Events\ShowFormEvent;
 use OCA\Registration\Events\ValidateFormEvent;
+use OCA\Registration\Service\InvitationService;
 use OCA\Registration\Service\LoginFlowService;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
@@ -51,6 +53,7 @@ class RegisterController extends Controller {
 		private RegistrationService $registrationService,
 		private LoginFlowService $loginFlowService,
 		private MailService $mailService,
+		private InvitationService $invitationService,
 		private IEventDispatcher $eventDispatcher,
 		private IInitialState $initialState,
 	) {
@@ -59,7 +62,7 @@ class RegisterController extends Controller {
 
 	#[PublicPage]
 	#[NoCSRFRequired]
-	public function showEmailForm(string $email = '', string $message = ''): TemplateResponse {
+	public function showEmailForm(string $email = '', string $message = '', string $code = ''): TemplateResponse {
 		$emailHint = '';
 		$domainList = $this->registrationService->getAllowedDomains();
 		if (!empty($domainList) && $this->config->getAppValueBool('show_domains')) {
@@ -77,6 +80,14 @@ class RegisterController extends Controller {
 			}
 		}
 
+		$emailList = $this->registrationService->getAllowedEmails();
+		if (!empty($emailList) && $this->config->getAppValueBool('show_domains')) {
+			$emailHint = $this->l10n->t(
+				'Registration is only allowed with the following email addresses: %s',
+				[implode(', ', $emailList)]
+			);
+		}
+
 		$this->eventDispatcher->dispatchTyped(new ShowFormEvent(ShowFormEvent::STEP_EMAIL));
 
 		$this->initialState->provideInitialState('email', $email);
@@ -85,33 +96,62 @@ class RegisterController extends Controller {
 		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValueBool('disable_email_verification'));
 		$this->initialState->provideInitialState('isLoginFlow', $this->loginFlowService->isUsingLoginFlow());
 		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
+		$this->initialState->provideInitialState('invitationCode', $code);
+		$this->initialState->provideInitialState('invitationCodeRequired', $this->config->getAppValueBool('invitation_code_required'));
+		$this->initialState->provideInitialState('invitationCodeLocked', $code !== '');
+		$this->initialState->provideInitialState('invitationsEnabled', $this->config->getAppValueBool('invitation_code_required') || $code !== '');
 		return new TemplateResponse('registration', 'form/email', [], 'guest');
 	}
 
 	#[PublicPage]
+	#[NoCSRFRequired]
+	public function showInviteForm(string $code): Response {
+		try {
+			$invitation = $this->invitationService->getByCode($code);
+			$this->invitationService->assertUsable($invitation);
+		} catch (DoesNotExistException $e) {
+			return $this->validateSecretAndTokenErrorPage();
+		} catch (RegistrationException $e) {
+			return $this->showEmailForm('', $e->getMessage(), $code);
+		}
+
+		return $this->showEmailForm('', '', $code);
+	}
+
+	#[PublicPage]
 	#[AnonRateLimit(limit: 5, period: 300)]
-	public function submitEmailForm(string $email): Response {
+	public function submitEmailForm(string $email, string $code = ''): Response {
 		$validateFormEvent = new ValidateFormEvent(ValidateFormEvent::STEP_EMAIL);
 		$this->eventDispatcher->dispatchTyped($validateFormEvent);
 
 		if (!empty($validateFormEvent->getErrors())) {
-			return $this->showEmailForm($email, implode(' ', $validateFormEvent->getErrors()));
+			return $this->showEmailForm($email, implode(' ', $validateFormEvent->getErrors()), $code);
+		}
+
+		try {
+			$invitation = $this->resolveInvitation($email, $code);
+		} catch (RegistrationException $e) {
+			return $this->showEmailForm($email, $e->getMessage(), $code);
 		}
 
 		try {
 			// Registration already in progress, update token and continue with verification
 			$registration = $this->registrationService->getRegistrationForEmail($email);
 			$this->registrationService->generateNewToken($registration);
+			if ($invitation !== null && $registration->getInvitationId() === null) {
+				$registration->setInvitationId($invitation->getId());
+				$this->registrationService->updateInvitation($registration);
+			}
 		} catch (DoesNotExistException $e) {
 			// No registration in progress
 			try {
 				$email = trim($email);
-				$this->registrationService->validateEmail($email);
+				$this->registrationService->validateEmail($email, $invitation);
 			} catch (RegistrationException $e) {
-				return $this->showEmailForm($email, $e->getMessage());
+				return $this->showEmailForm($email, $e->getMessage(), $code);
 			}
 
-			$registration = $this->registrationService->createRegistration($email);
+			$registration = $this->registrationService->createRegistration($email, '', '', '', $invitation?->getId());
 		}
 
 		if ($this->config->getAppValueBool('disable_email_verification')) {
@@ -131,9 +171,9 @@ class RegisterController extends Controller {
 		try {
 			$this->mailService->sendTokenByMail($registration);
 		} catch (RegistrationException $e) {
-			return $this->showEmailForm($email, $e->getMessage());
+			return $this->showEmailForm($email, $e->getMessage(), $code);
 		} catch (\Exception $e) {
-			return $this->showEmailForm($email, $this->l10n->t('A problem occurred sending email, please contact your administrator.'));
+			return $this->showEmailForm($email, $this->l10n->t('A problem occurred sending email, please contact your administrator.'), $code);
 		}
 
 		$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $registration->getClientSecret()));
@@ -144,6 +184,12 @@ class RegisterController extends Controller {
 				['secret' => $registration->getClientSecret()]
 			)
 		);
+	}
+
+	#[PublicPage]
+	#[AnonRateLimit(limit: 5, period: 300)]
+	public function submitInviteForm(string $code, string $email): Response {
+		return $this->submitEmailForm($email, $code);
 	}
 
 	#[PublicPage]
@@ -326,5 +372,32 @@ class RegisterController extends Controller {
 				['error' => $this->l10n->t('The verification failed.')],
 			],
 		], 'error');
+	}
+
+	/**
+	 * Resolve and validate the invitation code, if any is required
+	 *
+	 * @param string $email
+	 * @param string $code
+	 * @return Invitation|null
+	 * @throws RegistrationException
+	 */
+	protected function resolveInvitation(string $email, string $code): ?Invitation {
+		if ($code !== '') {
+			try {
+				$invitation = $this->invitationService->getByCode($code);
+			} catch (DoesNotExistException $e) {
+				throw new RegistrationException($this->l10n->t('This invitation code is not valid.'));
+			}
+
+			$this->invitationService->validate($invitation, $email);
+			return $invitation;
+		}
+
+		if ($this->config->getAppValueBool('invitation_code_required')) {
+			throw new RegistrationException($this->l10n->t('Please provide an invitation code.'));
+		}
+
+		return null;
 	}
 }
