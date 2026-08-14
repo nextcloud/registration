@@ -88,7 +88,7 @@ class InvitationController extends Controller {
 			'uses' => $invitation->getUses(),
 			'expires' => $this->formatDateTime($invitation->getExpires()),
 			'created_at' => $this->formatDateTime($invitation->getCreatedAt()),
-			'skip_email_verification' => $invitation->getSkipEmailVerification(),
+			'skip_email_verification' => $invitation->getSkipEmailVerification() === true,
 			'link' => $this->invitationService->generateLink($invitation),
 		];
 	}

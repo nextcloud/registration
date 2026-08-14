@@ -56,5 +56,6 @@ class Invitation extends Entity {
 		$this->addType('createdBy', 'string');
 		$this->addType('createdAt', 'datetime');
 		$this->addType('skipEmailVerification', 'boolean');
+		$this->skipEmailVerification = false;
 	}
 }

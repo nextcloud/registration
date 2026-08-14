@@ -419,6 +419,6 @@ class RegisterController extends Controller {
 			return false;
 		}
 
-		return $invitation->getSkipEmailVerification();
+		return $invitation->getSkipEmailVerification() === true;
 	}
 }
