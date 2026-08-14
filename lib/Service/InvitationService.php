@@ -33,10 +33,11 @@ class InvitationService {
 	 * @param int|null $maxUses
 	 * @param string|null $expires (Y-m-d H:i:s or null)
 	 * @param bool $skipEmailVerification
+	 * @param bool $skipAdminApproval
 	 * @return Invitation
 	 * @throws RegistrationException
 	 */
-	public function createInvitation(string $code, ?string $email, ?string $domain, ?string $quota, ?int $maxUses, ?string $expires, bool $skipEmailVerification = false): Invitation {
+	public function createInvitation(string $code, ?string $email, ?string $domain, ?string $quota, ?int $maxUses, ?string $expires, bool $skipEmailVerification = false, bool $skipAdminApproval = false): Invitation {
 		$code = trim($code);
 		if ($code === '') {
 			throw new RegistrationException($this->l10n->t('Please provide an invitation code.'));
@@ -61,6 +62,7 @@ class InvitationService {
 		$invitation->setUses(0);
 		$invitation->setExpires($expires);
 		$invitation->setSkipEmailVerification($skipEmailVerification);
+		$invitation->setSkipAdminApproval($skipAdminApproval);
 
 		return $this->invitationMapper->insert($invitation);
 	}

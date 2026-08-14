@@ -66,6 +66,7 @@ class InvitationServiceTest extends TestCase {
 			'max_uses' => '',
 			'expires' => '',
 			'skip_email_verification' => false,
+			'skip_admin_approval' => false,
 		], $overrides);
 
 		return $this->service->createInvitation(
@@ -76,6 +77,7 @@ class InvitationServiceTest extends TestCase {
 			$params['max_uses'] !== '' ? (int)$params['max_uses'] : null,
 			$params['expires'] !== '' ? $params['expires'] : null,
 			$params['skip_email_verification'],
+			$params['skip_admin_approval'],
 		);
 	}
 
@@ -171,5 +173,13 @@ class InvitationServiceTest extends TestCase {
 
 		$default = $this->createInvitation(['code' => 'DEFAULT']);
 		self::assertFalse($default->getSkipEmailVerification());
+	}
+
+	public function testSkipAdminApprovalFlag(): void {
+		$invitation = $this->createInvitation(['skip_admin_approval' => true]);
+		self::assertTrue($invitation->getSkipAdminApproval());
+
+		$default = $this->createInvitation(['code' => 'DEFAULT']);
+		self::assertFalse($default->getSkipAdminApproval());
 	}
 }

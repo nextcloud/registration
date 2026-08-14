@@ -29,8 +29,10 @@ use OCP\AppFramework\Db\Entity;
  * @method void setCreatedBy(?string $createdBy)
  * @method string getCreatedAt()
  * @method void setCreatedAt(string $createdAt)
- * @method bool getSkipEmailVerification()
- * @method void setSkipEmailVerification(bool $skipEmailVerification)
+ *  @method bool getSkipEmailVerification()
+ *  @method void setSkipEmailVerification(bool $skipEmailVerification)
+ *  @method bool getSkipAdminApproval()
+ *  @method void setSkipAdminApproval(bool $skipAdminApproval)
  */
 class Invitation extends Entity {
 	public $id;
@@ -44,6 +46,7 @@ class Invitation extends Entity {
 	protected $createdBy;
 	protected $createdAt;
 	protected $skipEmailVerification;
+	protected $skipAdminApproval;
 
 	public function __construct() {
 		$this->addType('code', 'string');
@@ -56,6 +59,8 @@ class Invitation extends Entity {
 		$this->addType('createdBy', 'string');
 		$this->addType('createdAt', 'datetime');
 		$this->addType('skipEmailVerification', 'boolean');
+		$this->addType('skipAdminApproval', 'boolean');
 		$this->skipEmailVerification = false;
+		$this->skipAdminApproval = false;
 	}
 }

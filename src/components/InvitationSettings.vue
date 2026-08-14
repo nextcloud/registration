@@ -74,6 +74,14 @@
 			</NcCheckboxRadioSwitch>
 			<p><em>{{ t('registration', 'If enabled, the email address does not need to be verified and the user can create the account right after entering their email address.') }}</em></p>
 
+			<NcCheckboxRadioSwitch
+				v-model="skipAdminApproval"
+				type="switch"
+				:disabled="loading">
+				{{ t('registration', 'Skip administrator approval') }}
+			</NcCheckboxRadioSwitch>
+			<p><em>{{ t('registration', 'If enabled, the account is enabled immediately even when administrator approval is required.') }}</em></p>
+
 			<div class="actions">
 				<NcButton
 					variant="primary"
@@ -194,6 +202,7 @@ type Invitation = {
 	expires: string | null
 	created_at: string
 	skip_email_verification: boolean
+	skip_admin_approval: boolean
 	link: string
 }
 
@@ -206,6 +215,7 @@ const quota = ref('')
 const maxUses = ref('')
 const expires = ref('')
 const skipEmailVerification = ref(false)
+const skipAdminApproval = ref(false)
 const listMessage = ref('')
 const listMessageType = ref<'error' | 'info'>('error')
 const showDialog = ref(false)
@@ -273,6 +283,7 @@ async function createInvitation() {
 			max_uses: maxUses.value,
 			expires: expires.value ? expires.value.replace('T', ' ') : '',
 			skip_email_verification: skipEmailVerification.value ? 'true' : '',
+			skip_admin_approval: skipAdminApproval.value ? 'true' : '',
 		})
 
 		if (response.data?.status === 'error') {
@@ -288,6 +299,7 @@ async function createInvitation() {
 			maxUses.value = ''
 			expires.value = ''
 			skipEmailVerification.value = false
+			skipAdminApproval.value = false
 			selectedInvitation.value = response.data
 			showDialog.value = true
 		}

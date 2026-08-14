@@ -394,8 +394,9 @@ class RegistrationService {
 			$groupId = '';
 		}
 
-		// disable user if this is requested by config
-		$adminApprovalRequired = $this->appConfig->getAppValueBool('admin_approval_required');
+		// disable user if this is requested by config (unless the invitation opts out)
+		$adminApprovalRequired = $this->appConfig->getAppValueBool('admin_approval_required')
+			&& !($invitation !== null && $invitation->getSkipAdminApproval() === true);
 		if ($adminApprovalRequired) {
 			$user->setEnabled(false);
 			$this->config->setUserValue($userId, Application::APP_ID, 'send_welcome_mail_on_enable', 'yes');

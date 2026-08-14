@@ -40,7 +40,7 @@ class InvitationController extends Controller {
 	}
 
 	#[AdminRequired]
-	public function create(string $code = '', string $email = '', string $domain = '', string $quota = '', string $max_uses = '', string $expires = '', string $skip_email_verification = ''): DataResponse {
+	public function create(string $code = '', string $email = '', string $domain = '', string $quota = '', string $max_uses = '', string $expires = '', string $skip_email_verification = '', string $skip_admin_approval = ''): DataResponse {
 		if ($code === '') {
 			$code = $this->invitationService->generateCode();
 		}
@@ -53,7 +53,8 @@ class InvitationController extends Controller {
 				$quota,
 				$max_uses !== '' ? (int)$max_uses : null,
 				$expires !== '' ? $expires : null,
-				$skip_email_verification === 'true' || $skip_email_verification === '1'
+				$skip_email_verification === 'true' || $skip_email_verification === '1',
+				$skip_admin_approval === 'true' || $skip_admin_approval === '1'
 			);
 		} catch (RegistrationException $e) {
 			return new DataResponse(
@@ -89,6 +90,7 @@ class InvitationController extends Controller {
 			'expires' => $this->formatDateTime($invitation->getExpires()),
 			'created_at' => $this->formatDateTime($invitation->getCreatedAt()),
 			'skip_email_verification' => $invitation->getSkipEmailVerification() === true,
+			'skip_admin_approval' => $invitation->getSkipAdminApproval() === true,
 			'link' => $this->invitationService->generateLink($invitation),
 		];
 	}
