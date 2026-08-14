@@ -110,7 +110,12 @@ class InvitationService {
 			return false;
 		}
 
-		$expireTimestamp = strtotime($expires);
+		if ($expires instanceof \DateTimeInterface) {
+			$expireTimestamp = $expires->getTimestamp();
+		} else {
+			$expireTimestamp = strtotime((string)$expires);
+		}
+
 		return $expireTimestamp !== false && $expireTimestamp < $this->timeFactory->getTime();
 	}
 

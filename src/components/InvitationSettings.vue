@@ -229,10 +229,10 @@ function restrictionLabel(invitation: Invitation): string {
 /**
  * Make a datetime string human friendly
  *
- * @param value datetime string
+ * @param value datetime value
  */
 function formatDate(value: string): string {
-	return value.replace('T', ' ')
+	return (value ?? '').replace('T', ' ')
 }
 
 /**

@@ -86,10 +86,22 @@ class InvitationController extends Controller {
 			'quota' => $invitation->getQuota(),
 			'max_uses' => $invitation->getMaxUses(),
 			'uses' => $invitation->getUses(),
-			'expires' => $invitation->getExpires(),
-			'created_at' => $invitation->getCreatedAt(),
+			'expires' => $this->formatDateTime($invitation->getExpires()),
+			'created_at' => $this->formatDateTime($invitation->getCreatedAt()),
 			'skip_email_verification' => $invitation->getSkipEmailVerification(),
 			'link' => $this->invitationService->generateLink($invitation),
 		];
+	}
+
+	private function formatDateTime(mixed $value): ?string {
+		if ($value === null) {
+			return null;
+		}
+
+		if ($value instanceof \DateTimeInterface) {
+			return $value->format('Y-m-d H:i:s');
+		}
+
+		return (string)$value;
 	}
 }
