@@ -93,7 +93,7 @@ class RegisterController extends Controller {
 		$this->initialState->provideInitialState('email', $email);
 		$this->initialState->provideInitialState('message', $message ?: $emailHint);
 		$this->initialState->provideInitialState('emailIsOptional', $this->config->getAppValueBool('email_is_optional'));
-		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValueBool('disable_email_verification'));
+		$this->initialState->provideInitialState('disableEmailVerification', $this->config->getAppValueBool('disable_email_verification') || $this->invitationSkipsVerification($code));
 		$this->initialState->provideInitialState('isLoginFlow', $this->loginFlowService->isUsingLoginFlow());
 		$this->initialState->provideInitialState('loginFormLink', $this->urlGenerator->linkToRoute('core.login.showLoginForm'));
 		$this->initialState->provideInitialState('invitationCode', $code);
@@ -154,7 +154,8 @@ class RegisterController extends Controller {
 			$registration = $this->registrationService->createRegistration($email, '', '', '', $invitation?->getId());
 		}
 
-		if ($this->config->getAppValueBool('disable_email_verification')) {
+		if ($this->config->getAppValueBool('disable_email_verification')
+			|| ($invitation !== null && $invitation->getSkipEmailVerification())) {
 			$this->eventDispatcher->dispatchTyped(new PassedFormEvent(PassedFormEvent::STEP_EMAIL, $registration->getClientSecret()));
 
 			return new RedirectResponse(
@@ -399,5 +400,25 @@ class RegisterController extends Controller {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Check whether an invitation code would skip the email verification step
+	 *
+	 * @param string $code
+	 * @return bool
+	 */
+	protected function invitationSkipsVerification(string $code): bool {
+		if ($code === '') {
+			return false;
+		}
+
+		try {
+			$invitation = $this->invitationService->getByCode($code);
+		} catch (DoesNotExistException $e) {
+			return false;
+		}
+
+		return $invitation->getSkipEmailVerification();
 	}
 }

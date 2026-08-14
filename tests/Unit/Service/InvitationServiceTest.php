@@ -65,6 +65,7 @@ class InvitationServiceTest extends TestCase {
 			'quota' => '5 GB',
 			'max_uses' => '',
 			'expires' => '',
+			'skip_email_verification' => false,
 		], $overrides);
 
 		return $this->service->createInvitation(
@@ -74,6 +75,7 @@ class InvitationServiceTest extends TestCase {
 			$params['quota'],
 			$params['max_uses'] !== '' ? (int)$params['max_uses'] : null,
 			$params['expires'] !== '' ? $params['expires'] : null,
+			$params['skip_email_verification'],
 		);
 	}
 
@@ -161,5 +163,13 @@ class InvitationServiceTest extends TestCase {
 	public function testGenerateLink(): void {
 		$invitation = $this->createInvitation();
 		self::assertSame('https://example.com/apps/registration/invite/CODE', $this->service->generateLink($invitation));
+	}
+
+	public function testSkipEmailVerificationFlag(): void {
+		$invitation = $this->createInvitation(['skip_email_verification' => true]);
+		self::assertTrue($invitation->getSkipEmailVerification());
+
+		$default = $this->createInvitation(['code' => 'DEFAULT']);
+		self::assertFalse($default->getSkipEmailVerification());
 	}
 }

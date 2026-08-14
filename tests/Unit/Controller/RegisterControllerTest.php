@@ -291,8 +291,55 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame('["registration.register.showVerificationForm",{"secret":"clientSecret"}]', $response->getRedirectURL());
 	}
 
-	public static function dataShowVerificationForm(): array {
-		return [
+	public function testSubmitEmailFormSkipVerificationWithInvitation(): void {
+		$email = 'nextcloud@example.tld';
+		$code = 'INVITE';
+
+		$this->registrationService
+			->method('getRegistrationForEmail')
+			->with($email)
+			->willThrowException(new DoesNotExistException($email));
+
+		$invitation = new \OCA\Registration\Db\Invitation();
+		$invitation->setCode($code);
+		$invitation->setSkipEmailVerification(true);
+
+		$this->invitationService
+			->expects($this->once())
+			->method('getByCode')
+			->with($code)
+			->willReturn($invitation);
+
+		$this->registrationService
+			->expects($this->once())
+			->method('createRegistration')
+			->with($email, '', '', '', $this->anything())
+			->willReturnCallback(function ($email, $username, $password, $displayname, $invitationId) {
+				return Registration::fromParams([
+					'clientSecret' => 'clientSecret',
+					'token' => 'token',
+				]);
+			});
+
+		$this->mailService
+			->expects($this->never())
+			->method('sendTokenByMail');
+
+		$this->urlGenerator
+			->method('linkToRoute')
+			->willReturnCallback(function () {
+				return json_encode(func_get_args());
+			});
+
+		$controller = $this->getController();
+		$response = $controller->submitEmailForm($email, $code);
+
+		self::assertInstanceOf(RedirectResponse::class, $response);
+		/** @var RedirectResponse $response */
+		self::assertSame('["registration.register.showUserForm",{"secret":"clientSecret","token":"token"}]', $response->getRedirectURL());
+	}
+
+	public static function dataShowVerificationForm(): array {		return [
 			[''],
 			['The entered verification code is wrong'],
 		];

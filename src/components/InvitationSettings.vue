@@ -66,6 +66,14 @@
 					:placeholder="t('registration', 'No expiry (optional)')" />
 			</div>
 
+			<NcCheckboxRadioSwitch
+				v-model="skipEmailVerification"
+				type="switch"
+				:disabled="loading">
+				{{ t('registration', 'Skip email verification') }}
+			</NcCheckboxRadioSwitch>
+			<p><em>{{ t('registration', 'If enabled, the email address does not need to be verified and the user can create the account right after entering their email address.') }}</em></p>
+
 			<div class="actions">
 				<NcButton
 					variant="primary"
@@ -112,6 +120,12 @@
 							<NcButton
 								variant="tertiary"
 								type="button"
+								@click="showDetails(invitation)">
+								{{ t('registration', 'Details') }}
+							</NcButton>
+							<NcButton
+								variant="tertiary"
+								type="button"
 								@click="deleteInvitation(invitation)">
 								{{ t('registration', 'Delete') }}
 							</NcButton>
@@ -120,6 +134,39 @@
 				</tbody>
 			</table>
 		</div>
+
+		<NcDialog
+			:open="showDialog"
+			:name="t('registration', 'Invitation created')"
+			@update:open="showDialog = $event">
+			<p class="invitation-dialog-text">
+				{{ t('registration', 'Share the link or the code below with the person you want to invite.') }}
+			</p>
+			<div class="invitation-dialog-row">
+				<NcTextField
+					:modelValue="selectedInvitation?.code"
+					:label="t('registration', 'Code')"
+					labelVisible
+					readonly />
+				<NcButton
+					variant="secondary"
+					@click="copyText(selectedInvitation?.code ?? '')">
+					{{ t('registration', 'Copy code') }}
+				</NcButton>
+			</div>
+			<div class="invitation-dialog-row">
+				<NcTextField
+					:modelValue="selectedInvitation?.link"
+					:label="t('registration', 'Invitation link')"
+					labelVisible
+					readonly />
+				<NcButton
+					variant="secondary"
+					@click="copyLink(selectedInvitation)">
+					{{ t('registration', 'Copy link') }}
+				</NcButton>
+			</div>
+		</NcDialog>
 	</NcSettingsSection>
 </template>
 
@@ -130,6 +177,8 @@ import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { onMounted, ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcDialog from '@nextcloud/vue/components/NcDialog'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
@@ -144,6 +193,7 @@ type Invitation = {
 	uses: number
 	expires: string | null
 	created_at: string
+	skip_email_verification: boolean
 	link: string
 }
 
@@ -155,8 +205,11 @@ const domain = ref('')
 const quota = ref('')
 const maxUses = ref('')
 const expires = ref('')
+const skipEmailVerification = ref(false)
 const listMessage = ref('')
 const listMessageType = ref<'error' | 'info'>('error')
+const showDialog = ref(false)
+const selectedInvitation = ref<Invitation | null>(null)
 
 /**
  * Human readable label for the restriction of an invitation
@@ -219,6 +272,7 @@ async function createInvitation() {
 			quota: quota.value,
 			max_uses: maxUses.value,
 			expires: expires.value ? expires.value.replace('T', ' ') : '',
+			skip_email_verification: skipEmailVerification.value ? 'true' : '',
 		})
 
 		if (response.data?.status === 'error') {
@@ -233,6 +287,9 @@ async function createInvitation() {
 			quota.value = ''
 			maxUses.value = ''
 			expires.value = ''
+			skipEmailVerification.value = false
+			selectedInvitation.value = response.data
+			showDialog.value = true
 		}
 	} catch (e) {
 		const msg = e.response?.data?.message
@@ -260,18 +317,37 @@ async function deleteInvitation(invitation: Invitation) {
 }
 
 /**
+ * Copy an arbitrary text to the clipboard
+ *
+ * @param text text to copy
+ */
+async function copyText(text: string) {
+	try {
+		await navigator.clipboard.writeText(text)
+		showSuccess(t('registration', 'Copied to clipboard'))
+	} catch (e) {
+		showError(t('registration', 'Could not copy to clipboard'))
+		console.error(e)
+	}
+}
+
+/**
  * Copy the invitation link to the clipboard
  *
  * @param invitation invitation whose link is copied
  */
 async function copyLink(invitation: Invitation) {
-	try {
-		await navigator.clipboard.writeText(invitation.link)
-		showSuccess(t('registration', 'Invitation link copied'))
-	} catch (e) {
-		showError(t('registration', 'Could not copy the invitation link'))
-		console.error(e)
-	}
+	await copyText(invitation.link)
+}
+
+/**
+ * Open the details dialog for an invitation
+ *
+ * @param invitation invitation to show
+ */
+function showDetails(invitation: Invitation) {
+	selectedInvitation.value = invitation
+	showDialog.value = true
 }
 
 onMounted(() => {
@@ -327,6 +403,21 @@ onMounted(() => {
 		td {
 			border-bottom: 1px solid var(--color-border);
 		}
+	}
+}
+
+.invitation-dialog-text {
+	margin-top: 0;
+}
+
+.invitation-dialog-row {
+	display: flex;
+	align-items: flex-end;
+	gap: .5rem;
+	margin-bottom: .75rem;
+
+	> :deep(*) {
+		flex: 1;
 	}
 }
 </style>
