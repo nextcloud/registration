@@ -30,7 +30,7 @@ class InvitationController extends Controller {
 
 	public function index(): DataResponse {
 		$invitations = array_map(
-			fn(Invitation $invitation) => $this->serialize($invitation),
+			fn (Invitation $invitation) => $this->serialize($invitation),
 			$this->invitationService->getAll()
 		);
 

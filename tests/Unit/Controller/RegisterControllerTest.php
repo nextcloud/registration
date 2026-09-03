@@ -339,7 +339,8 @@ class RegisterControllerTest extends TestCase {
 		self::assertSame('["registration.register.showUserForm",{"secret":"clientSecret","token":"token"}]', $response->getRedirectURL());
 	}
 
-	public static function dataShowVerificationForm(): array {		return [
+	public static function dataShowVerificationForm(): array {
+		return [
 			[''],
 			['The entered verification code is wrong'],
 		];

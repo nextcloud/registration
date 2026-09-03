@@ -29,10 +29,10 @@ use OCP\AppFramework\Db\Entity;
  * @method void setCreatedBy(?string $createdBy)
  * @method string getCreatedAt()
  * @method void setCreatedAt(string $createdAt)
- *  @method bool getSkipEmailVerification()
- *  @method void setSkipEmailVerification(bool $skipEmailVerification)
- *  @method bool getSkipAdminApproval()
- *  @method void setSkipAdminApproval(bool $skipAdminApproval)
+ * @method bool getSkipEmailVerification()
+ * @method void setSkipEmailVerification(bool $skipEmailVerification)
+ * @method bool getSkipAdminApproval()
+ * @method void setSkipAdminApproval(bool $skipAdminApproval)
  */
 class Invitation extends Entity {
 	public $id;
