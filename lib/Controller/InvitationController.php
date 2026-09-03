@@ -13,7 +13,6 @@ use OCA\Registration\Service\InvitationService;
 use OCA\Registration\Service\RegistrationException;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\Attribute\AdminRequired;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IL10N;
 use OCP\IRequest;
@@ -29,7 +28,6 @@ class InvitationController extends Controller {
 		parent::__construct($appName, $request);
 	}
 
-	#[AdminRequired]
 	public function index(): DataResponse {
 		$invitations = array_map(
 			fn(Invitation $invitation) => $this->serialize($invitation),
@@ -39,7 +37,6 @@ class InvitationController extends Controller {
 		return new DataResponse($invitations);
 	}
 
-	#[AdminRequired]
 	public function create(string $code = '', string $email = '', string $domain = '', string $quota = '', string $max_uses = '', string $expires = '', string $skip_email_verification = '', string $skip_admin_approval = ''): DataResponse {
 		if ($code === '') {
 			$code = $this->invitationService->generateCode();
@@ -69,7 +66,6 @@ class InvitationController extends Controller {
 		return new DataResponse($this->serialize($invitation));
 	}
 
-	#[AdminRequired]
 	public function destroy(int $id): DataResponse {
 		$this->invitationService->deleteById($id);
 

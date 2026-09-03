@@ -166,10 +166,14 @@ class RegistrationServiceTest extends TestCase {
 	 */
 	#[DataProvider('dataValidateEmailThrows')]
 	public function testValidateEmailThrows(string $email, string $allowedDomains, bool $blocked) {
-		$this->appConfig->expects($this->once())
+		$this->appConfig->expects($this->exactly(2))
 			->method('getAppValueString')
-			->with('allowed_domains')
-			->willReturn($allowedDomains);
+			->willReturnCallback(function ($key) use ($allowedDomains) {
+				if ($key === 'allowed_domains') {
+					return $allowedDomains;
+				}
+				return '';
+			});
 
 		$this->appConfig->expects($this->exactly(2))
 			->method('getAppValueBool')

@@ -165,6 +165,8 @@ class InvitationService {
 
 	public function incrementUses(Invitation $invitation): void {
 		$this->invitationMapper->incrementUses($invitation);
+		// Keep the in-memory entity in sync with the database
+		$invitation->setUses($invitation->getUses() + 1);
 	}
 
 	private function domainMatches(string $email, string $allowedDomain): bool {
