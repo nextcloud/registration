@@ -168,7 +168,11 @@ class InvitationService {
 	}
 
 	private function domainMatches(string $email, string $allowedDomain): bool {
-		[,$mailDomain] = explode('@', strtolower($email), 2);
+		$parts = explode('@', strtolower($email), 2);
+		if (count($parts) !== 2 || $parts[1] === '') {
+			return false;
+		}
+		$mailDomain = $parts[1];
 
 		if (str_contains($allowedDomain, '*')) {
 			$regexDomain = preg_quote($allowedDomain, '\\');

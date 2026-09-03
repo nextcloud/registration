@@ -91,7 +91,7 @@ class InvitationMapper extends QBMapper {
 	public function incrementUses(Invitation $invitation): void {
 		$query = $this->db->getQueryBuilder();
 		$query->update($this->getTableName())
-			->set('uses', $query->createFunction('`uses` + 1'))
+			->set('uses', $query->createFunction('uses + 1'))
 			->where($query->expr()->eq('id', $query->createNamedParameter($invitation->getId(), IQueryBuilder::PARAM_INT)))
 			->executeStatement();
 	}

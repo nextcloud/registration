@@ -139,6 +139,13 @@ class InvitationServiceTest extends TestCase {
 		$this->service->validate($invitation, 'foo@example.tld');
 	}
 
+	public function testValidateDomainRestrictionInvalidEmail(): void {
+		$invitation = $this->createInvitation(['domain' => '*.example.com']);
+
+		$this->expectException(RegistrationException::class);
+		$this->service->validate($invitation, 'not-an-email-address');
+	}
+
 	public function testValidateExpired(): void {
 		$invitation = $this->createInvitation(['expires' => '2000-01-01 00:00:00']);
 
