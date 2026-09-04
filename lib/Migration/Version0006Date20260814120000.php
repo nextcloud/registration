@@ -62,7 +62,7 @@ class Version0006Date20260814120000 extends SimpleMigrationStep {
 				'notnull' => true,
 			]);
 			$table->setPrimaryKey(['id']);
-			$table->addUniqueIndex(['code'], 'registration_invitation_code_idx');
+			$table->addUniqueIndex(['code'], 'registration_invitation_code');
 		}
 
 		$registrationTable = $schema->getTable('registration');
