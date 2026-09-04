@@ -61,7 +61,7 @@ class Version0006Date20260814120000 extends SimpleMigrationStep {
 			$table->addColumn('created_at', Types::DATETIME, [
 				'notnull' => true,
 			]);
-			$table->setPrimaryKey(['id']);
+			$table->setPrimaryKey(['id'], 'registration_invitation_pkey');
 			$table->addUniqueIndex(['code'], 'registration_invitation_code');
 		}
 
