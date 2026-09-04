@@ -30,7 +30,7 @@ class Version0007Date20260814190000 extends SimpleMigrationStep {
 			$table = $schema->getTable('registration_invitation');
 			if (!$table->hasColumn('skip_email_verification')) {
 				$table->addColumn('skip_email_verification', Types::BOOLEAN, [
-					'notnull' => true,
+					'notnull' => false,
 					'default' => false,
 				]);
 			}

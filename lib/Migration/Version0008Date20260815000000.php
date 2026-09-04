@@ -30,7 +30,7 @@ class Version0008Date20260815000000 extends SimpleMigrationStep {
 			$table = $schema->getTable('registration_invitation');
 			if (!$table->hasColumn('skip_admin_approval')) {
 				$table->addColumn('skip_admin_approval', Types::BOOLEAN, [
-					'notnull' => true,
+					'notnull' => false,
 					'default' => false,
 				]);
 			}
