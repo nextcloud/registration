@@ -44,6 +44,10 @@ class RegistrationSettings implements ISettings {
 			$this->config->getAppValueString('allowed_domains')
 		);
 		$this->initialState->provideInitialState(
+			'allowed_emails',
+			$this->config->getAppValueString('allowed_emails')
+		);
+		$this->initialState->provideInitialState(
 			'domains_is_blocklist',
 			$this->config->getAppValueBool('domains_is_blocklist')
 		);
@@ -54,6 +58,10 @@ class RegistrationSettings implements ISettings {
 		$this->initialState->provideInitialState(
 			'disable_email_verification',
 			$this->config->getAppValueBool('disable_email_verification')
+		);
+		$this->initialState->provideInitialState(
+			'invitation_code_required',
+			$this->config->getAppValueBool('invitation_code_required')
 		);
 		$this->initialState->provideInitialState(
 			'email_is_optional',
