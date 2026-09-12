@@ -6,6 +6,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 3.1.0 - 2026-09-12
+
+### Added
+
+- Compatibility with Nextcloud 35
+
+### Changed
+
+- Raise the minimum PHP version to 8.2
+- Update dependencies
+
+### Removed
+
+- Compatibility with Nextcloud 32
+- Unused `vue-template-compiler` dependency
+
 ## 3.0.0 - 2026-02-19
 
 ### Added

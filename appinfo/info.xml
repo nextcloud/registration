@@ -28,7 +28,7 @@ This app allows users to register a new account.
 4. User is lead to a form where they can choose their username and password
 5. New account is created and is logged in automatically
 		]]></description>
-	<version>3.0.0</version>
+	<version>3.1.0</version>
 	<licence>AGPL-3.0-or-later</licence>
 	<author mail="nextcloud@tcit.fr" homepage="https://tcit.fr">Thomas Citharel</author>
 	<author>Joas Schilling</author>
@@ -45,7 +45,7 @@ This app allows users to register a new account.
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/demo.gif</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/registration/master/docs/admin-settings.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="32" max-version="34" />
+		<nextcloud min-version="33" max-version="35" />
 	</dependencies>
 	<background-jobs>
 		<job>OCA\Registration\BackgroundJob\ExpireRegistrations</job>

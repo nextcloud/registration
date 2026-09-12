@@ -32,14 +32,15 @@ use OCP\Security\ICrypto;
 use OCP\Security\ISecureRandom;
 use OCP\Server;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 
 /**
  * class RegistrationServiceTest
- *
- * @group DB
  */
+#[Group('DB')]
 class RegistrationServiceTest extends TestCase {
 	use DatabaseTransaction;
 
@@ -238,9 +239,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->assertEquals('asd@example.com', $resulting_user->getEmailAddress());
 	}
 
-	/**
-	 * @depends testCreateAccountWebForm
-	 */
+	#[Depends('testCreateAccountWebForm')]
 	public function testDuplicateUsernameWebForm() {
 		$reg = new Registration();
 		$reg->setEmail('pppp@example.com');
@@ -262,9 +261,7 @@ class RegistrationServiceTest extends TestCase {
 	 * In API, they are also validated in ApiControllerTest::validate()
 	 */
 
-	/**
-	 * @depends testCreateAccountWebForm
-	 */
+	#[Depends('testCreateAccountWebForm')]
 	public function testDuplicateUsernameApi() {
 		$reg = new Registration();
 		$reg->setEmail('pppp@example.com');
@@ -282,9 +279,7 @@ class RegistrationServiceTest extends TestCase {
 		$this->service->createAccount($reg, null, 'Full name', '+49 800 / 1110111');
 	}
 
-	/**
-	 * @depends testDuplicateUsernameApi
-	 */
+	#[Depends('testDuplicateUsernameApi')]
 	public function testUsernameDoesntMatchPattern() {
 		$this->appConfig->expects($this->atLeastOnce())
 			->method('getAppValueString')
