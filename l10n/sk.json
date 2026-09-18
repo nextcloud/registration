@@ -50,7 +50,7 @@
     "Email is optional" : "E-mail je voliteľný",
     "Block listed email domains instead of allowing them" : "Blokovať uvedené email domény namiesto aby boli povolené",
     "Disable email verification" : "Zakázať overenie e-mailu",
-    "User settings" : "Nastavenia užívateľa",
+    "User settings" : "Nastavenia používateľa",
     "Force email as login name" : "Vynútiť použitie emaiu ako prihlasovacieho mena",
     "Login name policy" : "Pravidlá pre prihlasovacie meno",
     "Regular expression to validate login names" : "Regulárny výraz pre kontrolu prihlasovacieho mena",
