@@ -34,6 +34,7 @@ class SettingsController extends Controller {
 	 *
 	 * @param string|null $registered_user_group all newly registered user will be put in this group
 	 * @param string $allowed_domains Registrations are only allowed for E-Mailadresses with these domains
+	 * @param string $allowed_emails Registrations are only allowed for these exact E-Mailadresses
 	 * @param string $additional_hint show Text at user-creation form
 	 * @param string $email_verification_hint if filled embed Text in Verification mail send to user
 	 * @param string $username_policy_regex optional regex to check usernames against a pattern
@@ -42,10 +43,12 @@ class SettingsController extends Controller {
 	 * @param bool|null $email_is_login email address is forced as user id
 	 * @param bool|null $domains_is_blocklist is the domain list an allow or block list
 	 * @param bool|null $show_domains should the email list be shown to the user or not
+	 * @param bool|null $invitation_code_required all registrations need an invitation code
 	 * @return DataResponse
 	 */
 	public function admin(?string $registered_user_group,
 		string $allowed_domains,
+		string $allowed_emails,
 		string $additional_hint,
 		string $email_verification_hint,
 		string $username_policy_regex,
@@ -58,12 +61,20 @@ class SettingsController extends Controller {
 		?bool $enforce_phone,
 		?bool $domains_is_blocklist,
 		?bool $show_domains,
-		?bool $disable_email_verification): DataResponse {
+		?bool $disable_email_verification,
+		?bool $invitation_code_required): DataResponse {
 		// handle domains
 		if ($allowed_domains === '') {
 			$this->config->deleteAppValue('allowed_domains');
 		} else {
 			$this->config->setAppValueString('allowed_domains', $allowed_domains);
+		}
+
+		// handle allowed email addresses
+		if ($allowed_emails === '') {
+			$this->config->deleteAppValue('allowed_emails');
+		} else {
+			$this->config->setAppValueString('allowed_emails', $allowed_emails);
 		}
 
 		// handle hints
@@ -104,6 +115,7 @@ class SettingsController extends Controller {
 		$this->config->setAppValueBool('domains_is_blocklist', $domains_is_blocklist);
 		$this->config->setAppValueBool('show_domains', $show_domains);
 		$this->config->setAppValueBool('disable_email_verification', $disable_email_verification);
+		$this->config->setAppValueBool('invitation_code_required', $invitation_code_required);
 
 		if ($registered_user_group === null) {
 			$this->config->deleteAppValue('registered_user_group');
