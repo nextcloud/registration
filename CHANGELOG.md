@@ -6,6 +6,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 3.1.1 - 2026-10-16
+
+### Fixed
+
+- Login flow with NC33+
+
+### Changed
+
+- Translations
+- Dependencies updates
+
 ## 3.1.0 - 2026-09-12
 
 ### Added
