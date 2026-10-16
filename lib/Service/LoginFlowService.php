@@ -13,9 +13,11 @@ use OC\Core\Controller\ClientFlowLoginV2Controller;
 use OC\Core\Service\LoginFlowV2Service;
 use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\StandaloneTemplateResponse;
+use OCP\IInitialStateService;
 use OCP\IRequest;
 use OCP\ISession;
 use OCP\IUser;
+use OCP\Util;
 
 class LoginFlowService {
 
@@ -23,6 +25,7 @@ class LoginFlowService {
 		protected IRequest $request,
 		protected ISession $session,
 		protected LoginFlowV2Service $loginFlowV2Service,
+		protected IInitialStateService $initialStateService,
 	) {
 	}
 
@@ -59,11 +62,12 @@ class LoginFlowService {
 			return null;
 		}
 
+		Util::addScript('core', 'login_flow');
+		$this->initialStateService->provideInitialState('core', 'loginFlowState', 'done');
 		return new StandaloneTemplateResponse(
 			'core',
-			'loginflowv2/done',
-			[],
-			'guest'
+			'loginflow',
+			renderAs: 'guest'
 		);
 	}
 
