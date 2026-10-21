@@ -31,7 +31,7 @@
     "The phone number is invalid." : "Telefon numarası geçersiz.",
     "Please provide a password." : "Lütfen bir parola yazın.",
     "Please provide a valid phone number." : "Lütfen geçerli bir telefon numarası yazın.",
-    "Unable to create user, there are problems with the user backend." : "Kullanıcı oluşturulamadı. Kullanıcı arka yüzünde sorun çıktı.",
+    "Unable to create user, there are problems with the user backend." : "Kullanıcı oluşturulamadı. Kullanıcı arka ucunda sorun çıktı.",
     "Unable to set user email: " : "Kullanıcı e-posta adresi ayarlanamadı:",
     "Registration app auto setup" : "Hesap açma uygulaması otomatik kurulum",
     "This app allows users to self-register a new account using their email address." : "Bu uygulama kullanıcıların e-posta adresleri ile yeni bir hesap açmasını sağlar.",
