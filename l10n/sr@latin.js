@@ -1,6 +1,7 @@
 OC.L10N.register(
     "registration",
     {
+    "Saved" : "Sačuvano",
     "Email" : "email",
     "Phone number" : "Broj telefona",
     "Password" : "Lozinka",
