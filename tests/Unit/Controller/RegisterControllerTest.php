@@ -11,6 +11,7 @@ namespace OCA\Registration\Tests\Unit\Controller;
 use ChristophWurst\Nextcloud\Testing\TestCase;
 use OCA\Registration\Controller\RegisterController;
 use OCA\Registration\Db\Registration;
+use OCA\Registration\Service\InvitationService;
 use OCA\Registration\Service\LoginFlowService;
 use OCA\Registration\Service\MailService;
 use OCA\Registration\Service\RegistrationException;
@@ -39,6 +40,7 @@ class RegisterControllerTest extends TestCase {
 	private RegistrationService&MockObject $registrationService;
 	private LoginFlowService&MockObject $loginFlowService;
 	private MailService&MockObject $mailService;
+	private InvitationService&MockObject $invitationService;
 	private IEventDispatcher&MockObject $eventDispatcher;
 	private IInitialState&MockObject $initialState;
 
@@ -51,6 +53,7 @@ class RegisterControllerTest extends TestCase {
 		$this->registrationService = $this->createMock(RegistrationService::class);
 		$this->loginFlowService = $this->createMock(LoginFlowService::class);
 		$this->mailService = $this->createMock(MailService::class);
+		$this->invitationService = $this->createMock(InvitationService::class);
 		$this->eventDispatcher = $this->createMock(IEventDispatcher::class);
 		$this->initialState = $this->createMock(IInitialState::class);
 
@@ -76,6 +79,7 @@ class RegisterControllerTest extends TestCase {
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService,
+				$this->invitationService,
 				$this->eventDispatcher,
 				$this->initialState
 			);
@@ -92,6 +96,7 @@ class RegisterControllerTest extends TestCase {
 				$this->registrationService,
 				$this->loginFlowService,
 				$this->mailService,
+				$this->invitationService,
 				$this->eventDispatcher,
 				$this->initialState,
 			])
@@ -284,6 +289,54 @@ class RegisterControllerTest extends TestCase {
 		self::assertInstanceOf(RedirectResponse::class, $response);
 		/** @var RedirectResponse $response */
 		self::assertSame('["registration.register.showVerificationForm",{"secret":"clientSecret"}]', $response->getRedirectURL());
+	}
+
+	public function testSubmitEmailFormSkipVerificationWithInvitation(): void {
+		$email = 'nextcloud@example.tld';
+		$code = 'INVITE';
+
+		$this->registrationService
+			->method('getRegistrationForEmail')
+			->with($email)
+			->willThrowException(new DoesNotExistException($email));
+
+		$invitation = new \OCA\Registration\Db\Invitation();
+		$invitation->setCode($code);
+		$invitation->setSkipEmailVerification(true);
+
+		$this->invitationService
+			->expects($this->once())
+			->method('getByCode')
+			->with($code)
+			->willReturn($invitation);
+
+		$this->registrationService
+			->expects($this->once())
+			->method('createRegistration')
+			->with($email, '', '', '', $this->anything())
+			->willReturnCallback(function ($email, $username, $password, $displayname, $invitationId) {
+				return Registration::fromParams([
+					'clientSecret' => 'clientSecret',
+					'token' => 'token',
+				]);
+			});
+
+		$this->mailService
+			->expects($this->never())
+			->method('sendTokenByMail');
+
+		$this->urlGenerator
+			->method('linkToRoute')
+			->willReturnCallback(function () {
+				return json_encode(func_get_args());
+			});
+
+		$controller = $this->getController();
+		$response = $controller->submitEmailForm($email, $code);
+
+		self::assertInstanceOf(RedirectResponse::class, $response);
+		/** @var RedirectResponse $response */
+		self::assertSame('["registration.register.showUserForm",{"secret":"clientSecret","token":"token"}]', $response->getRedirectURL());
 	}
 
 	public static function dataShowVerificationForm(): array {
