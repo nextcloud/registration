@@ -85,7 +85,7 @@ OC.L10N.register(
     "Create account" : "Opret konto",
     "Verification code" : "Bekræftelseskode",
     "Verify" : "Bekræft",
-    "Approval required" : "Godkendelse påkrævet",
+    "Approval required" : "Godkendelse kræves",
     "Your account has been successfully created, but it still needs approval from an administrator." : "Din konto er blevet oprettet, men skal stadig godkendes af en administrator."
 },
 "nplurals=2; plural=(n != 1);");
