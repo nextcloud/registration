@@ -7,6 +7,7 @@ SPDX-FileCopyrightText: Guillaume Chau <guillaume.b.chau@gmail.com>
 SPDX-FileCopyrightText: Jeff Sagal <sagalbot@gmail.com>
 SPDX-FileCopyrightText: Nextcloud GmbH and Nextcloud contributors
 SPDX-FileCopyrightText: atomiks
+SPDX-FileCopyrightText: debounce developers
 SPDX-FileCopyrightText: registration developers
 
 This file is generated from multiple sources. Included packages:
@@ -30,6 +31,9 @@ This file is generated from multiple sources. Included packages:
 	- license: AGPL-3.0-or-later
 - @nextcloud/vue-select
 	- version: 4.1.0
+	- license: MIT
+- debounce
+	- version: 4.0.0
 	- license: MIT
 - floating-vue
 	- version: 5.4.0
