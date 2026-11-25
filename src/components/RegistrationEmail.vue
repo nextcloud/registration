@@ -11,6 +11,19 @@
 				</NcNoteCard>
 
 				<NcTextField
+					v-if="invitationsEnabled"
+					v-model="invitationCode"
+					name="code"
+					type="text"
+					:label="invitationLabel"
+					:labelVisible="true"
+					:required="invitationCodeRequired"
+					autocomplete="off"
+					:disabled="invitationCodeLocked">
+					<Key :size="20" />
+				</NcTextField>
+
+				<NcTextField
 					name="email"
 					type="email"
 					:label="emailLabel"
@@ -47,11 +60,12 @@
 import { getRequestToken } from '@nextcloud/auth'
 import { loadState } from '@nextcloud/initial-state'
 import { t } from '@nextcloud/l10n'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import Email from 'vue-material-design-icons/Email.vue'
+import Key from 'vue-material-design-icons/Key.vue'
 
 const emailIsOptional = loadState<boolean>('registration', 'emailIsOptional')
 const message = loadState<string>('registration', 'message')
@@ -59,7 +73,16 @@ const requesttoken = getRequestToken()
 const disableEmailVerification = loadState<boolean>('registration', 'disableEmailVerification')
 const isLoginFlow = loadState<boolean>('registration', 'isLoginFlow')
 const loginFormLink = loadState<string>('registration', 'loginFormLink')
+const invitationsEnabled = loadState<boolean>('registration', 'invitationsEnabled')
+const invitationCodeRequired = loadState<boolean>('registration', 'invitationCodeRequired')
+const invitationCodeLocked = loadState<boolean>('registration', 'invitationCodeLocked')
+const invitationCode = ref(loadState<string>('registration', 'invitationCode'))
 
+const invitationLabel = computed(() => {
+	return invitationCodeLocked
+		? t('registration', 'Invitation code')
+		: t('registration', invitationCodeRequired ? 'Invitation code' : 'Invitation code (optional)')
+})
 const emailLabel = computed(() => {
 	return emailIsOptional
 		? t('registration', 'Email (optional)')
